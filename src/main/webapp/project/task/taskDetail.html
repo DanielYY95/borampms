@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Form Elements | Hyper - Responsive Bootstrap 5 Admin Dashboard</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
+        <meta content="Coderthemes" name="author" />
+        <!-- App favicon -->
+        <link rel="shortcut icon" href="../assets/images/favicon.ico">
+
+        <!-- App css -->
+        <link href="../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+        <link href="../assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-style"/>
+
+    </head>
+
+    <body class="loading" data-layout-color="light" data-leftbar-theme="dark" data-layout-mode="fluid" data-rightbar-onstart="true">
+        <!-- Begin page -->
+        <div class="wrapper">
+
+
+            <!-- ============================================================== -->
+            <!-- Start Page Content here -->
+            <!-- ============================================================== -->
+
+            <div class="content-page">
+                <div class="content">
+        
+                    <!-- Start Content-->
+                    <div class="container-fluid">
+                        
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box">
+                                    <div class="page-title-right">
+                                        <ol class="breadcrumb m-0">
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Hyper</a></li>
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Forms</a></li>
+                                            <li class="breadcrumb-item active">Form Elements</li>
+                                        </ol>
+                                    </div>
+                                    <h4 class="page-title">업무 상세정보</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end page title --> 
+                        
+                         <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+                
+                                        <ul class="nav nav-tabs nav-bordered mb-3">
+                                            <li class="nav-item"> <!-- a링크에서  data-bs-toggle="tab" 뺐음-->
+                                                <a href="taskDetail.html"  aria-expanded="true" class="nav-link active">
+                                                   업무정보
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a href="#input-types-code"  aria-expanded="true" class="nav-link">
+                                                    WBS
+                                                </a>
+                                            </li>
+                                             <li class="nav-item">
+                                                <a href="taskOutput.html"  aria-expanded="true" class="nav-link">
+                                                    산출물
+                                                </a>
+                                            </li>
+                                             <li class="nav-item">
+                                                <a href="#input-types-code" aria-expanded="true" class="nav-link">
+                                                    이슈
+                                                </a>
+                                            </li>
+                                             <li class="nav-item">
+                                                <a href="#input-types-code"  aria-expanded="true" class="nav-link">
+                                                    가이드
+                                                </a>
+                                            </li>
+                                             <li class="nav-item">
+                                                <a href="#input-types-code"  aria-expanded="true" class="nav-link">
+                                                    히스토리
+                                                </a>
+                                            </li>
+                                        </ul> <!-- end nav-->
+
+                                            <!-- Signup modal content -->
+                                                <div id="taskDetail"  tabindex="-1" role="dialog" aria-hidden="true">
+                                                    <div class="modal-dialog" >
+                                                        <div class="modal-content" style="width: 150%;">
+
+                                                            <div class="modal-header">
+                                                            	
+                                                                <h4>업무정보</h4>                                                                
+                                                            	
+                                                            </div>
+            
+                                                            <div class="modal-body">
+                                                               
+            
+                                                                <form class="ps-3 pe-3" action="#">
+            																							
+                                                                    <div class="mb-3">
+                                                                        <label for="username" class="form-label">제목</label>
+                                                                        <input name="title" class="form-control"  required="" placeholder="제목을 입력해주세요" readonly>
+                                                                    </div>
+                                                                    
+                                                                    
+                                                                   <!-- Autoclose -->
+																	<div style="display:flex; justify-content: space-between;">
+                                                                   
+                                                                        <div class="mb-3 position-relative" style="width: 30%;">
+                                                                            <label class="form-label">작성자</label>
+                                                                            <input type="text" name="writer" required="" value="양초명" class="form-control" readonly>
+                                                                        </div>
+
+                                                                        <div class="mb-3 position-relative" id="datepicker4" style="width: 30%;">
+                                                                            <label class="form-label">시작일</label>
+                                                                            <input type="text" name="startdate" required="" class="form-control" data-provide="datepicker" data-date-autoclose="true" data-date-container="#datepicker4" readonly>
+                                                                        </div>
+                                                                                                                                            
+                                                                                                                                        <!-- Autoclose -->
+                                                                        <div class="mb-3 position-relative" id="datepicker4" style="width: 30%;">
+                                                                            <label class="form-label">마감일</label>
+                                                                            <input type="text" name="duedate" required="" class="form-control" data-provide="datepicker" data-date-autoclose="true" data-date-container="#datepicker4" readonly>
+                                                                        </div>
+
+                                                                    </div>
+																	
+																	<!-- Multiple Select -->
+																	<div class="mb-3 position-relative">
+																		<label class="form-label">업무담당자</label>
+																		<select class="select2 form-control select2-multiple" required="" data-toggle="select2" multiple="multiple" data-placeholder="업무담당자 지정" >
+																		    <optgroup label="IT팀">
+																		        <option value="AK">IT팀 조민혁</option>
+																		        <option value="HI">IT팀 전지원</option>
+																		    </optgroup>
+																		    <optgroup label="인사팀">
+																		        <option value="CA">인사팀 김파월</option>
+																		        <option value="NV">인사팀 김소월</option>
+																		        <option value="OR">인사팀 한가람</option>
+																		        <option value="WA">인사팀 김효은</option>
+																		    </optgroup>
+																		    <optgroup label="마케팅팀">
+																		        <option value="AZ">마케팅팀 양초명</option>
+																		        <option value="CO">마케팅팀 양현수</option>
+																		        <option value="ID">마케팅팀 양광</option>
+
+																		    </optgroup>
+																		</select>
+																	</div>
+            														
+
+                                                                    <div style="display:flex; justify-content: space-between; ">
+                                                                        <div class="mb-3" style="width: 45%;">
+                                                                            <label for="example-select" class="form-label">분류</label>
+                                                                            <select class="form-select" id="example-select" >
+                                                                                <option>요구사항 도출</option>
+                                                                                <option>요구사항 분석</option>
+                                                                                <option>요구사항 명확</option>
+                                                                                <option>요구사항 확인</option>
+                                                                                <option>개발</option>
+                                                                            </select>
+                                                                        </div>	
+                                                                        
+
+                                                                        
+                                                                        <div class="mb-3" style="width: 45%;">
+                                                                            <label for="example-select" class="form-label">진행상태</label>
+                                                                            <select class="form-select" id="example-select" >
+                                                                                <option>진행 전</option>
+                                                                                <option>진행 중</option>
+                                                                                <option>지연</option>
+                                                                                <option>완료</option>
+                                                    
+                                                                            </select>
+                                                                        </div>
+
+                                                                    </div>
+            														
+            														 <div class="mb-3">
+		                                                                <label for="example-textarea" class="form-label">내용</label>
+		                                                                <textarea class="form-control" id="example-textarea" rows="15" readonly></textarea>
+		                                                            </div>	<hr>		
+            
+                                                       
+                                                                    <div id="btnList" class="mb-3 text-center" style="display: flex; justify-content: space-between;">
+                                                                        <button class="btn btn-secondary"  >삭제</button>
+                                                                        <button class="btn btn-primary" id="uptBtn" >수정</button>
+                                                                        
+                                                                    </div>
+            
+                                                                </form>
+            
+                                                            </div>
+                                                        </div><!-- /.modal-content -->
+                                                    </div><!-- /.modal-dialog -->
+                                                </div><!-- /.modal -->
+                                        </div> <!-- end tab-content-->
+                                    </div> <!-- end card-body -->
+                                </div> <!-- end card -->
+                            </div><!-- end col -->
+                        </div><!-- end row -->
+					</div>
+                 
+                </div> <!-- end padding-->
+
+            </div>
+        </div><!-- end page  -->
+
+        <div class="rightbar-overlay"></div>
+        <!-- /End-bar -->
+
+
+        <!-- bundle -->
+        <script src="../assets/js/vendor.min.js"></script>
+        <script src="../assets/js/app.min.js"></script>
+        
+        <script>
+            $("#uptBtn").click(function(){
+
+                $("input, textarea").removeAttr("readonly");
+                $(this).text("수정완료").attr("id", "uptSuccessBtn"); // => 요걸 누르면 한번 더 눌린 것처럼 되네...
+
+            })
+
+            // 반영이 안되는구나.. 첨부파일 때 처럼 하위요소로 해야....
+                // 근데 또 이걸로 하니까 뭔가 좀 이상한디....
+            $("#btnList").on("click", "#uptSuccessBtn",function(){
+
+                alert("수정완료!");
+                $("input, textarea").attr('readonly', true);
+                $(this).text("수정").attr("id", "uptBtn");
+            })
+
+
+        </script>
+
+    </body>
+</html>
