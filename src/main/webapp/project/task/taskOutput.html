@@ -13,7 +13,11 @@
         <link href="../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
         <link href="../assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-style"/>
 		
-		
+		<style>
+            .container{width: 70%;}
+            .input-group-prepend{width:20%;}
+            .input-group-text{width:100%;font-weight:bolder;}
+        </style>
 		
     </head>
 
@@ -48,89 +52,71 @@
                             <div class="col-12">
                                 <div class="card">
                                     <div class="card-body">
-                
-                                        <ul class="nav nav-tabs nav-bordered mb-3">
-                                            <li class="nav-item"> <!-- a링크에서  data-bs-toggle="tab" 뺐음-->
-                                                <a href="taskDetail.html"  aria-expanded="true" class="nav-link">
-                                                   업무정보
-                                                </a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="#input-types-code"  aria-expanded="true" class="nav-link">
-                                                    WBS
-                                                </a>
-                                            </li>
-                                             <li class="nav-item">
-                                                <a href="taskOutput.html"  aria-expanded="true" class="nav-link active">
-                                                    산출물
-                                                </a>
-                                            </li>
-                                             <li class="nav-item">
-                                                <a href="#input-types-code" aria-expanded="true" class="nav-link">
-                                                    이슈
-                                                </a>
-                                            </li>
-                                             <li class="nav-item">
-                                                <a href="#input-types-code"  aria-expanded="true" class="nav-link">
-                                                    가이드
-                                                </a>
-                                            </li>
-                                             <li class="nav-item">
-                                                <a href="#input-types-code"  aria-expanded="true" class="nav-link">
-                                                    히스토리
-                                                </a>
-                                            </li>
-                                        </ul> <!-- end nav-->
-											
+                                        <div>
+                                            <ul class="nav nav-tabs nav-bordered mb-3" style="display: flex; justify-content: space-around;">
+                                                <li class="nav-item"> <!-- a링크에서  data-bs-toggle="tab" 뺐음-->
+                                                    <a href="taskDetail.html"  aria-expanded="true" class="nav-link">
+                                                    업무정보
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#input-types-code"  aria-expanded="true" class="nav-link">
+                                                        WBS
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="taskOutput.html"  aria-expanded="true" class="nav-link active">
+                                                        산출물
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="task_issue.html" aria-expanded="true" class="nav-link">
+                                                        이슈
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#input-types-code"  aria-expanded="true" class="nav-link">
+                                                        가이드
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#input-types-code"  aria-expanded="true" class="nav-link">
+                                                        히스토리
+                                                    </a>
+                                                </li>
+                                            </ul> <!-- end nav-->
+                                        </div>	
 										
 										<!-- ### 파일업로드 File Upload -->
-										<form action="/" method="post" class="dropzone" id="myAwesomeDropzone" data-plugin="dropzone" data-previews-container="#file-previews"
-										    data-upload-preview-template="#uploadPreviewTemplate">
-										    <div class="fallback">
-										        <input name="file" type="file" multiple />
-										    </div>
-										
-										    <div class="dz-message needsclick">
-										        <i class="h1 text-muted dripicons-cloud-upload"></i>
-										        <h3>파일을 넣으시거나 클릭해서 업로드해주세요.</h3>
-										        <span class="text-muted font-13">(용량은 최대
-										            <strong>10 MB</strong> 로 제한됩니다.)</span>
-										    </div>
-										</form>
-										
-										<!-- Preview -->
-										<div class="dropzone-previews mt-3" id="file-previews"></div>
-										
-										<!-- file preview template -->
-										<div class="d-none" id="uploadPreviewTemplate">
-										    <div class="card mt-1 mb-0 shadow-none border">
-										        <div class="p-2">
-										            <div class="row align-items-center">
-										                <div class="col-auto">
-										                    <img data-dz-thumbnail src="#" class="avatar-sm rounded bg-light" alt="">
-										                </div>
-										                <div class="col ps-0">
-										                    <a href="javascript:void(0);" class="text-muted fw-bold" data-dz-name></a>
-										                    <p class="mb-0" data-dz-size></p>
-										                </div>
-										                <div class="col-auto">
-										                    <!-- Button -->
-										                    <a href="" class="btn btn-link btn-lg text-muted" data-dz-remove>
-										                        <i class="dripicons-cross"></i>
-										                    </a>
-										                </div>
-										            </div>
-										        </div>
-										    </div>
-										</div>
-								<!-- ### end 파일업로드 -->
+                                        <div class="container">
+                                            <form method="post" enctype="multipart/form-data"
+                                                action="${path}/board.do?method=insert">
+                                        
+                                        <div id="uploadContainer">
+                                                <div class="input-group mb-3" >
+                                                
+                                                    <div class="row g-2">
+                                                       
+                                                            
+                                                            <input class="form-control" type="file" id="formFileMultiple" multiple>
+                                                            
+                                                    </div><span><button id="addUpload" class="btn btn-success">추가+</button></span>
+                                                    
+                                                </div>
+                                                
+                                            </div>
+                                        </form>
+                                        </div>
+    
 									
 										<div class="mb-3 text-center">
 	                                        <button class="btn btn-secondary">취소</button>
-	                                        <button class="btn btn-primary" type="submit">등록</button>
+	                                        <button class="btn btn-primary" type="submit" id="test">테스트</button>
 	                                        
 	                                    </div>
   
+
+
                                           
                                     </div> <!-- end card-body -->
                                 </div> <!-- end card -->
@@ -155,5 +141,43 @@
 		<!-- init js -->
 		<script src="../assets/js/ui/component.fileupload.js"></script>
 		        
+        <script>
+            // 첨부파일명이 화면에 나타날 수 있도록
+		$("#uploadContainer").on("change", ".custom-file-input", function(){
+			$(this).next(".custom-file-label").text($(this).val());
+			// label의 text를 파일 이름으로 변경
+		});  // 이미 랜더링이 된 상태여서 새로 만들어진 것들에 대해서는 적용이 안되는듯...업로드는 제대로 되는디
+		
+		// 첨부파일 목록의 갯수
+		let uploadLength = 1;
+		
+		// 추가버튼을 누르면 새로운 업로드 div 생성
+		$("#uploadContainer").on("click", "#addUpload", function(){
+			event.preventDefault(); // 계속해서 폼 제출을 하길래 막아놨다.
+
+			let newUpload = '<div class="input-group mb-3"><div class="row g-2">'
+						+'<input class="form-control" type="file" id="formFileMultiple" multiple>' 
+						+'</div><span><button id="deleteUpload" class="btn btn-danger">'+"삭제-"+'</button></span></div>';
+			
+			$("#uploadContainer").append(newUpload);
+
+		})
+
+        	// 삭제버튼을 누르면 버튼의 조상의 조상인 div를 삭제한다. 
+		$("#uploadContainer").on("click", "#deleteUpload", function(){
+			event.preventDefault();
+			$(this).parent().parent().remove();
+			
+		})
+		
+        $("#test").click(function(){
+
+            alert($("input").val());
+        })
+       
+
+        </script>
+
+
     </body>
 </html>

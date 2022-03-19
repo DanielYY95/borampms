@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >	
+
+<!-- 
+	// springweb.a02_mvc.a03_dao.A01_EmpDao : dao의 인터페이스명
+	// ArrayList<Emp> getEmpList(Emp sch);
+	1. 메서드명: id
+	2. 리턴타입: resultType
+	3. 매개변수: parameterType
+		이렇게 연동관계를 설정하여 dao와 sql을 연동하여 결과를 처리한다.
+	
+
+ -->
+
+	
+<mapper namespace="springweb.a02_mvc.a03_dao.A01_EmpDao">
+	<select id="getEmpList" resultType="emp" parameterType="emp">
+		select *
+		from emp2
+		where ename like '%' || #{ename} || '%'
+		and job like '%' || #{job} || '%'	
+	
+	</select>
+	
+	<select id="getEmpnos" resultType="Integer" parameterType="string">
+		select empno
+		from emp
+		where job = #{job}	
+	</select>
+	
+	<select id="getSalbyGrade" resultType="saldetail" >
+		SELECT empno, ename, sal, grade
+		FROM emp e, SALGRADE s 
+		WHERE sal BETWEEN losal AND hisal
+	</select>
+		
+		<!--  컬럼명과 property명이 다르게 설정하여 연결할 때 활용된다. -->
+	<resultMap type="emp2" id="emp2Rst">
+		<result column="empno" property="no" />
+		<result column="ename" property="name" />
+		<result column="mgr" property="mgrno" />
+		<result column="sal" property="salary" />
+	</resultMap>
+	
+	<insert id="insertEmp" parameterType="emp">
+		INSERT INTO EMP2 values(EMP_SEQ.NEXTVAL, #{ename}, #{job}, #{mgr}, 
+		to_date(#{hiredateS}, 'YYYY-MM-DD'), #{sal}, #{comm}, #{deptno})
+	</insert>
+	
+	<select id="getEmp" parameterType="int" resultType="emp">
+		select * from emp2 where empno=#{empno}
+	</select> 
+	
+	<update id = "uptEmp" parameterType="emp"> 
+	update emp2
+		set ename= #{ename},
+			job=#{job},
+			mgr=#{mgr},
+			hiredate = to_date(#{hiredateS}, 'YYYY-MM-DD'), 
+			sal=#{sal},
+			comm=#{comm},
+			deptno=#{deptno}
+		where empno = #{empno}
+	</update>
+	
+	<delete id="delEmp" parameterType="int">
+		delete from emp2 where empno = #{empno}
+	
+	
+	</delete>
+	
+	
+</mapper>

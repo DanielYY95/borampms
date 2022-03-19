@@ -45,7 +45,7 @@
                                                                
                                                                 
             
-                                                                <form class="ps-3 pe-3" action="#">
+                                                                <form id="regForm" class="ps-3 pe-3" action="#">
             																							
                                                                     <div class="mb-3">
                                                                         <label for="username" class="form-label">제목</label>
@@ -72,21 +72,21 @@
 																	<!-- Multiple Select -->
 																	<div class="mb-3 position-relative">
 																		<label class="form-label">업무담당자</label>
-																		<select class="select2 form-control select2-multiple" required="" data-toggle="select2" multiple="multiple" data-placeholder="업무담당자 지정">
+																		<select name="charge" class="select2 form-control select2-multiple" required="" data-toggle="select2" multiple="multiple" data-placeholder="업무담당자 지정">
 																		    <optgroup label="IT팀">
-																		        <option value="AK">IT팀 조민혁</option>
-																		        <option value="HI">IT팀 전지원</option>
+																		        <option value="IT팀 조민혁">IT팀 조민혁</option>
+																		        <option value="IT팀 전지원">IT팀 전지원</option>
 																		    </optgroup>
 																		    <optgroup label="인사팀">
-																		        <option value="CA">인사팀 김파월</option>
-																		        <option value="NV">인사팀 김소월</option>
-																		        <option value="OR">인사팀 한가람</option>
-																		        <option value="WA">인사팀 김효은</option>
+																		        <option value="인사팀 김파월">인사팀 김파월</option>
+																		        <option value="인사팀 김소월">인사팀 김소월</option>
+																		        <option value="인사팀 한가람">인사팀 한가람</option>
+																		        <option value="인사팀 김효은">인사팀 김효은</option>
 																		    </optgroup>
 																		    <optgroup label="마케팅팀">
-																		        <option value="AZ">마케팅팀 양초명</option>
-																		        <option value="CO">마케팅팀 양현수</option>
-																		        <option value="ID">마케팅팀 양광</option>
+																		        <option value="마케팅팀 양초명">마케팅팀 양초명</option>
+																		        <option value="마케팅팀 양현수">마케팅팀 양현수</option>
+																		        <option value="마케팅팀 양광">마케팅팀 양광</option>
 
 																		    </optgroup>
 																		</select>
@@ -129,7 +129,7 @@
                                                        
                                                                     <div class="mb-3 text-center" style="display: flex; justify-content: space-between;">
                                                                         <button class="btn btn-secondary" class="btn-close" data-bs-dismiss="modal" aria-label="Close">취소</button>
-                                                                        <button class="btn btn-primary" type="submit">등록</button>
+                                                                        <button class="btn btn-primary" type="submit" id="regBtn">등록</button>
                                                                         
                                                                     </div>
             
@@ -211,6 +211,13 @@
                     $(this).val('');
                 }
             })
+
+
+            $("#regBtn").click(function(){
+
+                alert($("[name=charge]").val());
+            })
+
 
         </script>
 
