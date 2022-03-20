@@ -51,44 +51,45 @@
                             <div class="col-12">
                                 <div class="card">
                                     <div class="card-body">
-                
-                                        <ul class="nav nav-tabs nav-bordered mb-3">
-                                            <li class="nav-item"> <!-- a링크에서  data-bs-toggle="tab" 뺐음-->
-                                                <a href="taskDetail.html"  aria-expanded="true" class="nav-link active">
-                                                   업무정보
-                                                </a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="#input-types-code"  aria-expanded="true" class="nav-link">
-                                                    WBS
-                                                </a>
-                                            </li>
-                                             <li class="nav-item">
-                                                <a href="taskOutput.html"  aria-expanded="true" class="nav-link">
-                                                    산출물
-                                                </a>
-                                            </li>
-                                             <li class="nav-item">
-                                                <a href="#input-types-code" aria-expanded="true" class="nav-link">
-                                                    이슈
-                                                </a>
-                                            </li>
-                                             <li class="nav-item">
-                                                <a href="#input-types-code"  aria-expanded="true" class="nav-link">
-                                                    가이드
-                                                </a>
-                                            </li>
-                                             <li class="nav-item">
-                                                <a href="#input-types-code"  aria-expanded="true" class="nav-link">
-                                                    히스토리
-                                                </a>
-                                            </li>
-                                        </ul> <!-- end nav-->
+                                        <div>
+                                            <ul class="nav nav-tabs nav-bordered mb-3" style="display: flex; justify-content: space-around;">
+                                                <li class="nav-item"> <!-- a링크에서  data-bs-toggle="tab" 뺐음-->
+                                                    <a href="taskDetail.html"  aria-expanded="true" class="nav-link active">
+                                                    업무정보
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#input-types-code"  aria-expanded="true" class="nav-link">
+                                                        WBS
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="taskOutput.html"  aria-expanded="true" class="nav-link">
+                                                        산출물
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="task_issue.html" aria-expanded="true" class="nav-link">
+                                                        이슈
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="taskGuide.html"  aria-expanded="true" class="nav-link">
+                                                        가이드
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="taskHistory.html"  aria-expanded="true" class="nav-link">
+                                                        히스토리
+                                                    </a>
+                                                </li>
+                                            </ul> <!-- end nav-->
+                                        </div>	
 
                                             <!-- Signup modal content -->
                                                 <div id="taskDetail"  tabindex="-1" role="dialog" aria-hidden="true">
-                                                    <div class="modal-dialog" >
-                                                        <div class="modal-content" style="width: 150%;">
+                                                    <div  >
+                                                        <div  style="width: 70%; margin: 0 auto">
 
                                                             <div class="modal-header">
                                                             	
@@ -131,21 +132,21 @@
 																	<!-- Multiple Select -->
 																	<div class="mb-3 position-relative">
 																		<label class="form-label">업무담당자</label>
-																		<select class="select2 form-control select2-multiple" required="" data-toggle="select2" multiple="multiple" data-placeholder="업무담당자 지정" >
+                                                                        <select name="charge" class="select2 form-control select2-multiple" required="" data-toggle="select2" multiple="multiple" data-placeholder="업무담당자 지정">
 																		    <optgroup label="IT팀">
-																		        <option value="AK">IT팀 조민혁</option>
-																		        <option value="HI">IT팀 전지원</option>
+																		        <option value="IT팀 조민혁">IT팀 조민혁</option>
+																		        <option value="IT팀 전지원">IT팀 전지원</option>
 																		    </optgroup>
 																		    <optgroup label="인사팀">
-																		        <option value="CA">인사팀 김파월</option>
-																		        <option value="NV">인사팀 김소월</option>
-																		        <option value="OR">인사팀 한가람</option>
-																		        <option value="WA">인사팀 김효은</option>
+																		        <option value="인사팀 김파월">인사팀 김파월</option>
+																		        <option value="인사팀 김소월">인사팀 김소월</option>
+																		        <option value="인사팀 한가람">인사팀 한가람</option>
+																		        <option value="인사팀 김효은">인사팀 김효은</option>
 																		    </optgroup>
 																		    <optgroup label="마케팅팀">
-																		        <option value="AZ">마케팅팀 양초명</option>
-																		        <option value="CO">마케팅팀 양현수</option>
-																		        <option value="ID">마케팅팀 양광</option>
+																		        <option value="마케팅팀 양초명">마케팅팀 양초명</option>
+																		        <option value="마케팅팀 양현수">마케팅팀 양현수</option>
+																		        <option value="마케팅팀 양광">마케팅팀 양광</option>
 
 																		    </optgroup>
 																		</select>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:aop="http://www.springframework.org/schema/aop" 
+	xmlns:context="http://www.springframework.org/schema/context"
+		xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 xmlns:util="http://www.springframework.org/schema/util"
+	 xmlns:websocket="http://www.springframework.org/schema/websocket"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+  		http://www.springframework.org/schema/mvc
+		http://www.springframework.org/schema/mvc/spring-mvc.xsd     
+        http://www.springframework.org/schema/util
+       http://www.springframework.org/schema/util/spring-util.xsd
+   		http://www.springframework.org/schema/websocket
+		http://www.springframework.org/schema/websocket/spring-websocket.xsd" >
+		
+	<context:component-scan base-package="borampms">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/><!-- @Controller한 것은 해당 -->
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
+	</context:component-scan>	
+	
+	<!-- 컨테이너에 공통 DB 설정 정보 가져오기  -->
+	<context:property-placeholder location="classpath:/resource/config"/>
+	
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close" > <!-- 자원의 해제하는 처리의 메서드를 지정 -->
+	
+		<property name="driverClassName" value="${driver}"></property>
+		<property name="url" value="${url}"></property>
+		<property name="username" value="${user}"></property>
+		<property name="password" value="${pass}"></property>
+		
+	</bean>
+	<!-- 
+		2. mybatis 컨테이너에서 사용하기..
+	 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+	<!-- dataSource에 의해 연결된 객체 호출하기 -->
+	<property name="dataSource" ref="dataSource"></property> <!-- ref는 bean 이름이다. -->
+	<!-- 설정파일 지정하기 -->
+	<property name="configLocation" value="classpath:resource/mybatis.Spring.xml"></property>
+	
+	</bean>
+	
+	<!-- 3. Dao 인터페이스 패키지 선언하기 
+	-->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="mvc.dao.TaskDao"></property>
+		
+	
+	</bean>
+	
+	<!-- 파일 업로드를 위한 viewer 선언  -->
+	<bean id="multipartResolver" 
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver"></bean>
+	
+
+	<!-- jsp view는 기본적으로 설정이 되어있지만, 우선 순위 때문에 선언한다 -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+
+		<property name="prefix" value="WEB-INF\views\"/>	 
+		<property name="suffix" value=".jsp"/>
+		<property name="order" value="1"></property>
+		
+	</bean>
+	
+	<!-- 정의한 bean viewer 선언. 우선 순위 첫번째로 지정  -->
+	<bean id="btnViewResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<property name="order" value="0"></property>
+	
+	</bean>
+
+	
+	<!-- json 뷰 선언 
+		return "pageJsonReport" -->
+	
+	<bean id="pageJsonReport" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView">
+		<property name="contentType" value="text/html; charset=utf-8"></property>
+	</bean>
+	
+	<!-- 다국어 처리를 위한 모듈 등록
+	1. 핵심 클래스
+	2. 다국어 파일 기본 위치 등록
+		\message\msg.properties 기준파일
+	3. 위치기반 session 설정  -->
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<value>message.msg</value>
+			</list>
+		</property>	
+	</bean>
+	<bean id="localeResolver" 
+	class="org.springframework.web.servlet.i18n.SessionLocaleResolver"/>
+	
+</beans>

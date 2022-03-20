@@ -3,29 +3,12 @@
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<typeAlias alias="emp" type="springweb.vo.Emp"/>
-		<typeAlias alias="emp2" type="springweb.vo.Emp2"/>
-		<typeAlias alias="dept" type="springweb.vo.Dept"/>
-		<typeAlias alias="saldetail" type="springweb.vo.SalDetail"/>
-		<typeAlias alias="dept2" type="springweb.vo.Dept2"/>
-		<typeAlias alias="salgrade" type="springweb.vo.Salgrade"/>
-		<typeAlias alias="salgrade2" type="springweb.vo.Salgrade2"/>
-		<typeAlias alias="emd" type="springweb.vo.EmpByDept"/>
-		<typeAlias alias="member" type="springweb.vo.Member"/>
-		<typeAlias alias="fileInfo" type="springweb.vo.FileInfo"/>
-		<typeAlias alias="calendar" type="springweb.vo.Calendar"/>
+		<typeAlias alias="task" type="mvc.vo.PRJ_INFO"/>
 		
 	</typeAliases>
 	<mappers>
-		<mapper resource="resource/EmpMapper.xml" />
-		<mapper resource="resource/cntMapper.xml" />
-		<mapper resource="resource/DeptMapper.xml" />
-		<mapper resource="resource/getEnameMapper.xml" />
-		<mapper resource="resource/SalgradeMapper.xml" />
-		<mapper resource="resource/emdMapper.xml" />
-		<mapper resource="resource/memberMapper.xml" />
-		<mapper resource="resource/FileMapper.xml" />
-		<mapper resource="resource/CalendarMapper.xml"/>
+		<mapper resource="resource/taskMapper.xml" />
+	
 		
 	</mappers>
 	
