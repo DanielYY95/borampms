@@ -1,9 +1,9 @@
 # db 정보
 
 driver=oracle.jdbc.driver.OracleDriver
-url=jdbc:oracle:thin:@localhost:1521:xe
-user=scott
-pass=tiger
+url=jdbc:oracle:thin:@146.56.185.62:1521:xe
+user=boram
+pass=pms
 
 # 업로드할 파일 경로 설정
 upload=C:/Users/A/OneDrive - UOS/springweb/src/main/webapp/z01_upload/

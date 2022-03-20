@@ -10,10 +10,13 @@ public class USER_INFO {
 	private String uiEmail;
 	private int uiPhone;
 	private Date uiBirth;
+	private Date uiRegDate;
 	private String uiPic;
 	private String uiIntro;
 	private String uiRank;
 	private String uiDept;
+	private String uiStatus;
+	
 	public USER_INFO() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -78,6 +81,20 @@ public class USER_INFO {
 	public void setUiDept(String uiDept) {
 		this.uiDept = uiDept;
 	}
+	public String getUiStatus() {
+		return uiStatus;
+	}
+	public void setUiStatus(String uiStatus) {
+		this.uiStatus = uiStatus;
+	}
+	public Date getUiRegDate() {
+		return uiRegDate;
+	}
+	public void setUiRegDate(Date uiRegDate) {
+		this.uiRegDate = uiRegDate;
+	}
 
+	
+	
 	
 }

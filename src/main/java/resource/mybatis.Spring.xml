@@ -2,13 +2,20 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+
+	<settings> 
+		<setting name="mapUnderscoreToCamelCase" value="true"/> 
+	</settings>
+	
+
 	<typeAliases>
 		<typeAlias alias="task" type="mvc.vo.PRJ_INFO"/>
+		<typeAlias alias="user" type="mvc.vo.USER_INFO"/>
 		
 	</typeAliases>
 	<mappers>
 		<mapper resource="resource/taskMapper.xml" />
-	
+		<mapper resource="resource/userMapper.xml" />
 		
 	</mappers>
 	

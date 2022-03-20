@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >		
+
+<mapper namespace="mvc.dao.UserDao">
+
+	
+	<!-- 1. 회원 리스트 조회 --> 
+	<select id="getUserList" resultType="user" >
+		select * from user_info
+	
+	</select>
+
+
+	<!-- 2. 회원가입 --> 
+	<insert id="insertUser" parameterType="user">
+		INSERT INTO user_info VALUES (
+		#{uiId}, #{uiPw}, #{uiName}, 
+		#{uiEmail}, #{uiPhone}, #{uiBirth}, sysdate,
+		'',
+		'',
+		'',
+		'',
+		0
+		)
+
+	</insert> 
+
+
+	<!-- 3. 아이디 중복 확인 --> 
+
+	<select id="idChk" parameterType="user" resultType="int">
+		SELECT count(*)
+		FROM user_info
+		WHERE UI_ID = #{uiId}
+	</select>
+
+	<!-- 4. 로그인 --> 
+
+	<select id="login"  parameterType="user" resultType="user" >
+		SELECT * FROM user_info
+		WHERE UI_ID = #{uiId}
+		AND UI_PW = #{uiPw}
+		
+	</select>
+
+	<!--  5. 회원정보 수정 -->
+	<update id="updateUser" parameterType="user">
+		UPDATE user_info 
+			SET UI_PW = #{uiPw}
+			and UI_EMAIL = #{uiEmail}
+			and UI_PHONE = #{uiPhone}
+			and UI_BIRTH = #{uiBirth}
+			and UI_PIC = #{uiPic}
+			and UI_INTRO = #{uiIntro}
+			and UI_RANK = #{uiRank}
+			and UI_DEPT = #{uiDept}
+			and UI_STATUS = #{uiStatus}
+			WHERE UI_ID = #{uiId}
+	
+	</update>
+
+	<!-- 6. 회원정보 불러오기 --> 
+	<select id="getUser" parameterType="string" resultType="user" >
+		select * from user_info
+		where UI_ID = #{uiId}
+	
+	</select>
+	
+
+
+	<!-- 7. 회원탈퇴 --> 
+	
+	<delete id="deleteUser" parameterType="user">
+		delete from user_info
+		where UI_ID = #{uiId}
+		and UI_PW = #{uiPw}
+	
+	</delete>
+	
+	<!-- 8. 아이디찾기 -->
+	
+	<!-- 9. 비밀번호찾기 -->
+	
+	
+</mapper>

@@ -21,7 +21,7 @@
    		http://www.springframework.org/schema/websocket
 		http://www.springframework.org/schema/websocket/spring-websocket.xsd" >
 		
-	<context:component-scan base-package="borampms">
+	<context:component-scan base-package="mvc">
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/><!-- @Controller한 것은 해당 -->
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
@@ -53,7 +53,7 @@
 	<!-- 3. Dao 인터페이스 패키지 선언하기 
 	-->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="mvc.dao.TaskDao"></property>
+		<property name="basePackage" value="mvc.dao"></property>
 		
 	
 	</bean>

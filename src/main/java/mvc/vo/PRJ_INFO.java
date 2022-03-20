@@ -10,6 +10,9 @@ public class PRJ_INFO {
 	private Date piStartdate;
 	private Date  piDuedate;
 	private String piStatus;
+	private String clId;
+	
+	
 	public PRJ_INFO() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -49,6 +52,12 @@ public class PRJ_INFO {
 	}
 	public void setPiStatus(String piStatus) {
 		this.piStatus = piStatus;
+	}
+	public String getClId() {
+		return clId;
+	}
+	public void setClId(String clId) {
+		this.clId = clId;
 	}
 	
 	
