@@ -26,12 +26,80 @@
  <script src="${path}/tools/jquery-3.6.0.js"></script>
  
 <script type="text/javascript">
-	$(document).ready(function(){
+	let msg = '${msg}';
+	
+	if(msg!=''){
+		alert(msg);
+	}
+	
+	
+	function chkValidate(){
+
+		// 입력 유효성 검사 
+		if($("[name=uiId]").val().trim()==""){
+			alert("아이디을 입력해주세요.");
+			$("[name=uiId]").focus();
+			return false;	
+        }
+        if ($("[name=uiPw]").val().trim()==""){
+			alert("비밀번호를 입력해주세요.");
+			$("[name=uiPw]").focus();
+			return false;
+        }
+        
+        if ($("[name=uiName]").val().trim()==""){
+			alert("이름을 입력해주세요.");
+			$("[name=uiName]").focus();
+			return false;
+               
+		}
+        
+        if ($("[name=uiEmail]").val().trim()==""){
+			alert("이메일을 입력해주세요.");
+			$("[name=uiEmail]").focus();
+			return false;
+		}
+        
+        if ($("[name=uiBirth]").val()==""){
+			alert("생년월일을 입력해주세요.");
+			$("[name=uiBirth]").focus();
+			return false;
+		}
 		
-		<%-- 
+		$("#signupBtn").click();
+			
 		
-		--%>	
-	});
+	}
+
+      // 중복 확인 후, 중복이 아니라고하면 아이디 readonly로 만듬. 중복이라고하면 아이디 초기화
+      function idchk(){
+                
+            if($("[name=uiId]").val().trim()==''){
+                    alert("아이디를 입력해주세요.");
+                    return;
+                }
+                
+                $.ajax({
+                url : "${path}/regUser.do?method=idchk",
+                type : "get",
+                dataType : "json",
+                data : "uiId="+$("[name=uiId]").val(),
+                success : function(data){
+                    result = data.result;
+                    if(result == 0){
+                        alert("사용가능한 아이디입니다.");
+                        $("[name=uiId]").attr("readonly", true);
+
+                    }else{
+                        alert("중복된 아이디입니다.");
+                    }
+                }
+                
+                });
+
+        }
+
+	
 </script>
 </head>
 
@@ -46,7 +114,7 @@
                             <!-- Logo-->
                             <div class="card-header text-center bg-primary">
                                 <a href="main.html">
-                                    <span><img src="../images/main/logo.png" alt="" height="50" width="100"></span>
+                                    <span><img src="${path}/images/main/logo.png" alt="" height="50" width="100"></span>
                                 </a>
                             </div>
 
@@ -57,18 +125,18 @@
                                 
                                 </div>
 
-                                <form id="regForm" method="post" action="${path}/reg.do">
+                                <form id="regForm" method="post" action="${path}/regUser.do?method=insert">
 
                                     <div class="mb-3">
                                         <label for="id" class="form-label">아이디</label>
-                                        <button style="float:right" class="btn btn-dark" type="button">중복 확인</button>
+                                        <button style="float:right" class="btn btn-dark" type="button" onclick="idchk()">중복 확인</button>
                                         <input class="form-control" type="text" id="id" name="uiId" required>
                                     </div>
 
                                     <div class="mb-3">
                                         <label for="password" class="form-label">패스워드</label>
                                         <div class="input-group input-group-merge">
-                                            <input type="password" id="password" class="form-control" name="uiPw" required>
+                                            <input type="password" id="pw" class="form-control" name="uiPw" required>
                                             <div class="input-group-text" data-password="false">
                                                 <span class="password-eye"></span>
                                             </div>
@@ -78,7 +146,7 @@
                                     <div class="mb-3">
                                         <label for="password" class="form-label">패스워드 확인</label>
                                         <div class="input-group input-group-merge">
-                                            <input type="password" id="password2" class="form-control"  required>
+                                            <input type="password" id="pw2" class="form-control"  required>
                                             <div class="input-group-text" data-password="false">
                                                 <span class="password-eye"></span>
                                             </div>
@@ -130,10 +198,13 @@
                                             <input type="checkbox" class="form-check-input" id="checkbox-signup">
                                             <label class="form-check-label" for="checkbox-signup">개인정보 관리에 동의합니다. <a href="#" class="text-muted">개인정보 약관</a></label>
                                         </div>
+                                        
+                                        
                                     </div>
 
                                     <div class="mb-3 text-center">
-                                        <button class="btn btn-primary" type="button" id="signupBtn"> 회원가입 </button>
+                                        <button class="btn btn-primary" type="button" id="chkBtn" onclick="chkValidate()"> 회원가입 </button>
+                                        <button type="button" hidden id="signupBtn"> </button>
                                     </div>
 
                                 </form>
@@ -165,28 +236,53 @@
         <script src="${path}/tools/main_assets/js/app.min.js"></script>
         <script>
 
-            // 중복 확인 후, 중복이 아니라고하면 아이디 readonly로 만듬. 중복이라고하면 아이디 초기화
+            // 아직 미구현 부분: 아이디, 패스워드 판별, 패스워드 확인 작업, 연락처 길이, 이름 확인 작업
 
+
+            // 적절한 아이디와 패스워드 판별
+
+            let reg1 = /^[a-zA-Z0-9]{4,20}$/ // 아이디와 패스워드가 적합한지 검사할 정규식
+            let reg2 = /^[a-zA-Z0-9]{8,20}$/ // 아이디와 패스워드가 적합한지 검사할 정규식
+
+            let result = 1; // 이게 0이 되어야 등록될 수 있도록
+           
             // 패스워드 확인 작업
 
 
-            // 연락처 숫자 아니면 거르기
-
+			
+            
+     
             // 폼 제출
             $("#signupBtn").click(function(){
 
-                alert($("[name=uiBirth]").val());
+                // 아이디 중복 체크 여부
+                if(result==1){
+                    alert("아이디 중복 체크해주세요.")
+                    return false;
+                }
 
                 // 패스워드 둘 다 같으면
+                if($("#pw").val() != $("#pw2").val()){
+                    alert("비밀번호 확인이 일치하지않습니다.");
+                    return false;
+                }
 
+                // 연락처 숫자 아니면 거르기
+                if(isNaN($("[name=phone2]").val()) || isNaN($("[name=phone3]").val())){
+                    alert("연락처는 숫자만 입력할 수 있습니다.")
+                    return false;
+                }
 
+	            
                 // 연락처 합치기
-                $("[name=phone]").val($("[name=phone1]").val()+$("[name=phone2]").val()+$("[name=phone3]").val());
-
+                $("[name=uiPhone]").val(parseInt($("[name=phone1]").val()+$("[name=phone2]").val()+$("[name=phone3]").val()));
+           
+	            
                 if(confirm("회원가입을 진행하시겠습니까?"))
                     $("#regForm").submit();
                
             })
+
 
 
         </script>

@@ -15,27 +15,25 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="${path}/a00_com/bootstrap.min.css" >
-<link rel="stylesheet" href="${path}/a00_com/jquery-ui.css" >
+
 <!-- App favicon -->
-<link rel="shortcut icon" href="assets/images/favicon.ico">
+<link rel="shortcut icon" href="${path}/tools/main_assets/images/favicon.ico">
 
 <!-- App css -->
-<link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
-<link href="assets/css/app-creative.min.css" rel="stylesheet" type="text/css" id="app-style" />
+<link href="${path}/tools/main_assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+<link href="${path}/tools/main_assets/css/app-creative.min.css" rel="stylesheet" type="text/css" id="app-style" />
+ 
+ <!-- jquery 라이브러리 -->
+ <script src="${path}/tools/jquery-3.6.0.js"></script>
+ 
 
-<script src="${path}/a00_com/jquery.min.js"></script>
-<script src="${path}/a00_com/popper.min.js"></script>
-<script src="${path}/a00_com/bootstrap.min.js"></script>
-<script src="${path}/a00_com/jquery-ui.js"></script>
-<script src="https://developers.google.com/web/ilt/pwa/working-with-the-fetch-api" type="text/javascript"></script>
+
 <script type="text/javascript">
-	$(document).ready(function(){
-		
-		<%-- 
-		
-		--%>	
-	});
+	let msg = '${msg}';
+	
+	if(msg!=''){
+		alert(msg);
+	}
 </script>
 </head>
 
@@ -642,9 +640,9 @@
         </footer>
         <!-- END FOOTER -->
 
-        <!-- bundle -->
-        <script src="assets/js/vendor.min.js"></script>
-        <script src="assets/js/app.min.js"></script>
+     <!-- bundle -->
+        <script src="${path}/tools/main_assets/js/vendor.min.js"></script>
+        <script src="${path}/tools/main_assets/js/app.min.js"></script>
 
     </body>
 

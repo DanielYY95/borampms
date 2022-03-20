@@ -2,7 +2,7 @@ package mvc.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import mvc.service.UserService;
@@ -13,18 +13,19 @@ public class LoginController {
 	@Autowired
 	private UserService service;
 	
+	@GetMapping("/main.do")
+	public String main() {
+		
+		return "main_login//main";
+	}
+	
 	@RequestMapping("/loginFrm.do") 
 	public String loginFrm() {
 
 		return "main_login//login";
 	}
 	
-	@RequestMapping("/regFrm.do")
-	public String regFrm(Model d) {
-	
-		return "main_login//reg";
-	}
-	
+
 	
 	/*
 	@RequestMapping("/logout.do") 
@@ -41,26 +42,7 @@ public class LoginController {
 		return "forward:/main.do";
 	}
 	
-	//회원가입 form
-	@RequestMapping("/reginsert.do")
-	public String insertMembers(USER_INFO ins, Model d) {
-		int resultId = service.idChk(ins);
-		int resultNick = service.nickChk(ins);
-		
-		if(resultId == 1 || resultNick == 1) {
-			d.addAttribute("msg", "이미 등록된 아이디나 닉네임으로 회원가입할 수 없습니다.");
-			return "login_reg_main//reg";
-		} else{
-			service.insertMembers(ins);
-			d.addAttribute("msg", "회원가입을 축하드립니다!");
-			d.addAttribute("members", new USER_INFO()); // 초기화시킴
-		} 
-		
-		return "forward:/main.do";
-	}
 	
-	
-	// 왜 자동으로 로그인이 되는 건지... => @ModelAttribute 로 vo객체를 사용하면 그런듯....
 	
 	
 	// id 중복확인  mId 

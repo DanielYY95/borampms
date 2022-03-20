@@ -9,7 +9,7 @@ public class USER_INFO {
 	private String uiName;
 	private String uiEmail;
 	private int uiPhone;
-	private Date uiBirth;
+	private String uiBirth;
 	private Date uiRegDate;
 	private String uiPic;
 	private String uiIntro;
@@ -51,12 +51,7 @@ public class USER_INFO {
 	public void setUiPhone(int uiPhone) {
 		this.uiPhone = uiPhone;
 	}
-	public Date getUiBirth() {
-		return uiBirth;
-	}
-	public void setUiBirth(Date uiBirth) {
-		this.uiBirth = uiBirth;
-	}
+
 	public String getUiPic() {
 		return uiPic;
 	}
@@ -92,6 +87,12 @@ public class USER_INFO {
 	}
 	public void setUiRegDate(Date uiRegDate) {
 		this.uiRegDate = uiRegDate;
+	}
+	public String getUiBirth() {
+		return uiBirth;
+	}
+	public void setUiBirth(String uiBirth) {
+		this.uiBirth = uiBirth;
 	}
 
 	

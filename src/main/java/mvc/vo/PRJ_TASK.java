@@ -1,14 +1,12 @@
 package mvc.vo;
 
-import java.util.Date;
-
 public class PRJ_TASK {
 
 	private String ptId;
 	private String ptTitle;
 	private String ptContent;
-	private Date ptStartdate;
-	private Date ptDuedate;
+	private String ptStartdate;
+	private String ptDuedate;
 	private String ptCharge;
 	private String ptType;
 	private String ptStatus;
@@ -40,16 +38,17 @@ public class PRJ_TASK {
 	public void setPtContent(String ptContent) {
 		this.ptContent = ptContent;
 	}
-	public Date getPtStartdate() {
+
+	public String getPtStartdate() {
 		return ptStartdate;
 	}
-	public void setPtStartdate(Date ptStartdate) {
+	public void setPtStartdate(String ptStartdate) {
 		this.ptStartdate = ptStartdate;
 	}
-	public Date getPtDuedate() {
+	public String getPtDuedate() {
 		return ptDuedate;
 	}
-	public void setPtDuedate(Date ptDuedate) {
+	public void setPtDuedate(String ptDuedate) {
 		this.ptDuedate = ptDuedate;
 	}
 	public String getPtCharge() {

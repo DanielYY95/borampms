@@ -30,7 +30,7 @@
 			
 			<div class="tab-content">
             <div class="tab-pane show active" id="modal-pages-preview" >
-                <!-- Signup modal content -->
+                <!-- Signup modal content --> 
                 <div id="signup-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content" >
@@ -57,17 +57,20 @@
                                     <!-- Autoclose -->
                                     <div style="display:flex; justify-content: space-between;">
                                     
-                                        <div class="mb-3 position-relative" id="datepicker4" style="width: 45%;">
-                                            <label class="form-label">시작일</label>
-                                            <input type="text" name="startdate" required="" class="form-control" data-provide="datepicker" data-date-autoclose="true" data-date-container="#datepicker4">
-                                        </div>
+                               
+                                        <div class="mb-3">
+	                                        <label class="form-label">시작일</label>
+	                                        <input class="form-control" required  type="date" name="startdate">
+	                                    </div>
+	                                    
+	                                    <div class="mb-3">
+	                                        <label class="form-label">마감일</label>
+	                                        <input class="form-control" required  type="date" name="duedate">
+	                                    </div>
+	                                    
+	                                        
                                                                                                             
-                                                                                                        <!-- Autoclose -->
-                                        <div class="mb-3 position-relative" id="datepicker4" style="width: 45%;">
-                                            <label class="form-label">마감일</label>
-                                            <input type="text" name="duedate" required="" class="form-control" data-provide="datepicker" data-date-autoclose="true" data-date-container="#datepicker4">
-                                        </div>
-
+                                 
                                     </div>
                                     
                                     <!-- Multiple Select -->

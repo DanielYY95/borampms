@@ -7,11 +7,9 @@ public class PRJ_INFO {
 	private String piId;
 	private String piWriter;
 	private Date piRegdate;
-	private Date piStartdate;
-	private Date  piDuedate;
+	private String piStartdate;
+	private String piDuedate;
 	private String piStatus;
-	private String clId;
-	
 	
 	public PRJ_INFO() {
 		super();
@@ -35,16 +33,19 @@ public class PRJ_INFO {
 	public void setPiRegdate(Date piRegdate) {
 		this.piRegdate = piRegdate;
 	}
-	public Date getPiStartdate() {
+	
+	
+	
+	public String getPiStartdate() {
 		return piStartdate;
 	}
-	public void setPiStartdate(Date piStartdate) {
+	public void setPiStartdate(String piStartdate) {
 		this.piStartdate = piStartdate;
 	}
-	public Date getPiDuedate() {
+	public String getPiDuedate() {
 		return piDuedate;
 	}
-	public void setPiDuedate(Date piDuedate) {
+	public void setPiDuedate(String piDuedate) {
 		this.piDuedate = piDuedate;
 	}
 	public String getPiStatus() {
@@ -53,13 +54,6 @@ public class PRJ_INFO {
 	public void setPiStatus(String piStatus) {
 		this.piStatus = piStatus;
 	}
-	public String getClId() {
-		return clId;
-	}
-	public void setClId(String clId) {
-		this.clId = clId;
-	}
-	
-	
+
 	
 }
