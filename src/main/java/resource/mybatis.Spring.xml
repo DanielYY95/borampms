@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+<settings> 
+      <setting name="mapUnderscoreToCamelCase" value="true"/> 
+   </settings>
+	<typeAliases>
+		<typeAlias alias="kanban" type="mvc.vo.KanbanVo"/>
+	</typeAliases>
+	<mappers>
+		<mapper resource="resource/KanbanMapper.xml" />
+		
+	</mappers>
+</configuration>
+
+
+
+
+
+
+
+
+
+
+
+
+<!--  
+
+
+### 참고
+
+<typeAliases>
+		<typeAlias alias="emp" type="springweb.vo.Emp"/>
+		<typeAlias alias="emp2" type="springweb.vo.Emp2"/>
+		<typeAlias alias="dept" type="springweb.vo.Dept"/>
+		<typeAlias alias="saldetail" type="springweb.vo.SalDetail"/>
+	</typeAliases>
+	<mappers>
+		<mapper resource="resource/EmpMapper.xml" />
+		<mapper resource="resource/cntMapper.xml" />
+		<mapper resource="resource/DeptMapper.xml" />
+		<mapper resource="resource/getEnameMapper.xml" />
+	</mappers>
+	
+	-->
