@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="mvc.dao.DeptDao ">
+	<!-- 부서문서 테이블 조회 -->
+	<select id="get_DD_List" resultType="dept_doc" parameterType="dept_doc">
+		select *
+		from DEPT_DOC
+	</select>
+	<!-- 부서문서 테이블 등록 -->
+	<!-- INSERT INTO DEPT_DOC VALUES(seq_dd.nextval, 
+	'요구사항정의서','홍길동','기획팀','확인해주세요',sysdate,'1'); -->
+	<!-- 
+	private String ddId;
+	private String ddTitle;
+	private String ddWriter;
+	private String ddDept;
+	private String ddContent;
+	private Date ddRegdate;
+	private String diId;
+	 -->
+	<insert id="insert_DD" parameterType="dept_doc">
+		INSERT INTO DEPT_DOC VALUES(seq_dd.nextval,#{ddTitle},#{ddWriter},
+		#{ddDept},#{ddContent},sysdate,'1')
+	</insert>
+	<!-- 부서문서 첨부파일 테이블 등록 -->
+	<insert id="insert_DF" parameterType="dept_file">
+		INSERT INTO DEPT_FILE VALUES(seq_df.nextval,
+		#{dfFile},sysdate,seq_dd.currval)
+	</insert>
+</mapper>
