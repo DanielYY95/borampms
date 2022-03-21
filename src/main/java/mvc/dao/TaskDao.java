@@ -77,4 +77,6 @@ public interface TaskDao {
 		// 4. 히스토리 삭제
 	public void deleteHistory(String thId);
 	
+	
+	
 }

@@ -1,23 +1,51 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"
+    import="java.util.*"
+    %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:set var="path" value="${pageContext.request.contextPath }"/>
+<fmt:requestEncoding value="utf-8"/>     
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <title>Form Elements | Hyper - Responsive Bootstrap 5 Admin Dashboard</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
-        <meta content="Coderthemes" name="author" />
-        <!-- App favicon -->
-        <link rel="shortcut icon" href="../assets/images/favicon.ico">
+<%--
 
-        <!-- App css -->
-        <link href="../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
-        <link href="../assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-style"/>
+
+ --%>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- App favicon -->
+<link rel="shortcut icon" href="${path}/tools/main_assets/images/favicon.ico">
+
+<!-- App css -->
+<link href="${path}/tools/main_assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+<link href="${path}/tools/main_assets/css/app-creative.min.css" rel="stylesheet" type="text/css" id="app-style" />
+ 
+ <!-- jquery 라이브러리 -->
+ <script src="${path}/tools/jquery-3.6.0.js"></script>
+ 
+ 
+ 
+<script type="text/javascript">
+	let msg = '${msg}';
+	
+	if(msg!=''){
+		alert(msg);
+	}
+	
+	
+	
+</script>
+<style>
+      .container{width: 70%;}
+      .input-group-prepend{width:20%;}
+      .input-group-text{width:100%;font-weight:bolder;}
+  </style>
 		
-		<style>
-  
-        </style>
-		
-    </head>
+  </head>
+
+
 
     <body class="loading" data-layout-color="light" data-leftbar-theme="dark" data-layout-mode="fluid" data-rightbar-onstart="true">
         <!-- Begin page -->
@@ -63,7 +91,7 @@
                                                     </a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a href="taskOutput.html"  aria-expanded="true" class="nav-link">
+                                                    <a href="taskOutput.html"  aria-expanded="true" class="nav-link active">
                                                         산출물
                                                     </a>
                                                 </li>
@@ -73,7 +101,7 @@
                                                     </a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a href="taskGuide.html"  aria-expanded="true" class="nav-link active">
+                                                    <a href="taskGuide.html"  aria-expanded="true" class="nav-link">
                                                         가이드
                                                     </a>
                                                 </li>
@@ -85,64 +113,34 @@
                                             </ul> <!-- end nav-->
                                         </div>	
 										
-                                        <div class="col-8" style="min-height: 65vh; margin: 0 auto;">
-
-                                            
-                                            <div class="modal-header">
-                                                            	
-                                                <h4>가이드</h4>                                                                
+										<!-- ### 파일업로드 File Upload -->
+                                        <div class="container">
+                                            <form method="post" enctype="multipart/form-data"
+                                                action="${path}/toInsert.do">
+                                        
+                                        <div id="uploadContainer">
+                                                <div class="input-group mb-3" >
+                                                
+                                                    <div class="row g-2">
+                                                       
+                                                            
+                                                            <input class="form-control" type="file" name="toReport"  id="formFileMultiple" multiple>
+                                                            
+                                                    </div>
+                                                    <span><button class="btn btn-primary">등록</button>
+                                                    </span><span><button id="addUpload" class="btn btn-success" type="button">추가+</button></span>
+                                                    
+                                                </div>
                                                 
                                             </div>
-                                            <div class="modal-body">
-                                                <div class="mb-3">
-                                                    <label for="example-textarea" class="form-label">가이드 내용</label>
-                                                    <textarea class="form-control" id="example-textarea" rows="5"></textarea>
-                                                </div>
-
-
-                                                <!-- Checkboxes--> 
-                                                <div class="mt-3">
-                                                    <h6 class="font-15 mt-3">체크사항</h6>
-                                                    <div class="form-check">
-                                                        <input type="checkbox" class="form-check-input" id="customCheck1">
-                                                        <label class="form-check-label" for="customCheck1">Check this custom checkbox</label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <input type="checkbox" class="form-check-input" id="customCheck2">
-                                                        <label class="form-check-label" for="customCheck2">Check this custom checkbox</label>
-                                                    </div>
-                                                </div>
-
-                                                    <!-- ### 파일업로드 File Upload -->
-                                            <div class="fileContainer">
-                                                <h6 class="font-15 mt-3">첨부파일</h6>
-                                                <form method="post" enctype="multipart/form-data"
-                                                    action="">
-                                            
-                                                <div id="uploadContainer">
-                                                        <div class="input-group mb-3" >
-                                                        
-                                                            <div class="">
-                                                            
-                                                                    
-                                                                <input class="form-control" type="file" id="formFileMultiple" multiple>
-                                                                    
-                                                            </div><span><button id="addUpload" class="btn btn-success">추가+</button></span>
-                                                            
-                                                        </div>
-                                                        
-                                                    </div>
-                                                </form>
-                                                </div>
-
-
-                                            </div>
+                                        </form>
                                         </div>
-                                        
+    
 									
                                         <div id="btnList" class="mb-3 text-center" style="display: flex; justify-content: space-between;">
-                                            <button class="btn btn-secondary"  >삭제</button>
-                                            <button class="btn btn-primary" id="uptBtn" >수정</button>
+                                            <button class="btn btn-secondary"  type="button" >삭제</button>
+                                            
+                                            <button class="btn btn-primary" id="uptBtn" type="button">수정</button>
                                             
                                         </div>
 
@@ -168,11 +166,55 @@
         <!-- bundle -->
         <script src="../assets/js/vendor.min.js"></script>
         <script src="../assets/js/app.min.js"></script>
-  
+        <!-- plugin js -->
+		<script src="../assets/js/vendor/dropzone.min.js"></script>
+		<!-- init js -->
+		<script src="../assets/js/ui/component.fileupload.js"></script>
+		        
         <script>
+            // 첨부파일명이 화면에 나타날 수 있도록
+		$("#uploadContainer").on("change", ".custom-file-input", function(){
+			$(this).next(".custom-file-label").text($(this).val());
+			// label의 text를 파일 이름으로 변경
+		});  // 이미 랜더링이 된 상태여서 새로 만들어진 것들에 대해서는 적용이 안되는듯...업로드는 제대로 되는디
+		
+		// 첨부파일 목록의 갯수
+		let uploadLength = 1;
+		
+		// 추가버튼을 누르면 새로운 업로드 div 생성
+		$("#uploadContainer").on("click", "#addUpload", function(){
+			event.preventDefault(); // 계속해서 폼 제출을 하길래 막아놨다.
+
+			let newUpload = '<div class="input-group mb-3"><div class="row g-2">'
+						+'<input class="form-control" type="file" id="formFileMultiple" multiple>' 
+						+'</div><span><button id="deleteUpload" class="btn btn-danger">'+"삭제-"+'</button></span></div>';
+			
+			$("#uploadContainer").append(newUpload);
+
+		})
+
+        	// 삭제버튼을 누르면 버튼의 조상의 조상인 div를 삭제한다. 
+		$("#uploadContainer").on("click", "#deleteUpload", function(){
+			event.preventDefault();
+			$(this).parent().parent().remove();
+			
+		})
+		
+        $("#test").click(function(){
+
+            alert($("input").val());
+        })
+       
 
         </script>
 
+	   <!-- bundle -->
+        <script src="${path}/tools/main_assets/js/vendor.min.js"></script>
+        <script src="${path}/tools/main_assets/js/app.min.js"></script>
+     
 
     </body>
 </html>
+
+
+     

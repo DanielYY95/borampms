@@ -8,7 +8,7 @@ public class USER_INFO {
 	private String uiPw;
 	private String uiName;
 	private String uiEmail;
-	private int uiPhone;
+	private String uiPhone;
 	private String uiBirth;
 	private Date uiRegDate;
 	private String uiPic;
@@ -45,13 +45,14 @@ public class USER_INFO {
 	public void setUiEmail(String uiEmail) {
 		this.uiEmail = uiEmail;
 	}
-	public int getUiPhone() {
+
+	
+	public String getUiPhone() {
 		return uiPhone;
 	}
-	public void setUiPhone(int uiPhone) {
+	public void setUiPhone(String uiPhone) {
 		this.uiPhone = uiPhone;
 	}
-
 	public String getUiPic() {
 		return uiPic;
 	}

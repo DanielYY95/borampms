@@ -2,6 +2,8 @@ package mvc.vo;
 
 import java.util.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class TASK_OUTPUT {
 
 	private String toId;
@@ -9,10 +11,25 @@ public class TASK_OUTPUT {
 	private String toWriter;
 	private Date toRegdate;
 	private String ptId;
+	private MultipartFile[] toReport;
+	
+	
 	public TASK_OUTPUT() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	
+	
+	public TASK_OUTPUT(String toFile, String toWriter, String ptId) {
+		super();
+		this.toFile = toFile;
+		this.toWriter = toWriter;
+		this.ptId = ptId;
+	}
+
+
+
 	public String getToId() {
 		return toId;
 	}
@@ -43,6 +60,13 @@ public class TASK_OUTPUT {
 	public void setPtId(String ptId) {
 		this.ptId = ptId;
 	}
+	public MultipartFile[] gettoReport() {
+		return toReport;
+	}
+	public void settoReport(MultipartFile[] toReport) {
+		this.toReport = toReport;
+	}
+	
 	
 	
 }

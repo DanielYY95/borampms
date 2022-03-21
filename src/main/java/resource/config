@@ -6,10 +6,10 @@ user=boram
 pass=pms
 
 # 업로드할 파일 경로 설정
-upload=C:/Users/A/OneDrive - UOS/springweb/src/main/webapp/z01_upload/
+toUpload=C:/Users/A/OneDrive - UOS/borampms/src/main/webapp/upload/
 
-/// \ 으로 하면 C:UsersAOneDrive 요렇게 인식하는데,
-/// / 으로 하면 경로를 찾을 수 없다고 하고,.... 하...
+
+
 /// 데스크탑은 Daniel Yang 대신 A로 되어있다. 그리고 데스크탑에서는 \대신 /로 진행했다. 
 /// 노트북은 Daniel Yang으로 하고, /를 사용하면 문제가 있다. 
 /// C:\Users\A\OneDrive - 서울시립대학교\springweb\src\main\webapp\z01_upload\
@@ -18,5 +18,3 @@ upload=C:/Users/A/OneDrive - UOS/springweb/src/main/webapp/z01_upload/
 // 한글 깨짐 참고: https://mkil.tistory.com/m/273
 /// https://hojak99.tistory.com/m/363
 /// https://checkblock.tistory.com/m/45
-
-// upload 경로를 제대로 인식 못하면 그냥 바탕화면에 까는듯하다.

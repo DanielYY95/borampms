@@ -275,7 +275,7 @@
 
 	            
                 // 연락처 합치기
-                $("[name=uiPhone]").val(parseInt($("[name=phone1]").val()+$("[name=phone2]").val()+$("[name=phone3]").val()));
+                $("[name=uiPhone]").val($("[name=phone1]").val()+$("[name=phone2]").val()+$("[name=phone3]").val());
            
 	            
                 if(confirm("회원가입을 진행하시겠습니까?"))
