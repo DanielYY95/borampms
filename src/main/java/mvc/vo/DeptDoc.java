@@ -1,10 +1,10 @@
 package mvc.vo;
-// mvc.vo.DEPT_DOC 
+// mvc.vo.DeptDoc 
 import java.util.Date;
 
 import org.springframework.web.multipart.MultipartFile;
 
-public class DEPT_DOC {
+public class DeptDoc {
 
 	private String ddId;
 	private String ddTitle;
@@ -14,13 +14,13 @@ public class DEPT_DOC {
 	private Date ddRegdate;
 	private String diId;
 	private MultipartFile[] report;
-	public DEPT_DOC() {
+	public DeptDoc() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	
 
-	public DEPT_DOC(String ddTitle, String ddWriter, String ddDept, String ddContent, String diId) {
+	public DeptDoc(String ddTitle, String ddWriter, String ddDept, String ddContent, String diId) {
 		super();
 		this.ddTitle = ddTitle;
 		this.ddWriter = ddWriter;

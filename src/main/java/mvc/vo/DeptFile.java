@@ -1,19 +1,19 @@
 package mvc.vo;
-// mvc.vo.DEPT_FILE 
+// mvc.vo.DeptFile 
 import java.util.Date;
 
-public class DEPT_FILE {
+public class DeptFile {
 
 	private String dfId;
 	private String dfFile;
 	private Date dfRegdate;
 	private String ddId;
-	public DEPT_FILE() {
+	public DeptFile() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	
-	public DEPT_FILE(String dfFile) {
+	public DeptFile(String dfFile) {
 		super();
 		this.dfFile = dfFile;
 	}

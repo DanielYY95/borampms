@@ -54,8 +54,6 @@
 	-->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="mvc.dao"></property>
-		
-	
 	</bean>
 	
 	<!-- 파일 업로드를 위한 viewer 선언  -->

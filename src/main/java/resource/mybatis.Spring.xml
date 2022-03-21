@@ -6,8 +6,7 @@
 		<setting name="mapUnderscoreToCamelCase" value="true"/> 
 	</settings>
 	<typeAliases>
-		<typeAlias alias="dept_doc" type="mvc.vo.DEPT_DOC"/>
-		<typeAlias alias="dept_file" type="mvc.vo.DEPT_FILE "/>
+		<typeAlias alias="deptDoc" type="mvc.vo.DeptDoc"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="resource/DeptMapper.xml"/>
