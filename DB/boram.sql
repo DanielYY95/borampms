@@ -17,7 +17,8 @@ CREATE TABLE DEPT_DOC(
 	DD_REGDATE DATE,
 	DI_ID VARCHAR2(20)
 );
-INSERT INTO DEPT_DOC VALUES(seq_dd.nextval, '요구사항정의서22','홍길동','기획팀','확인해주세요',sysdate,'1');
+DROP TABLE DEPT_DOC;
+INSERT INTO DEPT_DOC VALUES(seq_dd.nextval, '요구사항정의서33','홍길동','기획팀','확인해주세요',sysdate,'1');
 SELECT*FROM DEPT_DOC;
 /* 부서문서 시퀀스 생성 */
 CREATE SEQUENCE seq_dd
@@ -43,7 +44,7 @@ CREATE TABLE DEPT_FILE(
 	DD_ID VARCHAR2(20)
 );
 DROP TABLE DEPT_FILE;
-INSERT INTO DEPT_FILE(DF_ID, DF_FILE, DF_REGDATE) VALUES(seq_df.nextval,'하하.png',sysdate);
+INSERT INTO DEPT_FILE VALUES(seq_df.nextval,'하하.png',sysdate,seq_dd.currval);
 SELECT*FROM dept_file;
 
 /* 부서문서 첨부파일 시퀀스 생성 */
@@ -70,5 +71,3 @@ CREATE TABLE COMMON_FILE(
 	CF_REGDATE DATE,
 	CD_ID VARCHAR2(20)
 );
-
-

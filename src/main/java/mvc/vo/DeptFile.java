@@ -12,12 +12,10 @@ public class DeptFile {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
 	public DeptFile(String dfFile) {
 		super();
 		this.dfFile = dfFile;
 	}
-
 	public String getDfId() {
 		return dfId;
 	}

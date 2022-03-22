@@ -7,6 +7,8 @@
 	</settings>
 	<typeAliases>
 		<typeAlias alias="deptDoc" type="mvc.vo.DeptDoc"/>
+		<typeAlias alias="deptDocSch" type="mvc.vo.DeptDocSch"/>
+		<typeAlias alias="deptFile" type="mvc.vo.DeptFile"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="resource/DeptMapper.xml"/>
