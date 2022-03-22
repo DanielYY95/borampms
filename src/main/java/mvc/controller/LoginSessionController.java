@@ -12,7 +12,7 @@ import mvc.vo.USER_INFO;
 
 @Controller
 @SessionAttributes("USER")
-@RequestMapping("/web.do")
+@RequestMapping("/login.do")
 public class LoginSessionController {
 
 	@ModelAttribute("USER")
@@ -39,7 +39,7 @@ public class LoginSessionController {
 		}
 		d.addAttribute("USER",sch); // 이렇게 해야 로그인 실패할때 빈값으로 보내진다.
 		
-		return "forward:/web.do?method=login";
+		return "forward:/login.do?method=login";
 	}
 	// 로그인 실패해도 계속 빈 객체가 뷰단으로 보내지는 것 같다. => 해결
 	 

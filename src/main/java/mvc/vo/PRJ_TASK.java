@@ -1,7 +1,7 @@
 package mvc.vo;
 
 public class PRJ_TASK {
-
+	private int cnt;
 	private String ptId;
 	private String ptTitle;
 	private String ptContent;
@@ -14,7 +14,12 @@ public class PRJ_TASK {
 	private String uiId;
 	private String piId;
 	
-	
+	public int getCnt() {
+		return cnt;
+	}
+	public void setCnt(int cnt) {
+		this.cnt = cnt;
+	}
 	
 	public PRJ_TASK() {
 		super();

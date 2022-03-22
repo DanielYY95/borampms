@@ -113,7 +113,7 @@
                         <div class="card">
                             <!-- Logo-->
                             <div class="card-header text-center bg-primary">
-                                <a href="main.html">
+                                <a href="${path}/main.do">
                                     <span><img src="${path}/images/main/logo.png" alt="" height="50" width="100"></span>
                                 </a>
                             </div>
@@ -214,7 +214,7 @@
 
                         <div class="row mt-3">
                             <div class="col-12 text-center">
-                                <p class="text-muted">계정을 갖고 계신가요? <a href="login.html" class="text-muted ms-1"><b>로그인</b></a></p>
+                                <p class="text-muted">계정을 갖고 계신가요? <a href="${path}/loginFrm.do" class="text-muted ms-1"><b>로그인</b></a></p>
                             </div> <!-- end col-->
                         </div>
                         <!-- end row -->

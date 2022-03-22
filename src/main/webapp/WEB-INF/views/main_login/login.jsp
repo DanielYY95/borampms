@@ -47,7 +47,7 @@
 
                             <!-- Logo -->
                             <div class="card-header  text-center bg-primary">
-                                <a href="main.html">
+                                <a href="${path}/main.do">
                                     <span><img src="${path}/images/main/logo.png" alt="" height="50" width="100"></span>
                                 </a>
                             </div>
@@ -59,7 +59,7 @@
         
                                 </div>
 
-                                <form method="post" action="${path}/web.do?method=session">
+                                <form method="post" action="${path}/login.do?method=session">
 
                                     <div class="mb-3">
                                         <a href="pages-recoverpw.html" class="text-muted float-end"><small>아이디 찾기</small></a>
@@ -96,7 +96,7 @@
 
                         <div class="row mt-3">
                             <div class="col-12 text-center">
-	                            <p class="text-muted">새 계정이 필요하십니까? <a href="reg.html" class="text-muted ms-1"><b>회원가입</b></a></p>
+	                            <p class="text-muted">새 계정이 필요하십니까? <a href="${path}/regUser.do" class="text-muted ms-1"><b>회원가입</b></a></p>
                             </div> <!-- end col -->
                         </div>
 

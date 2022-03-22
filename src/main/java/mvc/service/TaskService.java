@@ -1,77 +1,70 @@
 package mvc.service;
 
-import java.io.File;
-import java.io.IOException;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 import mvc.dao.TaskDao;
-import mvc.vo.TASK_OUTPUT;
+import mvc.vo.PRJ_TASK;
+import mvc.vo.TaskSch;
 
 @Service
 public class TaskService {
-
 	@Autowired
 	private TaskDao dao;
 	
-	@Value("${toUpload}")
-	private String uploadPath;
-	
-	// 1. 산출물 등록
-	public String insertOutput(TASK_OUTPUT output) {
+	public List<PRJ_TASK> getTaskList(TaskSch sch) {
+		// 1. 전체 업무 건수를 TaskSch 객체에 설정 : 모델 데이터로 활용
+		sch.setCount(dao.getTotalCnt(sch));
 		
-		// 1) 메시지
-		String msg="등록 실패";
-		
-		// 2) 업로드한 게 있을 때만 실행
-		if(output.gettoReport()!=null && output.gettoReport().length>0) {
-		// 3) 파일업로드 중 하나가 문제가 있으면 예외 처리
-			try {
-				for(MultipartFile mf : output.gettoReport()) {
-					String filename = mf.getOriginalFilename(); // 빈 값: 여기까지는 들어온다. 
-					System.out.println("파일명: "+ filename);
-					if(filename!=null && !filename.equals("")) { // 빈 값:  여기를 못들어오고 있다.
-						System.out.println("경로명:"+uploadPath);
-						System.out.println("첨부파일명:"+filename);
-						File file = new File(uploadPath+filename);
-						
-						mf.transferTo(file); // 파일업로드 시, 여기까지 잘 됨.
-						
-						// System.out.println("파일업로드 까지는 잘 됨.");
-						
-						// setToWriter(uiId) 해야한다
-						// 고유번호와 등록일은 알아서. 파일명, 작성자, 프로젝트 업무ID만 새 매개변수로
-						
-						System.out.println(output.getPtId()+"@@@"+filename+"@@@"+output.getToWriter());
-						
-						dao.insertOutput(new TASK_OUTPUT(filename, output.getToWriter(), output.getPtId()));
-						System.out.println("파일 정보 DB에 들어간겨?");
-					}
-					
-					
-				}
-				
-				msg="등록 성공";
-				
-			}catch(IllegalStateException e) {
-				msg=e.getMessage();
-			}catch(IOException e) {
-				msg="파일전송오류:"+e.getMessage();
-			}catch(Exception e) {
-				msg="기타예외:"+e.getMessage();
-			} // 기타예외:Mapped Statements collection does not contain value for mvc.dao.TaskDao.insertOutput
-			 // 파일은 잘 들어가는데.. DB에 잘 안들어감..
+		// 2. 한 번에 출력하는 페이지 수 초기값 설정
+		if(sch.getPageSize() == 0) {
+			sch.setPageSize(5);
 		}
 		
-		return msg;
-	};
-	
-	
+		// 3. 전체 페이지 수 처리
+		double totalPage = sch.getCount() / (double)sch.getPageSize();
+		totalPage = Math.ceil(totalPage);	// 나머지가 있는 경우 페이지를 1장 추가하여 보여준다.
+		int totalPageInt = (int)totalPage;
+		sch.setPageCount(totalPageInt);
 		
+		// 4. 현재 페이지 호출
+		// 		초기값 설정
+		if(sch.getCurPage() == 0) {
+			sch.setCurPage(1);
+		}
+		
+		// 5. 시작번호 처리
+		sch.setFirstPage((sch.getCurPage()-1)*sch.getPageSize()+1);
+		
+		// 6. 마지막 번호 처리
+		sch.setLastPage(sch.getCurPage()*sch.getPageSize());
+
+		// 7. page block 처리
+		//		1) 기본 block 크기 지정
+		sch.setBlockSize(5);
+		
+		//		2) 현재 block의 그룹 번호 = 현재 클릭한 페이지 번호 / blockSize
+		int curBlockGrp = (int)Math.ceil(sch.getCurPage() / (double)sch.getBlockSize());
+		
+		//		3) block 그룹의 시작 페이지 처리
+		sch.setFirstBlock((curBlockGrp - 1)*sch.getBlockSize()+1);
+		
+		//		4) block 그룹의 마지막 페이지 처리
+		//			총 페이지 수를 넘어서는 경우 해당 페이지를 마지막 페이지 번호로 처리
+		int lastBlockGrp = curBlockGrp*sch.getBlockSize();
+		sch.setLastBlock((lastBlockGrp > sch.getPageCount()) ? sch.getPageCount() : lastBlockGrp);
+		
+		
+		return dao.getTaskList(sch);
+	}
 	
 	
-	
+	public String insertTask(PRJ_TASK ins) {
+		dao.insertTask(ins);
+		String msg = "업무 등록 성공";
+		
+		return msg;
+	}
 }
