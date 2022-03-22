@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="mvc.dao.UserInfoDao">
+	<select id="getUserInfo" parameterType="string" resultType="UserInfo">
+		select *
+		from user_info
+		where ui_id = #{ui_id}
+	</select>
+<!--  
+	<select id="getEmpList" parameterType="emp" resultType="emp">
+		select *
+		from empcrud
+		where ename like '%'||#{ename}||'%'
+		and job like '%'||#{job}||'%'
+	</select>
+	<insert id="insertEmp" parameterType="emp">
+		insert into empcrud values(empcrud_seq.NEXTVAL, #{ename},
+			#{job},#{mgr},to_date(#{hiredateS},'YYYY-MM-DD'),#{sal},#{comm},#{deptno})
+	</insert>
+	<select id="getEmp" parameterType="int" resultType="emp">
+		select * from empcrud where empno=#{empno}
+	</select>
+	<update id="uptEmp" parameterType="emp">
+		update empcrud
+		set ename=#{ename},
+			job=#{job},
+			mgr=#{mgr},
+			hiredate=to_date(#{hiredateS}, 'yyyy-mm-dd'),
+			sal=#{sal},
+			comm=#{comm},
+			deptno=#{deptno}
+		where empno = #{empno}
+	</update>
+	<delete id="delEmp" parameterType="int">
+		delete from empcrud where empno = #{empno}
+	</delete>
+-->
+</mapper>
