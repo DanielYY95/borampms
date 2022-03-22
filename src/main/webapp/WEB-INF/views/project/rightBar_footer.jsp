@@ -8,15 +8,6 @@
 <fmt:requestEncoding value="utf-8"/>     
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-</head>
-<body class="loading" data-layout-color="light" data-leftbar-theme="dark" data-layout-mode="fluid"
-	data-rightbar-onstart="true">
-	
-	<!-- wrapper 가 위에 있었다. -->
 
 	<!-- Footer Start -->
 	<footer class="footer">
@@ -117,5 +108,9 @@
 	
 	<div class="rightbar-overlay"></div>
 
-</body>
+	 <!-- bundle --> 
+	 <script src="${path}/tools/project_assets/js/vendor.min.js"></script>
+	 <script src="${path}/tools/project_assets/js/app.min.js"></script>
+  
+
 </html>

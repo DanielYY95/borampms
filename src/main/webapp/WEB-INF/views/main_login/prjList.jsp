@@ -7,583 +7,372 @@
 <c:set var="path" value="${pageContext.request.contextPath }"/>
 <fmt:requestEncoding value="utf-8"/>     
 <!DOCTYPE html>
-<%--
 
+    <html lang="en">
 
- --%>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+    <head>
+        <meta charset="utf-8" />
+        <title>내 프로젝트 목록 - borampms</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
+        <meta content="Coderthemes" name="author" />
+        <!-- App favicon -->
+        <link rel="shortcut icon" href="${path}/tools/main_assets/images/favicon.ico">
 
-<script type="text/javascript">
-	let msg = '${msg}';
+        <!-- App css -->
+        <link href="${path}/tools/main_assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+        <link href="${path}/tools/main_assets/css/app-creative.min.css" rel="stylesheet" type="text/css" id="app-style" />
+
+		 <!-- jquery 라이브러리 -->
+		 <script src="${path}/tools/jquery-3.6.0.js"></script>
+ 
+		
+    </head>
+
 	
-	if(msg!=''){
-		alert(msg);
-	}
-</script>
-</head>
+    <body class="loading" data-layout-color="light"  data-layout="topnav" data-layout-mode="fluid" data-rightbar-onstart="true">
+        <!-- Begin page -->
+        <div class="wrapper">
 
+            <!-- ============================================================== -->
+            <!-- Start Page Content here -->
+            <!-- ============================================================== -->
 
-  <body class="loading" data-layout-config='{"darkMode":false}'>
-    <div id="mainHeader">
+            <div class="content-page">
+                <div class="content">
+                	
+                	<div>
+                		<a href="index.html" class="logo text-center logo-light" style="background-color:#313a46">
+							<span class="logo-lg">
+								<img src="/borampms/tools/project_assets/images/boram_dark.png" alt="" height="45">
+							</span>
+							<span class="logo-sm">
+								<img src="/borampms/tools/project_assets/images/boram_sm_dark.png" alt="" height="35">
+							</span>
+						</a>
+			                	
+                	</div>
+                	
+                	<jsp:include page="../project/headerBar.jsp" flush="true"/>
+				
+        			<br>
 
-        <jsp:include page="mainHeader.jsp" flush="true"/>
-    
-    
-      </div>
+                    <!-- Start Content-->
+                    <div class="container-fluid">
 
-        <!-- START HERO -->
-        <section class="hero-section">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-md-5">
-                        <div class="mt-md-4">
-                            <div>
-                                <span class="badge bg-danger rounded-pill">New</span>
-                                <span class="text-white-50 ms-1">BORAM3 PMS version 3.4 업데이트</span>
-                            </div>
-                            <h2 class="text-white fw-normal mb-4 mt-3 hero-title">
-                                BORAM3의 이펙티브한 PMS 시스템
-                            </h2>
-
-                            <p class="mb-4 font-16 text-white-50">BORAM3 PMS는 간편하고 편리하며, 프로젝트 관리에 필요한 기능들을 모두 제공하고 있습니다.</p>
-                            <a href="${path}/regUser.do" class="btn btn-success">시작하기 <i
-                                    class="mdi mdi-arrow-right ms-1"></i></a>
-                        </div>
-                    </div>
-                    <div class="col-md-5 offset-md-2">
-                        <div class="text-md-end mt-3 mt-md-0">
-                            <img src="assets/images/startup.svg" alt="" class="img-fluid" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- END HERO -->
-
-        <!-- START SERVICES -->
-        <section class="py-5">
-            <div class="container">
-                <div class="row py-4">
-                    <div class="col-lg-12">
-                        <div class="text-center">
-                            <h1 class="mt-0"><i class="mdi mdi-infinity"></i></h1>
-                            <h3>BORAM3는 <span class="text-primary">사용자 친화</span> 적입니다. </h3>
-                            <p class="text-muted mt-2">누구나 쉽게 익힐 수 있고, 편리하게 사용가능합니다.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-lg-4 col-md-6">
-                        <div class="text-center p-2 p-sm-3">
-                            <div class="avatar-sm m-auto">
-                                <span class="avatar-title bg-primary-lighten rounded-circle">
-                                    <i class="uil uil-desktop text-primary font-24"></i>
-                                </span>
-                            </div>
-                            <h4 class="mt-3">대시보드</h4>
-                            <p class="text-muted mt-2 mb-0">Et harum quidem rerum as expedita distinctio nam libero tempore
-                                cum soluta nobis est cumque quo.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="text-center p-2 p-sm-3">
-                            <div class="avatar-sm m-auto">
-                                <span class="avatar-title bg-primary-lighten rounded-circle">
-                                    <i class="uil uil-vector-square text-primary font-24"></i>
-                                </span>
-                            </div>
-                            <h4 class="mt-3">일정관리</h4>
-                            <p class="text-muted mt-2 mb-0">Temporibus autem quibusdam et aut officiis necessitatibus saepe
-                                eveniet ut sit et recusandae.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="text-center p-2 p-sm-3">
-                            <div class="avatar-sm m-auto">
-                                <span class="avatar-title bg-primary-lighten rounded-circle">
-                                    <i class="uil uil-presentation text-primary font-24"></i>
-                                </span>
-                            </div>
-                            <h4 class="mt-3">소통관리</h4>
-                            <p class="text-muted mt-2 mb-0">Nam libero tempore, cum soluta a est eligendi minus id quod
-                                maxime placeate facere assumenda est.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="text-center p-2 p-sm-3">
-                            <div class="avatar-sm m-auto">
-                                <span class="avatar-title bg-primary-lighten rounded-circle">
-                                    <i class="uil uil-apps text-primary font-24"></i>
-                                </span>
-                            </div>
-                            <h4 class="mt-3">업무관리</h4>
-                            <p class="text-muted mt-2 mb-0">Et harum quidem rerum as expedita distinctio nam libero tempore
-                                cum soluta nobis est cumque quo.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="text-center p-2 p-sm-3">
-                            <div class="avatar-sm m-auto">
-                                <span class="avatar-title bg-primary-lighten rounded-circle">
-                                    <i class="uil uil-shopping-cart-alt text-primary font-24"></i>
-                                </span>
-                            </div>
-                            <h4 class="mt-3">인력관리</h4>
-                            <p class="text-muted mt-2 mb-0">Temporibus autem quibusdam et aut officiis necessitatibus saepe
-                                eveniet ut sit et recusandae.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="text-center p-2 p-sm-3">
-                            <div class="avatar-sm m-auto">
-                                <span class="avatar-title bg-primary-lighten rounded-circle">
-                                    <i class="uil uil-grids text-primary font-24"></i>
-                                </span>
-                            </div>
-                            <h4 class="mt-3">위험관리</h4>
-                            <p class="text-muted mt-2 mb-0">Nam libero tempore, cum soluta a est eligendi minus id quod
-                                maxime placeate facere assumenda est.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-        <!-- END SERVICES -->
-
-        <!-- START FEATURES 1 -->
-        <section class="py-5 bg-light-lighten border-top border-bottom border-light">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="text-center">
-                            <h3>Flexible <span class="text-primary">Layouts</span></h3>
-                            <p class="text-muted mt-2">There are three different layout options available to cater need for
-                                any <br /> modern web
-                                application.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row mt-1">
-                    <div class="col-lg-4 col-md-6">
-                        <div class="demo-box text-center mt-3">
-                            <img src="assets/images/layouts/layout-1.png" alt="demo-img"
-                                class="img-fluid shadow-sm rounded">
-                            <h5 class="mt-3 f-17">Vertical Layout</h5>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="demo-box text-center mt-3">
-                            <img src="assets/images/layouts/layout-2.png" alt="demo-img"
-                                class="img-fluid shadow-sm rounded">
-                            <h5 class="mt-3 f-17">Horizontal Layout</h5>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="demo-box text-center mt-3">
-                            <img src="assets/images/layouts/layout-3.png" alt="demo-img"
-                                class="img-fluid shadow-sm rounded">
-                            <h5 class="mt-3 f-17">Detached Layout</h5>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="demo-box text-center mt-3">
-                            <img src="assets/images/layouts/layout-5.png" alt="demo-img"
-                                class="img-fluid shadow-sm rounded">
-                            <h5 class="mt-3 f-17">Light Sidenav Layout</h5>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="demo-box text-center mt-3">
-                            <img src="assets/images/layouts/layout-6.png" alt="demo-img"
-                                class="img-fluid shadow-sm rounded">
-                            <h5 class="mt-3 f-17">Boxed Layout</h5>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="demo-box text-center mt-3">
-                            <img src="assets/images/layouts/layout-4.png" alt="demo-img"
-                                class="img-fluid shadow-sm rounded">
-                            <h5 class="mt-3 f-17">Semi Dark Layout</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- END FEATURES 1 -->
-
-        <!-- START FEATURES 2 -->
-        <section class="py-5">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="text-center">
-                            <h1 class="mt-0"><i class="mdi mdi-heart-multiple-outline"></i></h1>
-                            <h3>Features you'll <span class="text-danger">love</span></h3>
-                            <p class="text-muted mt-2">Hyper comes with next generation ui design and have multiple benefits
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row mt-2 py-5 align-items-center">
-                    <div class="col-lg-5 col-md-6">
-                        <img src="assets/images/features-1.svg" class="img-fluid" alt="">
-                    </div>
-                    <div class="col-lg-6 offset-md-1 col-md-5">
-                        <h3 class="fw-normal">Inbuilt applications and pages</h3>
-                        <p class="text-muted mt-3">Hyper comes with a variety of ready-to-use applications and pages that help to speed up the development</p>
-
-                        <div class="mt-4">
-                            <p class="text-muted"><i class="mdi mdi-circle-medium text-primary"></i> Projects & Tasks</p>
-                            <p class="text-muted"><i class="mdi mdi-circle-medium text-primary"></i> Ecommerce Application Pages</p>
-                            <p class="text-muted"><i class="mdi mdi-circle-medium text-primary"></i> Profile, pricing, invoice</p>
-                            <p class="text-muted"><i class="mdi mdi-circle-medium text-primary"></i> Login, signup, forget password</p>
-                        </div>
-
-                        <a href="" class="btn btn-primary rounded-pill mt-3">Read More <i class="mdi mdi-arrow-right ms-1"></i></a>
-
-                    </div>
-                </div>
-
-                <div class="row pb-3 pt-5 align-items-center">
-                    <div class="col-lg-6 col-md-5">
-                        <h3 class="fw-normal">Simply beautiful design</h3>
-                        <p class="text-muted mt-3">The simplest and fastest way to build dashboard or admin panel. Hyper is built using the latest tech and tools and provide an easy way to customize anything, including an overall color schemes, layout, etc.</p>
-
-                        <div class="mt-4">
-                            <p class="text-muted"><i class="mdi mdi-circle-medium text-success"></i> Built with latest Bootstrap</p>
-                            <p class="text-muted"><i class="mdi mdi-circle-medium text-success"></i> Extensive use of SCSS variables</p>
-                            <p class="text-muted"><i class="mdi mdi-circle-medium text-success"></i> Well documented and structured code</p>
-                            <p class="text-muted"><i class="mdi mdi-circle-medium text-success"></i> Detailed Documentation</p>
-                        </div>
-
-                        <a href="" class="btn btn-success rounded-pill mt-3">Read More <i class="mdi mdi-arrow-right ms-1"></i></a>
-
-                    </div>
-                    <div class="col-lg-5 col-md-6 offset-md-1">
-                        <img src="assets/images/features-2.svg" class="img-fluid" alt="">
-                    </div>
-                </div>
-
-            </div>
-        </section>
-        <!-- END FEATURES 2 -->
-
-        <!-- START PRICING -->
-        <section class="py-5 bg-light-lighten border-top border-bottom border-light">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="text-center">
-                            <h1 class="mt-0"><i class="mdi mdi-tag-multiple"></i></h1>
-                            <h3>Choose Simple <span class="text-primary">Pricing</span></h3>
-                            <p class="text-muted mt-2">The clean and well commented code allows easy customization of the
-                                theme.It's designed for
-                                <br>describing your app, agency or business.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row mt-5 pt-3">
-                    <div class="col-md-4">
-                        <div class="card card-pricing">
-                            <div class="card-body text-center">
-                                <p class="card-pricing-plan-name fw-bold text-uppercase">Standard License </p>
-                                <i class="card-pricing-icon dripicons-user text-primary"></i>
-                                <h2 class="card-pricing-price">$49 <span>/ License</span></h2>
-                                <ul class="card-pricing-features">
-                                    <li>10 GB Storage</li>
-                                    <li>500 GB Bandwidth</li>
-                                    <li>No Domain</li>
-                                    <li>1 User</li>
-                                    <li>Email Support</li>
-                                    <li>24x7 Support</li>
-                                </ul>
-                                <button class="btn btn-primary mt-4 mb-2 rounded-pill">Choose Plan</button>
-                            </div>
-                        </div>
-                        <!-- end Pricing_card -->
-                    </div>
-                    <!-- end col -->
-
-                    <div class="col-md-4">
-                        <div class="card card-pricing card-pricing-recommended">
-                            <div class="card-body text-center">
-                                <div class="card-pricing-plan-tag">Recommended</div>
-                                <p class="card-pricing-plan-name fw-bold text-uppercase">Multiple License</p>
-                                <i class="card-pricing-icon dripicons-briefcase text-primary"></i>
-                                <h2 class="card-pricing-price">$99 <span>/ License</span></h2>
-                                <ul class="card-pricing-features">
-                                    <li>50 GB Storage</li>
-                                    <li>900 GB Bandwidth</li>
-                                    <li>2 Domain</li>
-                                    <li>10 User</li>
-                                    <li>Email Support</li>
-                                    <li>24x7 Support</li>
-                                </ul>
-                                <button class="btn btn-primary mt-4 mb-2 rounded-pill">Choose Plan</button>
-                            </div>
-                        </div>
-                        <!-- end Pricing_card -->
-                    </div>
-                    <!-- end col -->
-
-                    <div class="col-md-4">
-                        <div class="card card-pricing">
-                            <div class="card-body text-center">
-                                <p class="card-pricing-plan-name fw-bold text-uppercase">Extended License</p>
-                                <i class="card-pricing-icon dripicons-store text-primary"></i>
-                                <h2 class="card-pricing-price">$599 <span>/ License</span></h2>
-                                <ul class="card-pricing-features">
-                                    <li>100 GB Storege</li>
-                                    <li>Unlimited Bandwidth</li>
-                                    <li>10 Domain</li>
-                                    <li>Unlimited User</li>
-                                    <li>Email Support</li>
-                                    <li>24x7 Support</li>
-                                </ul>
-                                <button class="btn btn-primary mt-4 mb-2 rounded-pill">Choose Plan</button>
-                            </div>
-                        </div>
-                        <!-- end Pricing_card -->
-                    </div>
-                    <!-- end col -->
-
-                </div>
-
-            </div>
-        </section>
-        <!-- END PRICING -->
-
-        <!-- START FAQ -->
-        <section class="py-5">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="text-center">
-                            <h1 class="mt-0"><i class="mdi mdi-frequently-asked-questions"></i></h1>
-                            <h3>Frequently Asked <span class="text-primary">Questions</span></h3>
-                            <p class="text-muted mt-2">Here are some of the basic types of questions for our customers. For more
-                                <br>information please contact us.</p>
-
-                            <button type="button" class="btn btn-success btn-sm mt-2"><i class="mdi mdi-email-outline me-1"></i> Email us your question</button>
-                            <button type="button" class="btn btn-info btn-sm mt-2 ms-1"><i class="mdi mdi-twitter me-1"></i> Send us a tweet</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row mt-5">
-                    <div class="col-lg-5 offset-lg-1">
-                        <!-- Question/Answer -->
-                        <div>
-                            <div class="faq-question-q-box">Q.</div>
-                            <h4 class="faq-question text-body">Can I use this template for my client?</h4>
-                            <p class="faq-answer mb-4 pb-1 text-muted">Yup, the marketplace license allows you to use this theme
-                                in any end products.
-                                For more information on licenses, please refere <a href="https://themes.getbootstrap.com/licenses/" target="_blank">here</a>.</p>
-                        </div>
-
-                        <!-- Question/Answer -->
-                        <div>
-                            <div class="faq-question-q-box">Q.</div>
-                            <h4 class="faq-question text-body">How do I get help with the theme?</h4>
-                            <p class="faq-answer mb-4 pb-1 text-muted">Use our dedicated support email (support@coderthemes.com) to send your issues or feedback. We are here to help anytime.</p>
-                        </div>
-
-                    </div>
-                    <!--/col-lg-5 -->
-
-                    <div class="col-lg-5">
-                        <!-- Question/Answer -->
-                        <div>
-                            <div class="faq-question-q-box">Q.</div>
-                            <h4 class="faq-question text-body">Can this theme work with Wordpress?</h4>
-                            <p class="faq-answer mb-4 pb-1 text-muted">No. This is a HTML template. It won't directly with
-                                wordpress, though you can convert this into wordpress compatible theme.</p>
-                        </div>
-
-                        <!-- Question/Answer -->
-                        <div>
-                            <div class="faq-question-q-box">Q.</div>
-                            <h4 class="faq-question text-body">Will you regularly give updates of Hyper?</h4>
-                            <p class="faq-answer mb-4 pb-1 text-muted">Yes, We will update the Hyper regularly. All the
-                                future updates would be available without any cost.</p>
-                        </div>
-
-                    </div>
-                    <!--/col-lg-5-->
-                </div>
-                <!-- end row -->
-
-            </div> <!-- end container-->
-        </section>
-        <!-- END FAQ -->
-
-
-        <!-- START CONTACT -->
-        <section class="py-5 bg-light-lighten border-top border-bottom border-light">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="text-center">
-                            <h3>Get In <span class="text-primary">Touch</span></h3>
-                            <p class="text-muted mt-2">Please fill out the following form and we will get back to you shortly. For more
-                                <br>information please contact us.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row align-items-center mt-3">
-                    <div class="col-md-4">
-                        <p class="text-muted"><span class="fw-bold">Customer Support:</span><br> <span class="d-block mt-1">+1 234 56 7894</span></p>
-                        <p class="text-muted mt-4"><span class="fw-bold">Email Address:</span><br> <span class="d-block mt-1">info@gmail.com</span></p>
-                        <p class="text-muted mt-4"><span class="fw-bold">Office Address:</span><br> <span class="d-block mt-1">4461 Cedar Street Moro, AR 72368</span></p>
-                        <p class="text-muted mt-4"><span class="fw-bold">Office Time:</span><br> <span class="d-block mt-1">9:00AM To 6:00PM</span></p>
-                    </div>
-
-                    <div class="col-md-8">
-                        <form>
-                            <div class="row mt-4">
-                                <div class="col-lg-6">
-                                    <div class="mb-2">
-                                        <label for="fullname" class="form-label">Your Name</label>
-                                        <input class="form-control form-control-light" type="text" id="fullname" placeholder="Name...">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="mb-2">
-                                        <label for="emailaddress" class="form-label">Your Email</label>
-                                        <input class="form-control form-control-light" type="email" required="" id="emailaddress" placeholder="Enter you email...">
-                                    </div>
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box">
+                                   	
+                                    <h4 class="page-title">프로젝트 목록</h4>
                                 </div>
                             </div>
+                        </div>
+                        <!-- end page title -->
 
-                            <div class="row mt-1">
-                                <div class="col-lg-12">
-                                    <div class="mb-2">
-                                        <label for="subject" class="form-label">Your Subject</label>
-                                        <input class="form-control form-control-light" type="text" id="subject" placeholder="Enter subject...">
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row mb-2">
+                                            <div class="col-xl-8">
+                                                <form class="row gy-2 gx-2 align-items-center justify-content-xl-start justify-content-between">
+                                                    <div class="col-auto">
+                                                        <label for="inputPassword2" class="visually-hidden">Search</label>
+                                                        <input type="search" class="form-control" id="inputPassword2" placeholder="Search...">
+                                                    </div>
+                                                    <div class="col-auto">
+                                                        <div class="d-flex align-items-center">
+                                                            <label for="status-select" class="me-2">Status</label>
+                                                            <select class="form-select" id="status-select">
+                                                                <option selected>Choose...</option>
+                                                                <option value="1">Paid</option>
+                                                                <option value="2">Awaiting Authorization</option>
+                                                                <option value="3">Payment failed</option>
+                                                                <option value="4">Cash On Delivery</option>
+                                                                <option value="5">Fulfilled</option>
+                                                                <option value="6">Unfulfilled</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="col-xl-4">
+                                                <div class="text-xl-end mt-xl-0 mt-2">
+                                                    <button id="newPrjBtn" type="button" class="btn btn-danger mb-2 me-2"><i class="mdi mdi-basket me-1"></i> 새 프로젝트 등록</button>
+                                                 
+                                                </div>
+                                            </div><!-- end col-->
+                                        </div>
 
-                            <div class="row mt-1">
-                                <div class="col-lg-12">
-                                    <div class="mb-2">
-                                        <label for="comments" class="form-label">Message</label>
-                                        <textarea id="comments" rows="4" class="form-control form-control-light" placeholder="Type your message here..."></textarea>
-                                    </div>
-                                </div>
-                            </div>
+                                        <div class="table-responsive">
+                                            <table class="table table-centered table-nowrap mb-0">
+                                                <thead class="table-light">
+                                                    <tr>
+                                                        <th style="width: 20px;">
+                                                            <div class="form-check">
+                                                                <input type="checkbox" class="form-check-input" id="customCheck1">
+                                                                <label class="form-check-label" for="customCheck1">&nbsp;</label>
+                                                            </div>
+                                                        </th>
+                                                        <th>프로젝트 ID</th>
+                                                        <th>제목</th>
+                                                        <th>프로젝트 관리자</th>
+                                                        <th>생성일/마감일</th>
+                                                        <th>프로젝트 상태</th>
+                                                        <th style="width: 125px;">탈퇴/삭제</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="form-check">
+                                                                <input type="checkbox" class="form-check-input" id="customCheck2">
+                                                                <label class="form-check-label" for="customCheck2">&nbsp;</label>
+                                                            </div>
+                                                        </td>
+                                                        <td><a href="apps-ecommerce-orders-details.html" class="text-body fw-bold">#PI9708</a> </td>
+                                                        <td onclick="goToPrj()">쌍용 5차 프로젝트</td>
+                                                        <td>
+                                                            <div class="d-flex">
+                                                                <div class="d-flex align-items-center">
+                                                                    <div class="flex-shrink-0">
+                                                                        <img src="${path}/tools/main_assets/images/users/avatar-1.jpg" class="rounded-circle avatar-xs" alt="friend">
+                                                                    </div>
+                                                                    <div class="flex-grow-1 ms-2"><h5 class="my-0">김철수</h5></div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
 
-                            <div class="row mt-2">
-                                <div class="col-12 text-end">
-                                    <button class="btn btn-primary">Send a Message <i
-                                        class="mdi mdi-telegram ms-1"></i> </button>
-                                </div>
-                            </div>
-                        </form>
+                                                        <td>
+                                                            <h5 class="my-0">2022-03-05</h5>
+                                                            <p class="mb-0 txt-muted">2022-12-31</p>
+                                                        </td>
+
+                                                        <td><h5 class="my-0"><span class="badge badge-info-lighten">예정</span></h5></td>
+                                                        <td>
+                                                            <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-arrow-top-right-bold-box-outline"></i></a>
+                                                            <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>
+                                                            <div class="form-check">
+                                                                <input type="checkbox" class="form-check-input" id="customCheck9">
+                                                                <label class="form-check-label" for="customCheck9">&nbsp;</label>
+                                                            </div>
+                                                        </td>
+                                                        <td><a href="apps-ecommerce-orders-details.html" class="text-body fw-bold">#PI9701</a> </td>
+                                                         <td onclick="goToPrj()">쌍용 디자인 프로젝트</td>
+                                                        <td>
+                                                            <div class="d-flex">
+                                                                <div class="d-flex align-items-center">
+                                                                    <div class="flex-shrink-0">
+                                                                        <img src="${path}/tools/main_assets/images/users/avatar-8.jpg" class="rounded-circle avatar-xs" alt="friend">
+                                                                    </div>
+                                                                    <div class="flex-grow-1 ms-2"><h5 class="my-0">배철수</h5></div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+
+                                                        <td>
+                                                            <h5 class="my-0">2022-01-20</h5>
+                                                            <p class="mb-0 txt-muted">2022-05-10</p>
+                                                        </td>
+
+                                                        <td><h5 class="my-0"><span class="badge badge-warning-lighten">지연</span></h5></td>
+                                                        <td>
+                                                            <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-arrow-top-right-bold-box-outline"></i></a>
+                                                            <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="form-check">
+                                                                <input type="checkbox" class="form-check-input" id="customCheck10">
+                                                                <label class="form-check-label" for="customCheck10">&nbsp;</label>
+                                                            </div>
+                                                        </td>
+                                                        <td><a href="apps-ecommerce-orders-details.html" class="text-body fw-bold">#PI9700</a> </td>
+                                                        <td onclick="goToPrj()">쌍용 임베디드 프로젝트</td>
+                                                        <td>
+                                                            <div class="d-flex">
+                                                                <div class="d-flex align-items-center">
+                                                                    <div class="flex-shrink-0">
+                                                                        <img src="${path}/tools/main_assets/images/users/avatar-9.jpg" class="rounded-circle avatar-xs" alt="friend">
+                                                                    </div>
+                                                                    <div class="flex-grow-1 ms-2"><h5 class="my-0">도철수</h5></div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+
+                                                        <td>
+                                                            <h5 class="my-0">2022-02-05</h5>
+                                                            <p class="mb-0 txt-muted">2022-09-01</p>
+                                                        </td>
+
+                                                        <td><h5 class="my-0"><span class="badge badge-primary-lighten">진행 중</span></h5></td>
+                                                        <td>
+                                                            <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-arrow-top-right-bold-box-outline"></i></a>
+                                                            <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="form-check">
+                                                                <input type="checkbox" class="form-check-input" id="customCheck11">
+                                                                <label class="form-check-label" for="customCheck11">&nbsp;</label>
+                                                            </div>
+                                                        </td>
+                                                        <td><a href="apps-ecommerce-orders-details.html" class="text-body fw-bold">#PI9699</a> </td>
+                                                        <td onclick="goToPrj()">쌍용 IOS 프로젝트</td>
+                                                        <td>
+                                                            <div class="d-flex">
+                                                                <div class="d-flex align-items-center">
+                                                                    <div class="flex-shrink-0">
+                                                                        <img src="${path}/tools/main_assets/images/users/avatar-10.jpg" class="rounded-circle avatar-xs" alt="friend">
+                                                                    </div>
+                                                                    <div class="flex-grow-1 ms-2"><h5 class="my-0">한철수</h5></div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+
+                                                        <td>
+                                                            <h5 class="my-0">2022-01-05</h5>
+                                                            <p class="mb-0 txt-muted">2022-04-04</p>
+                                                        </td>
+
+                                                        <td><h5 class="my-0"><span class="badge badge-success-lighten">완료</span></h5></td>
+                                                        <td>
+                                                            <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-arrow-top-right-bold-box-outline"></i></a>
+                                                            <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div> <!-- end card-body-->
+                                </div> <!-- end card-->
+                            </div> <!-- end col -->
+                        </div> <!-- end row -->
+
                     </div>
+                    <!-- container -->
+
                 </div>
-            </div>
-        </section>
-        <!-- END CONTACT -->
+                <!-- content -->
 
-        <!-- START FOOTER -->
-        <footer class="bg-dark py-5">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <img src="assets/images/logo.png" alt="" class="logo-dark" height="18" />
-                        <p class="text-muted mt-4">Hyper makes it easier to build better websites with
-                            <br> great speed. Save hundreds of hours of design
-                            <br> and development by using it.</p>
-
-                        <ul class="social-list list-inline mt-3">
-                            <li class="list-inline-item text-center">
-                                <a href="javascript: void(0);" class="social-list-item border-primary text-primary"><i class="mdi mdi-facebook"></i></a>
-                            </li>
-                            <li class="list-inline-item text-center">
-                                <a href="javascript: void(0);" class="social-list-item border-danger text-danger"><i class="mdi mdi-google"></i></a>
-                            </li>
-                            <li class="list-inline-item text-center">
-                                <a href="javascript: void(0);" class="social-list-item border-info text-info"><i class="mdi mdi-twitter"></i></a>
-                            </li>
-                            <li class="list-inline-item text-center">
-                                <a href="javascript: void(0);" class="social-list-item border-secondary text-secondary"><i class="mdi mdi-github"></i></a>
-                            </li>
-                        </ul>
-
-                    </div>
-
-                    <div class="col-lg-2 col-md-4 mt-3 mt-lg-0">
-                        <h5 class="text-light">Company</h5>
-
-                        <ul class="list-unstyled ps-0 mb-0 mt-3">
-                            <li class="mt-2"><a href="javascript: void(0);" class="text-muted">About Us</a></li>
-                            <li class="mt-2"><a href="javascript: void(0);" class="text-muted">Documentation</a></li>
-                            <li class="mt-2"><a href="javascript: void(0);" class="text-muted">Blog</a></li>
-                            <li class="mt-2"><a href="javascript: void(0);" class="text-muted">Affiliate Program</a></li>
-                        </ul>
-
-                    </div>
-
-                    <div class="col-lg-2 col-md-4 mt-3 mt-lg-0">
-                        <h5 class="text-light">Apps</h5>
-
-                        <ul class="list-unstyled ps-0 mb-0 mt-3">
-                            <li class="mt-2"><a href="javascript: void(0);" class="text-muted">Ecommerce Pages</a></li>
-                            <li class="mt-2"><a href="javascript: void(0);" class="text-muted">Email</a></li>
-                            <li class="mt-2"><a href="javascript: void(0);" class="text-muted">Social Feed</a></li>
-                            <li class="mt-2"><a href="javascript: void(0);" class="text-muted">Projects</a></li>
-                            <li class="mt-2"><a href="javascript: void(0);" class="text-muted">Tasks Management</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="col-lg-2 col-md-4 mt-3 mt-lg-0">
-                        <h5 class="text-light">Discover</h5>
-
-                        <ul class="list-unstyled ps-0 mb-0 mt-3">
-                            <li class="mt-2"><a href="javascript: void(0);" class="text-muted">Help Center</a></li>
-                            <li class="mt-2"><a href="javascript: void(0);" class="text-muted">Our Products</a></li>
-                            <li class="mt-2"><a href="javascript: void(0);" class="text-muted">Privacy</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="mt-5">
-                            <p class="text-muted mt-4 text-center mb-0">© 2018 - <script>document.write(new Date().getFullYear())</script> Hyper. Design and coded by
-                                Coderthemes</p>
+                <!-- Footer Start -->
+                <footer class="footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <script>document.write(new Date().getFullYear())</script> © Hyper - Coderthemes.com
+                            </div>
+                            <div class="col-md-6">
+                                <div class="text-md-end footer-links d-none d-md-block">
+                                    <a href="javascript: void(0);">About</a>
+                                    <a href="javascript: void(0);">Support</a>
+                                    <a href="javascript: void(0);">Contact Us</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </footer>
+                <!-- end Footer -->
+
             </div>
-        </footer>
-        <!-- END FOOTER -->
+
+            <!-- ============================================================== -->
+            <!-- End Page content -->
+            <!-- ============================================================== -->
+
+
+        </div>
+        <!-- END wrapper -->
+
+        <!-- Right Sidebar -->
+        <div class="end-bar">
+
+            <div class="rightbar-title">
+                <a href="javascript:void(0);" class="end-bar-toggle float-end">
+                    <i class="dripicons-cross noti-icon"></i>
+                </a>
+                <h5 class="m-0">Settings</h5>
+            </div>
+
+            <div class="rightbar-content h-100" data-simplebar>
+
+                <div class="p-3">
+                    <div class="alert alert-warning" role="alert">
+                        <strong>Customize </strong> the overall color scheme, layout width, etc.
+                    </div>
+
+                    <!-- Settings -->
+                    <h5 class="mt-3">Color Scheme</h5>
+                    <hr class="mt-1" />
+
+                    <div class="form-check form-switch mb-1">
+                        <input type="checkbox" class="form-check-input" name="color-scheme-mode" value="light"
+                            id="light-mode-check" checked />
+                        <label class="form-check-label" for="light-mode-check">Light Mode</label>
+                    </div>
+
+                    <div class="form-check form-switch mb-1">
+                        <input type="checkbox" class="form-check-input" name="color-scheme-mode" value="dark"
+                            id="dark-mode-check" />
+                        <label class="form-check-label" for="dark-mode-check">Dark Mode</label>
+                    </div>
+
+                    <!-- Width -->
+                    <h5 class="mt-4">Width</h5>
+                    <hr class="mt-1" />
+                    <div class="form-check form-switch mb-1">
+                        <input type="checkbox" class="form-check-input" name="width" value="fluid" id="fluid-check" checked />
+                        <label class="form-check-label" for="fluid-check">Fluid</label>
+                    </div>
+                    <div class="form-check form-switch mb-1">
+                        <input type="checkbox" class="form-check-input" name="width" value="boxed" id="boxed-check" />
+                        <label class="form-check-label" for="boxed-check">Boxed</label>
+                    </div>
+
+
+                    <div class="d-grid mt-4">
+                        <button class="btn btn-primary" id="resetBtn">Reset to Default</button>
+
+                        <a href="https://themes.getbootstrap.com/product/hyper-responsive-admin-dashboard-template/"
+                            class="btn btn-danger mt-3" target="_blank"><i class="mdi mdi-basket me-1"></i> Purchase Now</a>
+                    </div>
+                </div> <!-- end padding-->
+
+            </div>
+        </div>
+
+        <div class="rightbar-overlay"></div>
+        <!-- /End-bar -->
+
+        <!-- bundle -->
+        <script src="${path}/tools/main_assets/js/vendor.min.js"></script>
+        <script src="${path}/tools/main_assets/js/app.min.js"></script>
+
+        <script>
+        
+    		$(".button-menu-mobile").hide();
+    		// 여기서는 필요없기에 가려줘야한다.
+   
+        	$("#newPrjBtn").click(function(){
+        		location.href="./prjReg.html";
+        	})
+
+
+        	function goToPrj(){
+
+        		location.href="${path}/prjDash.do"
+        	} // 이 방식으로 post로 못 간다 
+
+        </script>
 
     </body>
-
 </html>

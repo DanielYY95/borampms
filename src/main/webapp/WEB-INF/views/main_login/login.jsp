@@ -141,7 +141,7 @@
 			if(loginMsg!=""){
 				alert(loginMsg);
 				if(loginMsg=="로그인 성공!"){ // 로그인 성공을 보여주고나서 이동
-					location.href="${path}/project/schedule/schCalendar.html"; // 원래라면 요청이 들어온 곳으로 보내고 싶은데, mapping url은...
+					location.href="${path}/main.do"; // 원래라면 요청이 들어온 곳으로 보내고 싶은데, mapping url은...
 				}
 			}
 			

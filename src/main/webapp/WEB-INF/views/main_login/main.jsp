@@ -16,6 +16,18 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
+<!-- App favicon -->
+<link rel="shortcut icon" href="${path}/tools/main_assets/images/favicon.ico">
+
+<!-- App css -->
+<link href="${path}/tools/main_assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+<link href="${path}/tools/main_assets/css/app-creative.min.css" rel="stylesheet" type="text/css" id="app-style" />
+ 
+ <!-- jquery 라이브러리 -->
+ <script src="${path}/tools/jquery-3.6.0.js"></script>
+ 
+
+
 <script type="text/javascript">
 	let msg = '${msg}';
 	
@@ -26,13 +38,73 @@
 </head>
 
 
-  <body class="loading" data-layout-config='{"darkMode":false}'>
-    <div id="mainHeader">
 
-        <jsp:include page="mainHeader.jsp" flush="true"/>
-    
-    
-      </div>
+  <body class="loading" data-layout-config='{"darkMode":false}'>
+
+		
+       	<!-- <c:set var="user_info.uiName" value="양초명" /> -->
+        <c:set var="reg_prjList_Link" value="${user_info.uiName==null? '/regUser.do': '/prjList.do'}" />        
+		<c:set var="reg_prjList_text" value="${user_info.uiName==null? '시작하기': '내 프로젝트 목록'}" />
+
+        <!-- NAVBAR START -->
+        <nav class="navbar navbar-expand-lg py-lg-3 navbar-dark">
+            <div class="container">
+
+                <!-- logo -->
+                <a href="${path}/main.do" class="navbar-brand me-lg-5">
+                    <img src="${path}/tools/project_assets/images/boram_light.png" style="height: 100px;" alt="" class="logo-dark" height="18" />
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="mdi mdi-menu"></i>
+                </button>
+
+                <!-- menus -->
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+
+                    <!-- left menu -->
+                    <ul class="navbar-nav me-auto align-items-center">
+                        <li class="nav-item mx-lg-2">
+                            <a class="nav-link active" href="">홈</a>
+                        </li>
+                        <li class="nav-item mx-lg-2">
+                            <a class="nav-link" href="">기능</a>
+                        </li>
+                        <li class="nav-item mx-lg-2">
+                            <a class="nav-link" href="">가격</a>
+                        </li>
+                        <li class="nav-item mx-lg-2">
+                            <a class="nav-link" href="">문의</a>
+                        </li>
+                        <li class="nav-item mx-lg-2">
+                            <a class="nav-link" href="">연락처</a>
+                        </li>
+                    </ul>
+
+                    <!-- right menu -->
+                    <ul class="navbar-nav ms-auto align-items-center">
+                    
+                        <li class="nav-item me-0">
+                        	 <c:if test="${empty user_info.uiName}">
+	                            <a href="${path}/loginFrm.do"  class="nav-link d-lg-none">로그인</a>
+	                            <a href="${path}/loginFrm.do"  class="btn btn-sm btn-light rounded-pill d-none d-lg-inline-flex"><!-- 버튼같은 a태그 -->
+	                                <span style="padding-top: 3%;">로그인&nbsp;</span> <i class="dripicons-power" > </i>
+	                            </a> 
+	                            <span>${user_info.uiName}</span>
+                            </c:if>
+                            <c:if test="${!empty user_info.uiName}">
+                            	<span class="badge bg-secondary text-light rounded-pill p-2 pb-1 fs-5">${user_info.uiName} 님</span>
+                            	<a href="${path}/login.do?method=logout" class="nav-link">로그아웃&nbsp;<i class="dripicons-enter"></i></a>
+                            </c:if>
+                            
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+        <!-- NAVBAR END -->
 
         <!-- START HERO -->
         <section class="hero-section">
@@ -49,7 +121,7 @@
                             </h2>
 
                             <p class="mb-4 font-16 text-white-50">BORAM3 PMS는 간편하고 편리하며, 프로젝트 관리에 필요한 기능들을 모두 제공하고 있습니다.</p>
-                            <a href="${path}/regUser.do" class="btn btn-success">시작하기 <i
+                            <a href="${path}${reg_prjList_Link}" class="btn btn-success">${reg_prjList_text}<i
                                     class="mdi mdi-arrow-right ms-1"></i></a>
                         </div>
                     </div>
@@ -310,13 +382,13 @@
                         <div class="card card-pricing">
                             <div class="card-body text-center">
                                 <p class="card-pricing-plan-name fw-bold text-uppercase">Standard License </p>
-                                <i class="card-pricing-icon dripicons-user text-primary"></i>
+                                <i class="card-pricing-icon dripicons-user_info.uiName text-primary"></i>
                                 <h2 class="card-pricing-price">$49 <span>/ License</span></h2>
                                 <ul class="card-pricing-features">
                                     <li>10 GB Storage</li>
                                     <li>500 GB Bandwidth</li>
                                     <li>No Domain</li>
-                                    <li>1 User</li>
+                                    <li>1 user_info.uiName</li>
                                     <li>Email Support</li>
                                     <li>24x7 Support</li>
                                 </ul>
@@ -338,7 +410,7 @@
                                     <li>50 GB Storage</li>
                                     <li>900 GB Bandwidth</li>
                                     <li>2 Domain</li>
-                                    <li>10 User</li>
+                                    <li>10 user_info.uiName</li>
                                     <li>Email Support</li>
                                     <li>24x7 Support</li>
                                 </ul>
@@ -359,7 +431,7 @@
                                     <li>100 GB Storege</li>
                                     <li>Unlimited Bandwidth</li>
                                     <li>10 Domain</li>
-                                    <li>Unlimited User</li>
+                                    <li>Unlimited user_info.uiName</li>
                                     <li>Email Support</li>
                                     <li>24x7 Support</li>
                                 </ul>
@@ -583,6 +655,10 @@
             </div>
         </footer>
         <!-- END FOOTER -->
+
+     <!-- bundle -->
+        <script src="${path}/tools/main_assets/js/vendor.min.js"></script>
+        <script src="${path}/tools/main_assets/js/app.min.js"></script>
 
     </body>
 

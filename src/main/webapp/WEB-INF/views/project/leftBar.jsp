@@ -8,15 +8,11 @@
 <fmt:requestEncoding value="utf-8"/>     
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="utf-8" />
-	<title>업무 목록 - borampms</title>
-</head>
-<body>
+
 		<!-- ========== Left Sidebar Start ========== -->
 		<div class="leftside-menu">
 			<!-- LOGO -->
-			<a href="index.html" class="logo text-center logo-light">
+			<a href="${path}/main.do" class="logo text-center logo-light">
 				<span class="logo-lg">
 					<img src="${path}/tools/project_assets/images/boram_dark.png" alt="" height="45">
 				</span>
@@ -25,7 +21,7 @@
 				</span>
 			</a>
 			<!-- LOGO -->
-			<a href="index.html" class="logo text-center logo-dark">
+			<a href="${path}/main.do" class="logo text-center logo-dark">
 				<span class="logo-lg">
 					<img src="${path}/tools/project_assets/images/boram_light.png" alt="" height="45">
 				</span>
@@ -37,7 +33,7 @@
 				<!--- Start Sidemenu -->
 				<ul class="side-nav">
 					<li class="side-nav-item">
-						<a href="../dashboard/prjDash.html" class="side-nav-link">
+						<a href="${path}/prjDash.do" class="side-nav-link">
              				<i class="fa fa-bar-chart" aria-hidden="true"></i>
               				<span> 대시보드 </span>
            				</a>
@@ -58,7 +54,7 @@
             			<div class="collapse" id="sidebarTasks">
               				<ul class="side-nav-second-level">
                 				<li><a href="../schedule/schGantt.html">WBS/간트차트</a></li>
-                				<li><a href="../schedule/schKanban.html">칸반보드</a></li>
+                				<li><a href="${path}/kanbanmain.do">칸반보드</a></li>
               				</ul>
             			</div>
           			</li>
@@ -71,13 +67,13 @@
 						</a>
 						<div class="collapse" id="sidebarDashboards">
 							<ul class="side-nav-second-level">
-								<li><a href="../task/task_list.html">업무 목록</a></li>
+								<li><a href="${path}/task.do?method=list">업무 목록</a></li>
 								<li><a href="../task/task_issue.html">업무 이슈</a></li>
 							</ul>
 						</div>
 					</li>
                     <li class="side-nav-item">
-                        <a href="../doc/Doc-Management.html" class="side-nav-link">
+                        <a href="${path}/deptDoc.do" class="side-nav-link">
                             <i class="uil-folder-plus"></i>
                             <span> 문서관리 </span>
                         </a>
@@ -92,6 +88,5 @@
 
 		</div>
 		<!-- ========== Left Sidebar end ========== -->
-		
-</body>
+
 </html>

@@ -2,18 +2,17 @@ package mvc.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import mvc.service.UserService;
 
 @Controller
-public class LoginController {
+public class MainController {
 	
 	@Autowired
 	private UserService service;
 	
-	@GetMapping("/main.do")
+	@RequestMapping("/main.do")
 	public String main() {
 		
 		return "main_login//main";
@@ -25,7 +24,18 @@ public class LoginController {
 		return "main_login//login";
 	}
 	
-
+	@RequestMapping("/prjList.do")
+	public String prjList() {
+		
+		
+		return "main_login//prjList";
+	}
+	
+	@RequestMapping("/prjDash.do")
+	public String prjDash() {
+		
+		return "dashboard/prjDash";
+	}
 	
 	/*
 	@RequestMapping("/logout.do") 

@@ -13,15 +13,26 @@
  --%>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<!-- App favicon -->
-<link rel="shortcut icon" href="${path}/tools/project_assets/images/favicon.ico">
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
+	<meta content="Coderthemes" name="author" />
+	<!-- App favicon -->
+	<link rel="shortcut icon" href="${path}/tools/project_assets/images/favicon.ico">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"/>
 
-<!-- App css -->
-<link href="${path}/tools/project_assets/css/icons.min.css" rel="stylesheet" type="text/css" />
-<link href="${path}/tools/project_assets/css/app-creative.min.css" rel="stylesheet" type="text/css" id="app-style" />
- 
+	<!-- App css -->
+	<link href="${path}/tools/project_assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+	<link href="${path}/tools/project_assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-style" />
+	
+
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script> <!-- 지원님은 이 jquery를 쓰시넹? -->
+	
+			
+</head>
+
+
  <!-- jquery 라이브러리 -->
  <script src="${path}/tools/jquery-3.6.0.js"></script>
  
@@ -51,66 +62,9 @@
     <body class="loading" data-layout-color="light" data-leftbar-theme="dark" data-layout-mode="fluid" data-rightbar-onstart="true">
         <!-- Begin page -->
         <div class="wrapper">
-				<!-- ========== Left Sidebar Start ========== -->
-		<div class="leftside-menu">
-			<!-- LOGO -->
-			<a href="index.html" class="logo text-center logo-light"> <span class="logo-lg"> <img src="${path}/tools/project_assets/images/logo.png" alt="" height="16" />
-			</span> <span class="logo-sm"> <img src="${path}/tools/project_assets/images/logo_sm.png" alt="" height="16" />
-			</span>
-			</a>
+        	
 
-			<!-- LOGO -->
-			<a href="index.html" class="logo text-center logo-dark"> <span class="logo-lg"> <img src="${path}/tools/project_assets/images/logo-dark.png" alt="" height="16" />
-			</span> <span class="logo-sm"> <img src="${path}/tools/project_assets/images/logo_sm_dark.png" alt="" height="16" />
-			</span>
-			</a>
-
-			<div class="h-100" id="leftside-menu-container" data-simplebar>
-				<!--- Sidemenu -->
-				<!-- 왼쪽 사이드바 시작  -->
-				<ul class="side-nav">
-					<li class="side-nav-item"><a href="../dashboard/prjDash.html" class="side-nav-link"> <i class="fa fa-bar-chart" aria-hidden="true"></i> <span> 대시보드 </span>
-					</a></li>
-					<li class="side-nav-item"><a href="../schedule/schCalendar.html" class="side-nav-link"> <i class="uil-calender"></i> <span> 캘린더 </span>
-					</a></li>
-
-					<li class="side-nav-item"><a data-bs-toggle="collapse" href="#sidebarTasks" aria-expanded="false" aria-controls="sidebarTasks" class="side-nav-link"> <i class="uil-clipboard-alt"></i> <span> 일정관리 </span> <span class="menu-arrow"></span>
-					</a>
-						<div class="collapse" id="sidebarTasks">
-							<ul class="side-nav-second-level">
-								<li><a href="../schedule/schGantt.html">WBS/간트차트</a></li>
-								<li><a href="../schedule/schKanban.html">칸반보드</a></li>
-							</ul>
-						</div></li>
-					<li class="side-nav-item"><a data-bs-toggle="collapse" href="#sidebarDashboards" aria-expanded="false" aria-controls="sidebarDashboards" class="side-nav-link"> <i class="uil-home-alt"></i> <span> 업무 관리 </span>
-					</a>
-						<div class="collapse" id="sidebarDashboards">
-							<ul class="side-nav-second-level">
-								<li><a href="../task/task_list.html">업무 목록</a></li>
-								<li><a href="../task/task_issue.html">업무 이슈</a></li>
-							</ul>
-						</div></li>
-					<li class="side-nav-item"><a href="../doc/Doc-Management.html" class="side-nav-link"> <i class="uil-folder-plus"></i> <span> 문서관리 </span>
-					</a></li>
-				</ul>
-
-				<!-- End Sidebar -->
-
-				<div class="clearfix"></div>
-			</div>
-			<!-- Sidebar -left -->
-		</div>
-		<!-- Left Sidebar End -->
-		<!-- 왼쪽 사이드바 종료  -->
-
-
-
-		<div class="clearfix"></div>
-	</div>
-	<!-- Sidebar -left -->
-	
-	<!-- Left Sidebar End -->
-	<!-- 왼쪽 사이드바 종료  -->
+			<jsp:include page="../leftBar.jsp" flush="true"/>
 
             <!-- ============================================================== -->
             <!-- Start Page Content here -->
@@ -118,7 +72,10 @@
 
             <div class="content-page">
                 <div class="content">
-        
+        	
+		        	<jsp:include page="../headerBar.jsp" flush="true"/>
+				
+        			
                     <!-- Start Content-->
                     <div class="container-fluid">
                         
@@ -290,20 +247,25 @@
                                                         </div><!-- /.modal-content -->
                                                     </div><!-- /.modal-dialog -->
                                                 </div><!-- /.modal -->
+                                             
                                         </div> <!-- end tab-content-->
                                     </div> <!-- end card-body -->
                                 </div> <!-- end card -->
                             </div><!-- end col -->
-                        </div><!-- end row -->
-					</div>
-                 
-                </div> <!-- end padding-->
+                        </div>
+				<!-- container -->
+					
+                </div>
+				<!-- content -->
+		
+		<jsp:include page="../rightBar_footer.jsp" flush="true"/>
+		
+		  	</div>
+       </div><!-- End Wrapper -->
+                                          
+		<!-- 이거 다음은 script 영역이다. 이게 끝 -->
 
-            </div>
-        </div><!-- end page  -->
-
-        <div class="rightbar-overlay"></div>
-        <!-- /End-bar -->
+	
 
         <script>
             $("option").not(":selected").attr("disabled", "disabled"); // 처음에 selected 되지않은 것들로 수정할 수 없도록
@@ -332,10 +294,7 @@
 
         </script>
 
-	   <!-- bundle -->
-        <script src="${path}/tools/project_assets/js/vendor.min.js"></script>
-        <script src="${path}/tools/project_assets/js/app.min.js"></script>
-     
+	 
 
     </body>
 </html>
