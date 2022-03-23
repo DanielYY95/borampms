@@ -8,40 +8,14 @@
    </settings>
 	<typeAliases>
 		<typeAlias alias="kanban" type="mvc.vo.KanbanVo"/>
+		<typeAlias alias="kanban2" type="mvc.vo.KanbanVo"/>
+		<typeAlias alias="kanban3" type="mvc.vo.KanbanVo"/>
+		<typeAlias alias="kanban4" type="mvc.vo.KanbanVo"/>
 	</typeAliases>
+	
+	
 	<mappers>
 		<mapper resource="resource/KanbanMapper.xml" />
 		
 	</mappers>
 </configuration>
-
-
-
-
-
-
-
-
-
-
-
-
-<!--  
-
-
-### 참고
-
-<typeAliases>
-		<typeAlias alias="emp" type="springweb.vo.Emp"/>
-		<typeAlias alias="emp2" type="springweb.vo.Emp2"/>
-		<typeAlias alias="dept" type="springweb.vo.Dept"/>
-		<typeAlias alias="saldetail" type="springweb.vo.SalDetail"/>
-	</typeAliases>
-	<mappers>
-		<mapper resource="resource/EmpMapper.xml" />
-		<mapper resource="resource/cntMapper.xml" />
-		<mapper resource="resource/DeptMapper.xml" />
-		<mapper resource="resource/getEnameMapper.xml" />
-	</mappers>
-	
-	-->
