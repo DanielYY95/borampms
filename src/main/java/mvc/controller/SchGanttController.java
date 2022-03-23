@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.google.gson.Gson;
+
 import mvc.service.SchGanttService;
 import mvc.vo.PRJ_TASK;
 
@@ -20,17 +22,37 @@ public class SchGanttController {
 
 	@GetMapping("/schGantt.do")
 	public String SchGanttList(PRJ_TASK pt, Model d) {
-		d.addAttribute("result", service.getGanttList());
 		return "project//schedule//schGantt";
 	}
 
-	@RequestMapping(value = "/saveSchGantt.do")
-	@ResponseBody
-	public ArrayList<PRJ_TASK> saveSchGantt() {
+	@GetMapping("/schGanttJson.do")
+	public String schGanttJson(PRJ_TASK pt, Model d) {
+		ArrayList<PRJ_TASK> resultList  = service.getGanttList(pt);
+		d.addAttribute("result", resultList);
+		return "pageJsonReport";
+	}
+
+	@GetMapping(value = "/saveSchGantt.do")
+	public String saveSchGantt(PRJ_TASK pt) {
 
 		ArrayList<PRJ_TASK> map = new ArrayList<PRJ_TASK>();
-		/* map = service.getSchGanttList(); */
+		service.saveSchGantt(pt);
+		return "pageJsonReport";
+	}
 
-		return map;
+	@GetMapping(value = "/updateSchGantt.do")
+	public String updateSchGantt(PRJ_TASK pt) {
+
+		ArrayList<PRJ_TASK> map = new ArrayList<PRJ_TASK>();
+		service.updateSchGantt(pt);
+		return "pageJsonReport";
+	}
+
+	@GetMapping(value = "/deleteSchGantt.do")
+	public String deleteSchGantt(PRJ_TASK pt) {
+
+		ArrayList<PRJ_TASK> map = new ArrayList<PRJ_TASK>();
+		service.deleteSchGantt(pt);
+		return "pageJsonReport";
 	}
 }

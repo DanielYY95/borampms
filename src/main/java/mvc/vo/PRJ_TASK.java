@@ -13,14 +13,22 @@ public class PRJ_TASK {
 	private String ptGuidecontent;
 	private String uiId;
 	private String piId;
-	
+	private String duration;
+
+
+	public String getDuration() {
+		return duration;
+	}
+	public void setDuration(String duration) {
+		this.duration = duration;
+	}
 	public int getCnt() {
 		return cnt;
 	}
 	public void setCnt(int cnt) {
 		this.cnt = cnt;
 	}
-	
+
 	public PRJ_TASK() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -92,8 +100,8 @@ public class PRJ_TASK {
 	public void setPiId(String piId) {
 		this.piId = piId;
 	}
-	
-	
-	
-	
+
+
+
+
 }

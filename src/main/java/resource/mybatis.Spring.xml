@@ -3,10 +3,10 @@
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 
-	<settings> 
-		<setting name="mapUnderscoreToCamelCase" value="true"/> 
+	<settings>
+		<setting name="mapUnderscoreToCamelCase" value="true"/>
 	</settings>
-	
+
 
 	<typeAliases>
 		<typeAlias alias="user" type="mvc.vo.USER_INFO"/>
@@ -23,9 +23,9 @@
 		<mapper resource="resource/KanbanMapper.xml" />
 		<mapper resource="resource/DeptMapper.xml"/>
 		<mapper resource="resource/TaskMapper.xml"/>
-		
+		<mapper resource="resource/sgMapper.xml"/>
 	</mappers>
-	
+
 </configuration>
 
 

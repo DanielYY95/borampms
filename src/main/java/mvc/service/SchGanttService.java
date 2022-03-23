@@ -14,10 +14,23 @@ public class SchGanttService {
 	@Autowired
 	private SchGanttDao dao;
 
-	public ArrayList<PRJ_TASK> getGanttList(){
-		return dao.getGanttList();
+	public ArrayList<PRJ_TASK> getGanttList(PRJ_TASK pt){
+		return dao.getGanttList(pt);
 	}
 	public ArrayList<Sch_Gantt> getSchGanttList(){
 		return dao.getSchGanttList();
 	}
+
+	public void saveSchGantt(PRJ_TASK pt){
+		dao.saveSchGantt(pt);
+	}
+
+	public void updateSchGantt(PRJ_TASK pt){
+		dao.updateSchGantt(pt);
+	}
+
+	public void deleteSchGantt(PRJ_TASK pt){
+		dao.deleteSchGantt(pt);
+	}
+
 }

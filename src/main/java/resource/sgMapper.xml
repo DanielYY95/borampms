@@ -4,7 +4,7 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="mvc.dao.SchGanttDao">
 	<!-- 1. 조회 -->
-	<select id="getSchGanttList"  resultType="sg">
+	<select id="getGanttList" resultType="task">
 		SELECT pt_id
 		     , pt_title
 		     , pt_startdate
@@ -13,47 +13,49 @@
 		     , pt_status
 		     , ui_id
 		     , pi_id
+		     , TO_DATE(pt_duedate, 'YYYY-MM-DD') - TO_DATE(pt_startdate, 'YYYY-MM-DD') as duration
 		  FROM prj_task
 	</select>
+	<select id="getSchGanttList"  resultType="sg">
+		SELECT sg_id
+		     , sg_type
+		     , sg_startdate
+		     , sg_duration
+		     , pt_id
+		  FROM SCH_GANTT
+	</select>
+
 	<!-- 2. 등록 -->
-	<insert id="insertGantt" parameterType="user">
-		INSERT INTO PRJ_TASK VALUES (
-		#{ptid}
+	<insert id="saveSchGantt" parameterType="task">
+		INSERT INTO PRJ_TASK
+		VALUES (
+		 'PT' || LPAD(to_seq.nextVal,5,0)
 		, #{ptTitle}
-		, #{ptContent}
+		, null
 		, #{ptStartdate}
 		, #{ptDuedate}
-		, #{ptCharge}
-		, #{ptType}
-		, #{ptStatus}
-		, #{ptGuidecontent}
-		, #{uiId}
-		, #{piId}
-		, #{ptPriority}
+		, null
+		, null
+		, null
+		, null
+		, null
+		, null
+		, null
 		)
 
 	</insert>
 	<!-- 3. 수정 -->
-	<update id="updateGantt" parameterType="sg">
-		UPDATE PRJ_TASK
-			SET UI_PW = #{uiPw}
-			and PT_TITLE = #{ptTitle}
-			and UI_PHONE = #{uiPhone}
-			and UI_BIRTH = #{uiBirth}
-			and UI_PIC = #{uiPic}
-			and UI_INTRO = #{uiIntro}
-			and UI_RANK = #{uiRank}
-			and UI_DEPT = #{uiDept}
-			and UI_STATUS = #{uiStatus}
-			WHERE UI_ID = #{uiId}
-
+	<update id="updateSchGantt" parameterType="task">
+		 UPDATE PRJ_TASK
+			SET PT_STARTDATE = #{ptStartdate}
+			  , PT_DUEDATE   = #{ptDuedate}
+			  , PT_TITLE     = #{ptTitle}
+		  WHERE PT_ID = #{ptId}
 	</update>
 	<!-- 4. 삭제 -->
-	<delete id="deleteGantt" parameterType="sg">
-		delete from PRJ_TASK
-		where UI_ID = #{uiId}
-		and UI_PW = #{uiPw}
-
+	<delete id="deleteSchGantt" parameterType="task">
+		delete
+		  from PRJ_TASK
+	     where pt_id = #{ptId}
 	</delete>
-	<!-- 5. 저장 -->
 </mapper>
