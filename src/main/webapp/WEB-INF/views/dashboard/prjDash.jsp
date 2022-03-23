@@ -28,7 +28,7 @@
         <div class="wrapper">
            
 			
-			<jsp:include page="../project/leftBar.jsp" flush="true"/>
+			<jsp:include page="../include/leftBar.jsp" flush="true"/>
 			
 
             <!-- ============================================================== -->
@@ -37,7 +37,7 @@
 
             <div class="content-page">
                 <div class="content">
-                  	<jsp:include page="../project/headerBar.jsp" flush="true"/>
+                  	<jsp:include page="../include/headerBar.jsp" flush="true"/>
 			
 		
                     <!-- Start Content-->
@@ -580,7 +580,7 @@
                 </div>
                 <!-- content -->
 
-           <jsp:include page="../project/rightBar_footer.jsp" flush="true"/>
+           <jsp:include page="../include/rightBar_footer.jsp" flush="true"/>
 			
 			</div>
 		</div>  <!-- End wrapper -->

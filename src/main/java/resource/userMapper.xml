@@ -20,8 +20,8 @@
 		#{uiEmail}, #{uiPhone}, #{uiBirth}, sysdate,
 		'',
 		'',
-		'',
-		'',
+		#{uiRank},
+		#{uiDept},
 		0
 		)
 

@@ -65,7 +65,19 @@
 			$("[name=uiBirth]").focus();
 			return false;
 		}
+        
+        if ($("[name=uiDept]").val()==""){
+			alert("부서를 입력해주세요.");
+			$("[name=uiDept]").focus();
+			return false;
+		}
 		
+        if ($("[name=uiRank]").val()==""){
+			alert("직급을 입력해주세요.");
+			$("[name=uiRank]").focus();
+			return false;
+		}
+        
 		$("#signupBtn").click();
 			
 		
@@ -153,25 +165,56 @@
                                         </div>
                                     </div>
 
-                                    <div class="mb-3">
-                                        <label for="fullname" class="form-label">이름</label>
-                                        <input class="form-control" type="text" id="fullname" name="uiName" required>
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <label for="emailaddress" class="form-label">이메일</label>
-                                        <input class="form-control" type="email" id="emailaddress" name="uiEmail" required placeholder="아이디와 비밀번호 찾기에 사용됩니다">
-                                    </div>
-
-                                    
-                           
-
-                                    <div class="mb-3">
-                                        <label for="example-date" class="form-label">생년월일</label>
-                                        <input class="form-control" id="example-date" name="uiBirth" type="date" name="uiBirth">
-                                    </div>
+									<div class="row g-2">
+									  	<div class="col-4 mb-3">
+	                                        <label for="fullname" class="form-label">이름</label>
+	                                        <input class="form-control" type="text" id="fullname" name="uiName" required>
+	                                    </div>
+	                                    
+	
+	                                    <div class="col-8 mb-3">
+	                                        <label for="emailaddress" class="form-label">이메일</label>
+	                                        <input class="form-control" type="email" id="emailaddress" name="uiEmail" required placeholder="아이디와 비밀번호 찾기에 사용됩니다">
+	                                    </div>
+            
+									</div>
 
                                     
+                           			<div class="row g-3">
+	                        			<div class="mb-3 col-4">
+	                                        <label for="example-date" class="form-label">생년월일</label>
+	                                        <input class="form-control" id="example-date" name="uiBirth" type="date" name="uiBirth">
+	                                    </div>
+	                                    
+	                                     <div class="mb-3 col">
+	                                        <label for="dept" class="form-label">부서</label> 
+	                                            <select class="form-select" id="dept" name="uiDept">
+	                                                <option>개발1팀</option>
+	                                                <option>개발2팀</option>
+	                                                <option>인사팀</option>
+	                                                <option>기획팀</option>
+	                                                <option>디자인팀</option>
+	                    							<option>마케팅팀</option>
+	                                            </select>
+	                                    </div>
+	                                    
+	                                     <div class="mb-3 col">
+	                                        <label for="dept" class="form-label">직급</label> 
+	                                            <select class="form-select" id="dept" name="uiRank">
+	                                            	<option>실장</option>
+	                                            	<option>팀장</option>
+	                                                <option>부장</option>
+	                                                <option>차장</option>
+	                                                <option>과장</option>
+	                                                <option>대리</option>
+	                                                <option>주임</option>
+	                    							<option>사원</option>
+	                                            </select>
+	                                    </div>
+                           			
+                           			</div>
+
+       
                                     <div class="row g-3 mb-3">
                                         <label for="phone1" class="form-label">연락처</label>
                                         <input type="text" name="uiPhone" hidden>

@@ -15,11 +15,12 @@
 		and pt_charge like '%'||#{ptCharge}||'%'
 		</if>
 	</select>
+
 	
 	<select id="getTaskList" parameterType="taskSch" resultType="task">
 		select *
 		from (
-			select rownum cnt, prj_task.*
+			SELECT row_number() over(ORDER BY to_date(pt_startdate, 'YYYY-MM-DD')) cnt, prj_task.*
 			from prj_task
 			where 1=1
 			<if test="ptTitle != null and ptTitle != ''">
@@ -28,9 +29,16 @@
 			<if test="ptCharge != null and ptCharge != ''">
 			and pt_charge like '%'||#{ptCharge}||'%'
 			</if>
+			<if test="ptStartdate != null and ptStartdate != ''">
+			and pt_startdate = #{ptStartdate}
+			</if>
+			<if test="ptDuedate != null and ptDuedate != ''">
+			and pt_duedate = #{ptDuedate}
+			</if>
 		)
 		where cnt between #{firstPage} and #{lastPage}
 	</select>
+	
 	
 	<insert id="insertTask" parameterType="task">
 		insert into prj_task values(

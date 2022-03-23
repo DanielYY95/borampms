@@ -18,8 +18,8 @@ public class TaskSch {
 	
 	// 이하 검색 키워드
 	private String ptTitle;
-	private Date ptStartdate;
-	private Date ptDuedate;
+	private String ptStartdate;
+	private String ptDuedate;
 	private String ptCharge;
 	
 	public TaskSch() {
@@ -107,19 +107,19 @@ public class TaskSch {
 		this.ptTitle = ptTitle;
 	}
 
-	public Date getPtStartdate() {
+	public String getPtStartdate() {
 		return ptStartdate;
 	}
 
-	public void setPtStartdate(Date ptStartdate) {
+	public void setPtStartdate(String ptStartdate) {
 		this.ptStartdate = ptStartdate;
 	}
 
-	public Date getPtDuedate() {
+	public String getPtDuedate() {
 		return ptDuedate;
 	}
 
-	public void setPtDuedate(Date ptDuedate) {
+	public void setPtDuedate(String ptDuedate) {
 		this.ptDuedate = ptDuedate;
 	}
 

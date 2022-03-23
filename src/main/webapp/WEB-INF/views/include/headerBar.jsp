@@ -9,9 +9,7 @@
 <!DOCTYPE html>
 <html lang="en">
 			
-    	
-		<c:set var="Dept" value="개발팀" />
-		
+
 		<script>
 			
 	
@@ -331,7 +329,7 @@
 								<img src="${path}/tools/project_assets/images/users/avatar-1.jpg" alt="user-image" class="rounded-circle">
 							</span>
 							<span>
-								<span class="account-position">${Dept}</span>				
+								<span class="account-position">${user_info.uiDept}</span>				
 								<span class="account-user-name">${user_info.uiName}</span>
 								
 							</span>

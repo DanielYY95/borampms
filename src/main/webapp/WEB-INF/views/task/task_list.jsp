@@ -22,6 +22,16 @@
 	<link href="${path}/tools/project_assets/css/icons.min.css" rel="stylesheet" type="text/css" />
 	<link href="${path}/tools/project_assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-style" />
 </head>
+
+<script>
+	//이제 여기다가 각 업무 고유번호를 매개변수로 !!
+	function detail11(){
+		
+		location.href="${path}/taskDetail.do";
+	}
+	
+</script>
+
 <body class="loading" data-layout-color="light" data-leftbar-theme="dark" data-layout-mode="fluid"
 	data-rightbar-onstart="true">
 	
@@ -86,11 +96,17 @@
 						</a>
 						<div class="collapse" id="sidebarDashboards">
 							<ul class="side-nav-second-level">
-								<li><a href="../task/task_list.html">업무 목록</a></li>
-								<li><a href="../task/task_issue.html">업무 이슈</a></li>
+								<li><a href="${path}/task.do?method=list">업무 목록</a></li>
+								<li><a href="${path}/issue.do?method=list">업무 이슈</a></li>
 							</ul>
 						</div>
 					</li>
+					<li class="side-nav-item">
+                        <a href="${path}/issue.do?method=list" class="side-nav-link">
+                            <i class="uil-folder-plus"></i>
+                            <span> 이슈 관리 </span>
+                        </a>
+                    </li>
                     <li class="side-nav-item">
                         <a href="../doc/Doc-Management.html" class="side-nav-link">
                             <i class="uil-folder-plus"></i>
@@ -98,7 +114,7 @@
                         </a>
                     </li>
                 </ul>
-				<!-- End Sidemeniu -->
+				<!-- End Sidemenu -->
 
 				<div class="clearfix"></div>
 
@@ -558,7 +574,7 @@
 								<div class="card-body">
 									<div class="row gy-2 gx-2 align-items-center justify-content-between">
 										<div class="col-auto">
-											<form class="row g-2" id="listsch" action="${path}/task.do?method=list" method="post">
+											<form class="row g-2" id="listsch" method="post">
 												<input type="hidden" name="curPage" value="1"/>
 												<div class="col">
 													<select class="form-select" id="search-select">
@@ -588,80 +604,100 @@
 											</form>
 										</div>
 									</div>
+									<!-- end row -->
+							
+									<div class="row my-3">
+										<div class="table-responsive">
+											<table class="table table-centered table-nowrap mb-0 text-center">
+												<thead class="table-light">
+													<tr>
+														<th>번호</th>
+														<th>제목</th>
+														<th>부서</th>
+														<th>작성자</th>
+														<th>작성일</th>
+														<th>마감일</th>
+														<th>진행상태</th>
+														<th>결재상태</th>
+													</tr>
+											 	</thead>
+											 	<tbody id="task-tbody">
+													<c:forEach var="task" items="${tasklist}" varStatus="status">
+													<tr>
+														<td>${task.cnt }</td>
+														<td ondblclick="detail11()">${task.ptTitle }</td>
+														<td>${task.ptCharge }</td>
+														<td>${task.ptCharge }</td>
+														<td>${task.ptStartdate }</td>
+														<td>${task.ptDuedate }</td>
+														<td>
+															<div class="progress">
+																<div
+																	<c:choose>
+																		<c:when test="${task.ptStatus eq '진행 전' }">
+																			class="progress-bar bg-secondary"
+																			style="width:100%" aria-valuenow="100"
+																		</c:when>
+																		<c:when test="${task.ptStatus eq '진행 중' }">
+																			class="progress-bar bg-info"
+																			style="width:70%" aria-valuenow="70"
+																		</c:when>
+																		<c:when test="${task.ptStatus eq '완료' }">
+																			class="progress-bar bg-success"
+																			style="width:100%" aria-valuenow="100"
+																		</c:when>
+																		<c:when test="${task.ptStatus eq '지연' }">
+																			class="progress-bar-striped bg-warning progress-bar-animated"
+																			style="width:0%" aria-valuenow="0"
+																		</c:when>
+																		<c:when test="${task.ptStatus eq '보류' }">
+																			class="progress-bar-striped"
+																			style="width:0%" aria-valuenow="0"
+																		</c:when>
+																	</c:choose>
+																		role="progressbar" aria-valuemin="0" aria-valuemax="100">${task.ptStatus }
+																</div>
+															</div>
+														</td>
+														<td>
+															<span class="badge bg-secondary text-light">결재완료</span>
+														</td>
+													</tr>
+													</c:forEach>
+												</tbody>
+											</table>
+										</div>
+									
+										<!-- 페이징 블록 -->
+										<div class="row gy-2">
+											<div class="col justify-content-end">
+												<ul class="pagination pagination-rounded">
+													<li class="page-item">
+												  		<a class="page-link" href="javascript:goPage(${taskSch.firstBlock != 1 ? taskSch.lastBlock-1 : 1})">Previous</a>
+												  	</li>
+												  	<c:forEach var="cnt" begin="${taskSch.firstBlock}" end="${taskSch.lastBlock}">
+												  	<li class="page-item ${cnt == taskSch.curPage ? 'active' : ''}"> <!-- 클릭한 현재 페이지 번호 -->
+												  		<a class="page-link" href="javascript:goPage(${cnt})">${cnt}</a>
+												  	</li>
+												  	</c:forEach>
+												  	<li class="page-item">
+												  		<a class="page-link"
+												  			href="javascript:goPage(${taskSch.firstBlock != taskSch.pageCount ? taskSch.lastBlock+1 : taskSch.lastBlock})">Next</a>
+												  	</li>
+												</ul>
+											</div>
+											<div class="d-grid gap-2 col-sm-2 col-lg-1 float-end">
+												<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#signup-modal">등록</button>
+											</div>
+										</div>
+									
+									</div>
+									<!-- end row -->
+									
 								</div>
 								<!-- end card body -->
-								
 							</div>
 							<!-- end card -->
-							
-							<div class="row">
-								<div class="table-responsive">
-									<table class="table table-centered table-nowrap mb-0 text-center">
-										<thead class="table-light">
-											<tr>
-												<th>번호</th>
-												<th>제목</th>
-												<th>부서</th>
-												<th>작성자</th>
-												<th>작성일</th>
-												<th>마감일</th>
-												<th>진행상태</th>
-												<th>결재상태</th>
-											</tr>
-									 	</thead>
-										<tbody id="task-tbody">
-											<c:forEach var="task" items="${tasklist}" varStatus="status">
-											<tr>
-												<td>${task.cnt }</td>
-												<td>${task.ptTitle }</td>
-												<td>${task.ptCharge }</td>
-												<td>${task.ptCharge }</td>
-												<td>${task.ptStartdate }</td>
-												<td>${task.ptDuedate }</td>
-												<td>
-													<div class="progress">
-														<div class="progress-bar" role="progressbar"
-															style="width: 100%" aria-valuenow="100" aria-valuemin="0"
-															aria-valuemax="100">완료</div>
-													</div>
-												</td>
-												<td>
-													<span class="badge bg-secondary text-light">결재완료</span>
-												</td>
-											</tr>
-											</c:forEach>
-										</tbody>
-									</table>
-								</div>
-							
-							<!-- 페이징 블록 -->
-							<div class="row gy-2">
-								<ul class="pagination justify-content-center">
-									<li class="page-item">
-								  		<a class="page-link" href="javascript:goPage(${taskSch.firstBlock != 1 ? taskSch.lastBlock-1 : 1})">Previous</a>
-								  	</li>
-								  	<c:forEach var="cnt" begin="${taskSch.firstBlock}" end="${taskSch.lastBlock}">
-								  	<li class="page-item ${cnt == taskSch.curPage ? 'active' : ''}"> <!-- 클릭한 현재 페이지 번호 -->
-								  		<a class="page-link" href="javascript:goPage(${cnt})">${cnt}</a>
-								  	</li>
-								  	</c:forEach>
-								  	<li class="page-item">
-								  		<a class="page-link"
-								  			href="javascript:goPage(${taskSch.firstBlock != taskSch.pageCount ? taskSch.lastBlock+1 : taskSch.lastBlock})">Next</a>
-								  	</li>
-								</ul>
-								
-								<div class="col pt-3">
-									<div class="d-grid gap-2 col-3 float-end">
-										<button type="button" class="btn btn-primary"
-											data-bs-toggle="modal" data-bs-target="#signup-modal">등록</button>
-									</div>
-								</div>
-							</div>
-							
-						</div>
-						<!-- end col -->
-					
 					</div>
 					<!-- end row -->
 					
@@ -884,19 +920,60 @@
 <!-- bundle -->
 <script src="${path}/tools/project_assets/js/vendor.min.js"></script>
 <script src="${path}/tools/project_assets/js/app.min.js"></script>
-<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="${path}/a00_com/jquery-3.6.0.js"></script>
 <script>
-	let schtype = "";
-	let schword = "";
-	let schdata = {};
 	
-	$(document).ready(function() {
-		let msg = "${msg}";
-		if(msg == "업무 등록 성공") {
-			location.href = "${path}/task.do?method=list";
-		}
-		
+	// 검색 범위(제목 / 담당자)
+	let schtype = "제목";
+	// 검색 키워드
+	let schword = "";
+	let schdate = {"startdate":"", "enddate":""};
+	let schdata = {"ptTitle":"", "ptCharge":"", "ptStartdate":"", "ptDuedate":""};
+	
+	
+	// 검색 : 제목 / 담당자
+	$("#search-select").change(function() {
+		schtype = $("#search-select option:selected").text();
 	});
+	// 검색 : 시작일 / 마감일
+	$("[name=startdate]").change(function() {
+		schdate.startdate = $(this).val();
+	});
+	$("[name=enddate]").change(function() {
+		schdate.enddate = $(this).val();
+	});
+	
+	// 제목 / 담당자 검색 키워드 입력 시
+	$("#search-word").keyup(function(key) {
+		schword = $(this).val();
+		
+		// 검색 범위와 검색 키워드를 json 형태로 설정
+		if(schtype == "제목") {
+			schdata.ptTitle = schword;
+			schdata.ptCharge = "";
+		};
+		if(schtype == "담당자") { 
+			schdata.ptCharge = schword;
+		};
+		
+		console.log(schdata);
+		
+		search(schdata);
+	});
+	
+	// 시작일 / 마감일 키워드 입력 시
+	$("[name=startdate], [name=enddate]").change(function() {
+		schword = $(this).val();
+		console.log(schword);
+		
+		schdata.ptStartdate = schdate.startdate;
+		schdata.ptDuedate = schdate.enddate;
+		
+		search(schdata);		
+	});
+	
+	
+	
 	function detail(ptId){
 		// 더블 클릭시, no를 매개변수를 넘기고 controller에 요청값을 전달 처리.
 		location.href="${path}/task.do?method=detail&ptId="+ptId;
@@ -905,35 +982,60 @@
 		$("[name=curPage]").val(no);
 		$("#listsch").submit();
 	}
-	
-	
-	$("#search-word").keydown(function() {
-		schword = $(this).val();		
-		schdata[schtype] = schword;
+	function search(schdata) {
+		console.log(schdata);
 		
 		$.ajax({
-			url:"${path}/task.do?method=ajax&"+schtype+"="+schword,
+			url:"${path}/task.do?method=search",
 			type:"get",
 			data:schdata,
 			dataType:"json",
 			success:function(data) {
-				console.log(data);
-				let tasklist = data.tasklist;
+				console.log(data.schlist);
 				let html = "";
 				
-		    	$.each(tasklist, function(idx, task) {
+		    	$.each(data.schlist, function(idx, sch) {
+		    		let ptStatus = sch.ptStatus;
+		    		let settings = {"cl":"", "style":"", "valuenow":0};
+		    		
+		    		if(ptStatus == "진행 전") {
+		    			settings.cl = "progress-bar bg-secondary";
+		    			settings.style = "width:100%";
+		    			settings.valuenow = 100;
+		    		}
+		    		if(ptStatus == "진행 중") {
+		    			settings.cl = "progress-bar bg-info";
+		    			settings.style = "width:70%";
+		    			settings.valuenow = 70;
+		    		}
+		    		if(ptStatus == "완료") {
+		    			settings.cl = "progress-bar bg-success";
+		    			settings.style = "width:100%";
+		    			settings.valuenow = 100;
+		    		}
+		    		if(ptStatus == "지연") {
+		    			settings.cl = "progress-bar-striped bg-warning progress-bar-animated";
+		    			settings.style = "width:70%";
+		    			settings.valuenow = 100;
+		    		}
+		    		if(ptStatus == "보류") {
+		    			settings.cl = "progress-bar-striped bg-secondary";
+		    			settings.style = "width:100%";
+		    			settings.valuenow = 100;
+		    		}
+		    		
 		 			html += "<tr>"
-		 				+"<td>"+task.cnt+"</td>"
-		 				+"<td>"+task.ptTitle+"</td>"
-		 				+"<td>"+task.ptCharge+"</td>"
-		 				+"<td>"+task.ptCharge+"</td>"
-		 				+"<td>"+task.ptStartdate+"</td>"
-		 				+"<td>"+task.ptDuedate+"</td>"
-		 				+"<td><div class='progress'><div class='progress-bar' role='progressbar'"
-		 				+"style='width:100%' aria-valuenow='100' aria-valuemin='0'"
-		 				+"aria-valuemax='100'"+"완료"+"</div></div></td>"
+		 				+"<td>"+sch.cnt+"</td>"
+		 				+"<td>"+sch.ptTitle+"</td>"
+		 				+"<td>"+sch.ptCharge+"</td>"
+		 				+"<td>"+sch.ptCharge+"</td>"
+		 				+"<td>"+sch.ptStartdate+"</td>"
+		 				+"<td>"+sch.ptDuedate+"</td>"
+		 				+"<td><div class='progress'>"
+		 				+"<div class='"+settings.cl+"' role='progressbar' style='"+settings.style+"' aria-valuenow='"+settings.valuenow+"' "
+		 				+"aria-valuemin='0' aria-valuemax='100'>"+sch.ptStatus+"</div></div></td>"		 				
 		 				+"<td><span class='badge bg-secondary text-light'>결재완료</span></td>"
-		 				+"</tr>";
+		 				+"</tr>";	
 			 	});	
 		 		$("#task-tbody").html(html);
 			},
@@ -941,14 +1043,9 @@
 				console.log(err);
 			}
 		});
-	});
+	}
 	
-	$("#search-select").change(function() {
-		schtype = $("#search-select option:selected").text() == "제목" ? "ptTitle" : "ptCharge";
-	});
-	
-	
-	
+
 	
 	// 업무 등록
 	$("#regBtn").click(function() {
@@ -971,6 +1068,7 @@
 	
 	
 	
+	
 	// 유효성 검증
 	// 1. 업무 등록
 	$("[name=ptTitle]").change(function(){
@@ -988,7 +1086,7 @@
 	
 	$("[name=ptStartdate]").change(function(){
 	    // 음.... 깜박하고 그런 경우에는...?
-	    // if($("[name=startdate]").val()<new Date().toLocaleDateString("en-US", newDateOptions)){
+	    // if($("[name=ptStartdate]").val()<new Date().toLocaleDateString("en-US", newDateOptions)){
 	    //     alert("시작일은 오늘 전일로 설정할 수 없습니다.");
 	    //     $(this).val('');
 	    // }
@@ -1000,7 +1098,7 @@
 	});
 	
 	$("[name=ptDuedate]").change(function(){
-	    // if($("[name=duedate]").val()<new Date().toLocaleDateString("en-US", newDateOptions)){
+	    // if($("[name=ptDuedate]").val()<new Date().toLocaleDateString("en-US", newDateOptions)){
 	    //     alert("마감일은 오늘 전일로 설정할 수 없습니다.");
 	    //     $(this).val('');
 	    // }

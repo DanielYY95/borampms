@@ -41,7 +41,7 @@ public class LoginSessionController {
 		d.addAttribute("user_info",sch); // 이렇게 해야 로그인 실패할때 빈값으로 보내진다.
 		// 이름 잘 되는거 체크 했음. System.out.println("이름: "+ sch.getUiName());
 		
-		return "main_login//main";
+		return "main_login//login";
 	}
 	// 로그인 실패해도 계속 빈 객체가 뷰단으로 보내지는 것 같다. => 해결
 	 

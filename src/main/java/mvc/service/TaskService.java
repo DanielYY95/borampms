@@ -61,10 +61,8 @@ public class TaskService {
 	}
 	
 	
-	public String insertTask(PRJ_TASK ins) {
+	
+	public void insertTask(PRJ_TASK ins) {
 		dao.insertTask(ins);
-		String msg = "업무 등록 성공";
-		
-		return msg;
 	}
 }

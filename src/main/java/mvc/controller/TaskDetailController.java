@@ -19,7 +19,7 @@ public class TaskDetailController {
 	@RequestMapping("/taskDetail.do")
 	public String goDetail() {
 		
-		return "project//task//taskDetail";
+		return "task//taskDetail";
 	}
 	
 	@RequestMapping("/taskUpt.do") // ptId를 포함한 vo객체 받는다.
@@ -28,14 +28,14 @@ public class TaskDetailController {
 		service.updateTask(task);
 		d.addAttribute("msg", "수정완료");
 		
-		return "project//task//taskDetail";
+		return "task//taskDetail";
 	}
 	
 	@RequestMapping("/toFrm.do")
 	public String toFrm() {
 		
 		
-		return "project//task//taskOutput";
+		return "task//taskOutput";
 	}
 	
 	@RequestMapping("/toInsert.do") //post방식이라 forward 적극 활용할 것
@@ -47,7 +47,7 @@ public class TaskDetailController {
 		// 등록 처리
 		m.addAttribute("msg", service.insertOutput(output)); // forward 할 때 요거 넘겨주나?
 		
-		return "project//task//taskOutput";
+		return "task//taskOutput";
 	}
 	
 }

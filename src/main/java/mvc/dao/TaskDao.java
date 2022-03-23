@@ -16,6 +16,6 @@ public interface TaskDao {
 	
 	
 	// 업무 등록
-	public String insertTask(PRJ_TASK ins);
+	public void insertTask(PRJ_TASK ins);
 	
 }

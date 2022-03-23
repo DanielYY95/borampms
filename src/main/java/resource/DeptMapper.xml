@@ -4,10 +4,27 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
 <mapper namespace="mvc.dao.DeptDao">
+	<!-- 부서문서 테이블 총 카운터 -->
+	<select id="totCnt"  parameterType="deptDocSch" resultType="int">
+		select count(*)
+		from DEPT_DOC 
+		where 1=1
+		<if test="ddWriter!=null and ddWriter!=''"> 
+		and DD_WRITER like '%'||#{ddWriter}||'%'
+		</if>
+	</select>
 	<!-- 부서문서 테이블 조회 -->
-	<select id="getDDList" resultType="deptDoc">
+	<select id="getDDList" parameterType="deptDocSch" resultType="deptDoc">
 		select *
-		from DEPT_DOC
+		from (
+			select rownum cnt, DEPT_DOC.*
+			from DEPT_DOC
+			where 1=1
+			<if test="ddWriter!=null and ddWriter!=''"> 
+			and DD_WRITER like '%'||#{ddWriter}||'%'
+			</if>
+		)
+		where cnt between #{firstPage} and #{lastPage}
 	</select>
 	<!-- 부서문서 테이블 등록 -->
 	<!-- INSERT INTO DEPT_DOC VALUES(seq_dd.nextval, 
@@ -21,4 +38,19 @@
 	private Date ddRegdate;
 	private String diId;
 	 -->
+	<insert id="insertDD" parameterType="deptDoc">
+		INSERT INTO DEPT_DOC VALUES(seq_dd.nextval,#{ddTitle},#{ddWriter},
+		#{ddDept},#{ddContent},sysdate,'1')
+	</insert>
+	<!-- 부서문서 첨부파일 테이블 등록 -->
+	<!-- 
+	private String dfId;
+	private String dfFile;
+	private Date dfRegdate;
+	private String ddId;
+	-->
+	<insert id="insertDF" parameterType="deptFile">
+		INSERT INTO DEPT_FILE VALUES(seq_df.nextval,
+		#{dfFile},sysdate,seq_dd.currval)
+	</insert>
 </mapper>

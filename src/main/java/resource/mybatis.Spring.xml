@@ -16,6 +16,8 @@
 		<typeAlias alias="sg" type="mvc.vo.Sch_Gantt"/>
 		<typeAlias alias="kanban" type="mvc.vo.KanbanVo"/>
 		<typeAlias alias="deptDoc" type="mvc.vo.DeptDoc"/>
+		<typeAlias alias="deptDocSch" type="mvc.vo.DeptDocSch"/>
+		<typeAlias alias="deptFile" type="mvc.vo.DeptFile"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="resource/taskDetailMapper.xml" />
@@ -23,6 +25,7 @@
 		<mapper resource="resource/KanbanMapper.xml" />
 		<mapper resource="resource/DeptMapper.xml"/>
 		<mapper resource="resource/TaskMapper.xml"/>
+		<mapper resource="resource/ganttMapper.xml" />
 		
 	</mappers>
 	

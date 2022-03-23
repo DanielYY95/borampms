@@ -550,124 +550,127 @@
 	                                            <div class="mt-3">
 	                                                <h5 class="mb-3">기획팀</h5>
 		                                                <!-- 게시물 조회 -->
-		                                                <form>
-			                                                <div class="input-group">
-							                                    <input type="text" class="form-control" placeholder="작성자 입력" id="top-search">
-							                                    <button class="input-group-text btn-primary" type="submit">검색</button>
-		                               						</div>
+		                                                <form id="frm01" method="post" action="${path}/dept.do?method=list">
+		                                                	<input type="hidden" name="curPage" value="1"/>
+		                               						<!-- 작성자 조회 -->
+		                               						<div class="input-group">
+			                               						<input type="text" id="simpleinput" class="form-control" name="ddWriter" value="${deptDocSch.ddWriter}" placeholder="작성자">
+			                               						<button class="input-group-text btn-primary" type="submit">조회</button>
+			                               					</div>
 		                               					</form>
 		                               					<br>
                                						 	<!-- 리스트형 게시물 -->
 		    											<div class="table-responsive">
-	                                                    <table class="table table-centered table-nowrap mb-0" style="text-align:center;">
-	                                                        <thead class="table-light">
-	                                                            <tr>
-	                                                                <th class="border-0">번호</th>
-	                                                                <th class="border-0">문서명</th>
-	                                                                <th class="border-0">부서명</th>
-	                                                                <th class="border-0">작성자</th>
-	                                                                <th class="border-0">작성일</th>
-	                                                            </tr>
-	                                                        </thead>
-	                                                        <tbody>
-	                                                        	<c:forEach var="deptdoc" items="${ddList}">
-	                                                            <tr>
-	                                                                <td>
-	                                                                    <span class="ms-2 fw-semibold">${deptdoc.ddId}</span>
-	                                                                </td>
-	                                                                <td>
-	                                                                    <span class="font-12"><a href="javascript: void(0);" class="text-reset">${deptdoc.ddTitle}</a></span>
-	                                                                </td>
-	                                                                <td>${deptdoc.ddWriter}</td>
-	                                                                <td>${deptdoc.ddDept}</td>
-	                                                                <td><fmt:formatDate value="${deptdoc.ddRegdate}" pattern="yyyy-mm-dd"/></td>
-	                                                            </tr>
-	                                                            </c:forEach>
-	                                                        </tbody>
-	                                                    </table>
-	                                                    <!-- 페이징 처리 -->
-														<nav class="pagination-margin-top">
-														    <ul class="pagination pagination-rounded mb-0 justify-content-center">
-														        <li class="page-item">
-														            <a class="page-link" href="javascript: void(0);" aria-label="Previous">
-														                <span aria-hidden="true">&laquo;</span>
-														            </a>
-														        </li>
-														        <li class="page-item  active"><a class="page-link" href="javascript: void(0);">1</a></li>
-														        <li class="page-item"><a class="page-link" href="javascript: void(0);">2</a></li>
-														        <li class="page-item"><a class="page-link" href="javascript: void(0);">3</a></li>
-														        <li class="page-item"><a class="page-link" href="javascript: void(0);">4</a></li>
-														        <li class="page-item"><a class="page-link" href="javascript: void(0);">5</a></li>
-														        <li class="page-item">
-														            <a class="page-link" href="javascript: void(0);" aria-label="Next">
-														                <span aria-hidden="true">&raquo;</span>
-														            </a>
-														        </li>
-														    </ul>
-														</nav>
-														<!-- 문서등록 버튼 -->
-														<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#doc-reg">등록</button>
-	                                                	 <!-- 문서 등록(모달창) -->
-	                                                	<form>
-		                                                	<div id="doc-reg" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-															    <div class="modal-dialog modal-top">
-															        <div class="modal-content">
-															            <div class="modal-header">
-															                <h4 class="modal-title" id="topModalLabel">문서</h4>
-															                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
-															            </div>
-															            <div class="modal-body">
-															            	<!-- 제목 입력란 -->
-															                <div class="mb-3">
-																			    <label for="simpleinput" class="form-label">제목</label>
-																			    <input type="text" id="simpleinput" class="form-control">
-																			</div>
-																			<!-- 로그인 계정(부서명, 이름) -->
-																			<label for="simpleinput" class="form-label">부서</label>
-																			<input type="text" id="simpleinput" class="form-control" readonly>
-																			<label for="simpleinput" class="form-label">이름</label>
-																			<input type="text" id="simpleinput" class="form-control" readonly>
-																			<!-- 에디터(내용) 입력란 -->
-																			<label for="simpleinput" class="form-label">내용</label>
-																			<textarea id="simplemde1"></textarea>
-																			<!-- 첨부파일 입력란 -->
-																			<label for="simpleinput" class="form-label">파일 업로드</label>
-																			<button id="btn-upload" type="button" style="border: 1px solid #ddd; outline: none;">파일 추가</button>
-																		  	<input id="input_file" multiple="multiple" type="file" style="display:none;">
-																		  	<span style="font-size:10px; color: gray;">※첨부파일은 최대 10개까지 등록이 가능합니다.</span>
-																		  	<div class="data_file_txt" id="data_file_txt" style="margin-top:15px;">
-																				<span>[첨부 파일]</span>
-																				<br />
-																				<div id="articlefileChange">
+		                                                    <table class="table table-centered table-nowrap mb-0" style="text-align:center;">
+		                                                        <thead class="table-light">
+		                                                            <tr>
+		                                                                <th class="border-0">번호</th>
+		                                                                <th class="border-0">문서명</th>
+		                                                                <th class="border-0">부서명</th>
+		                                                                <th class="border-0">작성자</th>
+		                                                                <th class="border-0">작성일</th>
+		                                                            </tr>
+		                                                        </thead>
+		                                                        <tbody>
+		                                                        	<c:forEach var="deptdoc" items="${ddList}">
+		                                                            <tr>
+		                                                                <td>
+		                                                                    <span class="ms-2 fw-semibold">${deptdoc.ddId}</span>
+		                                                                </td>
+		                                                                <td>
+		                                                                    <span class="font-12"><a href="javascript: void(0);" class="text-reset">${deptdoc.ddTitle}</a></span>
+		                                                                </td>
+		                                                                <td>${deptdoc.ddDept}</td>
+		                                                                <td>${deptdoc.ddWriter}</td>
+		                                                                <td><fmt:formatDate value="${deptdoc.ddRegdate}" pattern="yyyy-mm-dd"/></td>
+		                                                            </tr>
+		                                                            </c:forEach>
+		                                                        </tbody>
+		                                                    </table>
+		                                                    <!-- 페이징 처리 -->
+															<nav class="pagination-margin-top">
+															    <ul class="pagination pagination-rounded mb-0 justify-content-center">
+															        <li class="page-item">
+															            <a class="page-link" href="javascript:goPage(${deptDocSch.firstBlock!=1?deptDocSch.firstBlock-1:1})" aria-label="Previous">
+															                <span aria-hidden="true">&laquo;</span>
+															            </a>
+															        </li>
+															        <c:forEach var="cnt" begin="${deptDocSch.firstBlock}" end="${deptDocSch.lastBlock}">
+																		<li class="page-item ${cnt==deptDocSch.curPage?'active':''}"> <!-- 클릭한 현재 페이지 번호 -->
+																			<a class="page-link" href="javascript:goPage(${cnt})">${cnt}</a></li>
+																	</c:forEach>
+															        <li class="page-item">
+															            <a class="page-link" href="javascript:goPage(${deptDocSch.lastBlock!=deptDocSch.pageCount?deptDocSch.lastBlock+1:deptDocSch.lastBlock})" aria-label="Next">
+															                <span aria-hidden="true">&raquo;</span>
+															            </a>
+															        </li>
+															    </ul>
+															</nav>
+															<!-- 문서등록 버튼 -->
+															<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#doc-reg">등록</button>
+		                                                	 <!-- 문서 등록(모달창) -->
+		                                                	<form method="post" enctype="multipart/form-data" action="${path}/dept.do?method=insert">
+			                                                	<div id="doc-reg" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+																    <div class="modal-dialog modal-top">
+																        <div class="modal-content">
+																            <div class="modal-header">
+																                <h4 class="modal-title" id="topModalLabel">문서</h4>
+																                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
+																            </div>
+																            <div class="modal-body">
+																            	<!-- 제목 입력란 -->
+																                <div class="mb-3">
+																				    <label for="simpleinput" class="form-label">제목</label>
+																				    <input type="text" id="simpleinput" class="form-control"
+																				    	name="ddTitle" value="${deptdoc.ddTitle}">
 																				</div>
-																			</div>
-															            </div>
-															            <div class="modal-footer">
-															                <button type="button" class="btn btn-light" data-bs-dismiss="modal">취소</button>
-															                <button type="button" class="btn btn-primary">등록</button>
-															            </div>
-															        </div><!-- /.modal-content -->
-															    </div><!-- /.modal-dialog -->
-															</div><!-- /.modal -->
-														</form>
+																				<!-- 로그인 계정(부서명, 이름) -->
+																				<label for="simpleinput" class="form-label">부서</label>
+																				<input type="text" id="simpleinput" class="form-control" 
+																					name="ddDept" value="${deptdoc.ddDept}">
+																				<label for="simpleinput" class="form-label">작성자</label>
+																				<input type="text" id="simpleinput" class="form-control" 
+																					name="ddWriter" value="${deptdoc.ddWriter}">
+																				<!-- 에디터(내용) 입력란 -->
+																				<label for="simpleinput" class="form-label">내용</label>
+																				<textarea id="simplemde1" name="ddContent">${deptdoc.ddContent}</textarea>
+																				<!-- 첨부파일 입력란 -->
+																				<label for="simpleinput" class="form-label">파일 업로드</label>
+																				<button id="btn-upload" type="button" style="border: 1px solid #ddd; outline: none;">파일 추가</button>
+																			  	
+																			  	<span style="font-size:10px; color: gray;">※첨부파일은 최대 10개까지 등록이 가능합니다.</span>
+																			  	<div class="data_file_txt" id="data_file_txt" style="margin-top:15px;">
+																					<span>[첨부 파일]</span>
+																					<br />
+																					<div id="articlefileChange">
+																					</div>
+																				</div>
+																            </div>
+																            <div class="modal-footer">
+																                <button id="cancelBtn"type="button" class="btn btn-light" data-bs-dismiss="modal">취소</button>
+																                <button id="regBtn" type="button" class="btn btn-primary">등록</button>
+																            </div>
+																        </div><!-- /.modal-content -->
+																    </div><!-- /.modal-dialog -->
+																</div><!-- /.modal -->
+															</form>
+	                                                	</div>
+	                                            	</div>
+	                                        	</div> <!-- end .mt-3-->
 
-	                                                </div>
-	                                            </div>
-	                                        </div> <!-- end .mt-3-->
-
-                                        </div>
-                                        <!-- end inbox-rightbar-->
-                                    </div>
-                                    <!-- end card-body -->
-                                    <div class="clearfix"></div>
-                                </div> <!-- end card-box -->
-
-                            </div> <!-- end Col -->
-                        </div><!-- End row -->
-
-                    </div> <!-- container -->
-
-                </div> <!-- content -->
+	                                        </div>
+	                                        <!-- end inbox-rightbar-->
+	                                    </div>
+	                                    <!-- end card-body -->
+	                                    <div class="clearfix"></div>
+	                                </div> <!-- end card-box -->
+	
+	                            </div> <!-- end Col -->
+	                        </div><!-- End row -->
+	
+	                    </div> <!-- container -->
+	
+	                </div> <!-- content -->
 
                 <!-- Footer Start -->
                 <footer class="footer">
@@ -805,72 +808,38 @@
     </body>
 	<script>
 	/* 파일 업로드 스크립트 */
-	$(document).ready(function()
-			// input file 파일 첨부시 fileCheck 함수 실행
-			{
-				$("#input_file").on("change", fileCheck);
-			});
-
-	/**
-	 * 첨부파일로직
-	 */
-	$(function () {
-	    $('#btn-upload').click(function (e) {
-	        e.preventDefault();
-	        $('#input_file').click();
-	    });
-	});
-
-	// 파일 현재 필드 숫자 totalCount랑 비교값
-	var fileCount = 0;
-	// 해당 숫자를 수정하여 전체 업로드 갯수를 정한다.
-	var totalCount = 10;
-	// 파일 고유넘버
-	var fileNum = 0;
-	// 첨부파일 배열
-	var content_files = new Array();
-
-	function fileCheck(e) {
-	    var files = e.target.files;
-	    
-	    // 파일 배열 담기
-	    var filesArr = Array.prototype.slice.call(files);
-	    
-	    // 파일 개수 확인 및 제한
-	    if (fileCount + filesArr.length > totalCount) {
-	      $.alert('파일은 최대 '+totalCount+'개까지 업로드 할 수 있습니다.');
-	      return;
-	    } else {
-	    	 fileCount = fileCount + filesArr.length;
-	    }
-	    
-	    // 각각의 파일 배열담기 및 기타
-	    filesArr.forEach(function (f) {
-	      var reader = new FileReader();
-	      reader.onload = function (e) {
-	        content_files.push(f);
-	        $('#articlefileChange').append(
-	       		'<div id="file' + fileNum + '" onclick="fileDelete(\'file' + fileNum + '\')">'
-	       		+ '<font style="font-size:12px">' + f.name + '</font>'  
-	       		+ '&nbsp;<img src="../../images/main/minus_icon.png" style="width:20px; height:auto; vertical-align: middle; cursor: pointer;"/>' 
-	       		+ '<div/>'
+	$(document).ready(function(){
+		$("#btn-upload").click(function(){
+			/* 파일추가 버튼 클릭시(파일 선택 입력란이 나온다.) */
+			var html = '<div id="file_div">'
+		       	+ '<input id="input_file" multiple="multiple" type="file" name="report">'
+		       	+ '<button id="x_btn" type="button">X</button>'
+		       	+ '</div>'
+			$('#articlefileChange').append(
+		       	html
 			);
-	        fileNum ++;
-	      };
-	      reader.readAsDataURL(f);
-	    });
-	    console.log(content_files);
-	    //초기화 한다.
-	    $("#input_file").val("");
-	  }
-
-	// 파일 부분 삭제 함수
-	function fileDelete(fileNum){
-	    var no = fileNum.replace(/[^0-9]/g, "");
-	    content_files[no].is_delete = true;
-		$('#' + fileNum).remove();
-		fileCount --;
-	    console.log(content_files);
+			$("#x_btn").click(function(){
+				html.remove();
+			});
+		})
+	});
+	/* 부서문서 등록 처리 */
+	$(document).ready(function(){
+		$("#regBtn").click(function(){
+			if(confirm("등록하시겠습니까?")){
+				if($("[name=ddTitle]").val()==""){
+					alert("제목은 필수항목입니다.")
+					$("[name=ddTitle]").focus();
+					return;
+				}
+				$("form").submit();
+			}
+		});
+	});
+	/* 페이징 처리 */
+	function goPage(no){
+		$("[name=curPage]").val(no);
+		$("#frm01").submit();
 	}
 	</script>
 	<script>

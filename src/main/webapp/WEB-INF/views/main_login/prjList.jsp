@@ -44,16 +44,16 @@
                 	<div>
                 		<a href="index.html" class="logo text-center logo-light" style="background-color:#313a46">
 							<span class="logo-lg">
-								<img src="/borampms/tools/project_assets/images/boram_dark.png" alt="" height="45">
+								<img src="${path}/tools/project_assets/images/boram_dark.png" alt="" height="45">
 							</span>
 							<span class="logo-sm">
-								<img src="/borampms/tools/project_assets/images/boram_sm_dark.png" alt="" height="35">
+								<img src="${path}/tools/project_assets/images/boram_sm_dark.png" alt="" height="35">
 							</span>
 						</a>
 			                	
                 	</div>
                 	
-                	<jsp:include page="../project/headerBar.jsp" flush="true"/>
+                	<jsp:include page="../include/headerBar.jsp" flush="true"/>
 				
         			<br>
 

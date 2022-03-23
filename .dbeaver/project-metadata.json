@@ -1,1 +1,1 @@
-{"resources":{"taskSql.sql":{"sql-editor-data-source-id":"oracle_thin-17faa2cde48-779664cc8345badf","default-datasource":"oracle_thin-17faa2cde48-779664cc8345badf","default-schema":"BORAM"}}}
+{"resources":{"taskSql.sql":{"default-schema":"BORAM","sql-editor-data-source-id":"oracle_thin-17fb4c2a756-78cacc9a3bdef584","default-datasource":"oracle_thin-17fb4c2a756-78cacc9a3bdef584"}}}
