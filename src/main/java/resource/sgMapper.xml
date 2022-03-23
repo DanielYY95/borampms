@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="mvc.dao.SchGanttDao">
+	<!-- 1. 조회 -->
+	<select id="getSchGanttList"  resultType="sg">
+		SELECT pt_id
+		     , pt_title
+		     , pt_startdate
+		     , pt_duedate
+		     , pt_type
+		     , pt_status
+		     , ui_id
+		     , pi_id
+		  FROM prj_task
+	</select>
+	<!-- 2. 등록 -->
+	<insert id="insertGantt" parameterType="user">
+		INSERT INTO PRJ_TASK VALUES (
+		#{ptid}
+		, #{ptTitle}
+		, #{ptContent}
+		, #{ptStartdate}
+		, #{ptDuedate}
+		, #{ptCharge}
+		, #{ptType}
+		, #{ptStatus}
+		, #{ptGuidecontent}
+		, #{uiId}
+		, #{piId}
+		, #{ptPriority}
+		)
+
+	</insert>
+	<!-- 3. 수정 -->
+	<update id="updateGantt" parameterType="sg">
+		UPDATE PRJ_TASK
+			SET UI_PW = #{uiPw}
+			and PT_TITLE = #{ptTitle}
+			and UI_PHONE = #{uiPhone}
+			and UI_BIRTH = #{uiBirth}
+			and UI_PIC = #{uiPic}
+			and UI_INTRO = #{uiIntro}
+			and UI_RANK = #{uiRank}
+			and UI_DEPT = #{uiDept}
+			and UI_STATUS = #{uiStatus}
+			WHERE UI_ID = #{uiId}
+
+	</update>
+	<!-- 4. 삭제 -->
+	<delete id="deleteGantt" parameterType="sg">
+		delete from PRJ_TASK
+		where UI_ID = #{uiId}
+		and UI_PW = #{uiPw}
+
+	</delete>
+	<!-- 5. 저장 -->
+</mapper>

@@ -1,0 +1,10 @@
+## 파일 넣으시기전에 중복되서 덮어쓰기 되지 않도록 주의해주세요!!
+
+include와 schedule 폴더 web-inf 폴더 바로 안에 넣어주시면 되고,
+dtmlxgan@@.css 와 .js 는 schdule> gantt.jsp 상단에 있는 경로에 넣어주시면 됩니다.
+
+ganttmapper 넣어주시고(mybatis 설정도!) 
+
+필요한 MVC는 기존 하셨던 schGanttMVC 에 넣어놨습니다.
+
+컨트롤러 호출 url은 borampms/gantt.do  로 출력하시면 됩니다!
