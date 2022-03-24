@@ -26,29 +26,11 @@
 		)
 		where cnt between #{firstPage} and #{lastPage}
 	</select>
-	<!-- 부서문서 테이블 등록 -->
-	<!-- INSERT INTO DEPT_DOC VALUES(seq_dd.nextval, 
-	'요구사항정의서','홍길동','기획팀','확인해주세요',sysdate,'1'); -->
-	<!-- 
-	private String ddId;
-	private String ddTitle;
-	private String ddWriter;
-	private String ddDept;
-	private String ddContent;
-	private Date ddRegdate;
-	private String diId;
-	 -->
+	<!-- 부서문서 등록 -->
 	<insert id="insertDD" parameterType="deptDoc">
 		INSERT INTO DEPT_DOC VALUES(seq_dd.nextval,#{ddTitle},#{ddWriter},
 		#{ddDept},#{ddContent},sysdate,'1')
 	</insert>
-	<!-- 부서문서 첨부파일 테이블 등록 -->
-	<!-- 
-	private String dfId;
-	private String dfFile;
-	private Date dfRegdate;
-	private String ddId;
-	-->
 	<insert id="insertDF" parameterType="deptFile">
 		INSERT INTO DEPT_FILE VALUES(seq_df.nextval,
 		#{dfFile},sysdate,seq_dd.currval)

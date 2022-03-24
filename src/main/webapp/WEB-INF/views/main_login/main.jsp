@@ -42,9 +42,10 @@
   <body class="loading" data-layout-config='{"darkMode":false}'>
 
 		
-       	<!-- <c:set var="user_info.uiName" value="양초명" /> -->
-        <c:set var="reg_prjList_Link" value="${user_info.uiName==null? '/regUser.do': '/prjList.do'}" />        
-		<c:set var="reg_prjList_text" value="${user_info.uiName==null? '시작하기': '내 프로젝트 목록'}" />
+        <c:set var="reg_prjList_Link" 
+        	value="${user_info.uiName==null? '/regUser.do': '/prjList.do'}" />        
+		<c:set var="reg_prjList_text" 
+			value="${user_info.uiName==null? '시작하기': '내 프로젝트 목록'}" />
 
         <!-- NAVBAR START -->
         <nav class="navbar navbar-expand-lg py-lg-3 navbar-dark">
@@ -87,15 +88,20 @@
                     
                         <li class="nav-item me-0">
                         	 <c:if test="${empty user_info.uiName}">
-	                            <a href="${path}/loginFrm.do"  class="nav-link d-lg-none">로그인</a>
-	                            <a href="${path}/loginFrm.do"  class="btn btn-sm btn-light rounded-pill d-none d-lg-inline-flex"><!-- 버튼같은 a태그 -->
-	                                <span style="padding-top: 3%;">로그인&nbsp;</span> <i class="dripicons-power" > </i>
+	                            <a href="${path}/loginFrm.do"  
+	                            	class="nav-link d-lg-none">로그인</a>
+	                            <a href="${path}/loginFrm.do"  
+	                            	class="btn btn-sm btn-light rounded-pill d-none d-lg-inline-flex"><!-- 버튼같은 a태그 -->
+	                                <span style="padding-top: 3%;">로그인&nbsp;</span> 
+	                                	<i class="dripicons-power" > </i>
 	                            </a> 
 	                            <span>${user_info.uiName}</span>
                             </c:if>
                             <c:if test="${!empty user_info.uiName}">
-                            	<span class="badge bg-secondary text-light rounded-pill p-2 pb-1 fs-5">${user_info.uiName} 님</span>
-                            	<a href="${path}/login.do?method=logout" class="nav-link">로그아웃&nbsp;<i class="dripicons-enter"></i></a>
+                            	<span class="badge bg-secondary text-light 
+                            		rounded-pill p-2 pb-1 fs-5">${user_info.uiName} 님</span>
+                            	<a href="${path}/login.do?method=logout" 
+                            		class="nav-link">로그아웃&nbsp;<i class="dripicons-enter"></i></a>
                             </c:if>
                             
                         </li>
@@ -121,8 +127,9 @@
                             </h2>
 
                             <p class="mb-4 font-16 text-white-50">BORAM3 PMS는 간편하고 편리하며, 프로젝트 관리에 필요한 기능들을 모두 제공하고 있습니다.</p>
-                            <a href="${path}${reg_prjList_Link}" class="btn btn-success">${reg_prjList_text}<i
-                                    class="mdi mdi-arrow-right ms-1"></i></a>
+                            <a href="${path}${reg_prjList_Link}" 
+                            		class="btn btn-success">${reg_prjList_text}
+                            		<i class="mdi mdi-arrow-right ms-1"></i></a>
                         </div>
                     </div>
                     <div class="col-md-5 offset-md-2">
@@ -157,8 +164,7 @@
                                 </span>
                             </div>
                             <h4 class="mt-3">대시보드</h4>
-                            <p class="text-muted mt-2 mb-0">Et harum quidem rerum as expedita distinctio nam libero tempore
-                                cum soluta nobis est cumque quo.
+                            <p class="text-muted mt-2 mb-0">
                             </p>
                         </div>
                     </div>
@@ -171,8 +177,7 @@
                                 </span>
                             </div>
                             <h4 class="mt-3">일정관리</h4>
-                            <p class="text-muted mt-2 mb-0">Temporibus autem quibusdam et aut officiis necessitatibus saepe
-                                eveniet ut sit et recusandae.
+                            <p class="text-muted mt-2 mb-0">
                             </p>
                         </div>
                     </div>
@@ -185,8 +190,7 @@
                                 </span>
                             </div>
                             <h4 class="mt-3">소통관리</h4>
-                            <p class="text-muted mt-2 mb-0">Nam libero tempore, cum soluta a est eligendi minus id quod
-                                maxime placeate facere assumenda est.
+                            <p class="text-muted mt-2 mb-0">
                             </p>
                         </div>
                     </div>
@@ -199,8 +203,7 @@
                                 </span>
                             </div>
                             <h4 class="mt-3">업무관리</h4>
-                            <p class="text-muted mt-2 mb-0">Et harum quidem rerum as expedita distinctio nam libero tempore
-                                cum soluta nobis est cumque quo.
+                            <p class="text-muted mt-2 mb-0">
                             </p>
                         </div>
                     </div>
@@ -213,8 +216,7 @@
                                 </span>
                             </div>
                             <h4 class="mt-3">인력관리</h4>
-                            <p class="text-muted mt-2 mb-0">Temporibus autem quibusdam et aut officiis necessitatibus saepe
-                                eveniet ut sit et recusandae.
+                            <p class="text-muted mt-2 mb-0">
                             </p>
                         </div>
                     </div>
@@ -227,8 +229,7 @@
                                 </span>
                             </div>
                             <h4 class="mt-3">위험관리</h4>
-                            <p class="text-muted mt-2 mb-0">Nam libero tempore, cum soluta a est eligendi minus id quod
-                                maxime placeate facere assumenda est.
+                            <p class="text-muted mt-2 mb-0">
                             </p>
                         </div>
                     </div>

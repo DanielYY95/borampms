@@ -18,11 +18,7 @@
 		INSERT INTO user_info VALUES (
 		#{uiId}, #{uiPw}, #{uiName}, 
 		#{uiEmail}, #{uiPhone}, #{uiBirth}, sysdate,
-		'',
-		'',
-		#{uiRank},
-		#{uiDept},
-		0
+		'', '', #{uiRank}, #{uiDept}, 0
 		)
 
 	</insert> 

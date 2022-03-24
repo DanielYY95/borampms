@@ -37,5 +37,21 @@
 		SET pt_status = #{ptStatus}
 		WHERE pt_id = #{ptId}
 	</select>
+	<insert id="insertKanban" parameterType="task">
+		insert into prj_task values(
+			'PT' || lpad(task_seq.nextval,5,'0'),
+			#{ptTitle},
+			#{ptContent},
+			#{ptStartdate},
+			#{ptDuedate},
+			#{ptCharge},
+			#{ptType},
+			#{ptStatus},
+			#{ptPriority},
+			#{ptGuidecontent},
+			#{uiId},
+			#{piId}
+		)
+	</insert>
 	
 </mapper>

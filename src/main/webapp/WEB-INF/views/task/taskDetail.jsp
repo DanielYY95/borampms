@@ -94,6 +94,9 @@
         
         #### 
         생각해보니 업무당당자로 지정됬으면 내 작업으로 생기는 로직도 필요하겠네...
+        
+        ###
+        우선순위도 반영!!
 	
 	 -->
 	
@@ -104,7 +107,8 @@
         <div class="wrapper">
         	
 
-			<jsp:include page="../include/leftBar.jsp" flush="true"/>
+			<jsp:include page="../include/leftBar.jsp" 
+						flush="true"/>
 
             <!-- ============================================================== -->
             <!-- Start Page Content here -->
@@ -113,7 +117,8 @@
             <div class="content-page">
                 <div class="content">
         	
-		        	<jsp:include page="../include/headerBar.jsp" flush="true"/>
+		        	<jsp:include page="../include/headerBar.jsp" 
+		        				flush="true"/>
 				
         			
                     <!-- Start Content-->
@@ -233,7 +238,7 @@
                                                                         <input id="chargeView" value="${taskUser.ptCharge}" class="form-control" readonly />
 
 
-                                                                        <select id="chargeUpt" name="ptCharge" class="select2 form-control select2-multiple" value="${taskUser.ptCharge}" required="" data-toggle="select2" multiple="multiple" data-placeholder="업무담당자 지정">
+                                                                        <select id="chargeUpt"  name="ptCharge" class="select2 form-control select2-multiple" value="${taskUser.ptCharge}" required="" data-toggle="select2" multiple="multiple" data-placeholder="업무담당자 지정">
 																		    <optgroup label="IT팀">
 																		        <option value="IT팀 조민혁">IT팀 조민혁</option>
 																		        <option value="IT팀 전지원">IT팀 전지원</option>
@@ -250,13 +255,23 @@
 																		        <option value="마케팅팀 양광">마케팅팀 양광</option>
 
 																		    </optgroup>
-																		    <optgroup label="개발1팀">
+																		   
+																		   	<optgroup label="개발1팀">
 																		        <option value="개발1팀 양초명">개발1팀 양초명</option>
 																		        <option value="개발1팀 양현수">개발1팀 양현수</option>
 																		        <option value="개발1팀 양광">개발1팀 양광</option>
 
 																		    </optgroup>
 																		</select>
+																		
+																		<script>
+																			// 선택자
+																			$("#chargeUpt").val("${taskUser.ptCharge}");
+																			console.log("${taskUser.ptCharge}");
+																		
+																		
+																		</script>
+																		
 																	</div> <!-- 선택이되면 selected="" 
                                                                         data-select2-id="select2-data-id값(없으면 임의값)" 
                                                                         요게 바로 만들어지는 span과 연관된 것이다....
@@ -298,11 +313,14 @@
                                                        
                                                                     <div id="btnList" class="mb-3 text-center" style="display: flex; justify-content: space-between;">
                                                                        <c:if test="${taskUser.uiId eq user_info.uiId}">
-                                                                            <button class="btn btn-secondary" type="button" id="delBtn">삭제</button>
-                                                                            <button class="btn btn-primary" id="uptBtn" type="button">수정</button>
+                                                                            <button class="btn btn-secondary" 
+                                                                            		type="button" id="delBtn">삭제</button>
+                                                                            <button class="btn btn-primary" 
+                                                                            		id="uptBtn" type="button">수정</button>
                                                                         </c:if>
                                                                         <c:if test="${taskUser.uiId ne user_info.uiId}">                                              
-                                                                            <button class="btn btn-primary" id="listBtn" type="button">글 목록</button>
+                                                                            <button class="btn btn-primary" 
+                                                                            	id="listBtn" type="button">글 목록</button>
                                                                         </c:if>
                                                                     </div>
             
@@ -323,7 +341,8 @@
                 </div>
 				<!-- content -->
 		
-		<jsp:include page="../include/rightBar_footer.jsp" flush="true"/>
+		<jsp:include page="../include/rightBar_footer.jsp" 
+					flush="true"/>
 		
 		  	</div>
        </div><!-- End Wrapper -->
@@ -354,8 +373,12 @@
                 e.stopImmediatePropagation();
                 $("input, textarea").not("#writer, #chargeView").removeAttr("readonly");
                 $("option").removeAttr("disabled");
-                $(this).text("수정완료").attr("id", "uptSuccessBtn"); // => 요걸 누르면 한번 더 눌린 것처럼 되네...
+                $(this).text("수정완료").attr("id", "uptSuccessBtn"); 
                 
+            })
+            
+             $("#btnList").on('click','#listBtn',function(e){
+               location.href="${path}/task.do?method=list";
             })
 
             $(document).on("click", "#uptSuccessBtn",function(e){
@@ -381,9 +404,7 @@
                 $(this).text("수정").attr("id", "uptBtn");
             })
 
-            $("#btnList").on('click','#listBtn',function(e){
-               location.href="${path}/task.do?method=list";
-            })
+         
             
 			// 삭제 버튼
             $("#delBtn").click(function(){

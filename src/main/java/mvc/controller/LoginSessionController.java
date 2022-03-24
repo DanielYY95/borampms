@@ -13,7 +13,7 @@ import mvc.service.UserService;
 import mvc.vo.USER_INFO;
 
 @Controller
-@SessionAttributes("user_info") // vo객체 이름이랑 앞글자가 소문자인거 말곤 같아야한다
+@SessionAttributes("user_info")       // vo객체 이름이랑 앞글자가 소문자인거 말곤 같아야한다
 @RequestMapping("/login.do")
 public class LoginSessionController {
 
@@ -25,10 +25,11 @@ public class LoginSessionController {
 	@Autowired
 	private UserService service;
 	
-	//(2)세션 유지 페이지 
+	
 	@RequestMapping(params="method=session")
-	public String login(@ModelAttribute("user_info") USER_INFO sch, Model d) {
-		// 잘 받아온다
+	public String login(@ModelAttribute("user_info") 
+		USER_INFO sch, Model d) {
+		
 		sch = service.login(sch);
 		
 	
@@ -39,20 +40,14 @@ public class LoginSessionController {
 			d.addAttribute("loginMsg","아이디나 비밀번호가 일치하지않습니다.");
 		}
 		d.addAttribute("user_info",sch); // 이렇게 해야 로그인 실패할때 빈값으로 보내진다.
-		// 이름 잘 되는거 체크 했음. System.out.println("이름: "+ sch.getUiName());
-		
+	
 		return "main_login//login";
 	}
-	// 로그인 실패해도 계속 빈 객체가 뷰단으로 보내지는 것 같다. => 해결
-	 
-	@RequestMapping(params="method=login")
-		public String golog() {
-		
-			return "main_login//login";
-		}
+	
 	
 	@RequestMapping(params="method=logout")
-	public String logout(@ModelAttribute("user_info") USER_INFO sch, HttpSession session, Model d) {
+	public String logout(@ModelAttribute("user_info") 
+		USER_INFO sch, HttpSession session, Model d) {
 
 		// 세션 종료
 		session.invalidate(); // 세션은 확실히 없어졌으나, 계속 정보가 남아있는 문제(이것만으로는 로그아웃이 안되네)
@@ -61,6 +56,16 @@ public class LoginSessionController {
 		
 		return "forward:/main.do";
 	}
+
+	
+	
+	// 로그인 실패해도 계속 빈 객체가 뷰단으로 보내지는 것 같다. => 해결
+	 
+	@RequestMapping(params="method=login")
+		public String golog() {
+		
+			return "main_login//login";
+		}
 
 }
 

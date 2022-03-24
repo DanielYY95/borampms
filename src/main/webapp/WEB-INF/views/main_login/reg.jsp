@@ -293,7 +293,7 @@
 
 
 			
-            
+            // 굳이 두 개로 안 쪼개도 될 것 같은데???
      
             // 폼 제출
             $("#signupBtn").click(function(){
@@ -311,14 +311,16 @@
                 }
 
                 // 연락처 숫자 아니면 거르기
-                if(isNaN($("[name=phone2]").val()) || isNaN($("[name=phone3]").val())){
+                if(isNaN($("[name=phone2]").val()) || 
+                		isNaN($("[name=phone3]").val())){
                     alert("연락처는 숫자만 입력할 수 있습니다.")
                     return false;
                 }
 
 	            
                 // 연락처 합치기
-                $("[name=uiPhone]").val($("[name=phone1]").val()+$("[name=phone2]").val()+$("[name=phone3]").val());
+                $("[name=uiPhone]").val($("[name=phone1]").val()
+                		+$("[name=phone2]").val()+$("[name=phone3]").val());
            
 	            
                 if(confirm("회원가입을 진행하시겠습니까?"))

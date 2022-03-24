@@ -30,8 +30,9 @@
 		<mapper resource="resource/userMapper.xml" />
 		<mapper resource="resource/KanbanMapper.xml" />
 		<mapper resource="resource/DeptMapper.xml"/>
+		<mapper resource="resource/DeptDetailMapper.xml"/>
 		<mapper resource="resource/TaskMapper.xml"/>
-		<mapper resource="resource/ganttMapper.xml" />
+		<mapper resource="resource/sgMapper.xml"/>
 		
 	</mappers>
 	

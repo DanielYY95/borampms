@@ -278,36 +278,38 @@
         }
         
         
-            // 첨부파일명이 화면에 나타날 수 있도록
-		$("#uploadContainer").on("change", ".custom-file-input", function(){
+        // 첨부파일명이 화면에 나타날 수 있도록
+		$("#uploadContainer").on("change", 
+				".custom-file-input", function(){
 			$(this).next(".custom-file-label").text($(this).val());
+			
+		});  
+            
 			// label의 text를 파일 이름으로 변경
-		});  // 이미 랜더링이 된 상태여서 새로 만들어진 것들에 대해서는 적용이 안되는듯...업로드는 제대로 되는디
+            // 이미 랜더링이 된 상태여서 새로 만들어진 것들에 대해서는 적용이 안되는듯...업로드는 제대로 되는디
 		
 		
 		// 추가버튼을 누르면 새로운 업로드 div 생성
 		$("#uploadContainer").on("click", "#addUpload", function(){
-			event.preventDefault(); // 계속해서 폼 제출을 하길래 막아놨다.
 
 			let newUpload = '<div class="input-group mb-3"><div class="row g-2">'
-						+'<input class="form-control" type="file" id="formFileMultiple" multiple>' 
-						+'</div><span><button id="deleteUpload" class="btn btn-danger">'+"삭제-"+'</button></span></div>';
+						+'<input class="form-control" type="file"' 
+						+'id="formFileMultiple" multiple>' 
+						+'</div><span><button id="deleteUpload"'
+						+'type="button" class="btn btn-danger">'
+						+"삭제-"+'</button></span></div>';
 			
 			$("#uploadContainer").append(newUpload);
 
 		})
 
-        	// 삭제버튼을 누르면 버튼의 조상의 조상인 div를 삭제한다. 
+        // 삭제버튼을 누르면 버튼의 조상의 조상인 div를 삭제한다. 
 		$("#uploadContainer").on("click", "#deleteUpload", function(){
-			event.preventDefault();
 			$(this).parent().parent().remove();
 			
 		})
 		
-        $("#test").click(function(){
-
-            alert($("input").val());
-        })
+  
        
 
         </script>

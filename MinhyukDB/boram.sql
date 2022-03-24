@@ -1,11 +1,10 @@
 /* 부서정보 테이블 */
 CREATE TABLE DEPT_INFO(
 	DI_ID VARCHAR2(20) PRIMARY KEY,
-	DD_TITLE VARCHAR2(50), /* 프로젝트 고유번호 */
 	DI_DEPT VARCHAR2(30),
 	DI_STATUS VARCHAR2(20)
 );
-INSERT INTO DEPT_INFO VALUES('1', '사진협회 사이트', '개발팀', '존재');
+INSERT INTO DEPT_INFO VALUES('7', '개발팀', '존재');
 SELECT*FROM DEPT_INFO;
 /* 부서문서 테이블 */
 CREATE TABLE DEPT_DOC(
@@ -20,6 +19,14 @@ CREATE TABLE DEPT_DOC(
 DROP TABLE DEPT_DOC;
 INSERT INTO DEPT_DOC VALUES(seq_dd.nextval, '요구사항정의서33','홍길동','기획팀','확인해주세요',sysdate,'1');
 SELECT*FROM DEPT_DOC;
+/* 부서문서 테이블 수정 */
+UPDATE DEPT_DOC 
+SET DD_TITLE = '호호',
+	DD_CONTENT = '랄라',
+	DD_REGDATE = SYSDATE 
+WHERE DD_ID = '1';
+/* 부서문서 테이블 삭제 */
+DELETE FROM DEPT_DOC WHERE DD_ID = '3';
 /* 부서문서 시퀀스 생성 */
 CREATE SEQUENCE seq_dd
 INCREMENT BY 1
@@ -71,3 +78,5 @@ CREATE TABLE COMMON_FILE(
 	CF_REGDATE DATE,
 	CD_ID VARCHAR2(20)
 );
+select * from Dept_Doc where DD_ID = '1';
+SELECT * FROM dept_file WHERE DD_id = '1';
