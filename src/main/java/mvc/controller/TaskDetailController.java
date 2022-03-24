@@ -17,7 +17,9 @@ public class TaskDetailController {
 	
 	
 	@RequestMapping("/taskDetail.do")
-	public String goDetail() {
+	public String goDetail(String ptId, Model d) {
+		
+		d.addAttribute("taskUser", service.getTask(ptId));
 		
 		return "task//taskDetail";
 	}
@@ -27,13 +29,17 @@ public class TaskDetailController {
 		
 		service.updateTask(task);
 		d.addAttribute("msg", "수정완료");
+		// 수정하고나서 수정된 정보를 보여줘야하니....
+		d.addAttribute("taskUser", service.getTask(task.getPtId()));
+		
 		
 		return "task//taskDetail";
 	}
 	
 	@RequestMapping("/toFrm.do")
-	public String toFrm() {
+	public String toFrm(String ptId, Model d) {
 		
+		d.addAttribute("ptId", ptId);
 		
 		return "task//taskOutput";
 	}
@@ -41,13 +47,22 @@ public class TaskDetailController {
 	@RequestMapping("/toInsert.do") //post방식이라 forward 적극 활용할 것
 	public String toInsert(TASK_OUTPUT output, Model m) {
 		
-		output.setToWriter("aaa123");
 		output.setPtId("pt00111");
 		
 		// 등록 처리
 		m.addAttribute("msg", service.insertOutput(output)); // forward 할 때 요거 넘겨주나?
 		
 		return "task//taskOutput";
+	}
+	
+	@RequestMapping("/taskDel.do")
+	public String taskDel(String ptId, Model d) {
+		
+		service.delTask(ptId);
+		d.addAttribute("msg", "삭제되었습니다!");
+		
+		
+		return "forward:/task.do?method=list";
 	}
 	
 }

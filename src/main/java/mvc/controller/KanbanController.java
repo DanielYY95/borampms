@@ -16,6 +16,9 @@ public class KanbanController {
 	@RequestMapping("/kanbanmain.do")
 	public String kanbanMain(Model d) {
 		d.addAttribute("klist",service.getKlist());
-		return "/project/schKanban";
+		d.addAttribute("klist2",service.getKlist2());
+		d.addAttribute("klist3",service.getKlist3());
+		d.addAttribute("klist4",service.getKlist4());
+		return "/schedule/schKanban";
 	}
 }

@@ -193,8 +193,8 @@
                                                 <div class="input-group mb-3" >
                                                 
                                                     <div class="row g-2">
-                                                       
-                                                            
+                                                       		<input name="ptId" value="${ptId}" hidden />
+                                                            <input name="toWriter" value="${user_info.uiId}" hidden />
                                                             <input class="form-control" type="file" name="toReport"  id="formFileMultiple" multiple>
                                                             
                                                     </div>
@@ -267,8 +267,9 @@
         // 파일 유효성 체크
         function chkFile(){
         	
-        	if($("input").val()!=""){
+        	if($("[name=toReport]").val()!=""){
         		$("form").submit();
+        		$("[name=toReport]").val("");
         	}else{
         		alert("파일을 선택해주세요.")
         		return;

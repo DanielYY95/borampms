@@ -1,15 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >	
-	
-	<mapper namespace="mvc.dao.KanbanDao">
-	
-		<select id="getKlist" resultType="kanban">
-		SELECT pt_id, pt_title, pt_startdate, pt_duedate, 
-		pt_type, pt_status, ui_id, pi_id
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="mvc.dao.KanbanDao">
+	<select id="getKlist" resultType="kanban">
+		SELECT pt_id, pt_title, pt_startdate, pt_duedate, pt_type, pt_status,
+		pt_charge, pt_priority
 		FROM prj_task
-		</select>
-		
-		
-	</mapper>
+		WHERE pt_status = '진행 전'
+	</select>
+
+	<select id="getKlist2" resultType="kanban2">
+		SELECT pt_id, pt_title, pt_startdate, pt_duedate, pt_type, pt_status,
+		pt_charge, pt_priority
+		FROM prj_task
+		WHERE pt_status = '진행 중'
+	</select>
+	
+	<select id="getKlist3" resultType="kanban3">
+		SELECT pt_id, pt_title, pt_startdate, pt_duedate, pt_type, pt_status,
+		pt_charge, pt_priority
+		FROM prj_task
+		WHERE pt_status = '보류'
+	</select>
+	
+		<select id="getKlist4" resultType="kanban4">
+		SELECT pt_id, pt_title, pt_startdate, pt_duedate, pt_type, pt_status,
+		pt_charge, pt_priority
+		FROM prj_task
+		WHERE pt_status = '완료'
+	</select>
+	
+	<select id="KBupdate" parameterType="mvc.vo.KanbanVo">
+		UPDATE prj_task
+		SET pt_status = #{ptStatus}
+		WHERE pt_id = #{ptId}
+	</select>
+	
+</mapper>

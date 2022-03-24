@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 import mvc.dao.TaskDetailDao;
 import mvc.vo.PRJ_TASK;
 import mvc.vo.TASK_OUTPUT;
+import mvc.vo.Task_User;
 
 @Service
 public class TaskDetailService {
@@ -77,12 +78,28 @@ public class TaskDetailService {
 
 	// 2. 업무 정보 수정
 	public void updateTask(PRJ_TASK task) {
+		// 변경되는게 없도록
+		if(task.getPtCharge() == null) {
+			task.setPtCharge(dao.getTask(task.getPtId()).getPtCharge());
+		}
 		
 		dao.updateTask(task);
 		
 	}
 	
 	
+	// 3. 업무 정보 조회
+	public Task_User getTask(String ptId) {
+		
+		
+		return dao.getTask(ptId);
+	}
+	
+	// 4. 업무 삭제
+	public void delTask(String ptId) {
+		
+		dao.delTask(ptId);
+	};
 	
 	
 	

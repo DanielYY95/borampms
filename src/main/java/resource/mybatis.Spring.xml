@@ -18,6 +18,12 @@
 		<typeAlias alias="deptDoc" type="mvc.vo.DeptDoc"/>
 		<typeAlias alias="deptDocSch" type="mvc.vo.DeptDocSch"/>
 		<typeAlias alias="deptFile" type="mvc.vo.DeptFile"/>
+		<typeAlias alias="kanban" type="mvc.vo.KanbanVo"/>
+		<typeAlias alias="kanban2" type="mvc.vo.KanbanVo"/>
+		<typeAlias alias="kanban3" type="mvc.vo.KanbanVo"/>
+		<typeAlias alias="kanban4" type="mvc.vo.KanbanVo"/>
+		<typeAlias alias="taskUser" type="mvc.vo.Task_User"/>
+		
 	</typeAliases>
 	<mappers>
 		<mapper resource="resource/taskDetailMapper.xml" />

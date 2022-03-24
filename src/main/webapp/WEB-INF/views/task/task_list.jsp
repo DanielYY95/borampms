@@ -23,13 +23,19 @@
 	<link href="${path}/tools/project_assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-style" />
 </head>
 
+
+<!-- 양념한 부분 msg관련 js와 detail.
+	양념하고 싶은 거 : taskUser 활용 (조회리스트)
+ -->
+
 <script>
-	//이제 여기다가 각 업무 고유번호를 매개변수로 !!
-	function detail11(){
-		
-		location.href="${path}/taskDetail.do";
-	}
+	let msg = '${msg}';
 	
+	if(msg!=''){
+		alert(msg);
+	}
+	msg='';
+
 </script>
 
 <body class="loading" data-layout-color="light" data-leftbar-theme="dark" data-layout-mode="fluid"
@@ -625,7 +631,7 @@
 													<c:forEach var="task" items="${tasklist}" varStatus="status">
 													<tr>
 														<td>${task.cnt }</td>
-														<td ondblclick="detail11()">${task.ptTitle }</td>
+														<td ondblclick="detail('${task.ptId}')">${task.ptTitle }</td>
 														<td>${task.ptCharge }</td>
 														<td>${task.ptCharge }</td>
 														<td>${task.ptStartdate }</td>
@@ -843,11 +849,11 @@
 	                            <div style="display:flex; justify-content: space-between;">
 	                                <div class="mb-3">
 	                                 <label class="form-label">시작일</label>
-	                                 <input class="form-control" required  type="date" name="ptStartdate">
+	                                 <input class="form-control" required=""  type="date" name="ptStartdate">
 	                             </div>
 	                             <div class="mb-3">
 	                                 <label class="form-label">마감일</label>
-	                                 <input class="form-control" required  type="date" name="ptDuedate">
+	                                 <input class="form-control" required=""  type="date" name="ptDuedate">
 	                             </div>
 	                            </div>
 	                            
@@ -877,7 +883,15 @@
 	                            
 	
 	                            <div style="display:flex; justify-content: space-between; ">
-	                                <div class="mb-3" style="width: 45%;">
+	                            	<div class="mb-3" style="width: 30%;">
+	                                    <label for="example-select" class="form-label">우선순위</label>
+	                                    <select class="form-select" id="example-select" name="ptPriority">
+	                                        <option>중요</option>
+	                                        <option>보통</option>
+	                                        <option>낮음</option>
+	                                    </select>
+	                                </div>
+	                                <div class="mb-3" style="width: 30%;">
 	                                    <label for="example-select" class="form-label">분류</label>
 	                                    <select class="form-select" id="example-select" name="ptType">
 	                                        <option>요구사항 도출</option>
@@ -887,7 +901,7 @@
 	                                        <option>개발</option>
 	                                    </select>
 	                                </div>	
-	                                <div class="mb-3" style="width: 45%;">
+	                                <div class="mb-3" style="width: 30%;">
 	                                    <label for="example-select" class="form-label">진행상태</label>
 	                                    <select class="form-select" id="example-select" name="ptStatus">
 	                                        <option>진행 전</option>
@@ -976,7 +990,7 @@
 	
 	function detail(ptId){
 		// 더블 클릭시, no를 매개변수를 넘기고 controller에 요청값을 전달 처리.
-		location.href="${path}/task.do?method=detail&ptId="+ptId;
+		location.href="${path}/taskDetail.do?ptId="+ptId;
 	}
 	function goPage(no){
 		$("[name=curPage]").val(no);

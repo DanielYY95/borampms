@@ -7,6 +7,7 @@ import mvc.vo.TASK_CHECK;
 import mvc.vo.TASK_GUIDE;
 import mvc.vo.TASK_HISTORY;
 import mvc.vo.TASK_OUTPUT;
+import mvc.vo.Task_User;
 
 public interface TaskDetailDao {
 
@@ -19,13 +20,13 @@ public interface TaskDetailDao {
 	// ### 업무 상세 정보
 	// (1) 업무 정보
 		// 1. 업무 정보 조회
-	public PRJ_TASK getTask(String ptId);
+	public Task_User getTask(String ptId);
 	
 		// 2. 수정
 	public void updateTask(PRJ_TASK task);
 	
 		// 3. 삭제
-	public void deleteTask(String ptId);
+	public void delTask(String ptId);
 	
 	// (2) wbs
 		// 1. wbs에 업무 위치 표기

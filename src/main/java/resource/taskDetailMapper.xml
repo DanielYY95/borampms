@@ -31,5 +31,19 @@
 			
 	</update>
 	
+	
+	<select id="getTask" parameterType="string" resultType="taskUser">
+		select * from (
+		select * from PRJ_TASK where PT_ID = #{ptId}
+		) pt, USER_INFO ui
+		where pt.UI_ID = ui.UI_ID
+		
+	</select>
+	
+	<delete id="delTask" parameterType="string">
+		delete from PRJ_TASK where PT_ID = #{ptId}
+	
+	</delete>
+	
 
 </mapper>

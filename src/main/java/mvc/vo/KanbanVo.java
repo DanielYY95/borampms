@@ -10,12 +10,14 @@ public class KanbanVo {
 	private String ptStatus;
 	private String uiId;
 	private String piId;
+	private String ptCharge;
+	private String ptPriority;
 	public KanbanVo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public KanbanVo(String ptId, String ptTitle, String ptContent, String ptStartdate, String ptDuedate, String ptType,
-			String ptStatus, String uiId, String piId) {
+			String ptStatus, String uiId, String piId, String ptCharge, String ptPriority) {
 		super();
 		this.ptId = ptId;
 		this.ptTitle = ptTitle;
@@ -26,6 +28,8 @@ public class KanbanVo {
 		this.ptStatus = ptStatus;
 		this.uiId = uiId;
 		this.piId = piId;
+		this.ptCharge = ptCharge;
+		this.ptPriority = ptPriority;
 	}
 	public String getPtId() {
 		return ptId;
@@ -81,7 +85,17 @@ public class KanbanVo {
 	public void setPiId(String piId) {
 		this.piId = piId;
 	}
+	public String getPtCharge() {
+		return ptCharge;
+	}
+	public void setPtCharge(String ptCharge) {
+		this.ptCharge = ptCharge;
+	}
+	public String getPtPriority() {
+		return ptPriority;
+	}
+	public void setPtPriority(String ptPriority) {
+		this.ptPriority = ptPriority;
+	}
 	
-	
-
 }
