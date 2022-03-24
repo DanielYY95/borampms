@@ -48,7 +48,9 @@
         margin: 0px;
         overflow: hidden;
       }
-
+	  .gantt_grid_head_cell gantt_grid_head_add gantt_last_cell{
+	  	display : none;
+	  }
       .summary-row,
       .summary-row.odd {
         background-color: #eeeeee;
@@ -66,6 +68,7 @@
       .gantt_grid_data .gantt_add {
 		 display: none;
 	  }
+
     </style>
      <!-- 간트 js/css 끝 -->
   </head>
@@ -79,6 +82,94 @@
     data-rightbar-onstart="true"
   >
     <!-- Begin page -->
+    <div id="signup-modal" class="modal fade" >
+        <div class="modal-dialog">
+            <div class="modal-content" >
+
+                <div class="modal-header">
+                    <h4>업무등록</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <form id="regForm" class="ps-3 pe-3" action="${path}/task.do?method=insert" method="post">
+                        <div class="mb-3">
+                            <label for="username" class="form-label">제목</label>
+                            <input name="ptTitle" class="form-control"  required="" placeholder="제목을 입력해주세요">
+                        </div>
+                        <!-- Autoclose -->
+                        <div style="display:flex; justify-content: space-between;">
+                            <div class="mb-3">
+                             <label class="form-label">시작일</label>
+                             <input class="form-control" required  type="date" name="ptStartdate">
+                         </div>
+                         <div class="mb-3">
+                             <label class="form-label">마감일</label>
+                             <input class="form-control" required  type="date" name="ptDuedate">
+                         </div>
+                        </div>
+
+                        <!-- Multiple Select -->
+                        <div class="mb-3 position-relative">
+                            <label class="form-label">업무담당자</label>
+                            <select name="ptCharge" class="select2 form-control select2-multiple" required=""
+                            	data-toggle="select2" multiple="multiple" data-placeholder="업무담당자 지정">
+                                <optgroup label="IT팀">
+                                    <option value="IT팀 조민혁">IT팀 조민혁</option>
+                                    <option value="IT팀 전지원">IT팀 전지원</option>
+                                </optgroup>
+                                <optgroup label="인사팀">
+                                    <option value="인사팀 김파월">인사팀 김파월</option>
+                                    <option value="인사팀 김소월">인사팀 김소월</option>
+                                    <option value="인사팀 한가람">인사팀 한가람</option>
+                                    <option value="인사팀 김효은">인사팀 김효은</option>
+                                </optgroup>
+                                <optgroup label="마케팅팀">
+                                    <option value="마케팅팀 양초명">마케팅팀 양초명</option>
+                                    <option value="마케팅팀 양현수">마케팅팀 양현수</option>
+                                    <option value="마케팅팀 양광">마케팅팀 양광</option>
+
+                                </optgroup>
+                            </select>
+                        </div>
+
+
+                        <div style="display:flex; justify-content: space-between; ">
+                            <div class="mb-3" style="width: 45%;">
+                                <label for="example-select" class="form-label">분류</label>
+                                <select class="form-select" id="example-select" name="ptType">
+                                    <option>요구사항 도출</option>
+                                    <option>요구사항 분석</option>
+                                    <option>요구사항 명확</option>
+                                    <option>요구사항 확인</option>
+                                    <option>개발</option>
+                                </select>
+                            </div>
+                            <div class="mb-3" style="width: 45%;">
+                                <label for="example-select" class="form-label">진행상태</label>
+                                <select class="form-select" id="example-select" name="ptStatus">
+                                    <option>진행 전</option>
+                                    <option>진행 중</option>
+                                    <option>지연</option>
+                                    <option>보류</option>
+                                    <option>완료</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="example-textarea" class="form-label">내용</label>
+                            <textarea class="form-control" id="example-textarea" rows="15" name="ptContent"></textarea>
+                        </div>
+                        <hr>
+                        <div class="mb-3 text-center" style="display: flex; justify-content: space-between;">
+                            <button class="btn btn-secondary" class="btn-close" onclick="fn_close">취소</button>
+                            <button class="btn btn-primary" type="button" id="regBtn">등록</button>
+                        </div>
+                    </form>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
     <div class="wrapper">
       <!-- ========== Left Sidebar Start ========== -->
       <div class="leftside-menu">
@@ -983,7 +1074,22 @@
 		});
 		gantt.attachEvent("onLightboxSave", function(id, task, is_new){
 			saveData(is_new, task)
-		})
+		});
+
+		gantt.attachEvent("onGridHeaderClick", function(name, e){
+		    //any custom logic here
+		    if(name == "add"){
+				// 여기에 레이어 팝업 호출 시켜라
+				if($('#signup-modal').css('display')=="none"){
+					$('#signup-modal').css('display','block');
+				}else{
+					$('#signup-modal').css('display','none');
+				}
+
+				return false;
+		    }
+		    return true;
+		});
 
 		function getData(){
 			let paramData = [];
@@ -993,7 +1099,6 @@
 			    // data:schdata, => 파라미터 넣을곳
 			    dataType:"json",
 			    success:function(data){
-					debugger;
 			/* 		$.each(data.result, function(idx, sch){ //숙지
 						paramData.push({ text: sch.ptTitle , start_date: sch.ptStartdate, duration:sch.duration});
 					}); */
@@ -1062,6 +1167,9 @@
 				})
 
 			}
+		}
+		function fn_close(){
+			$('#signup-modal').css('display','none');
 		}
 		function dateFormat(date) {
 	        let month = date.getMonth();
