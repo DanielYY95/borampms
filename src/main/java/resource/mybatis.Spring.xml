@@ -12,6 +12,6 @@
 	</typeAliases>
 	<mappers>
 		<mapper resource="resource/DeptMapper.xml"/>
+		<mapper resource="resource/DeptDetailMapper.xml"/>
 	</mappers>
-
 </configuration>

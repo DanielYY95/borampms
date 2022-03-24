@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="mvc.dao.DeptDetailDao">
+	<select id="getDetailList" parameterType="String" resultType="deptDoc">
+		select * from Dept_Doc where DD_ID = #{ddId}
+	</select>
+	<update id="updateDept" parameterType="deptDoc">
+		update Dept_Doc
+		set DD_TITLE = #{ddTitle},
+			DD_CONTENT = #{ddContent},
+			DD_REGDATE = sysdate
+		where DD_ID = #{ddId}
+	</update>
+	<!-- DELETE FROM DEPT_DOC WHERE DD_ID = '3'; -->
+	<delete id="deleteDept" parameterType="string">
+		delete from DEPT_DOC where DD_ID = #{ddId}
+	</delete>
+</mapper>
