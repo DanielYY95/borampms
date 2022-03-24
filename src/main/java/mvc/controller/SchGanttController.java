@@ -22,7 +22,7 @@ public class SchGanttController {
 
 	@GetMapping("/schGantt.do")
 	public String SchGanttList(PRJ_TASK pt, Model d) {
-		return "project//schedule//schGantt";
+		return "schedule//schGantt";
 	}
 
 	@GetMapping("/schGanttJson.do")
