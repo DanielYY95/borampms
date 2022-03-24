@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import mvc.dao.KanbanDao;
 import mvc.vo.KanbanVo;
+import mvc.vo.PRJ_TASK;
 
 @Service
 public class KanbanService {
@@ -25,5 +26,11 @@ public class KanbanService {
 	}
 	public List<KanbanVo> getKlist4() {
 		return dao.getKlist4();
+	}
+	public String insertKanban(PRJ_TASK ins) {
+		dao.insertKanban(ins);
+		String msg = "업무 등록 성공";
+		
+		return msg;
 	}
 }

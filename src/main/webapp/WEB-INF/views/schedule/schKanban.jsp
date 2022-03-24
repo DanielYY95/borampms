@@ -15,6 +15,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
 <meta content="Coderthemes" name="author" />
+<script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
 <!-- App favicon -->
 <link rel="shortcut icon" href="${path}/tools/project_assets/images/favicon.ico" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
@@ -27,9 +28,8 @@
 <body class="loading" data-layout-color="light" data-leftbar-theme="dark" data-layout-mode="fluid" data-rightbar-onstart="true">
 	<!-- Begin page -->
 	<div class="wrapper">
-		<!-- 등록 모달 start -->
-		<!-- ui-modals.html에서 참고 -->
 
+		<!-- 업무 등록 modal -->
 		<div class="tab-content">
 			<div class="tab-pane show active" id="modal-pages-preview">
 				<!-- Signup modal content -->
@@ -38,43 +38,28 @@
 						<div class="modal-content">
 
 							<div class="modal-header">
-
 								<h4>업무등록</h4>
 								<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-
 							</div>
 
 							<div class="modal-body">
-
-
-
-								<form id="regForm" class="ps-3 pe-3" action="#">
-
+								<form id="regForm" class="ps-3 pe-3" action="${path}/kanban.do?method=insert" method="post">
 									<div class="mb-3">
-										<label for="username" class="form-label">제목</label> <input name="title" class="form-control" required="" placeholder="제목을 입력해주세요">
+										<label for="username" class="form-label">제목</label> <input name="ptTitle" class="form-control" required="" placeholder="제목을 입력해주세요">
 									</div>
-
-
 									<!-- Autoclose -->
 									<div style="display: flex; justify-content: space-between;">
-
-
 										<div class="mb-3">
-											<label class="form-label">시작일</label> <input class="form-control" required type="date" name="startdate">
+											<label class="form-label">시작일</label> <input class="form-control" required="" type="date" name="ptStartdate">
 										</div>
-
 										<div class="mb-3">
-											<label class="form-label">마감일</label> <input class="form-control" required type="date" name="duedate">
+											<label class="form-label">마감일</label> <input class="form-control" required="" type="date" name="ptDuedate">
 										</div>
-
-
-
-
 									</div>
 
 									<!-- Multiple Select -->
 									<div class="mb-3 position-relative">
-										<label class="form-label">업무담당자</label> <select name="charge" class="select2 form-control select2-multiple" required="" data-toggle="select2" multiple="multiple" data-placeholder="업무담당자 지정">
+										<label class="form-label">업무담당자</label> <select name="ptCharge" class="select2 form-control select2-multiple" required="" data-toggle="select2" multiple="multiple" data-placeholder="업무담당자 지정">
 											<optgroup label="IT팀">
 												<option value="IT팀 조민혁">IT팀 조민혁</option>
 												<option value="IT팀 전지원">IT팀 전지원</option>
@@ -96,8 +81,15 @@
 
 
 									<div style="display: flex; justify-content: space-between;">
-										<div class="mb-3" style="width: 45%;">
-											<label for="example-select" class="form-label">분류</label> <select class="form-select" id="example-select">
+										<div class="mb-3" style="width: 30%;">
+											<label for="example-select" class="form-label">우선순위</label> <select class="form-select" id="example-select" name="ptPriority">
+												<option>중요</option>
+												<option>보통</option>
+												<option>낮음</option>
+											</select>
+										</div>
+										<div class="mb-3" style="width: 30%;">
+											<label for="example-select" class="form-label">분류</label> <select class="form-select" id="example-select" name="ptType" value="">
 												<option>요구사항 도출</option>
 												<option>요구사항 분석</option>
 												<option>요구사항 명확</option>
@@ -105,37 +97,26 @@
 												<option>개발</option>
 											</select>
 										</div>
-
-
-
-										<div class="mb-3" style="width: 45%;">
-											<label for="example-select" class="form-label">진행상태</label> <select class="form-select" id="example-select">
+										<div class="mb-3" style="width: 30%;">
+											<label for="example-select" class="form-label">진행상태</label> <select class="form-select" id="example-select" name="ptStatus">
 												<option>진행 전</option>
 												<option>진행 중</option>
 												<option>지연</option>
 												<option>보류</option>
 												<option>완료</option>
-
 											</select>
 										</div>
-
 									</div>
-
 									<div class="mb-3">
 										<label for="example-textarea" class="form-label">내용</label>
-										<textarea class="form-control" id="example-textarea" rows="15"></textarea>
+										<textarea class="form-control" id="example-textarea" rows="15" name="ptContent"></textarea>
 									</div>
 									<hr>
-
-
 									<div class="mb-3 text-center" style="display: flex; justify-content: space-between;">
 										<button class="btn btn-secondary" class="btn-close" data-bs-dismiss="modal" aria-label="Close">취소</button>
-										<button class="btn btn-primary" type="submit" id="regBtn">등록</button>
-
+										<button class="btn btn-primary" type="button" id="regBtn">등록</button>
 									</div>
-
 								</form>
-
 							</div>
 						</div>
 						<!-- /.modal-content -->
@@ -143,70 +124,74 @@
 					<!-- /.modal-dialog -->
 				</div>
 				<!-- /.modal -->
-
-
-
 			</div>
-
+			<!-- /.tab-panel -->
 		</div>
+		<!-- /.tab-content -->
 
-		<!-- end 모달창 -->
 
-		<!-- ========== Left Sidebar Start ========== -->
-		<div class="leftside-menu">
-			<!-- LOGO -->
-			<a href="index.html" class="logo text-center logo-light"> <span class="logo-lg"> <img src="${path}/tools/project_assets/images/logo.png" alt="" height="16" />
-			</span> <span class="logo-sm"> <img src="${path}/tools/project_assets/images/logo_sm.png" alt="" height="16" />
-			</span>
-			</a>
 
-			<!-- LOGO -->
-			<a href="index.html" class="logo text-center logo-dark"> <span class="logo-lg"> <img src="${path}/tools/project_assets/images/logo-dark.png" alt="" height="16" />
-			</span> <span class="logo-sm"> <img src="${path}/tools/project_assets/images/logo_sm_dark.png" alt="" height="16" />
-			</span>
-			</a>
+	</div>
 
-			<div class="h-100" id="leftside-menu-container" data-simplebar>
-				<!--- Sidemenu -->
-				<!-- 왼쪽 사이드바 시작  -->
-				<ul class="side-nav">
-					<li class="side-nav-item"><a href="../dashboard/prjDash.html" class="side-nav-link"> <i class="fa fa-bar-chart" aria-hidden="true"></i> <span> 대시보드 </span>
-					</a></li>
-					<li class="side-nav-item"><a href="../schedule/schCalendar.html" class="side-nav-link"> <i class="uil-calender"></i> <span> 캘린더 </span>
-					</a></li>
+	</div>
 
-					<li class="side-nav-item"><a data-bs-toggle="collapse" href="#sidebarTasks" aria-expanded="false" aria-controls="sidebarTasks" class="side-nav-link"> <i class="uil-clipboard-alt"></i> <span> 일정관리 </span> <span class="menu-arrow"></span>
-					</a>
-						<div class="collapse" id="sidebarTasks">
-							<ul class="side-nav-second-level">
-								<li><a href="../schedule/schGantt.html">WBS/간트차트</a></li>
-								<li><a href="../schedule/schKanban.html">칸반보드</a></li>
-							</ul>
-						</div></li>
-					<li class="side-nav-item"><a data-bs-toggle="collapse" href="#sidebarDashboards" aria-expanded="false" aria-controls="sidebarDashboards" class="side-nav-link"> <i class="uil-home-alt"></i> <span> 업무 관리 </span>
-					</a>
-						<div class="collapse" id="sidebarDashboards">
-							<ul class="side-nav-second-level">
-								<li><a href="../task/task_list.html">업무 목록</a></li>
-								<li><a href="../task/task_issue.html">업무 이슈</a></li>
-							</ul>
-						</div></li>
-					<li class="side-nav-item"><a href="../doc/Doc-Management.html" class="side-nav-link"> <i class="uil-folder-plus"></i> <span> 문서관리 </span>
-					</a></li>
-				</ul>
+	<!-- end 모달창 -->
 
-				<!-- End Sidebar -->
+	<!-- ========== Left Sidebar Start ========== -->
+	<div class="leftside-menu">
+		<!-- LOGO -->
+		<a href="index.html" class="logo text-center logo-light"> <span class="logo-lg"> <img src="${path}/tools/project_assets/images/logo.png" alt="" height="16" />
+		</span> <span class="logo-sm"> <img src="${path}/tools/project_assets/images/logo_sm.png" alt="" height="16" />
+		</span>
+		</a>
 
-				<div class="clearfix"></div>
-			</div>
-			<!-- Sidebar -left -->
+		<!-- LOGO -->
+		<a href="index.html" class="logo text-center logo-dark"> <span class="logo-lg"> <img src="${path}/tools/project_assets/images/logo-dark.png" alt="" height="16" />
+		</span> <span class="logo-sm"> <img src="${path}/tools/project_assets/images/logo_sm_dark.png" alt="" height="16" />
+		</span>
+		</a>
+
+		<div class="h-100" id="leftside-menu-container" data-simplebar>
+			<!--- Sidemenu -->
+			<!-- 왼쪽 사이드바 시작  -->
+			<ul class="side-nav">
+				<li class="side-nav-item"><a href="../dashboard/prjDash.html" class="side-nav-link"> <i class="fa fa-bar-chart" aria-hidden="true"></i> <span> 대시보드 </span>
+				</a></li>
+				<li class="side-nav-item"><a href="../schedule/schCalendar.html" class="side-nav-link"> <i class="uil-calender"></i> <span> 캘린더 </span>
+				</a></li>
+
+				<li class="side-nav-item"><a data-bs-toggle="collapse" href="#sidebarTasks" aria-expanded="false" aria-controls="sidebarTasks" class="side-nav-link"> <i class="uil-clipboard-alt"></i> <span> 일정관리 </span> <span class="menu-arrow"></span>
+				</a>
+					<div class="collapse" id="sidebarTasks">
+						<ul class="side-nav-second-level">
+							<li><a href="../schedule/schGantt.html">WBS/간트차트</a></li>
+							<li><a href="../schedule/schKanban.html">칸반보드</a></li>
+						</ul>
+					</div></li>
+				<li class="side-nav-item"><a data-bs-toggle="collapse" href="#sidebarDashboards" aria-expanded="false" aria-controls="sidebarDashboards" class="side-nav-link"> <i class="uil-home-alt"></i> <span> 업무 관리 </span>
+				</a>
+					<div class="collapse" id="sidebarDashboards">
+						<ul class="side-nav-second-level">
+							<li><a href="../task/task_list.html">업무 목록</a></li>
+							<li><a href="../task/task_issue.html">업무 이슈</a></li>
+						</ul>
+					</div></li>
+				<li class="side-nav-item"><a href="../doc/Doc-Management.html" class="side-nav-link"> <i class="uil-folder-plus"></i> <span> 문서관리 </span>
+				</a></li>
+			</ul>
+
+			<!-- End Sidebar -->
+
+			<div class="clearfix"></div>
 		</div>
-		<!-- Left Sidebar End -->
-		<!-- 왼쪽 사이드바 종료  -->
+		<!-- Sidebar -left -->
+	</div>
+	<!-- Left Sidebar End -->
+	<!-- 왼쪽 사이드바 종료  -->
 
 
 
-		<div class="clearfix"></div>
+	<div class="clearfix"></div>
 	</div>
 	<!-- Sidebar -left -->
 	</div>
@@ -529,90 +514,79 @@
 				</div>
 			</div>
 			<!-- end page title -->
-			
-	<!-- !!!칸반 리스트 start!!!  -->
+
+			<!-- !!!칸반 리스트 start!!!  -->
 			<div class="row">
 				<div class="col-12">
-			
-				
+
+
 					<div class="board">
 						<div class="tasks" data-plugin="dragula" data-containers='["task-list-one", "task-list-two", "task-list-three", "task-list-four"]'>
 							<h5 class="mt-0 task-header">진행 전 (${klist.size() })</h5>
-							
-							
-						
+
+
+
 							<div id="task-list-one" class="task-list-items">
 								<!-- Task Item -->
-							
-									<!--  !!!!카드 시작!!!!  -->
-								<c:forEach var="kanban" items="${klist }">  	
-								<div class="card mb-0">
-									<div class="card-body p-3">
-										<small class="float-end text-muted">${kanban.ptStartdate }</small> 
-										<span class="badge bg-danger">${kanban.ptPriority }</span> 
-										<span class="badge bg-success">${kanban.ptStatus }</span>
 
-										<h5 class="mt-2 mb-2">
-											<a href="#" data-bs-toggle="modal" data-bs-target="#task-detail-modal" class="text-body">${kanban.ptTitle }</a>
-										</h5>
+								<!--  !!!!카드 시작!!!!  -->
+								<c:forEach var="kanban" items="${klist }">
+									<div class="card mb-0">
+										<div class="card-body p-3">
+											<small class="float-end text-muted">${kanban.ptStartdate }</small> <span class="badge bg-danger">${kanban.ptPriority }</span> <span class="badge bg-success">${kanban.ptStatus }</span>
 
-										<p class="mb-0">
-											<span class="pe-2 text-nowrap mb-2 d-inline-block"> <i class="mdi mdi-briefcase-outline text-muted"></i> ${kanban.ptType }
-											</span>
-										</p>
+											<h5 class="mt-2 mb-2">
+												<a href="#" data-bs-toggle="modal" data-bs-target="#task-detail-modal" class="text-body">${kanban.ptTitle }</a>
+											</h5>
 
-										<div class="dropdown float-end">
-											<a href="#" class="dropdown-toggle text-muted arrow-none" data-bs-toggle="dropdown" aria-expanded="false"> <i class="mdi mdi-dots-vertical font-18"></i>
-											</a>
+											<p class="mb-0">
+												<span class="pe-2 text-nowrap mb-2 d-inline-block"> <i class="mdi mdi-briefcase-outline text-muted"></i> ${kanban.ptType }
+												</span>
+											</p>
+											<p class="mb-0">
+												<img src="https://s3.ap-northeast-2.amazonaws.com/elasticbeanstalk-ap-northeast-2-176213403491/media/magazine_img/magazine_270/%EC%8D%B8%EB%84%A4%EC%9D%BC.jpg" alt="user-img" class="avatar-xs rounded-circle me-1" /> 
+												<span class="align-middle">${kanban.ptCharge }</span>
+											</p>
 										</div>
 
-										<p class="mb-0">
-											<img src="https://s3.ap-northeast-2.amazonaws.com/elasticbeanstalk-ap-northeast-2-176213403491/media/magazine_img/magazine_270/%EC%8D%B8%EB%84%A4%EC%9D%BC.jpg" alt="user-img" class="avatar-xs rounded-circle me-1" /> 
-											<span class="align-middle">${kanban.ptCharge }</span>
-										</p>
 									</div>
-									
-								</div>
-								<!-- Task Item End -->
+									<!-- Task Item End -->
 								</c:forEach>
-							
+
 								<!-- Task Item End -->
 
 							</div>
 							<!-- end company-list-1-->
-					
-							</div>
-			
+
+						</div>
+
 						<div class="tasks">
 							<h5 class="mt-0 task-header text-uppercase">진행 중 (${klist2.size() })</h5>
 
 							<div id="task-list-two" class="task-list-items">
 								<!-- Task Item -->
-									<!--  !!!!카드 시작!!!!  -->
-								<c:forEach var="kanban2" items="${klist2 }">  
-								<div class="card mb-0">
-									<div class="card-body p-3">
-										<small class="float-end text-muted">${kanban2.ptStartdate }</small> 
-										<span class="badge bg-secondary text-light">${kanban2.ptPriority }</span> 
-										<span class="badge bg-success">${kanban2.ptStatus }</span>
+								<!--  !!!!카드 시작!!!!  -->
+								<c:forEach var="kanban2" items="${klist2 }">
+									<div class="card mb-0">
+										<div class="card-body p-3">
+											<small class="float-end text-muted">${kanban2.ptStartdate }</small> <span class="badge bg-secondary text-light">${kanban2.ptPriority }</span> <span class="badge bg-success">${kanban2.ptStatus }</span>
 
-										<h5 class="mt-2 mb-2">
-											<a href="#" data-bs-toggle="modal" data-bs-target="#task-detail-modal" class="text-body">${kanban2.ptTitle }</a>
-										</h5>
+											<h5 class="mt-2 mb-2">
+												<a href="#" data-bs-toggle="modal" data-bs-target="#task-detail-modal" class="text-body">${kanban2.ptTitle }</a>
+											</h5>
 
-										<p class="mb-0">
-											<span class="pe-2 text-nowrap mb-2 d-inline-block"> <i class="mdi mdi-briefcase-outline text-muted"></i> ${kanban2.ptType }
-											</span>
-										</p>
-
-										<p class="mb-0">
-											<img src="https://mblogthumb-phinf.pstatic.net/MjAxNzA2MTZfNTAg/MDAxNDk3NTc5NDc4NTQ2.Ufe2TjvMYJsI_IZnN80Gcs8bR7cZpLRz3o7ayFCVncAg.-aOmnvQ5n4VVDGDkydd06yxMZfHS6-YvGmkd400oM9og.JPEG.gatoblancokr/Cat-Cool-Summer.jpg?type=w2" alt="user-img" class="avatar-xs rounded-circle me-1" /> 
-											<span class="align-middle">${kanban2.ptCharge }</span>
-										</p>
+											<p class="mb-0">
+												<span class="pe-2 text-nowrap mb-2 d-inline-block"> <i class="mdi mdi-briefcase-outline text-muted"></i> ${kanban2.ptType }
+												</span>
+											</p>
+											<p class="mb-0">
+												<img src="https://mblogthumb-phinf.pstatic.net/MjAxNzA2MTZfNTAg/MDAxNDk3NTc5NDc4NTQ2.Ufe2TjvMYJsI_IZnN80Gcs8bR7cZpLRz3o7ayFCVncAg.-aOmnvQ5n4VVDGDkydd06yxMZfHS6-YvGmkd400oM9og.JPEG.gatoblancokr/Cat-Cool-Summer.jpg?type=w2" alt="user-img" class="avatar-xs rounded-circle me-1" />
+												 <span class="align-middle">${kanban2.ptCharge }</span>
+											</p>
+										</div>
+										<!-- end card-body -->
 									</div>
-									<!-- end card-body -->
-								</div>
-								<!-- Task Item End -->
+									<!-- Task Item End -->
 								</c:forEach>
 								<!-- Task Item End -->
 							</div>
@@ -625,31 +599,27 @@
 								<!-- Task Item -->
 
 								<!-- Task Item -->
-									<!--  !!!!카드 시작!!!!  -->
-								<c:forEach var="kanban3" items="${klist3 }">  
-								<div class="card mb-0">
-									<div class="card-body p-3">
-										<small class="float-end text-muted">${kanban3.ptStartdate }</small>
-										 <span class="badge bg-danger">${kanban3.ptPriority }</span> 
-										 <span class="badge bg-success">${kanban3.ptStatus }</span>
+								<!--  !!!!카드 시작!!!!  -->
+								<c:forEach var="kanban3" items="${klist3 }">
+									<div class="card mb-0">
+										<div class="card-body p-3">
+											<small class="float-end text-muted">${kanban3.ptStartdate }</small> <span class="badge bg-danger">${kanban3.ptPriority }</span> <span class="badge bg-success">${kanban3.ptStatus }</span>
 
-										<h5 class="mt-2 mb-2">
-											<a href="#" data-bs-toggle="modal" data-bs-target="#task-detail-modal" class="text-body">${kanban3.ptTitle }</a>
-										</h5>
+											<h5 class="mt-2 mb-2">
+												<a href="#" data-bs-toggle="modal" data-bs-target="#task-detail-modal" class="text-body">${kanban3.ptTitle }</a>
+											</h5>
 
-										<p class="mb-0">
-											<span class="pe-2 text-nowrap mb-2 d-inline-block"> <i class="mdi mdi-briefcase-outline text-muted"></i>${kanban3.ptType }
-											</span>
-										</p>
-
-										<p class="mb-0">
-											<img src="${path}/tools/project_assets/images/users/avatar-4.jpg" alt="user-img" class="avatar-xs rounded-circle me-1" />
-											 <span class="align-middle">${kanban3.ptCharge }</span>
-										</p>
+											<p class="mb-0">
+												<span class="pe-2 text-nowrap mb-2 d-inline-block"> <i class="mdi mdi-briefcase-outline text-muted"></i>${kanban3.ptType }
+												</span>
+											</p>
+															<p class="mb-0">
+												<img src="${path}/tools/project_assets/images/users/avatar-4.jpg" alt="user-img" class="avatar-xs rounded-circle me-1" /> <span class="align-middle">${kanban3.ptCharge }</span>
+											</p>
+										</div>
+										<!-- end card-body -->
 									</div>
-									<!-- end card-body -->
-								</div>
-								<!-- Task Item End -->
+									<!-- Task Item End -->
 								</c:forEach>
 							</div>
 							<!-- end company-list-3-->
@@ -660,30 +630,28 @@
 							<div id="task-list-four" class="task-list-items">
 								<!-- Task Item -->
 								<!--  !!!!카드 시작!!!!  -->
-								<c:forEach var="kanban4" items="${klist4 }">  
-								<div class="card mb-0">
-									<div class="card-body p-3">
-										<small class="float-end text-muted">${kanban4.ptStartdate }</small>
-										 <span class="badge bg-success">${kanban4.ptPriority }</span> 
-										 <span class="badge bg-success">${kanban4.ptStatus }</span>
+								<c:forEach var="kanban4" items="${klist4 }">
+									<div class="card mb-0">
+										<div class="card-body p-3">
+											<small class="float-end text-muted">${kanban4.ptStartdate }</small> <span class="badge bg-success">${kanban4.ptPriority }</span> <span class="badge bg-success">${kanban4.ptStatus }</span>
 
-										<h5 class="mt-2 mb-2">
-											<a href="#" data-bs-toggle="modal" data-bs-target="#task-detail-modal" class="text-body">${kanban4.ptTitle }</a>
-										</h5>
+											<h5 class="mt-2 mb-2">
+												<a href="#" data-bs-toggle="modal" data-bs-target="#task-detail-modal" class="text-body">${kanban4.ptTitle }</a>
+											</h5>
 
-										<p class="mb-0">
-											<span class="pe-2 text-nowrap mb-2 d-inline-block"> <i class="mdi mdi-briefcase-outline text-muted"></i> ${kanban4.ptType }
-											</span>
-										</p>
-										<p class="mb-0">
-											<img src="https://s3.ap-northeast-2.amazonaws.com/elasticbeanstalk-ap-northeast-2-176213403491/media/magazine_img/magazine_270/%EC%8D%B8%EB%84%A4%EC%9D%BC.jpg" "
-                              alt="user-img" class="avatar-xs rounded-circle me-1" />
-                               <span class="align-middle">${kanban4.ptCharge }</span>
-										</p>
+											<p class="mb-0">
+												<span class="pe-2 text-nowrap mb-2 d-inline-block"> <i class="mdi mdi-briefcase-outline text-muted"></i> ${kanban4.ptType }
+												</span>
+											</p>
+										
+											<p class="mb-0">
+												<img src="https://s3.ap-northeast-2.amazonaws.com/elasticbeanstalk-ap-northeast-2-176213403491/media/magazine_img/magazine_270/%EC%8D%B8%EB%84%A4%EC%9D%BC.jpg" "
+                              alt="user-img" class="avatar-xs rounded-circle me-1" /> <span class="align-middle">${kanban4.ptCharge }</span>
+											</p>
+										</div>
+										<!-- end card-body -->
 									</div>
-									<!-- end card-body -->
-								</div>
-								<!-- Task Item End -->
+									<!-- Task Item End -->
 								</c:forEach>
 								<!-- Start Content-->
 
@@ -693,14 +661,13 @@
 						<!-- end .board-->
 					</div>
 					<!--  칸반 반복 end..?-->
-			 	
+
 					<!-- end col -->
 				</div>
-				
+
 				<!-- end row-->
 				<div class="container-fluid">
-					<br>
-					<br>
+					<br> <br>
 					<button type="button" class="btn btn-success btn-sm ms-3" data-bs-toggle="modal" data-bs-target="#signup-modal">새 업무 등록</button>
 
 				</div>
@@ -890,164 +857,28 @@
 	</div>
 	<!-- /.modal -->
 
-	<!--  Task details modal -->
-	<div class="modal fade task-modal-content" id="task-detail-modal" tabindex="-1" role="dialog" aria-labelledby="TaskDetailModalLabel" aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered modal-lg">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h4 class="modal-title" id="TaskDetailModalLabel">
-						iOS App home page <span class="badge bg-danger ms-2">High</span>
-					</h4>
-					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-				</div>
-				<div class="modal-body">
-					<div class="p-2">
-						<h5 class="mt-0">Description:</h5>
-
-						<p class="text-muted mb-4">Voluptates, illo, iste itaque voluptas corrupti ratione reprehenderit magni similique? Tempore, quos delectus asperiores libero voluptas quod perferendis! Voluptate, quod illo rerum? Lorem ipsum dolor sit amet. With supporting text below as a natural lead-in to additional contenposuere erat a ante.</p>
-
-						<div class="row">
-							<div class="col-md-4">
-								<div class="mb-4">
-									<h5>Create Date</h5>
-									<p>
-										17 March 2018 <small class="text-muted">1:00 PM</small>
-									</p>
-								</div>
-							</div>
-							<div class="col-md-4">
-								<div class="mb-4">
-									<h5>Due Date</h5>
-									<p>
-										22 December 2018 <small class="text-muted">1:00 PM</small>
-									</p>
-								</div>
-							</div>
-							<div class="col-md-4">
-								<div class="mb-4" id="tooltip-container">
-									<h5>Asignee:</h5>
-									<a href="javascript:void(0);" data-bs-container="#tooltip-container" data-bs-toggle="tooltip" data-bs-placement="top" title="Mat Helme" class="d-inline-block"> <img src="${path}/tools/project_assets/images/users/avatar-6.jpg" class="rounded-circle avatar-xs" alt="friend" />
-									</a>
-								</div>
-							</div>
-						</div>
-						<!-- end row-->
-
-						<ul class="nav nav-tabs nav-bordered mb-3">
-							<li class="nav-item"><a href="#home-b1" data-bs-toggle="tab" aria-expanded="false" class="nav-link active"> Comments </a></li>
-							<li class="nav-item"><a href="#profile-b1" data-bs-toggle="tab" aria-expanded="true" class="nav-link"> Files </a></li>
-						</ul>
-
-						<div class="tab-content">
-							<div class="tab-pane show active" id="home-b1">
-								<textarea class="form-control form-control-light mb-2" placeholder="Write message" id="example-textarea" rows="3"></textarea>
-								<div class="text-end">
-									<div class="btn-group mb-2 d-none d-sm-inline-block">
-										<button type="button" class="btn btn-link btn-sm text-muted font-18">
-											<i class="dripicons-paperclip"></i>
-										</button>
-									</div>
-									<div class="btn-group mb-2 ms-2 d-none d-sm-inline-block">
-										<button type="button" class="btn btn-primary btn-sm">Submit</button>
-									</div>
-								</div>
-
-								<div class="d-flex mt-2">
-									<img class="me-3 avatar-sm rounded-circle" src="${path}/tools/project_assets/images/users/avatar-3.jpg" alt="Generic placeholder image" />
-									<div class="w-100">
-										<h5 class="mt-0">Jeremy Tomlinson</h5>
-										Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
-
-										<div class="d-flex mt-3">
-											<a class="pe-3" href="#"> <img src="${path}/tools/project_assets/images/users/avatar-4.jpg" class="avatar-sm rounded-circle" alt="Generic placeholder image" />
-											</a>
-											<div class="w-100">
-												<h5 class="mt-0">Kathleen Thomas</h5>
-												Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="text-center mt-2">
-									<a href="javascript:void(0);" class="text-danger">Load more </a>
-								</div>
-							</div>
-							<div class="tab-pane" id="profile-b1">
-								<div class="card mb-1 shadow-none border">
-									<div class="p-2">
-										<div class="row align-items-center">
-											<div class="col-auto">
-												<div class="avatar-sm">
-													<span class="avatar-title rounded"> .ZIP </span>
-												</div>
-											</div>
-											<div class="col ps-0">
-												<a href="javascript:void(0);" class="text-muted fw-bold">Hyper-admin-design.zip</a>
-												<p class="mb-0">2.3 MB</p>
-											</div>
-											<div class="col-auto">
-												<!-- Button -->
-												<a href="javascript:void(0);" class="btn btn-link btn-lg text-muted"> <i class="dripicons-download"></i>
-												</a>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="card mb-1 shadow-none border">
-									<div class="p-2">
-										<div class="row align-items-center">
-											<div class="col-auto">
-												<img src="${path}/tools/project_assets/images/projects/project-1.jpg" class="avatar-sm rounded" alt="file-image" />
-											</div>
-											<div class="col ps-0">
-												<a href="javascript:void(0);" class="text-muted fw-bold">Dashboard-design.jpg</a>
-												<p class="mb-0">3.25 MB</p>
-											</div>
-											<div class="col-auto">
-												<!-- Button -->
-												<a href="javascript:void(0);" class="btn btn-link btn-lg text-muted"> <i class="dripicons-download"></i>
-												</a>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="card mb-0 shadow-none border">
-									<div class="p-2">
-										<div class="row align-items-center">
-											<div class="col-auto">
-												<div class="avatar-sm">
-													<span class="avatar-title bg-secondary rounded"> .MP4 </span>
-												</div>
-											</div>
-											<div class="col ps-0">
-												<a href="javascript:void(0);" class="text-muted fw-bold">Admin-bug-report.mp4</a>
-												<p class="mb-0">7.05 MB</p>
-											</div>
-											<div class="col-auto">
-												<!-- Button -->
-												<a href="javascript:void(0);" class="btn btn-link btn-lg text-muted"> <i class="dripicons-download"></i>
-												</a>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- .p-2 -->
-				</div>
-			</div>
-			<!-- /.modal-content -->
-		</div>
-
-		<!-- /.modal-dialog -->
-	</div>
-	<!-- /.modal -->
 	<script>
 /* 등록 모달 스크립트 start */
+ 
+ // 업무 등록
+	$("#regBtn").click(function() {
+		if(confirm("등록하시겠습니까?")) {
+			if($("[name=ptTitle]").val() == "") {
+				alert("제목을 작성해주세요.");
+			} else if($("[name=ptCharge]").val() == "" || $("[name=ptCharge]").val() == null) {
+				alert("업무담당자를 지정해주세요.");			
+			} else if($("[name=ptStartdate]").val() == "" || $("[name=ptStartdate]").val() == null) {
+				alert("업무 시작일을 지정해주세요.");
+			} else if($("[name=ptDuedate]").val() == "" || $("[name=ptDuedate]").val() == null) {
+				alert("업무 마감일을 지정해주세요.");
+			} else if($("[name=ptContent]").val() == "" || $("[name=ptContent]").val() == null) {
+				alert("업무 마감일을 지정해주세요.");
+			} else {
+				$("#regForm").submit();
+			}
+		}
+	});
+ 
  
 $("[name=title]").change(function(){
     if($(this).val().length>30){
@@ -1094,16 +925,15 @@ $("[name=duedate]").change(function(){
 })
 
 
-$("#regBtn").click(function(){
-
-    alert($("[name=charge]").val());
-})
 /* 등록 모달 스크립트 end */
+
+ 
 
 </script>
 	<!-- bundle -->
 	<script src="${path}/tools/project_assets/js/vendor.min.js"></script>
 	<script src="${path}/tools/project_assets/js/app.min.js"></script>
+	<script src="${path}/a00_com/jquery-3.6.0.js"></script>
 
 	<!-- dragula js-->
 	<script src="${path}/tools/project_assets/js/vendor/dragula.min.js"></script>

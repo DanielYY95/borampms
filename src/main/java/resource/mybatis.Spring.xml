@@ -6,16 +6,28 @@
 <settings> 
       <setting name="mapUnderscoreToCamelCase" value="true"/> 
    </settings>
+   
 	<typeAliases>
 		<typeAlias alias="kanban" type="mvc.vo.KanbanVo"/>
 		<typeAlias alias="kanban2" type="mvc.vo.KanbanVo"/>
 		<typeAlias alias="kanban3" type="mvc.vo.KanbanVo"/>
 		<typeAlias alias="kanban4" type="mvc.vo.KanbanVo"/>
+		<typeAlias alias="user" type="mvc.vo.USER_INFO"/>
+		<typeAlias alias="output" type="mvc.vo.TASK_OUTPUT"/>
+		<typeAlias alias="task" type="mvc.vo.PRJ_TASK"/>
+		<typeAlias alias="taskSch" type="mvc.vo.TaskSch"/>
+		<typeAlias alias="sg" type="mvc.vo.Sch_Gantt"/>
+		<typeAlias alias="deptDoc" type="mvc.vo.DeptDoc"/>
 	</typeAliases>
 	
 	
 	<mappers>
+		<mapper resource="resource/taskDetailMapper.xml" />
+		<mapper resource="resource/userMapper.xml" />
 		<mapper resource="resource/KanbanMapper.xml" />
+		<mapper resource="resource/DeptMapper.xml"/>
+		<mapper resource="resource/TaskMapper.xml"/>
 		
 	</mappers>
+	
 </configuration>
