@@ -53,8 +53,8 @@
             			</a>
             			<div class="collapse" id="sidebarTasks">
               				<ul class="side-nav-second-level">
-                				<li><a href="../schedule/schGantt.html">WBS/간트차트</a></li>
-                				<li><a href="${path}/kanbanmain.do">칸반보드</a></li>
+                				<li><a href="${path}/schGantt.do">WBS/간트차트</a></li>
+                				<li><a href="${path}/kanban.do?method=list">칸반보드</a></li>
               				</ul>
             			</div>
           			</li>
@@ -68,16 +68,24 @@
 						<div class="collapse" id="sidebarDashboards">
 							<ul class="side-nav-second-level">
 								<li><a href="${path}/task.do?method=list">업무 목록</a></li>
-								<li><a href="../task/task_issue.html">업무 이슈</a></li>
+								<li><a href="${path}/issue.do?method=list">업무 이슈</a></li>
+								<li><a href="${path}/mytask.do?method=list">내 업무</a></li>
 							</ul>
 						</div>
 					</li>
                     <li class="side-nav-item">
-                        <a href="${path}/deptDoc.do" class="side-nav-link">
+                        <a href="${path}/dept.do?method=list" class="side-nav-link">
                             <i class="uil-folder-plus"></i>
                             <span> 문서관리 </span>
                         </a>
                     </li>
+                    <li class="side-nav-item">
+                        <a href="${path}/manager.do?method=user" class="side-nav-link">
+                            <i class="mdi mdi-account-lock-open"></i>
+                            <span> 관리자페이지 </span>
+                        </a>
+                    </li>
+                    
                 </ul>
 				<!-- End Sidemeniu -->
 

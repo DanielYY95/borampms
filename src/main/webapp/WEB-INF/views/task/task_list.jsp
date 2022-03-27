@@ -88,7 +88,7 @@
             			</a>
             			<div class="collapse" id="sidebarTasks">
               				<ul class="side-nav-second-level">
-                				<li><a href="../schedule/schGantt.html">WBS/간트차트</a></li>
+                				<li><a href="${path}/schGantt.do">WBS/간트차트</a></li>
                 				<li><a href="../schedule/schKanban.html">칸반보드</a></li>
               				</ul>
             			</div>
@@ -114,7 +114,7 @@
                         </a>
                     </li>
                     <li class="side-nav-item">
-                        <a href="../doc/Doc-Management.html" class="side-nav-link">
+                        <a href="${path}/dept.do?method=list" class="side-nav-link">
                             <i class="uil-folder-plus"></i>
                             <span> 문서관리 </span>
                         </a>
@@ -552,28 +552,6 @@
 				<!-- end Topbar -->
 
 				<!-- Start Content-->
-				<div class="container-fluid">
-
-					<!-- start page title -->
-					<div class="row">
-						<div class="col-12">
-							<div class="page-title-box">
-								<div class="page-title-right">
-									<ol class="breadcrumb m-0">
-										<li class="breadcrumb-item"><a
-											href="javascript: void(0);">borampms</a></li>
-										<li class="breadcrumb-item"><a
-											href="javascript: void(0);">업무 관리</a></li>
-										<li class="breadcrumb-item active">업무 목록</li>
-									</ol>
-								</div>
-								<h4 class="page-title">업무 목록</h4>
-							</div>
-						</div>
-					</div>
-					<!-- end page title -->
-
-					<!-- start page content -->
 					<div class="row">
 						<div class="col-12">
 							<div class="card">
@@ -704,15 +682,7 @@
 								<!-- end card body -->
 							</div>
 							<!-- end card -->
-					</div>
-					<!-- end row -->
-					
-				</div>
-				<!-- end content -->
 				
-			</div>
-			
-			
 			<!-- end row -->
 			
 		</div>
@@ -825,7 +795,6 @@
 	<div class="rightbar-overlay"></div>
 	
 
-
 	<!-- 업무 등록 modal -->
 	<div class="tab-content">
 	    <div class="tab-pane show active" id="modal-pages-preview" >
@@ -906,7 +875,7 @@
 	                                    <select class="form-select" id="example-select" name="ptStatus">
 	                                        <option>진행 전</option>
 	                                        <option>진행 중</option>
-	                                        <option>지연</option>
+	                       
 	                                        <option>보류</option>
 	                                        <option>완료</option>
 	                                    </select>

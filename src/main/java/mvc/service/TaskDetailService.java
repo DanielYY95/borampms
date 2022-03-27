@@ -2,6 +2,7 @@ package mvc.service;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -12,6 +13,7 @@ import mvc.dao.TaskDetailDao;
 import mvc.vo.PRJ_TASK;
 import mvc.vo.TASK_OUTPUT;
 import mvc.vo.Task_User;
+import mvc.vo.USER_INFO;
 
 @Service
 public class TaskDetailService {
@@ -21,6 +23,20 @@ public class TaskDetailService {
 	
 	@Value("${toUpload}")
 	private String uploadPath;
+	
+	
+	public List<Task_User> getMytaskList(USER_INFO sch){
+		
+		return dao.getMytaskList(sch);
+	};
+	
+	public USER_INFO getUser(String ptId) {
+		
+		return dao.getUser(ptId);
+	};
+	
+	
+	
 	
 	// 1. 산출물 등록
 	public String insertOutput(TASK_OUTPUT output) {

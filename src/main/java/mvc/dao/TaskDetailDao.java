@@ -1,6 +1,7 @@
 package mvc.dao;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import mvc.vo.PRJ_TASK;
 import mvc.vo.TASK_CHECK;
@@ -8,9 +9,15 @@ import mvc.vo.TASK_GUIDE;
 import mvc.vo.TASK_HISTORY;
 import mvc.vo.TASK_OUTPUT;
 import mvc.vo.Task_User;
+import mvc.vo.USER_INFO;
 
 public interface TaskDetailDao {
 
+	public List<Task_User> getMytaskList(USER_INFO sch);
+	
+	public USER_INFO getUser(String ptId);
+	
+	
 	
 	
 	// ### 업무 등록

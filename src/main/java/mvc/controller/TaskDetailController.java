@@ -1,30 +1,46 @@
 package mvc.controller;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import mvc.service.TaskDetailService;
 import mvc.vo.PRJ_TASK;
 import mvc.vo.TASK_OUTPUT;
 
+
 @Controller
+@SessionAttributes("prj_task") 
 public class TaskDetailController {
 
+	@ModelAttribute("prj_task")
+	public PRJ_TASK getPrjTask() {
+		return new PRJ_TASK();
+	}
+	
 	@Autowired
 	private TaskDetailService service;
-	
+
 	
 	@RequestMapping("/taskDetail.do")
-	public String goDetail(String ptId, Model d) {
+	public String goDetail(@ModelAttribute("prj_task") PRJ_TASK sch, Model d, HttpServletResponse response) {
 		
-		d.addAttribute("taskUser", service.getTask(ptId));
+		d.addAttribute("taskUser", service.getTask(sch.getPtId()));
+		Cookie cookie = new Cookie("ptid", sch.getPtId()); 
+		
+		response.addCookie(cookie);
 		
 		return "task//taskDetail";
 	}
 	
-	@RequestMapping("/taskUpt.do") // ptId를 포함한 vo객체 받는다.
+	@PostMapping("/taskUpt.do") // ptId를 포함한 vo객체 받는다.
 	public String taskUpdate(PRJ_TASK task, Model d) {
 		
 		service.updateTask(task);
@@ -44,7 +60,7 @@ public class TaskDetailController {
 		return "task//taskOutput";
 	}
 	
-	@RequestMapping("/toInsert.do") //post방식이라 forward 적극 활용할 것
+	@PostMapping("/toInsert.do") //post방식이라 forward 적극 활용할 것
 	public String toInsert(TASK_OUTPUT output, Model m) {
 		
 		output.setPtId("pt00111");

@@ -37,8 +37,7 @@ public class MainController {
 		return "dashboard/prjDash";
 	}
 	
-	
-	
+
 	/*
 	@RequestMapping("/logout.do") 
 	public String loginout(HttpSession session, Model d) {

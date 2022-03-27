@@ -23,6 +23,10 @@
 		<typeAlias alias="kanban3" type="mvc.vo.KanbanVo"/>
 		<typeAlias alias="kanban4" type="mvc.vo.KanbanVo"/>
 		<typeAlias alias="taskUser" type="mvc.vo.Task_User"/>
+		<typeAlias alias="issue" type="mvc.vo.TASK_ISSUE"/>
+		<typeAlias alias="issueSch" type="mvc.vo.IssueSch"/>
+		<typeAlias alias="dept" type="mvc.vo.DeptInfo"/>
+		<typeAlias alias="prj" type="mvc.vo.PRJ_INFO"/>
 		
 	</typeAliases>
 	<mappers>
@@ -33,6 +37,8 @@
 		<mapper resource="resource/DeptDetailMapper.xml"/>
 		<mapper resource="resource/TaskMapper.xml"/>
 		<mapper resource="resource/sgMapper.xml"/>
+		<mapper resource="resource/IssueMapper.xml"/>
+		<mapper resource="resource/managerMapper.xml"/>
 		
 	</mappers>
 	

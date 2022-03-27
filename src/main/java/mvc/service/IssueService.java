@@ -5,17 +5,17 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import mvc.dao.TaskDao;
-import mvc.vo.PRJ_TASK;
-import mvc.vo.TaskSch;
+import mvc.dao.IssueDao;
+import mvc.vo.IssueSch;
+import mvc.vo.TASK_ISSUE;
 
 @Service
-public class TaskService {
+public class IssueService {
 	@Autowired
-	private TaskDao dao;
+	private IssueDao dao;
 	
-	public List<PRJ_TASK> getTaskList(TaskSch sch) {
-		// 1. 전체 업무 건수를 TaskSch 객체에 설정 : 모델 데이터로 활용
+	public List<TASK_ISSUE> getIssueList(IssueSch sch) {
+		// 1. 전체 업무 건수를 IssueSch 객체에 설정 : 모델 데이터로 활용
 		sch.setCount(dao.getTotalCnt(sch));
 		
 		// 2. 한 번에 출력하는 페이지 수 초기값 설정
@@ -57,15 +57,20 @@ public class TaskService {
 		sch.setLastBlock((lastBlockGrp > sch.getPageCount()) ? sch.getPageCount() : lastBlockGrp);
 		
 		
-		return dao.getTaskList(sch);
+		return dao.getIssueList(sch);
 	}
 	
 	
 	
-	public void insertTask(PRJ_TASK ins) {
-		dao.insertTask(ins);
+	public void insertIssue(TASK_ISSUE ins) {
+		dao.insertIssue(ins);
 	}
 	
-
+	public void updateIssue(TASK_ISSUE upt) {
+		dao.updateIssue(upt);
+	}
 	
+	public void deleteIssue(String tiId) {
+		dao.deleteIssue(tiId);
+	}
 }

@@ -1,5 +1,7 @@
 package mvc.controller;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,10 +27,11 @@ public class LoginSessionController {
 	@Autowired
 	private UserService service;
 	
-	
+	// https://moonong.tistory.com/45 회원가입시 메일 인증
+	// 로그인이 너무 잘 끊기는 문제...?
 	@RequestMapping(params="method=session")
 	public String login(@ModelAttribute("user_info") 
-		USER_INFO sch, Model d) {
+		USER_INFO sch, boolean saveId, HttpServletResponse response, Model d) {
 		
 		sch = service.login(sch);
 		
@@ -36,11 +39,29 @@ public class LoginSessionController {
 		if(sch!=null) {
 			d.addAttribute("loginMsg","로그인 성공!");
 			
+			// 아이디 기억
+			if(saveId) {
+				// 쿠키 생성해서 아이디속성에 저장 => 사용하려면 EL태그 cookie.id.value로 사용하라
+				Cookie cookie = new Cookie("id", sch.getUiId()); 
+				//	응답에 저장해서 보내
+				response.addCookie(cookie);
+			} else {
+				// 	쿠키를 삭제
+				Cookie cookie = new Cookie("id", sch.getUiId()); 
+				cookie.setMaxAge(0); // 쿠키를 삭제
+			    
+				response.addCookie(cookie);
+			}
+			
+			
 		}else{
 			d.addAttribute("loginMsg","아이디나 비밀번호가 일치하지않습니다.");
 		}
 		d.addAttribute("user_info",sch); // 이렇게 해야 로그인 실패할때 빈값으로 보내진다.
+		
+		
 	
+		
 		return "main_login//login";
 	}
 	

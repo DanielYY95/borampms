@@ -1,21 +1,16 @@
 {
 	"folders": {},
 	"connections": {
-		"oracle_thin-17faa2cde48-779664cc8345badf": {
+		"oracle_thin-17fb4c2a756-78cacc9a3bdef584": {
 			"provider": "oracle",
 			"driver": "oracle_thin",
-			"name": "New Connection",
+			"name": "New Connection 2",
 			"save-password": true,
 			"read-only": false,
 			"configuration": {
 				"url": "jdbc:oracle:thin:@146.56.185.62:1521:xe",
 				"home": "C:\\oraclexe\\app\\oracle\\product\\11.2.0\\server",
 				"type": "dev",
-				"properties": {
-					"useFetchSizeWithLongColumn": "true",
-					"loginTimeout": "20",
-					"oracle.jdbc.fanEnabled": "false"
-				},
 				"provider-properties": {
 					"@dbeaver-connection-type@": "CUSTOM",
 					"show-only-one-schema@": "false",
@@ -30,8 +25,7 @@
 					"oracle.meta-search-in-synonyms": "false",
 					"@dbeaver-sid-service@": "SERVICE"
 				},
-				"auth-model": "oracle_native",
-				"handlers": {}
+				"auth-model": "oracle_native"
 			}
 		}
 	},

@@ -18,4 +18,6 @@ public interface TaskDao {
 	// 업무 등록
 	public void insertTask(PRJ_TASK ins);
 	
+	
+	
 }

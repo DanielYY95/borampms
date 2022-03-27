@@ -1,10 +1,10 @@
 {
 	"folders": {},
 	"connections": {
-		"oracle_thin-17fb4c2a756-78cacc9a3bdef584": {
+		"oracle_thin-17fbe37468a-6a08eddfe30383b7": {
 			"provider": "oracle",
 			"driver": "oracle_thin",
-			"name": "New Connection 2",
+			"name": "New Connection",
 			"save-password": true,
 			"read-only": false,
 			"configuration": {

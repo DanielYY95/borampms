@@ -136,6 +136,7 @@
                                         </ol>
                                     </div>
                                     <h4 class="page-title">업무 상세정보</h4>
+                                      
                                 </div>
                             </div>
                         </div>
@@ -188,7 +189,7 @@
                                                             <div class="modal-header">
                                                             	
                                                                 <h4>업무정보</h4>                                                                
-                                                            	
+                                                            	<button class="btn btn-primary float-end" id="listBtn" type="button">글 목록</button>
                                                             </div>
             
                                                             <div class="modal-body">
@@ -235,38 +236,56 @@
                                                                         					<!-- Multiple Select -->
 																	<div class="col-lg-6 col-sm-4 mb-3 position-relative">
 																		<label class="form-label">업무담당자</label>
-                                                                        <input id="chargeView" value="${taskUser.ptCharge}" class="form-control" readonly />
-
-
+                                                                  
                                                                         <select id="chargeUpt"  name="ptCharge" class="select2 form-control select2-multiple" value="${taskUser.ptCharge}" required="" data-toggle="select2" multiple="multiple" data-placeholder="업무담당자 지정">
-																		    <optgroup label="IT팀">
-																		        <option value="IT팀 조민혁">IT팀 조민혁</option>
-																		        <option value="IT팀 전지원">IT팀 전지원</option>
+																	      	<optgroup label="개발1팀">
+																		        <option value="개발1팀 양초명">개발1팀 양초명</option>
+																		        <option value="개발1팀 조민혁">개발1팀 조민혁</option>
+
 																		    </optgroup>
-																		    <optgroup label="인사팀">
-																		        <option value="인사팀 김파월">인사팀 김파월</option>
-																		        <option value="인사팀 김소월">인사팀 김소월</option>
+																		      	<optgroup label="개발2팀">
+																		        <option value="개발2팀 한가람">개발2팀 한가람</option>
+																		        <option value="개발2팀 김효은">개발2팀 김효은</option>
+																		        <option value="개발2팀 전지원">개발2팀 전지원</option>
+
+																		    </optgroup>
+																		    
+																		     <optgroup label="인사팀">
+					
+																		        <option value="인사팀 김소월">인사팀 양초명</option>
 																		        <option value="인사팀 한가람">인사팀 한가람</option>
 																		        <option value="인사팀 김효은">인사팀 김효은</option>
 																		    </optgroup>
+																		    
+																		    <optgroup label="기획팀">
+																		        <option value="기획팀 조민혁">기획팀 양현수</option>
+																		        <option value="기획팀 전지원">기획팀 전지원</option>
+																		    </optgroup>
+																		   
+																		    <optgroup label="디자인팀">
+																		        <option value="디자인팀 조민혁">디자인팀 조민혁</option>
+																		        <option value="디자인팀 전지원">디자인팀 전지원</option>
+																		    </optgroup>
+																		   
+																		   
 																		    <optgroup label="마케팅팀">
 																		        <option value="마케팅팀 양초명">마케팅팀 양초명</option>
 																		        <option value="마케팅팀 양현수">마케팅팀 양현수</option>
-																		        <option value="마케팅팀 양광">마케팅팀 양광</option>
+																		       
 
 																		    </optgroup>
 																		   
-																		   	<optgroup label="개발1팀">
-																		        <option value="개발1팀 양초명">개발1팀 양초명</option>
-																		        <option value="개발1팀 양현수">개발1팀 양현수</option>
-																		        <option value="개발1팀 양광">개발1팀 양광</option>
-
-																		    </optgroup>
+																		 
 																		</select>
 																		
 																		<script>
-																			// 선택자
-																			$("#chargeUpt").val("${taskUser.ptCharge}");
+																			// 선택자 // .split(@@기준으로 잘라서 배열로 만든다.) => ["개발1팀 양초명", "개발1팀 양현수"]
+																			// let ChargeList = ["개발1팀 양초명","개발1팀 양현수", "IT팀 조민혁"];
+																			let ptCharge = "${taskUser.ptCharge}";
+																			let chargeList = ptCharge.split(",");
+																			
+																			// "${taskUser.ptCharge}"
+																			$("#chargeUpt").val(chargeList); // 개발1팀 양초명, 개발1팀 양현수
 																			console.log("${taskUser.ptCharge}");
 																		
 																		
@@ -289,7 +308,13 @@
                                                                                 <option>개발</option>
                                                                             </select>
                                                                         </div>	
-                                                                        
+                                                                       	<script>
+																			// 선택자
+																			$("[name=ptType]").val("${taskUser.ptType}");
+																			console.log("${taskUser.ptType}");
+																		
+																		
+																		</script>
 
                                                                         
                                                                         <div class="col-lg-3 col-sm-4 mb-3">
@@ -297,11 +322,18 @@
                                                                             <select class="form-select" id="example-select" value="${taskUser.ptStatus}" name="ptStatus">
                                                                                 <option>진행 전</option>
                                                                                 <option>진행 중</option>
-                                                                                <option>지연</option>
+                                                                                <option>보류</option>
                                                                                 <option>완료</option>
                                                     
                                                                             </select>
                                                                         </div>
+                                                                       	<script>
+																			// 선택자
+																			$("[name=ptStatus]").val("${taskUser.ptStatus}");
+																			console.log("${taskUser.ptStatus}");
+																		
+																		
+																		</script>
 
                                                                     </div>
             														
@@ -315,13 +347,12 @@
                                                                        <c:if test="${taskUser.uiId eq user_info.uiId}">
                                                                             <button class="btn btn-secondary" 
                                                                             		type="button" id="delBtn">삭제</button>
-                                                                            <button class="btn btn-primary" 
+                                                                            
+                                                                            <button class="btn btn-info" 
                                                                             		id="uptBtn" type="button">수정</button>
                                                                         </c:if>
-                                                                        <c:if test="${taskUser.uiId ne user_info.uiId}">                                              
-                                                                            <button class="btn btn-primary" 
-                                                                            	id="listBtn" type="button">글 목록</button>
-                                                                        </c:if>
+                                                                                                                
+                      
                                                                     </div>
             
                                                                 </form>
@@ -362,6 +393,22 @@
                     $(this).val($(this).val().substring(0,29));
                 }
             });
+            
+            $("[name=ptStartdate]").change(function(){
+        	
+        	    if($("[name=ptStartdate]").val()>$("[name=ptDuedate]").val() && $("[name=ptDuedate]").val()!=""){
+        	        alert("시작일은 마감일보다 이후로 설정할 수 없습니다.");
+        	        $(this).val('');
+        	    }
+        	});
+        	
+        	$("[name=ptDuedate]").change(function(){
+        	 
+        	    if($("[name=ptStartdate]").val()>$("[name=ptDuedate]").val()){
+        	        alert("마감일은 시작일보다 이전으로 설정할 수 없습니다.");
+        	        $(this).val('');
+        	    }
+        	});
 
 
             // .on("click")이 .click() 보다 메모리를 덜 먹고 동적으로 생성되는 요소들이 잘 작동
@@ -377,7 +424,7 @@
                 
             })
             
-             $("#btnList").on('click','#listBtn',function(e){
+             $('#listBtn').on('click',function(){
                location.href="${path}/task.do?method=list";
             })
 
@@ -388,11 +435,7 @@
                     return false;
                 }
 
-                if($("[name=ptCharge]").val()==""){
-                    alert("업무담당자를 입력하지않으면 기존 업무담당자로 유지합니다.");
-                    
-                }
-
+               
                 if($("[name=ptContent]").val().trim()==""){
                     alert("내용을 입력해주세요.");
                     return false;
@@ -421,7 +464,7 @@
 
             })
             
-       
+       		
             
 
 

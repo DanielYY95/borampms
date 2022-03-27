@@ -48,6 +48,7 @@ CREATE TABLE TASK_GUIDE (
 CREATE TABLE PRJ_INFO (
 	PI_ID	VARCHAR2(20)	PRIMARY key,
 	PI_WRITER	VARCHAR2(30)	,
+	 PI_TITLE varchar2(60),
 	PI_REGDATE	DATE	,
 	PI_STARTDATE	VARCHAR2(20)	,
 	PI_DUEDATE	VARCHAR2(20)	,
@@ -115,6 +116,7 @@ where pt.UI_ID = ui.UI_ID;
 SELECT * FROM USER_INFO ui;
 SELECT * FROM PRJ_TASK pt;
 SELECT * FROM DEPT_INFO di;
+SELECT * FROM DEPT_DOC dd;
 SELECT * FROM TASK_OUTPUT to2;
 
 
@@ -128,7 +130,41 @@ INSERT INTO user_info VALUES (
 	0
 	);
 
+
+
 SELECT * FROM USER_INFO;
-SELECT * FROM PRJ_TASK;
+
+-- 등록자이거나 내가 업무 담당자인 경우
+SELECT * FROM PRJ_TASK
+WHERE UI_ID = 'daniel95'
+OR PT_CHARGE LIKE '%' ||'개발1팀' || '양초명' || '%'
+;
+
+SELECT * FROM PRJ_TASK pt;
+
 SELECT * FROM PRJ_INFO;
+
+
+ALTER TABLE PRJ_INFO ADD PI_TITLE varchar2(60);
+
+ALTER TABLE PRJ_INFO modify PI_WRITER INVISIBLE;
+ALTER TABLE PRJ_INFO modify PI_STATUS INVISIBLE;
+
+
+CREATE SEQUENCE prj_seq
+	START WITH 1
+	MINVALUE 1;
+DROP SEQUENCE prj_seq;
+
+INSERT INTO PRJ_INFO values('PI' || LPAD(prj_seq.nextval,5,'0'), 'daniel95', '쌍용 5차 프로젝트', sysdate, '2022-03-05', '2022-04-12', '진행중');
+INSERT INTO PRJ_INFO values('PI' || LPAD(prj_seq.nextval,5,'0'), 'asd456', '쌍용 디자인 프로젝트', sysdate, '2022-02-15', '2022-03-12', '진행완료');
+INSERT INTO PRJ_INFO values('PI' || LPAD(prj_seq.nextval,5,'0'), 'aaa111', '쌍용 부트캠프 프로젝트', sysdate, '2022-03-20', '2022-05-25', '진행증');
+INSERT INTO PRJ_INFO values('PI' || LPAD(prj_seq.nextval,5,'0'), 'ycm95', '쌍용 IOS 프로젝트', sysdate, '2022-04-15', '2022-05-22', '진행전');
+
+
+
 SELECT * FROM TASK_OUTPUT;
+SELECT * FROM DEPT_INFO di;
+
+SELECT * FROM PRJ_INFO pi2;
+

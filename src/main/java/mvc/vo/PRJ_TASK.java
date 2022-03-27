@@ -10,6 +10,7 @@ public class PRJ_TASK {
 	private String ptCharge;
 	private String ptType;
 	private String ptStatus;
+	private String ptPriority;
 	private String ptGuidecontent;
 	private String uiId;
 	private String piId;
@@ -73,6 +74,12 @@ public class PRJ_TASK {
 	}
 	public void setPtStatus(String ptStatus) {
 		this.ptStatus = ptStatus;
+	}
+	public String getPtPriority() {
+		return ptPriority;
+	}
+	public void setPtPriority(String ptPriority) {
+		this.ptPriority = ptPriority;
 	}
 	public String getPtGuidecontent() {
 		return ptGuidecontent;

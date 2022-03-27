@@ -148,7 +148,7 @@
 		                                                                </td>
 		                                                                <td>${deptdoc.ddDept}</td>
 		                                                                <td>${deptdoc.ddWriter}</td>
-		                                                                <td><fmt:formatDate value="${deptdoc.ddRegdate}" pattern="yyyy-mm-dd"/></td>
+		                                                                <td><fmt:formatDate value="${deptdoc.ddRegdate}" pattern="yyyy-MM-dd"/></td>
 		                                                            </tr>
 		                                                            </c:forEach>
 		                                                        </tbody>

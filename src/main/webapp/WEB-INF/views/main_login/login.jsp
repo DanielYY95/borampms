@@ -64,7 +64,7 @@
                                     <div class="mb-3">
                                         <a href="pages-recoverpw.html" class="text-muted float-end"><small>아이디 찾기</small></a>
                                         <label for="id" class="form-label">아이디</label>
-                                        <input class="form-control" type="text" id="id" required="" name="uiId" placeholder="아이디를 입력하세요">
+                                        <input class="form-control" type="text" id="id" value="${cookie.id.value}" required="" name="uiId" placeholder="아이디를 입력하세요">
                                     </div>
 
                                     <div class="mb-3">
@@ -80,7 +80,7 @@
 
                                     <div class="mb-3 mb-3">
                                         <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="checkbox-signin" checked>
+                                            <input type="checkbox" name="saveId" class="form-check-input" id="checkbox-signin" checked>
                                             <label class="form-check-label" for="checkbox-signin">아이디 기억하기</label>
                                         </div>
                                     </div>

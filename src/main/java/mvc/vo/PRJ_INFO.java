@@ -6,6 +6,7 @@ public class PRJ_INFO {
 
 	private String piId;
 	private String piWriter;
+	private String piTitle;
 	private Date piRegdate;
 	private String piStartdate;
 	private String piDuedate;
@@ -20,6 +21,14 @@ public class PRJ_INFO {
 	}
 	public void setPiId(String piId) {
 		this.piId = piId;
+	}
+	
+	
+	public String getPiTitle() {
+		return piTitle;
+	}
+	public void setPiTitle(String piTitle) {
+		this.piTitle = piTitle;
 	}
 	public String getPiWriter() {
 		return piWriter;

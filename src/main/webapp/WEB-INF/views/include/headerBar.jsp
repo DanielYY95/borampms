@@ -47,7 +47,7 @@
 							aria-haspopup="false" aria-expanded="false">
 	
 								<img src="${path}/tools/project_assets/images/flags/korean.jpg" alt="user-image"
-								class="me-1" height="12"> <span class="align-middle">Korean</span>
+								class="me-1" height="12"> <span class="align-middle">한국어</span>
 								<i class="mdi mdi-chevron-down d-none d-sm-inline-block align-middle"></i>
 						</a>
 						
@@ -66,32 +66,28 @@
 							<!-- item-->
 							<a href="javascript:void(0);" class="dropdown-item notify-item">
 								<img src="${path}/tools/project_assets/images/flags/japan.jpg" alt="user-image"
-								class="me-1" height="12"> <span class="align-middle">Japan</span>
+								class="me-1" height="12"> <span class="align-middle">日本語</span>
 							</a>
 
 							<!-- item-->
 							<a href="javascript:void(0);" class="dropdown-item notify-item">
 								<img src="${path}/tools/project_assets/images/flags/germany.jpg" alt="user-image"
-								class="me-1" height="12"> <span class="align-middle">German</span>
+								class="me-1" height="12"> <span class="align-middle">Deutsch</span>
 							</a>
 
 							<!-- item-->
 							<a href="javascript:void(0);" class="dropdown-item notify-item">
 								<img src="${path}/tools/project_assets/images/flags/italy.jpg" alt="user-image"
-								class="me-1" height="12"> <span class="align-middle">Italian</span>
+								class="me-1" height="12"> <span class="align-middle">italiano</span>
 							</a>
 
 							<!-- item-->
 							<a href="javascript:void(0);" class="dropdown-item notify-item">
 								<img src="${path}/tools/project_assets/images/flags/spain.jpg" alt="user-image"
-								class="me-1" height="12"> <span class="align-middle">Spanish</span>
+								class="me-1" height="12"> <span class="align-middle">español</span>
 							</a>
 
-							<!-- item-->
-							<a href="javascript:void(0);" class="dropdown-item notify-item">
-								<img src="${path}/tools/project_assets/images/flags/russia.jpg" alt="user-image"
-								class="me-1" height="12"> <span class="align-middle">Russian</span>
-							</a>
+					
 
 						</div>
 					</li>

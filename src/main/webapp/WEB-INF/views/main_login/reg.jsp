@@ -163,6 +163,7 @@
                                                 <span class="password-eye"></span>
                                             </div>
                                         </div>
+                                        <span id="pwMsg"></span>
                                     </div>
 
 									<div class="row g-2">
@@ -199,8 +200,8 @@
 	                                    </div>
 	                                    
 	                                     <div class="mb-3 col">
-	                                        <label for="dept" class="form-label">직급</label> 
-	                                            <select class="form-select" id="dept" name="uiRank">
+	                                        <label for="rank" class="form-label">직급</label> 
+	                                            <select class="form-select" id="rank" name="uiRank">
 	                                            	<option>실장</option>
 	                                            	<option>팀장</option>
 	                                                <option>부장</option>
@@ -291,7 +292,17 @@
            
             // 패스워드 확인 작업
 
-
+			$("#pw2").keyup(function(){
+				if($("#pw2").val().trim()!=""){
+					if($("#pw2").val()!=$("#pw").val()){
+						$("#pwMsg").css("color","red").text("비밀번호가 일치하지않습니다.");
+						
+					}else{
+						$("#pwMsg").css("color","green").text("비밀번호가 일치합니다.");	
+					}
+					
+				}
+			})
 			
             // 굳이 두 개로 안 쪼개도 될 것 같은데???
      
