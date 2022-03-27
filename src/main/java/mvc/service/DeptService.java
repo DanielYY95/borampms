@@ -87,9 +87,6 @@ public class DeptService {
 						
 						mf.transferTo(file);
 						
-						// 첨부파일 db에 등록
-						//dao.insertOutput(new TASK_OUTPUT(filename, output.getToWriter(), output.getPtId()));
-						// String dfId, String dfFile, String ddId
 						dao.insertDF(new DeptFile(filename));
 					}
 				}

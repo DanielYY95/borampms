@@ -112,7 +112,6 @@
 															<div class="mb-3">
 															    <label class="form-label">파일 업로드</label>
 															    <button id="btn-upload" type="button" style="border: 1px solid #ddd; outline: none;">파일 추가</button>
-																
 															</div>    
 														</div>
 													</div>
