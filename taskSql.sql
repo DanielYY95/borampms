@@ -135,10 +135,24 @@ INSERT INTO user_info VALUES (
 SELECT * FROM USER_INFO;
 
 -- 등록자이거나 내가 업무 담당자인 경우
+-- 저는 daniel95 의 아이디를 갖고 있는 개발1팀 양초명입니다.
+-- 제 업무 => 제가 작성한 업무 글과 제가 담당하는 업무를 가져온다. 
+-- ====> 내가 작성한 글과 내가 담당한 업무를 탭으로 분류
+---- 
+
 SELECT * FROM PRJ_TASK
 WHERE UI_ID = 'daniel95'
-OR PT_CHARGE LIKE '%' ||'개발1팀' || '양초명' || '%'
+OR PT_CHARGE LIKE '%' ||'개발1팀' || '양초명' || '%'   
 ;
+
+SELECT * FROM PRJ_TASK
+WHERE UI_ID = 'daniel95'
+;
+
+SELECT * FROM PRJ_TASK
+WHERE PT_CHARGE LIKE '%' ||'개발1팀 ' || '양초명' || '%'   
+;
+
 
 SELECT * FROM PRJ_TASK pt;
 

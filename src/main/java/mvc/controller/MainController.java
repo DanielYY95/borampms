@@ -2,6 +2,7 @@ package mvc.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import mvc.service.UserService;
@@ -19,8 +20,10 @@ public class MainController {
 	}
 	
 	@RequestMapping("/loginFrm.do") 
-	public String loginFrm() {
+	public String loginFrm(String toURL, Model d) {
 
+		d.addAttribute("toURL", toURL); // 원래 요청 url
+		
 		return "main_login//login";
 	}
 	

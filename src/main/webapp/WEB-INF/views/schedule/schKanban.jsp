@@ -25,6 +25,28 @@
 <link href="${path}/tools/project_assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-style" />
 </head>
 
+
+<!-- 
+	### 로직
+	- ajax 사용....
+		- 이동했을 때 옮겨진다.
+		- 옮겨진 열의 div의 id값에 따라
+		- 옮겨진 카드가 가진 진행상태가 옮겨진 열의 div의 id값과 다르다면,
+		- ajax로 옮겨진 열의 div의 id값을 던져준다. 
+		- 새로운 조회리스트를 불러온다. 
+
+	- 새로고침 사용
+		- 이동했을 때 옮겨진다.
+		- 옮겨진 열의 div의 id값에 따라
+		- 옮겨진 카드가 가진 진행상태가 옮겨진 열의 div의 id값과 다르다면,
+		- 그 id값을 queryString으로 update => 새로고침
+
+
+ -->
+
+
+
+
 <body class="loading" data-layout-color="light" data-leftbar-theme="dark" data-layout-mode="fluid" data-rightbar-onstart="true">
 	<!-- Begin page -->
 	<div class="wrapper">

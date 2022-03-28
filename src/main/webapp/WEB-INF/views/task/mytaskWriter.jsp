@@ -89,6 +89,22 @@
 						</div>
 					</div>
 					<!-- end page title -->
+					
+					<div>
+                       <ul class="nav nav-tabs nav-bordered mb-3" style="display: flex; justify-content: space-around;">
+                           <li class="nav-item"> <!-- a링크에서  data-bs-toggle="tab" 뺐음-->
+                               <a href="${path}/mytask.do?method=clist"  aria-expanded="true" class="nav-link ">
+                               	 내 담당 업무
+                               </a>
+                           </li>
+                           <li class="nav-item">
+                               <a href="${path}/mytask.do?method=wlist"  aria-expanded="true" class="nav-link active">
+                                 내 등록 업무
+                               </a>
+                           </li>
+             
+                       </ul> <!-- end nav-->
+                   </div>	
 
 					<!-- start page content -->
 					<div class="row">
@@ -141,7 +157,7 @@
 														<th>작성일</th>
 														<th>마감일</th>
 														<th>진행상태</th>
-														<th>결재상태</th>
+													
 													</tr>
 											 	</thead>
 											 	<tbody id="task-tbody">
@@ -182,9 +198,7 @@
 																</div>
 															</div>
 														</td>
-														<td>
-															<span class="badge bg-secondary text-light">결재완료</span>
-														</td>
+													
 													</tr>
 													</c:forEach>
 												</tbody>

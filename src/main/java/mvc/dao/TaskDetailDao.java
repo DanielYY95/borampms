@@ -13,7 +13,10 @@ import mvc.vo.USER_INFO;
 
 public interface TaskDetailDao {
 
-	public List<Task_User> getMytaskList(USER_INFO sch);
+	public List<Task_User> getMytaskListW(USER_INFO sch);
+	public List<Task_User> getMytaskListC(USER_INFO sch);
+	
+	
 	
 	public USER_INFO getUser(String ptId);
 	

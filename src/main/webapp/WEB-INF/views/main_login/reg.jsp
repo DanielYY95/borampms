@@ -126,14 +126,14 @@
                             <!-- Logo-->
                             <div class="card-header text-center bg-primary">
                                 <a href="${path}/main.do">
-                                    <span><img src="${path}/images/main/logo.png" alt="" height="50" width="100"></span>
+                                    <span><img src="${path}/tools/project_assets/images/boram_light.png" alt="" height="50" width="175"></span>
                                 </a>
                             </div>
 
                             <div class="card-body p-4">
                                 
                                 <div class="text-center w-75 m-auto">
-                                    <h4 class="text-dark-50 text-center mt-0 fw-bold">회원가입</h4>
+                                    <h4 class="text-dark-50 text-center mt-0 fw-bold">사원가입</h4>
                                 
                                 </div>
 
@@ -247,7 +247,7 @@
                                     </div>
 
                                     <div class="mb-3 text-center">
-                                        <button class="btn btn-primary" type="button" id="chkBtn" onclick="chkValidate()"> 회원가입 </button>
+                                        <button class="btn btn-primary" type="button" id="chkBtn" onclick="chkValidate()"> 가입 </button>
                                         <button type="button" hidden id="signupBtn"> </button>
                                     </div>
 
@@ -290,16 +290,47 @@
 
             let result = 1; // 이게 0이 되어야 등록될 수 있도록
            
-            // 패스워드 확인 작업
 
-			$("#pw2").keyup(function(){
-				if($("#pw2").val().trim()!=""){
-					if($("#pw2").val()!=$("#pw").val()){
+            // 패스워드 확인 => 패스워드 확인 작성 후, 패스워드 
+            // 패스워드를 지웠을 경우, 초기화 (""가 되면 초기화되도록)
+
+
+
+            // 패스워드 확인 작업
+            	// 일치하다는 것을 확인후, 내용을 지우면 일치하지않음이 정상적으로 나온다.
+            	// 문제: 패스워드 확인을 갑자기 확 지우면 메시지가 안 지워진다....
+            	// 패스워드를 지우면 메시지가 지워지는데...
+            
+            $("#pw").keyup(function(){
+				if($("#pw").val().trim()!=""){
+					if($("#pw2").val()!=$("#pw").val()){ // 이게 꼭 반대여야하는듯...
 						$("#pwMsg").css("color","red").text("비밀번호가 일치하지않습니다.");
 						
 					}else{
 						$("#pwMsg").css("color","green").text("비밀번호가 일치합니다.");	
 					}
+					
+				}
+				// 패스워드확인에 아무것도 없을 때는 메시지x
+				if($("#pw2").val().trim()=="" || $("#pw").val().trim()==""){
+					$("#pwMsg").text("");
+				}
+			})
+			
+
+			$("#pw2").keyup(function(){
+				if($("#pw2").val().trim()!=""){ // 이미 여기서 통과했으니 순서가 바뀌어야..
+					if($("#pw").val()!=$("#pw2").val()){ //이게 반대여야...
+						$("#pwMsg").css("color","red").text("비밀번호가 일치하지않습니다.");
+						
+					}else{
+						$("#pwMsg").css("color","green").text("비밀번호가 일치합니다.");	
+					}
+					
+				}
+				// 패스워드에 아무것도 없을 때는 메시지x
+				if($("#pw").val().trim()=="" || $("#pw2").val().trim()==""){
+					$("#pwMsg").text("");
 					
 				}
 			})
@@ -334,7 +365,7 @@
                 		+$("[name=phone2]").val()+$("[name=phone3]").val());
            
 	            
-                if(confirm("회원가입을 진행하시겠습니까?"))
+                if(confirm("사원 가입을 진행하시겠습니까?"))
                     $("#regForm").submit();
                
             })

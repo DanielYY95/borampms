@@ -5,12 +5,18 @@
 	
 <mapper namespace="mvc.dao.TaskDetailDao">
 
-	<select id="getMytaskList" parameterType="user" resultType="taskUser">
+	<select id="getMytaskListW" parameterType="user" resultType="taskUser">
 		select * from PRJ_TASK
 		WHERE UI_ID = #{uiId}
-		OR PT_CHARGE LIKE '%' || #{uiDept} || #{uiName} || '%'
 	
 	</select>
+	
+	<select id="getMytaskListC" parameterType="user" resultType="taskUser">
+		select * from PRJ_TASK
+		WHERE PT_CHARGE LIKE '%' || #{uiDept} || ' ' || #{uiName} || '%'
+	
+	</select>
+	
 	
 	<select id="getUser" parameterType="string" resultType="user">
 		SELECT *

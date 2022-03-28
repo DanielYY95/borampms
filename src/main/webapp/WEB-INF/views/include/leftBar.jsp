@@ -69,7 +69,7 @@
 							<ul class="side-nav-second-level">
 								<li><a href="${path}/task.do?method=list">업무 목록</a></li>
 								<li><a href="${path}/issue.do?method=list">업무 이슈</a></li>
-								<li><a href="${path}/mytask.do?method=list">내 업무</a></li>
+								<li><a href="${path}/mytask.do?method=clist">내 업무</a></li>
 							</ul>
 						</div>
 					</li>

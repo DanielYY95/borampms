@@ -31,7 +31,7 @@ public class LoginSessionController {
 	// 로그인이 너무 잘 끊기는 문제...?
 	@RequestMapping(params="method=session")
 	public String login(@ModelAttribute("user_info") 
-		USER_INFO sch, boolean saveId, HttpServletResponse response, Model d) {
+		USER_INFO sch, boolean saveId, HttpServletResponse response, String toURL, Model d) {
 		
 		sch = service.login(sch);
 		
@@ -53,15 +53,15 @@ public class LoginSessionController {
 				response.addCookie(cookie);
 			}
 			
+			d.addAttribute("user_info",sch);
+			return "redirect:"+toURL;
+			
 			
 		}else{
 			d.addAttribute("loginMsg","아이디나 비밀번호가 일치하지않습니다.");
 		}
 		d.addAttribute("user_info",sch); // 이렇게 해야 로그인 실패할때 빈값으로 보내진다.
-		
-		
-	
-		
+
 		return "main_login//login";
 	}
 	

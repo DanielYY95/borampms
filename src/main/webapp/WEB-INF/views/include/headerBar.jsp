@@ -13,11 +13,23 @@
 		<script>
 			
 	
-			// 로그인할 때만 들어올 수 있도록
+			// 로그인할 때만 들어올 수 있도록 // 참조: https://erim1005.tistory.com/28
+
+
+
+
+			
 			<c:if test="${empty user_info.uiName}">
-	
+			
+				let url = '${requestScope['javax.servlet.forward.servlet_path']}'; // url
+				let queryString = '${requestScope['javax.servlet.forward.query_string']}'; //queryString
+				url += (queryString != '')? '?'+queryString: '';
+
+				// JSP 현재 url 정보 얻기 => ${pageContext.request.requestURL}는 실제 jsp 물리적 경로...
+				console.log(url);
 				alert("로그인 후, 이용해주세요.");
-				location.href="${path}/loginFrm.do";
+				
+				location.href="${path}/loginFrm.do?toURL="+url;
 			</c:if>
 		
 		
@@ -265,41 +277,41 @@
 							<div class="p-2">
 								<div class="row g-0">
 									<div class="col">
-										<a class="dropdown-icon-item" href="#">
-											<img src="${path}/tools/project_assets/images/brands/slack.png" alt="slack"> <span>Slack</span>
+										<a class="dropdown-icon-item" href="https://www.notion.so/ko-kr/product">
+											<img src="${path}/tools/project_assets/images/brands/notion.png" alt="notion"> <span>notion</span>
 										</a>
 									</div>
 									<div class="col">
-										<a class="dropdown-icon-item" href="#">
+										<a class="dropdown-icon-item" href="https://github.com/">
 											<img src="${path}/tools/project_assets/images/brands/github.png" alt="Github">
 											<span>GitHub</span>
 										</a>
 									</div>
 									<div class="col">
-										<a class="dropdown-icon-item" href="#">
-											<img src="${path}/tools/project_assets/images/brands/dribbble.png" alt="dribbble">
-											<span>Dribbble</span>
+										<a class="dropdown-icon-item" href="https://us02web.zoom.us/">
+											<img src="${path}/tools/project_assets/images/brands/zoom.png" alt="zoom">
+											<span>zoom</span>
 										</a>
 									</div>
 								</div>
 
 								<div class="row g-0">
 									<div class="col">
-										<a class="dropdown-icon-item" href="#">
-											<img src="${path}/tools/project_assets/images/brands/bitbucket.png" alt="bitbucket">
-											<span>Bitbucket</span>
+										<a class="dropdown-icon-item" href="https://ko.gather.town/">
+											<img src="${path}/tools/project_assets/images/brands/gather.png" alt="gathertown">
+											<span>gathertown</span>
 										</a>
 									</div>
 									<div class="col">
-										<a class="dropdown-icon-item" href="#">
-											<img src="${path}/tools/project_assets/images/brands/dropbox.png" alt="dropbox">
-											<span>Dropbox</span>
+										<a class="dropdown-icon-item" href="https://www.erdcloud.com/">
+											<img src="${path}/tools/project_assets/images/brands/erd.png" alt="erdcloud">
+											<span>erdcloud</span>
 										</a>
 									</div>
 									<div class="col">
-										<a class="dropdown-icon-item" href="#">
-											<img src="${path}/tools/project_assets/images/brands/g-suite.png" alt="G Suite">
-											<span>G Suite</span>
+									<a class=" dropdown-icon-item" href="https://drive.google.com/">
+											<img src="${path}/tools/project_assets/images/brands/drive.png" alt="G drive">
+											<span>G drive</span>
 										</a>
 									</div>
 								</div>

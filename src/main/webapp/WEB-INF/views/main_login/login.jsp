@@ -48,7 +48,7 @@
                             <!-- Logo -->
                             <div class="card-header  text-center bg-primary">
                                 <a href="${path}/main.do">
-                                    <span><img src="${path}/images/main/logo.png" alt="" height="50" width="100"></span>
+                                    <span><img src="${path}/tools/project_assets/images/boram_light.png" alt="" height="50" width="175"></span>
                                 </a>
                             </div>
 
@@ -60,7 +60,7 @@
                                 </div>
 
                                 <form method="post" action="${path}/login.do?method=session">
-
+									<input name="toURL" value="${toURL}" hidden />
                                     <div class="mb-3">
                                         <a href="pages-recoverpw.html" class="text-muted float-end"><small>아이디 찾기</small></a>
                                         <label for="id" class="form-label">아이디</label>
