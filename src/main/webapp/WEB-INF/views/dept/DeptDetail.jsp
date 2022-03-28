@@ -71,7 +71,6 @@
                             </div>
                         </div>
                         <!-- end page title -->
-						<form method="post" enctype="multipart/form-data" action="${path}/dept.do?method=upt">
                         <div class="row">
                             <div class="col-12">
                                 <div class="card">
@@ -84,7 +83,7 @@
 	                                                    <div class="col-lg-6">
 		                                                    <div class="mb-3">
 															    <label class="form-label">제목</label>
-															    <input type="text" class="form-control" name="ddTitle" value="${deptRowList.ddTitle}">
+															    <input type="text" class="form-control" name="ddTitle" value="${deptRowList.ddTitle}" readonly>
 															    <span class="font-13 text-muted">제목 입력은 필수사항입니다.</span>
 															</div>
 														</div>
@@ -104,26 +103,30 @@
 														</div>
 													</div>
 													<div class="mb-3">
-													    <label class="form-label">내용</label>
-													    <textarea id="simplemde1" name="ddContent">${deptRowList.ddContent}</textarea>
-													</div>
+                                                        <label class="form-label">내용</label>
+                                                        <textarea class="form-control" id="example-textarea" name="ddContent" rows="5" readonly>${deptRowList.ddContent}</textarea>
+                                                    </div>
 													<div class="row">
 	                                                    <div class="col-lg-6">
-															<div class="mb-3">
-															    <label class="form-label">파일 업로드</label>
-															    <button id="btn-upload" type="button" style="border: 1px solid #ddd; outline: none;">파일 추가</button>
-																
-															</div>    
+															    <label class="form-label">파일 다운로드</label>
+							
 														</div>
 													</div>
-													<!-- 추가파일 입력란 생성부분 -->
-													<div id="articlefileChange">
-													</div>
-													<!-- 등록/취소 버튼 -->
+													<c:forEach var="dfFile" items="${deptRowList.fnames}">
+													<div class="row">
+								            			<div class="col-lg-4">
+															<div class="mb-3">
+																<div class="input-group flex-nowrap">
+                                                            		<span class="input-group-text" id="basic-addon1"><i class="dripicons-upload"></i></span>
+                                                            		<input type="text" class="form-control" name="report" placeholder="${dfFile}" aria-label="Username" aria-describedby="basic-addon1" readonly>
+                                                        		</div>
+														  	</div>
+													  	</div>
+												  	</div>
+												  	</c:forEach>
 													<div style="text-align:right;">
-														<button id="regBtn" type="button" class="btn btn-primary">수정</button>&nbsp;&nbsp;
-														<button id="cancelBtn"type="button" class="btn btn-light">취소</button>
-                                                	</div>
+														<button id="docList-btn" type="button" class="btn btn-primary">글목록</button>
+		                                            </div>
                                                 <!-- end row -->                      
                                             </div> <!-- end preview-->
                                         
@@ -141,7 +144,7 @@
 	                        </div> <!-- end card-box -->
 	
 	                    </div> <!-- end Col -->
-	                    </form>
+	                    
 	                </div><!-- End row -->
                     
 	
@@ -153,7 +156,6 @@
                 <jsp:include page="../include/rightBar_footer.jsp"/>
                 <!-- end Footer -->
 
-            </div>
 
             <!-- ============================================================== -->
             <!-- End Page content -->
@@ -163,103 +165,6 @@
         </div>
         <!-- END wrapper -->
 
-
-        <!-- Right Sidebar -->
-        <div class="end-bar">
-
-            <div class="rightbar-title">
-                <a href="javascript:void(0);" class="end-bar-toggle float-end">
-                    <i class="dripicons-cross noti-icon"></i>
-                </a>
-                <h5 class="m-0">Settings</h5>
-            </div>
-
-            <div class="rightbar-content h-100" data-simplebar>
-
-                <div class="p-3">
-                    <div class="alert alert-warning" role="alert">
-                        <strong>Customize </strong> the overall color scheme, sidebar menu, etc.
-                    </div>
-
-                    <!-- Settings -->
-                    <h5 class="mt-3">Color Scheme</h5>
-                    <hr class="mt-1" />
-
-                    <div class="form-check form-switch mb-1">
-                        <input class="form-check-input" type="checkbox" name="color-scheme-mode" value="light" id="light-mode-check" checked>
-                        <label class="form-check-label" for="light-mode-check">Light Mode</label>
-                    </div>
-
-                    <div class="form-check form-switch mb-1">
-                        <input class="form-check-input" type="checkbox" name="color-scheme-mode" value="dark" id="dark-mode-check">
-                        <label class="form-check-label" for="dark-mode-check">Dark Mode</label>
-                    </div>
-
-
-                    <!-- Width -->
-                    <h5 class="mt-4">Width</h5>
-                    <hr class="mt-1" />
-                    <div class="form-check form-switch mb-1">
-                        <input class="form-check-input" type="checkbox" name="width" value="fluid" id="fluid-check" checked>
-                        <label class="form-check-label" for="fluid-check">Fluid</label>
-                    </div>
-
-                    <div class="form-check form-switch mb-1">
-                        <input class="form-check-input" type="checkbox" name="width" value="boxed" id="boxed-check">
-                        <label class="form-check-label" for="boxed-check">Boxed</label>
-                    </div>
-
-
-                    <!-- Left Sidebar-->
-                    <h5 class="mt-4">Left Sidebar</h5>
-                    <hr class="mt-1" />
-                    <div class="form-check form-switch mb-1">
-                        <input class="form-check-input" type="checkbox" name="theme" value="default" id="default-check">
-                        <label class="form-check-label" for="default-check">Default</label>
-                    </div>
-
-                    <div class="form-check form-switch mb-1">
-                        <input class="form-check-input" type="checkbox" name="theme" value="light" id="light-check" checked>
-                        <label class="form-check-label" for="light-check">Light</label>
-                    </div>
-
-                    <div class="form-check form-switch mb-3">
-                        <input class="form-check-input" type="checkbox" name="theme" value="dark" id="dark-check">
-                        <label class="form-check-label" for="dark-check">Dark</label>
-                    </div>
-
-                    <div class="form-check form-switch mb-1">
-                        <input class="form-check-input" type="checkbox" name="compact" value="fixed" id="fixed-check" checked>
-                        <label class="form-check-label" for="fixed-check">Fixed</label>
-                    </div>
-
-                    <div class="form-check form-switch mb-1">
-                        <input class="form-check-input" type="checkbox" name="compact" value="condensed" id="condensed-check">
-                        <label class="form-check-label" for="condensed-check">Condensed</label>
-                    </div>
-
-                    <div class="form-check form-switch mb-1">
-                        <input class="form-check-input" type="checkbox" name="compact" value="scrollable" id="scrollable-check">
-                        <label class="form-check-label" for="scrollable-check">Scrollable</label>
-                    </div>
-
-                    <div class="d-grid mt-4">
-                        <button class="btn btn-primary" id="resetBtn">Reset to Default</button>
-
-                        <a href="https://themes.getbootstrap.com/product/hyper-responsive-admin-dashboard-template/"
-                            class="btn btn-danger mt-3" target="_blank"><i class="mdi mdi-basket me-1"></i> Purchase Now</a>
-                    </div>
-                </div> <!-- end padding-->
-
-            </div>
-        </div>
-
-        <div class="rightbar-overlay"></div>
-        <!-- /End-bar -->
-
-        <!-- bundle -->
-        <script src="${path}/tools/main_assets/js/vendor.min.js"></script>
-        <script src="${path}/tools/main_assets/js/app.min.js"></script>
 		<!-- jstree js -->
 		<script src="${path}/tools/main_assets/js/vendor/jstree.min.js"></script>
 		<script src="${path}/tools/main_assets/js/pages/demo.jstree.js"></script>
@@ -276,7 +181,7 @@
 			var html = '<div class="row">'
             			+ '<div class="col-lg-6">'
 						+ '<div class="mb-3">'
-						+ '<input type="file" id="example-fileinput" class="form-control" multiple="multiple" name="report">'
+						+ '<input type="file" id="example-fileinput" class="form-control" multiple="multiple" name="deptRowList.report">'
 					  	+ '</div>'
 					  	+ '</div>'
 					  	+ '</div>'
@@ -288,30 +193,16 @@
 			});
 		})
 	});
-	/* 부서문서 등록 처리 */
-	$(document).ready(function(){
-		$("#regBtn").click(function(){
-			if(confirm("등록하시겠습니까?")){
-				/* 제목란이 비어있을 경우 */
-				if($("[name=ddTitle]").val()==""){
-					alert("제목은 필수항목입니다.")
-					$("[name=ddTitle]").focus();
-					return;
-				}
-				/* 문서관리 페이지로 이동 */
-				$("form").submit();
-			}
-		});
-	});
 	/* 페이징 처리 */
 	function goPage(no){
 		$("[name=curPage]").val(no);
 		$("#frm01").submit();
 	}
-	/* 클릭 시, ddId의 값을 controller에 요청값을 전달 */
-	function detail(ddId){
-		
-	}
+	/* 글목록버튼 클릭시, 문서관리 페이지로 이동 */
+	$("#docList-btn").click(function(){
+		alert("문서관리 페이지로 이동하시겠습니까?");
+		location.href="${path}/dept.do?method=list";
+	});
 	</script>
 	<script>
 	// 모달 창 닫기 버튼 클릭 시

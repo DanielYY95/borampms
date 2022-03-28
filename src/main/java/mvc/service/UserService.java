@@ -1,11 +1,13 @@
 package mvc.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import mvc.dao.UserDao;
+import mvc.vo.PRJ_INFO;
 import mvc.vo.USER_INFO;
 
 
@@ -57,6 +59,14 @@ public class UserService {
 		
 		dao.deleteUser(user);
 	};
+	
+	// 10. 내 프로젝트 목록 조회
+	
+	public ArrayList<PRJ_INFO> getMyPrjList(String uiId) {
+		
+		return dao.getMyPrjList(uiId);
+	};
+	
 	
 	
 	

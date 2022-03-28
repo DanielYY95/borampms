@@ -39,7 +39,7 @@
            				</a>
          			</li>
 					<li class="side-nav-item">
-            			<a href="../schedule/schCalendar.html" class="side-nav-link">
+            			<a href="${path}/calendar.do" class="side-nav-link">
               				<i class="uil-calender"></i>
               				<span> 캘린더 </span>
             			</a>

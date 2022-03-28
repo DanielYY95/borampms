@@ -42,7 +42,7 @@
                 <div class="content">
                 	
                 	<div>
-                		<a href="index.html" class="logo text-center logo-light" style="background-color:#313a46">
+                		<a href="${path}/main.do" class="logo text-center logo-light" style="background-color:#313a46">
 							<span class="logo-lg">
 								<img src="${path}/tools/project_assets/images/boram_dark.png" alt="" height="45">
 							</span>
@@ -76,29 +76,55 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="row mb-2">
-                                            <div class="col-xl-8">
-                                                <form class="row gy-2 gx-2 align-items-center justify-content-xl-start justify-content-between">
-                                                    <div class="col-auto">
-                                                        <label for="inputPassword2" class="visually-hidden">Search</label>
-                                                        <input type="search" class="form-control" id="inputPassword2" placeholder="Search...">
-                                                    </div>
-                                                    <div class="col-auto">
-                                                        <div class="d-flex align-items-center">
-                                                            <label for="status-select" class="me-2">Status</label>
-                                                            <select class="form-select" id="status-select">
-                                                                <option selected>Choose...</option>
-                                                                <option value="1">Paid</option>
-                                                                <option value="2">Awaiting Authorization</option>
-                                                                <option value="3">Payment failed</option>
-                                                                <option value="4">Cash On Delivery</option>
-                                                                <option value="5">Fulfilled</option>
-                                                                <option value="6">Unfulfilled</option>
+                                            <div class="col-xl-9">
+                                                <form class=""  method="post">
+                                                    <div class="row d-flex justify-content-between">
+                                                      <div class="d-flex col-5">
+                                                          <div class="">
+                                                            <select class="form-select" id="search-select">
+                                                                <option selected>프로젝트명</option>
+                                                                <option>프로젝트 관리자</option>
                                                             </select>
-                                                        </div>
-                                                    </div>
-                                                </form>
+                                                          </div>
+                                                          <div class="">
+                                                            <input type="search" class="form-control" id="search-word" placeholder="검색">
+                                                          </div>
+                                                          <div class="">
+                                                           <label class="col-form-label p-1" style="width: 100px;" >프로젝트상태</label>
+                                                          </div>
+                                                          <div class="">
+                                                            <select class="form-select" id="search-select">
+                                                                <option selected>전체</option>
+                                                                <option>진행전</option>
+                                                                <option>진행중</option>
+                                                                <option>지연</option>
+                                                                <option>진행완료</option>
+                                                            </select>
+                                                          </div>
+                                                      
+                                                      </div>
+                                                      <div class="d-flex justify-content-between col-3">
+                                                          
+                                                          <div>
+                                                            <label for="startdate-form" class="col-form-label p-1" style="width: 60px;" >시작일</label>
+                                                          </div>
+                                                          <div>
+                                                            <input id="startdate-form" class="form-control" type="date" />
+                                                          </div>
+                                                          <div>
+                                                            <label for="duedate-form" class="col-form-label p-1" style="width: 60px;">마감일</label>
+                                                          </div>
+                                                          <div >
+                                                            <input id="duedate-form" class="form-control" type="date" />
+                                                          </div>
+        
+                                                      </div>
+                                                  </div>
+                                              </form>
                                             </div>
-                                            <div class="col-xl-4">
+
+
+                                            <div class="col-xl-3">
                                                 <div class="text-xl-end mt-xl-0 mt-2">
                                                     <button id="newPrjBtn" type="button" class="btn btn-danger mb-2 me-2"><i class="mdi mdi-basket me-1"></i> 새 프로젝트 등록</button>
                                                  
@@ -125,6 +151,44 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                	<c:forEach var="prj" items="${prjList}">
+                                                		<tr>
+	                                                        <td>
+	                                                            <div class="form-check">
+	                                                                <input type="checkbox" class="form-check-input" id="customCheck2">
+	                                                                <label class="form-check-label" for="customCheck2">&nbsp;</label>
+	                                                            </div>
+	                                                        </td>
+	                                                        <td><a href="apps-ecommerce-orders-details.html" class="text-body fw-bold">${prj.piId} DB값</a> </td>
+	                                                        <td onclick="goToPrj()">${prj.piTitle}</td>
+	                                                        <td>
+	                                                            <div class="d-flex">
+	                                                                <div class="d-flex align-items-center">
+	                                                                    <div class="flex-shrink-0">
+	                                                                        <img src="${path}/tools/main_assets/images/users/avatar-1.jpg" class="rounded-circle avatar-xs" alt="friend">
+	                                                                    </div>
+	                                                                    <div class="flex-grow-1 ms-2"><h5 class="my-0">${prj.piWriter}</h5></div>
+	                                                                </div>
+	                                                            </div>
+	                                                        </td>
+	
+	                                                        <td>
+	                                                            <h5 class="my-0">${prj.piStartdate}</h5>
+	                                                            <p class="mb-0 txt-muted">${prj.piDuedate}</p>
+	                                                        </td>
+	
+	                                                        <td><h5 class="my-0"><span class="badge badge-info-lighten">${prj.piStatus}</span></h5></td>
+	                                                        <td>
+	                                                            <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-arrow-top-right-bold-box-outline"></i></a>
+	                                                            <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
+	                                                        </td>
+	                                                    </tr>
+                                                	
+              
+                                                	</c:forEach>
+                                                
+                                                
+                                                
                                                     <tr>
                                                         <td>
                                                             <div class="form-check">
@@ -132,7 +196,7 @@
                                                                 <label class="form-check-label" for="customCheck2">&nbsp;</label>
                                                             </div>
                                                         </td>
-                                                        <td><a href="apps-ecommerce-orders-details.html" class="text-body fw-bold">#PI9708</a> </td>
+                                                        <td><a href="apps-ecommerce-orders-details.html" class="text-body fw-bold">#PI9708 프론트샘플</a> </td>
                                                         <td onclick="goToPrj()">쌍용 5차 프로젝트</td>
                                                         <td>
                                                             <div class="d-flex">
@@ -164,7 +228,7 @@
                                                                 <label class="form-check-label" for="customCheck9">&nbsp;</label>
                                                             </div>
                                                         </td>
-                                                        <td><a href="apps-ecommerce-orders-details.html" class="text-body fw-bold">#PI9701</a> </td>
+                                                        <td><a href="apps-ecommerce-orders-details.html" class="text-body fw-bold">#PI9701 프론트샘플</a> </td>
                                                          <td onclick="goToPrj()">쌍용 디자인 프로젝트</td>
                                                         <td>
                                                             <div class="d-flex">
@@ -195,7 +259,7 @@
                                                                 <label class="form-check-label" for="customCheck10">&nbsp;</label>
                                                             </div>
                                                         </td>
-                                                        <td><a href="apps-ecommerce-orders-details.html" class="text-body fw-bold">#PI9700</a> </td>
+                                                        <td><a href="apps-ecommerce-orders-details.html" class="text-body fw-bold">#PI9700 프론트샘플</a> </td>
                                                         <td onclick="goToPrj()">쌍용 임베디드 프로젝트</td>
                                                         <td>
                                                             <div class="d-flex">
@@ -226,7 +290,7 @@
                                                                 <label class="form-check-label" for="customCheck11">&nbsp;</label>
                                                             </div>
                                                         </td>
-                                                        <td><a href="apps-ecommerce-orders-details.html" class="text-body fw-bold">#PI9699</a> </td>
+                                                        <td><a href="apps-ecommerce-orders-details.html" class="text-body fw-bold">#PI9699 프론트샘플</a> </td>
                                                         <td onclick="goToPrj()">쌍용 IOS 프로젝트</td>
                                                         <td>
                                                             <div class="d-flex">
@@ -264,99 +328,17 @@
                 </div>
                 <!-- content -->
 
-                <!-- Footer Start -->
-                <footer class="footer">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <script>document.write(new Date().getFullYear())</script> © Hyper - Coderthemes.com
-                            </div>
-                            <div class="col-md-6">
-                                <div class="text-md-end footer-links d-none d-md-block">
-                                    <a href="javascript: void(0);">About</a>
-                                    <a href="javascript: void(0);">Support</a>
-                                    <a href="javascript: void(0);">Contact Us</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
-                <!-- end Footer -->
-
-            </div>
 
             <!-- ============================================================== -->
             <!-- End Page content -->
             <!-- ============================================================== -->
-
-
+			<jsp:include page="../include/rightBar_footer.jsp" flush="true"/>
+			
+			</div>
         </div>
         <!-- END wrapper -->
 
-        <!-- Right Sidebar -->
-        <div class="end-bar">
-
-            <div class="rightbar-title">
-                <a href="javascript:void(0);" class="end-bar-toggle float-end">
-                    <i class="dripicons-cross noti-icon"></i>
-                </a>
-                <h5 class="m-0">Settings</h5>
-            </div>
-
-            <div class="rightbar-content h-100" data-simplebar>
-
-                <div class="p-3">
-                    <div class="alert alert-warning" role="alert">
-                        <strong>Customize </strong> the overall color scheme, layout width, etc.
-                    </div>
-
-                    <!-- Settings -->
-                    <h5 class="mt-3">Color Scheme</h5>
-                    <hr class="mt-1" />
-
-                    <div class="form-check form-switch mb-1">
-                        <input type="checkbox" class="form-check-input" name="color-scheme-mode" value="light"
-                            id="light-mode-check" checked />
-                        <label class="form-check-label" for="light-mode-check">Light Mode</label>
-                    </div>
-
-                    <div class="form-check form-switch mb-1">
-                        <input type="checkbox" class="form-check-input" name="color-scheme-mode" value="dark"
-                            id="dark-mode-check" />
-                        <label class="form-check-label" for="dark-mode-check">Dark Mode</label>
-                    </div>
-
-                    <!-- Width -->
-                    <h5 class="mt-4">Width</h5>
-                    <hr class="mt-1" />
-                    <div class="form-check form-switch mb-1">
-                        <input type="checkbox" class="form-check-input" name="width" value="fluid" id="fluid-check" checked />
-                        <label class="form-check-label" for="fluid-check">Fluid</label>
-                    </div>
-                    <div class="form-check form-switch mb-1">
-                        <input type="checkbox" class="form-check-input" name="width" value="boxed" id="boxed-check" />
-                        <label class="form-check-label" for="boxed-check">Boxed</label>
-                    </div>
-
-
-                    <div class="d-grid mt-4">
-                        <button class="btn btn-primary" id="resetBtn">Reset to Default</button>
-
-                        <a href="https://themes.getbootstrap.com/product/hyper-responsive-admin-dashboard-template/"
-                            class="btn btn-danger mt-3" target="_blank"><i class="mdi mdi-basket me-1"></i> Purchase Now</a>
-                    </div>
-                </div> <!-- end padding-->
-
-            </div>
-        </div>
-
-        <div class="rightbar-overlay"></div>
-        <!-- /End-bar -->
-
-        <!-- bundle -->
-        <script src="${path}/tools/main_assets/js/vendor.min.js"></script>
-        <script src="${path}/tools/main_assets/js/app.min.js"></script>
-
+         
         <script>
         
     		$(".button-menu-mobile").hide();

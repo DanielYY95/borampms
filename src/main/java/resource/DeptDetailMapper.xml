@@ -7,6 +7,9 @@
 	<select id="getDetailList" parameterType="String" resultType="deptDoc">
 		select * from Dept_Doc where DD_ID = #{ddId}
 	</select>
+	<select id="getFileInfo" parameterType="String" resultType="String">
+		SELECT DF_FILE FROM DEPT_FILE WHERE DD_ID = #{ddId}
+	</select>
 	<update id="updateDept" parameterType="deptDoc">
 		update Dept_Doc
 		set DD_TITLE = #{ddTitle},
@@ -14,7 +17,6 @@
 			DD_REGDATE = sysdate
 		where DD_ID = #{ddId}
 	</update>
-	<!-- DELETE FROM DEPT_DOC WHERE DD_ID = '3'; -->
 	<delete id="deleteDept" parameterType="string">
 		delete from DEPT_DOC where DD_ID = #{ddId}
 	</delete>

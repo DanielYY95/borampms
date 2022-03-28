@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="mvc.dao.EtcDao">
+
+	<insert id="insertAlarm" parameterType="alarm">
+		insert into ALARM values('A' || LPAD(alram_seq.nextval, 5, '0'), 
+			#{aFrom}, #{aTo}, #{aContent}, 0, sysdate)
+					
+	</insert>
+	
+	
+	
+	
+	<select id="getAlarmList" parameterType="taskUser" resultType="alarm">
+		SELECT * FROM alarm WHERE PI_ID = #{piId}
+		and A_TO Like '%' || #{uiDept} || ' ' || #{uiName} || '%'
+	
+	</select>
+	
+	
+	
+</mapper>

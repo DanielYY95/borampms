@@ -1,1134 +1,349 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"
-    import="java.util.*"
-    %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<c:set var="path" value="${pageContext.request.contextPath }"/>
-<fmt:requestEncoding value="utf-8"/>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="java.util.*"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<c:set var="path" value="${pageContext.request.contextPath }" />
+<fmt:requestEncoding value="utf-8" />
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>Calendar | Hyper - Responsive Bootstrap 5 Admin Dashboard</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      content="A fully featured admin theme which can be used to build CRM, CMS, etc."
-      name="description"
-    />
-    <meta content="Coderthemes" name="author" />
-    <!-- App favicon -->
-    <link rel="shortcut icon" href="../assets/images/favicon.ico" />
-
-    <!-- third party css -->
-    <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
-  />
-    <link
-      href="../assets/css/vendor/fullcalendar.min.css"
-      rel="stylesheet"
-      type="text/css"
-    />
-    <!-- third party css end -->
-
-    <!-- App css -->
-    <link href="../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
-    <link
-      href="../assets/css/app.min.css"
-      rel="stylesheet"
-      type="text/css"
-      id="app-style"
-    />
-  </head>
-
-  <body
-    class="loading"
-    data-layout-color="light"
-    data-leftbar-theme="dark"
-    data-layout-mode="fluid"
-    data-rightbar-onstart="true"
-  >
-    <!-- Begin page -->
-    <div class="wrapper">
-      <!-- ========== Left Sidebar Start ========== -->
-      <div class="leftside-menu">
-        <!-- LOGO -->
-        <a href="index.html" class="logo text-center logo-light">
-          <span class="logo-lg">
-            <img src="../assets/images/logo.png" alt="" height="16" />
-          </span>
-          <span class="logo-sm">
-            <img src="../assets/images/logo_sm.png" alt="" height="16" />
-          </span>
-        </a>
-
-        <!-- LOGO -->
-        <a href="index.html" class="logo text-center logo-dark">
-          <span class="logo-lg">
-            <img src="../assets/images/logo-dark.png" alt="" height="16" />
-          </span>
-          <span class="logo-sm">
-            <img src="../assets/images/logo_sm_dark.png" alt="" height="16" />
-          </span>
-        </a>
-
-        <div class="h-100" id="leftside-menu-container" data-simplebar>
-        <!-- 왼쪽 사이드바 시작  -->
-        <ul class="side-nav">
-         <li class="side-nav-item">
-
-            <a href="../dashboard/prjDash.html" class="side-nav-link">
-             <i class="fa fa-bar-chart" aria-hidden="true"></i>
-              <span> 대시보드 </span>
-            </a>
-          </li>
-<li class="side-nav-item">
-            <a href="../schedule/schCalendar.html" class="side-nav-link">
-              <i class="uil-calender"></i>
-              <span> 캘린더 </span>
-            </a>
-          </li>
-
-          <li class="side-nav-item">
-            <a
-              data-bs-toggle="collapse"
-              href="#sidebarTasks"
-              aria-expanded="false"
-              aria-controls="sidebarTasks"
-              class="side-nav-link"
-            >
-              <i class="uil-clipboard-alt"></i>
-              <span> 일정관리 </span>
-              <span class="menu-arrow"></span>
-            </a>
-            <div class="collapse" id="sidebarTasks">
-              <ul class="side-nav-second-level">
-                <li>
-                  <a href="../schedule/schGantt.html">WBS/간트차트</a>
-                </li>
-                <li>
-                  <a href="../schedule/schKanban.html">칸반보드</a>
-                </li>
-              </ul>
-            </div>
-          </li>
-           <li class="side-nav-item"><a data-bs-toggle="collapse"
-						href="#sidebarDashboards" aria-expanded="false"
-						aria-controls="sidebarDashboards" class="side-nav-link"> <i
-							class="uil-home-alt"></i> <span> 업무 관리 </span>
-					</a>
-						<div class="collapse" id="sidebarDashboards">
-							<ul class="side-nav-second-level">
-								<li><a href="../task/task_list.html">업무 목록</a></li>
-								<li><a href="../task/task_issue.html">업무 이슈</a></li>
-							</ul>
-						</div></li>
-                        <li class="side-nav-item">
-                            <a href="../doc/Doc-Management.html" class="side-nav-link">
-                                <i class="uil-folder-plus"></i>
-                                <span> 문서관리 </span>
-                            </a>
-                        </li>
-                    </ul>
-
-        <!-- End Sidebar -->
-
-          <div class="clearfix"></div>
-        </div>
-        <!-- Sidebar -left -->
-      </div>
-      <!-- Left Sidebar End -->
-
-      <!-- ============================================================== -->
-      <!-- Start Page Content here -->
-      <!-- ============================================================== -->
-
-      <div class="content-page">
-        <div class="content">
-          <!-- Topbar Start -->
-          <div class="navbar-custom">
-            <ul class="list-unstyled topbar-menu float-end mb-0">
-              <li class="dropdown notification-list d-lg-none">
-                <a
-                  class="nav-link dropdown-toggle arrow-none"
-                  data-bs-toggle="dropdown"
-                  href="#"
-                  role="button"
-                  aria-haspopup="false"
-                  aria-expanded="false"
-                >
-                  <i class="dripicons-search noti-icon"></i>
-                </a>
-                <div
-                  class="dropdown-menu dropdown-menu-animated dropdown-lg p-0"
-                >
-                  <form class="p-3">
-                    <input
-                      type="text"
-                      class="form-control"
-                      placeholder="Search ..."
-                      aria-label="Recipient's username"
-                    />
-                  </form>
-                </div>
-              </li>
-              <li class="dropdown notification-list topbar-dropdown">
-                <a
-                  class="nav-link dropdown-toggle arrow-none"
-                  data-bs-toggle="dropdown"
-                  href="#"
-                  role="button"
-                  aria-haspopup="false"
-                  aria-expanded="false"
-                >
-                  <img
-                    src="../assets/images/flags/us.jpg"
-                    alt="user-image"
-                    class="me-0 me-sm-1"
-                    height="12"
-                  />
-                  <span class="align-middle d-none d-sm-inline-block"
-                    >English</span
-                  >
-                  <i
-                    class="mdi mdi-chevron-down d-none d-sm-inline-block align-middle"
-                  ></i>
-                </a>
-                <div
-                  class="dropdown-menu dropdown-menu-end dropdown-menu-animated topbar-dropdown-menu"
-                >
-                  <!-- item-->
-                  <a
-                    href="javascript:void(0);"
-                    class="dropdown-item notify-item"
-                  >
-                    <img
-                      src="../assets/images/flags/germany.jpg"
-                      alt="user-image"
-                      class="me-1"
-                      height="12"
-                    />
-                    <span class="align-middle">German</span>
-                  </a>
-
-                  <!-- item-->
-                  <a
-                    href="javascript:void(0);"
-                    class="dropdown-item notify-item"
-                  >
-                    <img
-                      src="../assets/images/flags/italy.jpg"
-                      alt="user-image"
-                      class="me-1"
-                      height="12"
-                    />
-                    <span class="align-middle">Italian</span>
-                  </a>
-
-                  <!-- item-->
-                  <a
-                    href="javascript:void(0);"
-                    class="dropdown-item notify-item"
-                  >
-                    <img
-                      src="../assets/images/flags/spain.jpg"
-                      alt="user-image"
-                      class="me-1"
-                      height="12"
-                    />
-                    <span class="align-middle">Spanish</span>
-                  </a>
-
-                  <!-- item-->
-                  <a
-                    href="javascript:void(0);"
-                    class="dropdown-item notify-item"
-                  >
-                    <img
-                      src="../assets/images/flags/russia.jpg"
-                      alt="user-image"
-                      class="me-1"
-                      height="12"
-                    />
-                    <span class="align-middle">Russian</span>
-                  </a>
-                </div>
-              </li>
-
-              <li class="dropdown notification-list">
-                <a
-                  class="nav-link dropdown-toggle arrow-none"
-                  data-bs-toggle="dropdown"
-                  href="#"
-                  role="button"
-                  aria-haspopup="false"
-                  aria-expanded="false"
-                >
-                  <i class="dripicons-bell noti-icon"></i>
-                  <span class="noti-icon-badge"></span>
-                </a>
-                <div
-                  class="dropdown-menu dropdown-menu-end dropdown-menu-animated dropdown-lg"
-                >
-                  <!-- item-->
-                  <div class="dropdown-item noti-title px-3">
-                    <h5 class="m-0">
-                      <span class="float-end">
-                        <a href="javascript: void(0);" class="text-dark">
-                          <small>Clear All</small>
-                        </a> </span
-                      >Notification
-                    </h5>
-                  </div>
-
-                  <div class="px-3" style="max-height: 300px" data-simplebar>
-                    <h5 class="text-muted font-13 fw-normal mt-0">Today</h5>
-                    <!-- item-->
-                    <a
-                      href="javascript:void(0);"
-                      class="dropdown-item p-0 notify-item card unread-noti shadow-none mb-2"
-                    >
-                      <div class="card-body">
-                        <span class="float-end noti-close-btn text-muted"
-                          ><i class="mdi mdi-close"></i
-                        ></span>
-                        <div class="d-flex align-items-center">
-                          <div class="flex-shrink-0">
-                            <div class="notify-icon bg-primary">
-                              <i class="mdi mdi-comment-account-outline"></i>
-                            </div>
-                          </div>
-                          <div class="flex-grow-1 text-truncate ms-2">
-                            <h5 class="noti-item-title fw-semibold font-14">
-                              Datacorp
-                              <small class="fw-normal text-muted ms-1"
-                                >1 min ago</small
-                              >
-                            </h5>
-                            <small class="noti-item-subtitle text-muted"
-                              >Caleb Flakelar commented on Admin</small
-                            >
-                          </div>
-                        </div>
-                      </div>
-                    </a>
-
-                    <!-- item-->
-                    <a
-                      href="javascript:void(0);"
-                      class="dropdown-item p-0 notify-item card read-noti shadow-none mb-2"
-                    >
-                      <div class="card-body">
-                        <span class="float-end noti-close-btn text-muted"
-                          ><i class="mdi mdi-close"></i
-                        ></span>
-                        <div class="d-flex align-items-center">
-                          <div class="flex-shrink-0">
-                            <div class="notify-icon bg-info">
-                              <i class="mdi mdi-account-plus"></i>
-                            </div>
-                          </div>
-                          <div class="flex-grow-1 text-truncate ms-2">
-                            <h5 class="noti-item-title fw-semibold font-14">
-                              Admin
-                              <small class="fw-normal text-muted ms-1"
-                                >1 hours ago</small
-                              >
-                            </h5>
-                            <small class="noti-item-subtitle text-muted"
-                              >New user registered</small
-                            >
-                          </div>
-                        </div>
-                      </div>
-                    </a>
-
-                    <h5 class="text-muted font-13 fw-normal mt-0">Yesterday</h5>
-
-                    <!-- item-->
-                    <a
-                      href="javascript:void(0);"
-                      class="dropdown-item p-0 notify-item card read-noti shadow-none mb-2"
-                    >
-                      <div class="card-body">
-                        <span class="float-end noti-close-btn text-muted"
-                          ><i class="mdi mdi-close"></i
-                        ></span>
-                        <div class="d-flex align-items-center">
-                          <div class="flex-shrink-0">
-                            <div class="notify-icon">
-                              <img
-                                src="../assets/images/users/avatar-2.jpg"
-                                class="img-fluid rounded-circle"
-                                alt=""
-                              />
-                            </div>
-                          </div>
-                          <div class="flex-grow-1 text-truncate ms-2">
-                            <h5 class="noti-item-title fw-semibold font-14">
-                              Cristina Pride
-                              <small class="fw-normal text-muted ms-1"
-                                >1 day ago</small
-                              >
-                            </h5>
-                            <small class="noti-item-subtitle text-muted"
-                              >Hi, How are you? What about our next
-                              meeting</small
-                            >
-                          </div>
-                        </div>
-                      </div>
-                    </a>
-
-                    <h5 class="text-muted font-13 fw-normal mt-0">
-                      30 Dec 2021
-                    </h5>
-
-                    <!-- item-->
-                    <a
-                      href="javascript:void(0);"
-                      class="dropdown-item p-0 notify-item card read-noti shadow-none mb-2"
-                    >
-                      <div class="card-body">
-                        <span class="float-end noti-close-btn text-muted"
-                          ><i class="mdi mdi-close"></i
-                        ></span>
-                        <div class="d-flex align-items-center">
-                          <div class="flex-shrink-0">
-                            <div class="notify-icon bg-primary">
-                              <i class="mdi mdi-comment-account-outline"></i>
-                            </div>
-                          </div>
-                          <div class="flex-grow-1 text-truncate ms-2">
-                            <h5 class="noti-item-title fw-semibold font-14">
-                              Datacorp
-                            </h5>
-                            <small class="noti-item-subtitle text-muted"
-                              >Caleb Flakelar commented on Admin</small
-                            >
-                          </div>
-                        </div>
-                      </div>
-                    </a>
-
-                    <!-- item-->
-                    <a
-                      href="javascript:void(0);"
-                      class="dropdown-item p-0 notify-item card read-noti shadow-none mb-2"
-                    >
-                      <div class="card-body">
-                        <span class="float-end noti-close-btn text-muted"
-                          ><i class="mdi mdi-close"></i
-                        ></span>
-                        <div class="d-flex align-items-center">
-                          <div class="flex-shrink-0">
-                            <div class="notify-icon">
-                              <img
-                                src="../assets/images/users/avatar-4.jpg"
-                                class="img-fluid rounded-circle"
-                                alt=""
-                              />
-                            </div>
-                          </div>
-                          <div class="flex-grow-1 text-truncate ms-2">
-                            <h5 class="noti-item-title fw-semibold font-14">
-                              Karen Robinson
-                            </h5>
-                            <small class="noti-item-subtitle text-muted"
-                              >Wow ! this admin looks good and awesome
-                              design</small
-                            >
-                          </div>
-                        </div>
-                      </div>
-                    </a>
-
-                    <div class="text-center">
-                      <i
-                        class="mdi mdi-dots-circle mdi-spin text-muted h3 mt-0"
-                      ></i>
-                    </div>
-                  </div>
-
-                  <!-- All-->
-                  <a
-                    href="javascript:void(0);"
-                    class="dropdown-item text-center text-primary notify-item border-top border-light py-2"
-                  >
-                    View All
-                  </a>
-                </div>
-              </li>
-
-              <li class="dropdown notification-list d-none d-sm-inline-block">
-                <a
-                  class="nav-link dropdown-toggle arrow-none"
-                  data-bs-toggle="dropdown"
-                  href="#"
-                  role="button"
-                  aria-haspopup="false"
-                  aria-expanded="false"
-                >
-                  <i class="dripicons-view-apps noti-icon"></i>
-                </a>
-                <div
-                  class="dropdown-menu dropdown-menu-end dropdown-menu-animated dropdown-lg p-0"
-                >
-                  <div class="p-2">
-                    <div class="row g-0">
-                      <div class="col">
-                        <a class="dropdown-icon-item" href="#">
-                          <img
-                            src="../assets/images/brands/slack.png"
-                            alt="slack"
-                          />
-                          <span>Slack</span>
-                        </a>
-                      </div>
-                      <div class="col">
-                        <a class="dropdown-icon-item" href="#">
-                          <img
-                            src="../assets/images/brands/github.png"
-                            alt="Github"
-                          />
-                          <span>GitHub</span>
-                        </a>
-                      </div>
-                      <div class="col">
-                        <a class="dropdown-icon-item" href="#">
-                          <img
-                            src="../assets/images/brands/dribbble.png"
-                            alt="dribbble"
-                          />
-                          <span>Dribbble</span>
-                        </a>
-                      </div>
-                    </div>
-
-                    <div class="row g-0">
-                      <div class="col">
-                        <a class="dropdown-icon-item" href="#">
-                          <img
-                            src="../assets/images/brands/bitbucket.png"
-                            alt="bitbucket"
-                          />
-                          <span>Bitbucket</span>
-                        </a>
-                      </div>
-                      <div class="col">
-                        <a class="dropdown-icon-item" href="#">
-                          <img
-                            src="../assets/images/brands/dropbox.png"
-                            alt="dropbox"
-                          />
-                          <span>Dropbox</span>
-                        </a>
-                      </div>
-                      <div class="col">
-                        <a class="dropdown-icon-item" href="#">
-                          <img
-                            src="../assets/images/brands/g-suite.png"
-                            alt="G Suite"
-                          />
-                          <span>G Suite</span>
-                        </a>
-                      </div>
-                    </div>
-                    <!-- end row-->
-                  </div>
-                </div>
-              </li>
-
-              <li class="notification-list">
-                <a class="nav-link end-bar-toggle" href="javascript: void(0);">
-                  <i class="dripicons-gear noti-icon"></i>
-                </a>
-              </li>
-
-              <li class="dropdown notification-list">
-                <a
-                  class="nav-link dropdown-toggle nav-user arrow-none me-0"
-                  data-bs-toggle="dropdown"
-                  href="#"
-                  role="button"
-                  aria-haspopup="false"
-                  aria-expanded="false"
-                >
-                  <span class="account-user-avatar">
-                    <img
-                      src="../assets/images/users/avatar-1.jpg"
-                      alt="user-image"
-                      class="rounded-circle"
-                    />
-                  </span>
-                  <span>
-                    <span class="account-user-name">Dominic Keller</span>
-                    <span class="account-position">Founder</span>
-                  </span>
-                </a>
-                <div
-                  class="dropdown-menu dropdown-menu-end dropdown-menu-animated topbar-dropdown-menu profile-dropdown"
-                >
-                  <!-- item-->
-                  <div class="dropdown-header noti-title">
-                    <h6 class="text-overflow m-0">Welcome !</h6>
-                  </div>
-
-                  <!-- item-->
-                  <a
-                    href="javascript:void(0);"
-                    class="dropdown-item notify-item"
-                  >
-                    <i class="mdi mdi-account-circle me-1"></i>
-                    <span>My Account</span>
-                  </a>
-
-                  <!-- item-->
-                  <a
-                    href="javascript:void(0);"
-                    class="dropdown-item notify-item"
-                  >
-                    <i class="mdi mdi-account-edit me-1"></i>
-                    <span>Settings</span>
-                  </a>
-
-                  <!-- item-->
-                  <a
-                    href="javascript:void(0);"
-                    class="dropdown-item notify-item"
-                  >
-                    <i class="mdi mdi-lifebuoy me-1"></i>
-                    <span>Support</span>
-                  </a>
-
-                  <!-- item-->
-                  <a
-                    href="javascript:void(0);"
-                    class="dropdown-item notify-item"
-                  >
-                    <i class="mdi mdi-lock-outline me-1"></i>
-                    <span>Lock Screen</span>
-                  </a>
-
-                  <!-- item-->
-                  <a
-                    href="javascript:void(0);"
-                    class="dropdown-item notify-item"
-                  >
-                    <i class="mdi mdi-logout me-1"></i>
-                    <span>Logout</span>
-                  </a>
-                </div>
-              </li>
-            </ul>
-            <button class="button-menu-mobile open-left">
-              <i class="mdi mdi-menu"></i>
-            </button>
-            <div class="app-search dropdown d-none d-lg-block">
-              <form>
-                <div class="input-group">
-                  <input
-                    type="text"
-                    class="form-control dropdown-toggle"
-                    placeholder="Search..."
-                    id="top-search"
-                  />
-                  <span class="mdi mdi-magnify search-icon"></span>
-                  <button class="input-group-text btn-primary" type="submit">
-                    Search
-                  </button>
-                </div>
-              </form>
-
-              <div
-                class="dropdown-menu dropdown-menu-animated dropdown-lg"
-                id="search-dropdown"
-              >
-                <!-- item-->
-                <div class="dropdown-header noti-title">
-                  <h5 class="text-overflow mb-2">
-                    Found <span class="text-danger">17</span> results
-                  </h5>
-                </div>
-
-                <!-- item-->
-                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                  <i class="uil-notes font-16 me-1"></i>
-                  <span>Analytics Report</span>
-                </a>
-
-                <!-- item-->
-                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                  <i class="uil-life-ring font-16 me-1"></i>
-                  <span>How can I help you?</span>
-                </a>
-
-                <!-- item-->
-                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                  <i class="uil-cog font-16 me-1"></i>
-                  <span>User profile settings</span>
-                </a>
-
-                <!-- item-->
-                <div class="dropdown-header noti-title">
-                  <h6 class="text-overflow mb-2 text-uppercase">Users</h6>
-                </div>
-
-                <div class="notification-list">
-                  <!-- item-->
-                  <a
-                    href="javascript:void(0);"
-                    class="dropdown-item notify-item"
-                  >
-                    <div class="d-flex">
-                      <img
-                        class="d-flex me-2 rounded-circle"
-                        src="../assets/images/users/avatar-2.jpg"
-                        alt="Generic placeholder image"
-                        height="32"
-                      />
-                      <div class="w-100">
-                        <h5 class="m-0 font-14">Erwin Brown</h5>
-                        <span class="font-12 mb-0">UI Designer</span>
-                      </div>
-                    </div>
-                  </a>
-
-                  <!-- item-->
-                  <a
-                    href="javascript:void(0);"
-                    class="dropdown-item notify-item"
-                  >
-                    <div class="d-flex">
-                      <img
-                        class="d-flex me-2 rounded-circle"
-                        src="../assets/images/users/avatar-5.jpg"
-                        alt="Generic placeholder image"
-                        height="32"
-                      />
-                      <div class="w-100">
-                        <h5 class="m-0 font-14">Jacob Deo</h5>
-                        <span class="font-12 mb-0">Developer</span>
-                      </div>
-                    </div>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- end Topbar -->
-
-          <!-- Start Content-->
-          <div class="container-fluid">
-            <!-- start page title -->
-            <div class="row">
-              <div class="col-12">
-                <div class="page-title-box">
-                  <div class="page-title-right">
-                    <ol class="breadcrumb m-0">
-                      <li class="breadcrumb-item">
-                        <a href="javascript: void(0);">Hyper</a>
-                      </li>
-                      <li class="breadcrumb-item">
-                        <a href="javascript: void(0);">일정관리</a>
-                      </li>
-                      <li class="breadcrumb-item active">캘린더</li>
-                    </ol>
-                  </div>
-                  <h4 class="page-title">캘린더</h4>
-                </div>
-              </div>
-            </div>
-            <!-- end page title -->
-
-            <div class="row">
-              <div class="col-12">
-                <div class="card">
-                  <div class="card-body">
-                    <div class="row">
-                      <div class="col-lg-3">
-                        <div class="d-grid">
-                          <button
-                            class="btn btn-lg font-16 btn-danger"
-                            id="btn-new-event"
-                          >
-                            <i class="mdi mdi-plus-circle-outline"></i> 일정 등록
-                          </button>
-                        </div>
-                        <div id="external-events" class="m-t-20">
-                          <br />
-                          <div
-                            class="external-event bg-success-lighten text-success"
-                            data-class="bg-success"
-                          >
-                            <i
-                              class="mdi mdi-checkbox-blank-circle me-2 vertical-middle"
-                            ></i
-                            >중요
-                          </div>
-                          <div
-                            class="external-event bg-info-lighten text-info"
-                            data-class="bg-info"
-                          >
-                            <i
-                              class="mdi mdi-checkbox-blank-circle me-2 vertical-middle"
-                            ></i
-                            >내 일정
-                          </div>
-                          <div
-                            class="external-event bg-warning-lighten text-warning"
-                            data-class="bg-warning"
-                          >
-                            <i
-                              class="mdi mdi-checkbox-blank-circle me-2 vertical-middle"
-                            ></i
-                            >회의
-                          </div>
-                          <div
-                            class="external-event bg-danger-lighten text-danger"
-                            data-class="bg-danger"
-                          >
-                            <i
-                              class="mdi mdi-checkbox-blank-circle me-2 vertical-middle"
-                            ></i
-                            >새로운 일정
-                          </div>
-                        </div>
-
-
-                      </div>
-                      <!-- end col-->
-
-                      <div class="col-lg-9">
-                        <div class="mt-4 mt-lg-0">
-                          <div id="calendar"></div>
-                        </div>
-                      </div>
-                      <!-- end col -->
-                    </div>
-                    <!-- end row -->
-                  </div>
-                  <!-- end card body-->
-                </div>
-                <!-- end card -->
-
-                <!-- Add New Event MODAL -->
-                <div class="modal fade" id="event-modal" tabindex="-1">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <form
-                        class="needs-validation"
-                        name="event-form"
-                        id="form-event"
-                        novalidate
-                      >
-                        <div class="modal-header py-3 px-4 border-bottom-0">
-                          <h5 class="modal-title" id="modal-title">Event</h5>
-                          <button
-                            type="button"
-                            class="btn-close"
-                            data-bs-dismiss="modal"
-                            aria-label="Close"
-                          ></button>
-                        </div>
-                        <div class="modal-body px-4 pb-4 pt-0">
-                          <div class="row">
-                            <div class="col-12">
-                              <div class="mb-3">
-                                <label class="control-label form-label"
-                                  >Event Name</label
-                                >
-                                <input
-                                  class="form-control"
-                                  placeholder="Insert Event Name"
-                                  type="text"
-                                  name="title"
-                                  id="event-title"
-                                  required
-                                />
-                                <div class="invalid-feedback">
-                                  Please provide a valid event name
-                                </div>
-                              </div>
-                            </div>
-                            <div class="col-12">
-                              <div class="mb-3">
-                                <label class="control-label form-label"
-                                  >Category</label
-                                >
-                                <select
-                                  class="form-select"
-                                  name="category"
-                                  id="event-category"
-                                  required
-                                >
-                                  <option value="bg-danger" selected>
-                                    Danger
-                                  </option>
-                                  <option value="bg-success">Success</option>
-                                  <option value="bg-primary">Primary</option>
-                                  <option value="bg-info">Info</option>
-                                  <option value="bg-dark">Dark</option>
-                                  <option value="bg-warning">Warning</option>
-                                </select>
-                                <div class="invalid-feedback">
-                                  Please select a valid event category
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="row">
-                            <div class="col-6">
-                              <button
-                                type="button"
-                                class="btn btn-danger"
-                                id="btn-delete-event"
-                              >
-                                Delete
-                              </button>
-                            </div>
-                            <div class="col-6 text-end">
-                              <button
-                                type="button"
-                                class="btn btn-light me-1"
-                                data-bs-dismiss="modal"
-                              >
-                                Close
-                              </button>
-                              <button
-                                type="submit"
-                                class="btn btn-success"
-                                id="btn-save-event"
-                              >
-                                Save
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      </form>
-                    </div>
-                    <!-- end modal-content-->
-                  </div>
-                  <!-- end modal dialog-->
-                </div>
-                <!-- end modal-->
-              </div>
-              <!-- end col-12 -->
-            </div>
-            <!-- end row -->
-          </div>
-          <!-- container -->
-        </div>
-        <!-- content -->
-
-        <!-- Footer Start -->
-        <footer class="footer">
-          <div class="container-fluid">
-            <div class="row">
-              <div class="col-md-6">
-                <script>
-                  document.write(new Date().getFullYear());
-                </script>
-                © Hyper - Coderthemes.com
-              </div>
-              <div class="col-md-6">
-                <div class="text-md-end footer-links d-none d-md-block">
-                  <a href="javascript: void(0);">About</a>
-                  <a href="javascript: void(0);">Support</a>
-                  <a href="javascript: void(0);">Contact Us</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </footer>
-        <!-- end Footer -->
-      </div>
-
-      <!-- ============================================================== -->
-      <!-- End Page content -->
-      <!-- ============================================================== -->
-    </div>
-    <!-- END wrapper -->
-
-    <!-- Right Sidebar -->
-    <div class="end-bar">
-      <div class="rightbar-title">
-        <a href="javascript:void(0);" class="end-bar-toggle float-end">
-          <i class="dripicons-cross noti-icon"></i>
-        </a>
-        <h5 class="m-0">Settings</h5>
-      </div>
-
-      <div class="rightbar-content h-100" data-simplebar>
-        <div class="p-3">
-          <div class="alert alert-warning" role="alert">
-            <strong>Customize </strong> the overall color scheme, sidebar menu,
-            etc.
-          </div>
-
-          <!-- Settings -->
-          <h5 class="mt-3">Color Scheme</h5>
-          <hr class="mt-1" />
-
-          <div class="form-check form-switch mb-1">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              name="color-scheme-mode"
-              value="light"
-              id="light-mode-check"
-              checked
-            />
-            <label class="form-check-label" for="light-mode-check"
-              >Light Mode</label
-            >
-          </div>
-
-          <div class="form-check form-switch mb-1">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              name="color-scheme-mode"
-              value="dark"
-              id="dark-mode-check"
-            />
-            <label class="form-check-label" for="dark-mode-check"
-              >Dark Mode</label
-            >
-          </div>
-
-          <!-- Width -->
-          <h5 class="mt-4">Width</h5>
-          <hr class="mt-1" />
-          <div class="form-check form-switch mb-1">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              name="width"
-              value="fluid"
-              id="fluid-check"
-              checked
-            />
-            <label class="form-check-label" for="fluid-check">Fluid</label>
-          </div>
-
-          <div class="form-check form-switch mb-1">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              name="width"
-              value="boxed"
-              id="boxed-check"
-            />
-            <label class="form-check-label" for="boxed-check">Boxed</label>
-          </div>
-
-          <!-- Left Sidebar-->
-          <h5 class="mt-4">Left Sidebar</h5>
-          <hr class="mt-1" />
-          <div class="form-check form-switch mb-1">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              name="theme"
-              value="default"
-              id="default-check"
-            />
-            <label class="form-check-label" for="default-check">Default</label>
-          </div>
-
-          <div class="form-check form-switch mb-1">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              name="theme"
-              value="light"
-              id="light-check"
-              checked
-            />
-            <label class="form-check-label" for="light-check">Light</label>
-          </div>
-
-          <div class="form-check form-switch mb-3">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              name="theme"
-              value="dark"
-              id="dark-check"
-            />
-            <label class="form-check-label" for="dark-check">Dark</label>
-          </div>
-
-          <div class="form-check form-switch mb-1">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              name="compact"
-              value="fixed"
-              id="fixed-check"
-              checked
-            />
-            <label class="form-check-label" for="fixed-check">Fixed</label>
-          </div>
-
-          <div class="form-check form-switch mb-1">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              name="compact"
-              value="condensed"
-              id="condensed-check"
-            />
-            <label class="form-check-label" for="condensed-check"
-              >Condensed</label
-            >
-          </div>
-
-          <div class="form-check form-switch mb-1">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              name="compact"
-              value="scrollable"
-              id="scrollable-check"
-            />
-            <label class="form-check-label" for="scrollable-check"
-              >Scrollable</label
-            >
-          </div>
-
-          <div class="d-grid mt-4">
-            <button class="btn btn-primary" id="resetBtn">
-              Reset to Default
-            </button>
-
-            <a
-              href="https://themes.getbootstrap.com/product/hyper-responsive-admin-dashboard-template/"
-              class="btn btn-danger mt-3"
-              target="_blank"
-              ><i class="mdi mdi-basket me-1"></i> Purchase Now</a
-            >
-          </div>
-        </div>
-        <!-- end padding-->
-      </div>
-    </div>
-
-    <div class="rightbar-overlay"></div>
-    <!-- /End-bar -->
-
-    <!-- bundle -->
-    <script src="../assets/js/vendor.min.js"></script>
-    <script src="../assets/js/app.min.js"></script>
-
-    <!-- third party js -->
-    <script src="../assets/js/vendor/fullcalendar.min.js"></script>
-    <!-- third party js ends -->
-
-    <!-- demo app -->
-    <script src="../assets/js/pages/demo.calendar.js"></script>
-    <!-- end demo js-->
-  </body>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Calendar | Hyper - Responsive Bootstrap 5 Admin Dashboard</title>
+<script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
+<meta content="Coderthemes" name="author" />
+<!-- App favicon -->
+<link rel="shortcut icon" href="${path}/tools/project_assets/images/favicon.ico" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+
+<!-- third party css -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+<link href="../assets/css/vendor/fullcalendar.min.css" rel="stylesheet" type="text/css" />
+<!-- third party css end -->
+
+<!-- App css -->
+<link href="${path}/tools/project_assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+<link href="${path}/tools/project_assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-style" />
+<link rel="stylesheet" href="${path}/a00_com/bootstrap.min.css" >
+<link rel="stylesheet" href="${path}/a00_com/jquery-ui.css" >
+<link href='${path}/a00_com/lib/main.css' rel='stylesheet' />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+<script src="${path}/a00_com/jquery.min.js"></script>
+<script src="${path}/a00_com/popper.min.js"></script>
+<script src="${path}/a00_com/bootstrap.min.js"></script>
+<script src="${path}/a00_com/jquery-ui.js"></script>
+<script src='${path}/a00_com/lib/main.js'></script>
+
+<style>
+body {
+	margin: 40px 10px;
+	padding: 0;
+	font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+	font-size: 14px;
+}
+
+#calendar {
+	max-width: 1100px;
+	margin: 0 auto;
+}
+</style>
+
+<script type="text/javascript">
+	document
+			.addEventListener(
+					'DOMContentLoaded',
+					function() {
+						var calendarEl = document.getElementById('calendar');
+
+						var calendar = new FullCalendar.Calendar(
+								calendarEl,
+								{
+									headerToolbar : {
+										left : 'prev,next today',
+										center : 'title',
+										right : 'dayGridMonth,timeGridWeek,timeGridDay'
+									},
+									initialDate : '2022-03-17',
+									navLinks : true, // can click day/week names to navigate views
+									selectable : true,
+									selectMirror : true,
+									select : function(arg) {
+										console.log("#일정등록시 속성 확인#")
+										console.log(arg)
+										$("#exampleModalLongTitle")
+												.text("일정등록");
+										$("#regBtn").show();
+										$("#uptBtn").hide();
+										$("#delBtn").hide();
+										$("#frm01")[0].reset(); // 상세데이터 확인 후, 다시 등록할 때, 초기화가 필요..
+
+										$("#modalBtn").click();
+										// 이벤트가 강제 수행하여 모달창이 로딩되도록 한다.
+
+										console.log("시작일:"
+												+ arg.start.toLocaleString())
+										console.log("마지막일:"
+												+ arg.end.toLocaleString())
+										console.log("종일여부:" + arg.allDay)
+										// 클릭시, 가져온 속성값을 화면에 기본적으로 로딩할 수 있게 처리..
+										//$("[name=start]").val(arg.start.toISOString().split("T")[0])
+										// fullcanlendar에서는 표준형식을 출력을 처리하게 한다.
+										$("[name=cd_start]").val(
+												arg.start.toISOString())
+										//$("[name=end]").val(arg.end.toISOString().split("T")[0])
+										$("[name=cd_end]").val(
+												arg.end.toISOString())
+										$("[name=cd_allDay]").val("" + arg.allDay)
+										/*
+										var title = prompt('일정등록:');
+										if (title) {
+										  calendar.addEvent({
+										    title: title, // 타이틀
+										    start: arg.start, // 시작일자
+										    end: arg.end,	// 마지막일짜
+										    allDay: arg.allDay // 종일여부
+										  })
+										}
+										 */
+										calendar.unselect()
+									}, // eventClick, eventDrop, eventResize
+									eventClick : function(arg) {
+										console.log(arg.event)
+										formData(arg.event);
+										$("#exampleModalLongTitle")
+												.text("일정상세");
+										$("#regBtn").hide();
+										$("#uptBtn").show();
+										$("#delBtn").show();
+										$("#modalBtn").click();
+									},
+									eventDrop : function(info) {
+										formData(info.event);
+										$("#frm01").attr("action",
+												"${path}/updateCalendar.do");
+										$("#frm01").submit();
+									},
+									eventResize : function(info) {
+										formData(info.event);
+										$("#frm01").attr("action",
+												"${path}/updateCalendar.do");
+										$("#frm01").submit();
+									},
+									editable : true,
+									dayMaxEvents : true, // allow "more" link when too many events
+									events : function(info, successCallback,
+											failureCallback) {
+										// 서버에 있는 json 데이터 가져와서, fullcalenar 입력하기
+										$
+												.ajax({
+													type : "post",
+													url : "${path}/calList.do",
+													dataType : "json",
+													success : function(data) {
+														console
+																.log(data.calList)
+														successCallback(data.calList);
+														document
+																.getElementById('script-warning').style.display = 'none';
+													},
+													error : function(err) {
+														console.log(err)
+														failureCallback(err);
+														document
+																.getElementById('script-warning').style.display = 'block';
+													}
+												});
+									},
+									/*
+									events: {
+									  url: 'php/get-events.php', // controller에서 ajax데이터를 로딩하여 처리..
+									    failure: function() {
+									      document.getElementById('script-warning').style.display = 'block'
+									    } 
+									}, */
+									loading : function(bool) {
+										document.getElementById('loading').style.display = bool ? 'block'
+												: 'none';
+									}
+								});
+						calendar.setOption('themeSystem', "Bootstrap 5");
+						calendar.render();
+
+					});
+	function formData(event) {
+		$("[name=cd_id]").val(event.cd_id)
+		$("[name=cd_title]").val(event.cd_title)
+		// 내용을 기본 속성이 아니기에 extendedProps에 들어가 있다.
+		$("[name=cd_content]").val(event.extendedProps.cd_content)
+		$("[name=cd_start]").val(event.cd_start.toISOString())
+		$("[name=cd_end]").val(event.cd_end.toISOString())
+		$("[name=cd_borderColor]").val(event.cd_borderColor)
+		$("[name=cd_backgrColor]").val(event.cd_backgrColor)
+		$("[name=cd_textColor]").val(event.cd_textColor)
+		$("[name=cd_allDay]").val("" + event.cd_allDay)
+	}
+
+	$(document).ready(function() {
+		$('[data-toggle="tooltip"]').tooltip();
+		$("#regBtn").click(function() {
+			if (confirm("일정등록하시겠습니까?")) {
+				$("#frm01").attr("action", "${path}/insertCalendar.do");
+				$("#frm01").submit();
+			}
+		});
+		$("#uptBtn").click(function() {
+			if (confirm("일정수정하시겠습니까?")) {
+				$("#frm01").attr("action", "${path}/updateCalendar.do");
+				$("#frm01").submit();
+			}
+		});
+		$("#delBtn").click(function() {
+			if (confirm("일정삭제하시겠습니까?")) {
+				$("#frm01").attr("action", "${path}/deleteCalendar.do");
+				$("#frm01").submit();
+			}
+		});
+	});
+</script>
+</head>
+
+
+<body class="loading" data-layout-color="light" data-leftbar-theme="dark" data-layout-mode="fluid" data-rightbar-onstart="true">
+	<!-- Begin page -->
+	<div class="wrapper">
+		<!-- ========== Left Sidebar Start ========== -->
+		<jsp:include page="../include/leftBar.jsp" flush="true" />
+
+		<!-- ============================================================== -->
+		<!-- Start Page Content here -->
+		<!-- ============================================================== -->
+
+		<div class="content-page">
+			<div class="content">
+				<!-- Topbar Start -->
+				<jsp:include page="../include/headerBar.jsp" flush="true" />
+
+				<!-- Start 캘린더 시작 !! Content-->
+				<div class="container-fluid">
+					<!-- start page title -->
+					<div class="row">
+						<div class="col-12">
+							<div class="page-title-box">
+								<div class="page-title-right">
+									<ol class="breadcrumb m-0">
+										<li class="breadcrumb-item"><a href="javascript: void(0);">Hyper</a></li>
+										<li class="breadcrumb-item"><a href="javascript: void(0);">일정관리</a></li>
+										<li class="breadcrumb-item active">캘린더</li>
+									</ol>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- end page title -->
+
+					<div id='calendar'></div>
+
+					<div id='loading'>loading...</div>
+					<div id='script-warning'>
+						<code>서버</code>
+						must be running.
+					</div>
+					<%--
+	$("#modalBtn").click(); // 강제 수행하여 모달창이 로딩되도록 한다.
+ --%>
+					<button id="modalBtn" data-toggle="modal" data-target="#exampleModalCenter" style="display: none"></button>
+
+					<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+						<div class="modal-dialog modal-dialog-centered" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="exampleModalLongTitle">일정등록</h5>
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<div class="modal-body">
+									<form id="frm01" class="form" method="post">
+										<input type="hidden" name="id" value="0" />
+										<div class="row">
+											<div class="col">
+												<input type="text" class="form-control" placeholder="제목 입력" name="cd_title">
+											</div>
+										</div>
+										<div class="row">
+											<div class="col">
+												<input type="text" class="form-control" data-toggle="tooltip" data-placement="buttom" title="시작일" name="cd_start" readonly>
+											</div>
+											<div class="col">
+												<input type="text" class="form-control" data-toggle="tooltip" data-placement="buttom" title="종료일" name="cd_end" readonly>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col">
+												<textarea class="form-control" name="content" placeholder="내용" cols="10" rows="10"></textarea>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col">
+												<input type="color" data-toggle="tooltip" data-placement="buttom" title="배경색상" value="#0099cc" class="form-control" name="cd_backgrColor">
+											</div>
+
+											<div class="col">
+												<input type="color" class="form-control" data-toggle="tooltip" data-placement="buttom" title="글자색상" value="#ccffff" name="cd_textColor">
+											</div>
+										</div>
+										<div class="row">
+											<div class="col">
+												<input type="color" class="form-control" data-toggle="tooltip" data-placement="buttom" title="테두리색상" value="#4b0082" name="cd_borderColor">
+											</div>
+											<div class="col">
+												<select name="cd_allDay" class="form-control" data-toggle="tooltip" data-placement="buttom" title="종일여부">
+													<option value="true">종 일</option>
+													<option value="false">시 간</option>
+												</select>
+											</div>
+										</div>
+									</form>
+									<script>
+										
+									</script>
+								</div>
+								<div class="modal-footer">
+
+									<button type="button" id="regBtn" class="btn btn-primary">일정등록</button>
+									<button type="button" id="uptBtn" class="btn btn-info">일정수정</button>
+									<button type="button" id="delBtn" class="btn btn-danger">일정삭제</button>
+									<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- end row -->
+				</div>
+				<!-- container -->
+			</div>
+			<!-- content -->
+
+			<!-- Footer Start -->
+			<jsp:include page="../include/rightBar_footer.jsp" flush="true" />
+			<!-- end Footer -->
+		</div>
+
+		<!-- ============================================================== -->
+		<!-- End Page content -->
+		<!-- ============================================================== -->
+	</div>
+	<!-- END wrapper -->
+
+<!-- bundle -->
+	<script src="${path}/tools/project_assets/js/vendor.min.js"></script>
+	<script src="${path}/tools/project_assets/js/app.min.js"></script>
+	<script src="${path}/a00_com/jquery-3.6.0.js"></script>
+
+	<!-- dragula js-->
+	<script src="${path}/tools/project_assets/js/vendor/dragula.min.js"></script>
+
+	<!-- demo js -->
+	<script src="${path}/tools/project_assets/js/ui/component.dragula.js"></script>
+</body>
 </html>

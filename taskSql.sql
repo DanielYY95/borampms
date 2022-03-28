@@ -154,6 +154,8 @@ WHERE PT_CHARGE LIKE '%' ||'개발1팀 ' || '양초명' || '%'
 ;
 
 
+
+
 SELECT * FROM PRJ_TASK pt;
 
 SELECT * FROM PRJ_INFO;
@@ -180,5 +182,52 @@ INSERT INTO PRJ_INFO values('PI' || LPAD(prj_seq.nextval,5,'0'), 'ycm95', '쌍�
 SELECT * FROM TASK_OUTPUT;
 SELECT * FROM DEPT_INFO di;
 
+-- 프로젝트 참여
+CREATE TABLE PRJ_USER(
+	UI_ID varchar2(20) REFERENCES USER_INFO(UI_ID),
+	PI_ID varchar2(20) REFERENCES PRJ_INFO(PI_ID)
+)
+
+
+SELECT * FROM prj_user;
+
+INSERT INTO PRJ_USER values('daniel95','PI00001');
+INSERT INTO PRJ_USER values('daniel95','PI00002');
+
+select pi.* from ( 
+select * from prj_user
+where UI_ID = 'daniel95') pu, PRJ_INFO pi
+where pu.PI_ID = pi.PI_ID
+	
+
+
+SELECT * FROM DEPT_DOC dd;
+
 SELECT * FROM PRJ_INFO pi2;
 
+SELECT * FROM TASK_OUTPUT to2;
+
+
+CREATE TABLE Alarm (
+	A_ID	VARCHAR2(20) PRIMARY KEY,
+	A_FROM	VARCHAR2(30) NOT null, -- "개발1팀 양초명" 형식으로..?
+	A_TO	VARCHAR2(30) NOT null,
+	A_CONTENT	VARCHAR2(30) NOT null,
+	A_CHECKED	number,
+	A_REGDATE	Date NOT NULL,
+	PI_ID varchar2(20);
+);
+
+CREATE SEQUENCE alram_seq
+	START WITH 1
+	MINVALUE 1;
+
+SELECT * FROM ALARM; 
+
+SELECT * FROM alarm WHERE A_TO = '개발1팀 ' || '양초명'; 
+
+SELECT * FROM PRJ_TASK pt;
+
+UPDATE ALARM 
+	SET A_TO = '개발1팀 양초명'
+	WHERE A_ID = 'A00002';

@@ -34,6 +34,19 @@ public class Task_User {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	
+	
+	public Task_User(String piId, String uiDept,  String uiName) {
+		super();
+		this.piId = piId;
+		this.uiDept = uiDept;
+		this.uiName = uiName;
+		
+	}
+
+
+
 	public int getCnt() {
 		return cnt;
 	}

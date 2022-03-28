@@ -4,6 +4,9 @@
     %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<jsp:useBean id="now" class="java.util.Date" />
+<fmt:formatDate value="${now}" pattern="yyyy-MM-dd HH:mm:ss" var="now" />
 <c:set var="path" value="${pageContext.request.contextPath }"/>
 <fmt:requestEncoding value="utf-8"/>     
 <!DOCTYPE html>
@@ -21,8 +24,8 @@
 			
 			<c:if test="${empty user_info.uiName}">
 			
-				let url = '${requestScope['javax.servlet.forward.servlet_path']}'; // url
-				let queryString = '${requestScope['javax.servlet.forward.query_string']}'; //queryString
+				let url = '${requestScope['javax.servlet.forward.servlet_path']}'; // url  
+				let queryString = '${requestScope['javax.servlet.forward.query_string']}'; //queryString 
 				url += (queryString != '')? '?'+queryString: '';
 
 				// JSP 현재 url 정보 얻기 => ${pageContext.request.requestURL}는 실제 jsp 물리적 경로...
@@ -120,66 +123,46 @@
 								<h5 class="m-0">
 									<span class="float-end">
 										<a href="javascript: void(0);" class="text-dark">
-										<small>Clear All</small>
+										<small>모두 지우기</small>
 										</a>
 									</span>
-									Notification
+									알림
 								</h5>
 							</div>
 
 							<div class="px-3" style="max-height: 300px;" data-simplebar>
 
-								<h5 class="text-muted font-13 fw-normal mt-0">Today</h5>
+								<h5 class="text-muted font-13 fw-normal mt-0">오늘</h5>
 								<!-- item-->
-								<a href="javascript:void(0);" class="dropdown-item p-0 notify-item card unread-noti shadow-none mb-2">
-									<div class="card-body">
-										<span class="float-end noti-close-btn text-muted">
-											<i class="mdi mdi-close"></i>
-										</span>
-										<div class="d-flex align-items-center">
-											<div class="flex-shrink-0">
-												<div class="notify-icon bg-primary">
-													<i class="mdi mdi-comment-account-outline"></i>
+								<c:forEach var="alarm" items="${alarmList}">
+									<a href="javascript:void(0);" class="dropdown-item p-0 notify-item card unread-noti shadow-none mb-2">
+										<div class="card-body">
+											<span class="float-end noti-close-btn text-muted">
+												<i class="mdi mdi-close"></i>
+											</span>
+											<div class="d-flex align-items-center">
+												<div class="flex-shrink-0">
+													<div class="notify-icon bg-primary">
+														<i class="mdi mdi-comment-account-outline"></i>
+													</div>
+												</div>
+												<div class="flex-grow-1 text-truncate ms-2">
+													<h5 class="noti-item-title fw-semibold font-14">
+														${alarm.aFrom}
+														<small class="fw-normal text-muted ms-1">
+														<fmt:formatDate value="${alarm.aRegdate}" pattern="MM-dd HH:mm" var="Regdate" />
+															${Regdate}</small>
+													</h5>
+													<small class="noti-item-subtitle text-muted">
+														${alarm.aContent}</small>
 												</div>
 											</div>
-											<div class="flex-grow-1 text-truncate ms-2">
-												<h5 class="noti-item-title fw-semibold font-14">
-													Datacorp
-													<small class="fw-normal text-muted ms-1">1 min ago</small>
-												</h5>
-												<small class="noti-item-subtitle text-muted">
-													Caleb Flakelar commented on Admin</small>
-											</div>
 										</div>
-									</div>
-								</a>
+									</a>
+								</c:forEach>
+							
 
-								<!-- item-->
-								<a href="javascript:void(0);"
-									class="dropdown-item p-0 notify-item card read-noti shadow-none mb-2">
-									<div class="card-body">
-										<span class="float-end noti-close-btn text-muted">
-											<i class="mdi mdi-close"></i>
-										</span>
-										<div class="d-flex align-items-center">
-											<div class="flex-shrink-0">
-												<div class="notify-icon bg-info">
-													<i class="mdi mdi-account-plus"></i>
-												</div>
-											</div>
-											<div class="flex-grow-1 text-truncate ms-2">
-												<h5 class="noti-item-title fw-semibold font-14">
-													Admin
-													<small class="fw-normal text-muted ms-1">1 hours ago</small>
-												</h5>
-												<small class="noti-item-subtitle text-muted">
-													New user registered</small>
-											</div>
-										</div>
-									</div>
-								</a>
-
-								<h5 class="text-muted font-13 fw-normal mt-0">Yesterday</h5>
+								<h5 class="text-muted font-13 fw-normal mt-0">어제</h5>
 								<!-- item-->
 								<a href="javascript:void(0);"
 									class="dropdown-item p-0 notify-item card read-noti shadow-none mb-2">

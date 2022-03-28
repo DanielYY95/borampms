@@ -25,9 +25,6 @@
 	</select>
 	
 	
-	
-	
-
 
 	<insert id="insertTask" parameterType="task">
 	
@@ -35,11 +32,19 @@
 	
 	<insert id="insertOutput" parameterType="output">
 		insert into TASK_OUTPUT values(
-		'to' || LPAD(to_seq.nextval, 5,'0'), #{toFile}, 
+		'TO' || LPAD(to_seq.nextval, 5,'0'), #{toFile}, 
 			#{toWriter}, sysdate, #{ptId}
 		)
 							
 	</insert>
+	
+	<select id="getOutputList" parameterType="string" resultType="output">
+		SELECT * FROM TASK_OUTPUT
+		where PT_ID = #{ptId}
+	
+	
+	</select>
+	
 	
 	<update id="updateTask" parameterType="task">
 		update PRJ_TASK
@@ -67,6 +72,14 @@
 		delete from PRJ_TASK where PT_ID = #{ptId}
 	
 	</delete>
+	
+	<select id="pwChk" parameterType="user" resultType="int">
+		SELECT count(*)
+		FROM user_info
+		WHERE UI_ID = #{uiId}
+		and UI_PW = #{uiPw}
+		
+	</select>
 	
 
 </mapper>

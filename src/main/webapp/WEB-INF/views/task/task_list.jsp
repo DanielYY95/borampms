@@ -21,6 +21,10 @@
 	<!-- App css -->
 	<link href="${path}/tools/project_assets/css/icons.min.css" rel="stylesheet" type="text/css" />
 	<link href="${path}/tools/project_assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-style" />
+
+	<!-- jQuery -->	
+	<script src="${path}/tools/jquery-3.6.0.js"></script>
+
 </head>
 
 
@@ -38,96 +42,17 @@
 
 </script>
 
+<% String msg=""; %>
+
 <body class="loading" data-layout-color="light" data-leftbar-theme="dark" data-layout-mode="fluid"
 	data-rightbar-onstart="true">
 	
 	
 	<!-- Begin page -->
 	<div class="wrapper">
-		<!-- ========== Left Sidebar Start ========== -->
-		<div class="leftside-menu">
-			<!-- LOGO -->
-			<a href="index.html" class="logo text-center logo-light">
-				<span class="logo-lg">
-					<img src="${path}/tools/project_assets/images/boram_dark.png" alt="" height="45">
-				</span>
-				<span class="logo-sm">
-					<img src="${path}/tools/project_assets/images/boram_sm_dark.png" alt="" height="35">
-				</span>
-			</a>
-			<!-- LOGO -->
-			<a href="index.html" class="logo text-center logo-dark">
-				<span class="logo-lg">
-					<img src="${path}/tools/project_assets/images/boram_light.png" alt="" height="45">
-				</span>
-				<span class="logo-sm">
-					<img src="${path}/tools/project_assets/images/boram_sm_light.png" alt="" height="35">
-				</span>
-			</a>
-			<div class="h-100" id="leftside-menu-container" data-simplebar>
-				<!--- Start Sidemenu -->
-				<ul class="side-nav">
-					<li class="side-nav-item">
-						<a href="../dashboard/prjDash.html" class="side-nav-link">
-             				<i class="fa fa-bar-chart" aria-hidden="true"></i>
-              				<span> 대시보드 </span>
-           				</a>
-         			</li>
-					<li class="side-nav-item">
-            			<a href="../schedule/schCalendar.html" class="side-nav-link">
-              				<i class="uil-calender"></i>
-              				<span> 캘린더 </span>
-            			</a>
-          			</li>
-          			<li class="side-nav-item">
-          				<a data-bs-toggle="collapse" href="#sidebarTasks"
-            				aria-expanded="false" aria-controls="sidebarTasks" class="side-nav-link">
-              				<i class="uil-clipboard-alt"></i>
-              				<span> 일정관리 </span>
-              				<span class="menu-arrow"></span>
-            			</a>
-            			<div class="collapse" id="sidebarTasks">
-              				<ul class="side-nav-second-level">
-                				<li><a href="${path}/schGantt.do">WBS/간트차트</a></li>
-                				<li><a href="../schedule/schKanban.html">칸반보드</a></li>
-              				</ul>
-            			</div>
-          			</li>
-        			<li class="side-nav-item">
-           				<a data-bs-toggle="collapse" href="#sidebarDashboards" aria-expanded="false"
-							aria-controls="sidebarDashboards" class="side-nav-link">
-							<i class="uil-home-alt"></i>
-							<span> 업무 관리 </span>
-							<span class="menu-arrow"></span>
-						</a>
-						<div class="collapse" id="sidebarDashboards">
-							<ul class="side-nav-second-level">
-								<li><a href="${path}/task.do?method=list">업무 목록</a></li>
-								<li><a href="${path}/issue.do?method=list">업무 이슈</a></li>
-							</ul>
-						</div>
-					</li>
-					<li class="side-nav-item">
-                        <a href="${path}/issue.do?method=list" class="side-nav-link">
-                            <i class="uil-folder-plus"></i>
-                            <span> 이슈 관리 </span>
-                        </a>
-                    </li>
-                    <li class="side-nav-item">
-                        <a href="${path}/dept.do?method=list" class="side-nav-link">
-                            <i class="uil-folder-plus"></i>
-                            <span> 문서관리 </span>
-                        </a>
-                    </li>
-                </ul>
-				<!-- End Sidemenu -->
-
-				<div class="clearfix"></div>
-
-			</div>
-			<!-- Sidebar -left -->
-
-		</div>
+	
+		<!-- ========== Left Sidebar Start ========== -->	
+		<jsp:include page="../include/leftBar.jsp" flush="true"/>
 		<!-- ========== Left Sidebar end ========== -->
 		
 		
@@ -137,457 +62,70 @@
 
 		<div class="content-page">
 			<div class="content">
-			
-				<!-- Start Topbar -->
-				<div class="navbar-custom">
-					<ul class="list-unstyled topbar-menu float-end mb-0">
-						<li class="dropdown notification-list d-lg-none">
-							<a class="nav-link dropdown-toggle arrow-none"
-								data-bs-toggle="dropdown" href="#" role="button"
-								aria-haspopup="false" aria-expanded="false">
-								<i class="dripicons-search noti-icon"></i>
-							</a>
-							<div class="dropdown-menu dropdown-menu-animated dropdown-lg p-0">
-								<form class="p-3">
-									<input type="text" class="form-control"
-										placeholder="Search ..." aria-label="Recipient's username">
-								</form>
-							</div>
-						</li>
-						
-						<!--상단(top bar) 언어 설정 / 알림 목록 / 공유 / 설정 nav -->
-						<li class="dropdown notification-list topbar-dropdown">
-							<a class="nav-link dropdown-toggle arrow-none"
-								data-bs-toggle="dropdown" href="#" role="button"
-								aria-haspopup="false" aria-expanded="false">
-									<img src="${path}/tools/project_assets/images/flags/us.jpg" alt="user-image"
-										class="me-0 me-sm-1" height="12">
-									<span class="align-middle d-none d-sm-inline-block">English</span>
-									<i class="mdi mdi-chevron-down d-none d-sm-inline-block align-middle"></i>
-							</a>
+				<!-- Start headerBar -->	
+				<jsp:include page="../include/headerBar.jsp" flush="true"/>	
+				<!-- end headerBar -->
 							
-							<!-- 언어 설정 -->
-							<div class="dropdown-menu dropdown-menu-end dropdown-menu-animated topbar-dropdown-menu">
-
-								<!-- item-->
-								<a href="javascript:void(0);" class="dropdown-item notify-item">
-									<img src="${path}/tools/project_assets/images/flags/korean.jpg" alt="user-image"
-									class="me-1" height="12"> <span class="align-middle">Korean</span>
-								</a>
-								
-								<!-- item-->
-								<a href="javascript:void(0);" class="dropdown-item notify-item">
-									<img src="${path}/tools/project_assets/images/flags/japan.jpg" alt="user-image"
-									class="me-1" height="12"> <span class="align-middle">Japan</span>
-								</a>
-
-								<!-- item-->
-								<a href="javascript:void(0);" class="dropdown-item notify-item">
-									<img src="${path}/tools/project_assets/images/flags/germany.jpg" alt="user-image"
-									class="me-1" height="12"> <span class="align-middle">German</span>
-								</a>
-
-								<!-- item-->
-								<a href="javascript:void(0);" class="dropdown-item notify-item">
-									<img src="${path}/tools/project_assets/images/flags/italy.jpg" alt="user-image"
-									class="me-1" height="12"> <span class="align-middle">Italian</span>
-								</a>
-
-								<!-- item-->
-								<a href="javascript:void(0);" class="dropdown-item notify-item">
-									<img src="${path}/tools/project_assets/images/flags/spain.jpg" alt="user-image"
-									class="me-1" height="12"> <span class="align-middle">Spanish</span>
-								</a>
-
-								<!-- item-->
-								<a href="javascript:void(0);" class="dropdown-item notify-item">
-									<img src="${path}/tools/project_assets/images/flags/russia.jpg" alt="user-image"
-									class="me-1" height="12"> <span class="align-middle">Russian</span>
-								</a>
-
-							</div>
-						</li>
-
-						<!-- 알림 목록 -->
-						<li class="dropdown notification-list">
-							<a
-								class="nav-link dropdown-toggle arrow-none"
-								data-bs-toggle="dropdown" href="#" role="button"
-								aria-haspopup="false" aria-expanded="false">
-								<i class="dripicons-bell noti-icon"></i>
-								<span class="noti-icon-badge"></span>
-							</a>
-							<div class="dropdown-menu dropdown-menu-end dropdown-menu-animated dropdown-lg">
-
-								<!-- item-->
-								<div class="dropdown-item noti-title px-3">
-									<h5 class="m-0">
-										<span class="float-end">
-											<a href="javascript: void(0);" class="text-dark">
-											<small>Clear All</small>
-											</a>
-										</span>
-										Notification
-									</h5>
+				<!-- Start Content-->
+				<div class="row">
+						<div class="col-12">
+							<div class="page-title-box">
+								<div class="page-title-right">
+									<ol class="breadcrumb m-0">
+										<li class="breadcrumb-item"><a
+											href="javascript: void(0);">borampms</a></li>
+										<li class="breadcrumb-item"><a
+											href="javascript: void(0);">업무 관리</a></li>
+										<li class="breadcrumb-item active">업무 목록</li>
+									</ol>
 								</div>
-
-								<div class="px-3" style="max-height: 300px;" data-simplebar>
-
-									<h5 class="text-muted font-13 fw-normal mt-0">Today</h5>
-									<!-- item-->
-									<a href="javascript:void(0);" class="dropdown-item p-0 notify-item card unread-noti shadow-none mb-2">
-										<div class="card-body">
-											<span class="float-end noti-close-btn text-muted">
-												<i class="mdi mdi-close"></i>
-											</span>
-											<div class="d-flex align-items-center">
-												<div class="flex-shrink-0">
-													<div class="notify-icon bg-primary">
-														<i class="mdi mdi-comment-account-outline"></i>
-													</div>
-												</div>
-												<div class="flex-grow-1 text-truncate ms-2">
-													<h5 class="noti-item-title fw-semibold font-14">
-														Datacorp
-														<small class="fw-normal text-muted ms-1">1 min ago</small>
-													</h5>
-													<small class="noti-item-subtitle text-muted">
-														Caleb Flakelar commented on Admin</small>
-												</div>
-											</div>
-										</div>
-									</a>
-
-									<!-- item-->
-									<a href="javascript:void(0);"
-										class="dropdown-item p-0 notify-item card read-noti shadow-none mb-2">
-										<div class="card-body">
-											<span class="float-end noti-close-btn text-muted">
-												<i class="mdi mdi-close"></i>
-											</span>
-											<div class="d-flex align-items-center">
-												<div class="flex-shrink-0">
-													<div class="notify-icon bg-info">
-														<i class="mdi mdi-account-plus"></i>
-													</div>
-												</div>
-												<div class="flex-grow-1 text-truncate ms-2">
-													<h5 class="noti-item-title fw-semibold font-14">
-														Admin
-														<small class="fw-normal text-muted ms-1">1 hours ago</small>
-													</h5>
-													<small class="noti-item-subtitle text-muted">
-														New user registered</small>
-												</div>
-											</div>
-										</div>
-									</a>
-
-									<h5 class="text-muted font-13 fw-normal mt-0">Yesterday</h5>
-									<!-- item-->
-									<a href="javascript:void(0);"
-										class="dropdown-item p-0 notify-item card read-noti shadow-none mb-2">
-										<div class="card-body">
-											<span class="float-end noti-close-btn text-muted">
-												<i class="mdi mdi-close"></i>
-											</span>
-											<div class="d-flex align-items-center">
-												<div class="flex-shrink-0">
-													<div class="notify-icon">
-														<img src="${path}/tools/project_assets/images/users/avatar-2.jpg"
-															class="img-fluid rounded-circle" alt="" />
-													</div>
-												</div>
-												<div class="flex-grow-1 text-truncate ms-2">
-													<h5 class="noti-item-title fw-semibold font-14">
-														Cristina Pride
-														<small class="fw-normal text-muted ms-1">1 day ago</small>
-													</h5>
-													<small class="noti-item-subtitle text-muted">
-														Hi, How are you? What about our next meeting</small>
-												</div>
-											</div>
-										</div>
-									</a>
-
-									<h5 class="text-muted font-13 fw-normal mt-0">30 Dec 2021</h5>
-									<!-- item-->
-									<a href="javascript:void(0);"
-										class="dropdown-item p-0 notify-item card read-noti shadow-none mb-2">
-										<div class="card-body">
-											<span class="float-end noti-close-btn text-muted">
-												<i class="mdi mdi-close"></i>
-											</span>
-											<div class="d-flex align-items-center">
-												<div class="flex-shrink-0">
-													<div class="notify-icon bg-primary">
-														<i class="mdi mdi-comment-account-outline"></i>
-													</div>
-												</div>
-												<div class="flex-grow-1 text-truncate ms-2">
-													<h5 class="noti-item-title fw-semibold font-14">Datacorp</h5>
-													<small class="noti-item-subtitle text-muted">
-														Caleb Flakelar commented on Admin</small>
-												</div>
-											</div>
-										</div>
-									</a>
-
-									<!-- item-->
-									<a href="javascript:void(0);"
-										class="dropdown-item p-0 notify-item card read-noti shadow-none mb-2">
-										<div class="card-body">
-											<span class="float-end noti-close-btn text-muted">
-												<i class="mdi mdi-close"></i>
-											</span>
-											<div class="d-flex align-items-center">
-												<div class="flex-shrink-0">
-													<div class="notify-icon">
-														<img src="${path}/tools/project_assets/images/users/avatar-4.jpg"
-															class="img-fluid rounded-circle" alt="" />
-													</div>
-												</div>
-												<div class="flex-grow-1 text-truncate ms-2">
-													<h5 class="noti-item-title fw-semibold font-14">Karen Robinson</h5>
-													<small class="noti-item-subtitle text-muted">
-														Wow ! this admin looks good and awesome design</small>
-												</div>
-											</div>
-										</div>
-									</a>
-
-									<div class="text-center">
-										<i class="mdi mdi-dots-circle mdi-spin text-muted h3 mt-0"></i>
-									</div>
-								</div>
-
-								<!-- All-->
-								<a href="javascript:void(0);"
-									class="dropdown-item text-center text-primary notify-item border-top border-light py-2">
-									View All </a>
-
+								<h4 class="page-title">업무 목록</h4>
 							</div>
-						</li>
-
-						<!-- 타 플랫폼 공유 -->
-						<li class="dropdown notification-list d-none d-sm-inline-block">
-							<a class="nav-link dropdown-toggle arrow-none"
-								data-bs-toggle="dropdown" href="#" role="button"
-								aria-haspopup="false" aria-expanded="false">
-								<i class="dripicons-view-apps noti-icon"></i>
-							</a>
-							<div class="dropdown-menu dropdown-menu-end dropdown-menu-animated dropdown-lg p-0">
-
-								<div class="p-2">
-									<div class="row g-0">
-										<div class="col">
-											<a class="dropdown-icon-item" href="#">
-												<img src="${path}/tools/project_assets/images/brands/slack.png" alt="slack"> <span>Slack</span>
-											</a>
-										</div>
-										<div class="col">
-											<a class="dropdown-icon-item" href="#">
-												<img src="${path}/tools/project_assets/images/brands/github.png" alt="Github">
-												<span>GitHub</span>
-											</a>
-										</div>
-										<div class="col">
-											<a class="dropdown-icon-item" href="#">
-												<img src="${path}/tools/project_assets/images/brands/dribbble.png" alt="dribbble">
-												<span>Dribbble</span>
-											</a>
-										</div>
-									</div>
-
-									<div class="row g-0">
-										<div class="col">
-											<a class="dropdown-icon-item" href="#">
-												<img src="${path}/tools/project_assets/images/brands/bitbucket.png" alt="bitbucket">
-												<span>Bitbucket</span>
-											</a>
-										</div>
-										<div class="col">
-											<a class="dropdown-icon-item" href="#">
-												<img src="${path}/tools/project_assets/images/brands/dropbox.png" alt="dropbox">
-												<span>Dropbox</span>
-											</a>
-										</div>
-										<div class="col">
-											<a class="dropdown-icon-item" href="#">
-												<img src="${path}/tools/project_assets/images/brands/g-suite.png" alt="G Suite">
-												<span>G Suite</span>
-											</a>
-										</div>
-									</div>
-									<!-- end row-->
-								</div>
-
-							</div>
-						</li>
-
-						<!-- setting 아이콘 -->
-						<li class="notification-list">
-							<a class="nav-link end-bar-toggle" href="javascript: void(0);">
-								<i class="dripicons-gear noti-icon"></i>
-							</a>
-						</li>
-
-						<!-- 내 프로필 아이콘 -->
-						<li class="dropdown notification-list">
-							<a class="nav-link dropdown-toggle nav-user arrow-none me-0"
-								data-bs-toggle="dropdown" href="#" role="button"
-								aria-haspopup="false" aria-expanded="false">
-								<span class="account-user-avatar">
-									<img src="${path}/tools/project_assets/images/users/avatar-1.jpg" alt="user-image" class="rounded-circle">
-								</span>
-								<span>
-									<span class="account-user-name">Dominic Keller</span>
-									<span class="account-position">Founder</span>
-								</span>
-							</a>
-							<div class="dropdown-menu dropdown-menu-end dropdown-menu-animated topbar-dropdown-menu profile-dropdown">
-								<!-- item-->
-								<div class=" dropdown-header noti-title">
-									<h6 class="text-overflow m-0">Welcome !</h6>
-								</div>
-
-								<!-- item-->
-								<a href="javascript:void(0);" class="dropdown-item notify-item">
-									<i class="mdi mdi-account-circle me-1"></i>
-									<span>My Account</span>
-								</a>
-
-								<!-- item-->
-								<a href="javascript:void(0);" class="dropdown-item notify-item">
-									<i class="mdi mdi-account-edit me-1"></i>
-									<span>Settings</span>
-								</a>
-
-								<!-- item-->
-								<a href="javascript:void(0);" class="dropdown-item notify-item">
-									<i class="mdi mdi-lifebuoy me-1"></i>
-									<span>Support</span>
-								</a>
-
-								<!-- item-->
-								<a href="javascript:void(0);" class="dropdown-item notify-item">
-									<i class="mdi mdi-lock-outline me-1"></i>
-									<span>Lock Screen</span>
-								</a>
-
-								<!-- item-->
-								<a href="javascript:void(0);" class="dropdown-item notify-item">
-									<i class="mdi mdi-logout me-1"></i>
-									<span>Logout</span>
-								</a>
-							</div>
-						</li>
-					</ul>
-					
-					<button class="button-menu-mobile open-left">
-						<i class="mdi mdi-menu"></i>
-					</button>
-					
-					<!-- 상단(top bar) Search 클릭 시 -->
-					<div class="app-search dropdown d-none d-lg-block">
-						<form>
-							<div class="input-group">
-								<input type="text" class="form-control dropdown-toggle"
-									placeholder="Search..." id="top-search">
-								<span class="mdi mdi-magnify search-icon"></span>
-								<button class="input-group-text btn-primary" type="submit">Search</button>
-							</div>
-						</form>
-
-						<div class="dropdown-menu dropdown-menu-animated dropdown-lg" id="search-dropdown">
-							<!-- item-->
-							<div class="dropdown-header noti-title">
-								<h5 class="text-overflow mb-2">
-									Found <span class="text-danger">17</span> results
-								</h5>
-							</div>
-
-							<!-- item-->
-							<a href="javascript:void(0);" class="dropdown-item notify-item">
-								<i class="uil-notes font-16 me-1"></i>
-								<span>Analytics Report</span>
-							</a>
-
-							<!-- item-->
-							<a href="javascript:void(0);" class="dropdown-item notify-item">
-								<i class="uil-life-ring font-16 me-1"></i>
-								<span>How can I help you?</span>
-							</a>
-
-							<!-- item-->
-							<a href="javascript:void(0);" class="dropdown-item notify-item">
-								<i class="uil-cog font-16 me-1"></i>
-								<span>User profile settings</span>
-							</a>
-
-							<!-- item-->
-							<div class="dropdown-header noti-title">
-								<h6 class="text-overflow mb-2 text-uppercase">Users</h6>
-							</div>
-
-							<div class="notification-list">
-								<!-- item-->
-								<a href="javascript:void(0);" class="dropdown-item notify-item">
-									<div class="d-flex">
-										<img class="d-flex me-2 rounded-circle"
-											src="${path}/tools/project_assets/images/users/avatar-2.jpg"
-											alt="Generic placeholder image" height="32"/>
-										<div class="w-100">
-											<h5 class="m-0 font-14">Erwin Brown</h5>
-											<span class="font-12 mb-0">UI Designer</span>
-										</div>
-									</div>
-								</a>
-							</div>
-							<!-- end notification list -->
-							
 						</div>
 					</div>
-				</div>
-				<!-- end Topbar -->
+					<!-- end page title -->
 
-				<!-- Start Content-->
+					<!-- start page content -->
 					<div class="row">
 						<div class="col-12">
 							<div class="card">
 								<div class="card-body">
-									<div class="row gy-2 gx-2 align-items-center justify-content-between">
+									<form class="row gy-2 gx-2 align-items-center justify-content-between"
+										id="taskSchForm" method="post" action="${path}/task.do?method=list">
+										<input type="hidden" name="curPage" value="1"/>
+										<input type="hidden" name="ptTitle" value="${taskSch.ptTitle }"/>
+										<input type="hidden" name="uiId" value="${user_info.uiId}"/>
+										<input type="hidden" name="ptCharge" value="${taskSch.ptCharge }"/>
 										<div class="col-auto">
-											<form class="row g-2" id="listsch" method="post">
-												<input type="hidden" name="curPage" value="1"/>
+											<div class="row gy-2">
 												<div class="col">
 													<select class="form-select" id="search-select">
-														<option selected value="${taskSch.ptTitle}">제목</option>
-														<option value="${taskSch.ptCharge}">담당자</option>
+														<option value="제목">제목</option>
+														<option value="담당자">담당자</option>
 													</select>
 												</div>
 												<div class="col">
 													<input type="search" class="form-control" id="search-word" placeholder="Search...">
 												</div>
-											</form>
+											</div>
 										</div>
 										<div class="col-auto">
-											<form class="row g-4" id="datesch" action="">
+											<div class="row gy-4">
 												<div class="col">
 													<label for="startdate-form" class="col-form-label">시작일</label>
 												</div>
 												<div class="col">
-													<input class="form-control" type="date" name="startdate" value="${taskSch.ptStartdate }"/>
+													<input class="form-control" type="date" name="ptStartdate" value="${taskSch.ptStartdate }"/>
 												</div>
 												<div class="col">
 													<label for="enddate-form" class="col-form-label">마감일</label>
 												</div>
 												<div class="col">
-													<input class="form-control" type="date" name="enddate" value="${taskSch.ptDuedate }"/>
+													<input class="form-control" type="date" name="ptDuedate" value="${taskSch.ptDuedate }"/>
 												</div>
-											</form>
+											</div>
 										</div>
-									</div>
+									</form>
 									<!-- end row -->
 							
 									<div class="row my-3">
@@ -598,8 +136,8 @@
 														<th>번호</th>
 														<th>제목</th>
 														<th>부서</th>
-														<th>작성자</th>
-														<th>작성일</th>
+														<th>등록자</th>
+														<th>시작일</th>
 														<th>마감일</th>
 														<th>진행상태</th>
 														<th>결재상태</th>
@@ -610,37 +148,48 @@
 													<tr>
 														<td>${task.cnt }</td>
 														<td ondblclick="detail('${task.ptId}')">${task.ptTitle }</td>
-														<td>${task.ptCharge }</td>
-														<td>${task.ptCharge }</td>
+														<td>
+														<c:forEach var="charge" items="${task.ptCharge.split(',') }">
+															${charge.split(" ")[0] }<br>
+														</c:forEach>
+														</td>
+														<td>
+														<c:forEach var="charge" items="${task.ptCharge.split(',') }">
+															${charge.split(" ")[1] }<br>
+														</c:forEach>
+														</td>
 														<td>${task.ptStartdate }</td>
 														<td>${task.ptDuedate }</td>
 														<td>
-															<div class="progress">
-																<div
+															<div class="progress" style="position:relative;">
+																<div class=
 																	<c:choose>
 																		<c:when test="${task.ptStatus eq '진행 전' }">
-																			class="progress-bar bg-secondary"
+																			"progress-bar bg-secondary"
 																			style="width:100%" aria-valuenow="100"
 																		</c:when>
 																		<c:when test="${task.ptStatus eq '진행 중' }">
-																			class="progress-bar bg-info"
+																			"progress-bar-striped bg-info progress-bar-animated"
 																			style="width:70%" aria-valuenow="70"
 																		</c:when>
 																		<c:when test="${task.ptStatus eq '완료' }">
-																			class="progress-bar bg-success"
+																			"progress-bar bg-success"
 																			style="width:100%" aria-valuenow="100"
 																		</c:when>
 																		<c:when test="${task.ptStatus eq '지연' }">
-																			class="progress-bar-striped bg-warning progress-bar-animated"
-																			style="width:0%" aria-valuenow="0"
+																			"progress-bar-striped bg-warning progress-bar-animated"
+																			style="width:70%" aria-valuenow="70"
 																		</c:when>
 																		<c:when test="${task.ptStatus eq '보류' }">
-																			class="progress-bar-striped"
+																			"progress-bar-striped"
 																			style="width:0%" aria-valuenow="0"
 																		</c:when>
 																	</c:choose>
-																		role="progressbar" aria-valuemin="0" aria-valuemax="100">${task.ptStatus }
+																		role="progressbar" aria-valuemin="0" aria-valuemax="100">
 																</div>
+																<small class="justify-content-center d-flex position-absolute w-100" style="color:white;">
+																	${task.ptStatus }
+																</small>
 															</div>
 														</td>
 														<td>
@@ -652,8 +201,8 @@
 											</table>
 										</div>
 									
-										<!-- 페이징 블록 -->
-										<div class="row gy-2">
+										<!-- start 페이징 블록 -->
+										<div class="row gy-2" id="paging"> 
 											<div class="col justify-content-end">
 												<ul class="pagination pagination-rounded">
 													<li class="page-item">
@@ -674,125 +223,41 @@
 												<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#signup-modal">등록</button>
 											</div>
 										</div>
+										<!-- end 페이징 블록 -->
 									
 									</div>
 									<!-- end row -->
 									
 								</div>
 								<!-- end card body -->
+									
 							</div>
 							<!-- end card -->
+							
+						</div>
+						<!-- end col -->
+					
+					</div>
+					<!-- end col -->
 				
-			<!-- end row -->
+				</div>
+				<!-- end content -->
 			
-		</div>
+			</div>
+			<!-- end container -->
 		
+		
+		</div>
 		<!-- ============================================================== -->
 		<!-- End Page content -->
 		
 		
-	</div>
+		<!-- start rightBar_footer -->
+		<jsp:include page="../include/rightBar_footer.jsp" flush="true"/>
+		<!-- end rightBar_footer -->
+		
 	</div>
 	<!-- wrapper -->
-
-	<!-- Footer Start -->
-	<footer class="footer">
-		<div class="container-fluid">
-			<div class="row">
-				<div class="col-md-6">
-					<script>
-						document.write(new Date().getFullYear())
-					</script>
-					© Hyper - Coderthemes.com
-				</div>
-				<div class="col-md-6">
-					<div class="text-md-end footer-links d-none d-md-block">
-						<a href="javascript: void(0);">About</a>
-						<a href="javascript: void(0);">Support</a>
-						<a href="javascript: void(0);">Contact Us</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</footer>
-	<!-- Footer end -->
-
-
-	<!-- Right Sidebar -->
-	<div class="end-bar">
-		<div class="rightbar-title">
-			<a href="javascript:void(0);" class="end-bar-toggle float-end">
-				<i class="dripicons-cross noti-icon"></i>
-			</a>
-			<h5 class="m-0">Settings</h5>
-		</div>
-
-		<div class="rightbar-content h-100" data-simplebar>
-			<div class="p-3">
-				<!-- Settings -->
-				<h5 class="mt-3">Color Scheme</h5>
-				<hr class="mt-1"/>
-				<div class="form-check form-switch mb-1">
-					<input class="form-check-input" type="checkbox"
-						name="color-scheme-mode" value="light" id="light-mode-check" checked>
-					<label class="form-check-label" for="light-mode-check">Light Mode</label>
-				</div>
-				<div class="form-check form-switch mb-1">
-					<input class="form-check-input" type="checkbox"
-						name="color-scheme-mode" value="dark" id="dark-mode-check"/>
-					<label class="form-check-label" for="dark-mode-check">Dark Mode</label>
-				</div>
-
-				<!-- Left Sidebar-->
-				<h5 class="mt-4">Left Sidebar</h5>
-				<hr class="mt-1" />
-				<div class="form-check form-switch mb-1">
-					<input class="form-check-input" type="checkbox" name="theme"
-						value="default" id="default-check"/>
-					<label class="form-check-label" for="default-check">Default</label>
-				</div>
-
-				<div class="form-check form-switch mb-1">
-					<input class="form-check-input" type="checkbox" name="theme"
-						value="light" id="light-check" checked/>
-					<label class="form-check-label" for="light-check">Light</label>
-				</div>
-
-				<div class="form-check form-switch mb-3">
-					<input class="form-check-input" type="checkbox" name="theme"
-						value="dark" id="dark-check"/>
-					<label class="form-check-label" for="dark-check">Dark</label>
-				</div>
-
-				<div class="form-check form-switch mb-1">
-					<input class="form-check-input" type="checkbox" name="compact"
-						value="fixed" id="fixed-check" checked/>
-					<label class="form-check-label" for="fixed-check">Fixed</label>
-				</div>
-
-				<div class="form-check form-switch mb-1">
-					<input class="form-check-input" type="checkbox" name="compact"
-						value="condensed" id="condensed-check"/>
-					<label class="form-check-label" for="condensed-check">Condensed</label>
-				</div>
-
-				<div class="form-check form-switch mb-1">
-					<input class="form-check-input" type="checkbox" name="compact"
-						value="scrollable" id="scrollable-check"/>
-					<label class="form-check-label" for="scrollable-check">Scrollable</label>
-				</div>
-
-				<div class="d-grid mt-4">
-					<button class="btn btn-primary" id="resetBtn">Reset to Default</button>
-				</div>
-			</div>
-			<!-- end padding-->
-
-		</div>
-	</div>
-	<!-- /End-bar -->
-	
-	<div class="rightbar-overlay"></div>
 	
 
 	<!-- 업무 등록 modal -->
@@ -900,149 +365,101 @@
 			
 			
 			
-<!-- bundle -->
-<script src="${path}/tools/project_assets/js/vendor.min.js"></script>
-<script src="${path}/tools/project_assets/js/app.min.js"></script>
-<script src="${path}/a00_com/jquery-3.6.0.js"></script>
+
 <script>
+	// bootstrap modal 창에서 select2 폼을 사용할 때
+	// 참고 : https://select2.org/troubleshooting/common-problems
+	$(".select2").select2({
+	    dropdownParent: $("#signup-modal")
+	});
+	
+	$(document).ready(function() {
+		
+		
+		// 검색이 실행되어 화면이 새로고침되었더라도 검색 키워드가 입력된 상태로 설정
+		let schTitle = "${taskSch.ptTitle}";
+		let schCharge = "${taskSch.ptCharge}";
+		let schSdate = "${taskSch.ptStartdate}";
+		let schDdate = "${taskSch.ptDuedate}";
+		
+		if(schTitle != "") {
+			$("#search-select").val("제목").prop("selected", true);
+			$("#search-word").val(schTitle);
+		}
+		if(schCharge != "") {
+			$("#search-select").val("담당자").prop("selected", true);
+			$("#search-word").val(schCharge);
+		}
+		if(schSdate != "") {
+			$("#taskSchForm").children("[name=ptStartdate]").val(schSdate);
+		}
+		if(schDdate != "") {
+			$("#taskSchForm").children("[name=ptDuedate]").val(schDdate);
+		}
+	});
+	
+	
 	
 	// 검색 범위(제목 / 담당자)
 	let schtype = "제목";
 	// 검색 키워드
 	let schword = "";
-	let schdate = {"startdate":"", "enddate":""};
-	let schdata = {"ptTitle":"", "ptCharge":"", "ptStartdate":"", "ptDuedate":""};
+	
 	
 	
 	// 검색 : 제목 / 담당자
-	$("#search-select").change(function() {
-		schtype = $("#search-select option:selected").text();
-	});
-	// 검색 : 시작일 / 마감일
-	$("[name=startdate]").change(function() {
-		schdate.startdate = $(this).val();
-	});
-	$("[name=enddate]").change(function() {
-		schdate.enddate = $(this).val();
-	});
-	
 	// 제목 / 담당자 검색 키워드 입력 시
-	$("#search-word").keyup(function(key) {
-		schword = $(this).val();
-		
-		// 검색 범위와 검색 키워드를 json 형태로 설정
-		if(schtype == "제목") {
-			schdata.ptTitle = schword;
-			schdata.ptCharge = "";
-		};
-		if(schtype == "담당자") { 
-			schdata.ptCharge = schword;
-		};
-		
-		console.log(schdata);
-		
-		search(schdata);
+	$("#search-word").keydown(function(key) {
+		if(key.keyCode == 13) {
+			schtype = $("#search-select option:selected").val();
+			schword = $(this).val();
+			
+			if(schtype == "제목") {
+				$("#taskSchForm").children("[name=ptTitle]").val(schword);
+				$("#taskSchForm").children("[name=ptCharge]").val("");
+			};
+			if(schtype == "담당자") { 
+				$("#taskSchForm").children("[name=ptTitle]").val("");
+				$("#taskSchForm").children("[name=ptCharge]").val(schword);
+			};
+			
+			console.log(schtype+"="+schword);
+			$("#taskSchForm").submit();
+		}
 	});
 	
+	
+	// 검색 : 시작일 / 마감일
 	// 시작일 / 마감일 키워드 입력 시
-	$("[name=startdate], [name=enddate]").change(function() {
-		schword = $(this).val();
-		console.log(schword);
-		
-		schdata.ptStartdate = schdate.startdate;
-		schdata.ptDuedate = schdate.enddate;
-		
-		search(schdata);		
+	$("#taskSchForm").children("[name=ptStartdate], [name=ptDuedate]").change(function() {
+		$("#taskSchForm").submit();
 	});
 	
 	
-	
+	// 업무 상세 페이지로 이동
 	function detail(ptId){
 		// 더블 클릭시, no를 매개변수를 넘기고 controller에 요청값을 전달 처리.
 		location.href="${path}/taskDetail.do?ptId="+ptId;
 	}
+	// 
 	function goPage(no){
 		$("[name=curPage]").val(no);
-		$("#listsch").submit();
+		$("#taskSchForm").submit();
 	}
-	function search(schdata) {
-		console.log(schdata);
-		
-		$.ajax({
-			url:"${path}/task.do?method=search",
-			type:"get",
-			data:schdata,
-			dataType:"json",
-			success:function(data) {
-				console.log(data.schlist);
-				let html = "";
-				
-		    	$.each(data.schlist, function(idx, sch) {
-		    		let ptStatus = sch.ptStatus;
-		    		let settings = {"cl":"", "style":"", "valuenow":0};
-		    		
-		    		if(ptStatus == "진행 전") {
-		    			settings.cl = "progress-bar bg-secondary";
-		    			settings.style = "width:100%";
-		    			settings.valuenow = 100;
-		    		}
-		    		if(ptStatus == "진행 중") {
-		    			settings.cl = "progress-bar bg-info";
-		    			settings.style = "width:70%";
-		    			settings.valuenow = 70;
-		    		}
-		    		if(ptStatus == "완료") {
-		    			settings.cl = "progress-bar bg-success";
-		    			settings.style = "width:100%";
-		    			settings.valuenow = 100;
-		    		}
-		    		if(ptStatus == "지연") {
-		    			settings.cl = "progress-bar-striped bg-warning progress-bar-animated";
-		    			settings.style = "width:70%";
-		    			settings.valuenow = 100;
-		    		}
-		    		if(ptStatus == "보류") {
-		    			settings.cl = "progress-bar-striped bg-secondary";
-		    			settings.style = "width:100%";
-		    			settings.valuenow = 100;
-		    		}
-		    		
-		 			html += "<tr>"
-		 				+"<td>"+sch.cnt+"</td>"
-		 				+"<td>"+sch.ptTitle+"</td>"
-		 				+"<td>"+sch.ptCharge+"</td>"
-		 				+"<td>"+sch.ptCharge+"</td>"
-		 				+"<td>"+sch.ptStartdate+"</td>"
-		 				+"<td>"+sch.ptDuedate+"</td>"
-		 				+"<td><div class='progress'>"
-		 				+"<div class='"+settings.cl+"' role='progressbar' style='"+settings.style+"' aria-valuenow='"+settings.valuenow+"' "
-		 				+"aria-valuemin='0' aria-valuemax='100'>"+sch.ptStatus+"</div></div></td>"		 				
-		 				+"<td><span class='badge bg-secondary text-light'>결재완료</span></td>"
-		 				+"</tr>";	
-			 	});	
-		 		$("#task-tbody").html(html);
-			},
-			error:function(err) {
-				console.log(err);
-			}
-		});
-	}
-	
-
 	
 	// 업무 등록
 	$("#regBtn").click(function() {
 		if(confirm("등록하시겠습니까?")) {
-			if($("[name=ptTitle]").val() == "") {
+			if($("#regForm").find("[name=ptTitle]").val() == "") {
 				alert("제목을 작성해주세요.");
-			} else if($("[name=ptCharge]").val() == "" || $("[name=ptCharge]").val() == null) {
+			} else if($("#regForm").find("[name=ptCharge]").val() == "" || $("#regForm").find("[name=ptCharge]").val() == null) {
 				alert("업무담당자를 지정해주세요.");			
-			} else if($("[name=ptStartdate]").val() == "" || $("[name=ptStartdate]").val() == null) {
+			} else if($("#regForm").find("[name=ptStartdate]").val() == "" || $("#regForm").find("[name=ptStartdate]").val() == null) {
 				alert("업무 시작일을 지정해주세요.");
-			} else if($("[name=ptDuedate]").val() == "" || $("[name=ptDuedate]").val() == null) {
+			} else if($("#regForm").find("[name=ptDuedate]").val() == "" || $("#regForm").find("[name=ptDuedate]").val() == null) {
 				alert("업무 마감일을 지정해주세요.");
-			} else if($("[name=ptContent]").val() == "" || $("[name=ptContent]").val() == null) {
-				alert("업무 마감일을 지정해주세요.");
+			} else if($("#regForm").find("[name=ptContent]").val() == "" || $("#regForm").find("[name=ptContent]").val() == null) {
+				alert("업무 내용을 입력해주세요.");
 			} else {
 				$("#regForm").submit();
 			}
@@ -1093,7 +510,92 @@
 	
 	
 	
-    
+	
+	/*
+	// ajax 검색 시
+	let schword = "";
+	let schtype = "제목";
+	let schdate = {ptStartdate:"", ptDuedate:""};
+	let schdata = {ptTitle:"", ptCharge:"", ptStartdate:"", ptDuedate:"", curPage:1};
+	
+	$("[name=ptStartdate], [name=ptDuedate]").change(function() {
+		schword = $(this).val();
+		console.log(schword);
+		
+		schdata.ptStartdate = schdate.startdate;
+		schdata.ptDuedate = schdate.enddate;
+		
+		search(schdata);
+	});
+	function setProgress(ptStatus) {
+		let settings = {"cl":"", "style":"", "valuenow":0};
+		
+		if(ptStatus == "진행 전") {
+			settings.cl = "progress-bar bg-secondary";
+			settings.style = "width:100%";
+			settings.valuenow = 100;
+		}
+		if(ptStatus == "진행 중") {
+			settings.cl = "progress-bar-striped bg-info progress-bar-animated";
+			settings.style = "width:70%";
+			settings.valuenow = 70;
+		}
+		if(ptStatus == "완료") {
+			settings.cl = "progress-bar bg-success";
+			settings.style = "width:100%";
+			settings.valuenow = 100;
+		}
+		if(ptStatus == "지연") {
+			settings.cl = "progress-bar-striped bg-warning progress-bar-animated";
+			settings.style = "width:70%";
+			settings.valuenow = 100;
+		}
+		if(ptStatus == "보류") {
+			settings.cl = "progress-bar-striped bg-secondary";
+			settings.style = "width:100%";
+			settings.valuenow = 100;
+		}
+		
+		return settings;
+	}
+	function search(schdata) {
+		console.log(schdata);
+		
+		$.ajax({
+			url:"${path}/task.do?method=search",
+			type:"get",
+			data:schdata,
+			dataType:"json",
+			success:function(data) {
+				console.log(data.tasklist);
+				let tbody = "";
+				let paging = "";
+				
+		    	$.each(data.tasklist, function(idx, sch) {
+		    		let settings = setProgress(sch.ptStatus);
+		 			tbody += "<tr>"
+		 				+"<td>"+sch.cnt+"</td>"
+		 				+"<td>"+sch.ptTitle+"</td>"
+		 				+"<td>"+sch.ptCharge+"</td>"
+		 				+"<td>"+sch.ptCharge+"</td>"
+		 				+"<td>"+sch.ptStartdate+"</td>"
+		 				+"<td>"+sch.ptDuedate+"</td>"
+		 				+"<td><div class='progress' style='position:relative;'>"
+		 				+"<div class='"+settings.cl+"' role='progressbar' style='"+settings.style+"' aria-valuenow='"+settings.valuenow+"' "
+		 				+"aria-valuemin='0' aria-valuemax='100'></div><small class='justify-content-center d-flex position-absolute w-100' style='color:white;'>"+sch.ptStatus
+						+"</small></div></td>"
+		 				+"<td><span class='badge bg-secondary text-light'>결재완료</span></td>"
+		 				+"</tr>";	
+			 	});	
+		 		$("#task-tbody").html(tbody);
+		 		// 페이징 블록 .html 코드 추가 필요
+			},
+			error:function(err) {
+				console.log(err);
+			}
+		});
+	}
+	*/
 </script>
 
 

@@ -1,17 +1,26 @@
 package mvc.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import mvc.service.EtcService;
 import mvc.service.UserService;
+import mvc.vo.Task_User;
+import mvc.vo.USER_INFO;
 
 @Controller
 public class MainController {
 	
 	@Autowired
 	private UserService service;
+	
+	@Autowired
+	private EtcService etcservice;
 	
 	@RequestMapping("/main.do")
 	public String main() {
@@ -28,16 +37,29 @@ public class MainController {
 	}
 	
 	@RequestMapping("/prjList.do")
-	public String prjList() {
+	public String prjList(HttpServletRequest request, Model d) {
+		HttpSession session = request.getSession();
+		USER_INFO sch= (USER_INFO)session.getAttribute("user_info");
 		
-		
+		d.addAttribute("prjList", service.getMyPrjList(sch.getUiId()));
+			
 		return "main_login//prjList";
 	}
 	
 	@RequestMapping("/prjDash.do")
-	public String prjDash() {
+	public String prjDash(HttpServletRequest request, Model d) {
 		
-		return "dashboard/prjDash";
+		String piId = "PI00001";
+		HttpSession session = request.getSession();
+		USER_INFO user= (USER_INFO)session.getAttribute("user_info");
+		
+		System.out.println("##"+piId);
+		System.out.println("##"+user.getUiDept());
+		System.out.println("##"+user.getUiName());
+		
+		d.addAttribute("alarmList", etcservice.getAlarmList(new Task_User(piId, user.getUiDept(), user.getUiName())));
+		
+		return "dashboard//prjDash";
 	}
 	
 

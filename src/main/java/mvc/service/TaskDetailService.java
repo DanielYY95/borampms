@@ -2,6 +2,7 @@ package mvc.service;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -97,6 +98,15 @@ public class TaskDetailService {
 		// => 수정인지 아닌지 체크하는 비용을 생각하면 그냥 업데이트하는게 낫죠 
 			 //수정하지 않고 수정버튼 누르는 경우가 얼마나 될까요
 
+	
+	// 산출물 조회
+	
+	public ArrayList<TASK_OUTPUT> getOutputList(String ptId){
+		
+		return dao.getOutputList(ptId);
+	};
+	
+	
 	// 2. 업무 정보 수정
 	public void updateTask(PRJ_TASK task) {
 		// 변경되는게 없도록
@@ -120,6 +130,13 @@ public class TaskDetailService {
 	public void delTask(String ptId) {
 		
 		dao.delTask(ptId);
+	};
+	
+	// 5. 비밀번호 확인
+	
+	public int pwChk(USER_INFO sch) {
+		
+		return dao.pwChk(sch);
 	};
 	
 	

@@ -38,6 +38,10 @@ public interface TaskDetailDao {
 		// 3. 삭제
 	public void delTask(String ptId);
 	
+		// 3-1. 삭제를 위한 비밀번호 확인
+	public int pwChk(USER_INFO sch);
+	
+	
 	// (2) wbs
 		// 1. wbs에 업무 위치 표기
 	

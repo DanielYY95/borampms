@@ -159,7 +159,7 @@
                                                     </a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a href="${path}/toFrm.do?ptId='${taskUser.ptId}'"  aria-expanded="true" class="nav-link">
+                                                    <a href="${path}/toFrm.do"  aria-expanded="true" class="nav-link">
                                                         산출물
                                                     </a>
                                                 </li>
@@ -452,15 +452,31 @@
 			// 삭제 버튼
             $("#delBtn").click(function(){
                 let pw = prompt("삭제를 원하시면 비밀번호를 입력하세요.");
-                if(pw !== '${taskUser.uiPw}'){ // 요렇게 하면 웹브라우저에서 뜨지 않는가... ajax로 아이디 중복 체크하듯이 해야하나?
-                  alert("비밀번호가 일치하지않습니다.")
-                  return false;
-                }
-                let ptId = '${taskUser.ptId}';
-                if(confirm("삭제를 진행하시겠습니까?")){
-                   
-                    location.href="${path}/taskDel.do?ptId="+ptId;
-                }
+                console.log(typeof(pw));
+
+                $.ajax({
+                    url : "${path}/pwchk.do",
+                    type : "get",
+                    dataType : "json",
+                    data : "pw="+pw,
+                    success : function(data){
+                        
+                        let result = data.result;
+                        console.log(result)
+                        
+                        if(result == 1){
+                            if(confirm("삭제를 진행하시겠습니까?")){
+                            location.href="${path}/taskDel.do";
+                        }
+
+                        }else{
+                            alert("비밀번호가 일치하지않습니다.")
+                            return false;
+                        }
+                    }
+                
+                });
+
 
             })
             

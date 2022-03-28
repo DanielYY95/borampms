@@ -1,7 +1,9 @@
 package mvc.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import mvc.vo.PRJ_INFO;
 import mvc.vo.USER_INFO;
 
 
@@ -35,5 +37,7 @@ public interface UserDao {
 	// 9. 비밀번호 찾기
 	
 	
+	// 10. 내 프로젝트 목록 조회
+	public ArrayList<PRJ_INFO> getMyPrjList(String uiId);
 	
 }

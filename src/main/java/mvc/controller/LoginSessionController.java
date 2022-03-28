@@ -54,6 +54,11 @@ public class LoginSessionController {
 			}
 			
 			d.addAttribute("user_info",sch);
+		
+			if(toURL.equals("")) { // main에서 로그인할 때는, header 쪽에서 주는 toURL이 없으니
+				return "main_login//login";
+			}
+			
 			return "redirect:"+toURL;
 			
 			
