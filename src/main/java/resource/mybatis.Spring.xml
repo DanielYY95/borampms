@@ -18,6 +18,7 @@
 		<typeAlias alias="taskSch" type="mvc.vo.TaskSch"/>
 		<typeAlias alias="sg" type="mvc.vo.Sch_Gantt"/>
 		<typeAlias alias="deptDoc" type="mvc.vo.DeptDoc"/>
+		<typeAlias alias="calendar" type="mvc.vo.Sch_Calendar"/>
 	</typeAliases>
 	
 	
@@ -27,7 +28,7 @@
 		<mapper resource="resource/KanbanMapper.xml" />
 		<mapper resource="resource/DeptMapper.xml"/>
 		<mapper resource="resource/TaskMapper.xml"/>
-		
+		<mapper resource="resource/SchCalendarMapper.xml"/>
 	</mappers>
 	
 </configuration>

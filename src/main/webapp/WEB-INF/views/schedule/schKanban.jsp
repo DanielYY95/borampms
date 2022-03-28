@@ -101,7 +101,6 @@
 											<label for="example-select" class="form-label">진행상태</label> <select class="form-select" id="example-select" name="ptStatus">
 												<option>진행 전</option>
 												<option>진행 중</option>
-												<option>지연</option>
 												<option>보류</option>
 												<option>완료</option>
 											</select>
