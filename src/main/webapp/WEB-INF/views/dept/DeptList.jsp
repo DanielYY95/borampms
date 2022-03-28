@@ -135,20 +135,26 @@
 		                                                                <th class="border-0">부서명</th>
 		                                                                <th class="border-0">작성자</th>
 		                                                                <th class="border-0">작성일</th>
+		                                                                <th class="border-0">수정</th>
 		                                                            </tr>
 		                                                        </thead>
 		                                                        <tbody>
 		                                                        	<c:forEach var="deptdoc" items="${ddList}">
-		                                                            <tr onclick="detail(${deptdoc.ddId})">
-		                                                                <td>
+		                                                            <tr>
+		                                                                <td onclick="detail(${deptdoc.ddId})">
 		                                                                    <span class="ms-2 fw-semibold">${deptdoc.ddId}</span>
 		                                                                </td>
-		                                                                <td>
+		                                                                <td onclick="detail(${deptdoc.ddId})">
 		                                                                    <span class="font-12"><a href="javascript: void(0);" class="text-reset">${deptdoc.ddTitle}</a></span>
 		                                                                </td>
-		                                                                <td>${deptdoc.ddDept}</td>
-		                                                                <td>${deptdoc.ddWriter}</td>
-		                                                                <td><fmt:formatDate value="${deptdoc.ddRegdate}" pattern="yyyy-MM-dd"/></td>
+		                                                                <td onclick="detail(${deptdoc.ddId})">${deptdoc.ddDept}</td>
+		                                                                <td onclick="detail(${deptdoc.ddId})">${deptdoc.ddWriter}</td>
+		                                                                <td onclick="detail(${deptdoc.ddId})"><fmt:formatDate value="${deptdoc.ddRegdate}" pattern="yyyy-MM-dd"/></td>
+		                                                            	<c:choose>
+																			<c:when test="${deptdoc.ddDept=='개발팀'&&deptdoc.ddWriter=='조민혁'}">
+																				<td onclick="update(${deptdoc.ddId})"><button id="upt-btn"><i class="dripicons-pencil"></i></button></td>
+																			</c:when>
+																		</c:choose>
 		                                                            </tr>
 		                                                            </c:forEach>
 		                                                        </tbody>
@@ -324,6 +330,9 @@
 	/* 클릭 시, ddId의 값을 controller에 요청값을 전달 */
 	function detail(ddId){
 		location.href="${path}/dept.do?method=detail&ddId="+ddId;
+	}
+	function update(ddId){
+		location.href="${path}/dept.do?method=uptPage&ddId="+ddId;
 	}
 	</script>
 </html>

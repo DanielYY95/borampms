@@ -104,9 +104,9 @@
 														</div>
 													</div>
 													<div class="mb-3">
-													    <label class="form-label">내용</label>
-													    <textarea id="simplemde1" name="ddContent">${deptdoc.ddContent}</textarea>
-													</div>
+                                                        <label class="form-label">내용</label>
+                                                        <textarea class="form-control" id="example-textarea" name="ddContent" rows="5">${deptdoc.ddContent}</textarea>
+                                                    </div>
 													<div class="row">
 	                                                    <div class="col-lg-6">
 															<div class="mb-3">
@@ -268,6 +268,10 @@
 		<script src="${path}/tools/main_assets/js/pages/demo.simplemde.js"></script>
     </body>
 	<script>
+	$(document).ready(function(){
+		storage.removeItem("smde_simplemde1");	
+	});
+	
 	/* 파일 업로드 스크립트 */
 	$(document).ready(function(){
 		$("#btn-upload").click(function(){
@@ -297,20 +301,21 @@
 					$("[name=ddTitle]").focus();
 					return;
 				}
+				if($("[name=ddContent]").val()==""){
+					alert("내용은 필수항목입니다.")
+					$("[name=ddContent]").focus();
+					return;
+				}
 				/* 문서관리 페이지로 이동 */
 				$("form").submit();
 			}
 		});
 	});
-	/* 페이징 처리 */
-	function goPage(no){
-		$("[name=curPage]").val(no);
-		$("#frm01").submit();
-	}
-	/* 클릭 시, ddId의 값을 controller에 요청값을 전달 */
-	function detail(ddId){
-		
-	}
+	/* 취소버튼 클릭시, 문서관리 페이지로 이동 */
+	$("#cancelBtn").click(function(){
+		alert("문서관리 페이지로 이동하시겠습니까?");
+		location.href="${path}/dept.do?method=list";
+	});
 	</script>
 	<script>
 	// 모달 창 닫기 버튼 클릭 시

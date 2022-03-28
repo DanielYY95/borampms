@@ -42,7 +42,7 @@ public class DeptController {
 		System.out.println("확인:"+ins.getDdContent());
 		System.out.println("확인:"+ins.getReport());
 		d.addAttribute("msg",service.insertDD(ins));
-		return "dept\\DeptInsert"; 
+		return "redirect:/dept.do?method=list"; 
 	}
 	
 }

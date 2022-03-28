@@ -13,7 +13,9 @@ public class DeptDetailService {
 	private DeptDetailDao dao;
 	// 1. 부서문서 데이터 (행)별로 상세보기
 	public DeptDoc getDetailList(String ddId) {
-		return dao.getDetailList(ddId);
+		DeptDoc dd = dao.getDetailList(ddId);
+		dd.setFnames(dao.getFileInfo(ddId));
+		return dd;
 	}
 	// 2. 수정
 	public void updateDept(DeptDoc upt) {

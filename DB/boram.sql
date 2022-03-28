@@ -78,5 +78,11 @@ CREATE TABLE COMMON_FILE(
 	CF_REGDATE DATE,
 	CD_ID VARCHAR2(20)
 );
-select * from Dept_Doc where DD_ID = '1';
+select * from Dept_Doc;
 SELECT * FROM dept_file WHERE DD_id = '1';
+
+update Dept_Doc
+		set DD_TITLE = '1111(수정)',
+			DD_CONTENT = '수정',
+			DD_REGDATE = sysdate
+		where DD_ID = '47';

@@ -66,11 +66,12 @@
                                             <li class="breadcrumb-item active">File Manager</li>
                                         </ol>
                                     </div>
-                                    <h4 class="page-title">문서 상세정보</h4>
+                                    <h4 class="page-title">문서 수정</h4>
                                 </div>
                             </div>
                         </div>
                         <!-- end page title -->
+						<form method="post" enctype="multipart/form-data" action="${path}/dept.do?method=upt">
                         <div class="row">
                             <div class="col-12">
                                 <div class="card">
@@ -82,8 +83,9 @@
                                                     <div class="row">
 	                                                    <div class="col-lg-6">
 		                                                    <div class="mb-3">
+		                                                    	<input type="hidden" name="ddId" value="${deptRowList.ddId}"/>
 															    <label class="form-label">제목</label>
-															    <input type="text" class="form-control" name="ddTitle" value="${deptRowList.ddTitle}" readonly>
+															    <input type="text" class="form-control" name="ddTitle" value="${deptRowList.ddTitle}">
 															    <span class="font-13 text-muted">제목 입력은 필수사항입니다.</span>
 															</div>
 														</div>
@@ -92,40 +94,37 @@
 														<div class="col-lg-6">
 															<div class="mb-3">
 															    <label class="form-label" >부서</label>
-															    <input type="text" class="form-control" name="ddDept" value="${deptRowList.ddDept}" readonly>
+															    <input type="text" class="form-control" name="ddDept" value="${deptRowList.ddDept}"  readonly>
 															</div>
 														</div>
 														<div class="col-lg-6">
 															<div class="mb-3">
 															    <label class="form-label">작성자</label>
-															    <input type="text" class="form-control" name="ddWriter" value="${deptRowList.ddWriter}" readonly>
+															    <input type="text" class="form-control" name="ddWriter" value="${deptRowList.ddWriter}"  readonly>
 															</div>
 														</div>
 													</div>
 													<div class="mb-3">
                                                         <label class="form-label">내용</label>
-                                                        <textarea class="form-control" id="example-textarea" name="ddContent" rows="5" readonly>${deptRowList.ddContent}</textarea>
+                                                        <textarea class="form-control" id="example-textarea" name="ddContent" rows="5">${deptRowList.ddContent}</textarea>
                                                     </div>
 													<div class="row">
 	                                                    <div class="col-lg-6">
-															    <label class="form-label">파일 다운로드</label>
+															    <label class="form-label">파일 수정</label>
 							
 														</div>
 													</div>
 													<c:forEach var="dfFile" items="${deptRowList.fnames}">
 													<div class="row">
-								            			<div class="col-lg-4">
-															<div class="mb-3">
-																<div class="input-group flex-nowrap">
-                                                            		<span class="input-group-text" id="basic-addon1"><i class="dripicons-upload"></i></span>
-                                                            		<input type="text" class="form-control" name="report" placeholder="${dfFile}" aria-label="Username" aria-describedby="basic-addon1" readonly>
-                                                        		</div>
-														  	</div>
-													  	</div>
+							            			<div class="col-lg-6">
+													<div class="mb-3">
+													<input type="file" id="example-fileinput" class="form-control" multiple="multiple" name="report" value="${dfFile}" readonly>
+												  	</div>
+												  	</div>
 												  	</div>
 												  	</c:forEach>
 													<div style="text-align:right;">
-														<button id="docList-btn" type="button" class="btn btn-primary">글목록</button>
+														<button id="updBtn" type="button" class="btn btn-primary">수정</button>
 		                                            </div>
                                                 <!-- end row -->                      
                                             </div> <!-- end preview-->
@@ -144,7 +143,7 @@
 	                        </div> <!-- end card-box -->
 	
 	                    </div> <!-- end Col -->
-	                    
+	                    </form>
 	                </div><!-- End row -->
                     
 	
@@ -272,24 +271,25 @@
 		<script src="${path}/tools/main_assets/js/pages/demo.simplemde.js"></script>
     </body>
 	<script>
-	/* 파일 업로드 스크립트 */
+	/* 수정 처리 */
 	$(document).ready(function(){
-		$("#btn-upload").click(function(){
-			/* 파일추가 버튼 클릭시(파일 선택 입력란이 나온다.) */
-			var html = '<div class="row">'
-            			+ '<div class="col-lg-6">'
-						+ '<div class="mb-3">'
-						+ '<input type="file" id="example-fileinput" class="form-control" multiple="multiple" name="deptRowList.report">'
-					  	+ '</div>'
-					  	+ '</div>'
-					  	+ '</div>'
-			$('#articlefileChange').append(
-		       	html
-			);
-			$("#x_btn").click(function(){
-				html.remove();
-			});
-		})
+		$("#updBtn").click(function(){
+			if(confirm("수정하시겠습니까?")){
+				/* 제목란이 비어있을 경우 */
+				if($("[name=ddTitle]").val()==""){
+					alert("제목은 필수항목입니다.")
+					$("[name=ddTitle]").focus();
+					return;
+				}
+				if($("[name=ddContent]").val()==""){
+					alert("내용은 필수항목입니다.")
+					$("[name=ddContent]").focus();
+					return;
+				}
+				/* 문서관리 페이지로 이동 */
+				$("form").submit();
+			}
+		});
 	});
 	/* 페이징 처리 */
 	function goPage(no){
