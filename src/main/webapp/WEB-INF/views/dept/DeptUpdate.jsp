@@ -127,7 +127,8 @@
 												  	</div>
 												  	</c:forEach>
 													<div style="text-align:right;">
-														<button id="updBtn" type="button" class="btn btn-primary">수정</button>
+														<button id="updBtn" type="button" class="btn btn-primary">수정</button>&nbsp;&nbsp;
+														<button id="cancelBtn"type="button" class="btn btn-light">취소</button>
 		                                            </div>
                                                 <!-- end row -->                      
                                             </div> <!-- end preview-->
@@ -293,17 +294,17 @@
 				$("form").submit();
 			}
 		});
+		/* 취소버튼 클릭시, 문서관리 페이지로 이동 */
+		$("#cancelBtn").click(function(){
+			alert("문서관리 페이지로 이동하시겠습니까?");
+			location.href="${path}/dept.do?method=list";
+		});
 	});
 	/* 페이징 처리 */
 	function goPage(no){
 		$("[name=curPage]").val(no);
 		$("#frm01").submit();
 	}
-	/* 글목록버튼 클릭시, 문서관리 페이지로 이동 */
-	$("#docList-btn").click(function(){
-		alert("문서관리 페이지로 이동하시겠습니까?");
-		location.href="${path}/dept.do?method=list";
-	});
 	</script>
 	<script>
 	// 모달 창 닫기 버튼 클릭 시
