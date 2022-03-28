@@ -110,17 +110,20 @@
                                                     </div>
 													<div class="row">
 	                                                    <div class="col-lg-6">
-															    <label class="form-label">파일 수정</label>
+															    <label class="form-label">첨부 파일</label>
 							
 														</div>
 													</div>
 													<c:forEach var="dfFile" items="${deptRowList.fnames}">
 													<div class="row">
-							            			<div class="col-lg-6">
-													<div class="mb-3">
-													<input type="file" id="example-fileinput" class="form-control" multiple="multiple" name="report" value="${dfFile}" readonly>
-												  	</div>
-												  	</div>
+								            			<div class="col-lg-4">
+															<div class="mb-3">
+																<div class="input-group flex-nowrap">
+                                                            		<span class="input-group-text" id="basic-addon1"><i class="dripicons-document-new"></i></span>
+                                                            		<input type="text" class="form-control" name="report" placeholder="${dfFile}" aria-label="Username" aria-describedby="basic-addon1" readonly>
+                                                        		</div>
+														  	</div>
+													  	</div>
 												  	</div>
 												  	</c:forEach>
 													<div style="text-align:right;">

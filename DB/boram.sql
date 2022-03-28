@@ -85,4 +85,4 @@ update Dept_Doc
 		set DD_TITLE = '1111(수정)',
 			DD_CONTENT = '수정',
 			DD_REGDATE = sysdate
-		where DD_ID = '47';
+		where DD_ID = '46';

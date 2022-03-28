@@ -31,6 +31,14 @@
  		<script src="${path}/tools/jquery-3.6.0.js"></script>
         <!-- css -->
         <style>
+        	#del-btn{
+        		border:0;
+        		background:white;
+        	}
+        	#upt-btn{
+        		border:0;
+        		background:white;
+        	}
         	.pagination-margin-top{
         		margin-top:10px;
         	}
@@ -135,7 +143,7 @@
 		                                                                <th class="border-0">부서명</th>
 		                                                                <th class="border-0">작성자</th>
 		                                                                <th class="border-0">작성일</th>
-		                                                                <th class="border-0">수정</th>
+		                                                                <th class="border-0">수정/삭제</th>
 		                                                            </tr>
 		                                                        </thead>
 		                                                        <tbody>
@@ -152,7 +160,11 @@
 		                                                                <td onclick="detail(${deptdoc.ddId})"><fmt:formatDate value="${deptdoc.ddRegdate}" pattern="yyyy-MM-dd"/></td>
 		                                                            	<c:choose>
 																			<c:when test="${deptdoc.ddDept=='개발팀'&&deptdoc.ddWriter=='조민혁'}">
-																				<td onclick="update(${deptdoc.ddId})"><button id="upt-btn"><i class="dripicons-pencil"></i></button></td>
+																				<td>
+							 														<button onclick="update(${deptdoc.ddId})" id="upt-btn"><i class="dripicons-pencil"></i></button> |
+																					<input type="hidden" name="ddId" value="${deptdoc.ddId}"/>
+																					<button id="del-btn"><i class="dripicons-trash"></i></button>
+																				</td>
 																			</c:when>
 																		</c:choose>
 		                                                            </tr>
@@ -318,6 +330,15 @@
 		<script src="${path}/tools/main_assets/js/pages/demo.simplemde.js"></script>
     </body>
 	<script>
+	/* 휴지통 버튼(삭제) 클릭 시 */
+	$("#del-btn").click(function(){
+		if(!confirm("삭제할 경우 복구가 불가능합니다. \n삭제하시겠습니까?")){
+			location.href="${path}/dept.do?method=list";
+		}
+		else{
+			location.href="${path}/dept.do?method=del&ddId="+$("[name=ddId]").val();	
+		}	
+	});
 	/* 등록 버튼 클릭 시(등록 페이지로 이동) */
 	$("#Doc-regBtn").click(function(){
 		location.href="${path}//dept.do?method=insertFrm";
@@ -334,5 +355,6 @@
 	function update(ddId){
 		location.href="${path}/dept.do?method=uptPage&ddId="+ddId;
 	}
+	
 	</script>
 </html>

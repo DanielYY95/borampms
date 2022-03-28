@@ -38,5 +38,10 @@ public class DeptDetailController {
 
 		return "redirect:/dept.do?method=list";
 	}
-	
+	@RequestMapping(params="method=del")
+	public String ddDelete(String ddId) {
+		service1.deleteDept(ddId);
+		
+		return "redirect:/dept.do?method=list";
+	}
 }
