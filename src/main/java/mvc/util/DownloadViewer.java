@@ -14,7 +14,8 @@ import org.springframework.util.FileCopyUtils;
 import org.springframework.web.servlet.view.AbstractView;
 
 public class DownloadViewer extends AbstractView {
-	// ´Ù¿î·ÎµåÇÒ Æú´õ À§Ä¡ ÁöÁ¤(config¿¡¼­ È£Ãâ)
+
+	// ë‹¤ìš´ë¡œë“œí•  í´ë” ìœ„ì¹˜ ì§€ì •(configì—ì„œ í˜¸ì¶œ)
 	@Value("${upload}")
 	private String upload;
 	
@@ -22,34 +23,34 @@ public class DownloadViewer extends AbstractView {
 	protected void renderMergedOutputModel(Map<String, Object> model, 
 				HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		// 1. ¼­¹ö¿¡¼­ °¡Áö°í ÀÖ´Â ÆÄÀÏ °´Ã¼ ¸¸µé±â
-		// 		1) ÆÄÀÏ Àü¼Û ÄÁÆ®·Ñ·¯¿¡ ³Ñ°Ü¿Â ÆÄÀÏ ÀÌ¸§À» ¸ğµ¨¸íÀ¸·Î ¼³Á¤
-		//			d.addAttribute("downloadfile", ÆÄÀÏ¸í);
+		// 1. ì„œë²„ì—ì„œ ê°€ì§€ê³  ìˆëŠ” íŒŒì¼ ê°ì²´ ë§Œë“¤ê¸°
+		// 		1) íŒŒì¼ ì „ì†¡ ì»¨íŠ¸ë¡¤ëŸ¬ì— ë„˜ê²¨ì˜¨ íŒŒì¼ ì´ë¦„ì„ ëª¨ë¸ëª…ìœ¼ë¡œ ì„¤ì •
+		//			d.addAttribute("downloadfile", íŒŒì¼ëª…);
 		String fname = (String)model.get("downloadfile");
-		//		2) °æ·Î¿Í ÆÄÀÏ¸íÀ» Á¶ÇÕÇÏ¿© ÆÄÀÏ °´Ã¼ »ı¼º
+		//		2) ê²½ë¡œì™€ íŒŒì¼ëª…ì„ ì¡°í•©í•˜ì—¬ íŒŒì¼ ê°ì²´ ìƒì„±
 		File file = new File(upload+fname);
-		System.out.println("# file viewer ¸¦ ÅëÇÑ ´Ù¿î·Îµå ÆÄÀÏ Á¤º¸ #");
-		System.out.println("ÆÄÀÏÁ¤º¸ : "+file.getPath());
-		System.out.println("ÆÄÀÏÅ©±â : "+file.length());
+		System.out.println("# file viewer ë¥¼ í†µí•œ ë‹¤ìš´ë¡œë“œ íŒŒì¼ ì •ë³´ #");
+		System.out.println("íŒŒì¼ì •ë³´ : "+file.getPath());
+		System.out.println("íŒŒì¼í¬ê¸° : "+file.length());
 		
-		// 2. response °´Ã¼¸¦ ÅëÇØ ÆÄÀÏ client¿¡ Àü´ŞÇÏ±â
-		//		1) ÆÄÀÏ ´Ù¿î·Îµå¸¦ Ã³¸®ÇÏ±â À§ÇÑ contentType ÁöÁ¤
+		// 2. response ê°ì²´ë¥¼ í†µí•´ íŒŒì¼ clientì— ì „ë‹¬í•˜ê¸°
+		//		1) íŒŒì¼ ë‹¤ìš´ë¡œë“œë¥¼ ì²˜ë¦¬í•˜ê¸° ìœ„í•œ contentType ì§€ì •
 		response.setContentType("application/download; charset=UTF-8");
-		//		2) ÆÄÀÏ Å©±â
-		response.setContentLength((int)file.length()); // long -> int Çüº¯È¯
-		//		3) ÆÄÀÏ¸íÀÌ ÇÑ±ÛÀÎ °æ¿ì ±úÁü Çö»ó ¹æÁö, +(°ø¹é encoding)À» " "·Î ´ëÃ¼
+		//		2) íŒŒì¼ í¬ê¸°
+		response.setContentLength((int)file.length()); // long -> int í˜•ë³€í™˜
+		//		3) íŒŒì¼ëª…ì´ í•œê¸€ì¸ ê²½ìš° ê¹¨ì§ í˜„ìƒ ë°©ì§€, +(ê³µë°± encoding)ì„ " "ë¡œ ëŒ€ì²´
 		fname = URLEncoder.encode(fname, "utf-8").replaceAll("\\+", " ");
-		//		4) responseÀÇ header Á¤º¸¿¡ ÆÄÀÏ¸í Àü¼Û ½Ã encoding Çü½ÄÀ» binary·Î ¼³Á¤
-		// filename="ÆÄÀÏ¸í"
+		//		4) responseì˜ header ì •ë³´ì— íŒŒì¼ëª… ì „ì†¡ ì‹œ encoding í˜•ì‹ì„ binaryë¡œ ì„¤ì •
+		// filename="íŒŒì¼ëª…"
 		response.setHeader("Content-Disposition", "attachment;filename=\""+fname+"\"");
 		response.setHeader("Content-Transfer-Encoding", "binary");
 		
-		// 3. File °´Ã¼¸¦ ÀĞ¾î¿Í responseÀÇ OutputStreamÀ¸·Î Àü´ŞÇÏ±â
-		FileInputStream fis = new FileInputStream(file); // ¼­¹öÀÇ ÆÄÀÏÀ» streamÀ¸·Î ÀĞ¾î¿Í¼­
-		OutputStream out = response.getOutputStream();   // ³×Æ®¿öÅ©·Î Àü´Ş °¡´ÉÇÏµµ·Ï responseÀÇ outputstream °´Ã¼¸¦ È°¿ë
-		//		FileInputStreamÀ» ÅëÇØ ÆÄÀÏ °´Ã¼¸¦ ÀĞ¾î¿Â °ÍÀ» OutputStreamÀ¸·Î º¹»ç, ¹İÀÀ°ªÀ¸·Î Àü´Ş
+		// 3. File ê°ì²´ë¥¼ ì½ì–´ì™€ responseì˜ OutputStreamìœ¼ë¡œ ì „ë‹¬í•˜ê¸°
+		FileInputStream fis = new FileInputStream(file); // ì„œë²„ì˜ íŒŒì¼ì„ streamìœ¼ë¡œ ì½ì–´ì™€ì„œ
+		OutputStream out = response.getOutputStream();   // ë„¤íŠ¸ì›Œí¬ë¡œ ì „ë‹¬ ê°€ëŠ¥í•˜ë„ë¡ responseì˜ outputstream ê°ì²´ë¥¼ í™œìš©
+		//		FileInputStreamì„ í†µí•´ íŒŒì¼ ê°ì²´ë¥¼ ì½ì–´ì˜¨ ê²ƒì„ OutputStreamìœ¼ë¡œ ë³µì‚¬, ë°˜ì‘ê°’ìœ¼ë¡œ ì „ë‹¬
 		FileCopyUtils.copy(fis, out);
-		// 4. flush (ÀÚ¿ø ÇØÁ¦)
+		// 4. flush (ìì› í•´ì œ)
 		out.flush();
 		
 	}

@@ -1,4 +1,5 @@
 package mvc.vo;
+import java.util.ArrayList;
 // mvc.vo.DeptDoc 
 import java.util.Date;
 
@@ -14,6 +15,8 @@ public class DeptDoc {
 	private Date ddRegdate;
 	private String diId;
 	private MultipartFile[] report;
+	// 파일 정보 한번에 로딩
+	private ArrayList<String> fnames;
 	public DeptDoc() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -27,6 +30,14 @@ public class DeptDoc {
 		this.ddDept = ddDept;
 		this.ddContent = ddContent;
 		this.diId = diId;
+	}
+	
+
+
+	public DeptDoc(String ddTitle, String ddContent) {
+		super();
+		this.ddTitle = ddTitle;
+		this.ddContent = ddContent;
 	}
 
 
@@ -108,7 +119,16 @@ public class DeptDoc {
 	public void setReport(MultipartFile[] report) {
 		this.report = report;
 	}
-	
-	
-	
+
+
+	public ArrayList<String> getFnames() {
+		return fnames;
+	}
+
+
+	public void setFnames(ArrayList<String> fnames) {
+		this.fnames = fnames;
+	}
 }
+
+	
