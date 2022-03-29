@@ -20,6 +20,10 @@
 	<link href="${path}/tools/project_assets/css/icons.min.css" rel="stylesheet" type="text/css"/>
 	<link href="${path}/tools/project_assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-style"/>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"/>
+	
+	<!-- jquery 라이브러리 -->
+	 <script src="${path}/tools/jquery-3.6.0.js"></script>
+	 
 </head>
 
 

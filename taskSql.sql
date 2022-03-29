@@ -222,6 +222,12 @@ CREATE SEQUENCE alram_seq
 	START WITH 1
 	MINVALUE 1;
 
+SELECT pt_status, count(*)
+FROM prj_task
+GROUP BY PT_STATUS;
+
+SELECT * FROM DEPT_DOC dd;
+
 SELECT * FROM ALARM; 
 
 SELECT * FROM alarm WHERE A_TO = '개발1팀 ' || '양초명'; 

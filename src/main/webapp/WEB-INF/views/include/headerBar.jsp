@@ -18,10 +18,6 @@
 	
 			// 로그인할 때만 들어올 수 있도록 // 참조: https://erim1005.tistory.com/28
 
-
-
-
-			
 			<c:if test="${empty user_info.uiName}">
 			
 				let url = '${requestScope['javax.servlet.forward.servlet_path']}'; // url  
@@ -34,8 +30,7 @@
 				
 				location.href="${path}/loginFrm.do?toURL="+url;
 			</c:if>
-		
-		
+
 		</script>
 
 			<!-- Start Topbar -->
@@ -146,16 +141,16 @@
 														<i class="mdi mdi-comment-account-outline"></i>
 													</div>
 												</div>
-												<div class="flex-grow-1 text-truncate ms-2">
+												<div id="alramMsg" class="flex-grow-1 text-truncate ms-2">
 													<h5 class="noti-item-title fw-semibold font-14">
 														${alarm.aFrom}
 														<small class="fw-normal text-muted ms-1">
 														<fmt:formatDate value="${alarm.aRegdate}" pattern="MM-dd HH:mm" var="Regdate" />
 															${Regdate}</small>
 													</h5>
-													<small class="noti-item-subtitle text-muted">
+													<small id="alramType" class="noti-item-subtitle text-muted">
 														${alarm.aContent}</small>
-												</div>
+												</div> <!-- 클릭을 했을 때 ajax로 확인 처리 -->
 											</div>
 										</div>
 									</a>
@@ -406,6 +401,26 @@
 			</div><br><br>
 			<!-- end Topbar -->
 
+
+
+			<script>
+			
+			// 알림 메시지에 따라 이동을 다르게
+				$("#alramMsg").click(function(){
+					
+					if($("#alramType").text()==("새 업무를 담당")){
+						location.href="${path}/mytask.do?method=clist";
+					}
+					
+					
+				})
+				
+				
+			
+			
+			
+			
+			</script>
 
 		
 

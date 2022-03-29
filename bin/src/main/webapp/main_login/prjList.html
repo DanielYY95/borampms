@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
     <html lang="en">
 
@@ -26,6 +27,36 @@
 
             <div class="content-page">
                 <div class="content">
+=======
+<!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="utf-8" />
+        <title>Order List | Hyper - Responsive Bootstrap 5 Admin Dashboard</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
+        <meta content="Coderthemes" name="author" />
+        <!-- App favicon -->
+        <link rel="shortcut icon" href="assets/images/favicon.ico">
+
+        <!-- App css -->
+        <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/app-creative.min.css" rel="stylesheet" type="text/css" id="app-style" />
+
+    </head>
+
+    <body class="loading" data-layout-color="light" data-layout="topnav" data-layout-mode="fluid" data-rightbar-onstart="true">
+        <!-- Begin page -->
+        <div class="wrapper">
+
+            <!-- ============================================================== -->
+            <!-- Start Page Content here -->
+            <!-- ============================================================== -->
+
+            <div class="content-page">
+                <div class="content">
+>>>>>>> 3edd83969799db6194e61215fcfe4f67e44d8c5d
                     <!-- Topbar Start -->
                     <div class="navbar-custom topnav-navbar topnav-navbar-dark">
                         <div class="container-fluid">
@@ -674,6 +705,7 @@
                             </nav>
                         </div>
                     </div>
+<<<<<<< HEAD
 
 
                     <!-- Start Content-->
@@ -889,6 +921,223 @@
                 </div>
                 <!-- content -->
 
+=======
+
+
+                    <!-- Start Content-->
+                    <div class="container-fluid">
+
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box">
+                                    <div class="page-title-right">
+                                        <ol class="breadcrumb m-0">
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Hyper</a></li>
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">CRM</a></li>
+                                            <li class="breadcrumb-item active">Order List</li>
+                                        </ol>
+                                    </div>
+                                    <h4 class="page-title">Order List</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end page title -->
+
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row mb-2">
+                                            <div class="col-xl-8">
+                                                <form class="row gy-2 gx-2 align-items-center justify-content-xl-start justify-content-between">
+                                                    <div class="col-auto">
+                                                        <label for="inputPassword2" class="visually-hidden">Search</label>
+                                                        <input type="search" class="form-control" id="inputPassword2" placeholder="Search...">
+                                                    </div>
+                                                    <div class="col-auto">
+                                                        <div class="d-flex align-items-center">
+                                                            <label for="status-select" class="me-2">Status</label>
+                                                            <select class="form-select" id="status-select">
+                                                                <option selected>Choose...</option>
+                                                                <option value="1">Paid</option>
+                                                                <option value="2">Awaiting Authorization</option>
+                                                                <option value="3">Payment failed</option>
+                                                                <option value="4">Cash On Delivery</option>
+                                                                <option value="5">Fulfilled</option>
+                                                                <option value="6">Unfulfilled</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="col-xl-4">
+                                                <div class="text-xl-end mt-xl-0 mt-2">
+                                                    <button id="newPrjBtn" type="button" class="btn btn-danger mb-2 me-2"><i class="mdi mdi-basket me-1"></i> 새 프로젝트 등록</button>
+                                                    <button type="button" class="btn btn-light mb-2">Export</button>
+                                                </div>
+                                            </div><!-- end col-->
+                                        </div>
+
+                                        <div class="table-responsive">
+                                            <table class="table table-centered table-nowrap mb-0">
+                                                <thead class="table-light">
+                                                    <tr>
+                                                        <th style="width: 20px;">
+                                                            <div class="form-check">
+                                                                <input type="checkbox" class="form-check-input" id="customCheck1">
+                                                                <label class="form-check-label" for="customCheck1">&nbsp;</label>
+                                                            </div>
+                                                        </th>
+                                                        <th>프로젝트 ID</th>
+                                                        <th>제목</th>
+                                                        <th>프로젝트 관리자</th>
+                                                        <th>생성일/마감일</th>
+                                                        <th>프로젝트 상태</th>
+                                                        <th style="width: 125px;">탈퇴/삭제</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="form-check">
+                                                                <input type="checkbox" class="form-check-input" id="customCheck2">
+                                                                <label class="form-check-label" for="customCheck2">&nbsp;</label>
+                                                            </div>
+                                                        </td>
+                                                        <td><a href="apps-ecommerce-orders-details.html" class="text-body fw-bold">#CM9708</a> </td>
+                                                        <td onclick="goToPrj()">쌍용 5차 프로젝트</td>
+                                                        <td>
+                                                            <div class="d-flex">
+                                                                <div class="d-flex align-items-center">
+                                                                    <div class="flex-shrink-0">
+                                                                        <img src="assets/images/users/avatar-1.jpg" class="rounded-circle avatar-xs" alt="friend">
+                                                                    </div>
+                                                                    <div class="flex-grow-1 ms-2"><h5 class="my-0">김철수</h5></div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+
+                                                        <td>
+                                                            <h5 class="my-0">2022-03-05</h5>
+                                                            <p class="mb-0 txt-muted">2022-12-31</p>
+                                                        </td>
+
+                                                        <td><h5 class="my-0"><span class="badge badge-info-lighten">예정</span></h5></td>
+                                                        <td>
+                                                            <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-arrow-top-right-bold-box-outline"></i></a>
+                                                            <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>
+                                                            <div class="form-check">
+                                                                <input type="checkbox" class="form-check-input" id="customCheck9">
+                                                                <label class="form-check-label" for="customCheck9">&nbsp;</label>
+                                                            </div>
+                                                        </td>
+                                                        <td><a href="apps-ecommerce-orders-details.html" class="text-body fw-bold">#CM9701</a> </td>
+                                                         <td onclick="goToPrj()">쌍용 디자인 프로젝트</td>
+                                                        <td>
+                                                            <div class="d-flex">
+                                                                <div class="d-flex align-items-center">
+                                                                    <div class="flex-shrink-0">
+                                                                        <img src="assets/images/users/avatar-8.jpg" class="rounded-circle avatar-xs" alt="friend">
+                                                                    </div>
+                                                                    <div class="flex-grow-1 ms-2"><h5 class="my-0">배철수</h5></div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+
+                                                        <td>
+                                                            <h5 class="my-0">2022-01-20</h5>
+                                                            <p class="mb-0 txt-muted">2022-05-10</p>
+                                                        </td>
+
+                                                        <td><h5 class="my-0"><span class="badge badge-warning-lighten">지연</span></h5></td>
+                                                        <td>
+                                                            <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-arrow-top-right-bold-box-outline"></i></a>
+                                                            <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="form-check">
+                                                                <input type="checkbox" class="form-check-input" id="customCheck10">
+                                                                <label class="form-check-label" for="customCheck10">&nbsp;</label>
+                                                            </div>
+                                                        </td>
+                                                        <td><a href="apps-ecommerce-orders-details.html" class="text-body fw-bold">#CM9700</a> </td>
+                                                        <td onclick="goToPrj()">쌍용 임베디드 프로젝트</td>
+                                                        <td>
+                                                            <div class="d-flex">
+                                                                <div class="d-flex align-items-center">
+                                                                    <div class="flex-shrink-0">
+                                                                        <img src="assets/images/users/avatar-9.jpg" class="rounded-circle avatar-xs" alt="friend">
+                                                                    </div>
+                                                                    <div class="flex-grow-1 ms-2"><h5 class="my-0">도철수</h5></div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+
+                                                        <td>
+                                                            <h5 class="my-0">2022-02-05</h5>
+                                                            <p class="mb-0 txt-muted">2022-09-01</p>
+                                                        </td>
+
+                                                        <td><h5 class="my-0"><span class="badge badge-primary-lighten">진행 중</span></h5></td>
+                                                        <td>
+                                                            <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-arrow-top-right-bold-box-outline"></i></a>
+                                                            <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="form-check">
+                                                                <input type="checkbox" class="form-check-input" id="customCheck11">
+                                                                <label class="form-check-label" for="customCheck11">&nbsp;</label>
+                                                            </div>
+                                                        </td>
+                                                        <td><a href="apps-ecommerce-orders-details.html" class="text-body fw-bold">#CM9699</a> </td>
+                                                        <td onclick="goToPrj()">쌍용 IOS 프로젝트</td>
+                                                        <td>
+                                                            <div class="d-flex">
+                                                                <div class="d-flex align-items-center">
+                                                                    <div class="flex-shrink-0">
+                                                                        <img src="assets/images/users/avatar-10.jpg" class="rounded-circle avatar-xs" alt="friend">
+                                                                    </div>
+                                                                    <div class="flex-grow-1 ms-2"><h5 class="my-0">한철수</h5></div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+
+                                                        <td>
+                                                            <h5 class="my-0">2022-01-05</h5>
+                                                            <p class="mb-0 txt-muted">2022-04-04</p>
+                                                        </td>
+
+                                                        <td><h5 class="my-0"><span class="badge badge-success-lighten">완료</span></h5></td>
+                                                        <td>
+                                                            <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-arrow-top-right-bold-box-outline"></i></a>
+                                                            <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div> <!-- end card-body-->
+                                </div> <!-- end card-->
+                            </div> <!-- end col -->
+                        </div> <!-- end row -->
+
+                    </div>
+                    <!-- container -->
+
+                </div>
+                <!-- content -->
+
+>>>>>>> 3edd83969799db6194e61215fcfe4f67e44d8c5d
                 <!-- Footer Start -->
                 <footer class="footer">
                     <div class="container-fluid">
@@ -906,6 +1155,7 @@
                         </div>
                     </div>
                 </footer>
+<<<<<<< HEAD
                 <!-- end Footer -->
 
             </div>
@@ -918,6 +1168,20 @@
         </div>
         <!-- END wrapper -->
 
+=======
+                <!-- end Footer -->
+
+            </div>
+
+            <!-- ============================================================== -->
+            <!-- End Page content -->
+            <!-- ============================================================== -->
+
+
+        </div>
+        <!-- END wrapper -->
+
+>>>>>>> 3edd83969799db6194e61215fcfe4f67e44d8c5d
         <!-- Right Sidebar -->
         <div class="end-bar">
 
@@ -976,6 +1240,7 @@
         </div>
 
         <div class="rightbar-overlay"></div>
+<<<<<<< HEAD
         <!-- /End-bar -->
 
         <!-- bundle -->
@@ -996,4 +1261,26 @@
         </script>
 
     </body>
+=======
+        <!-- /End-bar -->
+
+        <!-- bundle -->
+        <script src="assets/js/vendor.min.js"></script>
+        <script src="assets/js/app.min.js"></script>
+
+        <script>
+        	$("#newPrjBtn").click(function(){
+        		location.href="./prjReg.html";
+        	})
+
+
+        	function goToPrj(){
+
+        		location.href="../project/dashboard/prjDash.html"
+        	}
+
+        </script>
+
+    </body>
+>>>>>>> 3edd83969799db6194e61215fcfe4f67e44d8c5d
 </html>

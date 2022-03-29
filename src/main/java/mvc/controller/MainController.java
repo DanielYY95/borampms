@@ -1,19 +1,23 @@
 package mvc.controller;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
+import mvc.method.SessionMethod;
 import mvc.service.EtcService;
 import mvc.service.UserService;
+import mvc.vo.PRJ_INFO;
 import mvc.vo.Task_User;
 import mvc.vo.USER_INFO;
 
 @Controller
+@SessionAttributes("prj_info")
 public class MainController {
 	
 	@Autowired
@@ -21,6 +25,15 @@ public class MainController {
 	
 	@Autowired
 	private EtcService etcservice;
+	
+	@Autowired
+	private SessionMethod smethod; // 항상 필요하니...
+	
+	@ModelAttribute("prj_info")
+	public PRJ_INFO getPrj() {
+		return new PRJ_INFO();
+	}
+	
 	
 	@RequestMapping("/main.do")
 	public String main() {
@@ -38,68 +51,23 @@ public class MainController {
 	
 	@RequestMapping("/prjList.do")
 	public String prjList(HttpServletRequest request, Model d) {
-		HttpSession session = request.getSession();
-		USER_INFO sch= (USER_INFO)session.getAttribute("user_info");
 		
-		d.addAttribute("prjList", service.getMyPrjList(sch.getUiId()));
+		USER_INFO user=  smethod.getUserSession(request);
+		d.addAttribute("prjList", service.getMyPrjList(user.getUiId()));
 			
 		return "main_login//prjList";
 	}
 	
 	@RequestMapping("/prjDash.do")
-	public String prjDash(HttpServletRequest request, Model d) {
+	public String prjDash(@ModelAttribute("prj_info") PRJ_INFO pi, HttpServletRequest request, Model d) {
+		// 이걸로 세션값을 받아온다. Prj_info vo객체에 piId 를 요청값으로 보내줬으니
 		
-		String piId = "PI00001";
-		HttpSession session = request.getSession();
-		USER_INFO user= (USER_INFO)session.getAttribute("user_info");
+		USER_INFO user= smethod.getUserSession(request);
 		
-		System.out.println("##"+piId);
-		System.out.println("##"+user.getUiDept());
-		System.out.println("##"+user.getUiName());
-		
-		d.addAttribute("alarmList", etcservice.getAlarmList(new Task_User(piId, user.getUiDept(), user.getUiName())));
+	
+		d.addAttribute("alarmList", etcservice.getAlarmList(new Task_User(pi.getPiId(), user.getUiDept(), user.getUiName())));
 		
 		return "dashboard//prjDash";
 	}
 	
-
-	/*
-	@RequestMapping("/logout.do") 
-	public String loginout(HttpSession session, Model d) {
-
-		// 1. 세션 종료
-		session.invalidate();
-		
-		// 2. 세션 값 변경
-		// d.addAttribute("members", new Members()); // 로그인한 요청값을 받을 수 있게 vo객체 만들어준다. 
-		
-		d.addAttribute("msg", "로그아웃이 되었습니다.");
-		
-		return "forward:/main.do";
-	}
-	
-	
-	
-	
-	// id 중복확인  mId 
-	@RequestMapping("/regcheck.do")
-	public String idChk(USER_INFO ins, Model d) {
-		System.out.println("확인 : "+ins.getmId());
-		d.addAttribute("result", service.idChk(ins));
-		return "pageJsonReport";
-	}
-	
-	// 닉네임 중복확인  mNick 
-	@RequestMapping("/nickcheck.do")
-	public String nickChk(USER_INFO ins, Model d) {
-		System.out.println("확인 : "+ins.getmNick());
-		d.addAttribute("result", service.nickChk(ins));
-		return "pageJsonReport";
-	}
-	
-	
-
-
-	
-	*/
 }

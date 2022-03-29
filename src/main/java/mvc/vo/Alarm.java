@@ -10,10 +10,37 @@ public class Alarm {
 	private String aContent;
 	private int aChecked;
 	private Date aRegdate;
+	private String piId;
+	
 	public Alarm() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	
+	
+	public Alarm(String aFrom, String aTo, String aContent, String piId) {
+		super();
+		this.aFrom = aFrom;
+		this.aTo = aTo;
+		this.aContent = aContent;
+		this.piId = piId;
+	}
+
+
+
+	public String getPiId() {
+		return piId;
+	}
+
+
+
+	public void setPiId(String piId) {
+		this.piId = piId;
+	}
+
+
+
 	public String getaId() {
 		return aId;
 	}

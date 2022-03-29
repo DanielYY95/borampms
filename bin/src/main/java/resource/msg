@@ -1,10 +1,19 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 name=camil
 grade=2
 kor=100
 eng=290
 math=200
 age=25
+=======
+name=camil
+grade=2
+kor=100
+eng=290
+math=200
+age=25
+>>>>>>> 3edd83969799db6194e61215fcfe4f67e44d8c5d
 loc=jeju
 =======
 name1=양초명

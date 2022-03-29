@@ -7,13 +7,10 @@
 
 	<insert id="insertAlarm" parameterType="alarm">
 		insert into ALARM values('A' || LPAD(alram_seq.nextval, 5, '0'), 
-			#{aFrom}, #{aTo}, #{aContent}, 0, sysdate)
+			#{aFrom}, #{aTo}, #{aContent}, 0, sysdate, #{piId})
 					
 	</insert>
-	
-	
-	
-	
+
 	<select id="getAlarmList" parameterType="taskUser" resultType="alarm">
 		SELECT * FROM alarm WHERE PI_ID = #{piId}
 		and A_TO Like '%' || #{uiDept} || ' ' || #{uiName} || '%'

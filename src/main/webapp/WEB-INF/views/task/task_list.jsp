@@ -67,6 +67,9 @@
 				<!-- end headerBar -->
 							
 				<!-- Start Content-->
+				<div class="container-fluid">	
+					<!-- start page title -->
+					
 				<div class="row">
 						<div class="col-12">
 							<div class="page-title-box">
@@ -133,33 +136,29 @@
 											<table class="table table-centered table-nowrap mb-0 text-center">
 												<thead class="table-light">
 													<tr>
-														<th>번호</th>
-														<th>제목</th>
-														<th>부서</th>
-														<th>등록자</th>
-														<th>시작일</th>
-														<th>마감일</th>
+														<th>번호</th>	
+														<th>제목</th>	
+														<th>등록자</th>	
+														<th>시작일</th>	
+														<th>마감일</th>	
+														<th>담당자</th>	
 														<th>진행상태</th>
-														<th>결재상태</th>
+													
 													</tr>
 											 	</thead>
 											 	<tbody id="task-tbody">
-													<c:forEach var="task" items="${tasklist}" varStatus="status">
-													<tr>
-														<td>${task.cnt }</td>
-														<td ondblclick="detail('${task.ptId}')">${task.ptTitle }</td>
-														<td>
-														<c:forEach var="charge" items="${task.ptCharge.split(',') }">
-															${charge.split(" ")[0] }<br>
+													<c:forEach var="task" items="${tasklist}" varStatus="status">	
+													<tr onclick="detail('${task.ptId}')">	
+														<td>${task.cnt }</td>	
+														<td>${task.ptTitle }</td>	
+														<td>${task_user.uiDept } ${task_user.uiName }</td>	
+														<td>${task.ptStartdate }</td>	
+														<td>${task.ptDuedate }</td>	
+														<td>	
+														<c:forEach var="charge" items="${task.ptCharge.split(',') }">	
+															${charge }<br>	
 														</c:forEach>
 														</td>
-														<td>
-														<c:forEach var="charge" items="${task.ptCharge.split(',') }">
-															${charge.split(" ")[1] }<br>
-														</c:forEach>
-														</td>
-														<td>${task.ptStartdate }</td>
-														<td>${task.ptDuedate }</td>
 														<td>
 															<div class="progress" style="position:relative;">
 																<div class=
@@ -192,9 +191,7 @@
 																</small>
 															</div>
 														</td>
-														<td>
-															<span class="badge bg-secondary text-light">결재완료</span>
-														</td>
+													
 													</tr>
 													</c:forEach>
 												</tbody>
@@ -274,7 +271,8 @@
 	                    </div>
 	
 	                    <div class="modal-body">
-	                        <form id="regForm" class="ps-3 pe-3" action="${path}/task.do?method=insert" method="post">                               
+                             <form id="regForm" class="ps-3 pe-3" action="${path}/task.do?method=insert" method="post">	
+	                        	<input type="hidden" name="uiId" value="${user_info.uiId }">                                   
 	                            <div class="mb-3">
 	                                <label for="username" class="form-label">제목</label>
 	                                <input name="ptTitle" class="form-control"  required="" placeholder="제목을 입력해주세요">
@@ -428,12 +426,11 @@
 		}
 	});
 	
-	
-	// 검색 : 시작일 / 마감일
-	// 시작일 / 마감일 키워드 입력 시
-	$("#taskSchForm").children("[name=ptStartdate], [name=ptDuedate]").change(function() {
-		$("#taskSchForm").submit();
-	});
+	// 검색 : 시작일 / 마감일	
+	// 시작일 / 마감일 키워드 입력 시	
+	$("#taskSchForm").find("[name=ptStartdate], [name=ptDuedate]").change(function() {	
+		$("#taskSchForm").submit();	
+	});	
 	
 	
 	// 업무 상세 페이지로 이동

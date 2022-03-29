@@ -1,5 +1,7 @@
 package mvc.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,11 +9,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import mvc.method.AlarmMethod;
+import mvc.method.SessionMethod;
 import mvc.service.EtcService;
 import mvc.service.TaskService;
 import mvc.vo.Alarm;
 import mvc.vo.PRJ_TASK;
 import mvc.vo.TaskSch;
+import mvc.vo.USER_INFO;
 
 @Controller
 @RequestMapping("/task.do")
@@ -21,6 +26,12 @@ public class TaskController {
 	
 	@Autowired
 	private EtcService etcservice;
+	
+	@Autowired
+	private SessionMethod smethod;
+	
+	@Autowired
+	private AlarmMethod amethod;
 	
 	@RequestMapping(params="method=list")
 	public String taskList(TaskSch sch, Model d) {
@@ -43,15 +54,23 @@ public class TaskController {
 	
 
 	@RequestMapping(params="method=insert")
-	public String insertTask(PRJ_TASK ins, Alarm alarm, Model d) {
-		ins.setUiId("asd456");
-		ins.setPiId("PI00001");
+	public String insertTask(HttpServletRequest request, PRJ_TASK ins, Alarm alarm, Model d) {
+		
+		
 		ins.setPtGuidecontent("가이드 콘텐츠");
 		
+		smethod.getPiid(request);
+		USER_INFO user = smethod.getUserSession(request);
 		
-		alarm.setaFrom("개발1팀 양초명");
-		alarm.setaTo(ins.getPtCharge());
-		alarm.setaContent("새 업무를 담당");
+		
+		alarm = amethod.taskAlarm(user, ins, smethod.getPiid(request)); // 이렇게 주면 구현부에서 알아서 처리된다. 
+
+		// 프로젝트 세션에서 프로젝트 고유번호를 받는다. 
+		// 유저 세션에서 dept와 name을 받는다.
+		// for 반복문으로 업무 담당자를 지정
+		// 쓰여지는 때에 따라 다른 메시지	
+		
+		System.out.println("##"+alarm.getaFrom()+alarm.getaTo()+alarm.getaContent()+alarm.getPiId());
 		
 		etcservice.insertAlarm(alarm);
 		

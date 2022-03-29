@@ -160,7 +160,7 @@
 	                                                            </div>
 	                                                        </td>
 	                                                        <td><a href="apps-ecommerce-orders-details.html" class="text-body fw-bold">${prj.piId} DB값</a> </td>
-	                                                        <td onclick="goToPrj()">${prj.piTitle}</td>
+	                                                        <td onclick="goToPrj('${prj.piId}')">${prj.piTitle}</td>
 	                                                        <td>
 	                                                            <div class="d-flex">
 	                                                                <div class="d-flex align-items-center">
@@ -349,9 +349,9 @@
         	})
 
 
-        	function goToPrj(){
-
-        		location.href="${path}/prjDash.do"
+        	function goToPrj(piId){
+        		location.href="${path}/prjDash.do?piId="+piId;
+//        		location.href="${path}/dash.do?method=list";
         	} // 이 방식으로 post로 못 간다 
 
         </script>
