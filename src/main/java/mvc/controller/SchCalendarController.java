@@ -19,7 +19,7 @@ public class SchCalendarController {
 		public String calendar() {
 			return "/schedule/schCalendar";
 		}
-		// http://localhost:7090/springweb/calList.do
+		// http://localhost:7090/borampms/calList.do
 		@RequestMapping("calList.do")
 		public String calList(Model d) {
 			d.addAttribute("calList", service.getCalendarList());	
@@ -27,6 +27,16 @@ public class SchCalendarController {
 		}
 		@RequestMapping("insertCalendar")
 		public String insertCalendar(Sch_Calendar ins){
+			// null 값 확인해보기 
+			System.out.println("배경색 :"+ins.getCd_backgrColor());
+			System.out.println("색 :"+ins.getCd_borderColor());
+			System.out.println("콘텐트 :"+ins.getCd_content());
+			System.out.println("종료일 :"+ins.getCd_end());
+			System.out.println("아이디 :"+ins.getCd_id());
+			System.out.println("시작일 :"+ins.getCd_start());
+			System.out.println("타이틀 :"+ins.getCd_title());
+			System.out.println("글꼴색 :"+ins.getCd_textColor());
+	
 			service.insertCalendar(ins);
 			return "redirect:/calendar.do";
 		}

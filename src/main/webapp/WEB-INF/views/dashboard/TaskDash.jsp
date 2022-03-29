@@ -197,14 +197,10 @@
 							
 									<div class="row my-3">
 										<div class="table-responsive">
-										<div class="prjList" style="font-size:20px; padding-bottom:10px;" >
+										<div class="header-title" style="font-size:20px; padding-bottom:10px; float:left;">프로젝트 총 작업</div>
+											<a href="${path}/task.do?method=list${taskdash.ptId}"  style="float:right;">전체작업 보기</a>
 										
-											<div class="header-title" style="float:left;">프로젝트 총 작업</div>
-											
-											
-											<div class="header-title" style="float:right;">전체작업 보기</div>
-											
-											</div>
+										
 											<table class="table table-centered table-nowrap mb-0 text-center">
 												<thead class="table-light">
 													<tr>
