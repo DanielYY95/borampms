@@ -1,6 +1,7 @@
 package mvc.service;
 
 
+
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -15,6 +16,15 @@ import mvc.vo.DeptDoc;
 import mvc.vo.DeptDocSch;
 import mvc.vo.DeptFile;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import mvc.dao.DeptDao;
+import mvc.vo.DeptDoc;
+
+
 // insert_DD 
 // insert_DF -> 첨부파일 정보 DB에 등록
 @Service
@@ -24,6 +34,7 @@ public class DeptService {
 	private DeptDao dao;
 	
 	// 부서문서 리스트 조회
+
 	public List<DeptDoc> getDDList(DeptDocSch sch){
 		// 1. 전체 갯수
 		sch.setCount(dao.totCnt(sch));
@@ -105,4 +116,5 @@ public class DeptService {
 		}
 		return msg;
 	}
+
 }
