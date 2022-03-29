@@ -75,7 +75,12 @@
 		<property name="order" value="0"></property>
 	
 	</bean>
-
+	
+	
+	<!-- 다운로드 viewer 등록
+			return "download"
+	-->
+	<bean id="download" class="mvc.util.DownloadViewer"/>
 	
 	<!-- json 뷰 선언 
 		return "pageJsonReport" -->

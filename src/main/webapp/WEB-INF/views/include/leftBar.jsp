@@ -73,10 +73,18 @@
 						</div>
 					</li>
                     <li class="side-nav-item">
-                        <a href="${path}/deptDoc.do" class="side-nav-link">
-                            <i class="uil-folder-plus"></i>
-                            <span> 문서관리 </span>
-                        </a>
+                        <a data-bs-toggle="collapse" href="#DeptDoc" aria-expanded="false"
+							aria-controls="sidebarDeptDoc" class="side-nav-link">
+							<i class="uil-folder-plus"></i>
+							<span> 문서 관리 </span>
+							<span class="menu-arrow"></span>
+						</a>
+                        <div class="collapse" id="sidebarDeptDoc">
+							<ul class="side-nav-second-level">
+								<li><a href="${path}/dept.do?method=list">공유문서함</a></li>
+								<li><a href="../task/task_issue.html">부서문서함</a></li>
+							</ul>
+						</div>
                     </li>
                 </ul>
 				<!-- End Sidemeniu -->

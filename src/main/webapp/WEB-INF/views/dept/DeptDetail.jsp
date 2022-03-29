@@ -112,13 +112,13 @@
 							
 														</div>
 													</div>
-													<c:forEach var="dfFile" items="${deptRowList.fnames}">
+													<c:forEach var="fname" items="${deptRowList.fnames}">
 													<div class="row">
 								            			<div class="col-lg-4">
 															<div class="mb-3">
 																<div class="input-group flex-nowrap">
-                                                            		<span class="input-group-text" id="basic-addon1"><i class="dripicons-upload"></i></span>
-                                                            		<input type="text" class="form-control" name="report" placeholder="${dfFile}" aria-label="Username" aria-describedby="basic-addon1" readonly>
+                                                            		<span class="input-group-text" id="basic-addon1" onclick="downFile('${fname}')"><i class="dripicons-upload"></i></span>
+                                                            		<input type="text" class="form-control" name="report" placeholder="${fname}" aria-label="Username" aria-describedby="basic-addon1" readonly>
                                                         		</div>
 														  	</div>
 													  	</div>
@@ -301,12 +301,10 @@
 		alert("문서관리 페이지로 이동하시겠습니까?");
 		location.href="${path}/dept.do?method=list";
 	});
-	</script>
-	<script>
-	// 모달 창 닫기 버튼 클릭 시
-	$('.modal').on('hidden.bs.modal', function (e) {
-		console.log('modal close');
-	    $(this).find('form').reset();
-	});
+	function downFile(fname){
+		if(confirm("다운로드할 파일:"+fname)){
+			location.href="${path}/download.do?fname="+fname;
+		}
+	}
 	</script>
 </html>
