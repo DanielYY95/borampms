@@ -218,6 +218,8 @@ CREATE TABLE Alarm (
 	PI_ID varchar2(20);
 );
 
+
+
 CREATE SEQUENCE alram_seq
 	START WITH 1
 	MINVALUE 1;

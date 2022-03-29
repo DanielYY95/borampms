@@ -58,7 +58,7 @@ public class MainController {
 		return "main_login//prjList";
 	}
 	
-	@RequestMapping("/prjDash.do")
+	@RequestMapping("/prjDash.do") // 메인->프로젝트 목록 -> 대시보드로 접근하는게 아니면 자꾸 에러가...
 	public String prjDash(@ModelAttribute("prj_info") PRJ_INFO pi, HttpServletRequest request, Model d) {
 		// 이걸로 세션값을 받아온다. Prj_info vo객체에 piId 를 요청값으로 보내줬으니
 		

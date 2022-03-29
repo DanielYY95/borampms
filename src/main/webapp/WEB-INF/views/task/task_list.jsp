@@ -292,25 +292,46 @@
 	                            <!-- Multiple Select -->
 	                            <div class="mb-3 position-relative">
 	                                <label class="form-label">업무담당자</label>
-	                                <select name="ptCharge" class="select2 form-control select2-multiple" required=""
-	                                	data-toggle="select2" multiple="multiple" data-placeholder="업무담당자 지정">
-	                                    <optgroup label="IT팀">
-	                                        <option value="IT팀 조민혁">IT팀 조민혁</option>
-	                                        <option value="IT팀 전지원">IT팀 전지원</option>
-	                                    </optgroup>
-	                                    <optgroup label="인사팀">
-	                                        <option value="인사팀 김파월">인사팀 김파월</option>
-	                                        <option value="인사팀 김소월">인사팀 김소월</option>
-	                                        <option value="인사팀 한가람">인사팀 한가람</option>
-	                                        <option value="인사팀 김효은">인사팀 김효은</option>
-	                                    </optgroup>
-	                                    <optgroup label="마케팅팀">
-	                                        <option value="마케팅팀 양초명">마케팅팀 양초명</option>
-	                                        <option value="마케팅팀 양현수">마케팅팀 양현수</option>
-	                                        <option value="마케팅팀 양광">마케팅팀 양광</option>
-	
-	                                    </optgroup>
-	                                </select>
+	                                <select id="chargeUpt"  name="ptCharge" class="select2 form-control select2-multiple" value="${taskUser.ptCharge}" required="" data-toggle="select2" multiple="multiple" data-placeholder="업무담당자 지정">
+										<optgroup label="개발1팀">
+									    <option value="개발1팀 양초명">개발1팀 양초명</option>
+									    <option value="개발1팀 조민혁">개발1팀 조민혁</option>
+									
+									</optgroup>
+									  	<optgroup label="개발2팀">
+									    <option value="개발2팀 한가람">개발2팀 한가람</option>
+									    <option value="개발2팀 김효은">개발2팀 김효은</option>
+									    <option value="개발2팀 전지원">개발2팀 전지원</option>
+									
+									</optgroup>
+									
+									 <optgroup label="인사팀">
+									
+									    <option value="인사팀 김소월">인사팀 양초명</option>
+									    <option value="인사팀 한가람">인사팀 한가람</option>
+									    <option value="인사팀 김효은">인사팀 김효은</option>
+									</optgroup>
+									
+									<optgroup label="기획팀">
+									    <option value="기획팀 조민혁">기획팀 양현수</option>
+									    <option value="기획팀 전지원">기획팀 전지원</option>
+									</optgroup>
+									
+									<optgroup label="디자인팀">
+									    <option value="디자인팀 조민혁">디자인팀 조민혁</option>
+									    <option value="디자인팀 전지원">디자인팀 전지원</option>
+									</optgroup>
+									
+									
+									<optgroup label="마케팅팀">
+									    <option value="마케팅팀 양초명">마케팅팀 양초명</option>
+									    <option value="마케팅팀 양현수">마케팅팀 양현수</option>
+									   
+									
+									</optgroup>
+									
+									
+									</select>
 	                            </div>
 	                            
 	
@@ -326,11 +347,12 @@
 	                                <div class="mb-3" style="width: 30%;">
 	                                    <label for="example-select" class="form-label">분류</label>
 	                                    <select class="form-select" id="example-select" name="ptType">
-	                                        <option>요구사항 도출</option>
-	                                        <option>요구사항 분석</option>
-	                                        <option>요구사항 명확</option>
-	                                        <option>요구사항 확인</option>
+	                                        <option>기획</option>
+	                                        <option>설계</option>
 	                                        <option>개발</option>
+	                                        <option>구현</option>
+	                                        <option>테스트</option> 
+                                         	<option>점검</option> 
 	                                    </select>
 	                                </div>	
 	                                <div class="mb-3" style="width: 30%;">
@@ -338,8 +360,7 @@
 	                                    <select class="form-select" id="example-select" name="ptStatus">
 	                                        <option>진행 전</option>
 	                                        <option>진행 중</option>
-	                       
-	                                        <option>보류</option>
+                                            <option>보류</option>
 	                                        <option>완료</option>
 	                                    </select>
 	                                </div>

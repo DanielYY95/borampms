@@ -301,11 +301,13 @@
                                                                         <div class="col-lg-3 col-sm-4 mb-3">
                                                                             <label for="example-select" class="form-label">분류</label>
                                                                             <select class="form-select" id="example-select" value="${taskUser.ptType}" name="ptType">
-                                                                                <option>요구사항 도출</option>
-                                                                                <option>요구사항 분석</option>
-                                                                                <option>요구사항 명확</option>
-                                                                                <option>요구사항 확인</option>
+                                                                                <option>기획</option>
+                                                                                <option>설계</option>
                                                                                 <option>개발</option>
+                                                                                <option>구현</option>
+                                                                                <option>테스트</option> 
+                                                                                <option>점검</option> 
+                                                                         
                                                                             </select>
                                                                         </div>	
                                                                        	<script>

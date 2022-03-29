@@ -53,13 +53,16 @@ public class TaskController {
 	}
 	
 
-	@RequestMapping(params="method=insert")
-	public String insertTask(HttpServletRequest request, PRJ_TASK ins, Alarm alarm, Model d) {
+	@RequestMapping(params="method=insert") // 메인->프로젝트 목록 -> 업무목록으로 접근하는게 아니면 자꾸 에러가...
+	public String insertTask(HttpServletRequest request, String uiId, PRJ_TASK ins, Alarm alarm, Model d) {
 		
+		// 프로젝트 고유번호가 없는 경우 대비
+
+		ins.setPiId(smethod.getPiid(request)); 
+		ins.setUiId(uiId); // 세션에서...
+		ins.setPtGuidecontent("가이드 콘텐츠"); // 비워두면 안되나?
 		
-		ins.setPtGuidecontent("가이드 콘텐츠");
-		
-		smethod.getPiid(request);
+	
 		USER_INFO user = smethod.getUserSession(request);
 		
 		
