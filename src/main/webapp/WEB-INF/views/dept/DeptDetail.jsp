@@ -112,22 +112,17 @@
 							
 														</div>
 													</div>
-<<<<<<< HEAD
+
 													<c:forEach var="dfFile" items="${deptRowList.fnames}">
-=======
-													<c:forEach var="fname" items="${deptRowList.fnames}">
->>>>>>> a00f3330a676de470fec20f98c7d9f559e5e5801
+
 													<div class="row">
 								            			<div class="col-lg-4">
 															<div class="mb-3">
 																<div class="input-group flex-nowrap">
-<<<<<<< HEAD
+
                                                             		<span class="input-group-text" id="basic-addon1"><i class="dripicons-upload"></i></span>
                                                             		<input type="text" class="form-control" name="report" placeholder="${dfFile}" aria-label="Username" aria-describedby="basic-addon1" readonly>
-=======
-                                                            		<span class="input-group-text" id="basic-addon1" onclick="downFile('${fname}')"><i class="dripicons-upload"></i></span>
-                                                            		<input type="text" class="form-control" name="report" placeholder="${fname}" aria-label="Username" aria-describedby="basic-addon1" readonly>
->>>>>>> a00f3330a676de470fec20f98c7d9f559e5e5801
+
                                                         		</div>
 														  	</div>
 													  	</div>

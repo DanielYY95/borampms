@@ -4,48 +4,69 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
 <mapper namespace="mvc.dao.TaskDao">
+<!-- 업무 목록 로딩 및 검색 -->
 	<select id="getTotalCnt" parameterType="taskSch" resultType="int">
 		select count(*)
 		from prj_task
 		where 1=1
+		and pi_id = #{piId}
 		<if test="ptTitle != null and ptTitle != ''">
-			and pt_title like '%'||#{ptTitle}||'%'
+		and pt_title like '%'||#{ptTitle}||'%'
 		</if>
 		<if test="ptCharge != null and ptCharge != ''">
 		and pt_charge like '%'||#{ptCharge}||'%'
 		</if>
-		<if test="ptStartdate != null and ptStartdate != ''">
-		and pt_startdate = #{ptStartdate}
-		</if>
-		<if test="ptDuedate != null and ptDuedate != ''">
-		and pt_duedate = #{ptDuedate}
-		</if>
+		<choose>
+			<when test="ptStartdate != null and ptStartdate != '' and  ptDuedate != null and ptDuedate != ''">
+			and pt_startdate between #{ptStartdate} and #{ptDuedate}
+			and pt_duedate between #{ptStartdate} and #{ptDuedate}
+			</when>
+			<when test="ptStartdate != null and ptStartdate != ''">
+			and pt_startdate >= #{ptStartdate}
+			</when>
+			<when test="ptDuedate != null and ptDuedate != ''">
+			and pt_duedate <![CDATA[<]]>= #{ptDuedate}
+			</when>
+		</choose>
 	</select>
-
-	
 	<select id="getTaskList" parameterType="taskSch" resultType="task">
 		select *
 		from (
-			SELECT row_number() over(ORDER BY to_date(pt_startdate, 'YYYY-MM-DD')) cnt, prj_task.*
-			from prj_task
+			SELECT row_number() over(ORDER BY to_date(pt_startdate, 'YYYY-MM-DD')) cnt, prj_task.*, user_info.*
+			from prj_task, user_info
 			where 1=1
+			and pi_id = #{piId}
 			<if test="ptTitle != null and ptTitle != ''">
 			and pt_title like '%'||#{ptTitle}||'%'
 			</if>
 			<if test="ptCharge != null and ptCharge != ''">
 			and pt_charge like '%'||#{ptCharge}||'%'
 			</if>
-			<if test="ptStartdate != null and ptStartdate != ''">
-			and pt_startdate = #{ptStartdate}
-			</if>
-			<if test="ptDuedate != null and ptDuedate != ''">
-			and pt_duedate = #{ptDuedate}
-			</if>
+			<choose>
+				<when test="ptStartdate != null and ptStartdate != '' and  ptDuedate != null and ptDuedate != ''">
+				and pt_startdate between #{ptStartdate} and #{ptDuedate}
+				and pt_duedate between #{ptStartdate} and #{ptDuedate}
+				</when>
+				<when test="ptStartdate != null and ptStartdate != ''">
+				and pt_startdate >= #{ptStartdate}
+				</when>
+				<when test="ptDuedate != null and ptDuedate != ''">
+				and pt_duedate <![CDATA[<=]]> #{ptDuedate}
+				</when>
+			</choose>
 		)
 		where cnt between #{firstPage} and #{lastPage}
 	</select>
 	
+	<!-- 유저 정보 불러오기 -->
+	<select id="getUserInfo" parameterType="string" resultType="user">
+		select *
+		from user_info
+		where ui_id = #{uiId}
+	</select>
 	
+
+	<!-- 업무 등록 -->
 	<insert id="insertTask" parameterType="task">
 		insert into prj_task values(
 			'PT' || lpad(task_seq.nextval,5,0),
@@ -62,36 +83,4 @@
 			#{piId}
 		)
 	</insert>
-	
-	
-
-<!--  
-	<select id="getEmpList" parameterType="emp" resultType="emp">
-		select *
-		from empcrud
-		where ename like '%'||#{ename}||'%'
-		and job like '%'||#{job}||'%'
-	</select>
-	<insert id="insertEmp" parameterType="emp">
-		insert into empcrud values(empcrud_seq.NEXTVAL, #{ename},
-			#{job},#{mgr},to_date(#{hiredateS},'YYYY-MM-DD'),#{sal},#{comm},#{deptno})
-	</insert>
-	<select id="getEmp" parameterType="int" resultType="emp">
-		select * from empcrud where empno=#{empno}
-	</select>
-	<update id="uptEmp" parameterType="emp">
-		update empcrud
-		set ename=#{ename},
-			job=#{job},
-			mgr=#{mgr},
-			hiredate=to_date(#{hiredateS}, 'yyyy-mm-dd'),
-			sal=#{sal},
-			comm=#{comm},
-			deptno=#{deptno}
-		where empno = #{empno}
-	</update>
-	<delete id="delEmp" parameterType="int">
-		delete from empcrud where empno = #{empno}
-	</delete>
--->
 </mapper>

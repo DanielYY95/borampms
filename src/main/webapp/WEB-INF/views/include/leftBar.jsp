@@ -9,6 +9,20 @@
 <!DOCTYPE html>
 <html lang="en">
 
+	<style>
+		.side-nav .side-nav-link{
+			padding: 35px;
+			font-size: 1.2rem;
+		
+		}
+		
+		.side-nav-link, .menu-arrow{
+			font-size: 1.2rem;
+		}
+	
+	
+	</style>
+
 		<!-- ========== Left Sidebar Start ========== -->
 		<div class="leftside-menu">
 			<!-- LOGO -->
@@ -47,7 +61,7 @@
           			<li class="side-nav-item">
           				<a data-bs-toggle="collapse" href="#sidebarTasks"
             				aria-expanded="false" aria-controls="sidebarTasks" class="side-nav-link">
-              				<i class="uil-clipboard-alt"></i>
+              				<i class=" uil-schedule"></i>
               				<span> 일정관리 </span>
               				<span class="menu-arrow"></span>
             			</a>
@@ -58,6 +72,12 @@
               				</ul>
             			</div>
           			</li>
+          			<li class="side-nav-item">
+                        <a href="${path}/chat.do?method=main" class="side-nav-link">
+                            <i class="uil-comment-dots"></i>
+                            <span> 소통관리 </span>
+                        </a>
+                    </li>
         			<li class="side-nav-item">
            				<a data-bs-toggle="collapse" href="#sidebarDashboards" aria-expanded="false"
 							aria-controls="sidebarDashboards" class="side-nav-link">

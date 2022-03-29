@@ -192,6 +192,7 @@ CREATE TABLE PRJ_USER(
 SELECT * FROM prj_user;
 
 INSERT INTO PRJ_USER values('daniel95','PI00001');
+INSERT INTO PRJ_USER values('asd456','PI00001');
 INSERT INTO PRJ_USER values('daniel95','PI00002');
 
 select pi.* from ( 
@@ -218,7 +219,7 @@ CREATE TABLE Alarm (
 	PI_ID varchar2(20);
 );
 
-
+SELECT * FROM USER_INFO ui;
 
 CREATE SEQUENCE alram_seq
 	START WITH 1

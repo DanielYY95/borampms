@@ -11,53 +11,46 @@ import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
 @Component("chatHandler")
-public class A02_ChatHandler extends TextWebSocketHandler {
-	// Á¢¼ÓÇÑ °èÁ¤ °ªÀ» ÀúÀåÇÏ´Â ÇÊµå ¼±¾ğ
+public class A02_ChatHandler extends TextWebSocketHandler{
+	// ì ‘ì†í•œ ê³„ì •ì„ ì €ì¥í•˜ëŠ” í•„ë“œ ì„ ì–¸.
 	private Map<String, WebSocketSession> users = new ConcurrentHashMap();
+	// ì²˜ìŒì— ë¹ˆ ê°’ìœ¼ë¡œ ì‹œì‘
 	
-	// 1. ¼ÒÄÏ ¼­¹ö Á¢¼Ó ½Ã Ã³¸®
-		@Override
-		public void afterConnectionEstablished(WebSocketSession session) throws Exception {
-			users.put(session.getId(), session);
-			log(session.getId()+"´Ô Á¢¼Ó, ÇöÀç Á¢¼ÓÀÚ ¼ö "+users.size()+"¸í");
-		}
+	// 1. ì†Œì¼“ ì„œë²„ì— ì ‘ì†ì‹œ ì²˜ë¦¬ ë©”ì„œë“œ
+	@Override
+	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
+		users.put(session.getId(), session);
+		log(session.getId()+"ë‹˜ ì ‘ì†í•©ë‹ˆë‹¤!! í˜„ì¬ ì ‘ì†ì ìˆ˜:"+users.size());
 		
-		
-	// 2. ¼ÒÄÏ ¼­¹ö¿¡ ¸Ş½ÃÁö Àü¼Û ½Ã Ã³¸®
+	}
+	// 2. ì†Œì¼“ ì„œë²„ì— ë©”ì‹œì§€ ì „ì†¡ì‹œ ì²˜ë¦¬ ë©”ì„œë“œ
 	@Override
 	protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
-		// 1) Æ¯Á¤ client·ÎºÎÅÍ Àü´Ş¹ŞÀº ¸Ş½ÃÁö¸¦ Ãâ·Â
-		log(session.getId()+"°¡ º¸³½ ¸Ş½ÃÁö : "+message.getPayload());
-		// 2) ÇöÀç Á¢¼ÓÇÑ ¸ğµç client¿¡ ¸Ş½ÃÁö¸¦ Àü´Ş
-		for(WebSocketSession ws : users.values()) {
-			// 1. Á¢¼ÓÇÑ clientµé¿¡°Ô ¸Ş½ÃÁö Àü´Ş
+		// 1) íŠ¹ì •í•œ clientë¥¼ í†µí•´ ì „ë‹¬í•´ì˜¨ ë©”ì‹œì§€ë¥¼ ì¶œë ¥
+		log(session.getId()+"ì—ì„œ ì˜¨ ë©”ì‹œì§€:"+message.getPayload()); // msg:sss:123   msg:ë³´ë‚¸ìì•„ì´ë””:ë³´ë‚¸ë©”ì‹œì§€
+		// 2) í˜„ì¬ ì ‘ì†í•œ ëª¨ë“  ê³„ì •ì— ë©”ì‹œì§€ ì „ë‹¬
+		for(WebSocketSession ws:users.values()) { // ë‚˜ì™€ ì°¸ì—¬ì ëª¨ë‘ ë³´ì—¬ì•¼í•˜ë‹ˆê¹Œ
+			// 1. ê° ì ‘ì†í•œ í´ë¼ì´ì–¸íŠ¸ì—ê²Œ ë©”ì‹œì§€ ì „ë‹¬
 			ws.sendMessage(message);
-			// 2. Àü´ŞÇÒ »ç¿ëÀÚ ¹× ¸Ş½ÃÁö È®ÀÎ
-			log(ws.getId()+"¿¡°Ô Àü´ŞÇÒ ¸Ş½ÃÁö : "+message.getPayload());
+			// 2. ê° ì „ë‹¬í•  ì‚¬ìš©ì ë° ë©”ì‹œì§€ í™•ì¸
+			log(ws.getId()+"ì—ê²Œ ì „ë‹¬ ë©”ì‹œì§€:"+message.getPayload());
 		}
 	}
-
-	
-	// 3. ¼ÒÄÏ ¼­¹ö Á¾·á ½Ã Ã³¸®
+	// 3. ì†Œì¼“ ì„œë²„ ì¢…ë£Œì‹œ ì²˜ë¦¬ ë©”ì„œë“œ
 	@Override
 	public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
-		// 1) ÇöÀç Á¢¼Ó ¸ñ·Ï¿¡¼­ Á¦°Å
+		// 1) ê¸°ëŠ¥ ë“±ë¡ìì—ì„œ ì œê±° ì²˜ë¦¬
 		users.remove(session.getId());
-		log(session.getId()+"´Ô Á¢¼Ó Á¾·á");
+		log(session.getId()+" ì ‘ì† ì¢…ë£Œí•©ë‹ˆë‹¤.");
 	}
-	
-		
-	// 4. ¿¡·¯ ¹ß»ı ½Ã Ã³¸® 
+	// 4. ì—ëŸ¬ë°œìƒì‹œ ì²˜ë¦¬ ë©”ì„œë“œ 
 	@Override
 	public void handleTransportError(WebSocketSession session, Throwable exception) throws Exception {
-		log("###"+session.getId()+" ¿¡·¯ ###\n"+exception.getMessage());
-		// session.sendMessage(exception.getMessage());
+		 log(session.getId()+"ì—ëŸ¬ ë°œìƒ! ì—ëŸ¬ë‚´ìš©"+exception.getMessage());
+		 //session.sendMessage( "ì—ëŸ¬ ë°œìƒ! ì—ëŸ¬ë‚´ìš©"+exception.getMessage());
 	}
-	
-	
-	// ±âº» ·Î±× Ã³¸®
+	// # ê¸°ë³¸ ë¡œê·¸ ì²˜ë¦¬
 	private void log(String logMsg) {
 		System.out.println(new Date()+":"+logMsg);
 	}
-	
 }

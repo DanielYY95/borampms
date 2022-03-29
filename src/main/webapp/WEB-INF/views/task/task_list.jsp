@@ -21,10 +21,9 @@
 	<!-- App css -->
 	<link href="${path}/tools/project_assets/css/icons.min.css" rel="stylesheet" type="text/css" />
 	<link href="${path}/tools/project_assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-style" />
-
-	<!-- jQuery -->	
+	
+	<!-- jQuery -->
 	<script src="${path}/tools/jquery-3.6.0.js"></script>
-
 </head>
 
 
@@ -42,8 +41,6 @@
 
 </script>
 
-<% String msg=""; %>
-
 <body class="loading" data-layout-color="light" data-leftbar-theme="dark" data-layout-mode="fluid"
 	data-rightbar-onstart="true">
 	
@@ -51,7 +48,7 @@
 	<!-- Begin page -->
 	<div class="wrapper">
 	
-		<!-- ========== Left Sidebar Start ========== -->	
+		<!-- ========== Left Sidebar Start ========== -->
 		<jsp:include page="../include/leftBar.jsp" flush="true"/>
 		<!-- ========== Left Sidebar end ========== -->
 		
@@ -62,15 +59,16 @@
 
 		<div class="content-page">
 			<div class="content">
-				<!-- Start headerBar -->	
-				<jsp:include page="../include/headerBar.jsp" flush="true"/>	
+			
+				<!-- Start headerBar -->
+				<jsp:include page="../include/headerBar.jsp" flush="true"/>
 				<!-- end headerBar -->
-							
+
 				<!-- Start Content-->
-				<div class="container-fluid">	
+				<div class="container-fluid">
+
 					<!-- start page title -->
-					
-				<div class="row">
+					<div class="row">
 						<div class="col-12">
 							<div class="page-title-box">
 								<div class="page-title-right">
@@ -136,27 +134,26 @@
 											<table class="table table-centered table-nowrap mb-0 text-center">
 												<thead class="table-light">
 													<tr>
-														<th>번호</th>	
-														<th>제목</th>	
-														<th>등록자</th>	
-														<th>시작일</th>	
-														<th>마감일</th>	
-														<th>담당자</th>	
+														<th>번호</th>
+														<th>제목</th>
+														<th>등록자</th>
+														<th>시작일</th>
+														<th>마감일</th>
+														<th>담당자</th>
 														<th>진행상태</th>
-													
 													</tr>
 											 	</thead>
 											 	<tbody id="task-tbody">
-													<c:forEach var="task" items="${tasklist}" varStatus="status">	
-													<tr onclick="detail('${task.ptId}')">	
-														<td>${task.cnt }</td>	
-														<td>${task.ptTitle }</td>	
-														<td>${task_user.uiDept } ${task_user.uiName }</td>	
-														<td>${task.ptStartdate }</td>	
-														<td>${task.ptDuedate }</td>	
-														<td>	
-														<c:forEach var="charge" items="${task.ptCharge.split(',') }">	
-															${charge }<br>	
+													<c:forEach var="task" items="${tasklist}" varStatus="status">
+													<tr onclick="detail('${task.ptId}')">
+														<td>${task.cnt }</td>
+														<td>${task.ptTitle }</td>
+														<td>${task_user.uiDept } ${task_user.uiName }</td>
+														<td>${task.ptStartdate }</td>
+														<td>${task.ptDuedate }</td>
+														<td>
+														<c:forEach var="charge" items="${task.ptCharge.split(',') }">
+															${charge }<br>
 														</c:forEach>
 														</td>
 														<td>
@@ -175,10 +172,6 @@
 																			"progress-bar bg-success"
 																			style="width:100%" aria-valuenow="100"
 																		</c:when>
-																		<c:when test="${task.ptStatus eq '지연' }">
-																			"progress-bar-striped bg-warning progress-bar-animated"
-																			style="width:70%" aria-valuenow="70"
-																		</c:when>
 																		<c:when test="${task.ptStatus eq '보류' }">
 																			"progress-bar-striped"
 																			style="width:0%" aria-valuenow="0"
@@ -191,7 +184,6 @@
 																</small>
 															</div>
 														</td>
-													
 													</tr>
 													</c:forEach>
 												</tbody>
@@ -257,6 +249,7 @@
 	<!-- wrapper -->
 	
 
+
 	<!-- 업무 등록 modal -->
 	<div class="tab-content">
 	    <div class="tab-pane show active" id="modal-pages-preview" >
@@ -271,8 +264,8 @@
 	                    </div>
 	
 	                    <div class="modal-body">
-                             <form id="regForm" class="ps-3 pe-3" action="${path}/task.do?method=insert" method="post">	
-	                        	<input type="hidden" name="uiId" value="${user_info.uiId }">                                   
+	                        <form id="regForm" class="ps-3 pe-3" action="${path}/task.do?method=insert" method="post">
+	                        	<input type="hidden" name="uiId" value="${user_info.uiId }">                  
 	                            <div class="mb-3">
 	                                <label for="username" class="form-label">제목</label>
 	                                <input name="ptTitle" class="form-control"  required="" placeholder="제목을 입력해주세요">
@@ -292,46 +285,39 @@
 	                            <!-- Multiple Select -->
 	                            <div class="mb-3 position-relative">
 	                                <label class="form-label">업무담당자</label>
-	                                <select id="chargeUpt"  name="ptCharge" class="select2 form-control select2-multiple" value="${taskUser.ptCharge}" required="" data-toggle="select2" multiple="multiple" data-placeholder="업무담당자 지정">
-										<optgroup label="개발1팀">
-									    <option value="개발1팀 양초명">개발1팀 양초명</option>
-									    <option value="개발1팀 조민혁">개발1팀 조민혁</option>
-									
-									</optgroup>
-									  	<optgroup label="개발2팀">
-									    <option value="개발2팀 한가람">개발2팀 한가람</option>
-									    <option value="개발2팀 김효은">개발2팀 김효은</option>
-									    <option value="개발2팀 전지원">개발2팀 전지원</option>
-									
-									</optgroup>
-									
-									 <optgroup label="인사팀">
-									
-									    <option value="인사팀 김소월">인사팀 양초명</option>
-									    <option value="인사팀 한가람">인사팀 한가람</option>
-									    <option value="인사팀 김효은">인사팀 김효은</option>
-									</optgroup>
-									
-									<optgroup label="기획팀">
-									    <option value="기획팀 조민혁">기획팀 양현수</option>
-									    <option value="기획팀 전지원">기획팀 전지원</option>
-									</optgroup>
-									
-									<optgroup label="디자인팀">
-									    <option value="디자인팀 조민혁">디자인팀 조민혁</option>
-									    <option value="디자인팀 전지원">디자인팀 전지원</option>
-									</optgroup>
-									
-									
-									<optgroup label="마케팅팀">
-									    <option value="마케팅팀 양초명">마케팅팀 양초명</option>
-									    <option value="마케팅팀 양현수">마케팅팀 양현수</option>
-									   
-									
-									</optgroup>
-									
-									
-									</select>
+	                                <select name="ptCharge" class="select2 form-control select2-multiple" required=""
+	                                	data-toggle="select2" multiple="multiple" data-placeholder="업무담당자 지정">
+	                                    <optgroup label="개발1팀">
+	                                        <option value="개발1팀 김일개">개발1팀 김일개</option>
+	                                        <option value="개발1팀 이일개">개발1팀 이일개</option>
+	                                    </optgroup>
+	                                    <optgroup label="개발2팀">
+	                                        <option value="개발2팀 김이개">개발2팀 김이개</option>
+	                                        <option value="개발2팀 최이개">개발2팀 최이개</option>
+	                                    </optgroup>
+	                                    <optgroup label="인사팀">
+	                                        <option value="인사팀 김파월">인사팀 김파월</option>
+	                                        <option value="인사팀 김소월">인사팀 김소월</option>
+	                                        <option value="인사팀 한가람">인사팀 한가람</option>
+	                                        <option value="인사팀 김효은">인사팀 김효은</option>
+	                                    </optgroup>
+	                                    <optgroup label="기획팀">
+	                                        <option value="기획팀 김기획">기획팀 김기획</option>
+	                                        <option value="기획팀 박기획">기획팀 박기획</option>
+	                                        <option value="기획팀 최기획">기획팀 최기획</option>
+	                                        <option value="기획팀 이기획">기획팀 이기획</option>
+	                                    </optgroup>
+	                                    <optgroup label="디자인팀">
+	                                        <option value="디자인팀 김일러">디자인팀 김일러</option>
+	                                        <option value="디자인팀 박포토">디자인팀 박포토</option>
+	                                        <option value="디자인팀 이마야">디자인팀 이마야</option>
+	                                    </optgroup>
+	                                    <optgroup label="마케팅팀">
+	                                        <option value="마케팅팀 양초명">마케팅팀 양초명</option>
+	                                        <option value="마케팅팀 양현수">마케팅팀 양현수</option>
+	                                        <option value="마케팅팀 양광">마케팅팀 양광</option>
+	                                    </optgroup>
+	                                </select>
 	                            </div>
 	                            
 	
@@ -347,12 +333,11 @@
 	                                <div class="mb-3" style="width: 30%;">
 	                                    <label for="example-select" class="form-label">분류</label>
 	                                    <select class="form-select" id="example-select" name="ptType">
-	                                        <option>기획</option>
-	                                        <option>설계</option>
+	                                        <option>요구사항 도출</option>
+	                                        <option>요구사항 분석</option>
+	                                        <option>요구사항 명확</option>
+	                                        <option>요구사항 확인</option>
 	                                        <option>개발</option>
-	                                        <option>구현</option>
-	                                        <option>테스트</option> 
-                                         	<option>점검</option> 
 	                                    </select>
 	                                </div>	
 	                                <div class="mb-3" style="width: 30%;">
@@ -360,7 +345,7 @@
 	                                    <select class="form-select" id="example-select" name="ptStatus">
 	                                        <option>진행 전</option>
 	                                        <option>진행 중</option>
-                                            <option>보류</option>
+	                                        <option>보류</option>
 	                                        <option>완료</option>
 	                                    </select>
 	                                </div>
@@ -384,7 +369,6 @@
 			
 			
 			
-
 <script>
 	// bootstrap modal 창에서 select2 폼을 사용할 때
 	// 참고 : https://select2.org/troubleshooting/common-problems
@@ -393,8 +377,6 @@
 	});
 	
 	$(document).ready(function() {
-		
-		
 		// 검색이 실행되어 화면이 새로고침되었더라도 검색 키워드가 입력된 상태로 설정
 		let schTitle = "${taskSch.ptTitle}";
 		let schCharge = "${taskSch.ptCharge}";
@@ -447,11 +429,12 @@
 		}
 	});
 	
-	// 검색 : 시작일 / 마감일	
-	// 시작일 / 마감일 키워드 입력 시	
-	$("#taskSchForm").find("[name=ptStartdate], [name=ptDuedate]").change(function() {	
-		$("#taskSchForm").submit();	
-	});	
+	
+	// 검색 : 시작일 / 마감일
+	// 시작일 / 마감일 키워드 입력 시
+	$("#taskSchForm").find("[name=ptStartdate], [name=ptDuedate]").change(function() {
+		$("#taskSchForm").submit();
+	});
 	
 	
 	// 업무 상세 페이지로 이동
@@ -465,6 +448,7 @@
 		$("#taskSchForm").submit();
 	}
 	
+
 	// 업무 등록
 	$("#regBtn").click(function() {
 		if(confirm("등록하시겠습니까?")) {
@@ -529,6 +513,7 @@
 	
 	
 	
+
 	/*
 	// ajax 검색 시
 	let schword = "";
@@ -618,4 +603,3 @@
 
 
 </body>
-</html>
