@@ -54,17 +54,7 @@
 	-->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="mvc.dao"></property>
-		
-	
 	</bean>
-	
-	<!--  채팅 -->	
-	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/>
-	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"/>
-	<mvc:default-servlet-handler/>
-	<websocket:handlers>
-		<websocket:mapping handler="chatHandler" path="/chat-ws.do"/>
-	</websocket:handlers>
 	
 	<!-- 파일 업로드를 위한 viewer 선언  -->
 	<bean id="multipartResolver" 
@@ -86,13 +76,11 @@
 	
 	</bean>
 	
+	
 	<!-- 다운로드 viewer 등록
 			return "download"
 	-->
 	<bean id="download" class="mvc.util.DownloadViewer"/>
-	
-	
-	
 	
 	<!-- json 뷰 선언 
 		return "pageJsonReport" -->
@@ -116,20 +104,5 @@
 	</bean>
 	<bean id="localeResolver" 
 	class="org.springframework.web.servlet.i18n.SessionLocaleResolver"/>
-	
-	<!-- advice 선언
-	<bean id="profiler" class="a02_aop.advice.Profiler"/>
-	aspect = poincut+advice
-	<aop:config>
-		<aop:aspect id="traceAspect" ref="profiler">
-			특정 시점과 수행 내용 선언  dao 처리시
-			<aop:pointcut expression="execution(public * springweb.a02_mvc.a03_dao..*(..))" 
-				id="publicMethod"/>
-			pointcut의 시점 메서드를 연결처리(weaving)
-			<aop:around method="trace" pointcut-ref="publicMethod"/>
-		</aop:aspect>
-	</aop:config>
-	-->
-	
 	
 </beans>

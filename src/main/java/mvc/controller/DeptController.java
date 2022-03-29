@@ -9,6 +9,9 @@ import mvc.service.DeptService;
 import mvc.vo.DeptDoc;
 import mvc.vo.DeptDocSch;
 
+import mvc.vo.DeptDoc;
+import mvc.vo.DeptDocSch;
+
 
 @Controller
 @RequestMapping("/dept.do")
@@ -16,7 +19,6 @@ public class DeptController {
 
 	@Autowired
 	private DeptService service;
-	
 	
 	// 부서문서 리스트 
 	// http://localhost:7080/borampms/dept.do?method=list
@@ -33,6 +35,7 @@ public class DeptController {
 			
 		return "dept\\DeptInsert";
 	}
+
 	// 부서문서 등록
 	@RequestMapping(params="method=insert")
 	public String ddInsertFrm(DeptDoc ins, Model d) {
@@ -44,5 +47,7 @@ public class DeptController {
 		d.addAttribute("msg",service.insertDD(ins));
 		return "redirect:/dept.do?method=list"; 
 	}
-	
+
 }
+
+

@@ -38,13 +38,16 @@
 			<a href="javascript:void(0);" class="end-bar-toggle float-end">
 				<i class="dripicons-cross noti-icon"></i>
 			</a>
+
 			<h5 class="m-0">설정</h5>
+
 		</div>
 
 		<div class="rightbar-content h-100" data-simplebar>
 			<div class="p-3">
 				<!-- Settings -->
 				<h5 class="mt-3">색깔 설정</h5>
+
 				<hr class="mt-1"/>
 				<div class="form-check form-switch mb-1">
 					<input class="form-check-input" type="checkbox"
@@ -75,13 +78,16 @@
 				<div class="form-check form-switch mb-3">
 					<input class="form-check-input" type="checkbox" name="theme"
 						value="dark" id="dark-check"/>
+
 					<label class="form-check-label" for="dark-check">검은</label>
+
 				</div>
 
 				<div class="form-check form-switch mb-1">
 					<input class="form-check-input" type="checkbox" name="compact"
 						value="fixed" id="fixed-check" checked/>
 					<label class="form-check-label" for="fixed-check">고정</label>
+
 				</div>
 
 				<div class="form-check form-switch mb-1">

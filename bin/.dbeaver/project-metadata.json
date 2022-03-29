@@ -1,5 +1,0 @@
-<<<<<<< HEAD
-{"resources":{"Scripts/Script.sql":{"default-schema":"BORAM","sql-editor-data-source-id":"oracle_thin-17fa737ec5e-4320cf5c55fc80f7","default-datasource":"oracle_thin-17fa737ec5e-4320cf5c55fc80f7"}}}
-=======
-{"resources":{"taskSql.sql":{"sql-editor-data-source-id":"oracle_thin-17faa2cde48-779664cc8345badf","default-datasource":"oracle_thin-17faa2cde48-779664cc8345badf","default-schema":"BORAM"}}}
->>>>>>> branch 'main' of https://github.com/DanielYY95/borampms

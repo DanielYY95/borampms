@@ -18,4 +18,6 @@ public interface DeptDetailDao {
 	public void updateDept(DeptDoc upt);
 	// 3. 삭제
 	public void deleteDept(String ddId);
+
 }
+

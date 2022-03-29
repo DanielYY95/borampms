@@ -7,11 +7,12 @@
 
 <jsp:useBean id="now" class="java.util.Date" />
 <fmt:formatDate value="${now}" pattern="yyyy-MM-dd HH:mm:ss" var="now" />
+
 <c:set var="path" value="${pageContext.request.contextPath }"/>
 <fmt:requestEncoding value="utf-8"/>     
 <!DOCTYPE html>
 <html lang="en">
-			
+
 
 		<script>
 			
@@ -89,6 +90,7 @@
 							<a href="javascript:void(0);" class="dropdown-item notify-item">
 								<img src="${path}/tools/project_assets/images/flags/italy.jpg" alt="user-image"
 								class="me-1" height="12"> <span class="align-middle">italiano</span>
+
 							</a>
 
 							<!-- item-->
@@ -96,8 +98,7 @@
 								<img src="${path}/tools/project_assets/images/flags/spain.jpg" alt="user-image"
 								class="me-1" height="12"> <span class="align-middle">español</span>
 							</a>
-
-					
+				
 
 						</div>
 					</li>
@@ -118,6 +119,7 @@
 								<h5 class="m-0">
 									<span class="float-end">
 										<a href="javascript: void(0);" class="text-dark">
+
 										<small>모두 지우기</small>
 										</a>
 									</span>
@@ -266,6 +268,7 @@
 										</a>
 									</div>
 									<div class="col">
+
 										<a class="dropdown-icon-item" href="https://us02web.zoom.us/">
 											<img src="${path}/tools/project_assets/images/brands/zoom.png" alt="zoom">
 											<span>zoom</span>
@@ -275,6 +278,7 @@
 
 								<div class="row g-0">
 									<div class="col">
+
 										<a class="dropdown-icon-item" href="https://ko.gather.town/">
 											<img src="${path}/tools/project_assets/images/brands/gather.png" alt="gathertown">
 											<span>gathertown</span>
@@ -290,6 +294,7 @@
 									<a class=" dropdown-icon-item" href="https://drive.google.com/">
 											<img src="${path}/tools/project_assets/images/brands/drive.png" alt="G drive">
 											<span>G drive</span>
+
 										</a>
 									</div>
 								</div>
@@ -316,6 +321,7 @@
 							</span>
 							<span>
 								<span class="account-position">${user_info.uiDept}</span>				
+
 								<span class="account-user-name">${user_info.uiName}</span>
 								
 							</span>
@@ -401,8 +407,6 @@
 			</div><br><br>
 			<!-- end Topbar -->
 
-
-
 			<script>
 			
 			// 알림 메시지에 따라 이동을 다르게
@@ -414,14 +418,7 @@
 					
 					
 				})
-				
-				
-			
-			
-			
-			
-			</script>
 
-		
+			</script>
 
 </html>
