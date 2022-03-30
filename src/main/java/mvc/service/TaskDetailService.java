@@ -106,6 +106,33 @@ public class TaskDetailService {
 		return dao.getOutputList(ptId);
 	};
 	
+	// 산출물 삭제
+	
+	public void deleteOutput(String toFile) {
+		
+		// 동일한 파일이 있는 경우...?
+		// while(file.exists()) 를 통해서 계속해서 (1), (2) 등으로 붙여줘야한다. DB와 파일업로드할 떄 모두 그래야 이름으로...
+		
+
+        File deleteFile = new File(uploadPath+toFile);
+ 
+        // 파일이 존재하는지 체크 존재할경우 true, 존재하지않을경우 false
+        if(deleteFile.exists()) {
+            
+            // 파일을 삭제합니다.
+            deleteFile.delete(); 
+            // DB에서도 삭제
+    		dao.deleteOutput(toFile);
+            System.out.println("파일을 삭제하였습니다.");
+            
+        } else {
+            System.out.println("파일이 존재하지 않습니다.");
+        }
+		
+		
+	};
+	
+	
 	
 	// 2. 업무 정보 수정
 	public void updateTask(PRJ_TASK task) {

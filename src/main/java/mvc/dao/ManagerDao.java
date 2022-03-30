@@ -16,4 +16,11 @@ public interface ManagerDao {
 	public ArrayList<DeptInfo> getDeptList();
 	
 	public ArrayList<PRJ_INFO> getPrjList();
+	
+	public void uptCustomer(USER_INFO user);
+	
+	public void delCustomer(String uiId);
+
+	public ArrayList<USER_INFO> searchUser(USER_INFO user);
+	
 }

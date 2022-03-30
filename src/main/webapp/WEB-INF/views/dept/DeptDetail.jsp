@@ -112,17 +112,13 @@
 							
 														</div>
 													</div>
-
-													<c:forEach var="dfFile" items="${deptRowList.fnames}">
-
+													<c:forEach var="fname" items="${deptRowList.fnames}">
 													<div class="row">
 								            			<div class="col-lg-4">
 															<div class="mb-3">
 																<div class="input-group flex-nowrap">
-
-                                                            		<span class="input-group-text" id="basic-addon1"><i class="dripicons-upload"></i></span>
-                                                            		<input type="text" class="form-control" name="report" placeholder="${dfFile}" aria-label="Username" aria-describedby="basic-addon1" readonly>
-
+                                                            		<span class="input-group-text" id="basic-addon1" onclick="downFile('${fname}')"><i class="dripicons-upload"></i></span>
+                                                            		<input type="text" class="form-control" name="report" placeholder="${fname}" aria-label="Username" aria-describedby="basic-addon1" readonly>
                                                         		</div>
 														  	</div>
 													  	</div>
@@ -160,10 +156,7 @@
                 <jsp:include page="../include/rightBar_footer.jsp"/>
                 <!-- end Footer -->
 
-<<<<<<< HEAD
-=======
             </div>
->>>>>>> a00f3330a676de470fec20f98c7d9f559e5e5801
 
             <!-- ============================================================== -->
             <!-- End Page content -->
@@ -173,8 +166,6 @@
         </div>
         <!-- END wrapper -->
 
-<<<<<<< HEAD
-=======
 
         <!-- Right Sidebar -->
         <div class="end-bar">
@@ -272,7 +263,6 @@
         <!-- bundle -->
         <script src="${path}/tools/main_assets/js/vendor.min.js"></script>
         <script src="${path}/tools/main_assets/js/app.min.js"></script>
->>>>>>> a00f3330a676de470fec20f98c7d9f559e5e5801
 		<!-- jstree js -->
 		<script src="${path}/tools/main_assets/js/vendor/jstree.min.js"></script>
 		<script src="${path}/tools/main_assets/js/pages/demo.jstree.js"></script>
@@ -311,17 +301,6 @@
 		alert("문서관리 페이지로 이동하시겠습니까?");
 		location.href="${path}/dept.do?method=list";
 	});
-<<<<<<< HEAD
-	</script>
-	<script>
-	// 모달 창 닫기 버튼 클릭 시
-	$('.modal').on('hidden.bs.modal', function (e) {
-		console.log('modal close');
-	    $(this).find('form').reset();
-	});
-	</script>
-</html>
-=======
 	function downFile(fname){
 		if(confirm("다운로드할 파일:"+fname)){
 			location.href="${path}/download.do?fname="+fname;
@@ -329,4 +308,3 @@
 	}
 	</script>
 </html>
->>>>>>> a00f3330a676de470fec20f98c7d9f559e5e5801

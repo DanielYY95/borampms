@@ -45,6 +45,13 @@
 	
 	</select>
 	
+	<delete id="deleteOutput" parameterType="String">
+	
+		DELETE FROM TASK_OUTPUT to2 WHERE TO_FILE = #{toFile}
+	
+	</delete>
+	
+	
 	
 	<update id="updateTask" parameterType="task">
 		update PRJ_TASK

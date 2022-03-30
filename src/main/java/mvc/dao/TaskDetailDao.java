@@ -53,7 +53,7 @@ public interface TaskDetailDao {
 	public ArrayList<TASK_OUTPUT> getOutputList(String ptId);
 	
 		// 3. 산출물 삭제
-	public void deleteOutput(String toId);
+	public void deleteOutput(String toFile);
 	
 	
 	// (5) 가이드

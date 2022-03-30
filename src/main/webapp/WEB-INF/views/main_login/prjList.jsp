@@ -143,7 +143,7 @@
                                                             </div>
                                                         </th>
                                                         <th>프로젝트 ID</th>
-                                                        <th>제목</th>
+                                                        <th>제목(프로젝트에 들어가기위해 여기를 누르시오)</th>
                                                         <th>프로젝트 관리자</th>
                                                         <th>생성일/마감일</th>
                                                         <th>프로젝트 상태</th>
@@ -350,7 +350,7 @@
 
 
         	function goToPrj(piId){
-        		location.href="${path}/prjDash.do?piId="+piId;
+        		location.href="${path}/dash.do?method=list&piId="+piId;
 //        		location.href="${path}/dash.do?method=list";
         	} // 이 방식으로 post로 못 간다 
 

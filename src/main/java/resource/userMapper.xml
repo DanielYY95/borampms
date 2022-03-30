@@ -45,14 +45,14 @@
 	<update id="updateUser" parameterType="user">
 		UPDATE user_info 
 			SET UI_PW = #{uiPw}
-			and UI_EMAIL = #{uiEmail}
-			and UI_PHONE = #{uiPhone}
-			and UI_BIRTH = #{uiBirth}
-			and UI_PIC = #{uiPic}
-			and UI_INTRO = #{uiIntro}
-			and UI_RANK = #{uiRank}
-			and UI_DEPT = #{uiDept}
-			and UI_STATUS = #{uiStatus}
+			, UI_EMAIL = #{uiEmail}
+			, UI_PHONE = #{uiPhone}
+			, UI_BIRTH = #{uiBirth}
+			, UI_PIC = #{uiPic}
+			, UI_INTRO = #{uiIntro}
+			, UI_RANK = #{uiRank}
+			, UI_DEPT = #{uiDept}
+			, UI_STATUS = #{uiStatus}
 			WHERE UI_ID = #{uiId}
 	
 	</update>
@@ -88,5 +88,7 @@
 		where UI_ID = #{uiId}) pu, PRJ_INFO pi
 		where pu.PI_ID = pi.PI_ID
 	</select>
+	
+	
 	
 </mapper>

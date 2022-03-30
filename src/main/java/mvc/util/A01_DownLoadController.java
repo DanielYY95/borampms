@@ -13,9 +13,12 @@ public class A01_DownLoadController {
 	public String download(@RequestParam("fname") String fname, Model d) {
 		// downloadviewer에서 사용하는 이름으로 모델 데이터를 파일명으로 설정
 		// model.get("downloadfile");
+		System.out.println("##"+fname);
+		
 		d.addAttribute("downloadfile", fname);
 		
 		// 스프링 container에서 선언된 view이름 호출..
 		return "download";
 	}
 }
+

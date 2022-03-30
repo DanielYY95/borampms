@@ -1,5 +1,7 @@
 package mvc.controller;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,7 +56,7 @@ public class TaskController {
 	
 
 	@RequestMapping(params="method=insert") // 메인->프로젝트 목록 -> 업무목록으로 접근하는게 아니면 자꾸 에러가...
-	public String insertTask(HttpServletRequest request, String uiId, PRJ_TASK ins, Alarm alarm, Model d) {
+	public String insertTask(HttpServletRequest request, String uiId, PRJ_TASK ins, Model d) {
 		
 		// 프로젝트 고유번호가 없는 경우 대비
 
@@ -66,16 +68,18 @@ public class TaskController {
 		USER_INFO user = smethod.getUserSession(request);
 		
 		
-		alarm = amethod.taskAlarm(user, ins, smethod.getPiid(request)); // 이렇게 주면 구현부에서 알아서 처리된다. 
+		ArrayList<Alarm> alarmList = amethod.taskAlarm(user, ins, smethod.getPiid(request)); // 이렇게 주면 구현부에서 알아서 처리된다. 
 
 		// 프로젝트 세션에서 프로젝트 고유번호를 받는다. 
 		// 유저 세션에서 dept와 name을 받는다.
 		// for 반복문으로 업무 담당자를 지정
 		// 쓰여지는 때에 따라 다른 메시지	
 		
-		System.out.println("##"+alarm.getaFrom()+alarm.getaTo()+alarm.getaContent()+alarm.getPiId());
-		
-		etcservice.insertAlarm(alarm);
+		for(Alarm a : alarmList) {
+			System.out.println("##"+a.getaFrom()+a.getaTo()+a.getaContent()+a.getPiId());
+			
+			etcservice.insertAlarm(a);
+		}
 		
 		service.insertTask(ins);
 		return "forward:/task.do?method=list";

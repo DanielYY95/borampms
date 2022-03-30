@@ -26,5 +26,49 @@
 	
 	</select>
 
+	<!--  회원관리 수정 -->
+	<update id="uptCustomer" parameterType="user">
+		UPDATE user_info 
+			SET UI_PW = #{uiPw}
+				, UI_EMAIL = #{uiEmail}
+				,UI_PHONE = #{uiPhone}
+				, UI_RANK = #{uiRank}
+				, UI_DEPT = #{uiDept}
+			WHERE UI_ID = #{uiId}
+	</update>
+
+	<!--   회원관리 삭제 -->
+	
+	<delete id="delCustomer" parameterType="string">
+		delete from user_info
+		where UI_ID = #{uiId}
+	
+	</delete>
+	
+	<!-- 회원관리 검색 -->
+	<select id="searchUser" parameterType="user" resultType="user">
+		select * from user_info
+		where 
+		<if test="uiName != null">
+			UI_NAME like '%'||#{uiName}||'%'
+		</if>
+		<if test="uiId != null">
+			UI_ID like '%'||#{uiId}||'%'
+		</if>
+		<if test="uiEmail != null">
+			UI_EMAIL like '%'||#{uiEmail}||'%'
+		</if>
+		
+		<if test="uiPhone != null">
+			UI_PHONE like '%'||#{uiPhone}||'%'
+		</if>
+		and UI_DEPT like '%' || #{uiDept} || '%'
+		and UI_RANK like '%' || #{uiRank} || '%'
+		<if test="uiPhone != null and uiPhone != ''">
+		and UI_STATUS = #{uiStatus}
+		</if>
+	
+	</select>
+	
 	
 </mapper>
