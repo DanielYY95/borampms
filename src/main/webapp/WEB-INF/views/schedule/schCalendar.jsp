@@ -88,12 +88,12 @@ body {
 										// 클릭시, 가져온 속성값을 화면에 기본적으로 로딩할 수 있게 처리..
 										//$("[name=start]").val(arg.start.toISOString().split("T")[0])
 										// fullcanlendar에서는 표준형식을 출력을 처리하게 한다.
-										$("[name=cd_start]").val(
+										$("[name=start]").val(
 												arg.start.toISOString())
 										//$("[name=end]").val(arg.end.toISOString().split("T")[0])
-										$("[name=cd_end]").val(
+										$("[name=end]").val(
 												arg.end.toISOString())
-										$("[name=cd_allDay]").val("" + arg.allDay)
+										$("[name=allDay]").val("" + arg.allDay)
 										/*
 										var title = prompt('일정등록:');
 										if (title) {
@@ -171,16 +171,16 @@ body {
 
 					});
 	function formData(event) {
-		$("[name=cd_id]").val(event.cd_id)
-		$("[name=cd_title]").val(event.cd_title)
+		$("[name=id]").val(event.id)
+		$("[name=title]").val(event.title)
 		// 내용을 기본 속성이 아니기에 extendedProps에 들어가 있다.
-		$("[name=cd_content]").val(event.extendedProps.cd_content)
-		$("[name=cd_start]").val(event.cd_start.toISOString())
-		$("[name=cd_end]").val(event.cd_end.toISOString())
-		$("[name=cd_borderColor]").val(event.cd_borderColor)
-		$("[name=cd_backgrColor]").val(event.cd_backgrColor)
-		$("[name=cd_textColor]").val(event.cd_textColor)
-		$("[name=cd_allDay]").val("" + event.cd_allDay)
+		$("[name=content]").val(event.extendedProps.content)
+		$("[name=start]").val(event.start.toISOString())
+		$("[name=end]").val(event.end.toISOString())
+		$("[name=borderColor]").val(event.borderColor)
+		$("[name=backgroundColor]").val(event.backgroundColor)
+		$("[name=textColor]").val(event.textColor)
+		$("[name=allDay]").val("" + event.allDay)
 	}
 
 	$(document).ready(function() {
@@ -267,15 +267,15 @@ body {
 										<input type="hidden" name="id" value="0" />
 										<div class="row">
 											<div class="col">
-												<input type="text" class="form-control" placeholder="제목 입력" name="cd_title">
+												<input type="text" class="form-control" placeholder="제목 입력" name="title">
 											</div>
 										</div>
 										<div class="row">
 											<div class="col">
-												<input type="text" class="form-control" data-toggle="tooltip" data-placement="buttom" title="시작일" name="cd_start" readonly>
+												<input type="text" class="form-control" data-toggle="tooltip" data-placement="buttom" title="시작일" name="start" readonly>
 											</div>
 											<div class="col">
-												<input type="text" class="form-control" data-toggle="tooltip" data-placement="buttom" title="종료일" name="cd_end" readonly>
+												<input type="text" class="form-control" data-toggle="tooltip" data-placement="buttom" title="종료일" name="end" readonly>
 											</div>
 										</div>
 										<div class="row">
@@ -285,19 +285,19 @@ body {
 										</div>
 										<div class="row">
 											<div class="col">
-												<input type="color" data-toggle="tooltip" data-placement="buttom" title="배경색상" value="#0099cc" class="form-control" name="cd_backgrColor">
+												<input type="color" data-toggle="tooltip" data-placement="buttom" title="배경색상" value="#0099cc" class="form-control" name="backgroundColor">
 											</div>
 
 											<div class="col">
-												<input type="color" class="form-control" data-toggle="tooltip" data-placement="buttom" title="글자색상" value="#ccffff" name="cd_textColor">
+												<input type="color" class="form-control" data-toggle="tooltip" data-placement="buttom" title="글자색상" value="#ccffff" name="textColor">
 											</div>
 										</div>
 										<div class="row">
 											<div class="col">
-												<input type="color" class="form-control" data-toggle="tooltip" data-placement="buttom" title="테두리색상" value="#4b0082" name="cd_borderColor">
+												<input type="color" class="form-control" data-toggle="tooltip" data-placement="buttom" title="테두리색상" value="#4b0082" name="borderColor">
 											</div>
 											<div class="col">
-												<select name="cd_allDay" class="form-control" data-toggle="tooltip" data-placement="buttom" title="종일여부">
+												<select name="allDay" class="form-control" data-toggle="tooltip" data-placement="buttom" title="종일여부">
 													<option value="true">종 일</option>
 													<option value="false">시 간</option>
 												</select>

@@ -6,34 +6,55 @@
 <mapper namespace="mvc.dao.SchCalendarDao">
 	<!-- 
 	List<Calendar> getCalendarList();
+	
+	public class Calendar {
+	private int id;
+	private String title;
+	private String start;
+	private	String end;
+	private String content;
+	private String borderColor;
+	private String backgroundColor;
+	private String textColor;
+	private boolean allDay;
+
+	
 	 -->
+	 
 	<resultMap type="calendar" id="calResult">
 		<result property="start" column="cd_start"/>
 		<result property="end" column="cd_end"/>
+		<result property="id" column="cd_id"/>
+		<result property="title" column="cd_title"/>
+		<result property="content" column="cd_content"/>
+		<result property="borderColor" column="cd_borderColor"/>
+		<result property="backgroundColor" column="cd_backgroundColor"/>
+		<result property="textColor" column="cd_textColor"/>
+		<result property="allDay" column="cd_allDay"/>
 	</resultMap> 
 	<select id="getCalendarList" resultMap="calResult">
 		select * from calendar
 	</select>
 	<insert id="insertCalendar" parameterType="calendar">
 		INSERT INTO calendar values(cal_seq.nextval, 
-			#{cd_title},#{cd_start},#{cd_end},#{cd_content},#{cd_borderColor},#{cd_backgrColor},
-				#{cd_textColor},
-				#{cd_allDay})
+			#{title},#{start},#{end},#{content},#{borderColor},#{backgroundColor},
+				#{textColor},
+				#{allDay})
 	</insert> 
 	<update id="updateCalendar"  parameterType="calendar">
 		UPDATE calendar
-			set cd_title = #{cd_title},
-			    cd_start = #{cd_start},
-			    cd_end = #{cd_end},
-			    cd_content = #{cd_content},
-			    cd_bordercolor = #{cd_borderColor},
-			    cd_backgrcolor = #{cd_backgrColor},
-			    cd_textcolor = #{cd_textColor},
-			    cd_allDay = #{cd_allDay}
-		WHERE cd_id = #{cd_id}		    
+			set cd_title = #{title},
+			    cd_start = #{start},
+			    cd_end = #{end},
+			    cd_content = #{content},
+			    cd_bordercolor = #{borderColor},
+			    cd_backgrcolor = #{backgroundColor},
+			    cd_textcolor = #{textColor},
+			    cd_allDay = #{allDay}
+		WHERE cd_id = #{id}		    
 	</update>
 	<delete id="deleteCalendar" parameterType="int">
 		DELETE FROM calendar
-			WHERE cd_id = #{cd_id}
+			WHERE cd_id = #{id}
 	</delete>
 </mapper>

@@ -6,19 +6,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import mvc.dao.SchCalendarDao;
-import mvc.vo.Sch_Calendar;
+import mvc.vo.Calendar;
 
 @Service
 public class SchCalendarService {
 	@Autowired
 	private SchCalendarDao dao;
-	public List<Sch_Calendar> getCalendarList(){
+	public List<Calendar> getCalendarList(){
 		return dao.getCalendarList();
 	}
-	public void insertCalendar(Sch_Calendar ins) {
+	public void insertCalendar(Calendar ins) {
 		dao.insertCalendar(ins);
 	}
-	public void updateCalendar(Sch_Calendar upt) {
+	public void updateCalendar(Calendar upt) {
 		dao.updateCalendar(upt);
 	}
 	public void deleteCalendar(int id) {
