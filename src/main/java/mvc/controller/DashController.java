@@ -3,11 +3,9 @@ package mvc.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import mvc.service.DashService;
-import mvc.vo.TaskSch;
 
 @Controller
 @RequestMapping("/dash.do")
@@ -19,7 +17,6 @@ public class DashController {
 	@RequestMapping(params="method=list")
 	public String taskList(Model d) {
 		d.addAttribute("dashlist", service.taskDashlist());
-		
 		return "/dashboard/TaskDash";
 	}
 

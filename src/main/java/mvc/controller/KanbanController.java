@@ -17,10 +17,10 @@ public class KanbanController {
 	// http://localhost:7090/borampms/kanban.do?method=list
 	@RequestMapping(params="method=list")
 	public String kanbanMain(Model d) {
-		d.addAttribute("klist",service.getKlist()); // 진행 전 
-		d.addAttribute("klist2",service.getKlist2()); // 진행 중
-		d.addAttribute("klist3",service.getKlist3()); // 보류 
-		d.addAttribute("klist4",service.getKlist4()); // 완료 
+		d.addAttribute("klist",service.getKlist());
+		d.addAttribute("klist2",service.getKlist2());
+		d.addAttribute("klist3",service.getKlist3());
+		d.addAttribute("klist4",service.getKlist4());
 		return "/schedule/schKanban";
 	}
 	

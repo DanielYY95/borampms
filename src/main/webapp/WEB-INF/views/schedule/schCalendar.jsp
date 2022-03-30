@@ -18,6 +18,7 @@
 
 <!-- third party css -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+<link href="../assets/css/vendor/fullcalendar.min.css" rel="stylesheet" type="text/css" />
 <!-- third party css end -->
 
 <!-- App css -->
@@ -92,7 +93,7 @@ body {
 										//$("[name=end]").val(arg.end.toISOString().split("T")[0])
 										$("[name=cd_end]").val(
 												arg.end.toISOString())
-										$("[name=cd_cd_allDay]").val("" + arg.allDay)
+										$("[name=cd_allDay]").val("" + arg.allDay)
 										/*
 										var title = prompt('일정등록:');
 										if (title) {
@@ -185,25 +186,24 @@ body {
 	$(document).ready(function() {
 		$('[data-toggle="tooltip"]').tooltip();
 		$("#regBtn").click(function() {
-			if (confirm("일정 등록하시겠습니까?")) {
+			if (confirm("일정등록하시겠습니까?")) {
 				$("#frm01").attr("action", "${path}/insertCalendar.do");
 				$("#frm01").submit();
 			}
 		});
 		$("#uptBtn").click(function() {
-			if (confirm("일정 수정하시겠습니까?")) {
+			if (confirm("일정수정하시겠습니까?")) {
 				$("#frm01").attr("action", "${path}/updateCalendar.do");
 				$("#frm01").submit();
 			}
 		});
 		$("#delBtn").click(function() {
-			if (confirm("일정 삭제하시겠습니까?")) {
+			if (confirm("일정삭제하시겠습니까?")) {
 				$("#frm01").attr("action", "${path}/deleteCalendar.do");
 				$("#frm01").submit();
 			}
 		});
 	});
-	
 </script>
 </head>
 
@@ -264,7 +264,7 @@ body {
 								</div>
 								<div class="modal-body">
 									<form id="frm01" class="form" method="post">
-										<input type="hidden" name="cd_id" value="0" />
+										<input type="hidden" name="id" value="0" />
 										<div class="row">
 											<div class="col">
 												<input type="text" class="form-control" placeholder="제목 입력" name="cd_title">
@@ -280,7 +280,7 @@ body {
 										</div>
 										<div class="row">
 											<div class="col">
-												<textarea class="form-control" name="cd_content" placeholder="내용" cols="10" rows="10"></textarea>
+												<textarea class="form-control" name="content" placeholder="내용" cols="10" rows="10"></textarea>
 											</div>
 										</div>
 										<div class="row">

@@ -8,8 +8,8 @@
 	List<Calendar> getCalendarList();
 	 -->
 	<resultMap type="calendar" id="calResult">
-		<result property="cd_start" column="cd_start"/>
-		<result property="cd_end" column="cd_end"/>
+		<result property="start" column="cd_start"/>
+		<result property="end" column="cd_end"/>
 	</resultMap> 
 	<select id="getCalendarList" resultMap="calResult">
 		select * from calendar
