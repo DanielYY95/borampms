@@ -203,6 +203,7 @@ body {
 			}
 		});
 	});
+	
 </script>
 </head>
 
@@ -263,7 +264,7 @@ body {
 								</div>
 								<div class="modal-body">
 									<form id="frm01" class="form" method="post">
-										<input type="hidden" name="id" value="0" />
+										<input type="hidden" name="cd_id" value="0" />
 										<div class="row">
 											<div class="col">
 												<input type="text" class="form-control" placeholder="제목 입력" name="cd_title">
