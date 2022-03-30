@@ -131,8 +131,8 @@
 																<option value="phone">연락처</option>
 															</select>
 														</div>
-														<div class="">
-															<input type="search" id="typeInput" name="uiName" class="form-control" placeholder="검색">
+														<div class=""> <!--왜 한글말고 다른건 입력이 안되는겨....-->
+															<input type="text" id="typeInput" name="uiName" class="form-control" placeholder="검색">
 														</div>
 
 													</div>
@@ -173,9 +173,9 @@
 														</div>
 														<div>
 															<select class="form-select" name="uiStatus">
-																<option value="전체" selected>전체</option>
-																<option value="재직">재직</option>
-																<option value="퇴사">퇴사</option>
+																<option value="" selected>전체</option>
+																<option value="0">재직</option>
+																<option value="1">퇴사</option>
 
 															</select>
 														</div>
@@ -209,7 +209,7 @@
 															<th>수정</th>
 														</tr>
 													</thead>
-													<tbody>
+													<tbody id="listBox">
 														<c:forEach var="user" items="${userList}">
 															<tr>
 																<td>
@@ -407,14 +407,9 @@
 				</div> <!-- /.tab-content -->
 
 
-
-
-
-
-
-
-
 				<script>
+
+
 					
 				  $("#pw").keyup(function(){
 						if($("#pw").val().trim()!=""){
@@ -517,19 +512,80 @@
 					let type= "";
 					
 					$("#searchBtn").on("click", function(){
-						
+						searchUser();		
+					})
+
+					$("#typeInput").on("keypress",function(e){
+						if(e.keyCode=13){
+							e.preventDefault();
+							searchUser();
+						}
+
+					});
+
+
+					function searchUser(){
+
 						if($("#type").val()!="name"){
 							type= ($("#type").val()=="id")? "uiId":(($("#type").val()=="phone")? "uiPhone": "uiEmail");
 							$("#typeInput").attr("name",type);
 						}
 						
-						
-						$("#searchForm").submit();
-						
-					})
-					
-					
+						$.ajax({
+				
+							url:"${path}/manager.do?method=userSearch",
+							type:"get",
+							data: $("#searchForm").serialize(),
+							dataType:"json",
+							success:function(data) {
+								
+								$("#listBox").html("");
+								let html = "";
+								$.each(data.userList, function(idx, sch) {
+									
+									html += '<tr><td><div class="form-check"><input type="checkbox" class="form-check-input"'+
+											'id="customCheck2"><label class="form-check-label"for="customCheck2">&nbsp;</label></div></td>'+
+											'<td><a href="apps-ecommerce-orders-details.html" class="text-body fw-bold">'+
+												sch.uiId+'</a></td><td>'+sch.uiName+'</td><td>'+sch.uiDept+
+												'</td><td><p class="mb-0 txt-muted">'+sch.uiRank+'</p></td><td>'+
+												sch.uiEmail+'</td><td>'+sch.uiPhone+
+												'</td><td><h5 class="my-0"><span class="badge badge-info-lighten">'+
+												sch.uiStatus+'</span></h5></td><td><a href="javascript:void(0);" class="action-icon"'+
+												'onclick="editUserDetail("'+sch.uiId+'")" data-bs-toggle="modal" data-bs-target="#signup-modal">'+
+												' <i class="mdi mdi-square-edit-outline"></i></a><a href="javascript:void(0);" class="action-icon"'+
+												'onclick="deleteUser("'+sch.uiName+'","'+sch.uiId+'")"><i class="mdi mdi-delete"></i></a></td></tr>'
 
+
+											// 	html += `<tr><td><div class="form-check"><input type="checkbox" class="form-check-input"
+											// id="customCheck2"><label class="form-check-label"for="customCheck2">&nbsp;</label></div></td>
+											// <td><a href="apps-ecommerce-orders-details.html" class="text-body fw-bold">
+											// 	${sch.uiId}</a></td><td>${sch.uiName}</td><td>${sch.uiDept}
+											// 	</td><td><p class="mb-0 txt-muted">${sch.uiRank}</p></td><td>
+											// 	${sch.uiEmail}</td><td>${sch.uiPhone}
+											// 	</td><td><h5 class="my-0"><span class="badge badge-info-lighten">
+											// 	${sch.uiStatus}</span></h5></td><td><a href="javascript:void(0);" class="action-icon"
+											// 	onclick="editUserDetail('${sch.uiId}')" data-bs-toggle="modal" data-bs-target="#signup-modal">
+											// 	<i class="mdi mdi-square-edit-outline"></i></a><a href="javascript:void(0);" class="action-icon"
+											// 	onclick="deleteUser('${sch.uiName}','${sch.uiId}')"><i class="mdi mdi-delete"></i></a></td></tr>`
+
+
+								});	
+								
+							
+								
+								$("#listBox").append(html);
+								
+							},
+							error:function(err) {
+								console.log(err);
+							}
+					
+						})
+					}
+
+
+					
+					
 				</script>
 
 

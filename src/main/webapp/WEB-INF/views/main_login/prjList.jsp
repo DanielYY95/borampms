@@ -350,9 +350,13 @@
 
 
         	function goToPrj(piId){
-        		location.href="${path}/dash.do?method=list&piId="+piId;
+        		location.href="${path}/prjDash.do?piId="+piId;
 //        		location.href="${path}/dash.do?method=list";
         	} // 이 방식으로 post로 못 간다 
+
+
+            $("#alarm").hide();
+
 
         </script>
 

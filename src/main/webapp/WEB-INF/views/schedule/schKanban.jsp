@@ -15,7 +15,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
 <meta content="Coderthemes" name="author" />
-<script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
+
 <!-- App favicon -->
 <link rel="shortcut icon" href="${path}/tools/project_assets/images/favicon.ico" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
@@ -23,7 +23,11 @@
 
 <link href="${path}/tools/project_assets/css/icons.min.css" rel="stylesheet" type="text/css" />
 <link href="${path}/tools/project_assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-style" />
+
+<script src="${path}/a00_com/jquery-3.6.0.js"></script>
+
 </head>
+
 
 
 <!-- 
@@ -81,23 +85,46 @@
 
 									<!-- Multiple Select -->
 									<div class="mb-3 position-relative">
-										<label class="form-label">업무담당자</label> <select name="ptCharge" class="select2 form-control select2-multiple" required="" data-toggle="select2" multiple="multiple" data-placeholder="업무담당자 지정">
-											<optgroup label="IT팀">
-												<option value="IT팀 조민혁">IT팀 조민혁</option>
-												<option value="IT팀 전지원">IT팀 전지원</option>
-											</optgroup>
-											<optgroup label="인사팀">
-												<option value="인사팀 김파월">인사팀 김파월</option>
-												<option value="인사팀 김소월">인사팀 김소월</option>
-												<option value="인사팀 한가람">인사팀 한가람</option>
-												<option value="인사팀 김효은">인사팀 김효은</option>
-											</optgroup>
-											<optgroup label="마케팅팀">
-												<option value="마케팅팀 양초명">마케팅팀 양초명</option>
-												<option value="마케팅팀 양현수">마케팅팀 양현수</option>
-												<option value="마케팅팀 양광">마케팅팀 양광</option>
-
-											</optgroup>
+										<label class="form-label">업무담당자</label>
+										<select id="chargeUpt"  name="ptCharge" class="select2 form-control select2-multiple" value="${taskUser.ptCharge}" required="" data-toggle="select2" multiple="multiple" data-placeholder="업무담당자 지정">
+											<optgroup label="개발1팀">
+											<option value="개발1팀 양초명">개발1팀 양초명</option>
+											<option value="개발1팀 조민혁">개발1팀 조민혁</option>
+										
+										</optgroup>
+											  <optgroup label="개발2팀">
+											<option value="개발2팀 한가람">개발2팀 한가람</option>
+											<option value="개발2팀 김효은">개발2팀 김효은</option>
+											<option value="개발2팀 전지원">개발2팀 전지원</option>
+										
+										</optgroup>
+										
+										 <optgroup label="인사팀">
+										
+											<option value="인사팀 김소월">인사팀 양초명</option>
+											<option value="인사팀 한가람">인사팀 한가람</option>
+											<option value="인사팀 김효은">인사팀 김효은</option>
+										</optgroup>
+										
+										<optgroup label="기획팀">
+											<option value="기획팀 조민혁">기획팀 양현수</option>
+											<option value="기획팀 전지원">기획팀 전지원</option>
+										</optgroup>
+										
+										<optgroup label="디자인팀">
+											<option value="디자인팀 조민혁">디자인팀 조민혁</option>
+											<option value="디자인팀 전지원">디자인팀 전지원</option>
+										</optgroup>
+										
+										
+										<optgroup label="마케팅팀">
+											<option value="마케팅팀 양초명">마케팅팀 양초명</option>
+											<option value="마케팅팀 양현수">마케팅팀 양현수</option>
+										   
+										
+										</optgroup>
+										
+										
 										</select>
 									</div>
 
@@ -111,19 +138,20 @@
 											</select>
 										</div>
 										<div class="mb-3" style="width: 30%;">
-											<label for="example-select" class="form-label">분류</label> <select class="form-select" id="example-select" name="ptType" value="">
-												<option>요구사항 도출</option>
-												<option>요구사항 분석</option>
-												<option>요구사항 명확</option>
-												<option>요구사항 확인</option>
+											<label for="example-select" class="form-label">분류</label> 
+											<select class="form-select" id="example-select" name="ptType" value="">
+												<option>기획</option>
+												<option>설계</option>
 												<option>개발</option>
+												<option>구현</option>
+												<option>테스트</option>
+												<option>점검</option>
 											</select>
 										</div>
 										<div class="mb-3" style="width: 30%;">
 											<label for="example-select" class="form-label">진행상태</label> <select class="form-select" id="example-select" name="ptStatus">
 												<option>진행 전</option>
 												<option>진행 중</option>
-										
 												<option>보류</option>
 												<option>완료</option>
 											</select>
@@ -189,7 +217,14 @@
 									<li class="breadcrumb-item active">칸반보드</li>
 								</ol>
 							</div>
-							<h4 class="page-title">칸반보드</h4>
+							<div class="row g-2">
+								<h4 class="col-10 page-title">칸반보드</h4> 
+								<button type="button" class="col-1 p-1 btn btn-success btn-sm ms-3" 
+									data-bs-toggle="modal" data-bs-target="#signup-modal">새 업무 등록</button>
+
+							</div>
+							
+
 						</div>
 						<!-- end page  -->
 						
@@ -217,7 +252,7 @@
 
 								<!--  !!!!카드 시작!!!!  -->
 								<c:forEach var="kanban" items="${klist }">
-									<div class="card mb-0">
+									<div id="task-list-one" name="${kanban.ptId}" class="card mb-0">
 										<div class="card-body p-3">
 											<small class="float-end text-muted">${kanban.ptStartdate }</small> <span class="badge bg-danger">${kanban.ptPriority }</span> <span class="badge bg-success">${kanban.ptStatus }</span>
 
@@ -253,7 +288,7 @@
 								<!-- Task Item -->
 								<!--  !!!!카드 시작!!!!  -->
 								<c:forEach var="kanban2" items="${klist2 }">
-									<div class="card mb-0">
+									<div id="task-list-two" name="${kanban2.ptId}"  class="card mb-0">
 										<div class="card-body p-3">
 											<small class="float-end text-muted">${kanban2.ptStartdate }</small> <span class="badge bg-secondary text-light">${kanban2.ptPriority }</span> <span class="badge bg-success">${kanban2.ptStatus }</span>
 
@@ -281,13 +316,13 @@
 
 						<div class="tasks">
 							<h5 class="mt-0 task-header text-uppercase">보류 (${klist3.size() })</h5>
-							<div id="task-list-three" class="task-list-items">
+							<div  id="task-list-three" class="task-list-items">
 								<!-- Task Item -->
 
 								<!-- Task Item -->
 								<!--  !!!!카드 시작!!!!  -->
 								<c:forEach var="kanban3" items="${klist3 }">
-									<div class="card mb-0">
+									<div id="task-list-three" name="${kanban3.ptId}" class="card mb-0">
 										<div class="card-body p-3">
 											<small class="float-end text-muted">${kanban3.ptStartdate }</small> <span class="badge bg-danger">${kanban3.ptPriority }</span> <span class="badge bg-success">${kanban3.ptStatus }</span>
 
@@ -311,14 +346,14 @@
 							<!-- end company-list-3-->
 						</div>
 
-						<div class="tasks">
+						<div class="tasks" >
 							<h5 class="mt-0 task-header text-uppercase">완료 (${klist4.size() })</h5>
 							<div id="task-list-four" class="task-list-items">
 								<!-- Task Item -->
 								<!--  !!!!카드 시작!!!!  -->
 								<c:forEach var="kanban4" items="${klist4 }">
-									<div class="card mb-0">
-										<div class="card-body p-3">
+									<div id="task-list-four" name="${kanban4.ptId}"  class="card mb-0">
+										<div class="card-body p-3" >
 											<small class="float-end text-muted">${kanban4.ptStartdate }</small> <span class="badge bg-success">${kanban4.ptPriority }</span> <span class="badge bg-success">${kanban4.ptStatus }</span>
 
 											<h5 class="mt-2 mb-2">
@@ -354,8 +389,7 @@
 				<!-- end row-->
 				<div class="container-fluid">
 					<br> <br>
-					<button type="button" class="btn btn-success btn-sm ms-3" data-bs-toggle="modal" data-bs-target="#signup-modal">새 업무 등록</button>
-
+					
 				</div>
 			</div>
 			<!-- container -->
@@ -363,188 +397,76 @@
 
 		<!-- content -->
 
-		<!-- Footer Start -->
-		<footer class="footer">
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-md-6">
-						<script>
-                  document.write(new Date().getFullYear());
-                </script>
-						© Hyper - Coderthemes.com
-					</div>
-					<div class="col-md-6">
-						<div class="text-md-end footer-links d-none d-md-block">
-							<a href="javascript: void(0);">About</a> <a href="javascript: void(0);">Support</a> <a href="javascript: void(0);">Contact Us</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</footer>
-		<!-- end Footer -->
+		<!-- start rightBar_footer -->
+		<jsp:include page="../include/rightBar_footer.jsp" flush="true"/>
+		<!-- end rightBar_footer -->
+		
 	</div>
+	<!-- wrapper -->
+		
 
-	<!-- ============================================================== -->
-	<!-- End Page content -->
-	<!-- ============================================================== -->
-	</div>
-	<!-- END wrapper -->
-
-	<!-- Right Sidebar -->
-	<div class="end-bar">
-		<div class="rightbar-title">
-			<a href="javascript:void(0);" class="end-bar-toggle float-end"> <i class="dripicons-cross noti-icon"></i>
-			</a>
-			<h5 class="m-0">Settings</h5>
-		</div>
-
-		<div class="rightbar-content h-100" data-simplebar>
-			<div class="p-3">
-				<div class="alert alert-warning" role="alert">
-					<strong>Customize </strong> the overall color scheme, sidebar menu, etc.
-				</div>
-
-				<!-- Settings -->
-				<h5 class="mt-3">Color Scheme</h5>
-				<hr class="mt-1" />
-
-				<div class="form-check form-switch mb-1">
-					<input class="form-check-input" type="checkbox" name="color-scheme-mode" value="light" id="light-mode-check" checked /> <label class="form-check-label" for="light-mode-check">Light Mode</label>
-				</div>
-
-				<div class="form-check form-switch mb-1">
-					<input class="form-check-input" type="checkbox" name="color-scheme-mode" value="dark" id="dark-mode-check" /> <label class="form-check-label" for="dark-mode-check">Dark Mode</label>
-				</div>
-
-				<!-- Width -->
-				<h5 class="mt-4">Width</h5>
-				<hr class="mt-1" />
-				<div class="form-check form-switch mb-1">
-					<input class="form-check-input" type="checkbox" name="width" value="fluid" id="fluid-check" checked /> <label class="form-check-label" for="fluid-check">Fluid</label>
-				</div>
-
-				<div class="form-check form-switch mb-1">
-					<input class="form-check-input" type="checkbox" name="width" value="boxed" id="boxed-check" /> <label class="form-check-label" for="boxed-check">Boxed</label>
-				</div>
-
-				<!-- Left Sidebar-->
-				<h5 class="mt-4">Left Sidebar</h5>
-				<hr class="mt-1" />
-				<div class="form-check form-switch mb-1">
-					<input class="form-check-input" type="checkbox" name="theme" value="default" id="default-check" /> <label class="form-check-label" for="default-check">Default</label>
-				</div>
-
-				<div class="form-check form-switch mb-1">
-					<input class="form-check-input" type="checkbox" name="theme" value="light" id="light-check" checked /> <label class="form-check-label" for="light-check">Light</label>
-				</div>
-
-				<div class="form-check form-switch mb-3">
-					<input class="form-check-input" type="checkbox" name="theme" value="dark" id="dark-check" /> <label class="form-check-label" for="dark-check">Dark</label>
-				</div>
-
-				<div class="form-check form-switch mb-1">
-					<input class="form-check-input" type="checkbox" name="compact" value="fixed" id="fixed-check" checked /> <label class="form-check-label" for="fixed-check">Fixed</label>
-				</div>
-
-				<div class="form-check form-switch mb-1">
-					<input class="form-check-input" type="checkbox" name="compact" value="condensed" id="condensed-check" /> <label class="form-check-label" for="condensed-check">Condensed</label>
-				</div>
-
-				<div class="form-check form-switch mb-1">
-					<input class="form-check-input" type="checkbox" name="compact" value="scrollable" id="scrollable-check" /> <label class="form-check-label" for="scrollable-check">Scrollable</label>
-				</div>
-
-				<div class="d-grid mt-4">
-					<button class="btn btn-primary" id="resetBtn">Reset to Default</button>
-
-					<a href="https://themes.getbootstrap.com/product/hyper-responsive-admin-dashboard-template/" class="btn btn-danger mt-3" target="_blank"><i class="mdi mdi-basket me-1"></i> Purchase Now</a>
-				</div>
-			</div>
-			<!-- end padding-->
-		</div>
-	</div>
-
-	<div class="rightbar-overlay"></div>
-	<!-- /End-bar -->
-
-	<!--  Add new task modal -->
-	<div class="modal fade task-modal-content" id="add-new-task-modal" tabindex="-1" role="dialog" aria-labelledby="NewTaskModalLabel" aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered modal-lg">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h4 class="modal-title" id="NewTaskModalLabel">Create New Task</h4>
-					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-				</div>
-				<div class="modal-body">
-					<form class="p-2">
-						<div class="mb-3">
-							<label class="form-label">Project</label> <select class="form-select form-control-light">
-								<option>Select</option>
-								<option>Hyper - Admin Dashboard</option>
-								<option>CRM - Design & Development</option>
-								<option>iOS - App Design</option>
-							</select>
-						</div>
-
-						<div class="row">
-							<div class="col-md-8">
-								<div class="mb-3">
-									<label for="task-title" class="form-label">Title</label> <input type="text" class="form-control form-control-light" id="task-title" placeholder="Enter title" />
-								</div>
-							</div>
-
-							<div class="col-md-4">
-								<div class="mb-3">
-									<label for="task-priority2" class="form-label">Priority</label> <select class="form-select form-control-light" id="task-priority2">
-										<option>Low</option>
-										<option>Medium</option>
-										<option>High</option>
-									</select>
-								</div>
-							</div>
-						</div>
-
-						<div class="mb-3">
-							<label for="task-description" class="form-label">Description</label>
-							<textarea class="form-control form-control-light" id="task-description" rows="3"></textarea>
-						</div>
-
-						<div class="row">
-							<div class="col-md-6">
-								<div class="mb-3">
-									<label for="task-title" class="form-label">Assign To</label> <select class="form-select form-control-light" id="task-priority">
-										<option>Coderthemes</option>
-										<option>Robert Carlile</option>
-										<option>Louis Allen</option>
-										<option>Sean White</option>
-										<option>Riley Steele</option>
-										<option>Zak Turnbull</option>
-									</select>
-								</div>
-							</div>
-
-							<div class="col-md-6">
-								<div class="mb-3">
-									<label for="task-priority" class="form-label">Due Date</label> <input type="text" class="form-control form-control-light" id="birthdatepicker" data-toggle="date-picker" data-single-date-picker="true" />
-								</div>
-							</div>
-						</div>
-
-						<div class="text-end">
-							<button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
-							<button type="button" class="btn btn-primary">Create</button>
-						</div>
-					</form>
-				</div>
-			</div>
-			<!-- /.modal-content -->
-		</div>
-		<!-- /.modal-dialog -->
-	</div>
-	<!-- /.modal -->
 
 	<script>
-	
+			// 참고: https://m.blog.naver.com/comball2/222084124768
+		// Mutation Observer
+		// 감시 대상 node 선택
+		let target1 = document.querySelector('#task-list-one');
+		let target2 = document.querySelector('#task-list-two');
+		let target3 = document.querySelector('#task-list-three');
+		let target4 = document.querySelector('#task-list-four');
+
+
+			// 감시자 인스턴스 만들기
+		let observer1 = new MutationObserver((mutations) => {
+			// 노드가 변경 됐을 때의 작업
+					//console.log('DOM 변경 감지');
+
+			// 자신이 포함하고 있는 녀석 중에서 task-list-? 가 같지 않은 녀석을 찾아서
+			// ptId를 갖고 해당 녀석을 ""로 바꿔버려라. 
+
+			let ptId = $("#task-list-one>div").not($("#task-list-one")).attr("name")+'';
+
+			location.href="${path}/kanban.do?method=update&ptId="+ptId+"&ptStatus="+"진행 전";
+
+		})
+
+		let observer2 = new MutationObserver((mutations) => {
+			
+			let ptId = $("#task-list-two>div").not($("#task-list-two")).attr("name")+''
+			location.href="${path}/kanban.do?method=update&ptId="+ptId+"&ptStatus="+"진행 중";
+
+		})
+
+		let observer3 = new MutationObserver((mutations) => {
+			
+			let ptId = $("#task-list-three>div").not($("#task-list-three")).attr("name")+''
+			location.href="${path}/kanban.do?method=update&ptId="+ptId+"&ptStatus="+"보류";
+
+		})
+
+		let observer4 = new MutationObserver((mutations) => {
+			
+			let ptId = $("#task-list-four>div").not($("#task-list-four")).attr("name")+''
+			location.href="${path}/kanban.do?method=update&ptId="+ptId+"&ptStatus="+"완료";
+
+		})
+
+
+
+
+
+		// 감시자의 설정
+		let option = {
+			childList: true
+		};
+
+		// 대상 노드에 감시자 전달
+		observer1.observe(target1, option);
+		observer2.observe(target2, option);
+		observer3.observe(target3, option);
+		observer4.observe(target4, option);
+
+		
 	function godetail(ptId){
 		// 더블 클릭시, no를 매개변수를 넘기고 controller에 요청값을 전달 처리.
 		location.href="${path}/taskDetail.do?ptId="+ptId;
@@ -622,10 +544,7 @@ $("[name=duedate]").change(function(){
  
 
 </script>
-	<!-- bundle -->
-	<script src="${path}/tools/project_assets/js/vendor.min.js"></script>
-	<script src="${path}/tools/project_assets/js/app.min.js"></script>
-	<script src="${path}/a00_com/jquery-3.6.0.js"></script>
+
 
 	<!-- dragula js-->
 	<script src="${path}/tools/project_assets/js/vendor/dragula.min.js"></script>

@@ -67,7 +67,7 @@ public class TaskController {
 	
 		USER_INFO user = smethod.getUserSession(request);
 		
-		
+		System.out.println("piId:"+smethod.getPiid(request));
 		ArrayList<Alarm> alarmList = amethod.taskAlarm(user, ins, smethod.getPiid(request)); // 이렇게 주면 구현부에서 알아서 처리된다. 
 
 		// 프로젝트 세션에서 프로젝트 고유번호를 받는다. 

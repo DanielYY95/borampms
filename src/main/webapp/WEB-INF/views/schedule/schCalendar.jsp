@@ -18,21 +18,16 @@
 
 <!-- third party css -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
-<link href="../assets/css/vendor/fullcalendar.min.css" rel="stylesheet" type="text/css" />
+<link href="${path}/tools/project_assets/css/vendor/fullcalendar.min.css" rel="stylesheet" type="text/css" />
 <!-- third party css end -->
 
 <!-- App css -->
 <link href="${path}/tools/project_assets/css/icons.min.css" rel="stylesheet" type="text/css" />
 <link href="${path}/tools/project_assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-style" />
-<link rel="stylesheet" href="${path}/a00_com/bootstrap.min.css" >
-<link rel="stylesheet" href="${path}/a00_com/jquery-ui.css" >
-<link href='${path}/a00_com/lib/main.css' rel='stylesheet' />
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
-<script src="${path}/a00_com/jquery.min.js"></script>
-<script src="${path}/a00_com/popper.min.js"></script>
-<script src="${path}/a00_com/bootstrap.min.js"></script>
-<script src="${path}/a00_com/jquery-ui.js"></script>
-<script src='${path}/a00_com/lib/main.js'></script>
+
+<script src="${path}/a00_com/jquery-3.6.0.js"></script>
+<script src="${path}/tools/project_assets/js/vendor/fullcalendar.min.js"></script>
+
 
 <style>
 body {
@@ -42,6 +37,7 @@ body {
 	font-size: 14px;
 }
 
+
 #calendar {
 	max-width: 1100px;
 	margin: 0 auto;
@@ -49,8 +45,7 @@ body {
 </style>
 
 <script type="text/javascript">
-	document
-			.addEventListener(
+	document.addEventListener(
 					'DOMContentLoaded',
 					function() {
 						var calendarEl = document.getElementById('calendar');
@@ -134,25 +129,21 @@ body {
 									events : function(info, successCallback,
 											failureCallback) {
 										// 서버에 있는 json 데이터 가져와서, fullcalenar 입력하기
-										$
-												.ajax({
-													type : "post",
-													url : "${path}/calList.do",
-													dataType : "json",
-													success : function(data) {
-														console
-																.log(data.calList)
-														successCallback(data.calList);
-														document
-																.getElementById('script-warning').style.display = 'none';
-													},
-													error : function(err) {
-														console.log(err)
-														failureCallback(err);
-														document
-																.getElementById('script-warning').style.display = 'block';
-													}
-												});
+										$.ajax({
+											type : "post",
+											url : "${path}/calList.do",
+											dataType : "json",
+											success : function(data) {
+												console.log(data.calList)
+												successCallback(data.calList);
+												document.getElementById('script-warning').style.display = 'none';
+											},
+											error : function(err) {
+												console.log(err)
+												failureCallback(err);
+												document.getElementById('script-warning').style.display = 'block';
+											}
+										});
 									},
 									/*
 									events: {
@@ -335,10 +326,6 @@ body {
 	</div>
 	<!-- END wrapper -->
 
-<!-- bundle -->
-	<script src="${path}/tools/project_assets/js/vendor.min.js"></script>
-	<script src="${path}/tools/project_assets/js/app.min.js"></script>
-	<script src="${path}/a00_com/jquery-3.6.0.js"></script>
 
 	<!-- dragula js-->
 	<script src="${path}/tools/project_assets/js/vendor/dragula.min.js"></script>

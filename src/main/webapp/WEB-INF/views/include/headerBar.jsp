@@ -8,29 +8,61 @@
 <jsp:useBean id="now" class="java.util.Date" />
 <fmt:formatDate value="${now}" pattern="yyyy-MM-dd HH:mm:ss" var="now" />
 
+
 <c:set var="path" value="${pageContext.request.contextPath }"/>
 <fmt:requestEncoding value="utf-8"/>     
 <!DOCTYPE html>
 <html lang="en">
-
+<!-- moment 라이브러리 -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 
 		<script>
 			
-	
 			// 로그인할 때만 들어올 수 있도록 // 참조: https://erim1005.tistory.com/28
-
+		
 			<c:if test="${empty user_info.uiName}">
 			
 				let url = '${requestScope['javax.servlet.forward.servlet_path']}'; // url  
 				let queryString = '${requestScope['javax.servlet.forward.query_string']}'; //queryString 
 				url += (queryString != '')? '?'+queryString: '';
-
+		
 				// JSP 현재 url 정보 얻기 => ${pageContext.request.requestURL}는 실제 jsp 물리적 경로...
 				console.log(url);
 				alert("로그인 후, 이용해주세요.");
 				
 				location.href="${path}/loginFrm.do?toURL="+url;
 			</c:if>
+			
+		
+		
+			$.ajax({
+				
+				url:"${path}/alarmList.do",
+				type:"get",
+				dataType:"json",
+				success:function(data) {
+			
+					let html = "";
+			    	$.each(data.alarmList, function(idx, sch) {
+			    		
+			 			html += '<a href="javascript:void(0);" class="dropdown-item p-0 notify-item card unread-noti shadow-none mb-2">'+
+								'<div class="card-body"><span class="float-end noti-close-btn text-muted">'+
+								'<i class="mdi mdi-close"></i></span><div class="d-flex align-items-center">'+
+								'<div class="flex-shrink-0"><div class="notify-icon bg-primary"><i class="mdi mdi-comment-account-outline"></i>'+
+								'</div></div><div id="alramMsg" class="flex-grow-1 text-truncate ms-2"><h5 class="noti-item-title fw-semibold font-14">'+
+								sch.aFrom+'<small class="fw-normal text-muted ms-1">'+moment(sch.aRegdate).format("MM-DD HH:mm")+
+								'</small></h5><small id="alramType" class="noti-item-subtitle text-muted">'+
+								sch.aContent+'</small></div></div></div></a>';
+				 	});	
+					
+			 		$("#alarmBox").append(html);
+			 		
+				},
+				error:function(err) {
+					console.log(err);
+				}
+		
+			})
 
 		</script>
 
@@ -104,7 +136,7 @@
 					</li>
 
 					<!-- 알림 목록 -->
-					<li class="dropdown notification-list">
+					<li id="alarm" class="dropdown notification-list">
 						<a
 							class="nav-link dropdown-toggle arrow-none"
 							data-bs-toggle="dropdown" href="#" role="button"
@@ -131,35 +163,12 @@
 
 								<h5 class="text-muted font-13 fw-normal mt-0">오늘</h5>
 								<!-- item-->
-								<c:forEach var="alarm" items="${alarmList}">
-									<a href="javascript:void(0);" class="dropdown-item p-0 notify-item card unread-noti shadow-none mb-2">
-										<div class="card-body">
-											<span class="float-end noti-close-btn text-muted">
-												<i class="mdi mdi-close"></i>
-											</span>
-											<div class="d-flex align-items-center">
-												<div class="flex-shrink-0">
-													<div class="notify-icon bg-primary">
-														<i class="mdi mdi-comment-account-outline"></i>
-													</div>
-												</div>
-												<div id="alramMsg" class="flex-grow-1 text-truncate ms-2">
-													<h5 class="noti-item-title fw-semibold font-14">
-														${alarm.aFrom}
-														<small class="fw-normal text-muted ms-1">
-														<fmt:formatDate value="${alarm.aRegdate}" pattern="MM-dd HH:mm" var="Regdate" />
-															${Regdate}</small>
-													</h5>
-													<small id="alramType" class="noti-item-subtitle text-muted">
-														${alarm.aContent}</small>
-												</div> <!-- 클릭을 했을 때 ajax로 확인 처리 -->
-											</div>
-										</div>
-									</a>
-								</c:forEach>
-							
+								<div id="alarmBox">
+									
+								</div>
 
-								<h5 class="text-muted font-13 fw-normal mt-0">어제</h5>
+
+								<!-- <h5 class="text-muted font-13 fw-normal mt-0">어제</h5> -->
 								<!-- item-->
 								<a href="javascript:void(0);"
 									class="dropdown-item p-0 notify-item card read-noti shadow-none mb-2">
@@ -181,52 +190,6 @@
 												</h5>
 												<small class="noti-item-subtitle text-muted">
 													Hi, How are you? What about our next meeting</small>
-											</div>
-										</div>
-									</div>
-								</a>
-
-								<h5 class="text-muted font-13 fw-normal mt-0">30 Dec 2021</h5>
-								<!-- item-->
-								<a href="javascript:void(0);"
-									class="dropdown-item p-0 notify-item card read-noti shadow-none mb-2">
-									<div class="card-body">
-										<span class="float-end noti-close-btn text-muted">
-											<i class="mdi mdi-close"></i>
-										</span>
-										<div class="d-flex align-items-center">
-											<div class="flex-shrink-0">
-												<div class="notify-icon bg-primary">
-													<i class="mdi mdi-comment-account-outline"></i>
-												</div>
-											</div>
-											<div class="flex-grow-1 text-truncate ms-2">
-												<h5 class="noti-item-title fw-semibold font-14">Datacorp</h5>
-												<small class="noti-item-subtitle text-muted">
-													Caleb Flakelar commented on Admin</small>
-											</div>
-										</div>
-									</div>
-								</a>
-
-								<!-- item-->
-								<a href="javascript:void(0);"
-									class="dropdown-item p-0 notify-item card read-noti shadow-none mb-2">
-									<div class="card-body">
-										<span class="float-end noti-close-btn text-muted">
-											<i class="mdi mdi-close"></i>
-										</span>
-										<div class="d-flex align-items-center">
-											<div class="flex-shrink-0">
-												<div class="notify-icon">
-													<img src="${path}/tools/project_assets/images/users/avatar-4.jpg"
-														class="img-fluid rounded-circle" alt="" />
-												</div>
-											</div>
-											<div class="flex-grow-1 text-truncate ms-2">
-												<h5 class="noti-item-title fw-semibold font-14">Karen Robinson</h5>
-												<small class="noti-item-subtitle text-muted">
-													Wow ! this admin looks good and awesome design</small>
 											</div>
 										</div>
 									</div>
@@ -408,9 +371,10 @@
 			<!-- end Topbar -->
 
 			<script>
-			
-			// 알림 메시지에 따라 이동을 다르게
-				$("#alramMsg").click(function(){
+			$(document).ready(function(){
+				
+				// 알림 메시지에 따라 이동을 다르게
+				$("#alramMsg").on("click",function(){
 					
 					if($("#alramType").text()==("새 업무를 담당")){
 						location.href="${path}/mytask.do?method=clist";
@@ -418,6 +382,11 @@
 					
 					
 				})
+				
+				
+				
+				});	
+			
 
 			</script>
 

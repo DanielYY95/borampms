@@ -64,8 +64,8 @@
 		</if>
 		and UI_DEPT like '%' || #{uiDept} || '%'
 		and UI_RANK like '%' || #{uiRank} || '%'
-		<if test="uiPhone != null and uiPhone != ''">
-		and UI_STATUS = #{uiStatus}
+		<if test="uiStatus != null and uiStatus != ''">
+		and UI_STATUS = #{uiStatus} 
 		</if>
 	
 	</select>

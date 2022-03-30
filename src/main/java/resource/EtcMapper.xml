@@ -14,7 +14,7 @@
 	<select id="getAlarmList" parameterType="taskUser" resultType="alarm">
 		SELECT * FROM alarm WHERE PI_ID = #{piId}
 		and A_TO Like '%' || #{uiDept} || ' ' || #{uiName} || '%'
-	
+		order by A_REGDATE desc
 	</select>
 	
 

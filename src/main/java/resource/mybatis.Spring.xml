@@ -27,7 +27,7 @@
 		<typeAlias alias="issueSch" type="mvc.vo.IssueSch"/>
 		<typeAlias alias="dept" type="mvc.vo.DeptInfo"/>
 		<typeAlias alias="prj" type="mvc.vo.PRJ_INFO"/>
-		<typeAlias alias="calendar" type="mvc.vo.Sch_Calendar"/>
+		<typeAlias alias="calendar" type="mvc.vo.Calendar"/>
 		<typeAlias alias="alarm" type="mvc.vo.Alarm"/>
 		
 	</typeAliases>

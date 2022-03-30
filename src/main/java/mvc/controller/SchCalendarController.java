@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import mvc.service.SchCalendarService;
-import mvc.vo.Sch_Calendar;
+import mvc.vo.Calendar;
 
 @Controller
 public class SchCalendarController {
@@ -19,20 +19,20 @@ public class SchCalendarController {
 		public String calendar() {
 			return "/schedule/schCalendar";
 		}
-		// http://localhost:7090/springweb/calList.do
+		// http://localhost:7090/borampms/calList.do
 		@RequestMapping("calList.do")
 		public String calList(Model d) {
 			d.addAttribute("calList", service.getCalendarList());	
 			return "pageJsonReport";
 		}
 		@RequestMapping("insertCalendar")
-		public String insertCalendar(Sch_Calendar ins){
+		public String insertCalendar(Calendar ins){
 			service.insertCalendar(ins);
 			return "redirect:/calendar.do";
 		}
 		@RequestMapping("updateCalendar")
-		public String updateCalendar(Sch_Calendar ins){
-			System.out.println("수정 id:"+ins.getCd_id());
+		public String updateCalendar(Calendar ins){
+			System.out.println("수정 id:"+ins.getId());
 			service.updateCalendar(ins);
 			return "redirect:/calendar.do";
 		}
@@ -43,4 +43,3 @@ public class SchCalendarController {
 			return "redirect:/calendar.do";
 		}	
 	}
-

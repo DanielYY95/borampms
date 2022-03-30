@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import mvc.method.SessionMethod;
+import mvc.service.DashService;
 import mvc.service.EtcService;
 import mvc.service.UserService;
 import mvc.vo.PRJ_INFO;
@@ -19,6 +20,9 @@ import mvc.vo.USER_INFO;
 @Controller
 @SessionAttributes("prj_info")
 public class MainController {
+	
+	@Autowired
+	private DashService dservice;
 	
 	@Autowired
 	private UserService service;
@@ -59,19 +63,26 @@ public class MainController {
 	}
 	
 	@RequestMapping("/prjDash.do") // 메인->프로젝트 목록 -> 대시보드로 접근하는게 아니면 자꾸 에러가...
-	public String prjDash(@ModelAttribute("prj_info") PRJ_INFO pi, HttpServletRequest request, Model d) {
+	public String prjDash(@ModelAttribute("prj_info") PRJ_INFO pi, Model d) {
 		// 이걸로 세션값을 받아온다. Prj_info vo객체에 piId 를 요청값으로 보내줬으니
 		
-		USER_INFO user= smethod.getUserSession(request);
+
 		
-	
-		d.addAttribute("alarmList", etcservice.getAlarmList(new Task_User(pi.getPiId(), user.getUiDept(), user.getUiName())));
+		d.addAttribute("dashlist", dservice.taskDashlist());
 		
-		return "dashboard//prjDash";
+		return "dashboard/TaskDash";
 	}
 	
 	
-	
+	@RequestMapping("/alarmList.do")
+	public String alarmList(@ModelAttribute("prj_info") PRJ_INFO pi, 
+			HttpServletRequest request, Model d) {
+		
+		USER_INFO user= smethod.getUserSession(request);
+		d.addAttribute("alarmList", etcservice.getAlarmList(new Task_User(pi.getPiId(), user.getUiDept(), user.getUiName())));
+		
+		return "pageJsonReport";
+	}
 	
 	
 	

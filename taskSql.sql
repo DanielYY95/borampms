@@ -4,6 +4,9 @@
 
 -- 고유번호들 varchar2(20) 이나 유저 아이디만 30
 
+SELECT * FROM calendar;
+
+
 SELECT * FROM USER_INFO ui;
 
 CREATE TABLE PRJ_TASK (

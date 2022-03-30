@@ -152,8 +152,8 @@
 													<tr>
 														<th>번호</th>
 														<th>제목</th>
-														<th>부서</th>
-														<th>작성자</th>
+														
+														<th>업무담당자</th>
 														<th>작성일</th>
 														<th>마감일</th>
 														<th>진행상태</th>
@@ -166,7 +166,7 @@
 														<td>${task.cnt }</td>
 														<td ondblclick="detail('${task.ptId}')">${task.ptTitle }</td>
 														<td>${task.ptCharge }</td>
-														<td>${task.ptCharge }</td>
+														
 														<td>${task.ptStartdate }</td>
 														<td>${task.ptDuedate }</td>
 														<td>
