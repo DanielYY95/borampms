@@ -8,8 +8,6 @@
 <fmt:requestEncoding value="utf-8"/>     
 <!DOCTYPE html>
 <%--
-
-
  --%>
 <html>
 <head>
@@ -120,7 +118,7 @@
 															<div class="mb-3">
 																<div class="input-group flex-nowrap">
                                                             		<span class="input-group-text" id="basic-addon1"><i class="dripicons-document-new"></i></span>
-                                                            		<input type="text" class="form-control" name="report" placeholder="${dfFile}" aria-label="Username" aria-describedby="basic-addon1" readonly>
+                                                            		<input type="file" class="form-control" name="report" placeholder="${dfFile}" aria-label="Username" aria-describedby="basic-addon1" readonly>
                                                         		</div>
 														  	</div>
 													  	</div>

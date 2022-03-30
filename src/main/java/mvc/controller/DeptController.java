@@ -38,11 +38,9 @@ public class DeptController {
 	public String ddInsertFrm(DeptDoc ins, Model d) {
 		System.out.println("확인:"+ins.getDdTitle());
 		System.out.println("확인:"+ins.getDdWriter());
-		System.out.println("확인:"+ins.getDdDept());
 		System.out.println("확인:"+ins.getDdContent());
 		System.out.println("확인:"+ins.getReport());
 		d.addAttribute("msg",service.insertDD(ins));
 		return "redirect:/dept.do?method=list"; 
 	}
-	
 }
