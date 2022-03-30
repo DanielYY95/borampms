@@ -106,6 +106,13 @@ public class TaskDetailController {
 		return "forward:/toFrm.do";
 	}
 	
-
+	@RequestMapping("/toDelete.do")
+	public String toDelete(String toFile, Model d) {
 	
+		service.deleteOutput(toFile);
+		d.addAttribute("msg", "산출물을 삭제했습니다!");
+		
+	
+		return "redirect:/toFrm.do";
+	}
 }

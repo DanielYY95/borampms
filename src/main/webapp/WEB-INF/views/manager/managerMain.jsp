@@ -38,8 +38,11 @@
 			</head>
 
 
-			<!-- 양념한 부분 msg관련 js와 detail.
-	양념하고 싶은 거 : taskUser 활용 (조회리스트)
+			<!-- 
+				select로 type을 골라서 input을 작성할 때, input에 아무것도 안 적으면 ""로 넘어간다. 
+				그리고 고르지않은 type의 값들은 null로 넘어간다.
+			
+			
  -->
 
 			<script>
@@ -117,19 +120,19 @@
 												</ul> <!-- end nav-->
 											</div>
 
-											<form class="" method="post">
+											<form id="searchForm" method="post" action="${path}/manager.do?method=userSearch">
 												<div class="row d-flex justify-content-between">
 													<div class="d-flex col-3">
 														<div class="">
-															<select class="form-select " id="search-select">
-																<option selected>이름</option>
-																<option>아이디</option>
-																<option>이메일</option>
-																<option>연락처</option>
+															<select class="form-select " id="type">
+																<option selected value="name">이름</option>
+																<option value="id">아이디</option>
+																<option value="email">이메일</option>
+																<option value="phone">연락처</option>
 															</select>
 														</div>
 														<div class="">
-															<input type="search" class="form-control" placeholder="검색">
+															<input type="search" id="typeInput" name="uiName" class="form-control" placeholder="검색">
 														</div>
 
 													</div>
@@ -139,44 +142,46 @@
 															<label class="pt-1 ">부서</label>
 														</div>
 														<div>
-															<select class="form-select">
-																<option selected>전체</option>
-																<option value="1">개발1팀</option>
-																<option value="2">개발2팀</option>
-																<option value="3">인사팀</option>
-																<option value="4">기획팀</option>
-																<option value="5">디자인팀</option>
-																<option value="6">마케팅팀</option>
+															<select class="form-select" name="uiDept">
+																<option value='' selected>전체</option>
+																<option value="개발1팀">개발1팀</option>
+																<option value="개발2팀">개발2팀</option>
+																<option value="인사팀">인사팀</option>
+																<option value="기획팀">기획팀</option>
+																<option value="디자인팀">디자인팀</option>
+																<option value="마케팅팀">마케팅팀</option>
 															</select>
 														</div>
 														<div>
 															<label class="pt-1">직급</label>
 														</div>
 														<div>
-															<select class="form-select">
-																<option selected>전체</option>
-																<option>실장</option>
-																<option>팀장</option>
-																<option>부장</option>
-																<option>차장</option>
-																<option>과장</option>
-																<option>대리</option>
-																<option>주임</option>
-																<option>사원</option>
+															<select class="form-select" name="uiRank">
+																<option value='' selected>전체</option>
+																<option value="실장">실장</option>
+																<option value="팀장">팀장</option>
+																<option value="부장">부장</option>
+																<option value="차장">차장</option>
+																<option value="과장">과장</option>
+																<option value="대리">대리</option>
+																<option value="주임">주임</option>
+																<option value="사원">사원</option>
 															</select>
 														</div>
 														<div>
 															<label class="pt-1 ">진행상태</label>
 														</div>
 														<div>
-															<select class="form-select">
-																<option selected>전체</option>
-																<option>재직</option>
-																<option>퇴사</option>
+															<select class="form-select" name="uiStatus">
+																<option value="전체" selected>전체</option>
+																<option value="재직">재직</option>
+																<option value="퇴사">퇴사</option>
 
 															</select>
 														</div>
-
+														<div>
+															<button class="btn btn-primary" id="searchBtn" type="button">조회</button>
+														</div>
 
 													</div>
 												</div>
@@ -235,7 +240,8 @@
 																		data-bs-toggle="modal"
 																		data-bs-target="#signup-modal"> <i
 																			class="mdi mdi-square-edit-outline"></i></a>
-																	<a href="javascript:void(0);" class="action-icon">
+																	<a href="javascript:void(0);" class="action-icon"
+																		onclick="deleteUser('${user.uiName}','${user.uiId}')">
 																		<i class="mdi mdi-delete"></i></a>
 																</td>
 															</tr>
@@ -278,12 +284,12 @@
 									</div>
 
 									<div class="modal-body">
-										<form id="regForm" class="ps-3 pe-3" action="${path}/task.do?method=insert"
+										<form id="uptForm" class="ps-3 pe-3" action="${path}/manager.do?method=userUpt"
 											method="post">
 											<div class="row g-2">
 												<div class="col mb-3">
 													<label for="username" class="form-label">아이디</label>
-													<input id="id" class="form-control" required="">
+													<input id="id" name="uiId" class="form-control" required="" readonly> 
 												</div>
 												<div class="col mb-3">
 													<label for="fullname" class="form-label">이름</label>
@@ -367,7 +373,7 @@
 											</div>
 											<div class="row mb-3">
 												<label for="phone1" class="form-label">연락처</label>
-												<input type="text" name="phone" hidden>
+												<input type="text" name="uiPhone" hidden>
 												<div class="col mt-0">
 													<select class="form-select mb-3" required name="phone1">
 														<option selected value="010">010</option>
@@ -390,7 +396,7 @@
 												style="display: flex; justify-content: space-between;">
 												<button class="btn btn-secondary" class="btn-close"
 													data-bs-dismiss="modal" aria-label="Close" type="button">취소</button>
-												<button class="btn btn-primary" type="button" id="regBtn">수정</button>
+												<button class="btn btn-primary" type="button" id="uptBtn">수정</button>
 											</div>
 										</form>
 									</div>
@@ -409,6 +415,69 @@
 
 
 				<script>
+					
+				  $("#pw").keyup(function(){
+						if($("#pw").val().trim()!=""){
+							if($("#pw2").val()!=$("#pw").val()){ // 이게 꼭 반대여야하는듯...
+								$("#pwMsg").css("color","red").text("비밀번호가 일치하지않습니다.");
+								
+							}else{
+								$("#pwMsg").css("color","green").text("비밀번호가 일치합니다.");	
+							}
+							
+						}
+						// 패스워드확인에 아무것도 없을 때는 메시지x
+						if($("#pw2").val().trim()=="" || $("#pw").val().trim()==""){
+							$("#pwMsg").text("");
+						}
+					})
+					
+
+					$("#pw2").keyup(function(){
+						if($("#pw2").val().trim()!=""){ // 이미 여기서 통과했으니 순서가 바뀌어야..
+							if($("#pw").val()!=$("#pw2").val()){ //이게 반대여야...
+								$("#pwMsg").css("color","red").text("비밀번호가 일치하지않습니다.");
+								
+							}else{
+								$("#pwMsg").css("color","green").text("비밀번호가 일치합니다.");	
+							}
+							
+						}
+						// 패스워드에 아무것도 없을 때는 메시지x
+						if($("#pw").val().trim()=="" || $("#pw2").val().trim()==""){
+							$("#pwMsg").text("");
+							
+						}
+					})
+					
+					    // 폼 제출
+		            $("#uptBtn").click(function(){
+	
+		                // 패스워드 둘 다 같으면
+		                if($("#pw").val() != $("#pw2").val()){
+		                    alert("비밀번호 확인이 일치하지않습니다.");
+		                    return false;
+		                }
+		
+		                // 연락처 숫자 아니면 거르기
+		                if(isNaN($("[name=phone2]").val()) || 
+		                		isNaN($("[name=phone3]").val())){
+		                    alert("연락처는 숫자만 입력할 수 있습니다.")
+		                    return false;
+		                }
+		
+			            
+		                // 연락처 합치기
+		                $("[name=uiPhone]").val($("[name=phone1]").val()
+		                		+$("[name=phone2]").val()+$("[name=phone3]").val());
+		           
+			            
+		                if(confirm("회원정보를 수정합니까?"))
+		                    $("#uptForm").submit();
+		               
+		            })
+						
+				
 
 					// ajax로 상세정보 가져옴
 					function editUserDetail(uiId) {
@@ -436,6 +505,30 @@
 						});
 					}
 
+		
+					
+					function deleteUser(uiName, uiId){
+						
+						if(confirm(uiName+" 회원을 삭제하시겠습니까?")){
+							location.href="${path}/manager.do?method=userDel&uiId="+uiId;
+						}
+					}
+					
+					let type= "";
+					
+					$("#searchBtn").on("click", function(){
+						
+						if($("#type").val()!="name"){
+							type= ($("#type").val()=="id")? "uiId":(($("#type").val()=="phone")? "uiPhone": "uiEmail");
+							$("#typeInput").attr("name",type);
+						}
+						
+						
+						$("#searchForm").submit();
+						
+					})
+					
+					
 
 				</script>
 

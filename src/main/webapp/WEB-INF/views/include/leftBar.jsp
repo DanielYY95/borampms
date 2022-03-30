@@ -47,7 +47,7 @@
 				<!--- Start Sidemenu -->
 				<ul class="side-nav">
 					<li class="side-nav-item">
-						<a href="${path}/prjDash.do" class="side-nav-link">
+						<a href="${path}/dash.do?method=list" class="side-nav-link">
              				<i class="fa fa-bar-chart" aria-hidden="true"></i>
               				<span> 대시보드 </span>
            				</a>

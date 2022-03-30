@@ -9,7 +9,7 @@
 		select count(*)
 		from prj_task
 		where 1=1
-		and pi_id = #{piId}
+		
 		<if test="ptTitle != null and ptTitle != ''">
 		and pt_title like '%'||#{ptTitle}||'%'
 		</if>
@@ -32,10 +32,10 @@
 	<select id="getTaskList" parameterType="taskSch" resultType="task">
 		select *
 		from (
-			SELECT row_number() over(ORDER BY to_date(pt_startdate, 'YYYY-MM-DD')) cnt, prj_task.*, user_info.*
-			from prj_task, user_info
+			SELECT row_number() over(ORDER BY to_date(pt_startdate, 'YYYY-MM-DD')) cnt, prj_task.*
+			from prj_task
 			where 1=1
-			and pi_id = #{piId}
+			
 			<if test="ptTitle != null and ptTitle != ''">
 			and pt_title like '%'||#{ptTitle}||'%'
 			</if>

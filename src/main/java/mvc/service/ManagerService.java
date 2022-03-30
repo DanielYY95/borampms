@@ -42,5 +42,28 @@ public class ManagerService {
 		return dao.getPrjList();
 	};
 	
+	public void uptCustomer(USER_INFO user) {
+		
+		
+		dao.uptCustomer(user);
+	};
+	
+	public void delCustomer(String uiId) {
+		
+		dao.delCustomer(uiId);
+	};
+	
+	public ArrayList<USER_INFO> searchUser(USER_INFO user){
+		
+		if(user.getUiDept().equals("전체")) user.setUiDept("");
+		if(user.getUiRank().equals("전체")) user.setUiRank("");
+		
+		String status = (user.getUiStatus().equals("전체"))? 
+				"": ((user.getUiStatus().equals("재직"))? "0":"1");
+		user.setUiStatus(status);
+		
+		
+		return dao.searchUser(user);
+	};
 	
 }

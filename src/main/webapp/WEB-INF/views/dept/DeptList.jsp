@@ -31,8 +31,7 @@
  		<script src="${path}/tools/jquery-3.6.0.js"></script>
         <!-- css -->
         <style>
-<<<<<<< HEAD
-=======
+
         	#del-btn{
         		border:0;
         		background:white;
@@ -41,7 +40,6 @@
         		border:0;
         		background:white;
         	}
->>>>>>> a00f3330a676de470fec20f98c7d9f559e5e5801
         	.pagination-margin-top{
         		margin-top:10px;
         	}
@@ -114,13 +112,9 @@
 											        	<i class="jstree-icon jstree-ocl" role="presentation"></i><a class="jstree-anchor" href="#" tabindex="-1" role="treeitem" aria-selected="false" aria-level="1" aria-expanded="true" id="j1_6_anchor"><i class="jstree-icon jstree-themeicon dripicons-folder text-warning jstree-themeicon-custom" role="presentation"></i>
 											        	공통 문서함
 											       	</a>
-<<<<<<< HEAD
-											       		<ul role="group" class="jstree-children" style=""><li role="none" data-jstree="{ &quot;selected&quot; : true }" id="j1_7" class="jstree-node  jstree-leaf"><i class="jstree-icon jstree-ocl" role="presentation"></i><a class="jstree-anchor jstree-clicked" href="javascript:;" tabindex="-1" role="treeitem" aria-selected="true" aria-level="2" id="j1_2_anchor"><i class="jstree-icon jstree-themeicon dripicons-folder text-warning jstree-themeicon-custom" role="presentation"></i>
-											                대외문서함 </a></li><li role="none" data-jstree="{ &quot;selected&quot; : true }" id="j1_8" class="jstree-node  jstree-leaf"><i class="jstree-icon jstree-ocl" role="presentation"></i><a class="jstree-anchor  jstree-clicked" href="javascript:;" tabindex="-1" role="treeitem" aria-selected="true" aria-level="2" id="j1_3_anchor"><i class="jstree-icon jstree-themeicon dripicons-folder text-warning jstree-themeicon-custom" role="presentation"></i>
-=======
+
 											       		<ul role="group" class="jstree-children" style=""><li role="none" data-jstree="{ &quot;selected&quot; : true }" id="j1_7" class="jstree-node  jstree-leaf"><i class="jstree-icon jstree-ocl" role="presentation"></i><a class="jstree-anchor jstree-clicked" href="javascript:;" tabindex="-1" role="treeitem" aria-selected="true" aria-level="2" id="j1_7_anchor"><i class="jstree-icon jstree-themeicon dripicons-folder text-warning jstree-themeicon-custom" role="presentation"></i>
 											                대외문서함 </a></li><li role="none" data-jstree="{ &quot;selected&quot; : true }" id="j1_8" class="jstree-node  jstree-leaf"><i class="jstree-icon jstree-ocl" role="presentation"></i><a class="jstree-anchor  jstree-clicked" href="javascript:;" tabindex="-1" role="treeitem" aria-selected="true" aria-level="2" id="j1_8_anchor"><i class="jstree-icon jstree-themeicon dripicons-folder text-warning jstree-themeicon-custom" role="presentation"></i>
->>>>>>> a00f3330a676de470fec20f98c7d9f559e5e5801
 											                대내문서함 </a></li></ul>
 											        </li>
 											   </ul>
@@ -134,19 +128,17 @@
 		                                                <!-- 게시물 조회 -->
 		                                                <form id="frm01" method="post" action="${path}/dept.do?method=list">
 		                                                	<input type="hidden" name="curPage" value="1"/>
-<<<<<<< HEAD
-=======
+
 		                               						<div class="col-lg-4" style="text-align:center;">
->>>>>>> a00f3330a676de470fec20f98c7d9f559e5e5801
+
 		                               						<!-- 작성자 조회 -->
 		                               						<div class="input-group">
 			                               						<input type="text" id="simpleinput" class="form-control" name="ddWriter" value="${deptDocSch.ddWriter}" placeholder="작성자">
 			                               						<button class="input-group-text btn-primary" type="submit">조회</button>
-<<<<<<< HEAD
-=======
+
 			                               					
 			                               					</div>
->>>>>>> a00f3330a676de470fec20f98c7d9f559e5e5801
+
 			                               					</div>
 		                               					</form>
 		                               					<br>
@@ -160,11 +152,8 @@
 		                                                                <th class="border-0">부서명</th>
 		                                                                <th class="border-0">작성자</th>
 		                                                                <th class="border-0">작성일</th>
-<<<<<<< HEAD
-		                                                                <th class="border-0">수정</th>
-=======
 		                                                                <th class="border-0">수정/삭제</th>
->>>>>>> a00f3330a676de470fec20f98c7d9f559e5e5801
+
 		                                                            </tr>
 		                                                        </thead>
 		                                                        <tbody>
@@ -181,15 +170,11 @@
 		                                                                <td onclick="detail(${deptdoc.ddId})"><fmt:formatDate value="${deptdoc.ddRegdate}" pattern="yyyy-MM-dd"/></td>
 		                                                            	<c:choose>
 																			<c:when test="${deptdoc.ddDept=='개발팀'&&deptdoc.ddWriter=='조민혁'}">
-<<<<<<< HEAD
-																				<td onclick="update(${deptdoc.ddId})"><button id="upt-btn"><i class="dripicons-pencil"></i></button></td>
-=======
 																				<td>
 							 														<button onclick="update(${deptdoc.ddId})" id="upt-btn"><i class="dripicons-pencil"></i></button> |
 																					<input type="hidden" name="ddId" value="${deptdoc.ddId}"/>
 																					<button id="del-btn"><i class="dripicons-trash"></i></button>
 																				</td>
->>>>>>> a00f3330a676de470fec20f98c7d9f559e5e5801
 																			</c:when>
 																		</c:choose>
 		                                                            </tr>
@@ -233,12 +218,8 @@
 	
 	                    </div> <!-- container -->
 	
-<<<<<<< HEAD
-	          
-=======
 	                </div> <!-- content -->
 
->>>>>>> a00f3330a676de470fec20f98c7d9f559e5e5801
                 <!-- Footer Start -->
                 <jsp:include page="../include/rightBar_footer.jsp"/>
                 <!-- end Footer -->
@@ -253,106 +234,6 @@
         </div>
         <!-- END wrapper -->
 
-
-<<<<<<< HEAD
-=======
-        <!-- Right Sidebar -->
-        <div class="end-bar">
-
-            <div class="rightbar-title">
-                <a href="javascript:void(0);" class="end-bar-toggle float-end">
-                    <i class="dripicons-cross noti-icon"></i>
-                </a>
-                <h5 class="m-0">Settings</h5>
-            </div>
-
-            <div class="rightbar-content h-100" data-simplebar>
-
-                <div class="p-3">
-                    <div class="alert alert-warning" role="alert">
-                        <strong>Customize </strong> the overall color scheme, sidebar menu, etc.
-                    </div>
-
-                    <!-- Settings -->
-                    <h5 class="mt-3">Color Scheme</h5>
-                    <hr class="mt-1" />
-
-                    <div class="form-check form-switch mb-1">
-                        <input class="form-check-input" type="checkbox" name="color-scheme-mode" value="light" id="light-mode-check" checked>
-                        <label class="form-check-label" for="light-mode-check">Light Mode</label>
-                    </div>
-
-                    <div class="form-check form-switch mb-1">
-                        <input class="form-check-input" type="checkbox" name="color-scheme-mode" value="dark" id="dark-mode-check">
-                        <label class="form-check-label" for="dark-mode-check">Dark Mode</label>
-                    </div>
-
-
-                    <!-- Width -->
-                    <h5 class="mt-4">Width</h5>
-                    <hr class="mt-1" />
-                    <div class="form-check form-switch mb-1">
-                        <input class="form-check-input" type="checkbox" name="width" value="fluid" id="fluid-check" checked>
-                        <label class="form-check-label" for="fluid-check">Fluid</label>
-                    </div>
-
-                    <div class="form-check form-switch mb-1">
-                        <input class="form-check-input" type="checkbox" name="width" value="boxed" id="boxed-check">
-                        <label class="form-check-label" for="boxed-check">Boxed</label>
-                    </div>
-
-
-                    <!-- Left Sidebar-->
-                    <h5 class="mt-4">Left Sidebar</h5>
-                    <hr class="mt-1" />
-                    <div class="form-check form-switch mb-1">
-                        <input class="form-check-input" type="checkbox" name="theme" value="default" id="default-check">
-                        <label class="form-check-label" for="default-check">Default</label>
-                    </div>
-
-                    <div class="form-check form-switch mb-1">
-                        <input class="form-check-input" type="checkbox" name="theme" value="light" id="light-check" checked>
-                        <label class="form-check-label" for="light-check">Light</label>
-                    </div>
-
-                    <div class="form-check form-switch mb-3">
-                        <input class="form-check-input" type="checkbox" name="theme" value="dark" id="dark-check">
-                        <label class="form-check-label" for="dark-check">Dark</label>
-                    </div>
-
-                    <div class="form-check form-switch mb-1">
-                        <input class="form-check-input" type="checkbox" name="compact" value="fixed" id="fixed-check" checked>
-                        <label class="form-check-label" for="fixed-check">Fixed</label>
-                    </div>
-
-                    <div class="form-check form-switch mb-1">
-                        <input class="form-check-input" type="checkbox" name="compact" value="condensed" id="condensed-check">
-                        <label class="form-check-label" for="condensed-check">Condensed</label>
-                    </div>
-
-                    <div class="form-check form-switch mb-1">
-                        <input class="form-check-input" type="checkbox" name="compact" value="scrollable" id="scrollable-check">
-                        <label class="form-check-label" for="scrollable-check">Scrollable</label>
-                    </div>
-
-                    <div class="d-grid mt-4">
-                        <button class="btn btn-primary" id="resetBtn">Reset to Default</button>
-
-                        <a href="https://themes.getbootstrap.com/product/hyper-responsive-admin-dashboard-template/"
-                            class="btn btn-danger mt-3" target="_blank"><i class="mdi mdi-basket me-1"></i> Purchase Now</a>
-                    </div>
-                </div> <!-- end padding-->
-
-            </div>
-        </div>
-
-        <div class="rightbar-overlay"></div>
-        <!-- /End-bar -->
-
-        <!-- bundle -->
-        <script src="${path}/tools/main_assets/js/vendor.min.js"></script>
-        <script src="${path}/tools/main_assets/js/app.min.js"></script>
->>>>>>> a00f3330a676de470fec20f98c7d9f559e5e5801
 		<!-- jstree js -->
 		<script src="${path}/tools/main_assets/js/vendor/jstree.min.js"></script>
 		<script src="${path}/tools/main_assets/js/pages/demo.jstree.js"></script>
@@ -362,8 +243,7 @@
 		<script src="${path}/tools/main_assets/js/pages/demo.simplemde.js"></script>
     </body>
 	<script>
-<<<<<<< HEAD
-=======
+
 	/* 휴지통 버튼(삭제) 클릭 시 */
 	$("#del-btn").click(function(){
 		if(!confirm("삭제할 경우 복구가 불가능합니다. \n삭제하시겠습니까?")){
@@ -373,7 +253,7 @@
 			location.href="${path}/dept.do?method=del&ddId="+$("[name=ddId]").val();	
 		}	
 	});
->>>>>>> a00f3330a676de470fec20f98c7d9f559e5e5801
+
 	/* 등록 버튼 클릭 시(등록 페이지로 이동) */
 	$("#Doc-regBtn").click(function(){
 		location.href="${path}//dept.do?method=insertFrm";
@@ -390,11 +270,8 @@
 	function update(ddId){
 		location.href="${path}/dept.do?method=uptPage&ddId="+ddId;
 	}
-<<<<<<< HEAD
-	</script>
-</html>
-=======
+
 	
 	</script>
 </html>
->>>>>>> a00f3330a676de470fec20f98c7d9f559e5e5801
+

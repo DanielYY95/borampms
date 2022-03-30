@@ -444,23 +444,6 @@
 			name = "${user_info.uiName}";
 			revMsg = $("#msg").val();
 
-			// hour = new Date().getHours();
-			// apm = (hour>11)? '오후':'오전';
-			// hour = (hour>11)? hour-12:hour;
-			// minute = String(new Date().getMinutes()).padStart(2,"0");
-		
-
-			// class="chat-avatar" 는 자동으로 정렬되는 구만...
-			// msgbox = '<li class="clearfix odd"><div class="chat-avatar pt-1">'+apm
-			// 		+'<i>'+hour +":" + minute
-			// 		+'<i></div><div class="conversation-text">'
-			// 		+'<div class="ctext-wrap"><i>'+name
-			// 		+'</i><p>'+revMsg
-			// 		+'</p></div></div></li><br>';
-
-			// $(".simplebar-content").eq(3).append(msgbox);
-
-			// message를 보내는 처리..서버의 handler의  handleTextMessage()와 연동
 			wsocket.send("msg:"+name+":"+revMsg);
 			$("#msg").val(""); 
 			$("#msg").focus();

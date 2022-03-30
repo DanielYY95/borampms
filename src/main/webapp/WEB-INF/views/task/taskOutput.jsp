@@ -194,20 +194,20 @@
                                                                                             data-dz-name="">${fname.toFile}</a>
                                                                                     </div>
                                                                                     
-                                                                                    <div class="col-auto">
-                                                                                        <!-- Button --> <a href=""
+                                                                                    <div class="col-auto"> <!-- a태그였기 때문에 문제가 있었다.. 이러면 같은 이름의 파일인 경우에는..? -->
+                                                                                        <!-- Button --> <button
                                                                                             class="btn btn-link btn-lg text-muted"
-                                                                                            data-dz-remove=""> <i
-                                                                                                class="dripicons-download" onclick="downFile('${fname.toId}')"></i>
-                                                                                        </a>
+                                                                                            data-dz-remove="" onclick="downFile('${fname.toFile}')"> <i
+                                                                                                class="dripicons-download" ></i>
+                                                                                        </button>
                                                                                     </div>
                                                                                     <c:if test="${fname.toWriter eq user_info.uiId}">
 	                                                                                    <div class="col-auto">
-	                                                                                        <!-- Button --> <a href=""
+	                                                                                        <!-- Button --> <button
 	                                                                                            class="btn btn-link btn-lg text-muted"
-	                                                                                            data-dz-remove=""> <i
-	                                                                                                class="dripicons-cross" onclick="deleteFile('${fname.toId}')"></i>
-	                                                                                        </a>
+	                                                                                            data-dz-remove="" onclick="deleteFile('${fname.toFile}')"> <i
+	                                                                                                class="dripicons-cross"></i>
+	                                                                                        </button>
 	                                                                                    </div>
                                                                                     </c:if>
                                                                                 </div>
@@ -266,14 +266,14 @@
                             // 이미 랜더링이 된 상태여서 새로 만들어진 것들에 대해서는 적용이 안되는듯...업로드는 제대로 되는디
 
                             function downFile(fname) {
-                                if (confirm("다운로드할 파일:" + fname)) {
-                                    location.href = "${path}/downFile.do?fname=" + fname;
+                                if(confirm("다운로드할 파일:" + fname)){
+                                	location.href="${path}/download.do?fname="+fname;
                                 }
                             }
                             
                             function deleteFile(fname) {
-                                if (confirm("삭제할 파일:" + fname)) {
-                                    location.href = "${path}/deleteFile.do?fname=" + fname;
+                                if(confirm("삭제하시겠습니까?")){
+                                    location.href="${path}/toDelete.do?toFile="+fname;
                                 }
                             }
                             

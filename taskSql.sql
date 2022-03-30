@@ -194,6 +194,8 @@ SELECT * FROM prj_user;
 INSERT INTO PRJ_USER values('daniel95','PI00001');
 INSERT INTO PRJ_USER values('asd456','PI00001');
 INSERT INTO PRJ_USER values('daniel95','PI00002');
+INSERT INTO PRJ_USER values('alsgurdl258','PI00001');
+
 
 select pi.* from ( 
 select * from prj_user
@@ -202,11 +204,23 @@ where pu.PI_ID = pi.PI_ID
 	
 
 
+SELECT * FROM TASK_ISSUE ti;
+
 SELECT * FROM DEPT_DOC dd;
 
 SELECT * FROM PRJ_INFO pi2;
 
 SELECT * FROM TASK_OUTPUT to2;
+
+SELECT * FROM USER_INFO ui;
+
+
+	select * from user_info
+		where 
+			UI_NAME like '%테스트봇4%'
+		and UI_DEPT like '%%'
+		and UI_RANK like '%%'
+		and UI_STATUS = '0';
 
 
 CREATE TABLE Alarm (
