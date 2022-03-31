@@ -5,7 +5,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="path" value="${pageContext.request.contextPath }"/>
-<fmt:requestEncoding value="utf-8"/>     
+<fmt:requestEncoding value="utf-8"/>
 <!DOCTYPE html>
 <%--
 
@@ -22,7 +22,7 @@
         <!-- App css -->
         <link href="${path}/tools/main_assets/css/icons.min.css" rel="stylesheet" type="text/css" />
         <link href="${path}/tools/main_assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-style"/>
-      
+
 		<link
 		    rel="stylesheet"
 		    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
@@ -117,6 +117,21 @@
 											                대외문서함 </a></li><li role="none" data-jstree="{ &quot;selected&quot; : true }" id="j1_8" class="jstree-node  jstree-leaf"><i class="jstree-icon jstree-ocl" role="presentation"></i><a class="jstree-anchor  jstree-clicked" href="javascript:;" tabindex="-1" role="treeitem" aria-selected="true" aria-level="2" id="j1_8_anchor"><i class="jstree-icon jstree-themeicon dripicons-folder text-warning jstree-themeicon-custom" role="presentation"></i>
 											                대내문서함 </a></li></ul>
 											        </li>
+											    </ul>
+											 </div>
+											 <div id="jstree-2" class="jstree jstree-1 jstree-default" role="tree" aria-multiselectable="true" tabindex="0" aria-activedescendant="j1_2" aria-busy="false">
+											 	<h4 class="header-title">부서문서함</h4>
+											 	<ul class="jstree-container-ul jstree-children" role="group">
+											        <li role="none" id="j1_9" class="jstree-node jstree-open">
+											 			<i class="jstree-icon jstree-ocl" role="presentation"></i><a class="jstree-anchor" href="#" tabindex="-1" role="treeitem" aria-selected="false" aria-level="1" aria-expanded="true" id="j1_9_anchor"><i class="jstree-icon jstree-themeicon dripicons-folder text-warning jstree-themeicon-custom" role="presentation"></i>
+											            결재 문서함
+											            </a>
+											            	<ul role="group" class="jstree-children" style=""><li role="none" data-jstree="{ &quot;selected&quot; : true }" id="j1_10" class="jstree-node  jstree-leaf"><i class="jstree-icon jstree-ocl" role="presentation"></i><a class="jstree-anchor jstree-clicked" href="javascript:;" tabindex="-1" role="treeitem" aria-selected="true" aria-level="2" id="j1_10_anchor"><i class="jstree-icon jstree-themeicon dripicons-folder text-warning jstree-themeicon-custom" role="presentation"></i>
+											                결재대기 </a></li><li role="none" data-jstree="{ &quot;selected&quot; : true }" id="j1_11" class="jstree-node  jstree-leaf"><i class="jstree-icon jstree-ocl" role="presentation"></i><a class="jstree-anchor  jstree-clicked" href="javascript:;" tabindex="-1" role="treeitem" aria-selected="true" aria-level="2" id="j1_11_anchor"><i class="jstree-icon jstree-themeicon dripicons-folder text-warning jstree-themeicon-custom" role="presentation"></i>
+											                결재처리중 </a></li><li role="none" data-jstree="{ &quot;selected&quot; : true }" id="j1_12" class="jstree-node  jstree-leaf"><i class="jstree-icon jstree-ocl" role="presentation"></i><a class="jstree-anchor  jstree-clicked" href="javascript:;" tabindex="-1" role="treeitem" aria-selected="true" aria-level="2" id="j1_12_anchor"><i class="jstree-icon jstree-themeicon dripicons-folder text-warning jstree-themeicon-custom" role="presentation"></i>
+											                결재완료/반려 </a></li><li role="none" data-jstree="{ &quot;selected&quot; : true }" id="j1_13" class="jstree-node  jstree-leaf jstree-last"><i class="jstree-icon jstree-ocl" role="presentation"></i><a class="jstree-anchor  jstree-clicked" href="javascript:;" tabindex="-1" role="treeitem" aria-selected="true" aria-level="2" id="j1_13_anchor"><i class="jstree-icon jstree-themeicon dripicons-folder text-warning jstree-themeicon-custom" role="presentation"></i>
+											                내 결재함 </a></li></ul>
+											        </li>
 											   </ul>
 											</div>
                                         </div>
@@ -136,7 +151,7 @@
 			                               						<input type="text" id="simpleinput" class="form-control" name="ddWriter" value="${deptDocSch.ddWriter}" placeholder="작성자">
 			                               						<button class="input-group-text btn-primary" type="submit">조회</button>
 
-			                               					
+
 			                               					</div>
 
 			                               					</div>
@@ -212,12 +227,12 @@
 	                                    <!-- end card-body -->
 	                                    <div class="clearfix"></div>
 	                                </div> <!-- end card-box -->
-	
+
 	                            </div> <!-- end Col -->
 	                        </div><!-- End row -->
-	
+
 	                    </div> <!-- container -->
-	
+
 	                </div> <!-- content -->
 
                 <!-- Footer Start -->
@@ -250,14 +265,14 @@
 			location.href="${path}/dept.do?method=list";
 		}
 		else{
-			location.href="${path}/dept.do?method=del&ddId="+$("[name=ddId]").val();	
-		}	
+			location.href="${path}/dept.do?method=del&ddId="+$("[name=ddId]").val();
+		}
 	});
 
 	/* 등록 버튼 클릭 시(등록 페이지로 이동) */
 	$("#Doc-regBtn").click(function(){
 		location.href="${path}//dept.do?method=insertFrm";
-	});	
+	});
 	/* 페이징 처리 */
 	function goPage(no){
 		$("[name=curPage]").val(no);
@@ -271,7 +286,7 @@
 		location.href="${path}/dept.do?method=uptPage&ddId="+ddId;
 	}
 
-	
+
 	</script>
 </html>
 
