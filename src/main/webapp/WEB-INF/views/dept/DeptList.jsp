@@ -5,7 +5,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="path" value="${pageContext.request.contextPath }"/>
-<fmt:requestEncoding value="utf-8"/>     
+<fmt:requestEncoding value="utf-8"/>
 <!DOCTYPE html>
 <%--
 
@@ -22,7 +22,7 @@
         <!-- App css -->
         <link href="${path}/tools/main_assets/css/icons.min.css" rel="stylesheet" type="text/css" />
         <link href="${path}/tools/main_assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-style"/>
-      
+
 		<link
 		    rel="stylesheet"
 		    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
@@ -161,6 +161,21 @@
 											                </li>
 											            </ul>
 											        </li>
+											    </ul>
+											 </div>
+											 <div id="jstree-2" class="jstree jstree-1 jstree-default" role="tree" aria-multiselectable="true" tabindex="0" aria-activedescendant="j1_2" aria-busy="false">
+											 	<h4 class="header-title">부서문서함</h4>
+											 	<ul class="jstree-container-ul jstree-children" role="group">
+											        <li role="none" id="j1_9" class="jstree-node jstree-open">
+											 			<i class="jstree-icon jstree-ocl" role="presentation"></i><a class="jstree-anchor" href="#" tabindex="-1" role="treeitem" aria-selected="false" aria-level="1" aria-expanded="true" id="j1_9_anchor"><i class="jstree-icon jstree-themeicon dripicons-folder text-warning jstree-themeicon-custom" role="presentation"></i>
+											            결재 문서함
+											            </a>
+											            	<ul role="group" class="jstree-children" style=""><li role="none" data-jstree="{ &quot;selected&quot; : true }" id="j1_10" class="jstree-node  jstree-leaf"><i class="jstree-icon jstree-ocl" role="presentation"></i><a class="jstree-anchor jstree-clicked" href="javascript:;" tabindex="-1" role="treeitem" aria-selected="true" aria-level="2" id="j1_10_anchor"><i class="jstree-icon jstree-themeicon dripicons-folder text-warning jstree-themeicon-custom" role="presentation"></i>
+											                결재대기 </a></li><li role="none" data-jstree="{ &quot;selected&quot; : true }" id="j1_11" class="jstree-node  jstree-leaf"><i class="jstree-icon jstree-ocl" role="presentation"></i><a class="jstree-anchor  jstree-clicked" href="javascript:;" tabindex="-1" role="treeitem" aria-selected="true" aria-level="2" id="j1_11_anchor"><i class="jstree-icon jstree-themeicon dripicons-folder text-warning jstree-themeicon-custom" role="presentation"></i>
+											                결재처리중 </a></li><li role="none" data-jstree="{ &quot;selected&quot; : true }" id="j1_12" class="jstree-node  jstree-leaf"><i class="jstree-icon jstree-ocl" role="presentation"></i><a class="jstree-anchor  jstree-clicked" href="javascript:;" tabindex="-1" role="treeitem" aria-selected="true" aria-level="2" id="j1_12_anchor"><i class="jstree-icon jstree-themeicon dripicons-folder text-warning jstree-themeicon-custom" role="presentation"></i>
+											                결재완료/반려 </a></li><li role="none" data-jstree="{ &quot;selected&quot; : true }" id="j1_13" class="jstree-node  jstree-leaf jstree-last"><i class="jstree-icon jstree-ocl" role="presentation"></i><a class="jstree-anchor  jstree-clicked" href="javascript:;" tabindex="-1" role="treeitem" aria-selected="true" aria-level="2" id="j1_13_anchor"><i class="jstree-icon jstree-themeicon dripicons-folder text-warning jstree-themeicon-custom" role="presentation"></i>
+											                내 결재함 </a></li></ul>
+											        </li>
 											   </ul>
 											</div>
                                         </div>
@@ -177,6 +192,11 @@
 		                               						<div class="input-group">
 			                               						<input type="text" id="simpleinput" class="form-control" name="ddWriter" value="${deptDocSch.ddWriter}" placeholder="작성자">
 			                               						<button class="input-group-text btn-primary" type="submit">조회</button>
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> d63f4e6a721750be9f4cc1f3c8b4791d36ae959b
 			                               					</div>
 			                               					</div>
 		                               					</form>
@@ -249,12 +269,12 @@
 	                                    <!-- end card-body -->
 	                                    <div class="clearfix"></div>
 	                                </div> <!-- end card-box -->
-	
+
 	                            </div> <!-- end Col -->
 	                        </div><!-- End row -->
-	
+
 	                    </div> <!-- container -->
-	
+
 	                </div> <!-- content -->
 
                 <!-- Footer Start -->
@@ -271,103 +291,6 @@
         </div>
         <!-- END wrapper -->
 
-
-        <!-- Right Sidebar -->
-        <div class="end-bar">
-
-            <div class="rightbar-title">
-                <a href="javascript:void(0);" class="end-bar-toggle float-end">
-                    <i class="dripicons-cross noti-icon"></i>
-                </a>
-                <h5 class="m-0">Settings</h5>
-            </div>
-
-            <div class="rightbar-content h-100" data-simplebar>
-
-                <div class="p-3">
-                    <div class="alert alert-warning" role="alert">
-                        <strong>Customize </strong> the overall color scheme, sidebar menu, etc.
-                    </div>
-
-                    <!-- Settings -->
-                    <h5 class="mt-3">Color Scheme</h5>
-                    <hr class="mt-1" />
-
-                    <div class="form-check form-switch mb-1">
-                        <input class="form-check-input" type="checkbox" name="color-scheme-mode" value="light" id="light-mode-check" checked>
-                        <label class="form-check-label" for="light-mode-check">Light Mode</label>
-                    </div>
-
-                    <div class="form-check form-switch mb-1">
-                        <input class="form-check-input" type="checkbox" name="color-scheme-mode" value="dark" id="dark-mode-check">
-                        <label class="form-check-label" for="dark-mode-check">Dark Mode</label>
-                    </div>
-
-
-                    <!-- Width -->
-                    <h5 class="mt-4">Width</h5>
-                    <hr class="mt-1" />
-                    <div class="form-check form-switch mb-1">
-                        <input class="form-check-input" type="checkbox" name="width" value="fluid" id="fluid-check" checked>
-                        <label class="form-check-label" for="fluid-check">Fluid</label>
-                    </div>
-
-                    <div class="form-check form-switch mb-1">
-                        <input class="form-check-input" type="checkbox" name="width" value="boxed" id="boxed-check">
-                        <label class="form-check-label" for="boxed-check">Boxed</label>
-                    </div>
-
-
-                    <!-- Left Sidebar-->
-                    <h5 class="mt-4">Left Sidebar</h5>
-                    <hr class="mt-1" />
-                    <div class="form-check form-switch mb-1">
-                        <input class="form-check-input" type="checkbox" name="theme" value="default" id="default-check">
-                        <label class="form-check-label" for="default-check">Default</label>
-                    </div>
-
-                    <div class="form-check form-switch mb-1">
-                        <input class="form-check-input" type="checkbox" name="theme" value="light" id="light-check" checked>
-                        <label class="form-check-label" for="light-check">Light</label>
-                    </div>
-
-                    <div class="form-check form-switch mb-3">
-                        <input class="form-check-input" type="checkbox" name="theme" value="dark" id="dark-check">
-                        <label class="form-check-label" for="dark-check">Dark</label>
-                    </div>
-
-                    <div class="form-check form-switch mb-1">
-                        <input class="form-check-input" type="checkbox" name="compact" value="fixed" id="fixed-check" checked>
-                        <label class="form-check-label" for="fixed-check">Fixed</label>
-                    </div>
-
-                    <div class="form-check form-switch mb-1">
-                        <input class="form-check-input" type="checkbox" name="compact" value="condensed" id="condensed-check">
-                        <label class="form-check-label" for="condensed-check">Condensed</label>
-                    </div>
-
-                    <div class="form-check form-switch mb-1">
-                        <input class="form-check-input" type="checkbox" name="compact" value="scrollable" id="scrollable-check">
-                        <label class="form-check-label" for="scrollable-check">Scrollable</label>
-                    </div>
-
-                    <div class="d-grid mt-4">
-                        <button class="btn btn-primary" id="resetBtn">Reset to Default</button>
-
-                        <a href="https://themes.getbootstrap.com/product/hyper-responsive-admin-dashboard-template/"
-                            class="btn btn-danger mt-3" target="_blank"><i class="mdi mdi-basket me-1"></i> Purchase Now</a>
-                    </div>
-                </div> <!-- end padding-->
-
-            </div>
-        </div>
-
-        <div class="rightbar-overlay"></div>
-        <!-- /End-bar -->
-
-        <!-- bundle -->
-        <script src="${path}/tools/project_assets/js/vendor.min.js"></script>
-        <script src="${path}/tools/project_assets/js/app.min.js"></script>
 		<!-- jstree js -->
 		<script src="${path}/tools/main_assets/js/vendor/jstree.min.js"></script>
 		<script src="${path}/tools/main_assets/js/pages/demo.jstree.js"></script>
@@ -414,10 +337,15 @@
 	function marketing(marketing){
 		location.href="${path}/dept.do?method=list&ddDept="+marketing;
 	}
+
+			location.href="${path}/dept.do?method=del&ddId="+$("[name=ddId]").val();
+		}
+	});
+
 	/* 등록 버튼 클릭 시(등록 페이지로 이동) */
 	$("#Doc-regBtn").click(function(){
 		location.href="${path}//dept.do?method=insertFrm";
-	});	
+	});
 	/* 페이징 처리 */
 	function goPage(no){
 		$("[name=curPage]").val(no);
@@ -431,6 +359,6 @@
 	function update(ddId){
 		location.href="${path}/dept.do?method=uptPage&ddId="+ddId;
 	}
-	
+
 	</script>
 </html>
