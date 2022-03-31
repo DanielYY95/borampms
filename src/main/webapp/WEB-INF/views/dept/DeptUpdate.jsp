@@ -118,7 +118,7 @@
 															<div class="mb-3">
 																<div class="input-group flex-nowrap">
                                                             		<span class="input-group-text" id="basic-addon1"><i class="dripicons-document-new"></i></span>
-                                                            		<input type="file" class="form-control" name="report" placeholder="${dfFile}" aria-label="Username" aria-describedby="basic-addon1" readonly>
+                                                            		<input type="text" class="form-control" name="report" placeholder="${dfFile}" aria-label="Username" aria-describedby="basic-addon1" disabled>
                                                         		</div>
 														  	</div>
 													  	</div>
@@ -297,18 +297,6 @@
 			alert("문서관리 페이지로 이동하시겠습니까?");
 			location.href="${path}/dept.do?method=list";
 		});
-	});
-	/* 페이징 처리 */
-	function goPage(no){
-		$("[name=curPage]").val(no);
-		$("#frm01").submit();
-	}
-	</script>
-	<script>
-	// 모달 창 닫기 버튼 클릭 시
-	$('.modal').on('hidden.bs.modal', function (e) {
-		console.log('modal close');
-	    $(this).find('form').reset();
 	});
 	</script>
 </html>

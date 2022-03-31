@@ -45,6 +45,16 @@
         	.btn{
         		float:right;
         	}
+        	.jstree-default .jstree-clicked, .jstree-default .jstree-hovered {
+			    background: white;
+			    -webkit-box-shadow: none;
+			    box-shadow: none;
+			}
+			.jstree-default .jstree-hovered {
+			    background: #eef2f7;
+			    -webkit-box-shadow: none;
+			    box-shadow: none;
+			}
         </style>
     </head>
 
@@ -98,7 +108,7 @@
 											 <div id="jstree-2" class="jstree jstree-1 jstree-default" role="tree" aria-multiselectable="true" tabindex="0" aria-activedescendant="j1_2" aria-busy="false">
 											 	<ul class="jstree-container-ul jstree-children" role="group">
 											 		<li role="none" id="j1_1" class="jstree-node jstree-open"><i class="jstree-icon jstree-ocl" role="presentation"></i>
-											 			<a class="jstree-anchor" href="#" tabindex="-1" role="treeitem" aria-selected="false" aria-level="1" aria-expanded="true" id="j1_1_anchor"><i class="jstree-icon jstree-themeicon dripicons-folder text-warning jstree-themeicon-custom" role="presentation"></i>
+											 			<a onclick="deptDoc('')" class="jstree-anchor" href="#" tabindex="-1" role="treeitem" aria-selected="false" aria-level="1" aria-expanded="true" id="j1_1_anchor"><i class="jstree-icon jstree-themeicon dripicons-folder text-warning jstree-themeicon-custom" role="presentation"></i>
 											            부서 공유문서함
 											            </a>
 											            <ul role="group" class="jstree-children" style="">
@@ -108,27 +118,27 @@
 												               	</a>
 											                </li>
 											                <li role="none" data-jstree="{ &quot;selected&quot; : true }" id="j1_3" class="jstree-node  jstree-leaf"><i class="jstree-icon jstree-ocl" role="presentation"></i>
-												                <a class="jstree-anchor  jstree-clicked" href="javascript:;" tabindex="-1" role="treeitem" aria-selected="true" aria-level="2" id="j1_3_anchor"><i class="jstree-icon jstree-themeicon dripicons-folder text-warning jstree-themeicon-custom" role="presentation"></i>
+												                <a onclick="devel2('개발2팀')" class="jstree-anchor  jstree-clicked" href="javascript:;" tabindex="-1" role="treeitem" aria-selected="true" aria-level="2" id="j1_3_anchor"><i class="jstree-icon jstree-themeicon dripicons-folder text-warning jstree-themeicon-custom" role="presentation"></i>
 												                개발2팀 
 												               	</a>
 											               	</li>
 											                <li role="none" data-jstree="{ &quot;selected&quot; : true }" id="j1_4" class="jstree-node  jstree-leaf"><i class="jstree-icon jstree-ocl" role="presentation"></i>
-												               	<a class="jstree-anchor  jstree-clicked" href="javascript:;" tabindex="-1" role="treeitem" aria-selected="true" aria-level="2" id="j1_4_anchor"><i class="jstree-icon jstree-themeicon dripicons-folder text-warning jstree-themeicon-custom" role="presentation"></i>
+												               	<a onclick="person('인사팀')" class="jstree-anchor  jstree-clicked" href="javascript:;" tabindex="-1" role="treeitem" aria-selected="true" aria-level="2" id="j1_4_anchor"><i class="jstree-icon jstree-themeicon dripicons-folder text-warning jstree-themeicon-custom" role="presentation"></i>
 												               	인사팀 
 												               	</a>
 											                </li>
 											                <li role="none" data-jstree="{ &quot;selected&quot; : true }" id="j1_5" class="jstree-node  jstree-leaf"><i class="jstree-icon jstree-ocl" role="presentation"></i>
-												                <a class="jstree-anchor  jstree-clicked" href="javascript:;" tabindex="-1" role="treeitem" aria-selected="true" aria-level="2" id="j1_5_anchor"><i class="jstree-icon jstree-themeicon dripicons-folder text-warning jstree-themeicon-custom" role="presentation"></i>
+												                <a onclick="plan('기획팀')" class="jstree-anchor  jstree-clicked" href="javascript:;" tabindex="-1" role="treeitem" aria-selected="true" aria-level="2" id="j1_5_anchor"><i class="jstree-icon jstree-themeicon dripicons-folder text-warning jstree-themeicon-custom" role="presentation"></i>
 												                기획팀 
 												               	</a>
 											                </li>
 											                <li role="none" data-jstree="{ &quot;selected&quot; : true }" id="j1_6" class="jstree-node  jstree-leaf"><i class="jstree-icon jstree-ocl" role="presentation"></i>
-												               	<a class="jstree-anchor  jstree-clicked" href="javascript:;" tabindex="-1" role="treeitem" aria-selected="true" aria-level="2" id="j1_6_anchor"><i class="jstree-icon jstree-themeicon dripicons-folder text-warning jstree-themeicon-custom" role="presentation"></i>
+												               	<a onclick="design('디자인팀')" class="jstree-anchor  jstree-clicked" href="javascript:;" tabindex="-1" role="treeitem" aria-selected="true" aria-level="2" id="j1_6_anchor"><i class="jstree-icon jstree-themeicon dripicons-folder text-warning jstree-themeicon-custom" role="presentation"></i>
 												              	디자인팀 
 												               	</a>
 											               	</li>
 											                <li role="none" data-jstree="{ &quot;selected&quot; : true }" id="j1_7" class="jstree-node  jstree-leaf jstree-last"><i class="jstree-icon jstree-ocl" role="presentation"></i>
-												               	<a class="jstree-anchor  jstree-clicked" href="javascript:;" tabindex="-1" role="treeitem" aria-selected="true" aria-level="2" id="j1_7_anchor"><i class="jstree-icon jstree-themeicon dripicons-folder text-warning jstree-themeicon-custom" role="presentation"></i>
+												               	<a onclick="marketing('마케팅팀')" class="jstree-anchor  jstree-clicked" href="javascript:;" tabindex="-1" role="treeitem" aria-selected="true" aria-level="2" id="j1_7_anchor"><i class="jstree-icon jstree-themeicon dripicons-folder text-warning jstree-themeicon-custom" role="presentation"></i>
 												            	마케팅팀 
 												               	</a>
 											               	</li>
@@ -158,7 +168,7 @@
 											<!-- 임의로 만든 표 -->
 	                                        <div class="page-aside-right">
 	                                            <div class="mt-3">
-	                                                <h5 class="mb-3">개발팀</h5>
+	                                                <h5 class="mb-3">부서 공유문서함</h5>
 		                                                <!-- 게시물 조회 -->
 		                                                <form id="frm01" method="post" action="${path}/dept.do?method=list">
 		                                                	<input type="hidden" name="curPage" value="1"/>
@@ -197,7 +207,7 @@
 		                                                                <td onclick="detail(${deptdoc.ddId})">${deptdoc.ddWriter}</td>
 		                                                                <td onclick="detail(${deptdoc.ddId})"><fmt:formatDate value="${deptdoc.ddRegdate}" pattern="yyyy-MM-dd"/></td>
 		                                                            	<c:choose>
-																			<c:when test="${deptdoc.ddDept=='개발팀'&&deptdoc.ddWriter=='조민혁'}">
+																			<c:when test="${deptdoc.ddDept=='개발1팀'&&deptdoc.ddWriter=='조민혁'}">
 																				<td>
 							 														<button onclick="update(${deptdoc.ddId})" id="upt-btn"><i class="dripicons-pencil"></i></button> |
 																					<button onclick="delete1(${deptdoc.ddId})" id="del-btn"><i class="dripicons-trash"></i></button>
@@ -376,9 +386,33 @@
 			location.href="${path}/dept.do?method=del&ddId="+ddId;	
 		}
 	}
+	/* 부서 공유문서함 클릭시 */
+	function deptDoc(deptDoc){
+		location.href="${path}/dept.do?method=list&ddDept="+deptDoc;
+	}
 	/* 개발1팀 클릭시 */
-	function devel1(ddDept){
-		location.href="${path}/dept.do?method=list&ddDept="+ddDept;
+	function devel1(devel1){
+		location.href="${path}/dept.do?method=list&ddDept="+devel1;
+	}
+	/* 개발2팀 클릭시 */
+	function devel2(devel2){
+		location.href="${path}/dept.do?method=list&ddDept="+devel2;
+	}
+	/* 인사팀 클릭시 */
+	function person(person){
+		location.href="${path}/dept.do?method=list&ddDept="+person;
+	}
+	/* 기획팀 클릭시 */
+	function plan(plan){
+		location.href="${path}/dept.do?method=list&ddDept="+plan;
+	}
+	/* 디자인 클릭시 */
+	function design(design){
+		location.href="${path}/dept.do?method=list&ddDept="+design;
+	}
+	/* 마케팅 클릭시 */
+	function marketing(marketing){
+		location.href="${path}/dept.do?method=list&ddDept="+marketing;
 	}
 	/* 등록 버튼 클릭 시(등록 페이지로 이동) */
 	$("#Doc-regBtn").click(function(){
@@ -393,6 +427,7 @@
 	function detail(ddId){
 		location.href="${path}/dept.do?method=detail&ddId="+ddId;
 	}
+	/* 연필 버튼(수정) 클릭 */
 	function update(ddId){
 		location.href="${path}/dept.do?method=uptPage&ddId="+ddId;
 	}

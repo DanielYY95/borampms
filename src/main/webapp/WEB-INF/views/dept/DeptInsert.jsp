@@ -317,11 +317,4 @@
 		location.href="${path}/dept.do?method=list";
 	});
 	</script>
-	<script>
-	// 모달 창 닫기 버튼 클릭 시
-	$('.modal').on('hidden.bs.modal', function (e) {
-		console.log('modal close');
-	    $(this).find('form').reset();
-	});
-	</script>
 </html>

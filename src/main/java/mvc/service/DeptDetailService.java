@@ -25,8 +25,4 @@ public class DeptDetailService {
 	public void deleteDept(String ddId) {
 		dao.deleteDept(ddId);
 	}
-	
-	public DeptDoc getDDListDetail(String ddDept) {
-		return dao.getDDListDetail(ddDept);
-	}
 }

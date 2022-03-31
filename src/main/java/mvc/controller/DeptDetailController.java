@@ -15,13 +15,6 @@ public class DeptDetailController {
 	@Autowired
 	private DeptDetailService service1;
 
-	@RequestMapping(params="method=docList")
-	public String ddListDetail(String ddDept, Model d) {
-		System.out.println("부서확인:"+ddDept);
-		d.addAttribute("deptDoc", service1.getDDListDetail(ddDept));
-		
-		return "redirect:/dept.do?method=list";
-	}
 	// 부서문서 상세보기(ddId)
 	@RequestMapping(params="method=detail")
 	public String DeptDetail(String ddId, Model d) {

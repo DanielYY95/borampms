@@ -272,30 +272,6 @@
 		<script src="${path}/tools/main_assets/js/pages/demo.simplemde.js"></script>
     </body>
 	<script>
-	/* 파일 업로드 스크립트 */
-	$(document).ready(function(){
-		$("#btn-upload").click(function(){
-			/* 파일추가 버튼 클릭시(파일 선택 입력란이 나온다.) */
-			var html = '<div class="row">'
-            			+ '<div class="col-lg-6">'
-						+ '<div class="mb-3">'
-						+ '<input type="file" id="example-fileinput" class="form-control" multiple="multiple" name="deptRowList.report">'
-					  	+ '</div>'
-					  	+ '</div>'
-					  	+ '</div>'
-			$('#articlefileChange').append(
-		       	html
-			);
-			$("#x_btn").click(function(){
-				html.remove();
-			});
-		})
-	});
-	/* 페이징 처리 */
-	function goPage(no){
-		$("[name=curPage]").val(no);
-		$("#frm01").submit();
-	}
 	/* 글목록버튼 클릭시, 문서관리 페이지로 이동 */
 	$("#docList-btn").click(function(){
 		alert("문서관리 페이지로 이동하시겠습니까?");

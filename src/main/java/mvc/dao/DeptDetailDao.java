@@ -18,7 +18,4 @@ public interface DeptDetailDao {
 	public void updateDept(DeptDoc upt);
 	// 3. 삭제
 	public void deleteDept(String ddId);
-	// # 부서별 문서
-	// 1. 부서별 문서 리스트
-	public DeptDoc getDDListDetail(String ddDept);
 }
