@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import mvc.dao.UserDao;
 import mvc.vo.PRJ_INFO;
+import mvc.vo.PRJ_USER;
 import mvc.vo.USER_INFO;
 
 
@@ -67,7 +68,20 @@ public class UserService {
 		return dao.getMyPrjList(uiId);
 	};
 	
+	// 11. 참여하지않은 프로젝트 목록 조회
 	
+	public ArrayList<PRJ_INFO> getNewPrjList(String uiId){
+		
+		return dao.getNewPrjList(uiId);
+	};
+	
+	// 12. 프로젝트 참여
+	
+	public void joinPrj(PRJ_USER user) {
+		
+		dao.joinPrj(user);
+	};
+
 	
 	
 }

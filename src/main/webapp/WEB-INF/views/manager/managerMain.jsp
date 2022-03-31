@@ -551,22 +551,9 @@
 												sch.uiEmail+'</td><td>'+sch.uiPhone+
 												'</td><td><h5 class="my-0"><span class="badge badge-info-lighten">'+
 												sch.uiStatus+'</span></h5></td><td><a href="javascript:void(0);" class="action-icon"'+
-												'onclick="editUserDetail("'+sch.uiId+'")" data-bs-toggle="modal" data-bs-target="#signup-modal">'+
+												'onclick="editUserDetail('+"'"+sch.uiId+"'"+')" data-bs-toggle="modal" data-bs-target="#signup-modal">'+
 												' <i class="mdi mdi-square-edit-outline"></i></a><a href="javascript:void(0);" class="action-icon"'+
-												'onclick="deleteUser("'+sch.uiName+'","'+sch.uiId+'")"><i class="mdi mdi-delete"></i></a></td></tr>'
-
-
-											// 	html += `<tr><td><div class="form-check"><input type="checkbox" class="form-check-input"
-											// id="customCheck2"><label class="form-check-label"for="customCheck2">&nbsp;</label></div></td>
-											// <td><a href="apps-ecommerce-orders-details.html" class="text-body fw-bold">
-											// 	${sch.uiId}</a></td><td>${sch.uiName}</td><td>${sch.uiDept}
-											// 	</td><td><p class="mb-0 txt-muted">${sch.uiRank}</p></td><td>
-											// 	${sch.uiEmail}</td><td>${sch.uiPhone}
-											// 	</td><td><h5 class="my-0"><span class="badge badge-info-lighten">
-											// 	${sch.uiStatus}</span></h5></td><td><a href="javascript:void(0);" class="action-icon"
-											// 	onclick="editUserDetail('${sch.uiId}')" data-bs-toggle="modal" data-bs-target="#signup-modal">
-											// 	<i class="mdi mdi-square-edit-outline"></i></a><a href="javascript:void(0);" class="action-icon"
-											// 	onclick="deleteUser('${sch.uiName}','${sch.uiId}')"><i class="mdi mdi-delete"></i></a></td></tr>`
+												'onclick="deleteUser('+"'"+sch.uiName+"','"+sch.uiId+"'"+')"><i class="mdi mdi-delete"></i></a></td></tr>'
 
 
 								});	

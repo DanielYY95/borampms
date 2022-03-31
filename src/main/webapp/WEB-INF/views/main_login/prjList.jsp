@@ -187,133 +187,7 @@
               
                                                 	</c:forEach>
                                                 
-                                                
-                                                
-                                                    <tr>
-                                                        <td>
-                                                            <div class="form-check">
-                                                                <input type="checkbox" class="form-check-input" id="customCheck2">
-                                                                <label class="form-check-label" for="customCheck2">&nbsp;</label>
-                                                            </div>
-                                                        </td>
-                                                        <td><a href="apps-ecommerce-orders-details.html" class="text-body fw-bold">#PI9708 프론트샘플</a> </td>
-                                                        <td onclick="goToPrj()">쌍용 5차 프로젝트</td>
-                                                        <td>
-                                                            <div class="d-flex">
-                                                                <div class="d-flex align-items-center">
-                                                                    <div class="flex-shrink-0">
-                                                                        <img src="${path}/tools/main_assets/images/users/avatar-1.jpg" class="rounded-circle avatar-xs" alt="friend">
-                                                                    </div>
-                                                                    <div class="flex-grow-1 ms-2"><h5 class="my-0">김철수</h5></div>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-
-                                                        <td>
-                                                            <h5 class="my-0">2022-03-05</h5>
-                                                            <p class="mb-0 txt-muted">2022-12-31</p>
-                                                        </td>
-
-                                                        <td><h5 class="my-0"><span class="badge badge-info-lighten">예정</span></h5></td>
-                                                        <td>
-                                                            <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-arrow-top-right-bold-box-outline"></i></a>
-                                                            <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
-                                                        </td>
-                                                    </tr>
-
-                                                    <tr>
-                                                        <td>
-                                                            <div class="form-check">
-                                                                <input type="checkbox" class="form-check-input" id="customCheck9">
-                                                                <label class="form-check-label" for="customCheck9">&nbsp;</label>
-                                                            </div>
-                                                        </td>
-                                                        <td><a href="apps-ecommerce-orders-details.html" class="text-body fw-bold">#PI9701 프론트샘플</a> </td>
-                                                         <td onclick="goToPrj()">쌍용 디자인 프로젝트</td>
-                                                        <td>
-                                                            <div class="d-flex">
-                                                                <div class="d-flex align-items-center">
-                                                                    <div class="flex-shrink-0">
-                                                                        <img src="${path}/tools/main_assets/images/users/avatar-8.jpg" class="rounded-circle avatar-xs" alt="friend">
-                                                                    </div>
-                                                                    <div class="flex-grow-1 ms-2"><h5 class="my-0">배철수</h5></div>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-
-                                                        <td>
-                                                            <h5 class="my-0">2022-01-20</h5>
-                                                            <p class="mb-0 txt-muted">2022-05-10</p>
-                                                        </td>
-
-                                                        <td><h5 class="my-0"><span class="badge badge-warning-lighten">지연</span></h5></td>
-                                                        <td>
-                                                            <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-arrow-top-right-bold-box-outline"></i></a>
-                                                            <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <div class="form-check">
-                                                                <input type="checkbox" class="form-check-input" id="customCheck10">
-                                                                <label class="form-check-label" for="customCheck10">&nbsp;</label>
-                                                            </div>
-                                                        </td>
-                                                        <td><a href="apps-ecommerce-orders-details.html" class="text-body fw-bold">#PI9700 프론트샘플</a> </td>
-                                                        <td onclick="goToPrj()">쌍용 임베디드 프로젝트</td>
-                                                        <td>
-                                                            <div class="d-flex">
-                                                                <div class="d-flex align-items-center">
-                                                                    <div class="flex-shrink-0">
-                                                                        <img src="${path}/tools/main_assets/images/users/avatar-9.jpg" class="rounded-circle avatar-xs" alt="friend">
-                                                                    </div>
-                                                                    <div class="flex-grow-1 ms-2"><h5 class="my-0">도철수</h5></div>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-
-                                                        <td>
-                                                            <h5 class="my-0">2022-02-05</h5>
-                                                            <p class="mb-0 txt-muted">2022-09-01</p>
-                                                        </td>
-
-                                                        <td><h5 class="my-0"><span class="badge badge-primary-lighten">진행 중</span></h5></td>
-                                                        <td>
-                                                            <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-arrow-top-right-bold-box-outline"></i></a>
-                                                            <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <div class="form-check">
-                                                                <input type="checkbox" class="form-check-input" id="customCheck11">
-                                                                <label class="form-check-label" for="customCheck11">&nbsp;</label>
-                                                            </div>
-                                                        </td>
-                                                        <td><a href="apps-ecommerce-orders-details.html" class="text-body fw-bold">#PI9699 프론트샘플</a> </td>
-                                                        <td onclick="goToPrj()">쌍용 IOS 프로젝트</td>
-                                                        <td>
-                                                            <div class="d-flex">
-                                                                <div class="d-flex align-items-center">
-                                                                    <div class="flex-shrink-0">
-                                                                        <img src="${path}/tools/main_assets/images/users/avatar-10.jpg" class="rounded-circle avatar-xs" alt="friend">
-                                                                    </div>
-                                                                    <div class="flex-grow-1 ms-2"><h5 class="my-0">한철수</h5></div>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-
-                                                        <td>
-                                                            <h5 class="my-0">2022-01-05</h5>
-                                                            <p class="mb-0 txt-muted">2022-04-04</p>
-                                                        </td>
-
-                                                        <td><h5 class="my-0"><span class="badge badge-success-lighten">완료</span></h5></td>
-                                                        <td>
-                                                            <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-arrow-top-right-bold-box-outline"></i></a>
-                                                            <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
-                                                        </td>
-                                                    </tr>
+                                        
                                                 </tbody>
                                             </table>
                                         </div>
@@ -321,7 +195,95 @@
                                 </div> <!-- end card-->
                             </div> <!-- end col -->
                         </div> <!-- end row -->
+						
+						
+						
+						   <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box">
+                                   	
+                                    <h4 class="page-title">프로젝트 참여가능 목록</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end page title -->
 
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row mb-2">
+                                         
+                                               
+		
+		                                        <div class="table-responsive">
+		                                            <table class="table table-centered table-nowrap mb-0">
+		                                                <thead class="table-light">
+		                                                    <tr>
+		                                                        <th style="width: 20px;">
+		                                                            <div class="form-check">
+		                                                                <input type="checkbox" class="form-check-input" id="customCheck1">
+		                                                                <label class="form-check-label" for="customCheck1">&nbsp;</label>
+		                                                            </div>
+		                                                        </th>
+		                                                        <th>프로젝트 ID</th>
+		                                                        <th>제목</th>
+		                                                        <th>프로젝트 관리자</th>
+		                                                        <th>생성일/마감일</th>
+		                                                        <th>프로젝트 상태</th>
+		                                                        <th style="width: 125px;">참가</th>
+		                                                    </tr>
+		                                                </thead>
+		                                                <tbody>
+		                                                	<c:forEach var="newprj" items="${newPrjList}">
+		                                                		<tr>
+			                                                        <td>
+			                                                            <div class="form-check">
+			                                                                <input type="checkbox" class="form-check-input" id="customCheck2">
+			                                                                <label class="form-check-label" for="customCheck2">&nbsp;</label>
+			                                                            </div>
+			                                                        </td>
+			                                                        <td><a href="apps-ecommerce-orders-details.html" class="text-body fw-bold">${newprj.piId} DB값</a> </td>
+			                                                        <td>${newprj.piTitle}</td>
+			                                                        <td>
+			                                                            <div class="d-flex">
+			                                                                <div class="d-flex align-items-center">
+			                                                                    <div class="flex-shrink-0">
+			                                                                        <img src="${path}/tools/main_assets/images/users/avatar-1.jpg" class="rounded-circle avatar-xs" alt="friend">
+			                                                                    </div>
+			                                                                    <div class="flex-grow-1 ms-2"><h5 class="my-0">${newprj.piWriter}</h5></div>
+			                                                                </div>
+			                                                            </div>
+			                                                        </td>
+			
+			                                                        <td>
+			                                                            <h5 class="my-0">${newprj.piStartdate}</h5>
+			                                                            <p class="mb-0 txt-muted">${newprj.piDuedate}</p>
+			                                                        </td>
+			
+			                                                        <td><h5 class="my-0"><span class="badge badge-info-lighten">${newprj.piStatus}</span></h5></td>
+			                                                        <td>
+			                                                            <a href="javascript:void(0);" class="action-icon" onclick="joinToPrj('${newprj.piId}')"> <i class="dripicons-rocket"></i></a>
+			                                                            
+			                                                        </td>
+			                                                    </tr>
+		                                                	
+		              
+		                                                	</c:forEach>
+		                                                
+		                                                
+		                                                    
+		                                                </tbody>
+		                                            </table>
+		                                        </div>
+                                    </div> <!-- end card-body-->
+                                </div> <!-- end card-->
+                            </div> <!-- end col -->
+                        </div> <!-- end row -->
+						
+						
+						
                     </div>
                     <!-- container -->
 
@@ -353,6 +315,12 @@
         		location.href="${path}/prjDash.do?piId="+piId;
 //        		location.href="${path}/dash.do?method=list";
         	} // 이 방식으로 post로 못 간다 
+        	
+        	
+        	function joinToPrj(piId){
+        		
+        		location.href="${path}/joinPrj.do?piId="+piId;
+        	}
 
 
             $("#alarm").hide();

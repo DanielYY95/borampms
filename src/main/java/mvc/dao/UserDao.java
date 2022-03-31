@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import mvc.vo.PRJ_INFO;
+import mvc.vo.PRJ_USER;
 import mvc.vo.USER_INFO;
 
 
@@ -39,5 +40,15 @@ public interface UserDao {
 	
 	// 10. 내 프로젝트 목록 조회
 	public ArrayList<PRJ_INFO> getMyPrjList(String uiId);
+	
+	
+	// 11. 참여하지않은 프로젝트 목록 조회
+	
+	public ArrayList<PRJ_INFO> getNewPrjList(String uiId);
+	
+	// 12. 프로젝트 참여
+	
+	public void joinPrj(PRJ_USER user);
+
 	
 }

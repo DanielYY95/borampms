@@ -26,6 +26,11 @@
 <link href="${path}/tools/project_assets/css/icons.min.css" rel="stylesheet" type="text/css" />
 <link href="${path}/tools/project_assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-style" />
 
+	<!-- jquery 라이브러리 -->
+	 <script src="${path}/tools/jquery-3.6.0.js"></script>
+	 
+
+
 <body class="loading" data-layout-color="light" data-leftbar-theme="dark" data-layout-mode="fluid" data-rightbar-onstart="true">
 	<!-- Begin page -->
 	<div class="wrapper">
@@ -192,7 +197,7 @@
 													</tr>
 											 	</thead>
 											 	<tbody id="task-tbody">
-													<c:forEach var="taskdash" items="${dashlist}" varStatus="status">
+													<c:forEach var="taskdash" items="${dashlist}" varStatus="status"  begin="0" end="4">
 													<tr>
 														<td>${taskdash.cnt }</td>
 														<td>${taskdash.ptTitle }</td>

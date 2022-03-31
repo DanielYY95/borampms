@@ -14,6 +14,7 @@ import mvc.service.DashService;
 import mvc.service.EtcService;
 import mvc.service.UserService;
 import mvc.vo.PRJ_INFO;
+import mvc.vo.PRJ_USER;
 import mvc.vo.Task_User;
 import mvc.vo.USER_INFO;
 
@@ -58,9 +59,21 @@ public class MainController {
 		
 		USER_INFO user=  smethod.getUserSession(request);
 		d.addAttribute("prjList", service.getMyPrjList(user.getUiId()));
+		d.addAttribute("newPrjList", service.getNewPrjList(user.getUiId()));
 			
 		return "main_login//prjList";
 	}
+	
+	@RequestMapping("/joinPrj.do")
+	public String joinPrj(HttpServletRequest request, String piId, Model d) {
+		
+		USER_INFO user=  smethod.getUserSession(request);
+		service.joinPrj(new PRJ_USER(piId, user.getUiId()));
+		
+		
+		return "forward:/prjList.do";
+	}
+	
 	
 	@RequestMapping("/prjDash.do") // 메인->프로젝트 목록 -> 대시보드로 접근하는게 아니면 자꾸 에러가...
 	public String prjDash(@ModelAttribute("prj_info") PRJ_INFO pi, Model d) {
