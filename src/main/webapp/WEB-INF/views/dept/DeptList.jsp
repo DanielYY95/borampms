@@ -31,7 +31,6 @@
  		<script src="${path}/tools/jquery-3.6.0.js"></script>
         <!-- css -->
         <style>
-
         	#del-btn{
         		border:0;
         		background:white;
@@ -46,6 +45,16 @@
         	.btn{
         		float:right;
         	}
+        	.jstree-default .jstree-clicked, .jstree-default .jstree-hovered {
+			    background: white;
+			    -webkit-box-shadow: none;
+			    box-shadow: none;
+			}
+			.jstree-default .jstree-hovered {
+			    background: #eef2f7;
+			    -webkit-box-shadow: none;
+			    box-shadow: none;
+			}
         </style>
     </head>
 
@@ -98,24 +107,59 @@
                                         	<h4 class="header-title">공유문서함</h4>
 											 <div id="jstree-2" class="jstree jstree-1 jstree-default" role="tree" aria-multiselectable="true" tabindex="0" aria-activedescendant="j1_2" aria-busy="false">
 											 	<ul class="jstree-container-ul jstree-children" role="group">
-											 		<li role="none" id="j1_1" class="jstree-node jstree-open">
-											 			<i class="jstree-icon jstree-ocl" role="presentation"></i><a class="jstree-anchor" href="#" tabindex="-1" role="treeitem" aria-selected="false" aria-level="1" aria-expanded="true" id="j1_1_anchor"><i class="jstree-icon jstree-themeicon dripicons-folder text-warning jstree-themeicon-custom" role="presentation"></i>
+											 		<li role="none" id="j1_1" class="jstree-node jstree-open"><i class="jstree-icon jstree-ocl" role="presentation"></i>
+											 			<a onclick="deptDoc('')" class="jstree-anchor" href="#" tabindex="-1" role="treeitem" aria-selected="false" aria-level="1" aria-expanded="true" id="j1_1_anchor"><i class="jstree-icon jstree-themeicon dripicons-folder text-warning jstree-themeicon-custom" role="presentation"></i>
 											            부서 공유문서함
 											            </a>
-											            	<ul role="group" class="jstree-children" style=""><li role="none" data-jstree="{ &quot;selected&quot; : true }" id="j1_2" class="jstree-node  jstree-leaf"><i class="jstree-icon jstree-ocl" role="presentation"></i><a class="jstree-anchor jstree-clicked" href="javascript:;" tabindex="-1" role="treeitem" aria-selected="true" aria-level="2" id="j1_2_anchor"><i class="jstree-icon jstree-themeicon dripicons-folder text-warning jstree-themeicon-custom" role="presentation"></i>
-											                기획팀 </a></li><li role="none" data-jstree="{ &quot;selected&quot; : true }" id="j1_3" class="jstree-node  jstree-leaf"><i class="jstree-icon jstree-ocl" role="presentation"></i><a class="jstree-anchor  jstree-clicked" href="javascript:;" tabindex="-1" role="treeitem" aria-selected="true" aria-level="2" id="j1_3_anchor"><i class="jstree-icon jstree-themeicon dripicons-folder text-warning jstree-themeicon-custom" role="presentation"></i>
-											                인사팀 </a></li><li role="none" data-jstree="{ &quot;selected&quot; : true }" id="j1_4" class="jstree-node  jstree-leaf"><i class="jstree-icon jstree-ocl" role="presentation"></i><a class="jstree-anchor  jstree-clicked" href="javascript:;" tabindex="-1" role="treeitem" aria-selected="true" aria-level="2" id="j1_4_anchor"><i class="jstree-icon jstree-themeicon dripicons-folder text-warning jstree-themeicon-custom" role="presentation"></i>
-											                개발팀 </a></li><li role="none" data-jstree="{ &quot;selected&quot; : true }" id="j1_5" class="jstree-node  jstree-leaf jstree-last"><i class="jstree-icon jstree-ocl" role="presentation"></i><a class="jstree-anchor  jstree-clicked" href="javascript:;" tabindex="-1" role="treeitem" aria-selected="true" aria-level="2" id="j1_5_anchor"><i class="jstree-icon jstree-themeicon dripicons-folder text-warning jstree-themeicon-custom" role="presentation"></i>
-											                마케팅팀 </a></li></ul>
+											            <ul role="group" class="jstree-children" style="">
+											            	<li role="none" data-jstree="{ &quot;selected&quot; : true }" id="j1_2" class="jstree-node  jstree-leaf"><i class="jstree-icon jstree-ocl" role="presentation"></i>
+												            	<a onclick="devel1('개발1팀')" class="jstree-anchor jstree-clicked" tabindex="-1" role="treeitem" aria-selected="true" aria-level="2" id="j1_2_anchor"><i class="jstree-icon jstree-themeicon dripicons-folder text-warning jstree-themeicon-custom" role="presentation"></i>
+												               	개발1팀 
+												               	</a>
+											                </li>
+											                <li role="none" data-jstree="{ &quot;selected&quot; : true }" id="j1_3" class="jstree-node  jstree-leaf"><i class="jstree-icon jstree-ocl" role="presentation"></i>
+												                <a onclick="devel2('개발2팀')" class="jstree-anchor  jstree-clicked" href="javascript:;" tabindex="-1" role="treeitem" aria-selected="true" aria-level="2" id="j1_3_anchor"><i class="jstree-icon jstree-themeicon dripicons-folder text-warning jstree-themeicon-custom" role="presentation"></i>
+												                개발2팀 
+												               	</a>
+											               	</li>
+											                <li role="none" data-jstree="{ &quot;selected&quot; : true }" id="j1_4" class="jstree-node  jstree-leaf"><i class="jstree-icon jstree-ocl" role="presentation"></i>
+												               	<a onclick="person('인사팀')" class="jstree-anchor  jstree-clicked" href="javascript:;" tabindex="-1" role="treeitem" aria-selected="true" aria-level="2" id="j1_4_anchor"><i class="jstree-icon jstree-themeicon dripicons-folder text-warning jstree-themeicon-custom" role="presentation"></i>
+												               	인사팀 
+												               	</a>
+											                </li>
+											                <li role="none" data-jstree="{ &quot;selected&quot; : true }" id="j1_5" class="jstree-node  jstree-leaf"><i class="jstree-icon jstree-ocl" role="presentation"></i>
+												                <a onclick="plan('기획팀')" class="jstree-anchor  jstree-clicked" href="javascript:;" tabindex="-1" role="treeitem" aria-selected="true" aria-level="2" id="j1_5_anchor"><i class="jstree-icon jstree-themeicon dripicons-folder text-warning jstree-themeicon-custom" role="presentation"></i>
+												                기획팀 
+												               	</a>
+											                </li>
+											                <li role="none" data-jstree="{ &quot;selected&quot; : true }" id="j1_6" class="jstree-node  jstree-leaf"><i class="jstree-icon jstree-ocl" role="presentation"></i>
+												               	<a onclick="design('디자인팀')" class="jstree-anchor  jstree-clicked" href="javascript:;" tabindex="-1" role="treeitem" aria-selected="true" aria-level="2" id="j1_6_anchor"><i class="jstree-icon jstree-themeicon dripicons-folder text-warning jstree-themeicon-custom" role="presentation"></i>
+												              	디자인팀 
+												               	</a>
+											               	</li>
+											                <li role="none" data-jstree="{ &quot;selected&quot; : true }" id="j1_7" class="jstree-node  jstree-leaf jstree-last"><i class="jstree-icon jstree-ocl" role="presentation"></i>
+												               	<a onclick="marketing('마케팅팀')" class="jstree-anchor  jstree-clicked" href="javascript:;" tabindex="-1" role="treeitem" aria-selected="true" aria-level="2" id="j1_7_anchor"><i class="jstree-icon jstree-themeicon dripicons-folder text-warning jstree-themeicon-custom" role="presentation"></i>
+												            	마케팅팀 
+												               	</a>
+											               	</li>
+											               </ul>
 											        </li>
-											        <li role="none" id="j1_6" class="jstree-node jstree-open">
-											        	<i class="jstree-icon jstree-ocl" role="presentation"></i><a class="jstree-anchor" href="#" tabindex="-1" role="treeitem" aria-selected="false" aria-level="1" aria-expanded="true" id="j1_6_anchor"><i class="jstree-icon jstree-themeicon dripicons-folder text-warning jstree-themeicon-custom" role="presentation"></i>
-											        	공통 문서함
-											       	</a>
-
-											       		<ul role="group" class="jstree-children" style=""><li role="none" data-jstree="{ &quot;selected&quot; : true }" id="j1_7" class="jstree-node  jstree-leaf"><i class="jstree-icon jstree-ocl" role="presentation"></i><a class="jstree-anchor jstree-clicked" href="javascript:;" tabindex="-1" role="treeitem" aria-selected="true" aria-level="2" id="j1_7_anchor"><i class="jstree-icon jstree-themeicon dripicons-folder text-warning jstree-themeicon-custom" role="presentation"></i>
-											                대외문서함 </a></li><li role="none" data-jstree="{ &quot;selected&quot; : true }" id="j1_8" class="jstree-node  jstree-leaf"><i class="jstree-icon jstree-ocl" role="presentation"></i><a class="jstree-anchor  jstree-clicked" href="javascript:;" tabindex="-1" role="treeitem" aria-selected="true" aria-level="2" id="j1_8_anchor"><i class="jstree-icon jstree-themeicon dripicons-folder text-warning jstree-themeicon-custom" role="presentation"></i>
-											                대내문서함 </a></li></ul>
+											        <li role="none" id="j1_8" class="jstree-node jstree-open"><i class="jstree-icon jstree-ocl" role="presentation"></i>
+												        <a class="jstree-anchor" href="#" tabindex="-1" role="treeitem" aria-selected="false" aria-level="1" aria-expanded="true" id="j1_8_anchor"><i class="jstree-icon jstree-themeicon dripicons-folder text-warning jstree-themeicon-custom" role="presentation"></i>
+												        	공통 문서함
+												       	</a>
+											       		<ul role="group" class="jstree-children" style="">
+											       			<li role="none" data-jstree="{ &quot;selected&quot; : true }" id="j1_9" class="jstree-node  jstree-leaf"><i class="jstree-icon jstree-ocl" role="presentation"></i>
+												       			<a class="jstree-anchor jstree-clicked" href="javascript:;" tabindex="-1" role="treeitem" aria-selected="true" aria-level="2" id="j1_9_anchor"><i class="jstree-icon jstree-themeicon dripicons-folder text-warning jstree-themeicon-custom" role="presentation"></i>
+												                대외문서함 
+												                </a>
+											                </li>
+											                <li role="none" data-jstree="{ &quot;selected&quot; : true }" id="j1_10" class="jstree-node  jstree-leaf"><i class="jstree-icon jstree-ocl" role="presentation"></i>
+												                <a class="jstree-anchor  jstree-clicked" href="javascript:;" tabindex="-1" role="treeitem" aria-selected="true" aria-level="2" id="j1_10_anchor"><i class="jstree-icon jstree-themeicon dripicons-folder text-warning jstree-themeicon-custom" role="presentation"></i>
+												                대내문서함 
+												                </a>
+											                </li>
+											            </ul>
 											        </li>
 											   </ul>
 											</div>
@@ -124,21 +168,16 @@
 											<!-- 임의로 만든 표 -->
 	                                        <div class="page-aside-right">
 	                                            <div class="mt-3">
-	                                                <h5 class="mb-3">개발팀</h5>
+	                                                <h5 class="mb-3">부서 공유문서함</h5>
 		                                                <!-- 게시물 조회 -->
 		                                                <form id="frm01" method="post" action="${path}/dept.do?method=list">
 		                                                	<input type="hidden" name="curPage" value="1"/>
-
 		                               						<div class="col-lg-4" style="text-align:center;">
-
 		                               						<!-- 작성자 조회 -->
 		                               						<div class="input-group">
 			                               						<input type="text" id="simpleinput" class="form-control" name="ddWriter" value="${deptDocSch.ddWriter}" placeholder="작성자">
 			                               						<button class="input-group-text btn-primary" type="submit">조회</button>
-
-			                               					
 			                               					</div>
-
 			                               					</div>
 		                               					</form>
 		                               					<br>
@@ -153,7 +192,6 @@
 		                                                                <th class="border-0">작성자</th>
 		                                                                <th class="border-0">작성일</th>
 		                                                                <th class="border-0">수정/삭제</th>
-
 		                                                            </tr>
 		                                                        </thead>
 		                                                        <tbody>
@@ -169,11 +207,10 @@
 		                                                                <td onclick="detail(${deptdoc.ddId})">${deptdoc.ddWriter}</td>
 		                                                                <td onclick="detail(${deptdoc.ddId})"><fmt:formatDate value="${deptdoc.ddRegdate}" pattern="yyyy-MM-dd"/></td>
 		                                                            	<c:choose>
-																			<c:when test="${deptdoc.ddDept=='개발팀'&&deptdoc.ddWriter=='조민혁'}">
+																			<c:when test="${deptdoc.ddDept=='개발1팀'&&deptdoc.ddWriter=='조민혁'}">
 																				<td>
 							 														<button onclick="update(${deptdoc.ddId})" id="upt-btn"><i class="dripicons-pencil"></i></button> |
-																					<input type="hidden" name="ddId" value="${deptdoc.ddId}"/>
-																					<button id="del-btn"><i class="dripicons-trash"></i></button>
+																					<button onclick="delete1(${deptdoc.ddId})" id="del-btn"><i class="dripicons-trash"></i></button>
 																				</td>
 																			</c:when>
 																		</c:choose>
@@ -234,6 +271,103 @@
         </div>
         <!-- END wrapper -->
 
+
+        <!-- Right Sidebar -->
+        <div class="end-bar">
+
+            <div class="rightbar-title">
+                <a href="javascript:void(0);" class="end-bar-toggle float-end">
+                    <i class="dripicons-cross noti-icon"></i>
+                </a>
+                <h5 class="m-0">Settings</h5>
+            </div>
+
+            <div class="rightbar-content h-100" data-simplebar>
+
+                <div class="p-3">
+                    <div class="alert alert-warning" role="alert">
+                        <strong>Customize </strong> the overall color scheme, sidebar menu, etc.
+                    </div>
+
+                    <!-- Settings -->
+                    <h5 class="mt-3">Color Scheme</h5>
+                    <hr class="mt-1" />
+
+                    <div class="form-check form-switch mb-1">
+                        <input class="form-check-input" type="checkbox" name="color-scheme-mode" value="light" id="light-mode-check" checked>
+                        <label class="form-check-label" for="light-mode-check">Light Mode</label>
+                    </div>
+
+                    <div class="form-check form-switch mb-1">
+                        <input class="form-check-input" type="checkbox" name="color-scheme-mode" value="dark" id="dark-mode-check">
+                        <label class="form-check-label" for="dark-mode-check">Dark Mode</label>
+                    </div>
+
+
+                    <!-- Width -->
+                    <h5 class="mt-4">Width</h5>
+                    <hr class="mt-1" />
+                    <div class="form-check form-switch mb-1">
+                        <input class="form-check-input" type="checkbox" name="width" value="fluid" id="fluid-check" checked>
+                        <label class="form-check-label" for="fluid-check">Fluid</label>
+                    </div>
+
+                    <div class="form-check form-switch mb-1">
+                        <input class="form-check-input" type="checkbox" name="width" value="boxed" id="boxed-check">
+                        <label class="form-check-label" for="boxed-check">Boxed</label>
+                    </div>
+
+
+                    <!-- Left Sidebar-->
+                    <h5 class="mt-4">Left Sidebar</h5>
+                    <hr class="mt-1" />
+                    <div class="form-check form-switch mb-1">
+                        <input class="form-check-input" type="checkbox" name="theme" value="default" id="default-check">
+                        <label class="form-check-label" for="default-check">Default</label>
+                    </div>
+
+                    <div class="form-check form-switch mb-1">
+                        <input class="form-check-input" type="checkbox" name="theme" value="light" id="light-check" checked>
+                        <label class="form-check-label" for="light-check">Light</label>
+                    </div>
+
+                    <div class="form-check form-switch mb-3">
+                        <input class="form-check-input" type="checkbox" name="theme" value="dark" id="dark-check">
+                        <label class="form-check-label" for="dark-check">Dark</label>
+                    </div>
+
+                    <div class="form-check form-switch mb-1">
+                        <input class="form-check-input" type="checkbox" name="compact" value="fixed" id="fixed-check" checked>
+                        <label class="form-check-label" for="fixed-check">Fixed</label>
+                    </div>
+
+                    <div class="form-check form-switch mb-1">
+                        <input class="form-check-input" type="checkbox" name="compact" value="condensed" id="condensed-check">
+                        <label class="form-check-label" for="condensed-check">Condensed</label>
+                    </div>
+
+                    <div class="form-check form-switch mb-1">
+                        <input class="form-check-input" type="checkbox" name="compact" value="scrollable" id="scrollable-check">
+                        <label class="form-check-label" for="scrollable-check">Scrollable</label>
+                    </div>
+
+                    <div class="d-grid mt-4">
+                        <button class="btn btn-primary" id="resetBtn">Reset to Default</button>
+
+                        <a href="https://themes.getbootstrap.com/product/hyper-responsive-admin-dashboard-template/"
+                            class="btn btn-danger mt-3" target="_blank"><i class="mdi mdi-basket me-1"></i> Purchase Now</a>
+                    </div>
+                </div> <!-- end padding-->
+
+            </div>
+        </div>
+
+        <div class="rightbar-overlay"></div>
+        <!-- /End-bar -->
+
+        <!-- bundle -->
+        <script src="${path}/tools/project_assets/js/vendor.min.js"></script>
+        <script src="${path}/tools/project_assets/js/app.min.js"></script>
 		<!-- jstree js -->
 		<script src="${path}/tools/main_assets/js/vendor/jstree.min.js"></script>
 		<script src="${path}/tools/main_assets/js/pages/demo.jstree.js"></script>
@@ -243,17 +377,43 @@
 		<script src="${path}/tools/main_assets/js/pages/demo.simplemde.js"></script>
     </body>
 	<script>
-
 	/* 휴지통 버튼(삭제) 클릭 시 */
-	$("#del-btn").click(function(){
+	function delete1(ddId){
 		if(!confirm("삭제할 경우 복구가 불가능합니다. \n삭제하시겠습니까?")){
 			location.href="${path}/dept.do?method=list";
 		}
 		else{
-			location.href="${path}/dept.do?method=del&ddId="+$("[name=ddId]").val();	
-		}	
-	});
-
+			location.href="${path}/dept.do?method=del&ddId="+ddId;	
+		}
+	}
+	/* 부서 공유문서함 클릭시 */
+	function deptDoc(deptDoc){
+		location.href="${path}/dept.do?method=list&ddDept="+deptDoc;
+	}
+	/* 개발1팀 클릭시 */
+	function devel1(devel1){
+		location.href="${path}/dept.do?method=list&ddDept="+devel1;
+	}
+	/* 개발2팀 클릭시 */
+	function devel2(devel2){
+		location.href="${path}/dept.do?method=list&ddDept="+devel2;
+	}
+	/* 인사팀 클릭시 */
+	function person(person){
+		location.href="${path}/dept.do?method=list&ddDept="+person;
+	}
+	/* 기획팀 클릭시 */
+	function plan(plan){
+		location.href="${path}/dept.do?method=list&ddDept="+plan;
+	}
+	/* 디자인 클릭시 */
+	function design(design){
+		location.href="${path}/dept.do?method=list&ddDept="+design;
+	}
+	/* 마케팅 클릭시 */
+	function marketing(marketing){
+		location.href="${path}/dept.do?method=list&ddDept="+marketing;
+	}
 	/* 등록 버튼 클릭 시(등록 페이지로 이동) */
 	$("#Doc-regBtn").click(function(){
 		location.href="${path}//dept.do?method=insertFrm";
@@ -267,11 +427,10 @@
 	function detail(ddId){
 		location.href="${path}/dept.do?method=detail&ddId="+ddId;
 	}
+	/* 연필 버튼(수정) 클릭 */
 	function update(ddId){
 		location.href="${path}/dept.do?method=uptPage&ddId="+ddId;
 	}
-
 	
 	</script>
 </html>
-

@@ -32,8 +32,6 @@ public class RegController {
 		if(resultId == 0) {
 			service.insertUser(ins);
 			d.addAttribute("msg", "회원가입을 축하드립니다!");
-		//	d.addAttribute("USER", new USER_INFO()); // 초기화시킴
-			
 		} else{
 			d.addAttribute("msg", "이미 등록된 아이디나 닉네임으로 회원가입할 수 없습니다.");
 			return "main_login//reg";

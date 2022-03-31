@@ -147,42 +147,40 @@
                                                                 <div class="modal-body">
                                                                     <!-- ### 파일업로드 File Upload -->
                                                                     <div class="container">
-                                                                        <form method="post"
-                                                                            enctype="multipart/form-data"
-                                                                            action="${path}/toInsert.do">
-
-                                                                            <div id="uploadContainer" >
-                                                                                <div class="mb-3" style="margin: 0 auto;">
-
-                                                                                    <div class="row g-2 justify-content-center">
-                                                                                        <input name="ptId"
-                                                                                            value="${ptId}" hidden />
-                                                                                        <input name="toWriter"
-                                                                                            value="${user_info.uiId}"
-                                                                                            hidden />
-                          
-                                                                                        <input class="form-control"
-                                                                                            type="file" name="toReport"
-                                                                                            id="formFileMultiple"
-                                                                                            multiple style="width: 60%">
-																						  <span style="width: 15%"><button
-                                                                                            class="btn btn-primary px-3"
-                                                                                            id="regBtn" type="button"
-                                                                                            onclick="chkFile()">등록</button>
-                                                                                    	</span>
-
-
-                                                                                    </div>
-                                                                                    
-                                                                                  
-
-                                                                                </div>
-
-                                                                            </div>
-                                                                        </form>
+                                                                    	 
+	                                                                        <form method="post"
+	                                                                            enctype="multipart/form-data"
+	                                                                            action="${path}/toInsert.do">
+	
+	                                                                            <div id="uploadContainer" >
+	                                                                                <div class="mb-3" style="margin: 0 auto;">
+	
+	                                                                                    <div class="row g-2 justify-content-center">
+	                                                                                        <input name="ptId"
+	                                                                                            value="${ptId}" hidden />
+	                                                                                        <input name="toWriter"
+	                                                                                            value="${user_info.uiId}"
+	                                                                                            hidden />
+	                          
+	                                                                                        <input class="form-control"
+	                                                                                            type="file" name="toReport"
+	                                                                                            id="formFileMultiple"
+	                                                                                            multiple style="width: 60%">
+																							  <span style="width: 15%"><button
+	                                                                                            class="btn btn-primary px-3"
+	                                                                                            id="regBtn" type="button"
+	                                                                                            onclick="chkFile()">등록</button>
+	                                                                                    	</span>
+	                                                                                    </div>
+	                                                  
+	                                                                                </div>
+	
+	                                                                            </div>
+	                                                                        </form>
+                                                                        
                                                                     </div>
 
-                                                                    <!-- 산출물 리스트. 아직 DB쪽이... -->
+                                         
                                                                     <div class="fileContainer">
                                                                         <c:forEach var="fname" items="${outputList }">
 
@@ -205,7 +203,8 @@
 	                                                                                    <div class="col-auto">
 	                                                                                        <!-- Button --> <button
 	                                                                                            class="btn btn-link btn-lg text-muted"
-	                                                                                            data-dz-remove="" onclick="deleteFile('${fname.toFile}')"> <i
+	                                                                                            data-dz-remove="" 
+	                                                                                            onclick="deleteFile('${fname.toFile}')"> <i
 	                                                                                                class="dripicons-cross"></i>
 	                                                                                        </button>
 	                                                                                    </div>
@@ -255,16 +254,7 @@
                             }
 
 
-                            // 첨부파일명이 화면에 나타날 수 있도록
-                            $("#uploadContainer").on("change",
-                                ".custom-file-input", function () {
-                                    $(this).next(".custom-file-label").text($(this).val());
-
-                                });
-
-                            // label의 text를 파일 이름으로 변경
-                            // 이미 랜더링이 된 상태여서 새로 만들어진 것들에 대해서는 적용이 안되는듯...업로드는 제대로 되는디
-
+          
                             function downFile(fname) {
                                 if(confirm("다운로드할 파일:" + fname)){
                                 	location.href="${path}/download.do?fname="+fname;

@@ -43,9 +43,11 @@
 
 		
         <c:set var="reg_prjList_Link" 
-        	value="${user_info.uiName==null? '/regUser.do': '/prjList.do'}" />        
+        	value="${user_info.uiName==null? 
+        		'/regUser.do': '/prjList.do'}" />        
 		<c:set var="reg_prjList_text" 
-			value="${user_info.uiName==null? '시작하기': '내 프로젝트 목록'}" />
+			value="${user_info.uiName==null? 
+				'시작하기': '내 프로젝트 목록'}" />
 
         <!-- NAVBAR START -->
         <nav class="navbar navbar-expand-lg py-lg-3 navbar-dark">
@@ -91,7 +93,8 @@
 	                            <a href="${path}/loginFrm.do"  
 	                            	class="nav-link d-lg-none">로그인</a>
 	                            <a href="${path}/loginFrm.do"  
-	                            	class="btn btn-sm btn-light rounded-pill d-none d-lg-inline-flex"><!-- 버튼같은 a태그 -->
+	                            	class="btn btn-sm btn-light 
+	                            		rounded-pill d-none d-lg-inline-flex"><!-- 버튼같은 a태그 -->
 	                                <span style="padding-top: 3%;">로그인&nbsp;</span> 
 	                                	<i class="dripicons-power" > </i>
 	                            </a> 

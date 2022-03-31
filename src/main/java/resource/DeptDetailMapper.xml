@@ -5,7 +5,7 @@
 
 <mapper namespace="mvc.dao.DeptDetailDao">
 	<select id="getDetailList" parameterType="String" resultType="deptDoc">
-		select * from Dept_Doc where DD_ID = #{ddId}
+		select * from DEPT_DOC where DD_ID = #{ddId}
 	</select>
 	<select id="getFileInfo" parameterType="String" resultType="String">
 		SELECT DF_FILE FROM DEPT_FILE WHERE DD_ID = #{ddId}

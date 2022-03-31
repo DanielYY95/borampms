@@ -10,4 +10,5 @@ import mvc.vo.PRJ_TASK;
 public interface DashDao {
 	// 업무 목록 불러오기
 		public List<PRJ_TASK> taskDashlist();
+		public List<PRJ_TASK> getDashUser();
 }

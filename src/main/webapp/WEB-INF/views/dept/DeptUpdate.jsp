@@ -8,8 +8,6 @@
 <fmt:requestEncoding value="utf-8"/>     
 <!DOCTYPE html>
 <%--
-
-
  --%>
 <html>
 <head>
@@ -120,7 +118,7 @@
 															<div class="mb-3">
 																<div class="input-group flex-nowrap">
                                                             		<span class="input-group-text" id="basic-addon1"><i class="dripicons-document-new"></i></span>
-                                                            		<input type="text" class="form-control" name="report" placeholder="${dfFile}" aria-label="Username" aria-describedby="basic-addon1" readonly>
+                                                            		<input type="text" class="form-control" name="report" placeholder="${dfFile}" aria-label="Username" aria-describedby="basic-addon1" disabled>
                                                         		</div>
 														  	</div>
 													  	</div>
@@ -169,8 +167,6 @@
         </div>
         <!-- END wrapper -->
 
-<<<<<<< HEAD
-=======
 
         <!-- Right Sidebar -->
         <div class="end-bar">
@@ -268,7 +264,6 @@
         <!-- bundle -->
         <script src="${path}/tools/main_assets/js/vendor.min.js"></script>
         <script src="${path}/tools/main_assets/js/app.min.js"></script>
->>>>>>> a00f3330a676de470fec20f98c7d9f559e5e5801
 		<!-- jstree js -->
 		<script src="${path}/tools/main_assets/js/vendor/jstree.min.js"></script>
 		<script src="${path}/tools/main_assets/js/pages/demo.jstree.js"></script>
@@ -303,21 +298,5 @@
 			location.href="${path}/dept.do?method=list";
 		});
 	});
-	/* 페이징 처리 */
-	function goPage(no){
-		$("[name=curPage]").val(no);
-		$("#frm01").submit();
-	}
 	</script>
-	<script>
-	// 모달 창 닫기 버튼 클릭 시
-	$('.modal').on('hidden.bs.modal', function (e) {
-		console.log('modal close');
-	    $(this).find('form').reset();
-	});
-	</script>
-<<<<<<< HEAD
 </html>
-=======
-</html>
->>>>>>> a00f3330a676de470fec20f98c7d9f559e5e5801

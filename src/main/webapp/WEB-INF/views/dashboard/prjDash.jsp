@@ -41,7 +41,8 @@
 
             <div class="content-page">
                 <div class="content">
-                  	<jsp:include page="../include/headerBar.jsp" flush="true"/>
+                  	<jsp:include page="../include/headerBar.jsp"
+                  	 		 flush="true"/>
 			
 		
                     <!-- Start Content-->
@@ -584,7 +585,8 @@
                 </div>
                 <!-- content -->
 
-           <jsp:include page="../include/rightBar_footer.jsp" flush="true"/>
+           <jsp:include page="../include/rightBar_footer.jsp"
+           		 flush="true"/>
 			
 			</div>
 		</div>  <!-- End wrapper -->

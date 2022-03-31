@@ -385,7 +385,7 @@
 	
 
         <script>
-            $("option").not(":selected").attr("disabled", "disabled"); // 처음에 selected 되지않은 것들로 수정할 수 없도록
+            $("option").attr("disabled", "disabled"); // 처음에 selected 되지않은 것들로 수정할 수 없도록
             
 
 

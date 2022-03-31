@@ -17,8 +17,9 @@ public class DashController {
 	@RequestMapping(params="method=list")
 	public String taskList(Model d) {
 		d.addAttribute("dashlist", service.taskDashlist());
+		//d.addAttribute("DList", service.getDashUser());
+		
 		return "/dashboard/TaskDash";
 	}
-
-	
+		
 }

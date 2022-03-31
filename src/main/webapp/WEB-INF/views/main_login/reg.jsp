@@ -335,11 +335,18 @@
 				}
 			})
 			
-            // 굳이 두 개로 안 쪼개도 될 것 같은데???
-     
+   
             // 폼 제출
             $("#signupBtn").click(function(){
 
+                // 연락처 숫자 아니면 거르기
+                if(isNaN($("[name=phone2]").val()) || 
+                		isNaN($("[name=phone3]").val())){
+                    alert("연락처는 숫자만 입력할 수 있습니다.")
+                    return false;
+                }
+
+            	
                 // 아이디 중복 체크 여부
                 if(result==1){
                     alert("아이디 중복 체크해주세요.")
@@ -349,13 +356,6 @@
                 // 패스워드 둘 다 같으면
                 if($("#pw").val() != $("#pw2").val()){
                     alert("비밀번호 확인이 일치하지않습니다.");
-                    return false;
-                }
-
-                // 연락처 숫자 아니면 거르기
-                if(isNaN($("[name=phone2]").val()) || 
-                		isNaN($("[name=phone3]").val())){
-                    alert("연락처는 숫자만 입력할 수 있습니다.")
                     return false;
                 }
 

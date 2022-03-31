@@ -34,9 +34,11 @@
     <link href="${path}/tools/main_assets/css/icons.min.css" rel="stylesheet" type="text/css" />
 
     <!-- 간트 js/css 시작 -->
-    <script src="${path}/tools/main_assets/js/dhtmlxgantt.js?v=7.1.9"></script>
-    <link rel="stylesheet" href="${path}/tools/main_assets/css/dhtmlxgantt.css?v=7.1.9" />
-    <link rel="stylesheet" href="${path}/tools/main_assets/css/controls_styles.css?v=7.1.9" />
+    <script src="${path}/tools/main_assets/js/dhtmlxgantt.js"></script>
+	<!-- jquery 라이브러리 -->
+	<script src="${path}/tools/jquery-3.6.0.js"></script>
+    <link rel="stylesheet" href="${path}/tools/main_assets/css/dhtmlxgantt.css" />
+    <link rel="stylesheet" href="${path}/tools/main_assets/css/controls_styles.css" />
 
     <style>
       html,
@@ -46,7 +48,9 @@
         margin: 0px;
         overflow: hidden;
       }
-
+	 .gantt_grid .gantt_grid_scale .gantt_grid_head_cell .gantt_grid_head_add {
+	  	display : none;
+	  }
       .summary-row,
       .summary-row.odd {
         background-color: #eeeeee;
@@ -61,6 +65,14 @@
       .summary-bar {
         opacity: 0.4;
       }
+      .gantt_grid_data .gantt_add,
+      .gantt_grid_scale .gantt_grid_head_add {
+		 display: none;
+		 width: 0px !important
+	  }
+	 .gantt_layout_cell.grid_cell.gantt_layout_outer_scroll.gantt_layout_outer_scroll_vertical.gantt_layout_outer_scroll.gantt_layout_outer_scroll_horizontal.gantt_layout_cell_border_right{
+	     width: calc(360px - 43px) !important
+	 }
     </style>
      <!-- 간트 js/css 끝 -->
   </head>
@@ -108,7 +120,7 @@
               <span> 대시보드 </span>
             </a>
           </li>
-<li class="side-nav-item">
+			<li class="side-nav-item">
             <a href="../schedule/schCalendar.html" class="side-nav-link">
               <i class="uil-calender"></i>
               <span> 캘린더 </span>
@@ -661,7 +673,7 @@
                     id="top-search"
                   />
                   <span class="mdi mdi-magnify search-icon"></span>
-                  <button class="input-group-text btn-primary" type="submit">
+                  <button class="input-group-text btn-primary" id="btn_search" type="submit">
                     Search
                   </button>
                 </div>
@@ -765,32 +777,7 @@
           <!-- end page title -->
 
           <!-- 간트 body 시작 -->
-            <div class="gantt_control">
-              <input
-                type="button"
-                id="default"
-                onclick="showGroups()"
-                value="계층형 정렬"
-              />
-              <input
-                type="button"
-                id="priority"
-                onclick="showGroups('priority')"
-                value="우선순위별 정렬"
-              />
-              <input
-                type="button"
-                id="user"
-                onclick="showGroups('user')"
-                value="작성자별 정렬"
-              />
-              <input
-                type="button"
-                id="stage"
-                onclick="showGroups('stage')"
-                value="분류별 정렬"
-              />
-            </div>
+
             <div id="gantt_here" style="width: 100%; height: calc(100vh - 52px)"></div>
             <!-- 간트 body 끝 -->
 
@@ -993,268 +980,128 @@
     <div class="rightbar-overlay"></div>
     <!-- /End-bar -->
 
-    <!-- bundle -->
-    <!-- 간트 js -->
     <script type="text/javascript">
-      gantt.plugins({
-        grouping: true,
-      });
-      // test data
-      var tasks = {
-        data: [
-          {
-            id: 1,
-            text: "최종프로젝트 시작",
-            start_date: "04-03-2022 00:00",
-            duration: 3,
-            priority: 3,
-            stage: 1,
-            user: 4,
-            open: true,
-            parent: 0,
-          },
-          {
-            id: 5,
-            text: "요구사항정의서",
-            start_date: "10-03-2022 00:00",
-            duration: 4,
-            parent: 1,
-            open: true,
-            priority: 2,
-            stage: 1,
-            user: 2,
-          },
-          {
-            id: 6,
-            text: "Task #1.2",
-            start_date: "11-04-2022 00:00",
-            duration: 6,
-            parent: 1,
-            open: true,
-            priority: 2,
-            stage: 2,
-            user: 3,
-          },
-          {
-            id: 2,
-            text: "Task #2",
-            start_date: "11-04-2022 00:00",
-            duration: 2,
-            priority: 1,
-            stage: 3,
-            user: 0,
-            open: true,
-            parent: 0,
-          },
-          {
-            id: 7,
-            text: "Task #2.1",
-            start_date: "13-04-2022 00:00",
-            duration: 2,
-            parent: 2,
-            open: true,
-            priority: 3,
-            stage: 2,
-            user: 2,
-          },
-          {
-            id: 3,
-            text: "Task #3",
-            start_date: "11-04-2022 00:00",
-            duration: 6,
-            priority: 2,
-            stage: 2,
-            user: 1,
-            open: true,
-            parent: 0,
-          },
-          {
-            id: 8,
-            text: "Task #3.1",
-            start_date: "09-04-2022 00:00",
-            duration: 3,
-            parent: 3,
-            open: true,
-            priority: 1,
-            stage: 1,
-            user: 3,
-          },
-          {
-            id: 9,
-            text: "Task #3.2",
-            start_date: "12-04-2022 00:00",
-            duration: 2,
-            parent: 3,
-            open: true,
-            priority: 3,
-            stage: 3,
-            user: 1,
-          },
-          {
-            id: 10,
-            text: "Task #3.3",
-            start_date: "17-04-2022 00:00",
-            duration: 2,
-            parent: 3,
-            open: true,
-            priority: 2,
-            stage: 2,
-            user: 0,
-          },
-        ],
-        links: [
-          { source: "1", target: "5", type: "0" },
-          { source: "5", target: "8", type: "0" },
-          { source: "3", target: "7", type: "0" },
-          { source: "6", target: "7", type: "0" },
-          { source: "2", target: "10", type: "0" },
-        ],
-      };
-      gantt.serverList("stage", [
-        { key: 1, label: "분석" },
-        { key: 2, label: "개발" },
-        { key: 3, label: "테스트" },
-      ]);
+		// test data
+		gantt.init("gantt_here");
+		getData();
+		gantt.attachEvent("onAfterTaskDrag", function(id, mode, e){
+			let task = gantt.getTask(id);
+			saveData(false, task)
+		});
+		gantt.attachEvent("onLightboxSave", function(id, task, is_new){
+			saveData(is_new, task)
+		});
 
-      gantt.serverList("user", [
-        { key: 0, label: "김효은" },
-        { key: 1, label: "양초명" },
-        { key: 2, label: "전지원" },
-        { key: 3, label: "조민혁" },
-        { key: 4, label: "한가람" },
-      ]);
-      gantt.serverList("priority", [
-        { key: 1, label: "낮음" },
-        { key: 2, label: "중간" },
-        { key: 3, label: "높음" },
-      ]);
+		gantt.attachEvent("onGridHeaderClick", function(name, e){
+		    //any custom logic here
+		    if(name == "add"){
+				return false;
+		    }
+		    return true;
+		});
+		gantt.attachEvent("onTaskDblClick", function(id,e){
+		    //any custom logic here
+		    return false;
+		});
+		function getData(){
+			let paramData = [];
+			$.ajax({
+			    url:"${path}/schGanttJson.do",
+			    type:"get",
+			    // data:schdata, => 파라미터 넣을곳
+			    dataType:"json",
+			    success:function(data){
+			/* 		$.each(data.result, function(idx, sch){ //숙지
+						paramData.push({ text: sch.ptTitle , start_date: sch.ptStartdate, duration:sch.duration});
+					}); */
+					for(var i=0; i < data.result.length; i++){
+						paramData.push({ id:data.result[i].ptId
+							           , text: data.result[i].ptTitle
+							           , start_date: stringToDate(data.result[i].ptStartdate)
+							           , duration:data.result[i].duration
+							           });
+					}
+					gantt.parse({
+						data: paramData,
+						links: [
+							{id: 1, source: 1, target: 2, type: "1"},
+							{id: 2, source: 2, target: 3, type: "0"}
+						]
+					});
+			    },
+			    error:function(err){
+			       console.log("에러발생:"+err);
+			    }
 
-      // end text data
+			})
+		}
+		function saveData(is_new, task){
+			if(is_new){
+				let paramData = {
+					ptTitle : task.text,
+					ptStartdate : dateFormat(task.start_date),
+					ptDuedate : dateFormat(task.end_date)
+				}// 화면에서 입력한 값 = 저장할 값.
+				$.ajax({
+				    url:"${path}/saveSchGantt.do",
+				    type:"get",
+				    data: paramData,
+				    dataType:"json",
+				    success:function(data){
+						alert("저장되었습니다.");
+						document.getElementById('btn_search').click();
+				    },
+				    error:function(){
+				       console.log("에러발생:"+err);
+				    }
 
-      gantt.config.order_branch = true;
-      gantt.config.grid_width = 420;
-      gantt.config.row_height = 24;
-      gantt.config.grid_resize = true;
+				})
+			}else{
+				let paramData = {
+					ptTitle : task.text,
+					ptId : task.id,
+					ptStartdate : dateFormat(task.start_date),
+					ptDuedate : dateFormat(task.end_date)
+				}// 화면에서 입력한 값 = 저장할 값.
+				$.ajax({
+				    url:"${path}/updateSchGantt.do",
+				    type:"get",
+				    data: paramData,
+				    dataType:"json",
+				    success:function(data){
+						alert("저장되었습니다.");
+						document.getElementById('btn_search').click();
+				    },
+				    error:function(){
+				       console.log("에러발생:"+err);
+				    }
 
-      gantt.i18n.setLocale({
-        labels: {
-          column_priority: "우선순위",
-          section_priority: "Priority",
-          column_owner: "작성자",
-          section_owner: "Owner",
-          column_stage: "업무분류",
-          section_stage: "Stage",
-          /* 시작/마감일 추가 day */
-          column_day: "시작일",
-          section_day: "day",
-          section_resources: "Resources",
-        },
-      });
+				})
 
-      function byId(list, id) {
-        for (var i = 0; i < list.length; i++) {
-          if (list[i].key == id) return list[i].label || "";
-        }
-        return "";
-      }
+			}
+		}
+		function fn_close(){
+			$('#signup-modal').css('display','none');
+		}
+		function dateFormat(date) {
+	        let month = date.getMonth();
+	        let day = date.getDate();
+	        let hour = date.getHours();
+	        let minute = date.getMinutes();
+	        let second = date.getSeconds();
 
-      gantt.config.columns = [
-        { name: "text", label: "작업명 ", tree: true, width: "*" },
-        {
-          name: "priority",
-          width: 60,
-          align: "center",
-          template: function (item) {
-            return byId(gantt.serverList("priority"), item.priority);
-          },
-        },
-        {
-          name: "owner",
-          width: 60,
-          align: "center",
-          template: function (item) {
-            return byId(gantt.serverList("user"), item.user);
-          },
-        },
-        {
-          name: "stage",
-          width: 60,
-          align: "center",
-          template: function (item) {
-            return byId(gantt.serverList("stage"), item.stage);
-          },
-        },
+	        month = month >= 10 ? month : '0' + month;
+	        day = day >= 10 ? day : '0' + day;
+/* 	        hour = hour >= 10 ? hour : '0' + hour;
+	        minute = minute >= 10 ? minute : '0' + minute;
+	        second = second >= 10 ? second : '0' + second; */
 
-        {
-          /* 시작/마감일 추가 day */
-          name: "day",
-          width: 80,
-          align: "center",
-          template: function (item) {
-            return byId(gantt.serverList("day"), item.user);
-          },
-        },
-        { name: "add", width: 40 },
-      ];
-
-      gantt.config.lightbox.sections = [
-        {
-          name: "description",
-          height: 38,
-          map_to: "text",
-          type: "textarea",
-          focus: true,
-        },
-        {
-          name: "priority",
-          height: 22,
-          map_to: "priority",
-          type: "select",
-          options: gantt.serverList("priority"),
-        },
-        {
-          name: "owner",
-          height: 22,
-          map_to: "user",
-          type: "select",
-          options: gantt.serverList("user"),
-        },
-        {
-          name: "stage",
-          height: 22,
-          map_to: "stage",
-          type: "select",
-          options: gantt.serverList("stage"),
-        },
-        { name: "time", type: "duration", map_to: "auto" },
-      ];
-
-      gantt.templates.grid_row_class = gantt.templates.task_row_class =
-        function (start, end, task) {
-          if (task.$virtual) return "summary-row";
-        };
-      gantt.templates.task_class = function (start, end, task) {
-        if (task.$virtual) return "summary-bar";
-      };
-
-      gantt.init("gantt_here");
-      gantt.sort("start_date");
-      gantt.parse(tasks);
-
-      function showGroups(listname) {
-        if (listname) {
-          gantt.groupBy({
-            groups: gantt.serverList(listname),
-            relation_property: listname,
-            group_id: "key",
-            group_text: "label",
-          });
-          gantt.sort("start_date");
-        } else {
-          gantt.groupBy(false);
-        }
-      }
-    </script>
+	        return date.getFullYear() + '-' + month + '-' + day;
+		}
+		function stringToDate(value) {
+	        return new Date(value.split('-')[0],value.split('-')[1],value.split('-')[2]);
+		}
+	</script>
     <script src="${path}/tools/main_assets/js/vendor.min.js"></script>
     <script src="${path}/tools/main_assets/js/app.min.js"></script>
 

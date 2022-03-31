@@ -14,7 +14,7 @@ public class DeptDetailController {
 
 	@Autowired
 	private DeptDetailService service1;
-	
+
 	// 부서문서 상세보기(ddId)
 	@RequestMapping(params="method=detail")
 	public String DeptDetail(String ddId, Model d) {

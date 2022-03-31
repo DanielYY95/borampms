@@ -29,6 +29,8 @@
 		<typeAlias alias="prj" type="mvc.vo.PRJ_INFO"/>
 		<typeAlias alias="calendar" type="mvc.vo.Calendar"/>
 		<typeAlias alias="alarm" type="mvc.vo.Alarm"/>
+		<typeAlias alias="dashUser" type="mvc.vo.PRJ_TASK"/>
+		
 		
 	</typeAliases>
 	<mappers>

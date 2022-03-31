@@ -26,12 +26,6 @@
 <link href="${path}/tools/project_assets/css/icons.min.css" rel="stylesheet" type="text/css" />
 <link href="${path}/tools/project_assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-style" />
 
-
-	<!-- jQuery -->
-	<script src="${path}/tools/jquery-3.6.0.js"></script>
-
-
-
 <body class="loading" data-layout-color="light" data-leftbar-theme="dark" data-layout-mode="fluid" data-rightbar-onstart="true">
 	<!-- Begin page -->
 	<div class="wrapper">
@@ -105,43 +99,34 @@
 							</div>
 							<!-- end row -->
 
-							<div class="row">
+							
 								<div class="col-sm-6">
-									<div class="card widget-flat">
-										<div class="card-body">
-								
-											<h5 class="text-muted fw-normal mt-0" title="Average Revenue">Revenue</h5>
-											<h3 class="mt-3 mb-3">$6,254</h3>
-											<p class="mb-0 text-muted">
-												<span class="text-danger me-2"><i class="mdi mdi-arrow-down-bold"></i> 7.00%</span> <span class="text-nowrap">Since last month</span>
-											</p>
-										</div>
-										<!-- end card-body-->
-									</div>
-									<!-- end card-->
-								</div>
-								<!-- end col-->
 
-								<div class="col-sm-6">
-									<div class="card widget-flat">
-										<div class="card-body">
+									<div class="card widget-flat" style=" width:100%; hight:40px;">
+										<div class="card-body" >
+								<div style="text-align:center; padding-bottom:10px;">
+									<%-- <c:forEach var="dashUser" items="${DList }"> --%>
+										<i class="fa-solid fa-child-reaching fa-4x"></i>
+											
+											<h5 class="text-muted fw-normal mt-0" title="Number of Customers" 
+											style="text-align:center; padding-bottom:10px;">프로젝트 구성원</h5>
+					
+										<%-- 	<span class="text-nowrap">${DList.ptCharge}</span> --%>
+									<p class="mb-0 text-muted">
+											 <div class="text-nowrap"  style="text-align:center; padding-bottom:10px;">개발팀 양초명</div>
+										
+											</p>
+									<%-- 	</c:forEach> --%>
+										</div>
+										</div>
+										</div>
+									
+									</div>
 						
-											<h5 class="text-muted fw-normal mt-0" title="Growth">Growth</h5>
-											<h3 class="mt-3 mb-3">+ 30.56%</h3>
-											<p class="mb-0 text-muted">
-												<span class="text-success me-2"><i class="mdi mdi-arrow-up-bold"></i> 4.87%</span> <span class="text-nowrap">Since last month</span>
-											</p>
-										</div>
-										<!-- end card-body-->
-									</div>
 									<!-- end card-->
 								</div>
 								<!-- end col-->
-							</div>
-							<!-- end row -->
 
-						</div>
-						<!-- end col -->
 
 						<div class="col-xl-7 col-lg-6">
 							<div class="card card-h-100">
@@ -149,18 +134,8 @@
 									<div class="d-flex justify-content-between align-items-center mb-2">
 										<h4 class="header-title">작업현황</h4>
 										<div class="dropdown">
-											<a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false"> <i class="mdi mdi-dots-vertical"></i>
+											<a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false">
 											</a>
-											<div class="dropdown-menu dropdown-menu-end">
-												<!-- item-->
-												<a href="javascript:void(0);" class="dropdown-item">Sales Report</a>
-												<!-- item-->
-												<a href="javascript:void(0);" class="dropdown-item">Export Report</a>
-												<!-- item-->
-												<a href="javascript:void(0);" class="dropdown-item">Profit</a>
-												<!-- item-->
-												<a href="javascript:void(0);" class="dropdown-item">Action</a>
-											</div>
 										</div>
 									</div>
 										<div id="myChart" width="300" height="186" class="apex-charts mb-4 mt-3" data-colors="#727cf5,#0acf97,#fa5c7c,#ffbc00">
@@ -182,11 +157,7 @@
 										</p>
 									</div>
 
-	<!-- 								<div dir="ltr">
-										<div id="high-performing-product" class="apex-charts" data-colors="#727cf5,#e3eaef"></div>
-									</div>
-									
- -->
+
 								</div>
 								<!-- end card-body-->
 							</div>

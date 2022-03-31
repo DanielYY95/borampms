@@ -17,4 +17,7 @@ public class DashService {
 		return dao.taskDashlist();
 		
 	}
+	public List<PRJ_TASK> getDashUser(){
+		return dao.getDashUser();
+	}
 }

@@ -7,7 +7,7 @@ public class DeptDocSch {
 	private int curPage;	// 현재 페이지 번호
 	private int firstPage;	// 페이지 내 시작 번호
 	private int lastPage;	// 페이지 내 마지막 번호
-	
+	private String ddDept;
 	private int blockSize;	// 한 번에 출력되는 페이지 블럭 수
 	private int firstBlock;	// 페이지 블럭의 시작 번호
 	private int lastBlock;	// 페이지 블럭의 끝 번호
@@ -66,6 +66,16 @@ public class DeptDocSch {
 
 	public void setLastPage(int lastPage) {
 		this.lastPage = lastPage;
+	}
+	
+	
+
+	public String getDdDept() {
+		return ddDept;
+	}
+
+	public void setDdDept(String ddDept) {
+		this.ddDept = ddDept;
 	}
 
 	public int getBlockSize() {

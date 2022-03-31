@@ -26,4 +26,3 @@ public class DeptDetailService {
 		dao.deleteDept(ddId);
 	}
 }
-
