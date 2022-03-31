@@ -25,6 +25,14 @@ CREATE TABLE DEPT_DOC(
 DROP TABLE DEPT_DOC;
 INSERT INTO DEPT_DOC VALUES(seq_dd.nextval, '요구사항정의서33','홍길동','기획팀','확인해주세요',sysdate,'1');
 SELECT*FROM DEPT_DOC;
+select *
+	from (
+		select rownum cnt, DEPT_DOC.*
+		from DEPT_DOC
+		where 1=1
+		and DD_DEPT like '%'||'개발1팀'||'%'
+	);
+SELECT * FROM dept_doc WHERE dd_dept ='개발1팀';
 /* 부서문서 테이블 수정 */
 UPDATE DEPT_DOC 
 SET DD_TITLE = '호호',

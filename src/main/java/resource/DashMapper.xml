@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="mvc.dao.DashDao">
+	
+	<select id="taskDashlist" resultType="task">
+			select *
+		from (
+			SELECT row_number() over(ORDER BY to_date(pt_startdate, 'YYYY-MM-DD')) cnt, prj_task.*
+			from prj_task
+			where 1=1
+			<if test="ptTitle != null and ptTitle != ''">
+			and pt_title like '%'||#{ptTitle}||'%'
+			</if>
+			<if test="ptCharge != null and ptCharge != ''">
+			and pt_charge like '%'||#{ptCharge}||'%'
+			</if>
+			<if test="ptStartdate != null and ptStartdate != ''">
+			and pt_startdate = #{ptStartdate}
+			</if>
+			<if test="ptDuedate != null and ptDuedate != ''">
+			and pt_duedate = #{ptDuedate}
+			</if>
+		)
+	</select>
+	</mapper>

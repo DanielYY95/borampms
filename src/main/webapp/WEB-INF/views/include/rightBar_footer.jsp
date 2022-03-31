@@ -38,66 +38,72 @@
 			<a href="javascript:void(0);" class="end-bar-toggle float-end">
 				<i class="dripicons-cross noti-icon"></i>
 			</a>
-			<h5 class="m-0">Settings</h5>
+
+			<h5 class="m-0">설정</h5>
+
 		</div>
 
 		<div class="rightbar-content h-100" data-simplebar>
 			<div class="p-3">
 				<!-- Settings -->
-				<h5 class="mt-3">Color Scheme</h5>
+				<h5 class="mt-3">색깔 설정</h5>
+
 				<hr class="mt-1"/>
 				<div class="form-check form-switch mb-1">
 					<input class="form-check-input" type="checkbox"
 						name="color-scheme-mode" value="light" id="light-mode-check" checked>
-					<label class="form-check-label" for="light-mode-check">Light Mode</label>
+					<label class="form-check-label" for="light-mode-check">밝은 배경</label>
 				</div>
 				<div class="form-check form-switch mb-1">
 					<input class="form-check-input" type="checkbox"
 						name="color-scheme-mode" value="dark" id="dark-mode-check"/>
-					<label class="form-check-label" for="dark-mode-check">Dark Mode</label>
+					<label class="form-check-label" for="dark-mode-check">검은 배경</label>
 				</div>
 
 				<!-- Left Sidebar-->
-				<h5 class="mt-4">Left Sidebar</h5>
+				<h5 class="mt-4">좌측 배경</h5>
 				<hr class="mt-1" />
 				<div class="form-check form-switch mb-1">
 					<input class="form-check-input" type="checkbox" name="theme"
 						value="default" id="default-check"/>
-					<label class="form-check-label" for="default-check">Default</label>
+					<label class="form-check-label" for="default-check">기본값</label>
 				</div>
 
 				<div class="form-check form-switch mb-1">
 					<input class="form-check-input" type="checkbox" name="theme"
 						value="light" id="light-check" checked/>
-					<label class="form-check-label" for="light-check">Light</label>
+					<label class="form-check-label" for="light-check">밝음</label>
 				</div>
 
 				<div class="form-check form-switch mb-3">
 					<input class="form-check-input" type="checkbox" name="theme"
 						value="dark" id="dark-check"/>
-					<label class="form-check-label" for="dark-check">Dark</label>
+
+					<label class="form-check-label" for="dark-check">검은</label>
+
 				</div>
 
 				<div class="form-check form-switch mb-1">
 					<input class="form-check-input" type="checkbox" name="compact"
 						value="fixed" id="fixed-check" checked/>
-					<label class="form-check-label" for="fixed-check">Fixed</label>
+					<label class="form-check-label" for="fixed-check">고정</label>
+
 				</div>
 
 				<div class="form-check form-switch mb-1">
 					<input class="form-check-input" type="checkbox" name="compact"
 						value="condensed" id="condensed-check"/>
-					<label class="form-check-label" for="condensed-check">Condensed</label>
+					<label class="form-check-label" for="condensed-check">압축</label>
 				</div>
 
 				<div class="form-check form-switch mb-1">
 					<input class="form-check-input" type="checkbox" name="compact"
 						value="scrollable" id="scrollable-check"/>
-					<label class="form-check-label" for="scrollable-check">Scrollable</label>
+					<label class="form-check-label" for="scrollable-check">스크롤</label>
 				</div>
 
 				<div class="d-grid mt-4">
-					<button class="btn btn-primary" id="resetBtn">Reset to Default</button>
+					<button class="btn btn-primary" id="resetBtn">설정 초기화</button>
 				</div>
 			</div>
 			<!-- end padding-->

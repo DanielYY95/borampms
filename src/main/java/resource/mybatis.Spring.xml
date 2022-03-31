@@ -2,16 +2,50 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+
 	<settings> 
 		<setting name="mapUnderscoreToCamelCase" value="true"/> 
 	</settings>
+	
+
 	<typeAliases>
+		<typeAlias alias="user" type="mvc.vo.USER_INFO"/>
+		<typeAlias alias="output" type="mvc.vo.TASK_OUTPUT"/>
+		<typeAlias alias="task" type="mvc.vo.PRJ_TASK"/>
+		<typeAlias alias="taskSch" type="mvc.vo.TaskSch"/>
+		<typeAlias alias="sg" type="mvc.vo.Sch_Gantt"/>
+		<typeAlias alias="kanban" type="mvc.vo.KanbanVo"/>
 		<typeAlias alias="deptDoc" type="mvc.vo.DeptDoc"/>
 		<typeAlias alias="deptDocSch" type="mvc.vo.DeptDocSch"/>
 		<typeAlias alias="deptFile" type="mvc.vo.DeptFile"/>
+		<typeAlias alias="kanban" type="mvc.vo.KanbanVo"/>
+		<typeAlias alias="kanban2" type="mvc.vo.KanbanVo"/>
+		<typeAlias alias="kanban3" type="mvc.vo.KanbanVo"/>
+		<typeAlias alias="kanban4" type="mvc.vo.KanbanVo"/>
+		<typeAlias alias="taskUser" type="mvc.vo.Task_User"/>
+		<typeAlias alias="issue" type="mvc.vo.TASK_ISSUE"/>
+		<typeAlias alias="issueSch" type="mvc.vo.IssueSch"/>
+		<typeAlias alias="dept" type="mvc.vo.DeptInfo"/>
+		<typeAlias alias="prj" type="mvc.vo.PRJ_INFO"/>
+		<typeAlias alias="calendar" type="mvc.vo.Sch_Calendar"/>
+		<typeAlias alias="alarm" type="mvc.vo.Alarm"/>
+		
 	</typeAliases>
 	<mappers>
+		<mapper resource="resource/taskDetailMapper.xml" />
+		<mapper resource="resource/userMapper.xml" />
+		<mapper resource="resource/KanbanMapper.xml" />
 		<mapper resource="resource/DeptMapper.xml"/>
 		<mapper resource="resource/DeptDetailMapper.xml"/>
+		<mapper resource="resource/TaskMapper.xml"/>
+		<mapper resource="resource/sgMapper.xml"/>
+		<mapper resource="resource/IssueMapper.xml"/>
+		<mapper resource="resource/managerMapper.xml"/>
+		<mapper resource="resource/SchCalendarMapper.xml"/>
+		<mapper resource="resource/EtcMapper.xml"/>
+		<mapper resource="resource/DashMapper.xml"/>
 	</mappers>
+	
 </configuration>
+
+

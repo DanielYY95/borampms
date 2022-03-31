@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >	
+	
+<mapper namespace="mvc.dao.TaskDetailDao">
+
+	<select id="getMytaskListW" parameterType="user" resultType="taskUser">
+		select * from PRJ_TASK
+		WHERE UI_ID = #{uiId}
+	
+	</select>
+	
+	<select id="getMytaskListC" parameterType="user" resultType="taskUser">
+		select * from PRJ_TASK
+		WHERE PT_CHARGE LIKE '%' || #{uiDept} || ' ' || #{uiName} || '%'
+	
+	</select>
+	
+	
+	<select id="getUser" parameterType="string" resultType="user">
+		SELECT *
+		FROM user_info
+		WHERE UI_ID = #{uiId}
+	</select>
+	
+	
+
+	<insert id="insertTask" parameterType="task">
+	
+	</insert>
+	
+	<insert id="insertOutput" parameterType="output">
+		insert into TASK_OUTPUT values(
+		'TO' || LPAD(to_seq.nextval, 5,'0'), #{toFile}, 
+			#{toWriter}, sysdate, #{ptId}
+		)
+							
+	</insert>
+	
+	<select id="getOutputList" parameterType="string" resultType="output">
+		SELECT * FROM TASK_OUTPUT
+		where PT_ID = #{ptId}
+	
+	
+	</select>
+	
+	
+	<update id="updateTask" parameterType="task">
+		update PRJ_TASK
+			set PT_TITLE =  #{ptTitle}
+				,PT_CONTENT = #{ptContent}
+				,PT_STARTDATE = #{ptStartdate}
+				,PT_DUEDATE = #{ptDuedate}
+				,PT_CHARGE = #{ptCharge}
+				,PT_TYPE = #{ptType}
+				,PT_STATUS = #{ptStatus}
+		where PT_ID = #{ptId}
+			
+	</update>
+	
+	
+	<select id="getTask" parameterType="string" resultType="taskUser">
+		select * from (
+		select * from PRJ_TASK where PT_ID = #{ptId}
+		) pt, USER_INFO ui
+		where pt.UI_ID = ui.UI_ID
+		
+	</select>
+	
+	<delete id="delTask" parameterType="string">
+		delete from PRJ_TASK where PT_ID = #{ptId}
+	
+	</delete>
+	
+	<select id="pwChk" parameterType="user" resultType="int">
+		SELECT count(*)
+		FROM user_info
+		WHERE UI_ID = #{uiId}
+		and UI_PW = #{uiPw}
+		
+	</select>
+	
+
+</mapper>

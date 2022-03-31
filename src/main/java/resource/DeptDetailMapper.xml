@@ -5,10 +5,26 @@
 
 <mapper namespace="mvc.dao.DeptDetailDao">
 	<select id="getDetailList" parameterType="String" resultType="deptDoc">
-		select * from Dept_Doc where DD_ID = #{ddId}
+		select *
+		from (
+			select rownum cnt, DEPT_DOC.*
+			from DEPT_DOC
+			where 1=1
+			<if test="ddWriter!=null and ddWriter!=''"> 
+			and DD_WRITER like '%'||#{ddWriter}||'%'
+			</if>
+			<if test="ddDept!=null and ddDept!=''">
+			and DD_DEPT like '%'||#{ddDept}||'%'
+			</if>
+		)
+		where cnt between #{firstPage} and #{lastPage}
+		order by DD_ID desc
 	</select>
 	<select id="getFileInfo" parameterType="String" resultType="String">
 		SELECT DF_FILE FROM DEPT_FILE WHERE DD_ID = #{ddId}
+	</select>
+	<select id="getDDListDetail" parameterType="String" resultType="deptDoc">
+		SELECT * FROM DEPT_DOC WHERE DD_DEPT = #{ddDept}
 	</select>
 	<update id="updateDept" parameterType="deptDoc">
 		update Dept_Doc

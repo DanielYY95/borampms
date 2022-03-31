@@ -1,0 +1,1 @@
+{"resources":{"DB/boram.sql":{"sql-editor-data-source-id":"oracle_thin-17f8725d5df-23da19eecb70e011","default-datasource":"oracle_thin-17f8725d5df-23da19eecb70e011","default-schema":"BORAM"},"taskSql.sql":{"default-schema":"BORAM","sql-editor-data-source-id":"oracle_thin-17faa2cde48-779664cc8345badf","default-datasource":"oracle_thin-17faa2cde48-779664cc8345badf"}}}

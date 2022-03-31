@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="mvc.dao.TaskDao">
+<!-- 업무 목록 로딩 및 검색 -->
+	<select id="getTotalCnt" parameterType="taskSch" resultType="int">
+		select count(*)
+		from prj_task
+		where 1=1
+		<if test="ptTitle != null and ptTitle != ''">
+		and pt_title like '%'||#{ptTitle}||'%'
+		</if>
+		<if test="ptCharge != null and ptCharge != ''">
+		and pt_charge like '%'||#{ptCharge}||'%'
+		</if>
+		<choose>
+			<when test="ptStartdate != null and ptStartdate != '' and  ptDuedate != null and ptDuedate != ''">
+			and pt_startdate between #{ptStartdate} and #{ptDuedate}
+			and pt_duedate between #{ptStartdate} and #{ptDuedate}
+			</when>
+			<when test="ptStartdate != null and ptStartdate != ''">
+			and pt_startdate >= #{ptStartdate}
+			</when>
+			<when test="ptDuedate != null and ptDuedate != ''">
+			and pt_duedate <![CDATA[<]]>= #{ptDuedate}
+			</when>
+		</choose>
+	</select>
+	<select id="getTaskList" parameterType="taskSch" resultType="task">
+		select *
+		from (
+			SELECT row_number() over(ORDER BY to_date(pt_startdate, 'YYYY-MM-DD')) cnt, prj_task.*
+			from prj_task
+			where 1=1
+			<if test="ptTitle != null and ptTitle != ''">
+			and pt_title like '%'||#{ptTitle}||'%'
+			</if>
+			<if test="ptCharge != null and ptCharge != ''">
+			and pt_charge like '%'||#{ptCharge}||'%'
+			</if>
+			<choose>
+				<when test="ptStartdate != null and ptStartdate != '' and  ptDuedate != null and ptDuedate != ''">
+				and pt_startdate between #{ptStartdate} and #{ptDuedate}
+				and pt_duedate between #{ptStartdate} and #{ptDuedate}
+				</when>
+				<when test="ptStartdate != null and ptStartdate != ''">
+				and pt_startdate >= #{ptStartdate}
+				</when>
+				<when test="ptDuedate != null and ptDuedate != ''">
+				and pt_duedate <![CDATA[<=]]> #{ptDuedate}
+				</when>
+			</choose>
+		)
+		where cnt between #{firstPage} and #{lastPage}
+	</select>
+	
+	<!-- 유저 정보 불러오기 -->
+	<select id="getUserInfo" parameterType="string" resultType="user">
+		select *
+		from user_info
+		where ui_id = #{uiId}
+	</select>
+	
+
+	<!-- 업무 등록 -->
+	<insert id="insertTask" parameterType="task">
+		insert into prj_task values(
+			'PT' || lpad(task_seq.nextval,5,0),
+			#{ptTitle},
+			#{ptContent},
+			#{ptStartdate},
+			#{ptDuedate},
+			#{ptCharge},
+			#{ptType},
+			#{ptStatus},
+			#{ptPriority},
+			#{ptGuidecontent},
+			#{uiId},
+			#{piId}
+		)
+	</insert>
+</mapper>

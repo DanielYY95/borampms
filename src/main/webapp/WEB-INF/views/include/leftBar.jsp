@@ -9,6 +9,20 @@
 <!DOCTYPE html>
 <html lang="en">
 
+	<style>
+		.side-nav .side-nav-link{
+			padding: 35px;
+			font-size: 1.2rem;
+		
+		}
+		
+		.side-nav-link, .menu-arrow{
+			font-size: 1.2rem;
+		}
+	
+	
+	</style>
+
 		<!-- ========== Left Sidebar Start ========== -->
 		<div class="leftside-menu">
 			<!-- LOGO -->
@@ -39,7 +53,7 @@
            				</a>
          			</li>
 					<li class="side-nav-item">
-            			<a href="../schedule/schCalendar.html" class="side-nav-link">
+            			<a href="${path}/calendar.do" class="side-nav-link">
               				<i class="uil-calender"></i>
               				<span> 캘린더 </span>
             			</a>
@@ -47,17 +61,23 @@
           			<li class="side-nav-item">
           				<a data-bs-toggle="collapse" href="#sidebarTasks"
             				aria-expanded="false" aria-controls="sidebarTasks" class="side-nav-link">
-              				<i class="uil-clipboard-alt"></i>
+              				<i class=" uil-schedule"></i>
               				<span> 일정관리 </span>
               				<span class="menu-arrow"></span>
             			</a>
             			<div class="collapse" id="sidebarTasks">
               				<ul class="side-nav-second-level">
-                				<li><a href="../schedule/schGantt.html">WBS/간트차트</a></li>
-                				<li><a href="${path}/kanbanmain.do">칸반보드</a></li>
+                				<li><a href="${path}/schGantt.do">WBS/간트차트</a></li>
+                				<li><a href="${path}/kanban.do?method=list">칸반보드</a></li>
               				</ul>
             			</div>
           			</li>
+          			<li class="side-nav-item">
+                        <a href="${path}/chat.do?method=main" class="side-nav-link">
+                            <i class="uil-comment-dots"></i>
+                            <span> 소통관리 </span>
+                        </a>
+                    </li>
         			<li class="side-nav-item">
            				<a data-bs-toggle="collapse" href="#sidebarDashboards" aria-expanded="false"
 							aria-controls="sidebarDashboards" class="side-nav-link">
@@ -68,24 +88,24 @@
 						<div class="collapse" id="sidebarDashboards">
 							<ul class="side-nav-second-level">
 								<li><a href="${path}/task.do?method=list">업무 목록</a></li>
-								<li><a href="../task/task_issue.html">업무 이슈</a></li>
+								<li><a href="${path}/issue.do?method=list">업무 이슈</a></li>
+								<li><a href="${path}/mytask.do?method=clist">내 업무</a></li>
 							</ul>
 						</div>
 					</li>
                     <li class="side-nav-item">
-                        <a data-bs-toggle="collapse" href="#DeptDoc" aria-expanded="false"
-							aria-controls="sidebarDeptDoc" class="side-nav-link">
-							<i class="uil-folder-plus"></i>
-							<span> 문서 관리 </span>
-							<span class="menu-arrow"></span>
-						</a>
-                        <div class="collapse" id="sidebarDeptDoc">
-							<ul class="side-nav-second-level">
-								<li><a href="${path}/dept.do?method=list">공유문서함</a></li>
-								<li><a href="../task/task_issue.html">부서문서함</a></li>
-							</ul>
-						</div>
+                        <a href="${path}/dept.do?method=list" class="side-nav-link">
+                            <i class="uil-folder-plus"></i>
+                            <span> 문서관리 </span>
+                        </a>
                     </li>
+                    <li class="side-nav-item">
+                        <a href="${path}/manager.do?method=user" class="side-nav-link">
+                            <i class="mdi mdi-account-lock-open"></i>
+                            <span> 관리자페이지 </span>
+                        </a>
+                    </li>
+                    
                 </ul>
 				<!-- End Sidemeniu -->
 

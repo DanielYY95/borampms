@@ -1,0 +1,51 @@
+<<<<<<< HEAD
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<setting name="mapUnderscoreToCamelCase" value="true"/>
+	</settings>
+	<typeAliases>
+		<typeAlias alias="task" type="mvc.vo.PRJ_TASK"/>
+		<typeAlias alias="taskSch" type="mvc.vo.TaskSch"/>
+		<!-- <typeAlias alias="user" type="mvc.vo.UserInfo"/>  -->
+	</typeAliases>
+	<mappers>
+		<mapper resource="resource/TaskMapper.xml"/>
+		<!--  <mapper resource="resource/UserInfoMapper.xml"/> -->
+	</mappers>
+</configuration>
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<settings> 
+		<setting name="mapUnderscoreToCamelCase" value="true"/> 
+	</settings>
+	
+
+	<typeAliases>
+		<typeAlias alias="user" type="mvc.vo.USER_INFO"/>
+		<typeAlias alias="output" type="mvc.vo.TASK_OUTPUT"/>
+		<typeAlias alias="task" type="mvc.vo.PRJ_TASK"/>
+		<typeAlias alias="taskSch" type="mvc.vo.TaskSch"/>
+		<typeAlias alias="sg" type="mvc.vo.Sch_Gantt"/>
+		<typeAlias alias="kanban" type="mvc.vo.KanbanVo"/>
+		<typeAlias alias="deptDoc" type="mvc.vo.DeptDoc"/>
+	</typeAliases>
+	<mappers>
+		<mapper resource="resource/taskDetailMapper.xml" />
+		<mapper resource="resource/userMapper.xml" />
+		<mapper resource="resource/KanbanMapper.xml" />
+		<mapper resource="resource/DeptMapper.xml"/>
+		<mapper resource="resource/TaskMapper.xml"/>
+		
+	</mappers>
+	
+</configuration>
+
+
+>>>>>>> branch 'main' of https://github.com/DanielYY95/borampms
