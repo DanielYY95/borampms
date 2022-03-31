@@ -84,7 +84,7 @@
 
 					<!-- JSON 데이터 -->
 						<script>
-
+							
 							gantt.init("gantt_here");
 							getData();
 				

@@ -15,6 +15,7 @@
 		     , pi_id
 		     , TO_DATE(pt_duedate, 'YYYY-MM-DD') - TO_DATE(pt_startdate, 'YYYY-MM-DD') as duration
 		  FROM prj_task
+		  order by pt_startdate
 	</select>
 	<select id="getSchGanttList"  resultType="sg">
 		SELECT sg_id

@@ -31303,7 +31303,7 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
                     ? n.date.to_fixed(i.getUTCDate())
                     : n.date.to_fixed(i.getDate());
                 case "%m":
-                  return e
+                  return e 
                     ? n.date.to_fixed(i.getUTCMonth() + 1)
                     : n.date.to_fixed(i.getMonth() + 1);
                 case "%j":
@@ -31447,13 +31447,13 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
               case "%d":
                 return '"+to_fixed(date.get' + (e ? "UTC" : "") + 'Date())+"';
               case "%m":
-                return (
-                  '"+to_fixed((date.get' + (e ? "UTC" : "") + 'Month()+1))+"'
+                return ( //month()+1 // 여기서 +1 되어있는 걸 빼야한다.  // 보여지는 것만을 뺀다..
+                  '"+to_fixed((date.get' + (e ? "UTC" : "") + 'Month()))+"'
                 );
               case "%j":
                 return '"+date.get' + (e ? "UTC" : "") + 'Date()+"';
-              case "%n":
-                return '"+(date.get' + (e ? "UTC" : "") + 'Month()+1)+"';
+              case "%n": 
+                return '"+(date.get' + (e ? "UTC" : "") + 'Month()+1)"';
               case "%y":
                 return (
                   '"+to_fixed(date.get' + (e ? "UTC" : "") + 'FullYear()%100)+"'
@@ -31476,7 +31476,7 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
                 return (
                   '"+locale.date.month_short[date.get' +
                   (e ? "UTC" : "") +
-                  'Month()]+"'
+                  'Month()]+"' // 이걸 빼면 %M을 사용하는 곳에서 날짜를 맞춰준다. 다만.... 일 수가 안 맞는다.
                 );
               case "%F":
                 return (
@@ -32137,7 +32137,7 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
             ],
             scale_offset_minimal: !0,
             inherit_scale_class: !1,
-            scales: [{ unit: "day", step: 1, date: "%d %M" }],
+            scales: [{ unit: "day", step: 1, date: "%M %d" }], // 달력 상단 날짜 형식
             time_step: 60,
             duration_step: 1,
             task_date: "%d %F %Y",

@@ -1,18 +1,37 @@
 package mvc.controller;
 
+import java.util.ArrayList;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import mvc.method.AlarmMethod;
+import mvc.method.SessionMethod;
+import mvc.service.EtcService;
 import mvc.service.KanbanService;
+import mvc.vo.Alarm;
+import mvc.vo.KanbanVo;
 import mvc.vo.PRJ_TASK;
+import mvc.vo.USER_INFO;
 
 @Controller
 @RequestMapping("/kanban.do")
 public class KanbanController {
 	@Autowired
 	private KanbanService service;
+	
+	@Autowired
+	private EtcService etcservice;
+
+	@Autowired
+	private SessionMethod smethod;
+
+	@Autowired
+	private AlarmMethod amethod;
 	
 	// http://localhost:7090/borampms/kanban.do?method=list
 	@RequestMapping(params="method=list")
@@ -24,16 +43,49 @@ public class KanbanController {
 		return "/schedule/schKanban";
 	}
 	
-	@RequestMapping(params="method=insert")
-	public String insertKanban(PRJ_TASK ins, Model d) {
-		ins.setUiId("asd456");
-		ins.setPiId("PI00001");
-		ins.setPtGuidecontent("가이드 콘텐츠");
+	public String insertKanban(HttpServletRequest request, PRJ_TASK ins, Model d) {
+
+
+
+		ins.setPiId(smethod.getPiid(request)); 
+		ins.setUiId(smethod.getUserSession(request).getUiId()); // 세션에서...
+		ins.setPtGuidecontent("가이드 콘텐츠"); // 비워두면 안되나?
+
+
+		USER_INFO user = smethod.getUserSession(request);
+
+
+		ArrayList<Alarm> alarmList = amethod.taskAlarm(user, ins, smethod.getPiid(request)); // 이렇게 주면 구현부에서 알아서 처리된다. 
+
+		// 프로젝트 세션에서 프로젝트 고유번호를 받는다. 
+		// 유저 세션에서 dept와 name을 받는다.
+		// for 반복문으로 업무 담당자를 지정
+		// 쓰여지는 때에 따라 다른 메시지	
+
+		for(Alarm a : alarmList) {
+			System.out.println("##"+a.getaFrom()+a.getaTo()+a.getaContent()+a.getPiId());
+
+			etcservice.insertAlarm(a);
+		}
+
+
 		System.out.println("제목 : "+ins.getPtTitle());
-		
+
 		d.addAttribute("msg", service.insertKanban(ins));
 		 return "redirect:/kanban.do?method=list";
-		
-				
+
+
 	}
+
+	@RequestMapping(params="method=update")
+	public String updateKanban(KanbanVo sch, Model d) {
+
+		service.KBupdate(sch);
+
+		d.addAttribute("msg", "칸반보드가 수정되었습니다.");
+		 return "redirect:/kanban.do?method=list";
+
+
+	}
+
 }
