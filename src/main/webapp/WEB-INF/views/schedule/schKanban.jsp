@@ -206,31 +206,29 @@
 					<div class="board">
 						<div class="tasks" data-plugin="dragula" data-containers='["task-list-one", "task-list-two", "task-list-three", "task-list-four"]'>
 							<h5 class="mt-0 task-header">진행 전 (${klist.size() })</h5>
-
-
-
-							<div id="task-list-one" class="task-list-items">
-								<!-- Task Item -->
-
-
-							<!--  a 태그에 있던 data 관련된거 싹다 지움 -->
-
+						<div id="task-list-one" class="task-list-items">
 								<!--  !!!!카드 시작!!!!  -->
 								<c:forEach var="kanban" items="${klist }">
 									<div class="card mb-0">
 										<div class="card-body p-3">
-											<small class="float-end text-muted">${kanban.ptStartdate }</small> <span class="badge bg-danger">${kanban.ptPriority }</span> <span class="badge bg-success">${kanban.ptStatus }</span>
+											<small class="float-end text-muted">${kanban.ptStartdate }</small> 
+											<span class="badge bg-danger">${kanban.ptPriority }</span> 
+											<span class="badge bg-success">${kanban.ptStatus }</span>
 
 											<h5 class="mt-2 mb-2">
-												<a href="${path}/taskDetail.do?ptId=${kanban.ptId}" class="text-body">${kanban.ptTitle }</a>
+												<a href="${path}/taskDetail.do?ptId=${kanban.ptId}" 
+												class="text-body">${kanban.ptTitle }</a>
 											</h5>
 
 											<p class="mb-0">
-												<span class="pe-2 text-nowrap mb-2 d-inline-block"> <i class="mdi mdi-briefcase-outline text-muted"></i> ${kanban.ptType }
+												<span class="pe-2 text-nowrap mb-2 d-inline-block"> 
+												<i class="mdi mdi-briefcase-outline text-muted"></i> ${kanban.ptType }
 												</span>
 											</p>
 											<p class="mb-0">
-												<img src="https://s3.ap-northeast-2.amazonaws.com/elasticbeanstalk-ap-northeast-2-176213403491/media/magazine_img/magazine_270/%EC%8D%B8%EB%84%A4%EC%9D%BC.jpg" alt="user-img" class="avatar-xs rounded-circle me-1" /> 
+												<img src="https://s3.ap-northeast-2.amazonaws.com/elasticbeanstalk-ap-northeas
+												t-2-176213403491/media/magazine_img/magazine_270/%EC%8D%B8%EB%84%A4%EC%9D%BC.jpg"
+												 alt="user-img" class="avatar-xs rounded-circle me-1" /> 
 												<span class="align-middle">${kanban.ptCharge }</span>
 											</p>
 										</div>
@@ -249,7 +247,7 @@
 						<div class="tasks">
 							<h5 class="mt-0 task-header text-uppercase">진행 중 (${klist2.size() })</h5>
 
-							<div id="task-list-two" class="task-list-items">
+							<div id="task-list-two" class="task-list-items" >
 								<!-- Task Item -->
 								<!--  !!!!카드 시작!!!!  -->
 								<c:forEach var="kanban2" items="${klist2 }">

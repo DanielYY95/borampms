@@ -24,8 +24,8 @@
 <!-- App css -->
 <link href="${path}/tools/project_assets/css/icons.min.css" rel="stylesheet" type="text/css" />
 <link href="${path}/tools/project_assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-style" />
-<link rel="stylesheet" href="${path}/a00_com/bootstrap.min.css" >
-<link rel="stylesheet" href="${path}/a00_com/jquery-ui.css" >
+<link rel="stylesheet" href="${path}/a00_com/bootstrap.min.css">
+<link rel="stylesheet" href="${path}/a00_com/jquery-ui.css">
 <link href='${path}/a00_com/lib/main.css' rel='stylesheet' />
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
 <script src="${path}/a00_com/jquery.min.js"></script>
@@ -49,22 +49,20 @@ body {
 </style>
 
 <script type="text/javascript">
-	document
-			.addEventListener(
+	document.addEventListener(
 					'DOMContentLoaded',
 					function() {
 						var calendarEl = document.getElementById('calendar');
 
 						var calendar = new FullCalendar.Calendar(
 								calendarEl,
-								{
-									headerToolbar : {
+								{ headerToolbar : {
 										left : 'prev,next today',
 										center : 'title',
 										right : 'dayGridMonth,timeGridWeek,timeGridDay'
 									},
 									initialDate : '2022-03-17',
-									navLinks : true, // can click day/week names to navigate views
+									navLinks : true, 
 									selectable : true,
 									selectMirror : true,
 									select : function(arg) {
@@ -75,36 +73,23 @@ body {
 										$("#regBtn").show();
 										$("#uptBtn").hide();
 										$("#delBtn").hide();
-										$("#frm01")[0].reset(); // 상세데이터 확인 후, 다시 등록할 때, 초기화가 필요..
+										$("#frm01")[0].reset(); 
 
 										$("#modalBtn").click();
-										// 이벤트가 강제 수행하여 모달창이 로딩되도록 한다.
-
+	
 										console.log("시작일:"
 												+ arg.start.toLocaleString())
 										console.log("마지막일:"
 												+ arg.end.toLocaleString())
 										console.log("종일여부:" + arg.allDay)
-										// 클릭시, 가져온 속성값을 화면에 기본적으로 로딩할 수 있게 처리..
-										//$("[name=start]").val(arg.start.toISOString().split("T")[0])
-										// fullcanlendar에서는 표준형식을 출력을 처리하게 한다.
+	
 										$("[name=start]").val(
 												arg.start.toISOString())
-										//$("[name=end]").val(arg.end.toISOString().split("T")[0])
+										
 										$("[name=end]").val(
 												arg.end.toISOString())
 										$("[name=allDay]").val("" + arg.allDay)
-										/*
-										var title = prompt('일정등록:');
-										if (title) {
-										  calendar.addEvent({
-										    title: title, // 타이틀
-										    start: arg.start, // 시작일자
-										    end: arg.end,	// 마지막일짜
-										    allDay: arg.allDay // 종일여부
-										  })
-										}
-										 */
+
 										calendar.unselect()
 									}, // eventClick, eventDrop, eventResize
 									eventClick : function(arg) {
@@ -335,7 +320,7 @@ body {
 	</div>
 	<!-- END wrapper -->
 
-<!-- bundle -->
+	<!-- bundle -->
 	<script src="${path}/tools/project_assets/js/vendor.min.js"></script>
 	<script src="${path}/tools/project_assets/js/app.min.js"></script>
 	<script src="${path}/a00_com/jquery-3.6.0.js"></script>

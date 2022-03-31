@@ -30,6 +30,8 @@
 		<typeAlias alias="calendar" type="mvc.vo.Calendar"/>
 		<typeAlias alias="alarm" type="mvc.vo.Alarm"/>
 		<typeAlias alias="taskUser" type="mvc.vo.Task_User"/>
+		<typeAlias alias="dashUser" type="mvc.vo.PRJ_TASK"/>
+		
 		
 	</typeAliases>
 	<mappers>
