@@ -9,9 +9,6 @@ import mvc.service.DeptService;
 import mvc.vo.DeptDoc;
 import mvc.vo.DeptDocSch;
 
-import mvc.vo.DeptDoc;
-import mvc.vo.DeptDocSch;
-
 
 @Controller
 @RequestMapping("/dept.do")
@@ -24,6 +21,7 @@ public class DeptController {
 	// http://localhost:7080/borampms/dept.do?method=list
 	@RequestMapping(params="method=list")
 	public String ddList(DeptDocSch sch, Model d) {
+		System.out.println("부서확인:"+sch.getDdDept());
 		d.addAttribute("ddList", service.getDDList(sch));
 		
 		return "dept\\DeptList";
@@ -49,5 +47,4 @@ public class DeptController {
 	}
 
 }
-
 

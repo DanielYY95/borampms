@@ -12,6 +12,9 @@
 		<if test="ddWriter!=null and ddWriter!=''"> 
 		and DD_WRITER like '%'||#{ddWriter}||'%'
 		</if>
+		<if test="ddDept!=null and ddDept!=''">
+		and DD_DEPT like '%'||#{ddDept}||'%'
+		</if>
 	</select>
 	<!-- 부서문서 테이블 조회 -->
 	<select id="getDDList" parameterType="deptDocSch" resultType="deptDoc">
@@ -23,14 +26,19 @@
 			<if test="ddWriter!=null and ddWriter!=''"> 
 			and DD_WRITER like '%'||#{ddWriter}||'%'
 			</if>
+			<if test="ddDept!=null and ddDept!=''">
+			and DD_DEPT like '%'||#{ddDept}||'%'
+			</if>
 		)
 		where cnt between #{firstPage} and #{lastPage}
+		order by DD_ID desc
 	</select>
 	<!-- 부서문서 등록 -->
 	<insert id="insertDD" parameterType="deptDoc">
 		INSERT INTO DEPT_DOC VALUES(seq_dd.nextval,#{ddTitle},#{ddWriter},
 		#{ddDept},#{ddContent},sysdate,'1')
 	</insert>
+	<!-- 부서문서 첨부파일 -->
 	<insert id="insertDF" parameterType="deptFile">
 		INSERT INTO DEPT_FILE VALUES(seq_df.nextval,
 		#{dfFile},sysdate,seq_dd.currval)
