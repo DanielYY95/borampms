@@ -52,12 +52,7 @@
               				<span> 대시보드 </span>
            				</a>
          			</li>
-					<li class="side-nav-item">
-            			<a href="${path}/calendar.do" class="side-nav-link">
-              				<i class="uil-calender"></i>
-              				<span> 캘린더 </span>
-            			</a>
-          			</li>
+					
           			<li class="side-nav-item">
           				<a data-bs-toggle="collapse" href="#sidebarTasks"
             				aria-expanded="false" aria-controls="sidebarTasks" class="side-nav-link">
@@ -67,8 +62,10 @@
             			</a>
             			<div class="collapse" id="sidebarTasks">
               				<ul class="side-nav-second-level">
+              					<li><a href="${path}/calendar.do">캘린더</a></li>
                 				<li><a href="${path}/schGantt.do">WBS/간트차트</a></li>
                 				<li><a href="${path}/kanban.do?method=list">칸반보드</a></li>
+                				
               				</ul>
             			</div>
           			</li>
@@ -88,7 +85,6 @@
 						<div class="collapse" id="sidebarDashboards">
 							<ul class="side-nav-second-level">
 								<li><a href="${path}/task.do?method=list">업무 목록</a></li>
-								<li><a href="${path}/issue.do?method=list">업무 이슈</a></li>
 								<li><a href="${path}/mytask.do?method=clist">내 업무</a></li>
 							</ul>
 						</div>
@@ -97,6 +93,19 @@
                         <a href="${path}/dept.do?method=list" class="side-nav-link">
                             <i class="uil-folder-plus"></i>
                             <span> 문서관리 </span>
+                        </a>
+                    </li>
+                    <li class="side-nav-item">
+                        <a href="${path}/issue.do?method=list" class="side-nav-link">
+                            <i class="uil-folder-plus"></i>
+                            <span> 리스크관리 </span>
+                        </a>
+                    </li>
+                    
+                     <li class="side-nav-item">
+                        <a href="" class="side-nav-link">
+                            <i class="mdi mdi-account-lock-open"></i>
+                            <span> 공지사항 </span>
                         </a>
                     </li>
                     <li class="side-nav-item">
