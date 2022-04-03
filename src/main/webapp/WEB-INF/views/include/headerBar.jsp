@@ -50,10 +50,10 @@
 								'<i class="mdi mdi-close"></i></span><div class="d-flex align-items-center">'+
 								'<div class="flex-shrink-0"><div class="notify-icon bg-primary"><i class="mdi mdi-comment-account-outline"></i>'+
 								'</div></div><div id="alramMsg" class="flex-grow-1 text-truncate ms-2"><h5 class="noti-item-title fw-semibold font-14">'+
-								sch.aFrom+'<small class="fw-normal text-muted ms-1">'+moment(sch.aRegdate).format("MM-DD HH:mm")+
+								sch.aFrom+'<small class="fw-normal text-muted ms-1">'+moment(sch.aRegdate).utcOffset(0).format("MM:DD HH:mm")+
 								'</small></h5><small id="alramType" class="noti-item-subtitle text-muted">'+
 								sch.aContent+'</small></div></div></div></a>';
-				 	});	
+				 	});	// .utcOffset(0). 을 붙여줘야 제대로 출력된다
 					
 			 		$("#alarmBox").append(html);
 			 		

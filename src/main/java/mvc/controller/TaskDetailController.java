@@ -1,5 +1,7 @@
 package mvc.controller;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import mvc.method.SessionMethod;
+import mvc.service.SchGanttService;
 import mvc.service.TaskDetailService;
 import mvc.vo.PRJ_TASK;
 import mvc.vo.TASK_OUTPUT;
@@ -29,6 +32,9 @@ public class TaskDetailController {
 	
 	@Autowired
 	private TaskDetailService service;
+	
+	@Autowired
+	private SchGanttService gservice;
 	
 	@Autowired
 	private SessionMethod smethod; 
@@ -82,6 +88,21 @@ public class TaskDetailController {
 		return "forward:/task.do?method=list";
 	}
 	
+	@RequestMapping("/taskWbs.do")
+	public String taskWbs(PRJ_TASK pt, Model d) {
+		
+		ArrayList<PRJ_TASK> resultList  = gservice.getGanttList(pt);
+		d.addAttribute("result", resultList);
+		
+		return "task//task_wbs";
+	}
+	
+	@RequestMapping("/taskIssue.do")
+	public String taskIssue() {
+		
+		
+		return "task//Issue";
+	}
 	
 	
 	

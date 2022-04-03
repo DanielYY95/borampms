@@ -6,6 +6,9 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="path" value="${pageContext.request.contextPath }"/>
 <fmt:requestEncoding value="utf-8"/>     
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,6 +24,8 @@
 	<!-- App css -->
 	<link href="${path}/tools/project_assets/css/icons.min.css" rel="stylesheet" type="text/css" />
 	<link href="${path}/tools/project_assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-style" />
+
+
 
 	<script src="${path}/a00_com/jquery-3.6.0.js"></script>
 
@@ -100,16 +105,17 @@
                                                         부서관리
                                                     </a>
                                                 </li>
-                                                <li class="nav-item">
-                                                    <a href="" aria-expanded="true" class="nav-link">
-                                                        이메일 발송
-                                                    </a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a href="${path}/project/task/taskGuide.html"  aria-expanded="true" class="nav-link">
-                                                        설정
-                                                    </a>
-                                                </li>
+                                               	<li class="nav-item">
+														<a href="" aria-expanded="true" class="nav-link">
+															공지사항
+														</a>
+													</li>
+													<li class="nav-item">
+														<a href="${path}/manager.do?method=prjUser" aria-expanded="true" class="nav-link">
+															프로젝트 참여자 목록
+														</a>
+													</li>
+                                          
                                               
                                             </ul> <!-- end nav-->
                                         </div>	
@@ -181,7 +187,7 @@
 	                                                        <td><a href="apps-ecommerce-orders-details.html" class="text-body fw-bold">${prj.piId}</a> </td>
 	                                                        <td>${prj.piWriter}</td>
 	                                                        <td>${prj.piTitle}</td>
-	                                                        <td>${prj.piRegdate}</td>
+	                                                        <td>${prj.piRegdate}</td> <!-- sysdate의 경우, to_char로 가져오고 String 프로퍼티면 된다 -->
 	                                                        <td>
 	                                                            <p class="mb-0 txt-muted">${prj.piStartdate}</p>
 	                                                        </td>
@@ -191,7 +197,7 @@
 	                                                        <td><h5 class="my-0"><span class="badge badge-info-lighten">${prj.piStatus}</span></h5></td>
 	                                                        <td>
 	                                                            <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
-	                                                            <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
+	                         
 	                                                        </td>
 	                                                    </tr>
                                                     </c:forEach>

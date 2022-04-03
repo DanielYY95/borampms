@@ -5,6 +5,10 @@ public class DeptInfo {
 	private String diId;
 	private String diDept;
 	private String diStatus;
+	
+	// 부서 인원 카운트 수
+	private String count;
+	
 	public DeptInfo() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -26,6 +30,12 @@ public class DeptInfo {
 	}
 	public void setDiStatus(String diStatus) {
 		this.diStatus = diStatus;
+	}
+	public String getCount() {
+		return count;
+	}
+	public void setCount(String count) {
+		this.count = count;
 	}
 	
 	

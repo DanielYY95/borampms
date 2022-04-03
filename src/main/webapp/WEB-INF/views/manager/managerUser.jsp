@@ -41,7 +41,8 @@
 			<!-- 
 				select로 type을 골라서 input을 작성할 때, input에 아무것도 안 적으면 ""로 넘어간다. 
 				그리고 고르지않은 type의 값들은 null로 넘어간다.
-			
+				
+				
 			
  -->
 
@@ -107,15 +108,15 @@
 													</li>
 													<li class="nav-item">
 														<a href="" aria-expanded="true" class="nav-link">
-															이메일 발송
+															공지사항
 														</a>
 													</li>
 													<li class="nav-item">
-														<a href="${path}/project/task/taskGuide.html"
-															aria-expanded="true" class="nav-link">
-															설정
+														<a href="${path}/manager.do?method=prjUser" aria-expanded="true" class="nav-link">
+															프로젝트 참여자 목록
 														</a>
 													</li>
+												
 
 												</ul> <!-- end nav-->
 											</div>
@@ -176,6 +177,8 @@
 																<option value="" selected>전체</option>
 																<option value="0">재직</option>
 																<option value="1">퇴사</option>
+																<option value="2">승인대기</option>
+																<option value="3">반려</option>
 
 															</select>
 														</div>
@@ -233,6 +236,9 @@
 																	<h5 class="my-0"><span
 																			class="badge badge-info-lighten">${user.uiStatus}</span>
 																	</h5>
+																	<c:if test="${user.uiStatus eq 2}">
+                                                                            <span class="badge bg-danger">승인 요청</span>
+                                                                     </c:if>
 																</td>
 																<td>
 																	<a href="javascript:void(0);" class="action-icon"
@@ -246,7 +252,6 @@
 																</td>
 															</tr>
 														</c:forEach>
-
 
 													</tbody>
 												</table>
@@ -291,18 +296,9 @@
 													<label for="username" class="form-label">아이디</label>
 													<input id="id" name="uiId" class="form-control" required="" readonly> 
 												</div>
+												
 												<div class="col mb-3">
-													<label for="fullname" class="form-label">이름</label>
-													<input class="form-control" type="text" id="name" name="uiName"
-														value="${editUser.uiName}" required>
-
-												</div>
-
-											</div>
-											<!-- Autoclose -->
-											<div class="row g-2">
-												<div class="col mb-3">
-													<label class="form-label">패스워드</label>
+													<label for="pw" class="form-label">패스워드</label>
 													<div class="input-group input-group-merge">
 														<input type="password" id="pw" class="form-control" name="uiPw"
 															required value="${editUser.uiPw}">
@@ -311,18 +307,35 @@
 														</div>
 													</div>
 												</div>
+												
+																			
+										
+											</div>
+											<!-- Autoclose -->
+											<div class="row g-2">
+												
+													<div class="col mb-3">
+													<label for="fullname" class="form-label">이름</label>
+													<input class="form-control" type="text" id="name" name="uiName"
+														value="${editUser.uiName}" required>
+
+												</div>
+												
+												
+												
 												<div class="col mb-3">
-													<label class="form-label">패스워드 확인</label>
-													<div class="input-group input-group-merge">
-														<input type="password" id="pw2" class="form-control" required
-															value="${editUser.uiPw}">
-														<div class="input-group-text" data-password="false">
-															<span class="password-eye"></span>
-														</div>
-													</div>
-													<span id="pwMsg"></span>
+													<label for="userStatus" class="form-label">회원상태</label>
+													<select class="form-select" id="userStatus" name="uiStatus">
+														<option value="0">재직</option>
+														<option value="1">퇴사</option>
+														<option value="2">승인대기</option>
+														<option value="3">반려</option>
+													</select>
+				
 												</div>
 											</div>
+											
+										
 
 
 											<div class="mb-3 position-relative">
@@ -331,8 +344,10 @@
 													value="${editUser.uiEmail}">
 
 											</div>
+											
+											
 
-
+								
 											<div class="row g-2">
 												<div class="col mb-3">
 													<label for="dept" class="form-label">부서</label>
@@ -346,11 +361,7 @@
 													</select>
 												</div>
 
-												<script>
-													$("#dept").val("${editUser.uiDept}")
-
-												</script>
-
+												
 
 												<div class="col mb-3">
 													<label for="dept" class="form-label">직급</label>
@@ -365,11 +376,7 @@
 														<option>사원</option>
 													</select>
 												</div>
-												<script>
-													$("#rank").val("${editUser.uiRank}")
-
-												</script>
-
+											
 											</div>
 											<div class="row mb-3">
 												<label for="phone1" class="form-label">연락처</label>
@@ -409,51 +416,10 @@
 
 				<script>
 
-
-					
-				  $("#pw").keyup(function(){
-						if($("#pw").val().trim()!=""){
-							if($("#pw2").val()!=$("#pw").val()){ // 이게 꼭 반대여야하는듯...
-								$("#pwMsg").css("color","red").text("비밀번호가 일치하지않습니다.");
-								
-							}else{
-								$("#pwMsg").css("color","green").text("비밀번호가 일치합니다.");	
-							}
-							
-						}
-						// 패스워드확인에 아무것도 없을 때는 메시지x
-						if($("#pw2").val().trim()=="" || $("#pw").val().trim()==""){
-							$("#pwMsg").text("");
-						}
-					})
-					
-
-					$("#pw2").keyup(function(){
-						if($("#pw2").val().trim()!=""){ // 이미 여기서 통과했으니 순서가 바뀌어야..
-							if($("#pw").val()!=$("#pw2").val()){ //이게 반대여야...
-								$("#pwMsg").css("color","red").text("비밀번호가 일치하지않습니다.");
-								
-							}else{
-								$("#pwMsg").css("color","green").text("비밀번호가 일치합니다.");	
-							}
-							
-						}
-						// 패스워드에 아무것도 없을 때는 메시지x
-						if($("#pw").val().trim()=="" || $("#pw2").val().trim()==""){
-							$("#pwMsg").text("");
-							
-						}
-					})
-					
 					    // 폼 제출
 		            $("#uptBtn").click(function(){
 	
-		                // 패스워드 둘 다 같으면
-		                if($("#pw").val() != $("#pw2").val()){
-		                    alert("비밀번호 확인이 일치하지않습니다.");
-		                    return false;
-		                }
-		
+		 
 		                // 연락처 숫자 아니면 거르기
 		                if(isNaN($("[name=phone2]").val()) || 
 		                		isNaN($("[name=phone3]").val())){
@@ -486,8 +452,9 @@
 								editUser = data.editUser;
 								$("#id").val(editUser.uiId);
 								$("#name").val(editUser.uiName);
-								$("#pw, #pw2").val(editUser.uiPw);
+								$("#pw").val(editUser.uiPw);
 								$("#dept").val(editUser.uiDept);
+								$("#userStatus").val(editUser.uiStatus);
 								$("#rank").val(editUser.uiRank);
 								$("#email").val(editUser.uiEmail);
 								let phone = editUser.uiPhone;
@@ -523,7 +490,7 @@
 
 					});
 
-
+			
 					function searchUser(){
 
 						if($("#type").val()!="name"){
@@ -549,19 +516,30 @@
 												sch.uiId+'</a></td><td>'+sch.uiName+'</td><td>'+sch.uiDept+
 												'</td><td><p class="mb-0 txt-muted">'+sch.uiRank+'</p></td><td>'+
 												sch.uiEmail+'</td><td>'+sch.uiPhone+
-												'</td><td><h5 class="my-0"><span class="badge badge-info-lighten">'+
+												'</td><td class="statusClr"><h5 class="my-0"><span class="badge badge-info-lighten">'+
 												sch.uiStatus+'</span></h5></td><td><a href="javascript:void(0);" class="action-icon"'+
 												'onclick="editUserDetail('+"'"+sch.uiId+"'"+')" data-bs-toggle="modal" data-bs-target="#signup-modal">'+
 												' <i class="mdi mdi-square-edit-outline"></i></a><a href="javascript:void(0);" class="action-icon"'+
 												'onclick="deleteUser('+"'"+sch.uiName+"','"+sch.uiId+"'"+')"><i class="mdi mdi-delete"></i></a></td></tr>'
-
-
+						
 								});	
 								
-							
+								//JSTL과 JAVASCRIPT는 실행되는 시점이 다르기 때문에...	 서버는 JAVA>JSTL>HTML>Javascript 순서로 동작
+
+								//JSTL이 먼저 실행되고 JAVASCRIPT는 이후에 실행됩니다. => badge 붙여주는게 어려울 듯... 
 								
 								$("#listBox").append(html);
+								let approveMsg = `<span class="badge bg-danger">승인 요청</span>`;
+
+								// id는 하나만 가져온다. 여러 개의 경우에는 class 등을 사용할 것!
+								$(".statusClr span").each(function(idx, status){
+									if($(status).text() == 2){
+										$(status).parent().after(approveMsg);
+									}
+
+								})
 								
+							
 							},
 							error:function(err) {
 								console.log(err);

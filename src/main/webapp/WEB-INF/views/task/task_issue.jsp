@@ -79,23 +79,7 @@
 							<div class="card">
 								<div class="card-body" id="form-card-body">
 									<div class="card-title" id="card-title-reg"><h4>이슈 등록</h4></div>
-									<!--  
-									<ul class="nav nav-tabs nav-justified nav-bordered mb-3">
-										<li class="nav-item">
-											<a href="taskDetail.html" aria-expanded="true" class="nav-link"> 업무정보 </a>
-										</li>
-										<li class="nav-item"><a href="#input-types-code"
-											aria-expanded="true" class="nav-link"> WBS </a></li>
-										<li class="nav-item"><a href="taskOutput.html"
-											aria-expanded="true" class="nav-link"> 산출물 </a></li>
-										<li class="nav-item"><a href="task_issue.html"
-											aria-expanded="true" class="nav-link active"> 이슈 </a></li>
-										<li class="nav-item"><a href="#input-types-code"
-											aria-expanded="true" class="nav-link"> 가이드 </a></li>
-										<li class="nav-item"><a href="#input-types-code"
-											aria-expanded="true" class="nav-link"> 히스토리 </a></li>
-									</ul>
-									-->
+								
 									<!-- end nav-->
 									<div class="tab-content">	
 										<form id="isRegForm" method="post">	

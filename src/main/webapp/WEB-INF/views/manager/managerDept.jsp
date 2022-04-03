@@ -100,57 +100,38 @@
                                                         부서관리
                                                     </a>
                                                 </li>
-                                                <li class="nav-item">
-                                                    <a href="" aria-expanded="true" class="nav-link">
-                                                        이메일 발송
-                                                    </a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a href="${path}/project/task/taskGuide.html"  aria-expanded="true" class="nav-link">
-                                                        설정
-                                                    </a>
-                                                </li>
+                                               	<li class="nav-item">
+														<a href="" aria-expanded="true" class="nav-link">
+															공지사항
+														</a>
+													</li>
+													<li class="nav-item">
+														<a href="${path}/manager.do?method=prjUser" aria-expanded="true" class="nav-link">
+															프로젝트 참여자 목록
+														</a>
+													</li>
+                                             
                                               
                                             </ul> <!-- end nav-->
-                                        </div>	
-
-										<form class=""  method="post">
-											<div class="row d-flex">
-											  <div class="d-flex col-2">
-												  <div class="">
-													<select class="form-select " id="search-select">
-														<option selected>부서명</option>
-														<option >상태</option>
-													</select>
-												  </div>
-												  <div class="">
-													<select class="form-select" >
-														<option selected>전체</option>
-														<option value="1">개발1팀</option>
-														<option value="2">개발2팀</option>
-														<option value="3">인사팀</option>
-														<option value="4">기획팀</option>
-														<option value="5">디자인팀</option>
-														<option value="6">마케팅팀</option>
-													</select>
-												  </div>
-											  
-											  </div>
-											  <div class="d-flex col-2">
-												  
-												  <div>
-													<label class="py-1 px-2">책임자</label>
-												  </div>
-												  <div>
-													<input type="search" class="form-control"  placeholder="검색">
-	                                                           
-
-											  	</div>
-										  	</div>
-										</div>
-									  </form><br>
-
-
+                                        </div>
+                                        <div class="row">
+                                        	<form action="${path}/manager.do?method=deptInsert">
+	                                        	<div class="col-2 d-flex justify-content-evenly">
+	                                        		<div>
+	                                        			<label>부서명</label>
+	                                        		</div>
+	                                        		 <div class="">
+	                                        		 
+														<input type="text" class="form-control" id="search-word" name="diDept" required placeholder="입력">
+													  </div>
+													
+	                                        	</div>
+	                                        	<div class="col-3">  
+	                                        		<button id="newDeptBtn" type="button" class="btn btn-danger mb-2 me-2 ">부서 등록</button>     
+	                                        	</div>
+                                        	</form>                  
+										</div>                           
+										
                                         <div class="table-responsive">
                                             <table class="table table-centered table-nowrap mb-0">
                                                 <thead class="table-light">
@@ -164,7 +145,6 @@
                                                         <th>부서고유번호</th>
                                                         <th>부서명</th>
                                                         <th>부서인원</th>
-                                                        <th>부서책임자</th>
                                                         <th>부서상태</th>   
                                                         <th>수정</th>                            
                                                     </tr>
@@ -180,14 +160,14 @@
 	                                                        </td>
 	                                                        <td><a href="apps-ecommerce-orders-details.html" class="text-body fw-bold">${dept.diId}</a> </td>
 	                                                        <td>${dept.diDept}</td>
-	                                                        <td>??</td>
-	                                                        <td>
-	                                                            <p class="mb-0 txt-muted">??</p>
-	                                                        </td>
+	                                                        <td>${dept.count}</td>
+	                                               
 	                                                        <td><h5 class="my-0"><span class="badge badge-info-lighten">${dept.diStatus}</span></h5></td>
 	                                                        <td>
-	                                                            <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
-	                                                            <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
+	                                                            <a onclick="deptDetail('${dept.diId}')" class="action-icon"
+	                                                            data-bs-toggle="modal"data-bs-target="#signup-modal">
+	                                                             <i class="mdi mdi-square-edit-outline"></i></a>
+	                                                      
 	                                                        </td>
 	                                                    </tr>
                                                     </c:forEach>
@@ -204,6 +184,61 @@
 			
 		</div>
 		
+		<!-- 업무 등록 modal -->
+				<div class="tab-content">
+					<div class="tab-pane show active" id="modal-pages-preview">
+						<!-- Signup modal content -->
+						<div id="signup-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+
+									<div class="modal-header">
+										<h4>부서정보 수정</h4>
+										<button type="button" class="btn-close" data-bs-dismiss="modal"
+											aria-label="Close"></button>
+									</div>
+
+									<div class="modal-body">
+										<form id="uptForm" class="ps-3 pe-3" action="${path}/manager.do?method=deptUpdate"
+											method="post">
+										
+											<!-- Autoclose -->
+											<div class="row g-2">
+													<input name="diId" id="deptId" hidden />
+													<div class="col mb-3">
+													<label for="fullname" class="form-label">부서명</label>
+													<input class="form-control" type="text" id="dept" name="diDept"
+														 required>
+
+												</div>
+				
+												<div class="col mb-3">
+													<label for="userStatus" class="form-label">부서상태</label>
+													<select class="form-select" id="deptStatus" name="diStatus">
+														<option value="0">존재</option>
+														<option value="1">폐쇄</option>
+														<option value="2">승인대기</option>
+														<option value="3">반려</option>
+													</select>
+				
+												</div>
+											</div>
+											
+											<hr>
+											<div class="mb-3 text-center"
+												style="display: flex; justify-content: space-between;">
+												<button class="btn btn-secondary" class="btn-close"
+													data-bs-dismiss="modal" aria-label="Close" type="button">취소</button>
+												<button class="btn btn-primary" type="submit" id="uptBtn">수정</button>
+											</div>
+										</form>
+									</div>
+								</div><!-- /.modal-content -->
+							</div><!-- /.modal-dialog -->
+						</div><!-- /.modal -->
+					</div> <!-- /.tab-panel -->
+				</div> <!-- /.tab-content -->
+		
 		<!-- ============================================================== -->
 		<!-- End Page content -->
 		
@@ -214,17 +249,25 @@
 	</div>
 	<!-- wrapper -->
 
-
-
-		
-
-
-
-			
-			
-
-
 <script>
+
+	function deptDetail(diId){
+		
+			$.ajax({
+				url: "${path}/manager.do?method=deptDetail",
+				type: "get",
+				dataType: "json",
+				data: "diId="+diId,
+				success: function (data) {
+					deptDetail = data.deptDetail;
+				
+					$("#deptId").val(deptDetail.diId);
+					$("#dept").val(deptDetail.diDept);
+					$("#deptStatus").val(deptDetail.diStatus);
+				}
+			});
+		
+	}
 
 	
 </script>

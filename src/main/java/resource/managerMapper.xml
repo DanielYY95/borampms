@@ -14,17 +14,6 @@
 		where UI_ID = #{uiId}
 	
 	</select>
-	
-	
-	<select id="getDeptList" resultType="dept">
-		select * from dept_info
-	
-	</select>
-	
-	<select id="getPrjList" resultType="prj">
-		select * from prj_info
-	
-	</select>
 
 	<!--  회원관리 수정 -->
 	<update id="uptCustomer" parameterType="user">
@@ -34,6 +23,7 @@
 				,UI_PHONE = #{uiPhone}
 				, UI_RANK = #{uiRank}
 				, UI_DEPT = #{uiDept}
+				, UI_STATUS = #{uiStatus}
 			WHERE UI_ID = #{uiId}
 	</update>
 
@@ -69,6 +59,84 @@
 		</if>
 	
 	</select>
+	
+	
+	
+	<!-- ### 부서관리  -->
+	
+	<select id="getDeptList" resultType="dept">
+		
+		SELECT di.*, nvl(count,'0') as count 
+		FROM DEPT_INFO di, 
+		(SELECT uI_dept, count(*) count FROM USER_INFO ui 
+		GROUP BY UI_DEPT) ui
+		WHERE di.DI_DEPT = UI_DEPT(+)
+		ORDER BY DI_ID
+			
+	</select>
+	
+	<insert id="addDept" parameterType="dept">
+		insert into dept_info 
+		values('DI' || LPAD(di_seq.nextval,5,'0'), #{diDept}, 0)
+		
+	</insert>
+	
+	<update id="uptDept" parameterType="dept">
+		update dept_info
+			set DI_DEPT = #{diDept}
+			, DI_STATUS = #{diStatus}
+			where DI_ID = #{diId}
+	</update>
+	
+	<select id="getDept" parameterType="string" resultType="dept">
+		select * from DEPT_INFO 
+		where DI_ID = #{diId}
+	
+	</select>
+	
+	
+	
+	<select id="getPrjList" resultType="prj">
+		select PI_ID, PI_WRITER, PI_TITLE, 
+			TO_CHAR(PI_REGDATE, 'YYYY-MM-DD') as PI_REGDATE, PI_STARTDATE, 
+			PI_DUEDATE, PI_STATUS from prj_info
+	
+	</select>
+	
+	
+	
+	
+	
+	<select id="getPrjUserAll" resultType="prjUser" > <!-- 매개변수가 다르더라도 이름이 같으면 안되는듯.. -->
+		SELECT ui.UI_NAME, ui.UI_DEPT,ui.UI_RANK, pi2.PI_TITLE, pu.PU_STATUS 
+		FROM USER_INFO ui,PRJ_USER pu, PRJ_INFO pi2
+		WHERE pu.UI_ID = ui.UI_ID
+		AND pu.PI_ID = pi2.PI_ID
+		order by pi2.PI_TITLE
+	</select>
+	
+	
+	<select id="getPrjUserList" parameterType="prjUser" resultType="prjUser" >
+		SELECT ui.UI_NAME, ui.UI_DEPT,ui.UI_RANK, pi2.PI_TITLE, pu.PU_STATUS 
+		FROM USER_INFO ui,PRJ_USER pu, PRJ_INFO pi2
+		WHERE pu.UI_ID = ui.UI_ID
+		AND pu.PI_ID = pi2.PI_ID
+		<if test="uiName != null">
+		and UI_NAME LIKE '%' || #{uiName} || '%'
+		</if>
+		<if test="uiDept != null">
+		and UI_DEPT LIKE '%' || #{uiDept} || '%'
+		</if>
+		<if test="piTitle != null">
+		and PI_TITLE LIKE '%' || #{piTitle} || '%'
+		</if>
+		<if test="puStatus != null and puStatus != ''"> <!-- 숫자형태이기 때문에 전체를 고를 때 난감.. -->
+		and PU_STATUS LIKE '%' || #{puStatus} || '%'
+		</if>
+		order by pi2.PI_TITLE
+	</select>
+	
+	
 	
 	
 </mapper>

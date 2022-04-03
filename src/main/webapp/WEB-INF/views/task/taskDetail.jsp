@@ -154,9 +154,10 @@
                                                     </a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a href="#input-types-code"  aria-expanded="true" class="nav-link">
-                                                        WBS
-                                                    </a>
+                                                    <a href="${path}/taskWbs.do" aria-expanded="true"
+                                                                    class="nav-link">
+                                                          WBS
+                                                      </a>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a href="${path}/toFrm.do"  aria-expanded="true" class="nav-link">
@@ -164,10 +165,10 @@
                                                     </a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a href="" aria-expanded="true" class="nav-link">
-                                                        이슈
-                                                    </a>
-                                                </li>
+                                                     <a href="${path}/taskIssue.do?" aria-expanded="true" class="nav-link">
+                                                         이슈
+                                                     </a>
+                                                 </li>
                                                 <li class="nav-item">
                                                     <a href="${path}/project/task/taskGuide.html"  aria-expanded="true" class="nav-link">
                                                         가이드

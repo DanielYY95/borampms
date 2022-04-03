@@ -5,7 +5,9 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
@@ -73,6 +75,24 @@ public class MainController {
 		
 		return "forward:/prjList.do";
 	}
+	
+	
+	@GetMapping("/addPrjFrm.do")
+	public String addPrj() {
+		
+		
+		return "main_login/addPrj";
+	}
+	
+	@PostMapping("/insertPrj.do")
+	public String insertPrj(PRJ_INFO sch) {
+		
+		service.insertPrj(sch);
+		
+		
+		return "forward:/prjList.do";
+	}
+	
 	
 	
 	@RequestMapping("/prjDash.do") // 메인->프로젝트 목록 -> 대시보드로 접근하는게 아니면 자꾸 에러가...

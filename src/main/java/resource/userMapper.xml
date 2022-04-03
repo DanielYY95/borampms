@@ -18,7 +18,7 @@
 		INSERT INTO user_info VALUES (
 		#{uiId}, #{uiPw}, #{uiName}, 
 		#{uiEmail}, #{uiPhone}, #{uiBirth}, sysdate,
-		'', '', #{uiRank}, #{uiDept}, 0
+		'', '', #{uiRank}, #{uiDept}, 2
 		)
 
 	</insert> 
@@ -77,31 +77,69 @@
 	
 	<!-- 8. 아이디찾기 -->
 	
+	<select id="getId" parameterType="user" resultType="string">
+		SELECT UI_ID FROM USER_INFO ui
+		WHERE UI_NAME = #{uiName}
+		AND UI_EMAIL = #{uiEmail}
+	
+	</select>
+	
 	<!-- 9. 비밀번호찾기 -->
+	
+	<select id="getPw" parameterType="user" resultType="string">
+		SELECT UI_PW FROM USER_INFO ui
+		WHERE UI_NAME = #{uiName}
+		AND UI_ID = #{uiId}
+	
+	</select>
+	
+	<update id="updateTempPw" >
+		update USER_INFO
+			set UI_PW = #{uiPw}
+			where UI_NAME = #{uiName}
+			and UI_ID = #{uiId}
+	
+	</update>
+	
+	<select id="getEmail" parameterType="user" resultType="string">
+		SELECT UI_EMAIL FROM USER_INFO ui
+		WHERE UI_NAME = #{uiName}
+		AND UI_ID = #{uiId}
+	
+	</select>
+	
 	
 	
 	<!-- 10. 내 프로젝트 목록  -->
 	
 	<select id="getMyPrjList" parameterType="string" resultType="prj">
-		select pi.* from ( 
+		select pi.*, ui.UI_NAME from ( 
 		select * from prj_user
-		where UI_ID = #{uiId}) pu, PRJ_INFO pi
+		where UI_ID = #{uiId}) pu, PRJ_INFO pi, USER_INFO ui 
 		where pu.PI_ID = pi.PI_ID
+		and pi.PI_WRITER = ui.UI_ID
+		order by pi.PI_ID
 	</select>
 	
 	<select id="getNewPrjList" parameterType="string" resultType="prj">
-		SELECT * FROM PRJ_INFO
+		SELECT pi.*, ui.UI_NAME FROM PRJ_INFO pi, USER_INFO ui 
 		WHERE NOT PI_ID IN 
 		(SELECT PI_ID FROM PRJ_USER pu 
 		WHERE UI_ID = #{uiId})
+		and pi.PI_WRITER = ui.UI_ID
+		order by pi.PI_ID
 	</select>
 	
 	
 	<insert id="joinPrj" parameterType="prjUser">
 		insert into PRJ_USER
-		values(#{uiId}, #{piId})	
+		values(#{uiId}, #{piId}, 0)	
+	</insert>
 	
-	
+	<insert id="insertPrj" parameterType="prj">
+		insert into PRJ_INFO
+		values('PI' || LPAD(prj_seq.nextval,5,'0'), #{piWriter}, #{piTitle}, sysdate, #{piStartdate}, #{piDuedate}, #{piStatus})
+
 	</insert>
 	
 	

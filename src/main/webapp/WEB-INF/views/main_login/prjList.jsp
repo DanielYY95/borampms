@@ -159,7 +159,7 @@
 	                                                                <label class="form-check-label" for="customCheck2">&nbsp;</label>
 	                                                            </div>
 	                                                        </td>
-	                                                        <td><a href="apps-ecommerce-orders-details.html" class="text-body fw-bold">${prj.piId} DB값</a> </td>
+	                                                        <td><a href="apps-ecommerce-orders-details.html" class="text-body fw-bold">${prj.piId} </a> </td>
 	                                                        <td onclick="goToPrj('${prj.piId}')">${prj.piTitle}</td>
 	                                                        <td>
 	                                                            <div class="d-flex">
@@ -167,7 +167,7 @@
 	                                                                    <div class="flex-shrink-0">
 	                                                                        <img src="${path}/tools/main_assets/images/users/avatar-1.jpg" class="rounded-circle avatar-xs" alt="friend">
 	                                                                    </div>
-	                                                                    <div class="flex-grow-1 ms-2"><h5 class="my-0">${prj.piWriter}</h5></div>
+	                                                                    <div class="flex-grow-1 ms-2"><h5 class="my-0">${prj.uiName}</h5></div>
 	                                                                </div>
 	                                                            </div>
 	                                                        </td>
@@ -252,7 +252,7 @@
 			                                                                    <div class="flex-shrink-0">
 			                                                                        <img src="${path}/tools/main_assets/images/users/avatar-1.jpg" class="rounded-circle avatar-xs" alt="friend">
 			                                                                    </div>
-			                                                                    <div class="flex-grow-1 ms-2"><h5 class="my-0">${newprj.piWriter}</h5></div>
+			                                                                    <div class="flex-grow-1 ms-2"><h5 class="my-0">${newprj.uiName}</h5></div>
 			                                                                </div>
 			                                                            </div>
 			                                                        </td>
@@ -307,14 +307,14 @@
     		// 여기서는 필요없기에 가려줘야한다.
    
         	$("#newPrjBtn").click(function(){
-        		location.href="./prjReg.html";
+        		location.href="${path}/addPrjFrm.do";
         	})
 
 
         	function goToPrj(piId){
         		location.href="${path}/prjDash.do?piId="+piId;
-//        		location.href="${path}/dash.do?method=list";
-        	} // 이 방식으로 post로 못 간다 
+
+        	} 
         	
         	
         	function joinToPrj(piId){
@@ -322,6 +322,7 @@
         		location.href="${path}/joinPrj.do?piId="+piId;
         	}
 
+        	
 
             $("#alarm").hide();
 

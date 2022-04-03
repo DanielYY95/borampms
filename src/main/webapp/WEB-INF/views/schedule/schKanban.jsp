@@ -252,9 +252,9 @@
 
 								<!--  !!!!카드 시작!!!!  -->
 								<c:forEach var="kanban" items="${klist }">
-									<div id="task-list-one" name="${kanban.ptId}" class="card mb-0">
+									<div name="${kanban.ptId}" class="one card mb-0">
 										<div class="card-body p-3">
-											<small class="float-end text-muted">${kanban.ptStartdate }</small> <span class="badge bg-danger">${kanban.ptPriority }</span> <span class="badge bg-success">${kanban.ptStatus }</span>
+											<small class="float-end text-muted">${kanban.ptStartdate }</small> <span class="priorityClr">${kanban.ptPriority }</span> <span class="badge bg-success">${kanban.ptStatus }</span>
 
 											<h5 class="mt-2 mb-2">
 												<a href="${path}/taskDetail.do?ptId=${kanban.ptId}" class="text-body">${kanban.ptTitle }</a>
@@ -288,9 +288,9 @@
 								<!-- Task Item -->
 								<!--  !!!!카드 시작!!!!  -->
 								<c:forEach var="kanban2" items="${klist2 }">
-									<div id="task-list-two" name="${kanban2.ptId}"  class="card mb-0">
+									<div name="${kanban2.ptId}"  class="two card mb-0">
 										<div class="card-body p-3">
-											<small class="float-end text-muted">${kanban2.ptStartdate }</small> <span class="badge bg-secondary text-light">${kanban2.ptPriority }</span> <span class="badge bg-success">${kanban2.ptStatus }</span>
+											<small class="float-end text-muted">${kanban2.ptStartdate }</small> <span class="priorityClr">${kanban2.ptPriority }</span> <span class="badge bg-success">${kanban2.ptStatus }</span>
 
 											<h5 class="mt-2 mb-2">
 												<a href="${path}/taskDetail.do?ptId=${kanban2.ptId}" class="text-body">${kanban2.ptTitle }</a>
@@ -322,9 +322,9 @@
 								<!-- Task Item -->
 								<!--  !!!!카드 시작!!!!  -->
 								<c:forEach var="kanban3" items="${klist3 }">
-									<div id="task-list-three" name="${kanban3.ptId}" class="card mb-0">
+									<div name="${kanban3.ptId}" class="three card mb-0">
 										<div class="card-body p-3">
-											<small class="float-end text-muted">${kanban3.ptStartdate }</small> <span class="badge bg-danger">${kanban3.ptPriority }</span> <span class="badge bg-success">${kanban3.ptStatus }</span>
+											<small class="float-end text-muted">${kanban3.ptStartdate }</small> <span class="priorityClr">${kanban3.ptPriority }</span> <span class="badge bg-success">${kanban3.ptStatus }</span>
 
 											<h5 class="mt-2 mb-2">
 												<a href="${path}/taskDetail.do?ptId=${kanban3.ptId}" class="text-body">${kanban3.ptTitle }</a>
@@ -352,9 +352,9 @@
 								<!-- Task Item -->
 								<!--  !!!!카드 시작!!!!  -->
 								<c:forEach var="kanban4" items="${klist4 }">
-									<div id="task-list-four" name="${kanban4.ptId}"  class="card mb-0">
+									<div name="${kanban4.ptId}"  class="four card mb-0">
 										<div class="card-body p-3" >
-											<small class="float-end text-muted">${kanban4.ptStartdate }</small> <span class="badge bg-success">${kanban4.ptPriority }</span> <span class="badge bg-success">${kanban4.ptStatus }</span>
+											<small class="float-end text-muted">${kanban4.ptStartdate }</small> <span class="priorityClr">${kanban4.ptPriority }</span> <span class="badge bg-success">${kanban4.ptStatus }</span>
 
 											<h5 class="mt-2 mb-2">
 												<a href="${path}/taskDetail.do?ptId=${kanban4.ptId}" class="text-body">${kanban4.ptTitle }</a>
@@ -407,6 +407,21 @@
 
 
 	<script>
+
+		// 색깔 부여
+		$(".priorityClr").each(function(idx, status){
+			if($(status).text()=="중요"){
+				$(status).attr("class", "badge bg-danger");
+			}else if($(status).text()=="보통"){
+				$(status).attr("class", "badge bg-info");
+			}else{
+				$(status).attr("class", "badge bg-secondary");
+			}
+			
+		})
+	
+	
+	
 			// 참고: https://m.blog.naver.com/comball2/222084124768
 		// Mutation Observer
 		// 감시 대상 node 선택
@@ -414,8 +429,9 @@
 		let target2 = document.querySelector('#task-list-two');
 		let target3 = document.querySelector('#task-list-three');
 		let target4 = document.querySelector('#task-list-four');
-
-
+	
+		
+		
 			// 감시자 인스턴스 만들기
 		let observer1 = new MutationObserver((mutations) => {
 			// 노드가 변경 됐을 때의 작업
@@ -423,8 +439,9 @@
 
 			// 자신이 포함하고 있는 녀석 중에서 task-list-? 가 같지 않은 녀석을 찾아서
 			// ptId를 갖고 해당 녀석을 ""로 바꿔버려라. 
+			// # 선택자로 부르면 하나만 나오니 배열로 가져올 수 있는 녀석으로 선택자를 잡으라
 
-			let ptId = $("#task-list-one>div").not($("#task-list-one")).attr("name")+'';
+			let ptId = $("#task-list-one").children().not($(".one.card.mb-0")).attr("name")+'';
 
 			location.href="${path}/kanban.do?method=update&ptId="+ptId+"&ptStatus="+"진행 전";
 
@@ -432,21 +449,21 @@
 
 		let observer2 = new MutationObserver((mutations) => {
 			
-			let ptId = $("#task-list-two>div").not($("#task-list-two")).attr("name")+''
+			let ptId = $("#task-list-two").children().not($(".two.card.mb-0")).attr("name")+''
 			location.href="${path}/kanban.do?method=update&ptId="+ptId+"&ptStatus="+"진행 중";
 
 		})
 
 		let observer3 = new MutationObserver((mutations) => {
 			
-			let ptId = $("#task-list-three>div").not($("#task-list-three")).attr("name")+''
+			let ptId = $("#task-list-three").children().not($(".three.card.mb-0")).attr("name")+''
 			location.href="${path}/kanban.do?method=update&ptId="+ptId+"&ptStatus="+"보류";
 
 		})
 
 		let observer4 = new MutationObserver((mutations) => {
 			
-			let ptId = $("#task-list-four>div").not($("#task-list-four")).attr("name")+''
+			let ptId = $("#task-list-four").children().not($(".four.card.mb-0")).attr("name")+''
 			location.href="${path}/kanban.do?method=update&ptId="+ptId+"&ptStatus="+"완료";
 
 		})

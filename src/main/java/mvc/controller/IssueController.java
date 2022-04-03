@@ -1,5 +1,7 @@
 package mvc.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.google.gson.Gson;
 
+import mvc.method.SessionMethod;
 import mvc.service.IssueService;
 import mvc.vo.IssueSch;
 import mvc.vo.TASK_ISSUE;
@@ -18,6 +21,10 @@ import mvc.vo.TASK_ISSUE;
 public class IssueController {
 	@Autowired
 	private IssueService service;
+	
+	@Autowired
+	private SessionMethod smethod; // 세션 값 가져오는 메서드
+	
 	
 	@RequestMapping(params="method=list")
 	public String issueList(IssueSch sch, Model d) {
@@ -47,9 +54,10 @@ public class IssueController {
 	
 	
 	@RequestMapping(params="method=insert")
-	public String insertIssue(TASK_ISSUE ins) {
-		ins.setTiWriter("테스트봇1");
-		ins.setPtId("PT00032");
+	public String insertIssue(TASK_ISSUE ins, HttpServletRequest request) {
+		
+		ins.setTiWriter(smethod.getUserSession(request).getUiId());
+		
 		
 		service.insertIssue(ins);
 		

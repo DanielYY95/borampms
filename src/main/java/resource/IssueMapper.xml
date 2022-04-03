@@ -52,8 +52,7 @@
 			#{tiContent},
 			#{tiCharge},
 			#{tiPriority},
-			#{tiDuedate},
-			#{ptId}
+			#{tiDuedate}, ''
 		)
 	</insert>
 	

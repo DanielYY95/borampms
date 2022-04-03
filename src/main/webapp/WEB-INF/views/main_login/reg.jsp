@@ -90,6 +90,11 @@
                     alert("아이디를 입력해주세요.");
                     return;
                 }
+            
+            if(!checkId($("#id").val())){
+             	alert("아이디는 숫자, 영소문자로 최소 4글자에서 최대 20자 가능합니다.");
+             	return;
+             };
                 
                 $.ajax({
                 url : "${path}/regUser.do?method=idchk",
@@ -142,13 +147,13 @@
                                     <div class="mb-3">
                                         <label for="id" class="form-label">아이디</label>
                                         <button style="float:right" class="btn btn-dark" type="button" onclick="idchk()">중복 확인</button>
-                                        <input class="form-control" type="text" id="id" name="uiId" required>
+                                        <input class="form-control" type="text" id="id" name="uiId" placeholder="영소문자로 시작해서 숫자, 영소문자로 4자 ~ 20자" required>
                                     </div>
 
                                     <div class="mb-3">
                                         <label for="password" class="form-label">패스워드</label>
                                         <div class="input-group input-group-merge">
-                                            <input type="password" id="pw" class="form-control" name="uiPw" required>
+                                            <input type="password" id="pw" class="form-control" name="uiPw" required placeholder="숫자, 영문자로 최소 8글자에서 최대 20자">
                                             <div class="input-group-text" data-password="false">
                                                 <span class="password-eye"></span>
                                             </div>
@@ -280,21 +285,12 @@
         <script src="${path}/tools/main_assets/js/app.min.js"></script>
         <script>
 
-            // 아직 미구현 부분: 아이디, 패스워드 판별, 패스워드 확인 작업, 연락처 길이, 이름 확인 작업
-
-
-            // 적절한 아이디와 패스워드 판별
-
-            let reg1 = /^[a-zA-Z0-9]{4,20}$/ // 아이디와 패스워드가 적합한지 검사할 정규식
-            let reg2 = /^[a-zA-Z0-9]{8,20}$/ // 아이디와 패스워드가 적합한지 검사할 정규식
 
             let result = 1; // 이게 0이 되어야 등록될 수 있도록
            
 
             // 패스워드 확인 => 패스워드 확인 작성 후, 패스워드 
             // 패스워드를 지웠을 경우, 초기화 (""가 되면 초기화되도록)
-
-
 
             // 패스워드 확인 작업
             	// 일치하다는 것을 확인후, 내용을 지우면 일치하지않음이 정상적으로 나온다.
@@ -338,6 +334,12 @@
    
             // 폼 제출
             $("#signupBtn").click(function(){
+        
+                 if(!checkPw($("#pw").val())){
+                	 alert("패스워드는 각각 하나 이상의 숫자, 영어로 최소 8글자에서 최대 20자 가능합니다.");
+                 	return;
+                 };
+            	
 
                 // 연락처 숫자 아니면 거르기
                 if(isNaN($("[name=phone2]").val()) || 
@@ -358,8 +360,13 @@
                     alert("비밀번호 확인이 일치하지않습니다.");
                     return false;
                 }
+                
+                // 이메일 형식 확인
+                if(!CheckEmail($("#emailaddress").val())){
+                	alert("이메일 형식이 잘못되었습니다.");
+                	return;
+                };
 
-	            
                 // 연락처 합치기
                 $("[name=uiPhone]").val($("[name=phone1]").val()
                 		+$("[name=phone2]").val()+$("[name=phone3]").val());
@@ -369,7 +376,47 @@
                     $("#regForm").submit();
                
             })
+            
+            function checkId(Id){ 
+            		// 영문자로 시작해서 영어, 숫자로만 4~20글자 // ""를 하면 함수가 아니라고 에러
+            	let regId = /^[A-Za-z]{1}[A-Za-z0-9]{4,20}$/;
+            		  if(!regId.test(Id)) {                            
+    			          return false;         
+    			     }                            	
+    			     else {                       	
+    			          return true;         	
+    			     }          
+     
+            	}
+        
+            function checkPw(Pw){
+            		// 최소 하나이상의 영어, 숫자 8~20글자 필요
+          	   let regPw = /^(?=.*[a-zA-z])(?=.*[0-9]).{8,20}$/;
+          		  if(!regPw.test(Pw)) {                            
+			          return false;         
+			     }                            	
+			     else {                       	
+			          return true;         	
+			     }          
+        		
+            }
+            
 
+            
+                  // 이메일 형식 확인 함수
+            function CheckEmail(email){
+
+			   let regEmail = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+								
+			     if(!regEmail.test(email)) {                            
+			          return false;         
+			     }                            	
+			     else {                       	
+			          return true;         	
+			     }                            
+			
+			}           
+	          
 
 
         </script>

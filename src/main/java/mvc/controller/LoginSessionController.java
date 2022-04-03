@@ -39,6 +39,17 @@ public class LoginSessionController {
 		if(sch!=null) {
 			d.addAttribute("loginMsg","로그인 성공!");
 			
+			// 승인 요청 중인 자는 승인 대기 화면으로
+			if(sch.getUiStatus().equals("2")) {
+				return "main_login//userApprove";
+			}
+			
+			// 퇴사자나 승인 반려자는 알림 화면으로
+			if(sch.getUiStatus().equals("1") || sch.getUiStatus().equals("3")) {
+				return "main_login//userBan";
+			}
+			
+			
 			// 아이디 기억
 			if(saveId) {
 				// 쿠키 생성해서 아이디속성에 저장 => 사용하려면 EL태그 cookie.id.value로 사용하라

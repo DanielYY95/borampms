@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import mvc.dao.ManagerDao;
 import mvc.vo.DeptInfo;
 import mvc.vo.PRJ_INFO;
+import mvc.vo.PRJ_USER;
 import mvc.vo.USER_INFO;
 import mvc.vo.UserInfo;
 
@@ -36,6 +37,23 @@ public class ManagerService {
 		return dao.getDeptList();
 	}
 	
+	public void addDept(DeptInfo dept) {
+		
+		dao.addDept(dept);
+	}
+	
+	public void uptDept(DeptInfo dept) {
+		
+		dao.uptDept(dept);
+	};
+	
+	public DeptInfo getDept(String diId) {
+		
+		return dao.getDept(diId);
+	};
+	
+	
+	
 	public ArrayList<PRJ_INFO> getPrjList(){
 		
 		
@@ -60,5 +78,26 @@ public class ManagerService {
 
 		return dao.searchUser(user);
 	};
+
+	
+	
+	
+	
+	public ArrayList<PRJ_USER> getPrjUserAll(){
+		
+	
+		return dao.getPrjUserAll();
+	};
+	
+	public ArrayList<PRJ_USER> getPrjUserList(PRJ_USER sch){
+		
+		if(sch.getUiDept() != null && sch.getUiDept().equals("전체")) {
+			
+				sch.setUiDept("");
+		}
+		
+		return dao.getPrjUserList(sch);
+	};
+	
 	
 }

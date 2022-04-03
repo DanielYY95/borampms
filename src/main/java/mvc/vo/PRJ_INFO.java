@@ -1,17 +1,26 @@
 package mvc.vo;
 
-import java.util.Date;
-
 public class PRJ_INFO {
 
 	private String piId;
 	private String piWriter;
 	private String piTitle;
-	private Date piRegdate;
+	private String piRegdate;
 	private String piStartdate;
 	private String piDuedate;
 	private String piStatus;
 	
+	// DB에 없으나 작성자명을 나타내기위함
+	private String uiName;
+	
+	
+	
+	public String getUiName() {
+		return uiName;
+	}
+	public void setUiName(String uiName) {
+		this.uiName = uiName;
+	}
 	public PRJ_INFO() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -36,15 +45,16 @@ public class PRJ_INFO {
 	public void setPiWriter(String piWriter) {
 		this.piWriter = piWriter;
 	}
-	public Date getPiRegdate() {
+	
+	
+	
+	
+	public String getPiRegdate() {
 		return piRegdate;
 	}
-	public void setPiRegdate(Date piRegdate) {
+	public void setPiRegdate(String piRegdate) {
 		this.piRegdate = piRegdate;
 	}
-	
-	
-	
 	public String getPiStartdate() {
 		return piStartdate;
 	}

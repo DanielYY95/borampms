@@ -103,7 +103,7 @@
                                                                 </a>
                                                             </li>
                                                             <li class="nav-item">
-                                                                <a href="#input-types-code" aria-expanded="true"
+                                                                <a href="${path}/taskWbs.do" aria-expanded="true"
                                                                     class="nav-link">
                                                                     WBS
                                                                 </a>
@@ -114,8 +114,8 @@
                                                                     산출물
                                                                 </a>
                                                             </li>
-                                                            <li class="nav-item">
-                                                                <a href="" aria-expanded="true" class="nav-link">
+                                                             <li class="nav-item">
+                                                                <a href="${path}/taskIssue.do?" aria-expanded="true" class="nav-link">
                                                                     이슈
                                                                 </a>
                                                             </li>

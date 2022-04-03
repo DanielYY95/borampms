@@ -6,6 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import mvc.service.ManagerService;
+import mvc.vo.DeptInfo;
+import mvc.vo.PRJ_USER;
 import mvc.vo.USER_INFO;
 
 @Controller
@@ -20,7 +22,7 @@ public class managerController {
 		
 		d.addAttribute("userList", service.getUserList());
 		
-		return "manager/managerMain";
+		return "manager/managerUser";
 	}
 	
 	@RequestMapping(params="method=userDetail")
@@ -69,6 +71,34 @@ public class managerController {
 		
 		return "manager/managerDept";
 	}
+	
+	@RequestMapping(params="method=deptInsert")
+	public String deptInsert(DeptInfo dept, Model d) {
+		
+		service.addDept(dept);
+		
+		return "manager/managerDept";
+	}
+	
+	@RequestMapping(params="method=deptDetail")
+	public String deptDetail(String diId, Model d) {
+		
+		d.addAttribute("deptDetail", service.getDept(diId));
+		
+		return "pageJsonReport";
+	}
+	
+	@RequestMapping(params="method=deptUpdate")
+	public String deptUpdate(DeptInfo dept, Model d) {
+		
+		service.uptDept(dept);
+	
+		return "forward:/manager.do?method=dept";
+	}
+	
+	
+	
+	
 
 	@RequestMapping(params="method=prj")
 	public String managerprj(Model d) {
@@ -77,7 +107,24 @@ public class managerController {
 		
 		return "manager/managerPrj";
 	}
-
+	
+	@RequestMapping(params="method=prjUser")
+	public String managePrjUser(Model d) {
+		
+		d.addAttribute("prjUserList", service.getPrjUserAll());
+		
+		return "manager/managerPrjUser";
+	}
+	
+	@RequestMapping(params="method=prjUserSearch")
+	public String prjUserSearch(PRJ_USER sch, Model d) {
+		
+		
+		d.addAttribute("prjUserList", service.getPrjUserList(sch));
+		
+		return "pageJsonReport";
+	}
+	
 
 }
 

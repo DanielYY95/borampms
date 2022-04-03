@@ -121,6 +121,9 @@
 		
 		gantt.init("gantt_here");
 		getData();
+		
+		
+		
 		gantt.attachEvent("onAfterTaskDrag", function(id, mode, e){
 			let task = gantt.getTask(id);
 			saveData(false, task)

@@ -95,6 +95,12 @@
                             <span> 문서관리 </span>
                         </a>
                     </li>
+                     <li class="side-nav-item">
+                        <a href="" class="side-nav-link">
+                            <i class="uil-folder-plus"></i>
+                            <span> 결재관리 </span>
+                        </a>
+                    </li>
                     <li class="side-nav-item">
                         <a href="${path}/issue.do?method=list" class="side-nav-link">
                             <i class="uil-folder-plus"></i>

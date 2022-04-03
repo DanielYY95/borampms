@@ -137,7 +137,7 @@
                     </div>
                     <div class="col-md-5 offset-md-2">
                         <div class="text-md-end mt-3 mt-md-0">
-                            <img src="assets/images/startup.svg" alt="" class="img-fluid" />
+                            <img src="${path}/tools/main_assets/images/startup.svg" alt="" class="img-fluid" />
                         </div>
                     </div>
                 </div>
@@ -317,7 +317,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6">
-                        <img src="assets/images/logo.png" alt="" class="logo-dark" height="18" />
+                        <img src="${path}/tools/main_assets/images/logo.png" alt="" class="logo-dark" height="18" />
                         <p class="text-muted mt-4">Hyper makes it easier to build better websites with
                             <br> great speed. Save hundreds of hours of design
                             <br> and development by using it.</p>

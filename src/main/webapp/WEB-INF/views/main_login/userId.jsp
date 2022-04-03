@@ -54,51 +54,40 @@
 
                             <div class="card-body p-4">
 
-                                <div class="text-center w-75 m-auto">
-                                    <h4 class="text-dark-50 text-center mt-0 fw-bold">로그인</h4>
+                                <div class="text-center w-75 m-auto mb-3">
+                                    <h4 class="text-dark-50 text-center mt-0 fw-bold">아이디 찾기</h4>
         
                                 </div>
 
-                                <form method="post" action="${path}/login.do?method=session">
-									<input name="toURL" value="${toURL}" hidden />
+                           
+                                   <form method="post" action="${path}/getUserId.do">
+									
                                     <div class="mb-3">
-                                        <a href="${path}/findId.do" class="text-muted float-end"><small>아이디 찾기</small></a>
-                                        <label for="id" class="form-label">아이디</label>
-                                        <input class="form-control" type="text" id="id" value="${cookie.id.value}" required="" name="uiId" placeholder="아이디를 입력하세요">
+                                      
+                                        <label for="name" class="form-label">이름</label>
+                                        <input class="form-control" type="text" id="name" required="" name="uiName" placeholder="이름을 입력하세요">
                                     </div>
 
                                     <div class="mb-3">
-                                        <a href="${path}/findPw.do" class="text-muted float-end"><small>비밀번호 찾기</small></a>
-                                        <label for="password" class="form-label">비밀번호</label>
+                                      
+                                        <label for="password" class="form-label">이메일</label>
                                         <div class="input-group input-group-merge">
-                                            <input type="password" id="password" class="form-control" name="uiPw" placeholder="비밀번호를 입력하세요">
-                                            <div class="input-group-text" data-password="false">
-                                                <span class="password-eye"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="mb-3 mb-3">
-                                        <div class="form-check">
-                                            <input type="checkbox" name="saveId" class="form-check-input" id="checkbox-signin" checked>
-                                            <label class="form-check-label" for="checkbox-signin">아이디 기억하기</label>
+                                            <input type="email" id="email" class="form-control" name="uiEmail" placeholder="이메일을 입력하세요">
+                                          
                                         </div>
                                     </div>
 
                                     <div class="mb-3 mb-0 text-center">
-                                        <button class="btn btn-primary" type="submit" onclick="return loginchk()">로그인 </button>
+                                        <button class="btn btn-primary" type="button" onclick="findId()">아이디 조회</button>
                                     </div>
 
                                 </form>
+
                             </div> <!-- end card-body -->
                         </div>
                         <!-- end card -->
 
-                        <div class="row mt-3">
-                            <div class="col-12 text-center">
-	                            <p class="text-muted">새 계정이 필요하십니까? <a href="${path}/regUser.do" class="text-muted ms-1"><b>회원가입</b></a></p>
-                            </div> <!-- end col -->
-                        </div>
+                 
 
                         <!-- end row -->
 
@@ -119,34 +108,25 @@
         <script src="${path}/tools/main_assets/js/app.min.js"></script>
 		
 		<script>
-		
-		   function loginchk(){
-				if($("[name=uiId]").val().trim()==""){
-					alert("아이디를 입력해주세요.");
-					// 값이 들어가있지 않으면 false로 리턴 
-					$("[name=uiId]").focus();
-					return false;
-				}else if ($("[name=uiPw]").val().trim()==""){
-					alert("비밀번호를 입력해주세요.");
-					$("[name=uiPw]").focus();
-					return false;
-				}else{
-					return true;
-					// 유효성 검증 후 값이 전부 들어가 있으면 main으로 이동 
-				}
-			}   
-		
-		$(document).ready(function(){
-			var loginMsg="${loginMsg}";
-			if(loginMsg!=""){
-				alert(loginMsg);
-				if(loginMsg=="로그인 성공!"){ // 로그인 성공을 보여주고나서 이동
-					location.href="${path}/prjList.do"; // 원래라면 요청이 들어온 곳으로 보내고 싶은데, mapping url은...
-				}
-			}
 			
-		});
-		
+			function findId(){
+	
+                $.ajax({
+                url : "${path}/getUserId.do",
+                type : "get",
+                dataType : "json",
+                data : $("form").serialize(),
+                success : function(data){
+                	userId = data.userId;
+                    if(userId != null){
+                        alert("귀하의 아이디는 "+userId+"입니다.");
+              
+                    }else{
+                        alert("정보가 올바르지 않습니다.");
+                    }
+                }
+			})
+			}
 		
 		</script>
 		
