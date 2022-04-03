@@ -31448,7 +31448,7 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
                 return '"+to_fixed(date.get' + (e ? "UTC" : "") + 'Date())+"';
               case "%m":
                 return ( //month()+1 // 여기서 +1 되어있는 걸 빼야한다.  // 보여지는 것만을 뺀다..
-                  '"+to_fixed((date.get' + (e ? "UTC" : "") + 'Month()))+"'
+                  '"+to_fixed((date.get' + (e ? "UTC" : "") + 'Month()+1))+"'
                 );
               case "%j":
                 return '"+date.get' + (e ? "UTC" : "") + 'Date()+"';

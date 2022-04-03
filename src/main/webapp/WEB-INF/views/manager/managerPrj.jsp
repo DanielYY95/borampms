@@ -120,17 +120,18 @@
                                             </ul> <!-- end nav-->
                                         </div>	
 
-										<form class=""  method="post">
+										<form id="searchForm" action="${path}/manager.do?method=prjSearch"  method="post">
 											<div class="row d-flex justify-content-between">
 											  <div class="d-flex col-3">
 												  <div class="">
-													<select class="form-select" id="search-select">
-														<option selected>프로젝트명</option>
-														<option>프로젝트 등록자</option>
+													<select class="form-select" id="type">
+														<option value="title" selected>프로젝트명</option>
+														<option value="writer" >프로젝트 등록자</option>
+														<option value="status" >프로젝트 상태</option>
 													</select>
 												  </div>
 												  <div class="">
-													<input type="search" class="form-control" id="search-word" placeholder="검색">
+													<input type="search" name="piTitle" class="form-control" id="typeInput" placeholder="검색">
 												  </div>
 											  
 											  </div>
@@ -140,16 +141,21 @@
 													<label for="startdate-form" class="col-form-label">시작일</label>
 												  </div>
 												  <div>
-													<input class="form-control" type="date" />
+													<input class="form-control" type="date" name="piStartdate" />
 												  </div>
 												  <div>
 													<label for="enddate-form" class="col-form-label">마감일</label>
 												  </div>
 												  <div >
-													<input class="form-control" type="date" />
+													<input class="form-control" type="date" name="piDuedate" />
 												  </div>
 
 											  </div>
+											  
+											  	<div>
+													<button class="btn btn-primary" id="searchBtn"  type="button">조회</button>
+												</div>
+												
 										  </div>
 									  </form>
 
@@ -175,7 +181,7 @@
 
                                                     </tr>
                                                 </thead>
-                                                <tbody>
+                                                <tbody id="listBox">
                                                     <c:forEach var="prj" items="${prjList}">
 	                                                    <tr>
 	                                                        <td>
@@ -185,7 +191,7 @@
 	                                                            </div>
 	                                                        </td>
 	                                                        <td><a href="apps-ecommerce-orders-details.html" class="text-body fw-bold">${prj.piId}</a> </td>
-	                                                        <td>${prj.piWriter}</td>
+	                                                        <td>${prj.piWriter} (${prj.uiName})</td>
 	                                                        <td>${prj.piTitle}</td>
 	                                                        <td>${prj.piRegdate}</td> <!-- sysdate의 경우, to_char로 가져오고 String 프로퍼티면 된다 -->
 	                                                        <td>
@@ -196,7 +202,11 @@
 	                                                        </td>
 	                                                        <td><h5 class="my-0"><span class="badge badge-info-lighten">${prj.piStatus}</span></h5></td>
 	                                                        <td>
-	                                                            <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
+	                                                            <a href="javascript:void(0);" onclick="goPrjDetail('${prj.piId}')" class="action-icon"
+	                                                            data-bs-toggle="modal" data-bs-target="#signup-modal"> 
+	                                                            <i class="mdi mdi-square-edit-outline"></i></a>
+	                                                            
+	                                                            
 	                         
 	                                                        </td>
 	                                                    </tr>
@@ -214,6 +224,91 @@
 			
 		</div>
 		
+		<!-- 등록 modal -->
+				<div class="tab-content">
+					<div class="tab-pane show active" id="modal-pages-preview">
+						<!-- Signup modal content -->
+						<div id="signup-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+
+									<div class="modal-header">
+										<h4>프로젝트정보 수정</h4>
+										<button type="button" class="btn-close" data-bs-dismiss="modal"
+											aria-label="Close"></button>
+									</div>
+
+									<div class="modal-body">
+										<form id="uptForm" class="ps-3 pe-3" action="${path}/manager.do?method=prjUpdate"
+											method="post">
+										
+										<div class="row g-2">
+												<div class="col mb-3">
+													<label for="id" class="form-label">프로젝트 고유번호</label>
+													<input id="prjId" name="piId" class="form-control" required="" readonly> 
+												</div>
+												
+												<div class="col mb-3">
+													<label for="writer" class="form-label">프로젝트 등록자</label>
+													<input id="prjWriter" name="piWriter" class="form-control" required="" readonly> 
+												</div>
+												
+																			
+										
+											</div>
+											<!-- Autoclose -->
+											<div class="row g-2">
+												
+													<div class="col mb-3">
+													<label for="prjTitle" class="form-label">프로젝트명</label>
+													<input class="form-control" type="text" id="prjTitle" name="piTitle"
+														 required>
+
+												</div>
+			
+												<div class="col mb-3">
+													<label for="prjStatus" class="form-label">프로젝트상태</label>
+													<select class="form-select" id="prjStatus" name="piStatus">
+														<option value="진행 전">진행 전</option>
+														<option value="진행 중">진행 중</option>
+														<option value="보류">보류</option>
+														<option value="완료">완료</option>
+													</select>
+				
+												</div>
+											</div>
+											
+											  
+                                              <div class="row g-2">
+				                                <div class="col mb-3">
+				                                 <label class="form-label">시작일</label>
+				                                 <input class="form-control" required=""  type="date" id="prjStartdate" name="piStartdate">
+				                             </div>
+				                             <div class="col mb-3">
+				                                 <label class="form-label">마감일</label>
+				                                 <input class="form-control" required=""  type="date" id="prjDuedate" name="piDuedate">
+				                             </div>
+				                            </div>
+	                             
+
+
+											<hr>
+											<div class="mb-3 text-center"
+												style="display: flex; justify-content: space-between;">
+												<button class="btn btn-secondary" class="btn-close"
+													data-bs-dismiss="modal" aria-label="Close" type="button">취소</button>
+												<button class="btn btn-primary" type="submit" id="uptBtn">수정</button>
+											</div>
+										</form>
+									</div>
+								</div><!-- /.modal-content -->
+							</div><!-- /.modal-dialog -->
+						</div><!-- /.modal -->
+					</div> <!-- /.tab-panel -->
+				</div> <!-- /.tab-content -->
+		
+		
+		
 		<!-- ============================================================== -->
 		<!-- End Page content -->
 		
@@ -223,19 +318,97 @@
 	</div>
 	</div>
 	<!-- wrapper -->
-
-
-
-		
-
-
-
-			
-			
+	
+	
+	
+	
 
 
 <script>
 
+	// 에러: 아무런 문제가 없는 상황에서 Uncaught-TypeError-is-not-a-function => 태그 id, name이 자바스크립트 함수 이름과 같으면 발생한다.
+
+	function goPrjDetail(piId){
+		
+			$.ajax({
+				url: "${path}/manager.do?method=prjDetail",
+				type: "get",
+				dataType: "json",
+				data: "piId="+piId,
+				success: function (data) {
+					prjDetail = data.prjDetail;	
+					$("#prjId").val(prjDetail.piId);
+					$("#prjTitle").val(prjDetail.piTitle);
+					$("#prjWriter").val(prjDetail.piWriter);
+					$("#prjStartdate").val(prjDetail.piStartdate);
+					$("#prjDuedate").val(prjDetail.piDuedate);
+					$("#prjStatus").val(prjDetail.piStatus);
+					
+				
+				}
+			})
+		
+		}
+	
+	$("#searchBtn").on("click", function(){
+		searchPrj();		
+	})
+
+	$("#typeInput").on("keypress",function(e){
+		if(e.keyCode==13){
+			e.preventDefault();
+			searchPrj();
+		}
+
+	});
+
+	function searchPrj(){
+
+		if($("#type").val()!="title"){
+			type= ($("#type").val()=="writer")? "piWriter": "piStatus";
+			$("#typeInput").attr("name",type);
+		}else{
+			$("#typeInput").attr("name","piTitle");
+		}
+		
+		$.ajax({
+
+			url:"${path}/manager.do?method=prjSearch",
+			type:"get",
+			data: $("#searchForm").serialize(),
+			dataType:"json",
+			success:function(data) {
+				
+				$("#listBox").html("");
+				let html = "";
+				$.each(data.prjList, function(idx, sch) {
+					
+					html += '<tr><td><div class="form-check"><input type="checkbox" class="form-check-input"'+
+							'id="customCheck2"><label class="form-check-label"for="customCheck2">&nbsp;</label></div></td>'+
+							'<td><a href="apps-ecommerce-orders-details.html" class="text-body fw-bold">'+
+								sch.piId+'</a></td><td>'+sch.piWriter+' ('+sch.uiName+')</td><td>'+sch.piTitle+
+								'</td><td><p class="mb-0 txt-muted">'+sch.piRegdate+'</p></td><td>'+
+								sch.piStartdate+'</td><td>'+sch.piDuedate+
+								'</td><td><h5 class="my-0"><span class="badge badge-info-lighten">'+
+								sch.piStatus+'</span></h5></td><td><a href="javascript:void(0);" class="action-icon"'+
+								'onclick="goPrjDetail('+"'"+sch.piId+"'"+')" data-bs-toggle="modal" data-bs-target="#signup-modal">'+
+								' <i class="mdi mdi-square-edit-outline"></i></a></td></tr>'
+		
+				});	
+		
+				$("#listBox").append(html);
+		
+			
+			},
+			error:function(err) {
+				console.log(err);
+			}
+	
+		})
+	}
+	
+	
+	
 	
 </script>
 

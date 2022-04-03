@@ -31,6 +31,9 @@
 		<typeAlias alias="alarm" type="mvc.vo.Alarm"/>
 		<typeAlias alias="dashUser" type="mvc.vo.PRJ_TASK"/>
 		<typeAlias alias="prjUser" type="mvc.vo.PRJ_USER"/>
+		<typeAlias alias="appdDoc" type="mvc.vo.APPD_DOC"/>
+		<typeAlias alias="appdDocSch" type="mvc.vo.APPD_DOC_SCH"/>
+
 		
 		
 	</typeAliases>
@@ -47,6 +50,8 @@
 		<mapper resource="resource/SchCalendarMapper.xml"/>
 		<mapper resource="resource/EtcMapper.xml"/>
 		<mapper resource="resource/DashMapper.xml"/>
+		<mapper resource="resource/AppdDocMapper.xml"/>
+		<mapper resource="resource/AppdDocDetailMapper.xml"/>
 	</mappers>
 	
 </configuration>

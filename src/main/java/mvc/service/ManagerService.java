@@ -31,6 +31,29 @@ public class ManagerService {
 		return dao.getUser(uiId);
 	};
 	
+	public void uptCustomer(USER_INFO user) {
+		
+		
+		dao.uptCustomer(user);
+	};
+	
+	public void delCustomer(String uiId) {
+		
+		dao.delCustomer(uiId);
+	};
+	
+	public ArrayList<USER_INFO> searchUser(USER_INFO user){
+		
+		if(user.getUiDept().equals("전체")) user.setUiDept("");
+		if(user.getUiRank().equals("전체")) user.setUiRank("");
+
+		return dao.searchUser(user);
+	};
+	
+	
+	
+	
+	
 	public ArrayList<DeptInfo> getDeptList(){
 		
 		
@@ -54,49 +77,64 @@ public class ManagerService {
 	
 	
 	
+	
+	
 	public ArrayList<PRJ_INFO> getPrjList(){
 		
 		
 		return dao.getPrjList();
 	};
 	
-	public void uptCustomer(USER_INFO user) {
+	public void uptPrj(PRJ_INFO prj) {
 		
-		
-		dao.uptCustomer(user);
+		dao.uptPrj(prj);
 	};
 	
-	public void delCustomer(String uiId) {
+	public PRJ_INFO getPrj(String piId) {
 		
-		dao.delCustomer(uiId);
+		
+		return dao.getPrj(piId);
 	};
 	
-	public ArrayList<USER_INFO> searchUser(USER_INFO user){
+	public ArrayList<PRJ_INFO> searchPrj(PRJ_INFO prj){
 		
-		if(user.getUiDept().equals("전체")) user.setUiDept("");
-		if(user.getUiRank().equals("전체")) user.setUiRank("");
+		return dao.searchPrj(prj);
+	};
+	
+	
+	
 
-		return dao.searchUser(user);
-	};
+
+
+
 
 	
-	
-	
-	
-	public ArrayList<PRJ_USER> getPrjUserAll(){
+	public ArrayList<PRJ_USER> getPrjUserList(){
 		
 	
-		return dao.getPrjUserAll();
+		return dao.getPrjUserList();
 	};
 	
-	public ArrayList<PRJ_USER> getPrjUserList(PRJ_USER sch){
+	public void uptPrjUser(PRJ_USER sch) {
+		
+		dao.uptPrjUser(sch);
+	};
+	
+	public PRJ_USER getPrjUser(String puId) {
+		
+		return dao.getPrjUser(puId);
+	};
+	
+	public ArrayList<PRJ_USER> searchPrjUser(PRJ_USER sch){
 		
 		if(sch.getUiDept() != null && sch.getUiDept().equals("전체")) {
 			
 				sch.setUiDept("");
 		}
 		
-		return dao.getPrjUserList(sch);
+
+		
+		return dao.searchPrjUser(sch);
 	};
 	
 	

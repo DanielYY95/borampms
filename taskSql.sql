@@ -4,6 +4,8 @@
 
 -- 고유번호들 varchar2(20) 이나 유저 아이디만 30
 
+-- 수정과 삭제를 위해서는 고유번호가 반드시 필요하다...
+
 SELECT * FROM calendar;
 
 SELECT * FROM TASK_ISSUE ti;
@@ -22,6 +24,8 @@ SELECT * FROM DEPT_INFO di;
 
 
 
+SELECT * FROM PRJ_USER;
+
 
 SELECT UI_ID FROM USER_INFO ui
 WHERE UI_NAME = #{uiName}
@@ -36,12 +40,14 @@ ORDER BY DI_ID
 ;
 
 
-
 ALTER TABLE DEPT_INFO 
 
 SELECT * FROM PRJ_USER pu;
 
 SELECT * FROM PRJ_INFO pi2;
+
+
+
 
 SELECT p.*, ui.UI_NAME FROM PRJ_INFO p, USER_INFO ui 
 WHERE NOT PI_ID IN 

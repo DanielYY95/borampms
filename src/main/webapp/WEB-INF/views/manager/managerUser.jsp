@@ -132,9 +132,11 @@
 																<option value="phone">연락처</option>
 															</select>
 														</div>
-														<div class=""> <!--왜 한글말고 다른건 입력이 안되는겨....-->
-															<input type="text" id="typeInput" name="uiName" class="form-control" placeholder="검색">
-														</div>
+														<!--왜 한글말고 다른건 입력이 안되는겨....-->
+													
+												  <div class="">
+													<input type="search" name="uiName" class="form-control" id="typeInput" placeholder="검색">
+												  </div>
 
 													</div>
 													<div class="d-flex justify-content-between col-3">
@@ -250,6 +252,9 @@
 																		onclick="deleteUser('${user.uiName}','${user.uiId}')">
 																		<i class="mdi mdi-delete"></i></a>
 																</td>
+																
+																
+																
 															</tr>
 														</c:forEach>
 
@@ -466,6 +471,9 @@
 							}
 						});
 					}
+					    
+					    
+					    
 
 		
 					
@@ -483,7 +491,7 @@
 					})
 
 					$("#typeInput").on("keypress",function(e){
-						if(e.keyCode=13){
+						if(e.keyCode==13){
 							e.preventDefault();
 							searchUser();
 						}

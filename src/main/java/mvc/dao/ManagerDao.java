@@ -14,6 +14,13 @@ public interface ManagerDao {
 	
 	public USER_INFO getUser(String uiId);
 	
+	public void uptCustomer(USER_INFO user);
+	
+	public void delCustomer(String uiId);
+
+	public ArrayList<USER_INFO> searchUser(USER_INFO user);
+	
+	
 	public ArrayList<DeptInfo> getDeptList();
 	
 	public void addDept(DeptInfo dept);
@@ -22,17 +29,27 @@ public interface ManagerDao {
 	
 	public DeptInfo getDept(String diId);
 	
+	
+	
 	public ArrayList<PRJ_INFO> getPrjList();
 	
-	public void uptCustomer(USER_INFO user);
+	public void uptPrj(PRJ_INFO prj);
 	
-	public void delCustomer(String uiId);
-
-	public ArrayList<USER_INFO> searchUser(USER_INFO user);
+	public PRJ_INFO getPrj(String piId);
+	
+	public ArrayList<PRJ_INFO> searchPrj(PRJ_INFO prj);
 	
 	
-	public ArrayList<PRJ_USER> getPrjUserAll();
 	
-	public ArrayList<PRJ_USER> getPrjUserList(PRJ_USER sch);
+	
+	
+	
+	public ArrayList<PRJ_USER> getPrjUserList();
+	
+	public void uptPrjUser(PRJ_USER sch);
+	
+	public PRJ_USER getPrjUser(String puId);
+	
+	public ArrayList<PRJ_USER> searchPrjUser(PRJ_USER sch);
 	
 }

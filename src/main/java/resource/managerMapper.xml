@@ -96,28 +96,94 @@
 	
 	
 	
+	
+	
 	<select id="getPrjList" resultType="prj">
 		select PI_ID, PI_WRITER, PI_TITLE, 
 			TO_CHAR(PI_REGDATE, 'YYYY-MM-DD') as PI_REGDATE, PI_STARTDATE, 
-			PI_DUEDATE, PI_STATUS from prj_info
+			PI_DUEDATE, PI_STATUS, UI_NAME 
+		from prj_info pi, user_info ui
+		where pi.PI_WRITER = ui.UI_ID
+		order by PI_ID
+	</select>
+	
+	<update id="uptPrj" parameterType="prj">
+		update prj_info
+			set PI_WRITER = #{piWriter}
+			, PI_TITLE = #{piTitle}
+			, PI_STARTDATE = #{piStartdate}
+			, PI_DUEDATE = #{piDuedate}
+			, PI_STATUS = #{piStatus}
+			where PI_ID = #{piId}
+	</update>
+	
+	<select id="getPrj" parameterType="string" resultType="prj">
+		select * from PRJ_INFO 
+		where PI_ID = #{piId}
 	
 	</select>
 	
+	<select id="searchPrj" parameterType="prj" resultType="prj">
+		select PI_ID, PI_WRITER, PI_TITLE, 
+			TO_CHAR(PI_REGDATE, 'YYYY-MM-DD') as PI_REGDATE, PI_STARTDATE, 
+			PI_DUEDATE, PI_STATUS, UI_NAME  
+		from prj_info pi, user_info ui
+		where pi.PI_WRITER = ui.UI_ID
+			and
+		<if test="piTitle != null">
+			PI_TITLE like '%'||#{piTitle}||'%'
+		</if>
+		<if test="piWriter != null">
+			PI_WRITER like '%'||#{piWriter}||'%'
+		</if>
+		<if test="piStatus != null">
+			PI_STATUS like '%'||#{piStatus}||'%'
+		</if>
+		<choose>
+			<when test="piStartdate != null and piStartdate != '' and  piDuedate != null and piDuedate != ''">
+			and pi_startdate between #{piStartdate} and #{piDuedate}
+			and pi_duedate between #{piStartdate} and #{piDuedate}
+			</when>
+			<when test="piStartdate != null and piStartdate != ''">
+			and pi_startdate >= #{piStartdate}
+			</when>
+			<when test="piDuedate != null and piDuedate != ''">
+			and pi_duedate <![CDATA[<]]>= #{piDuedate}
+			</when>
+		</choose>
+		
+	</select>
+	
+
 	
 	
-	
-	
-	<select id="getPrjUserAll" resultType="prjUser" > <!-- 매개변수가 다르더라도 이름이 같으면 안되는듯.. -->
-		SELECT ui.UI_NAME, ui.UI_DEPT,ui.UI_RANK, pi2.PI_TITLE, pu.PU_STATUS 
+	<select id="getPrjUserList" resultType="prjUser" > <!-- 매개변수가 다르더라도 이름이 같으면 안되는듯.. -->
+		SELECT pu.PU_ID, ui.UI_NAME, ui.UI_DEPT,ui.UI_RANK, pi2.PI_TITLE, pu.PU_STATUS 
 		FROM USER_INFO ui,PRJ_USER pu, PRJ_INFO pi2
 		WHERE pu.UI_ID = ui.UI_ID
 		AND pu.PI_ID = pi2.PI_ID
 		order by pi2.PI_TITLE
 	</select>
 	
+		
+	<update id="uptPrjUser" parameterType="prjUser">
+		update prj_user
+			set PU_STATUS = #{puStatus}
+			where PU_ID = #{puId}
+	</update>
 	
-	<select id="getPrjUserList" parameterType="prjUser" resultType="prjUser" >
-		SELECT ui.UI_NAME, ui.UI_DEPT,ui.UI_RANK, pi2.PI_TITLE, pu.PU_STATUS 
+	<select id="getPrjUser" parameterType="string" resultType="prjUser">
+		SELECT pu.PU_ID, ui.UI_NAME, ui.UI_DEPT,ui.UI_RANK, pi2.PI_TITLE, pu.PU_STATUS 
+		FROM USER_INFO ui,PRJ_USER pu, PRJ_INFO pi2
+		WHERE pu.PU_ID = #{puId}
+		and pu.UI_ID = ui.UI_ID
+		AND pu.PI_ID = pi2.PI_ID
+	
+	</select>
+	
+	
+	<select id="searchPrjUser" parameterType="prjUser" resultType="prjUser" >
+		SELECT pu.PU_ID, ui.UI_NAME, ui.UI_DEPT,ui.UI_RANK, pi2.PI_TITLE, pu.PU_STATUS 
 		FROM USER_INFO ui,PRJ_USER pu, PRJ_INFO pi2
 		WHERE pu.UI_ID = ui.UI_ID
 		AND pu.PI_ID = pi2.PI_ID

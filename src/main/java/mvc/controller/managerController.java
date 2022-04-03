@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import mvc.service.ManagerService;
 import mvc.vo.DeptInfo;
+import mvc.vo.PRJ_INFO;
 import mvc.vo.PRJ_USER;
 import mvc.vo.USER_INFO;
 
@@ -64,6 +65,7 @@ public class managerController {
 	}
 	
 	
+	
 	@RequestMapping(params="method=dept")
 	public String managerdept(Model d) {
 		
@@ -108,22 +110,76 @@ public class managerController {
 		return "manager/managerPrj";
 	}
 	
+	
+	@RequestMapping(params="method=prjDetail")
+	public String prjDetail(String piId, Model d) {
+		
+		d.addAttribute("prjDetail", service.getPrj(piId));
+		
+		return "pageJsonReport";
+	}
+	
+	@RequestMapping(params="method=prjUpdate")
+	public String prjUpdate(PRJ_INFO prj, Model d) {
+		
+		service.uptPrj(prj);
+	
+		return "forward:/manager.do?method=prj";
+	}
+	
+	@RequestMapping(params="method=prjSearch")
+	public String prjSearch(PRJ_INFO prj, Model d) {
+			
+		d.addAttribute("prjList", service.searchPrj(prj));
+		
+		
+		return "pageJsonReport";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	@RequestMapping(params="method=prjUser")
 	public String managePrjUser(Model d) {
 		
-		d.addAttribute("prjUserList", service.getPrjUserAll());
+		d.addAttribute("prjUserList", service.getPrjUserList());
 		
 		return "manager/managerPrjUser";
 	}
+	
+
+	@RequestMapping(params="method=prjUserDetail")
+	public String prjUserDetail(String puId, Model d) {
+		
+		d.addAttribute("prjUserDetail", service.getPrjUser(puId));
+		
+		return "pageJsonReport";
+	}
+	
+	@RequestMapping(params="method=prjUserUpdate")
+	public String prjUserUpdate(PRJ_USER sch, Model d) {
+		
+		service.uptPrjUser(sch);
+	
+		return "forward:/manager.do?method=prjUser";
+	}
+	
 	
 	@RequestMapping(params="method=prjUserSearch")
 	public String prjUserSearch(PRJ_USER sch, Model d) {
 		
 		
-		d.addAttribute("prjUserList", service.getPrjUserList(sch));
+		d.addAttribute("prjUserList", service.searchPrjUser(sch));
 		
 		return "pageJsonReport";
 	}
+	
+	
+	
 	
 
 }

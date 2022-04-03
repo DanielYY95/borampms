@@ -184,7 +184,7 @@
 			
 		</div>
 		
-		<!-- 업무 등록 modal -->
+		<!-- modal -->
 				<div class="tab-content">
 					<div class="tab-pane show active" id="modal-pages-preview">
 						<!-- Signup modal content -->

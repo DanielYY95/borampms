@@ -122,20 +122,31 @@
 											</div>
 											
 										
-											<form id="searchForm" method="post" action="${path}/manager.do?method=userSearch">
+											<form id="searchForm" method="post" action="${path}/manager.do?method=prjUserSearch">
 												<div class="row d-flex justify-content-between">
 													<div class="d-flex col-3">
 														<div class="">
-															<select class="form-select " id="type">
-																<option selected value="name">이름</option>
+															<label>이름</label>
 
-															</select>
 														</div>
 														<div class=""> <!--왜 한글말고 다른건 입력이 안되는겨....-->
 															<input type="text" id="typeInput" name="uiName" class="form-control" placeholder="검색">
 														</div>
 
 													</div>
+													
+													<div class="d-flex col-3">
+														<div class="">
+															<label>프로젝트명</label>
+
+														</div>
+														<div class=""> <!--왜 한글말고 다른건 입력이 안되는겨....-->
+															<input type="text" id="typeInput" name="piTitle" class="form-control" placeholder="검색">
+														</div>
+
+													</div>
+													
+													
 													<div class="d-flex justify-content-between col-3">
 
 														<div>
@@ -154,13 +165,13 @@
 														</div>
 									
 														<div>
-															<label class="pt-1 ">진행상태</label>
+															<label class="pt-1 ">참여상태</label>
 														</div>
 														<div>
-															<select class="form-select" name="uiStatus">
+															<select class="form-select" name="puStatus">
 																<option value="" selected>전체</option>
-																<option value="0">재직</option>
-																<option value="1">퇴사</option>
+																<option value="0">참여</option>
+																<option value="1">탈퇴</option>
 																<option value="2">승인대기</option>
 																<option value="3">반려</option>
 
@@ -193,7 +204,7 @@
 															<th>참여 프로젝트</th>
 															<th>참여상태</th>
 															<th>수정</th>
-														</tr>
+														</tr> 
 													</thead>
 													<tbody id="listBox">
 														<c:forEach var="prjUser" items="${prjUserList}">
@@ -206,8 +217,7 @@
 																			for="customCheck2">&nbsp;</label>
 																	</div>
 																</td>
-																<td><a href="apps-ecommerce-orders-details.html"
-																		class="text-body fw-bold">${prjUser.uiName}</a> </td>
+																<td><h5 class="text-body fw-bold">${prjUser.uiName}</h5> </td>
 																
 																<td>${prjUser.uiDept}</td> 
 																<td>
@@ -225,7 +235,7 @@
 																</td>
 																<td>
 																	<a href="javascript:void(0);" class="action-icon"
-																		onclick="editPrjUserDetail()"
+																		onclick="goPrjUserDetail('${prjUser.puId}')"
 																		data-bs-toggle="modal"
 																		data-bs-target="#signup-modal"> <i
 																			class="mdi mdi-square-edit-outline"></i></a>
@@ -269,46 +279,62 @@
 										<button type="button" class="btn-close" data-bs-dismiss="modal"
 											aria-label="Close"></button>
 									</div>
+									
+						
+							
+					
+						
 
 									<div class="modal-body">
-										<form id="uptForm" class="ps-3 pe-3" action="${path}/manager.do?method=userUpt"
+										<form id="uptForm" class="ps-3 pe-3" action="${path}/manager.do?method=prjUserUpdate"
 											method="post">
+											
 											<div class="row g-2">
 												<div class="col mb-3">
-													<label for="username" class="form-label">아이디</label>
-													<input id="id" name="uiId" class="form-control" required="" readonly> 
+													<label for="prjUserId" class="form-label">고유번호</label>
+													<input name="puId" id="prjUserId" class="form-control" required="" readonly> 
 												</div>
 												
 												<div class="col mb-3">
 
-													<label class="form-label">패스워드</label>
-													<div class="input-group input-group-merge">
-														<input type="password" id="pw" class="form-control" name="uiPw"
-															required value="${editUser.uiPw}">
-														<div class="input-group-text" data-password="false">
-															<span class="password-eye"></span>
-														</div>
+													<div class="col mb-3">
+														<label for="prjUserName" class="form-label">이름</label>
+														<input name="uiName" id="prjUserName" class="form-control" required="" readonly> 
 													</div>
 												</div>
 										
 											</div>
+											
+											<div class="row g-2">
+												<div class="col mb-3">
+													<label for="prjUserDept" class="form-label">부서</label>
+													<input name="uiDept" id="prjUserDept" class="form-control" required="" readonly> 
+												</div>
+												
+												<div class="col mb-3">
+
+													<div class="col mb-3">
+														<label for="prjUserRank" class="form-label">직급</label>
+														<input name="uiRank" id="prjUserRank" class="form-control" required="" readonly> 
+													</div>
+												</div>
+										
+											</div>
+											
 											<!-- Autoclose -->
 											<div class="row g-2">
 												
-													<div class="col mb-3">
-													<label for="fullname" class="form-label">이름</label>
-													<input class="form-control" type="text" id="name" name="uiName"
-														value="${editUser.uiName}" required>
-
-												</div>
-												
-												
-												
 												<div class="col mb-3">
-													<label for="userStatus" class="form-label">회원상태</label>
-													<select class="form-select" id="userStatus" name="uiStatus">
-														<option value="0">재직</option>
-														<option value="1">퇴사</option>
+													<label for="prjUserTitle" class="form-label">참여 프로젝트</label>
+													<input name="piTitle" id="prjUserTitle" class="form-control" required="" readonly> 
+				
+												</div>
+										
+												<div class="col mb-3">
+													<label for="prjUserStatus" class="form-label">참여 상태</label>
+													<select class="form-select" id="prjUserStatus" name="puStatus">
+														<option value="0">참여</option>
+														<option value="1">탈퇴</option>
 														<option value="2">승인대기</option>
 														<option value="3">반려</option>
 													</select>
@@ -316,75 +342,13 @@
 												</div>
 											</div>
 											
-										
 
-
-											<div class="mb-3 position-relative">
-												<label for="emailaddress" class="form-label">이메일</label>
-												<input class="form-control" type="email" id="email" name="uiEmail"
-													value="${editUser.uiEmail}">
-
-											</div>
-											
-											
-
-								
-											<div class="row g-2">
-												<div class="col mb-3">
-													<label for="dept" class="form-label">부서</label>
-													<select class="form-select" id="dept" name="uiDept">
-														<option>개발1팀</option>
-														<option>개발2팀</option>
-														<option>인사팀</option>
-														<option>기획팀</option>
-														<option>디자인팀</option>
-														<option>마케팅팀</option>
-													</select>
-												</div>
-
-												
-
-												<div class="col mb-3">
-													<label for="dept" class="form-label">직급</label>
-													<select class="form-select" id="rank" name="uiRank">
-														<option>실장</option>
-														<option>팀장</option>
-														<option>부장</option>
-														<option>차장</option>
-														<option>과장</option>
-														<option>대리</option>
-														<option>주임</option>
-														<option>사원</option>
-													</select>
-												</div>
-											
-											</div>
-											<div class="row mb-3">
-												<label for="phone1" class="form-label">연락처</label>
-												<input type="text" name="uiPhone" hidden>
-												<div class="col mt-0">
-													<select class="form-select mb-3" required name="phone1">
-														<option selected value="010">010</option>
-														<option value="011">011</option>
-
-														<option value="016">016</option>
-														<option value="017">017</option>
-														<option value="018">018</option>
-														<option value="019">019</option>
-													</select>
-
-												</div>
-												-<div class="col mt-0"><input type="text" name="phone2"
-														class="form-control" maxLength="4" required /></div>
-												-<div class="col mt-0"><input type="text" name="phone3"
-														class="form-control" maxLength="4" required /></div>
-											</div>
 											<hr>
 											<div class="mb-3 text-center"
 												style="display: flex; justify-content: space-between;">
 												<button class="btn btn-secondary" class="btn-close"
 													data-bs-dismiss="modal" aria-label="Close" type="button">취소</button>
-												<button class="btn btn-primary" type="button" id="uptBtn">수정</button>
+												<button class="btn btn-primary" type="submit" id="uptBtn">수정</button>
 											</div>
 										</form>
 									</div>
@@ -399,142 +363,84 @@
 
 
 					
-				
-				
-				
-			
+				function goPrjUserDetail(puId){
 					
-					    // 폼 제출
-		            $("#uptBtn").click(function(){
-	
-		 
-		                // 연락처 숫자 아니면 거르기
-		                if(isNaN($("[name=phone2]").val()) || 
-		                		isNaN($("[name=phone3]").val())){
-		                    alert("연락처는 숫자만 입력할 수 있습니다.")
-		                    return false;
-		                }
-		
-			            
-		                // 연락처 합치기
-		                $("[name=uiPhone]").val($("[name=phone1]").val()
-		                		+$("[name=phone2]").val()+$("[name=phone3]").val());
-		           
-			            
-		                if(confirm("회원정보를 수정합니까?"))
-		                    $("#uptForm").submit();
-		               
-		            })
-						
-				
-
-					// ajax로 상세정보 가져옴
-					function editUserDetail(uiId) {
-
-						$.ajax({
-							url: "${path}/manager.do?method=userDetail",
-							type: "get",
-							dataType: "json",
-							data: "uiId=" + uiId,
-							success: function (data) {
-								editUser = data.editUser;
-								$("#id").val(editUser.uiId);
-								$("#name").val(editUser.uiName);
-								$("#pw").val(editUser.uiPw);
-								$("#dept").val(editUser.uiDept);
-								$("#userStatus").val(editUser.uiStatus);
-								$("#rank").val(editUser.uiRank);
-								$("#email").val(editUser.uiEmail);
-								let phone = editUser.uiPhone;
-								let phoneNum = [phone.slice(0, 3), phone.slice(3, 7), phone.slice(7)];
-								$("[name=phone1]").val(phoneNum[0]);
-								$("[name=phone2]").val(phoneNum[1]);
-								$("[name=phone3]").val(phoneNum[2]);
-
-							}
-						});
-					}
-
-		
-					
-					function deleteUser(uiName, uiId){
-						
-						if(confirm(uiName+" 회원을 삭제하시겠습니까?")){
-							location.href="${path}/manager.do?method=userDel&uiId="+uiId;
-						}
-					}
-					
-					let type= "";
-					
-					$("#searchBtn").on("click", function(){
-						searchUser();		
-					})
-
-					$("#typeInput").on("keypress",function(e){
-						if(e.keyCode=13){
-							e.preventDefault();
-							searchUser();
-						}
-
-					});
-
-			
-					function searchUser(){
-
-						if($("#type").val()!="name"){
-							type= ($("#type").val()=="id")? "uiId":(($("#type").val()=="phone")? "uiPhone": "uiEmail");
-							$("#typeInput").attr("name",type);
-						}
-						
-						$.ajax({
-				
-							url:"${path}/manager.do?method=userSearch",
-							type:"get",
-							data: $("#searchForm").serialize(),
-							dataType:"json",
-							success:function(data) {
-								
-								$("#listBox").html("");
-								let html = "";
-								$.each(data.userList, function(idx, sch) {
-									
-									html += '<tr><td><div class="form-check"><input type="checkbox" class="form-check-input"'+
-											'id="customCheck2"><label class="form-check-label"for="customCheck2">&nbsp;</label></div></td>'+
-											'<td><a href="apps-ecommerce-orders-details.html" class="text-body fw-bold">'+
-												sch.uiId+'</a></td><td>'+sch.uiName+'</td><td>'+sch.uiDept+
-												'</td><td><p class="mb-0 txt-muted">'+sch.uiRank+'</p></td><td>'+
-												sch.uiEmail+'</td><td>'+sch.uiPhone+
-												'</td><td class="statusClr"><h5 class="my-0"><span class="badge badge-info-lighten">'+
-												sch.uiStatus+'</span></h5></td><td><a href="javascript:void(0);" class="action-icon"'+
-												'onclick="editUserDetail('+"'"+sch.uiId+"'"+')" data-bs-toggle="modal" data-bs-target="#signup-modal">'+
-												' <i class="mdi mdi-square-edit-outline"></i></a><a href="javascript:void(0);" class="action-icon"'+
-												'onclick="deleteUser('+"'"+sch.uiName+"','"+sch.uiId+"'"+')"><i class="mdi mdi-delete"></i></a></td></tr>'
-						
-								});	
-								
-								//JSTL과 JAVASCRIPT는 실행되는 시점이 다르기 때문에...	 서버는 JAVA>JSTL>HTML>Javascript 순서로 동작
-
-								//JSTL이 먼저 실행되고 JAVASCRIPT는 이후에 실행됩니다. => badge 붙여주는게 어려울 듯... 
-								
-								$("#listBox").append(html);
-								let approveMsg = `<span class="badge bg-danger">승인 요청</span>`;
-
-								// id는 하나만 가져온다. 여러 개의 경우에는 class 등을 사용할 것!
-								$(".statusClr span").each(function(idx, status){
-									if($(status).text() == 2){
-										$(status).parent().after(approveMsg);
-									}
-
-								})
-								
+					$.ajax({
+						url: "${path}/manager.do?method=prjUserDetail",
+						type: "get",
+						dataType: "json",
+						data: "puId="+puId,
+						success: function (data) {
+							prjUserDetail = data.prjUserDetail;	
 							
-							},
-							error:function(err) {
-								console.log(err);
+							$("#prjUserId").val(prjUserDetail.puId);
+							$("#prjUserName").val(prjUserDetail.uiName);
+							$("#prjUserDept").val(prjUserDetail.uiDept);
+							$("#prjUserRank").val(prjUserDetail.uiRank);
+							$("#prjUserTitle").val(prjUserDetail.piTitle);
+							$("#prjUserStatus").val(prjUserDetail.puStatus);
+						
+						}
+					})
+				
+				}
+			
+			$("#searchBtn").on("click", function(){
+				searchPrjUser();		
+			})
+
+			$("#typeInput").on("keypress",function(e){
+				if(e.keyCode==13){
+					e.preventDefault();
+					searchPrjUser();
+				}
+
+			});
+
+			function searchPrjUser(){
+
+		
+				$.ajax({
+
+					url:"${path}/manager.do?method=prjUserSearch",
+					type:"get",
+					data: $("#searchForm").serialize(),
+					dataType:"json",
+					success:function(data) {
+						
+						$("#listBox").html("");
+						let html = "";
+						$.each(data.prjUserList, function(idx, sch) {
+							
+							html += '<tr><td><div class="form-check"><input type="checkbox" class="form-check-input"'+
+									'id="customCheck2"><label class="form-check-label" for="customCheck2">&nbsp;</label></div></td>'+
+									'<td><h5 class="text-body fw-bold">'+sch.uiName+'</h5></td><td>'+sch.uiDept+
+									'</td> <td><p class="mb-0 txt-muted">'+sch.uiRank+'</p></td><td>'+sch.piTitle+
+									'</td><td class="statusClr"><h5 class="my-0"><span class="badge badge-info-lighten">'+sch.puStatus+
+									'</span></h5></td><td><a href="javascript:void(0);" class="action-icon"'+ 
+									'onclick="goPrjUserDetail('+"'"+sch.puId+"'"+')" data-bs-toggle="modal"'+
+									'data-bs-target="#signup-modal"> <i class="mdi mdi-square-edit-outline"></i></a></td></tr>';
+				
+						});		
+				
+						$("#listBox").append(html);
+						let approveMsg = `<span class="badge bg-danger">승인 요청</span>`;
+
+						
+						$(".statusClr span").each(function(idx, status){
+							if($(status).text() == 2){
+								$(status).parent().after(approveMsg);
 							}
-					
+
 						})
+					
+					},
+					error:function(err) {
+						console.log(err);
 					}
+			
+				})
+			}
 
 
 					

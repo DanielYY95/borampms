@@ -6,10 +6,11 @@ public class PRJ_USER {
 	private String uiDept;
 	private String uiRank;
 	private String piTitle;
+	private String puId;
 	
 	private String piId;
 	private String uiId;
-	private int puStatus;
+	private String puStatus; // 넘버 타입이긴 하나 전체로 검색을 할 때는 이게 용이
 	
 	public PRJ_USER() {
 		super();
@@ -22,13 +23,23 @@ public class PRJ_USER {
 		this.uiId = uiId;
 	}
 
-	public int getPuStatus() {
+	
+	
+	public String getPuId() {
+		return puId;
+	}
+
+	public void setPuId(String puId) {
+		this.puId = puId;
+	}
+
+	public String getPuStatus() {
 		return puStatus;
 	}
 
 
 
-	public void setPuStatus(int puStatus) {
+	public void setPuStatus(String puStatus) {
 		this.puStatus = puStatus;
 	}
 

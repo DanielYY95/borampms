@@ -113,7 +113,7 @@
 	<!-- 10. 내 프로젝트 목록  -->
 	
 	<select id="getMyPrjList" parameterType="string" resultType="prj">
-		select pi.*, ui.UI_NAME from ( 
+		select pi.*, ui.UI_NAME from (
 		select * from prj_user
 		where UI_ID = #{uiId}) pu, PRJ_INFO pi, USER_INFO ui 
 		where pu.PI_ID = pi.PI_ID
@@ -133,7 +133,7 @@
 	
 	<insert id="joinPrj" parameterType="prjUser">
 		insert into PRJ_USER
-		values(#{uiId}, #{piId}, 0)	
+		values(#{uiId}, #{piId}, 0, 'PU' || LPAD(pu_seq.nextval, 5, '0'))	
 	</insert>
 	
 	<insert id="insertPrj" parameterType="prj">
