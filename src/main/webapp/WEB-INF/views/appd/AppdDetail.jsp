@@ -124,10 +124,13 @@
 														<c:if test="${appdRowList.adAppd == '결재대기' && appdRowList.adUiId == sessionUserId }">
 															<button id="docList-btn1" type="button" class="btn btn-primary">결제</button>
 														</c:if>
+														<c:if test="${appdRowList.adAppd == '결재대기' && appdRowList.adUiId == sessionUserId }">
+															<button id="docList-btn4" type="button" class="btn btn-primary">반려</button>
+														</c:if>
 														<c:if test="${appdRowList.adAppd == '결재대기' && appdRowList.adWriter == sessionUserId }">
 															<button id="docList-btn2" type="button" class="btn btn-primary">수정</button>
 														</c:if>
-														<c:if test="${appdRowList.adAppd == '결재대기' && appdRowList.adWriter == sessionUserId }">
+														<c:if test="${(appdRowList.adAppd == '결재대기' || appdRowList.adAppd == '반려' ) && appdRowList.adWriter == sessionUserId }">
 														<button id="docList-btn3" type="button" class="btn btn-primary">삭제</button>
 														</c:if>
 														<button id="docList-btn" type="button" class="btn btn-primary">글목록</button>
@@ -273,6 +276,10 @@
 	<script>
 	/* 글목록버튼 클릭시, 문서관리 페이지로 이동 */
 
+	$("#docList-btn4").click(function(){
+		alert("결재 반려하시겠습니까?");
+		location.href="${path}/appd.do?method=returnDocument&adId="+$('#adId').val();
+	});
 	$("#docList-btn1").click(function(){
 		alert("결재 승인하시겠습니까?");
 		location.href="${path}/appd.do?method=appdDocument&adId="+$('#adId').val();

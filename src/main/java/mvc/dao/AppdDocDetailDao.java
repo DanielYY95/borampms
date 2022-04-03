@@ -13,6 +13,8 @@ public interface AppdDocDetailDao {
 	public void updateAppdDoc(APPD_DOC upt);
 	// 3. 삭제
 	public void deleteAppdDoc(String adId);
-	// 4. ㄱㅕㄹㅈㅔ
+	// 4. 결재
 	public void appdDocument(String adId);
+	// 5. 반려
+	public void returnDocument(String adId);
 }

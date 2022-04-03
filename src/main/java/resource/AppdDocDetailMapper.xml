@@ -31,4 +31,11 @@
 		 where AD_ID = #{value}
 	</delete>
 
+	<delete id="returnDocument" parameterType="string">
+		update APPD_DOC
+		   set AD_APPD_SIGN = 0
+		     , AD_APPD = '반려'
+		 where AD_ID = #{value}
+	</delete>
+
 </mapper>

@@ -106,7 +106,7 @@
 														<div class="col-lg-6">
 															<div class="mb-3">
 															    <label class="form-label">결재상태</label>
-															    <input type="text" class="form-control" name="adAppd" value="결재요청" readonly>
+															    <input type="text" class="form-control" name="adAppd" value="결재대기" readonly>
 															</div>
 														</div>
 														<div class="col-lg-6">

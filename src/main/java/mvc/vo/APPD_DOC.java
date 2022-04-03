@@ -14,6 +14,7 @@ public class APPD_DOC {
 	private String adUiId;
 	private String uiName;
 	private int adAppdSign;
+	private int adReturn;
 
 	public APPD_DOC() {
 		super();
@@ -97,6 +98,12 @@ public class APPD_DOC {
 	}
 	public void setAdAppdSign(int adAppdSign) {
 		this.adAppdSign = adAppdSign;
+	}
+	public int getAdReturn() {
+		return adReturn;
+	}
+	public void setAdReturn(int adReturn) {
+		this.adReturn = adReturn;
 	}
 
 

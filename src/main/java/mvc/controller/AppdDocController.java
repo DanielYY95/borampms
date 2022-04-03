@@ -28,8 +28,10 @@ public class AppdDocController {
 	public String adList(HttpServletRequest request, APPD_DOC_SCH sch, Model d) {
 
 		USER_INFO user=  smethod.getUserSession(request);
+		if(user == null) return "main_login//login";
 		sch.setUiId(user.getUiId());
 		d.addAttribute("adList", service.getADList(sch));
+		d.addAttribute("appdDocSch", sch);
 
 		return "appd\\AppdList";
 	}
@@ -39,6 +41,7 @@ public class AppdDocController {
 	public String ddInsertFrm(HttpServletRequest request, Model d) {
 		// select box 위한 userid 정보들이 필요함.
 		USER_INFO user=  smethod.getUserSession(request);
+		if(user == null) return "main_login//login";
 		d.addAttribute("deptUserList",service.getDeptUserList(user.getUiId()));
 		d.addAttribute("uiId",user.getUiId());
 		return "appd\\AppdInsert";
@@ -49,6 +52,7 @@ public class AppdDocController {
 	public String adInsertFrm(HttpServletRequest request, APPD_DOC ins, Model d) {
 
 		USER_INFO user=  smethod.getUserSession(request);
+		if(user == null) return "main_login//login";
 		ins.setAdWriter(user.getUiId());
 
 		if(ins.getAdId()!=null && !ins.getAdId().equals("")) {

@@ -24,8 +24,12 @@ public class AppdDocDetailService {
 	public void deleteAppdDoc(String adId) {
 		dao.deleteAppdDoc(adId);
 	}
-	// 4. ㄱㅕㄹㅈㅔ
+	// 4. 결재
 	public void appdDocument(String adId) {
 		dao.appdDocument(adId);
+	}
+	// 5.반려
+	public void returnDocument(String adId) {
+		dao.returnDocument(adId);
 	}
 }

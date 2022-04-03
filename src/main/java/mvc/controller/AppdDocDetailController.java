@@ -31,6 +31,7 @@ public class AppdDocDetailController {
 	public String adInsertFrm(HttpServletRequest request, String adId, Model d) {
 		System.out.println("번호:"+adId);
 		USER_INFO user=  smethod.getUserSession(request);
+		if(user == null) return "main_login//login";
 		d.addAttribute("deptUserList",service.getDeptUserList(user.getUiId()));
 		d.addAttribute("appddoc",service1.getDetailList(adId));
 		return "appd\\AppdInsert";
@@ -39,6 +40,7 @@ public class AppdDocDetailController {
 	public String appdDocDetail(HttpServletRequest request, String adId, Model d) {
 		System.out.println("번호:"+adId);
 		USER_INFO user=  smethod.getUserSession(request);
+		if(user == null) return "main_login//login";
 		d.addAttribute("deptUserList",service.getDeptUserList(user.getUiId()));
 		d.addAttribute("appdRowList",service1.getDetailList(adId));
 		d.addAttribute("sessionUserId",user.getUiId());
@@ -70,6 +72,11 @@ public class AppdDocDetailController {
 	@RequestMapping(params="method=appdDocument")
 	public String appdDocument(String adId) {
 		service1.appdDocument(adId);
+		return "redirect:/appd.do?method=list";
+	}
+	@RequestMapping(params="method=returnDocument")
+	public String returnDocument(String adId) {
+		service1.returnDocument(adId);
 		return "redirect:/appd.do?method=list";
 	}
 

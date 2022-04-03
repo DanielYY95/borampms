@@ -29,7 +29,7 @@
 <link href="${path}/tools/project_assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-style" />
     <!-- 간트 js/css 시작 -->
     <script src="${path}/tools/main_assets/js/dhtmlxgantt.js"></script>
-	
+
 	<!-- jquery 라이브러리 -->
 	<script src="${path}/tools/jquery-3.6.0.js"></script>
     <link rel="stylesheet" href="${path}/tools/main_assets/css/dhtmlxgantt.css" />
@@ -82,9 +82,9 @@
   >
     <!-- Begin page -->
     <div class="wrapper">
-    
+
     <jsp:include page="../include/leftBar.jsp" flush="true" />
-    
+
       <!-- Left Sidebar End -->
       <!-- 왼쪽 사이드바 종료  -->
 
@@ -101,7 +101,7 @@
 			<!-- Start Content-->
 			<div class="container-fluid" style="height: 80vh;">
 				<div id="gantt_here" style='width:100%; height:100%;'></div>
-				
+
 			</div>
 			<!-- container -->
 
@@ -118,8 +118,10 @@
 
     <script type="text/javascript">
 		// test data
-		
+		gantt.config.start_date = new Date(2022, 01, 01);
+		gantt.config.end_date = new Date(2022, 12, 31);
 		gantt.init("gantt_here");
+		//gantt.init("gantt_here", new Date(2022, 01, 01), new Date(2022, 01, 20));
 		getData();
 		gantt.attachEvent("onAfterTaskDrag", function(id, mode, e){
 			let task = gantt.getTask(id);
@@ -136,7 +138,7 @@
 		    }
 		    return true;
 		});
-		gantt.attachEvent("onTaskDblClick", function(id,e){
+ 		gantt.attachEvent("onTaskDblClick", function(id,e){
 		    //any custom logic here
 		    return false;
 		});
@@ -157,7 +159,7 @@
 							           , start_date: stringToDate(data.result[i].ptStartdate)
 							           , duration:data.result[i].duration
 							           });
-						
+
 					}
 					gantt.parse({
 						data: paramData,
@@ -230,17 +232,14 @@
 
 	        month = month >= 10 ? month : '0' + month;
 	        day = day >= 10 ? day : '0' + day;
-/* 	        hour = hour >= 10 ? hour : '0' + hour;
-	        minute = minute >= 10 ? minute : '0' + minute;
-	        second = second >= 10 ? second : '0' + second; */
 
 	        return date.getFullYear() + '-' + month + '-' + day;
 		}
 		function stringToDate(value) {
-	        return new Date(value.split('-')[0],value.split('-')[1],value.split('-')[2]);
+	        return new Date(Number(value.split('-')[0]),Number(value.split('-')[1])-1,Number(value.split('-')[2]));
 		}
 	</script>
- 
+
     <!-- dragula js-->
     <script src="${path}/tools/main_assets/js/vendor/dragula.min.js"></script>
 

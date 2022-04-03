@@ -245,8 +245,7 @@
 															                <span aria-hidden="true">&laquo;</span>
 															            </a>
 															        </li>
-															        <c:forEach var="cnt" begin="${appdDocSch.firstBlock}" end="${appdDocSch.lastBlock}">
-																		<li class="page-item ${cnt==appdDocSch.curPage?'active':''}"> <!-- 클릭한 현재 페이지 번호 -->
+															        <c:forEach var="cnt" begin="${appdDocSch.firstBlock}" end="${appdDocSch.lastBlock}">																		<li class="page-item ${cnt==appdDocSch.curPage?'active':''}"> <!-- 클릭한 현재 페이지 번호 -->
 																			<a class="page-link" href="javascript:goPage(${cnt})">${cnt}</a></li>
 																	</c:forEach>
 															        <li class="page-item">
@@ -297,9 +296,7 @@
     </body>
 	<script>
 	/* 부서 공유문서함 클릭시 */
-	debugger;
 	function searchDocList(type){
-		debugger;
 		$('#searchDocStauts').val(type);
 		$('#frm01').submit();
 	}
