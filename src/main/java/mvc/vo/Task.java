@@ -17,6 +17,8 @@ import java.sql.Date;
  * 
 */
 public class Task {
+	private int count;
+	
 	private String ptId;
 	private String ptTitle;
 	private Date ptStartdate;
@@ -33,6 +35,20 @@ public class Task {
 		// TODO Auto-generated constructor stub
 	}
 	
+	
+	
+	public int getCount() {
+		return count;
+	}
+
+
+
+	public void setCount(int count) {
+		this.count = count;
+	}
+
+
+
 	public String getPtId() {
 		return ptId;
 	}

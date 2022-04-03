@@ -31,6 +31,7 @@
 		<typeAlias alias="alarm" type="mvc.vo.Alarm"/>
 		<typeAlias alias="dashUser" type="mvc.vo.PRJ_TASK"/>
 		<typeAlias alias="prjUser" type="mvc.vo.PRJ_USER"/>
+		<typeAlias alias="notice" type="mvc.vo.Notice"/>
 		
 		
 	</typeAliases>

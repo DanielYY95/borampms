@@ -100,9 +100,9 @@
                         </a>
                     </li>
                     <li class="side-nav-item">
-                        <a href="${path}/manager.do?method=user" class="side-nav-link">
+                        <a href="${path}/manager.do?method=notice" class="side-nav-link">
                             <i class="mdi mdi-account-lock-open"></i>
-                            <span> 관리자페이지 </span>
+                            <span> 공지사항 </span>
                         </a>
                     </li>
                     

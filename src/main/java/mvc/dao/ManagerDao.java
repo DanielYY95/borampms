@@ -3,6 +3,7 @@ package mvc.dao;
 import java.util.ArrayList;
 
 import mvc.vo.DeptInfo;
+import mvc.vo.Notice;
 import mvc.vo.PRJ_INFO;
 import mvc.vo.USER_INFO;
 import mvc.vo.UserInfo;
@@ -22,5 +23,8 @@ public interface ManagerDao {
 	public void delCustomer(String uiId);
 
 	public ArrayList<USER_INFO> searchUser(USER_INFO user);
+	
+	public int getTotalCnt(Notice sch);
+	public ArrayList<Notice> getNoticeList(Notice sch);
 	
 }

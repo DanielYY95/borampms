@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import mvc.service.ManagerService;
+import mvc.vo.Notice;
 import mvc.vo.USER_INFO;
 
 @Controller
@@ -76,6 +77,12 @@ public class managerController {
 		d.addAttribute("prjList", service.getPrjList());
 		
 		return "manager/managerPrj";
+	}
+	
+	@RequestMapping(params="method=notice")
+	public String getNoticeList(Notice sch, Model d) {
+		d.addAttribute("ntlist", service.getNoticeList(sch));
+		return "manager/managerNotice";
 	}
 
 

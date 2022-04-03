@@ -14,11 +14,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <!-- moment 라이브러리 -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+<script src="https://momentjs.com/downloads/moment.js"></script>
+<script src="https://momentjs.com/downloads/moment-timezone.min.js"></script>
 
 		<script>
-			
-			// 로그인할 때만 들어올 수 있도록 // 참조: https://erim1005.tistory.com/28
+		// 로그인할 때만 들어올 수 있도록 // 참조: https://erim1005.tistory.com/28
 		
 			<c:if test="${empty user_info.uiName}">
 			
@@ -50,11 +50,12 @@
 								'<i class="mdi mdi-close"></i></span><div class="d-flex align-items-center">'+
 								'<div class="flex-shrink-0"><div class="notify-icon bg-primary"><i class="mdi mdi-comment-account-outline"></i>'+
 								'</div></div><div id="alramMsg" class="flex-grow-1 text-truncate ms-2"><h5 class="noti-item-title fw-semibold font-14">'+
-								sch.aFrom+'<small class="fw-normal text-muted ms-1">'+moment(sch.aRegdate).format("MM-DD HH:mm")+
+								sch.aFrom+'<small class="fw-normal text-muted ms-1">'+moment(sch.aRegdate).utcOffset(0).format("MM:DD HH:mm")+
 								'</small></h5><small id="alramType" class="noti-item-subtitle text-muted">'+
 								sch.aContent+'</small></div></div></div></a>';
 				 	});	
 					
+			    	
 			 		$("#alarmBox").append(html);
 			 		
 				},

@@ -11,11 +11,21 @@ public class PRJ_TASK {
 	private String ptType;
 	private String ptStatus;
 	private String ptGuidecontent;
+	private String ptPriority;
 	private String uiId;
 	private String piId;
 	private String duration;
 
 
+	
+	
+	
+	public String getPtPriority() {
+		return ptPriority;
+	}
+	public void setPtPriority(String ptPriority) {
+		this.ptPriority = ptPriority;
+	}
 	public String getDuration() {
 		return duration;
 	}
