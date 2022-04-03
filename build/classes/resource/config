@@ -7,8 +7,8 @@ jdbc.pass=pms
 
 # 업로드할 파일 경로 설정
 
-upload=C:/Users/A/OneDrive - UOS/borampms/src/main/webapp/upload/
-toUpload=C:/Users/A/OneDrive - UOS/borampms/src/main/webapp/upload/
+upload=D:/upload/
+toUpload=D:/upload/
 
 
 ///// upload=C:/a01_javaexp/z01_upload/

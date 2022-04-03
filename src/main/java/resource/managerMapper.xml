@@ -204,5 +204,42 @@
 	
 	
 	
+	<!-- ### 공지사항 -->
+	
+	
+	
+	<!-- 공지사항 조회 -->
+	<select id="getTotalCnt" parameterType="notice" resultType="int">
+		select count(*)
+		from notice
+		where 1=1
+		
+		<if test="ntTitle != null and ntTitle != ''">
+		and nt_title like '%'||#{ntTitle}||'%'
+		</if>
+		<if test="ntType != null and ntType != ''">
+		and nt_type like '%'||#{ntType}||'%'
+		</if>
+	</select>
+	<select id="getNoticeList" parameterType="notice" resultType="notice">
+		select *
+		from (
+			SELECT row_number() over(ORDER BY to_date(nt_regdate, 'YYYY-MM-DD')) cnt, notice.*
+			from notice
+			where 1=1
+			
+			<if test="ntTitle != null and ntTitle != ''">
+			and nt_title like '%'||#{ntTitle}||'%'
+			</if>
+			<if test="ntType != null and ntType != ''">
+			and nt_type like '%'||#{ntType}||'%'
+			</if>
+		)
+		where cnt between #{firstPage} and #{lastPage}
+	</select>
+	
+	
+	
+	
 	
 </mapper>

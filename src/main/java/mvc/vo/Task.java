@@ -28,6 +28,19 @@ public class Task {
 	private String uiId;
 	private String piId;
 	
+	private int count;
+	
+	public int getCount() {
+		return count;
+	}
+
+
+
+	public void setCount(int count) {
+		this.count = count;
+	}
+
+	
 	public Task() {
 		super();
 		// TODO Auto-generated constructor stub

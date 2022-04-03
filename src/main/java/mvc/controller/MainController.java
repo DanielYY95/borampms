@@ -60,8 +60,12 @@ public class MainController {
 	public String prjList(HttpServletRequest request, Model d) {
 		
 		USER_INFO user=  smethod.getUserSession(request);
-		d.addAttribute("prjList", service.getMyPrjList(user.getUiId()));
-		d.addAttribute("newPrjList", service.getNewPrjList(user.getUiId()));
+		
+		String uiId = user.getUiId();
+		
+		d.addAttribute("prjList", service.getMyPrjList(uiId));
+		d.addAttribute("newPrjList", service.getNewPrjList(uiId));
+		d.addAttribute("waitPrjList", service.getWaitPrjList(uiId));
 			
 		return "main_login//prjList";
 	}

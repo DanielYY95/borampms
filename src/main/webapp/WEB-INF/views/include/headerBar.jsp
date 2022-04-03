@@ -14,21 +14,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <!-- moment 라이브러리 -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+<script src="https://momentjs.com/downloads/moment.js"></script>
+<script src="https://momentjs.com/downloads/moment-timezone.min.js"></script>
 
 		<script>
 			
 			// 로그인할 때만 들어올 수 있도록 // 참조: https://erim1005.tistory.com/28
-		
+			
 			<c:if test="${empty user_info.uiName}">
 			
-				let url = '${requestScope['javax.servlet.forward.servlet_path']}'; // url  
+				let url = '${requestScope['javax.servlet.forward.servlet_path']}'; //
 				let queryString = '${requestScope['javax.servlet.forward.query_string']}'; //queryString 
 				url += (queryString != '')? '?'+queryString: '';
 		
 				// JSP 현재 url 정보 얻기 => ${pageContext.request.requestURL}는 실제 jsp 물리적 경로...
 				console.log(url);
-				alert("로그인 후, 이용해주세요.");
+				alert("로그인 후, 이용해주세요."); 
 				
 				location.href="${path}/loginFrm.do?toURL="+url;
 			</c:if>

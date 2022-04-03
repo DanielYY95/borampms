@@ -118,22 +118,35 @@
 		where UI_ID = #{uiId}) pu, PRJ_INFO pi, USER_INFO ui 
 		where pu.PI_ID = pi.PI_ID
 		and pi.PI_WRITER = ui.UI_ID
+		and pu.PU_STATUS = '0'
 		order by pi.PI_ID
 	</select>
-	
+
 	<select id="getNewPrjList" parameterType="string" resultType="prj">
-		SELECT pi.*, ui.UI_NAME FROM PRJ_INFO pi, USER_INFO ui 
+		SELECT pi.*, ui.UI_NAME
+		FROM PRJ_INFO pi, USER_INFO ui 
 		WHERE NOT PI_ID IN 
 		(SELECT PI_ID FROM PRJ_USER pu 
 		WHERE UI_ID = #{uiId})
-		and pi.PI_WRITER = ui.UI_ID
+		and pi.PI_WRITER = ui.UI_ID	
 		order by pi.PI_ID
+	</select>
+	
+	<select id="getWaitPrjList" parameterType="string" resultType="prj">
+		select pi.*, ui.UI_NAME, pu.PU_STATUS 
+		from (select * from prj_user
+		where UI_ID = #{uiId}) pu, PRJ_INFO pi, USER_INFO ui 
+		where pu.PI_ID = pi.PI_ID
+		and pi.PI_WRITER = ui.UI_ID
+		and pu.PU_STATUS not in ('0','1')
+		order by pi.PI_ID
+	
 	</select>
 	
 	
 	<insert id="joinPrj" parameterType="prjUser">
 		insert into PRJ_USER
-		values(#{uiId}, #{piId}, 0, 'PU' || LPAD(pu_seq.nextval, 5, '0'))	
+		values(#{uiId}, #{piId}, 2, 'PU' || LPAD(pu_seq.nextval, 5, '0'))	
 	</insert>
 	
 	<insert id="insertPrj" parameterType="prj">

@@ -3,6 +3,7 @@ package mvc.dao;
 import java.util.ArrayList;
 
 import mvc.vo.DeptInfo;
+import mvc.vo.Notice;
 import mvc.vo.PRJ_INFO;
 import mvc.vo.PRJ_USER;
 import mvc.vo.USER_INFO;
@@ -51,5 +52,12 @@ public interface ManagerDao {
 	public PRJ_USER getPrjUser(String puId);
 	
 	public ArrayList<PRJ_USER> searchPrjUser(PRJ_USER sch);
+	
+	
+	// 공지사항
+	
+	public int getTotalCnt(Notice sch);
+	public ArrayList<Notice> getNoticeList(Notice sch);
+	
 	
 }

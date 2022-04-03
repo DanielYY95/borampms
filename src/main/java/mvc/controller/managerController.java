@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import mvc.service.ManagerService;
 import mvc.vo.DeptInfo;
+import mvc.vo.Notice;
 import mvc.vo.PRJ_INFO;
 import mvc.vo.PRJ_USER;
 import mvc.vo.USER_INFO;
@@ -177,6 +178,16 @@ public class managerController {
 		
 		return "pageJsonReport";
 	}
+	
+	
+	// 공지사항
+	
+	@RequestMapping(params="method=notice")
+	public String getNoticeList(Notice sch, Model d) {
+		d.addAttribute("ntlist", service.getNoticeList(sch));
+		return "manager/managerNotice";
+	}
+
 	
 	
 	

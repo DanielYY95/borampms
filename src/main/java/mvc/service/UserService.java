@@ -168,6 +168,11 @@ public class UserService {
 		return dao.getNewPrjList(uiId);
 	};
 	
+	public ArrayList<PRJ_INFO> getWaitPrjList(String uiId){
+		
+		return dao.getWaitPrjList(uiId);
+	};
+	
 	// 12. 프로젝트 참여
 	
 	public void joinPrj(PRJ_USER user) {

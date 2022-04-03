@@ -1,6 +1,7 @@
 {
   "name": "hyper",
   "version": "4.6.0",
+  "type": "module",
   "description": "Fully responsive web application ui kit",
   "main": "index.js",
   "scripts": {

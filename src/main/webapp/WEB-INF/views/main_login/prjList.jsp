@@ -147,7 +147,7 @@
                                                         <th>프로젝트 관리자</th>
                                                         <th>생성일/마감일</th>
                                                         <th>프로젝트 상태</th>
-                                                        <th style="width: 125px;">탈퇴/삭제</th>
+                                                        
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -178,10 +178,7 @@
 	                                                        </td>
 	
 	                                                        <td><h5 class="my-0"><span class="badge badge-info-lighten">${prj.piStatus}</span></h5></td>
-	                                                        <td>
-	                                                            <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-arrow-top-right-bold-box-outline"></i></a>
-	                                                            <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
-	                                                        </td>
+	                                                      
 	                                                    </tr>
                                                 	
               
@@ -232,7 +229,7 @@
 		                                                        <th>프로젝트 관리자</th>
 		                                                        <th>생성일/마감일</th>
 		                                                        <th>프로젝트 상태</th>
-		                                                        <th style="width: 125px;">참가</th>
+		                                                        <th style="width: 125px;">참가 요청/상태</th>
 		                                                    </tr>
 		                                                </thead>
 		                                                <tbody>
@@ -264,8 +261,52 @@
 			
 			                                                        <td><h5 class="my-0"><span class="badge badge-info-lighten">${newprj.piStatus}</span></h5></td>
 			                                                        <td>
-			                                                            <a href="javascript:void(0);" class="action-icon" onclick="joinToPrj('${newprj.piId}')"> <i class="dripicons-rocket"></i></a>
+			                                                            <a href="javascript:void(0);" class="action-icon" onclick="joinToPrj('${newprj.piId}')">
+			                                                            <span class="fs-5">요청&nbsp;</span><i class="dripicons-rocket"></i></a>
 			                                                            
+			                                                        </td>
+			                                                    </tr>
+		                                                	
+		              
+		                                                	</c:forEach>
+		                                                		<c:forEach var="waitprj" items="${waitPrjList}">
+		                                                		<tr>
+			                                                        <td>
+			                                                            <div class="form-check">
+			                                                                <input type="checkbox" class="form-check-input" id="customCheck2">
+			                                                                <label class="form-check-label" for="customCheck2">&nbsp;</label>
+			                                                            </div>
+			                                                        </td>
+			                                                        <td><a href="apps-ecommerce-orders-details.html" class="text-body fw-bold">${waitprj.piId} DB값</a> </td>
+			                                                        <td>${waitprj.piTitle}</td>
+			                                                        <td>
+			                                                            <div class="d-flex">
+			                                                                <div class="d-flex align-items-center">
+			                                                                    <div class="flex-shrink-0">
+			                                                                        <img src="${path}/tools/main_assets/images/users/avatar-1.jpg" class="rounded-circle avatar-xs" alt="friend">
+			                                                                    </div>
+			                                                                    <div class="flex-grow-1 ms-2"><h5 class="my-0">${waitprj.uiName}</h5></div>
+			                                                                </div>
+			                                                            </div>
+			                                                        </td>
+			
+			                                                        <td>
+			                                                            <h5 class="my-0">${waitprj.piStartdate}</h5>
+			                                                            <p class="mb-0 txt-muted">${waitprj.piDuedate}</p>
+			                                                        </td>
+			
+			                                                        <td><h5 class="my-0"><span class="badge badge-info-lighten">${waitprj.piStatus}</span></h5></td>
+			                                                        <td>
+			                                                             <c:if test="${waitprj.puStatus eq 2}">
+											                            	<span class="badge bg-primary text-light 
+											                            		rounded-pill p-1  fs-6">승인 요청 중</span>
+											                            	
+											                            </c:if>
+										                                <c:if test="${waitprj.puStatus eq 3}">
+											                            	<span class="badge bg-secondary text-light 
+											                            		rounded-pill p-1 fs-6">승인 반려</span>
+											                            </c:if>
+														                                                            
 			                                                        </td>
 			                                                    </tr>
 		                                                	

@@ -12,9 +12,16 @@ public class PRJ_INFO {
 	
 	// DB에 없으나 작성자명을 나타내기위함
 	private String uiName;
+	private String puStatus;
 	
+
 	
-	
+	public String getPuStatus() {
+		return puStatus;
+	}
+	public void setPuStatus(String puStatus) {
+		this.puStatus = puStatus;
+	}
 	public String getUiName() {
 		return uiName;
 	}

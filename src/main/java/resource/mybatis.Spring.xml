@@ -33,7 +33,7 @@
 		<typeAlias alias="prjUser" type="mvc.vo.PRJ_USER"/>
 		<typeAlias alias="appdDoc" type="mvc.vo.APPD_DOC"/>
 		<typeAlias alias="appdDocSch" type="mvc.vo.APPD_DOC_SCH"/>
-
+		<typeAlias alias="notice" type="mvc.vo.Notice"/>
 
 	</typeAliases>
 	<mappers>

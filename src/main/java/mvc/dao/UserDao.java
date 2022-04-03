@@ -51,6 +51,8 @@ public interface UserDao {
 	
 	public ArrayList<PRJ_INFO> getNewPrjList(String uiId);
 	
+	public ArrayList<PRJ_INFO> getWaitPrjList(String uiId);
+	
 	// 12. 프로젝트 참여
 	
 	public void joinPrj(PRJ_USER user);
