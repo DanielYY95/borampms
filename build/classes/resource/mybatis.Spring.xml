@@ -3,10 +3,10 @@
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 
-	<settings> 
-		<setting name="mapUnderscoreToCamelCase" value="true"/> 
+	<settings>
+		<setting name="mapUnderscoreToCamelCase" value="true"/>
 	</settings>
-	
+
 
 	<typeAliases>
 		<typeAlias alias="user" type="mvc.vo.USER_INFO"/>
@@ -34,8 +34,7 @@
 		<typeAlias alias="appdDoc" type="mvc.vo.APPD_DOC"/>
 		<typeAlias alias="appdDocSch" type="mvc.vo.APPD_DOC_SCH"/>
 
-		
-		
+
 	</typeAliases>
 	<mappers>
 		<mapper resource="resource/taskDetailMapper.xml" />
@@ -53,7 +52,7 @@
 		<mapper resource="resource/AppdDocMapper.xml"/>
 		<mapper resource="resource/AppdDocDetailMapper.xml"/>
 	</mappers>
-	
+
 </configuration>
 
 

@@ -5,7 +5,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="path" value="${pageContext.request.contextPath }"/>
-<fmt:requestEncoding value="utf-8"/>     
+<fmt:requestEncoding value="utf-8"/>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,14 +13,14 @@
 		.side-nav .side-nav-link{
 			padding: 35px;
 			font-size: 1.2rem;
-		
+
 		}
-		
+
 		.side-nav-link, .menu-arrow{
 			font-size: 1.2rem;
 		}
-	
-	
+
+
 	</style>
 
 		<!-- ========== Left Sidebar Start ========== -->
@@ -52,7 +52,7 @@
               				<span> 대시보드 </span>
            				</a>
          			</li>
-					
+
           			<li class="side-nav-item">
           				<a data-bs-toggle="collapse" href="#sidebarTasks"
             				aria-expanded="false" aria-controls="sidebarTasks" class="side-nav-link">
@@ -65,7 +65,7 @@
               					<li><a href="${path}/calendar.do">캘린더</a></li>
                 				<li><a href="${path}/schGantt.do">WBS/간트차트</a></li>
                 				<li><a href="${path}/kanban.do?method=list">칸반보드</a></li>
-                				
+
               				</ul>
             			</div>
           			</li>
@@ -107,7 +107,7 @@
                             <span> 리스크관리 </span>
                         </a>
                     </li>
-                    
+
                      <li class="side-nav-item">
                         <a href="" class="side-nav-link">
                             <i class="mdi mdi-account-lock-open"></i>
@@ -120,13 +120,15 @@
                             <span> 관리자페이지 </span>
                         </a>
                     </li>
-                      <li class="side-nav-item">
+
+                    <li class="side-nav-item">
+
                         <a href="#" class="side-nav-link">
                             <i class="mdi mdi-account-lock-open"></i>
                             <span> 팀 </span>
                         </a>
                     </li>
-                    
+
                 </ul>
 				<!-- End Sidemeniu -->
 

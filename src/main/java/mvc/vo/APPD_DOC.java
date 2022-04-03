@@ -106,5 +106,4 @@ public class APPD_DOC {
 		this.adReturn = adReturn;
 	}
 
-
 }
