@@ -32,11 +32,13 @@
 		WHERE pt_status = '완료'
 	</select>
 	
-	<select id="KBupdate" parameterType="mvc.vo.KanbanVo">
+	<update id="KBupdate" parameterType="mvc.vo.KanbanVo">
 		UPDATE prj_task
 		SET pt_status = #{ptStatus}
 		WHERE pt_id = #{ptId}
-	</select>
+	</update>
+	
+	
 	<insert id="insertKanban" parameterType="task">
 		insert into prj_task values(
 			'PT' || lpad(task_seq.nextval,5,'0'),

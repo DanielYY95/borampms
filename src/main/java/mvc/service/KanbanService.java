@@ -35,4 +35,11 @@ public class KanbanService {
 		return msg;
 	}
 	
+	public void KBupdate(KanbanVo sch) {
+		
+		dao.KBupdate(sch);
+		
+	};
+	
+	
 }

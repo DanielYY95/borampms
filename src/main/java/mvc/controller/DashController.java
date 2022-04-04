@@ -1,14 +1,12 @@
 package mvc.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import mvc.service.DashService;
-import mvc.vo.PRJ_TASK;
+import mvc.service.TaskService;
 
 @Controller
 @RequestMapping("/dash.do")
@@ -19,10 +17,11 @@ public class DashController {
 	//http://localhost:7090/borampms/dash.do?method=list
 	@RequestMapping(params="method=list")
 	public String taskList(Model d) {
-		d.addAttribute("dashlist", service.taskDashlist());
-		//d.addAttribute("DList", service.getDashUser());
-		
+		d.addAttribute("dashlist", service.gettaskDashlist());
+		d.addAttribute("taskDashChart", service.gettaskDashChart());
+
 		return "/dashboard/TaskDash";
 	}
+	
 		
 }

@@ -7,18 +7,17 @@ import org.springframework.stereotype.Service;
 
 import mvc.dao.DashDao;
 import mvc.vo.PRJ_TASK;
-import mvc.vo.USER_INFO;
 
 @Service
 public class DashService {
 
 	@Autowired
 	private DashDao dao;
-	public List<PRJ_TASK> taskDashlist(){
-		return dao.taskDashlist();
+	public List<PRJ_TASK> gettaskDashlist(){
+		return dao.gettaskDashlist();
 		
 	}
-	public List<PRJ_TASK> getDashUser(){
-		return dao.getDashUser();
+	public List<PRJ_TASK> gettaskDashChart(){
+		return dao.gettaskDashChart();
 	}
 }

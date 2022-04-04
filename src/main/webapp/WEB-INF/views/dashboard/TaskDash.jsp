@@ -9,6 +9,10 @@
 <head>
 <meta charset="utf-8" />
 <title>Dashboard | Hyper - Responsive Bootstrap 5 Admin Dashboard</title>
+<!-- ㅊ ㅏ트  -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1/dist/chart.min.js"></script>
+<!-- jquery 라이브러리 -->
+<script src="${path}/tools/jquery-3.6.0.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
 <meta content="Coderthemes" name="author" />
@@ -16,8 +20,7 @@
 <link rel="shortcut icon" href="${path}/tools/project_assets/images/favicon.ico">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
-<!-- ㅊ ㅏ트  -->
-  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
 <!-- third party css -->
 <link href="${path}/tools/project_assets/css/vendor/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" />
 <!-- third party css end -->
@@ -25,6 +28,8 @@
 <!-- App css -->
 <link href="${path}/tools/project_assets/css/icons.min.css" rel="stylesheet" type="text/css" />
 <link href="${path}/tools/project_assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-style" />
+	 
+
 
 <body class="loading" data-layout-color="light" data-leftbar-theme="dark" data-layout-mode="fluid" data-rightbar-onstart="true">
 	<!-- Begin page -->
@@ -105,18 +110,17 @@
 									<div class="card widget-flat" style=" width:100%; hight:40px;">
 										<div class="card-body" >
 								<div style="text-align:center; padding-bottom:10px;">
-									<%-- <c:forEach var="dashUser" items="${DList }"> --%>
-										<i class="fa-solid fa-child-reaching fa-4x"></i>
-											
+									
+										<i class="fa-solid fa-child-reaching fa-4x"></i> 				
 											<h5 class="text-muted fw-normal mt-0" title="Number of Customers" 
-											style="text-align:center; padding-bottom:10px;">프로젝트 구성원</h5>
+											style="text-align:center; padding-bottom:10px;" >프로젝트 구성원</h5>
+							<c:forEach var="taskdash" items="${dashlist}" begin="0" end="4">
+											 <div class="text-nowrap"  
+											 style="text-align:center; padding-bottom:10px;">
+											 ${taskdash.ptCharge }
+											 </div>
+											 </c:forEach>
 					
-										<%-- 	<span class="text-nowrap">${DList.ptCharge}</span> --%>
-									<p class="mb-0 text-muted">
-											 <div class="text-nowrap"  style="text-align:center; padding-bottom:10px;">개발팀 양초명</div>
-										
-											</p>
-									<%-- 	</c:forEach> --%>
 										</div>
 										</div>
 										</div>
@@ -138,10 +142,13 @@
 											</a>
 										</div>
 									</div>
-										<div id="myChart" width="300" height="186" class="apex-charts mb-4 mt-3" data-colors="#727cf5,#0acf97,#fa5c7c,#ffbc00">
-										
-										</div>
-										
+									<form class = "chartform">
+										<div class="form-body">
+										<div style="height: 400px">
+											<canvas id="taskDashChart"></canvas>
+										</div>	
+									</div>
+									</form>
 									<div class="chart-widget-list">
 										<p>
 											<i class="mdi mdi-square text-primary"></i> 진행 중 <span class="float-end">4건</span>
@@ -164,8 +171,6 @@
 							<!-- end card-->
 
 						</div>
-						<!-- end col -->
-											<!-- start page content -->
 					<div class="row">
 						<div class="col-12">
 							<div class="card">
@@ -192,7 +197,7 @@
 													</tr>
 											 	</thead>
 											 	<tbody id="task-tbody">
-													<c:forEach var="taskdash" items="${dashlist}" varStatus="status">
+													<c:forEach var="taskdash" items="${dashlist}" varStatus="status"  begin="0" end="4">
 													<tr>
 														<td>${taskdash.cnt }</td>
 														<td>${taskdash.ptTitle }</td>
@@ -288,10 +293,47 @@
 	<script src="${path}/tools/project_assets/js/vendor/apexcharts.min.js"></script>
 	<script src="${path}/tools/project_assets/js/vendor/jquery-jvectormap-1.2.2.min.js"></script>
 	<script src="${path}/tools/project_assets/js/vendor/jquery-jvectormap-world-mill-en.js"></script>
-	<!-- third party js ends -->
 
-	<!-- demo app -->
-<!-- 	<script src="${path}/tools/project_assets/js/pages/demo.dashboard.js"></script> -->
-	<!-- end demo js-->
+	<script>
+	//상태별 파이차트 
+	var taskDashList = [];
+	var taskCountList = [];
+	
+	<c:forEach var="task" items="${taskDashChart}">
+	taskDashList.push('${task.ptStatus}');
+	taskCountList.push('${task.count}');
+	
+	</c:forEach>
+	
+	const tdl = document.getElementById('taskDashChart');
+	const taskDashChart = new Chart(tdl, {
+		type:'doughnut',
+		data : {
+			labels : taskDashList,
+			datasets : [{
+				data : taskCountList,
+				backgroundColor: [
+					'rgba(80, 80, 255, 1)', //보라 
+					'rgba(255, 106, 137, 1)', //핑크 
+					'rgba(56, 149, 97, 1)', // 연두
+					'rgba(255, 215, 50, 1)' //노랑
+				],
+				hoverOffset: 4
+			}],
+		},
+/* 		options: {
+			responsive: true,
+			maintainAspectRatio: false,
+			plugins: {
+				legend: {
+					position : 'bottom'
+				}
+			}
+		} */
+	});
+	
+	</script>
+
+
 </body>
 </html>

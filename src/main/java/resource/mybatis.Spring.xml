@@ -29,8 +29,9 @@
 		<typeAlias alias="prj" type="mvc.vo.PRJ_INFO"/>
 		<typeAlias alias="calendar" type="mvc.vo.Calendar"/>
 		<typeAlias alias="alarm" type="mvc.vo.Alarm"/>
-		<typeAlias alias="taskUser" type="mvc.vo.Task_User"/>
 		<typeAlias alias="dashUser" type="mvc.vo.PRJ_TASK"/>
+		<typeAlias alias="prjUser" type="mvc.vo.PRJ_USER"/>
+		
 		
 		
 	</typeAliases>
@@ -47,6 +48,7 @@
 		<mapper resource="resource/SchCalendarMapper.xml"/>
 		<mapper resource="resource/EtcMapper.xml"/>
 		<mapper resource="resource/DashMapper.xml"/>
+		
 	</mappers>
 	
 </configuration>

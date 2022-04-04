@@ -43,4 +43,3 @@ public class SchCalendarController {
 			return "redirect:/calendar.do";
 		}	
 	}
-

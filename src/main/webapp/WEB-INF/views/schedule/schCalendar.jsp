@@ -18,25 +18,34 @@
 
 <!-- third party css -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
-<link href="../assets/css/vendor/fullcalendar.min.css" rel="stylesheet" type="text/css" />
+<link href="${path}/tools/project_assets/css/vendor/fullcalendar.min.css" rel="stylesheet" type="text/css" />
 <!-- third party css end -->
 
 <!-- App css -->
 <link href="${path}/tools/project_assets/css/icons.min.css" rel="stylesheet" type="text/css" />
 <link href="${path}/tools/project_assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-style" />
+
+
+<script src="${path}/a00_com/jquery-3.6.0.js"></script>
+<script src="${path}/tools/project_assets/js/vendor/fullcalendar.min.js"></script>
+
 <link rel="stylesheet" href="${path}/a00_com/bootstrap.min.css">
 <link rel="stylesheet" href="${path}/a00_com/jquery-ui.css">
-<link href='${path}/a00_com/lib/main.css' rel='stylesheet' />
+
+<link href='${path}/a00_com/lib/project.css' rel='stylesheet' />
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
 <script src="${path}/a00_com/jquery.min.js"></script>
 <script src="${path}/a00_com/popper.min.js"></script>
 <script src="${path}/a00_com/bootstrap.min.js"></script>
 <script src="${path}/a00_com/jquery-ui.js"></script>
-<script src='${path}/a00_com/lib/main.js'></script>
+<script src='${path}/a00_com/lib/project.js'></script>
+
+
+
 
 <style>
 body {
-	margin: 40px 10px;
+
 	padding: 0;
 	font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
 	font-size: 14px;
@@ -68,8 +77,7 @@ body {
 									select : function(arg) {
 										console.log("#일정등록시 속성 확인#")
 										console.log(arg)
-										$("#exampleModalLongTitle")
-												.text("일정등록");
+										$("#exampleModalLongTitle").text("일정등록");
 										$("#regBtn").show();
 										$("#uptBtn").hide();
 										$("#delBtn").hide();
@@ -119,25 +127,21 @@ body {
 									events : function(info, successCallback,
 											failureCallback) {
 										// 서버에 있는 json 데이터 가져와서, fullcalenar 입력하기
-										$
-												.ajax({
-													type : "post",
-													url : "${path}/calList.do",
-													dataType : "json",
-													success : function(data) {
-														console
-																.log(data.calList)
-														successCallback(data.calList);
-														document
-																.getElementById('script-warning').style.display = 'none';
-													},
-													error : function(err) {
-														console.log(err)
-														failureCallback(err);
-														document
-																.getElementById('script-warning').style.display = 'block';
-													}
-												});
+										$.ajax({
+											type : "post",
+											url : "${path}/calList.do",
+											dataType : "json",
+											success : function(data) {
+												console.log(data.calList)
+												successCallback(data.calList);
+												document.getElementById('script-warning').style.display = 'none';
+											},
+											error : function(err) {
+												console.log(err)
+												failureCallback(err);
+												document.getElementById('script-warning').style.display = 'block';
+											}
+										});
 									},
 									/*
 									events: {
@@ -147,8 +151,7 @@ body {
 									    } 
 									}, */
 									loading : function(bool) {
-										document.getElementById('loading').style.display = bool ? 'block'
-												: 'none';
+										document.getElementById('loading').style.display = bool ? 'block': 'none';
 									}
 								});
 						calendar.setOption('themeSystem', "Bootstrap 5");
@@ -216,7 +219,7 @@ body {
 							<div class="page-title-box">
 								<div class="page-title-right">
 									<ol class="breadcrumb m-0">
-										<li class="breadcrumb-item"><a href="javascript: void(0);">Hyper</a></li>
+										<li class="breadcrumb-item"><a href="javascript: void(0);">borampms</a></li>
 										<li class="breadcrumb-item"><a href="javascript: void(0);">일정관리</a></li>
 										<li class="breadcrumb-item active">캘린더</li>
 									</ol>
@@ -320,10 +323,7 @@ body {
 	</div>
 	<!-- END wrapper -->
 
-	<!-- bundle -->
-	<script src="${path}/tools/project_assets/js/vendor.min.js"></script>
-	<script src="${path}/tools/project_assets/js/app.min.js"></script>
-	<script src="${path}/a00_com/jquery-3.6.0.js"></script>
+	
 
 	<!-- dragula js-->
 	<script src="${path}/tools/project_assets/js/vendor/dragula.min.js"></script>

@@ -14,4 +14,8 @@ public interface KanbanDao {
 	public List<KanbanVo> getKlist3();
 	public List<KanbanVo> getKlist4();
 	public void insertKanban(PRJ_TASK ins);
+	
+	public void KBupdate(KanbanVo sch);
+	
+	
 }
