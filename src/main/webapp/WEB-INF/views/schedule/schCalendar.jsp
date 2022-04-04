@@ -32,13 +32,13 @@
 <link rel="stylesheet" href="${path}/a00_com/bootstrap.min.css">
 <link rel="stylesheet" href="${path}/a00_com/jquery-ui.css">
 
-<link href='${path}/a00_com/lib/project.css' rel='stylesheet' />
+<link href='${path}/a00_com/lib/main.css' rel='stylesheet' />
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
 <script src="${path}/a00_com/jquery.min.js"></script>
 <script src="${path}/a00_com/popper.min.js"></script>
 <script src="${path}/a00_com/bootstrap.min.js"></script>
 <script src="${path}/a00_com/jquery-ui.js"></script>
-<script src='${path}/a00_com/lib/project.js'></script>
+<script src='${path}/a00_com/lib/main.js'></script>
 
 
 

@@ -43,6 +43,7 @@ public class KanbanController {
 		return "/schedule/schKanban";
 	}
 	
+	@RequestMapping(params="method=insert")
 	public String insertKanban(HttpServletRequest request, PRJ_TASK ins, Model d) {
 
 
