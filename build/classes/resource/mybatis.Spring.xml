@@ -18,6 +18,9 @@
 		<typeAlias alias="deptDoc" type="mvc.vo.DeptDoc"/>
 		<typeAlias alias="deptDocSch" type="mvc.vo.DeptDocSch"/>
 		<typeAlias alias="deptFile" type="mvc.vo.DeptFile"/>
+		<typeAlias alias="commonDoc" type="mvc.vo.CommonDoc"/>
+		<typeAlias alias="commonDocSch" type="mvc.vo.CommonDocSch"/>
+		<typeAlias alias="commonFile" type="mvc.vo.CommonFile"/>
 		<typeAlias alias="kanban" type="mvc.vo.KanbanVo"/>
 		<typeAlias alias="kanban2" type="mvc.vo.KanbanVo"/>
 		<typeAlias alias="kanban3" type="mvc.vo.KanbanVo"/>
@@ -37,6 +40,8 @@
 		<mapper resource="resource/KanbanMapper.xml" />
 		<mapper resource="resource/DeptMapper.xml"/>
 		<mapper resource="resource/DeptDetailMapper.xml"/>
+		<mapper resource="resource/CommonMapper.xml"/>
+		<mapper resource="resource/CommonDetailMapper.xml"/>
 		<mapper resource="resource/TaskMapper.xml"/>
 		<mapper resource="resource/sgMapper.xml"/>
 		<mapper resource="resource/IssueMapper.xml"/>

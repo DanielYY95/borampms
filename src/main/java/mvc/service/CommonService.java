@@ -11,23 +11,24 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import mvc.dao.DeptDao;
-import mvc.vo.DeptDoc;
-import mvc.vo.DeptDocSch;
-import mvc.vo.DeptFile;
+import mvc.dao.CommonDao;
+import mvc.vo.CommonDoc;
+import mvc.vo.CommonDocSch;
+import mvc.vo.CommonFile;
+
 
 
 // insert_DD 
 // insert_DF -> 첨부파일 정보 DB에 등록
 @Service
-public class DeptService {
+public class CommonService {
 
 	@Autowired
-	private DeptDao dao;
+	private CommonDao dao;
 	
 	// 부서문서 리스트 조회
 
-	public List<DeptDoc> getDDList(DeptDocSch sch){
+	public List<CommonDoc> getCDList(CommonDocSch sch){
 		// 1. 전체 갯수
 		sch.setCount(dao.totCnt(sch));
 		
@@ -68,15 +69,15 @@ public class DeptService {
 		int lastBlockGrp = curBlockGrp*sch.getBlockSize();
 		sch.setLastBlock((lastBlockGrp > sch.getPageCount()) ? sch.getPageCount() : lastBlockGrp);
 		
-		return dao.getDDList(sch);
+		return dao.getCDList(sch);
 	}
 	
 	// 부서문서 등록 처리부분
 	@Value("${upload}")
 	private String uploadPath;
 	
-	public String insertDD(DeptDoc ins) {
-		dao.insertDD(ins);
+	public String insertCD(CommonDoc ins) {
+		dao.insertCD(ins);
 		String msg = "등록성공";
 		// 특정한 위치에 첨부파일 업로드
 		if(ins.getReport() != null && ins.getReport().length > 0) {
@@ -90,7 +91,7 @@ public class DeptService {
 						
 						mf.transferTo(file);
 						
-						dao.insertDF(new DeptFile(filename));
+						dao.insertCF(new CommonFile(filename));
 					}
 				}
 			} catch (IllegalStateException e) {

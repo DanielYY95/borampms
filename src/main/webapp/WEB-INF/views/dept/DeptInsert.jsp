@@ -33,6 +33,9 @@
         	.pagination-margin-top{
         		margin-top:10px;
         	}
+        	.card-body{
+        	padding:3rem 9rem;
+        	}
         </style>
     </head>
 
@@ -93,13 +96,13 @@
 														<div class="col-lg-6">
 															<div class="mb-3">
 															    <label class="form-label" >부서</label>
-															    <input type="text" class="form-control" name="ddDept" value="${deptdoc.ddDept}">
+															    <input type="text" class="form-control" name="ddDept" value="${user_info.uiDept}" readonly>
 															</div>
 														</div>
 														<div class="col-lg-6">
 															<div class="mb-3">
 															    <label class="form-label">작성자</label>
-															    <input type="text" class="form-control" name="ddWriter" value="${deptdoc.ddWriter}">
+															    <input type="text" class="form-control" name="ddWriter" value="${user_info.uiName}" readonly>
 															</div>
 														</div>
 													</div>

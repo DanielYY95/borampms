@@ -72,22 +72,22 @@
                             </div>
                         </div>
                         <!-- end page title -->
-						<form method="post" enctype="multipart/form-data" action="${path}/dept.do?method=upt">
+						<form method="post" enctype="multipart/form-data" action="${path}/common.do?method=upt">
                         <div class="row">
                             <div class="col-12">
                                 <div class="card">
                                     <div class="card-body">
-                                    <h4 class="header-title">[부서 문서공유함]</h4>
+                                    <h4 class="header-title">[공통 문서함]</h4>
                                     <br>
                                         <div class="tab-content">
                                             <div class="tab-pane show active" id="input-masks-preview">
                                                     <div class="row">
 	                                                    <div class="col-lg-6">
 		                                                    <div class="mb-3">
-		                                                    	<input type="hidden" name="ddId" value="${deptRowList.ddId}"/>
+		                                                    	<input type="hidden" name="cdId" value="${commonRowList.cdId}"/>
 															    <label class="form-label">제목</label>
-															    <input type="text" class="form-control" name="ddTitle" value="${deptRowList.ddTitle}">
-															    <span class="font-13 text-muted">제목 입력은 필수사항입니다.</span>
+															    <input type="text" class="form-control" name="cdTitle" value="${commonRowList.cdTitle}">
+															    <span class="font-13 text-muted">[대외/대내]제목명 형식으로 작성해주세요.</span>
 															</div>
 														</div>
 													</div>
@@ -95,19 +95,19 @@
 														<div class="col-lg-6">
 															<div class="mb-3">
 															    <label class="form-label" >부서</label>
-															    <input type="text" class="form-control" name="ddDept" value="${deptRowList.ddDept}"  readonly>
+															    <input type="text" class="form-control" name="cdDept" value="${commonRowList.cdDept}"  readonly>
 															</div>
 														</div>
 														<div class="col-lg-6">
 															<div class="mb-3">
 															    <label class="form-label">작성자</label>
-															    <input type="text" class="form-control" name="ddWriter" value="${deptRowList.ddWriter}"  readonly>
+															    <input type="text" class="form-control" name="cdWriter" value="${commonRowList.cdWriter}"  readonly>
 															</div>
 														</div>
 													</div>
 													<div class="mb-3">
                                                         <label class="form-label">내용</label>
-                                                        <textarea class="form-control" id="example-textarea" name="ddContent" rows="5">${deptRowList.ddContent}</textarea>
+                                                        <textarea class="form-control" id="example-textarea" name="cdContent" rows="5">${commonRowList.cdContent}</textarea>
                                                     </div>
 													<div class="row">
 	                                                    <div class="col-lg-6">
@@ -115,13 +115,13 @@
 							
 														</div>
 													</div>
-													<c:forEach var="dfFile" items="${deptRowList.fnames}">
+													<c:forEach var="cfFile" items="${commonRowList.fnames}">
 													<div class="row">
 								            			<div class="col-lg-4">
 															<div class="mb-3">
 																<div class="input-group flex-nowrap">
                                                             		<span class="input-group-text" id="basic-addon1"><i class="dripicons-document-new"></i></span>
-                                                            		<input type="text" class="form-control" name="report" placeholder="${dfFile}" aria-label="Username" aria-describedby="basic-addon1" disabled>
+                                                            		<input type="text" class="form-control" name="report" placeholder="${cfFile}" aria-label="Username" aria-describedby="basic-addon1" disabled>
                                                         		</div>
 														  	</div>
 													  	</div>
@@ -281,14 +281,14 @@
 		$("#updBtn").click(function(){
 			if(confirm("수정하시겠습니까?")){
 				/* 제목란이 비어있을 경우 */
-				if($("[name=ddTitle]").val()==""){
+				if($("[name=cdTitle]").val()==""){
 					alert("제목은 필수항목입니다.")
-					$("[name=ddTitle]").focus();
+					$("[name=cdTitle]").focus();
 					return;
 				}
-				if($("[name=ddContent]").val()==""){
+				if($("[name=cdContent]").val()==""){
 					alert("내용은 필수항목입니다.")
-					$("[name=ddContent]").focus();
+					$("[name=cdContent]").focus();
 					return;
 				}
 				/* 문서관리 페이지로 이동 */
@@ -298,7 +298,7 @@
 		/* 취소버튼 클릭시, 문서관리 페이지로 이동 */
 		$("#cancelBtn").click(function(){
 			alert("문서관리 페이지로 이동하시겠습니까?");
-			location.href="${path}/dept.do?method=list";
+			location.href="${path}/common.do?method=list";
 		});
 	});
 	</script>

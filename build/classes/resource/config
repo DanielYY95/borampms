@@ -4,5 +4,5 @@ jdbc.url=jdbc:oracle:thin:@146.56.185.62:1521:xe
 jdbc.user=boram
 jdbc.pass=pms
 # 업로드할 파일 경로 설정
-upload=C:/a01_javaexp/z01_upload/
-toUpload=C:/a01_javaexp/z01_upload/
+upload=D:/upload/
+toUpload=D:/upload/

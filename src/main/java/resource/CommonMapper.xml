@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="mvc.dao.CommonDao">
+	<!-- 공통문서 테이블 총 카운터 -->
+	<select id="totCnt"  parameterType="commonDocSch" resultType="int">
+		select count(*)
+		from COMMON_DOC
+		where 1=1
+		<if test="cdWriter!=null and cdWriter!=''"> 
+		and CD_WRITER like '%'||#{cdWriter}||'%'
+		</if>
+		<if test="cdTitle!=null and cdTitle!=''">
+		and CD_TITLE like '%'||#{cdTitle}||'%'
+		</if>
+	</select>
+	<!-- 공통문서 테이블 조회 -->
+	<select id="getCDList" parameterType="commonDocSch" resultType="commonDoc">
+		select *
+		from (
+			select rownum cnt, COMMON_DOC.*
+			from COMMON_DOC
+			where 1=1
+			<if test="cdWriter!=null and cdWriter!=''"> 
+			and CD_WRITER like '%'||#{cdWriter}||'%'
+			</if>
+			<if test="cdTitle!=null and cdTitle!=''">
+			and CD_TITLE like '%'||#{cdTitle}||'%'
+			</if>
+		)
+		where cnt between #{firstPage} and #{lastPage}
+		order by CD_ID desc
+	</select>
+	<!-- 공통문서 등록 -->
+	<insert id="insertCD" parameterType="commonDoc">
+		INSERT INTO COMMON_DOC VALUES(seq_cd.nextval,#{cdTitle},#{cdWriter},
+		#{cdDept},#{cdContent},sysdate,'1')
+	</insert>
+	<!-- 공통문서 첨부파일 -->
+	<insert id="insertCF" parameterType="commonFile">
+		INSERT INTO COMMON_FILE VALUES(seq_cf.nextval,
+		#{cfFile},sysdate,seq_cd.currval)
+	</insert>
+</mapper>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="mvc.dao.CommonDetailDao">
+	<select id="getDetailList" parameterType="String" resultType="commonDoc">
+		select * from COMMON_DOC where CD_ID = #{cdId}
+	</select>
+	<select id="getFileInfo" parameterType="String" resultType="String">
+		SELECT CF_FILE FROM COMMON_FILE WHERE CD_ID = #{cdId}
+	</select>
+	<update id="updateCommon" parameterType="commonDoc">
+		update Common_Doc
+		set CD_TITLE = #{cdTitle},
+			CD_CONTENT = #{cdContent},
+			CD_REGDATE = sysdate
+		where CD_ID = #{cdId}
+	</update>
+	<delete id="deleteCommon" parameterType="string">
+		delete from Common_DOC where CD_ID = #{cdId}
+	</delete>
+</mapper>

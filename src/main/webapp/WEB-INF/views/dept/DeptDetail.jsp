@@ -33,6 +33,9 @@
         	.pagination-margin-top{
         		margin-top:10px;
         	}
+        	.card-body{
+        	padding:3rem 9rem;
+        	}
         </style>
     </head>
 
@@ -84,7 +87,7 @@
 		                                                    <div class="mb-3">
 															    <label class="form-label">제목</label>
 															    <input type="text" class="form-control" name="ddTitle" value="${deptRowList.ddTitle}" readonly>
-															    <span class="font-13 text-muted">제목 입력은 필수사항입니다.</span>
+															    <span class="font-13 text-muted"></span>
 															</div>
 														</div>
 													</div>

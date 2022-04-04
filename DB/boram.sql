@@ -32,7 +32,7 @@ select *
 		where 1=1
 		and DD_DEPT like '%'||'개발1팀'||'%'
 	);
-SELECT * FROM dept_doc WHERE dd_dept ='개발1팀';
+SELECT * FROM dept_doc WHERE dd_dept ='개발2팀';
 /* 부서문서 테이블 수정 */
 UPDATE DEPT_DOC 
 SET DD_TITLE = '호호',
@@ -81,10 +81,19 @@ CREATE TABLE COMMON_DOC(
 	CD_ID VARCHAR2(20),
 	CD_TITLE VARCHAR2(50),
 	CD_WRITER VARCHAR2(15),
+	CD_DEPT VARCHAR2(30),
 	CD_CONTENT VARCHAR2(1000),
 	CD_REGDATE DATE,
 	DI_ID VARCHAR2(20)
 );
+SELECT*FROM common_doc;
+DROP TABLE COMMON_DOC;
+/* 공통문서 시퀀스 생성 */
+CREATE SEQUENCE seq_cd
+INCREMENT BY 1
+START WITH 1
+MINVALUE 1
+nocycle;
 /* 공통문서 첨부파일 */
 CREATE TABLE COMMON_FILE(
 	CF_ID VARCHAR2(20),
@@ -92,6 +101,13 @@ CREATE TABLE COMMON_FILE(
 	CF_REGDATE DATE,
 	CD_ID VARCHAR2(20)
 );
+/* 공통문서 첨부파일 시퀀스 생성 */
+CREATE SEQUENCE seq_cf
+INCREMENT BY 1
+START WITH 1
+MINVALUE 1
+nocycle;
+
 select * from Dept_Doc;
 SELECT * FROM dept_file WHERE DD_id = '1';
 
@@ -100,3 +116,9 @@ update Dept_Doc
 			DD_CONTENT = '수정',
 			DD_REGDATE = sysdate
 		where DD_ID = '46';
+	
+	
+	
+SELECT*FROM USER_INFO ui ;
+
+	
