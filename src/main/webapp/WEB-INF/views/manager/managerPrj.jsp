@@ -205,9 +205,7 @@
 	                                                            <a href="javascript:void(0);" onclick="goPrjDetail('${prj.piId}')" class="action-icon"
 	                                                            data-bs-toggle="modal" data-bs-target="#signup-modal"> 
 	                                                            <i class="mdi mdi-square-edit-outline"></i></a>
-	                                                            
-	                                                            
-	                         
+	                             
 	                                                        </td>
 	                                                    </tr>
                                                     </c:forEach>

@@ -70,6 +70,16 @@ public class MainController {
 		return "main_login//prjList";
 	}
 	
+	@RequestMapping("/mainSearchPrj.do")
+	public String mainSearchPrj(HttpServletRequest request, PRJ_INFO prj, Model d) {
+		USER_INFO user=  smethod.getUserSession(request);
+		prj.setUiId(user.getUiId());
+		
+		d.addAttribute("searchPrjList", service.mainSearchPrj(prj));
+		
+		return "pageJsonReport";
+	}
+	
 	@RequestMapping("/joinPrj.do")
 	public String joinPrj(HttpServletRequest request, String piId, Model d) {
 		
@@ -77,7 +87,7 @@ public class MainController {
 		service.joinPrj(new PRJ_USER(piId, user.getUiId()));
 		
 		
-		return "forward:/prjList.do";
+		return "redirect:/prjList.do";
 	}
 	
 	
@@ -94,7 +104,7 @@ public class MainController {
 		service.insertPrj(sch);
 		
 		
-		return "forward:/prjList.do";
+		return "redirect:/prjList.do";
 	}
 	
 	
@@ -121,6 +131,23 @@ public class MainController {
 		return "pageJsonReport";
 	}
 	
+	@RequestMapping("/alarmCheck.do")
+	public String alarmCheck(String aId) {
+		
+
+		etcservice.uptAlarm(aId);
+		
+		return "pageJsonReport";
+	}
+	
+	@RequestMapping("/alarmDelete.do")
+	public String alarmDelete(String aId) {
+		
+	
+		etcservice.delAlarm(aId);
+		
+		return "pageJsonReport";
+	}
 	
 	
 	

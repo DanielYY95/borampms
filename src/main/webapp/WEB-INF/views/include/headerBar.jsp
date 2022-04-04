@@ -34,36 +34,84 @@
 				location.href="${path}/loginFrm.do?toURL="+url;
 			</c:if>
 			
-		
-		
-			$.ajax({
-				
-				url:"${path}/alarmList.do",
-				type:"get",
-				dataType:"json",
-				success:function(data) {
 			
-					let html = "";
-			    	$.each(data.alarmList, function(idx, sch) {
-			    		
-			 			html += '<a href="javascript:void(0);" class="dropdown-item p-0 notify-item card unread-noti shadow-none mb-2">'+
-								'<div class="card-body"><span class="float-end noti-close-btn text-muted">'+
-								'<i class="mdi mdi-close"></i></span><div class="d-flex align-items-center">'+
-								'<div class="flex-shrink-0"><div class="notify-icon bg-primary"><i class="mdi mdi-comment-account-outline"></i>'+
-								'</div></div><div id="alramMsg" class="flex-grow-1 text-truncate ms-2"><h5 class="noti-item-title fw-semibold font-14">'+
-								sch.aFrom+'<small class="fw-normal text-muted ms-1">'+moment(sch.aRegdate).utcOffset(0).format("MM:DD HH:mm")+
-								'</small></h5><small id="alramType" class="noti-item-subtitle text-muted">'+
-								sch.aContent+'</small></div></div></div></a>';
-				 	});	// .utcOffset(0). 을 붙여줘야 제대로 출력된다
+			getAlarmList();
+			
+			
+			function alarmCheck(aId){
+				
+				$.ajax({
 					
-			 		$("#alarmBox").append(html);
-			 		
-				},
-				error:function(err) {
-					console.log(err);
-				}
+					url:"${path}/alarmCheck.do",
+					type:"get",
+					data:"aId="+aId,
+					success:function() {
+						
+						location.href="${path}/mytask.do?method=clist";
+						
+					},
+					error:function(err) {
+						console.log(err);
+					}
+			
+				})
+				
+			}
+			
+			function alarmDel(aId){
+				
+				$(event.target).parent().parent().parent().remove();
+
+				$.ajax({
+					
+					url:"${path}/alarmDelete.do",
+					type:"get",
+					data: "aId="+aId,  
+					success:function() {
+						
+					},
+					error:function(err) {
+						console.log(err);
+					}
+			
+				})
+				
+			}
+			
+			
+			
+			function getAlarmList(){
 		
-			})
+				$.ajax({
+					
+					url:"${path}/alarmList.do",
+					type:"get",
+					dataType:"json",
+					success:function(data) {
+				
+						let html = "";
+				    	$.each(data.alarmList, function(idx, sch) {
+				    		
+				 			html += '<a href="javascript:void(0);" id="alarm" class="dropdown-item p-0 notify-item card unread-noti shadow-none mb-2">'+
+									'<div class="'+sch.aChecked+' card-body"><span class="float-end noti-close-btn text-muted" onclick="alarmDel('+"'"+sch.aId+"'"+')">'+
+									'<i class="mdi mdi-close"></i></span><div class="d-flex align-items-center">'+
+									'<div class="flex-shrink-0"><div class="notify-icon bg-primary"><i class="mdi mdi-comment-account-outline"></i>'+
+									'</div></div><div class="alarmMsg"><div onclick="alarmCheck('+"'"+sch.aId+"'"+')" class="flex-grow-1 text-truncate ms-2">'+
+									'<h5 class="noti-item-title fw-semibold font-14">'+
+									sch.aFrom+'<small class="fw-normal text-muted ms-1">'+moment(sch.aRegdate).utcOffset(0).format("MM:DD HH:mm")+
+									'</small></h5><small class="noti-item-subtitle text-muted">'+
+									sch.aContent+'</small></div></div></div></div></a>';
+					 	});	// .utcOffset(0). 을 붙여줘야 제대로 출력된다
+						
+				 		$("#alarmBox").append(html);
+				 		
+					},
+					error:function(err) {
+						console.log(err);
+					}
+			
+				})
+			}
 
 		</script>
 
@@ -137,7 +185,7 @@
 					</li>
 
 					<!-- 알림 목록 -->
-					<li id="alarm" class="dropdown notification-list">
+					<li id="alarmLogo" class="dropdown notification-list">
 						<a
 							class="nav-link dropdown-toggle arrow-none"
 							data-bs-toggle="dropdown" href="#" role="button"
@@ -374,16 +422,8 @@
 			<script>
 			$(document).ready(function(){
 				
-				// 알림 메시지에 따라 이동을 다르게
-				$("#alramMsg").on("click",function(){
-					
-					if($("#alramType").text()==("새 업무를 담당")){
-						location.href="${path}/mytask.do?method=clist";
-					}
-					
-					
-				})
 				
+				$(".1.card-body").parent().removeClass("unread-noti");
 				
 				
 				});	

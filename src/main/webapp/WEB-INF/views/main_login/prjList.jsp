@@ -77,48 +77,51 @@
                                     <div class="card-body">
                                         <div class="row mb-2">
                                             <div class="col-xl-9">
-                                                <form class=""  method="post">
+                                                <form id="searchForm" action="${path}/mainSearchPrj.do"  method="post">
+                                                	
                                                     <div class="row d-flex justify-content-between">
                                                       <div class="d-flex col-5">
                                                           <div class="">
-                                                            <select class="form-select" id="search-select">
-                                                                <option selected>프로젝트명</option>
-                                                                <option>프로젝트 관리자</option>
-                                                            </select>
+                                                         
+                                                            <label class="col-form-label p-1" style="width: 100px;" >프로젝트명</label>
                                                           </div>
                                                           <div class="">
-                                                            <input type="search" class="form-control" id="search-word" placeholder="검색">
+                                                            <input type="search" name="piTitle" class="form-control" id="search-word" placeholder="검색">
                                                           </div>
                                                           <div class="">
                                                            <label class="col-form-label p-1" style="width: 100px;" >프로젝트상태</label>
                                                           </div>
                                                           <div class="">
-                                                            <select class="form-select" id="search-select">
-                                                                <option selected>전체</option>
-                                                                <option>진행전</option>
-                                                                <option>진행중</option>
-                                                                <option>지연</option>
-                                                                <option>진행완료</option>
+                                                            <select class="form-select" id="search-select" name="piStatus">
+                                                                <option value="" selected>전체</option>
+                                                                <option>진행 전</option>
+                                                                <option>진행 중</option>
+                                                                <option>보류</option>
+                                                                <option>완료</option>
                                                             </select>
                                                           </div>
                                                       
                                                       </div>
-                                                      <div class="d-flex justify-content-between col-3">
+                                                      <div class="d-flex justify-content-between col-4">
                                                           
                                                           <div>
                                                             <label for="startdate-form" class="col-form-label p-1" style="width: 60px;" >시작일</label>
                                                           </div>
                                                           <div>
-                                                            <input id="startdate-form" class="form-control" type="date" />
+                                                            <input id="startdate-form" class="form-control" name="piStartdate" type="date" />
                                                           </div>
                                                           <div>
                                                             <label for="duedate-form" class="col-form-label p-1" style="width: 60px;">마감일</label>
                                                           </div>
                                                           <div >
-                                                            <input id="duedate-form" class="form-control" type="date" />
+                                                            <input id="duedate-form" class="form-control" name="piDuedate" type="date" />
                                                           </div>
+       													 <div>
+															<button class="btn btn-primary" id="searchBtn" type="button">조회</button>
+														</div>
         
                                                       </div>
+                                                     
                                                   </div>
                                               </form>
                                             </div>
@@ -150,7 +153,7 @@
                                                         
                                                     </tr>
                                                 </thead>
-                                                <tbody>
+                                                <tbody id="listBox">
                                                 	<c:forEach var="prj" items="${prjList}">
                                                 		<tr>
 	                                                        <td>
@@ -241,7 +244,7 @@
 			                                                                <label class="form-check-label" for="customCheck2">&nbsp;</label>
 			                                                            </div>
 			                                                        </td>
-			                                                        <td><a href="apps-ecommerce-orders-details.html" class="text-body fw-bold">${newprj.piId} DB값</a> </td>
+			                                                        <td><a href="apps-ecommerce-orders-details.html" class="text-body fw-bold">${newprj.piId}</a> </td>
 			                                                        <td>${newprj.piTitle}</td>
 			                                                        <td>
 			                                                            <div class="d-flex">
@@ -277,7 +280,7 @@
 			                                                                <label class="form-check-label" for="customCheck2">&nbsp;</label>
 			                                                            </div>
 			                                                        </td>
-			                                                        <td><a href="apps-ecommerce-orders-details.html" class="text-body fw-bold">${waitprj.piId} DB값</a> </td>
+			                                                        <td><a href="apps-ecommerce-orders-details.html" class="text-body fw-bold">${waitprj.piId} </a> </td>
 			                                                        <td>${waitprj.piTitle}</td>
 			                                                        <td>
 			                                                            <div class="d-flex">
@@ -351,6 +354,19 @@
         		location.href="${path}/addPrjFrm.do";
         	})
 
+       		$("#searchBtn").on("click", function(){
+       			
+				searchPrj();		
+			})
+		
+			$("input").on("keypress",function(e){
+				if(e.keyCode==13){
+					e.preventDefault();
+					searchPrj();
+				}
+		
+			});
+			        	
 
         	function goToPrj(piId){
         		location.href="${path}/prjDash.do?piId="+piId;
@@ -363,9 +379,46 @@
         		location.href="${path}/joinPrj.do?piId="+piId;
         	}
 
+        	function searchPrj(){
+
+        
+        		$.ajax({
+
+        			url:"${path}/mainSearchPrj.do",
+        			type:"get",
+        			data: $("#searchForm").serialize(),
+        			dataType:"json",
+        			success:function(data) {
+        				
+        				$("#listBox").html("");
+        				let html = "";
+        				$.each(data.searchPrjList, function(idx, sch) {
+        					
+        					html += '<tr><td><div class="form-check"><input type="checkbox" class="form-check-input" id="customCheck2">'+
+        							'<label class="form-check-label" for="customCheck2">&nbsp;</label></div></td><td><a href="apps-ecommerce-orders-details.html" class="text-body fw-bold">'+
+        							sch.piId+'</a></td><td onclick="goToPrj('+"'"+sch.piId+"'"+')">'+sch.piTitle+'</td><td><div class="d-flex"><div class="d-flex align-items-center">'+
+                                    '<div class="flex-shrink-0"><img src="${path}/tools/main_assets/images/users/avatar-1.jpg" class="rounded-circle avatar-xs" alt="friend"></div>'+
+                                    '<div class="flex-grow-1 ms-2"><h5 class="my-0">'+sch.uiName+'</h5></div> </div></div></td><td><h5 class="my-0">'+sch.piStartdate+
+                                    '</h5><p class="mb-0 txt-muted">'+sch.piDuedate+'}</p> </td><td><h5 class="my-0"><span class="badge badge-info-lighten">'+
+                                    sch.piStatus+'</span></h5></td></tr>';
+        				});	
+        		
+        				$("#listBox").append(html);
+        		
+        			
+        			},
+        			error:function(err) {
+        				console.log(err);
+        			}
+        	
+        		})
+        	}
         	
 
             $("#alarm").hide();
+            
+            
+            
 
 
         </script>

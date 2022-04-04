@@ -28,5 +28,17 @@ public class EtcService {
 		return dao.getAlarmList(user);
 	};
 	
+	public void uptAlarm(String aid) {
+		
+		dao.uptAlarm(aid);
+	};
+	
+	
+	public void delAlarm(String aid) {
+		
+		dao.delAlarm(aid);
+	};
+	
+	
 	
 }

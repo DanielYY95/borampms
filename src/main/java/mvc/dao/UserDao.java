@@ -46,6 +46,7 @@ public interface UserDao {
 	// 10. 내 프로젝트 목록 조회
 	public ArrayList<PRJ_INFO> getMyPrjList(String uiId);
 	
+	public ArrayList<PRJ_INFO> mainSearchPrj(PRJ_INFO prj);
 	
 	// 11. 참여하지않은 프로젝트 목록 조회
 	

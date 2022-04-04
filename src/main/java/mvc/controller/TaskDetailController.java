@@ -48,7 +48,7 @@ public class TaskDetailController {
 		return "task//taskDetail";
 	}
 	
-	@PostMapping("/taskUpt.do") // ptId를 포함한 vo객체 받는다.
+	@RequestMapping("/taskUpt.do") // ptId를 포함한 vo객체 받는다.
 	public String taskUpdate(PRJ_TASK task, Model d) {
 		
 		service.updateTask(task);
@@ -57,7 +57,7 @@ public class TaskDetailController {
 		d.addAttribute("taskUser", service.getTask(task.getPtId()));
 		
 		
-		return "task//taskDetail";
+		return "redirect:/taskDetail.do"; 
 	}
 	
 	@RequestMapping("/pwchk.do") //  Controller 메서드의 파라메터를 HttpRequest의 파라메터로 연결해서 사용하려면 @ReqParam 어노테이션을 주고 value도 꼭 주어야 한다
@@ -85,7 +85,7 @@ public class TaskDetailController {
 		d.addAttribute("msg", "삭제되었습니다!");
 		
 		
-		return "forward:/task.do?method=list";
+		return "redirect:/task.do?method=list";
 	}
 	
 	@RequestMapping("/taskWbs.do")
@@ -124,7 +124,7 @@ public class TaskDetailController {
 		// 등록 처리
 		m.addAttribute("msg", service.insertOutput(output)); // forward 할 때 요거 넘겨주나?
 		
-		return "forward:/toFrm.do";
+		return "redirect:/toFrm.do";
 	}
 	
 	@RequestMapping("/toDelete.do")

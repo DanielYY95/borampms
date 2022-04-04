@@ -161,6 +161,11 @@ public class UserService {
 		return dao.getMyPrjList(uiId);
 	};
 	
+	public ArrayList<PRJ_INFO> mainSearchPrj(PRJ_INFO prj){
+		
+		return dao.mainSearchPrj(prj);
+	};
+	
 	// 11. 참여하지않은 프로젝트 목록 조회
 	
 	public ArrayList<PRJ_INFO> getNewPrjList(String uiId){

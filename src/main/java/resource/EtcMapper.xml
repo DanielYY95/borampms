@@ -16,8 +16,23 @@
 		and A_TO Like '%' || #{uiDept} || ' ' || #{uiName} || '%'
 		order by A_REGDATE desc
 	</select>
+
+
+	<update id="uptAlarm" parameterType="string">
+		update alarm
+			set A_CHECKED = '1'
+			where A_ID = #{aId}
+	
+	</update>
+
 	
 
+	<delete id="delAlarm" parameterType="string">
+		delete from alarm
+			where A_ID = #{aId}
+		
+	</delete>
+	
 	
 	
 </mapper>

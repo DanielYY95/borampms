@@ -13,9 +13,17 @@ public class PRJ_INFO {
 	// DB에 없으나 작성자명을 나타내기위함
 	private String uiName;
 	private String puStatus;
+	private String uiId;
 	
-
 	
+	
+	
+	public String getUiId() {
+		return uiId;
+	}
+	public void setUiId(String uiId) {
+		this.uiId = uiId;
+	}
 	public String getPuStatus() {
 		return puStatus;
 	}

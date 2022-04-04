@@ -93,6 +93,15 @@ CREATE TABLE PRJ_TASK (
 
 SELECT * FROM prj_task;
 
+SELECT * FROM alarm;
+
+	select pi.PI_ID, PI_TITLE, PI_STARTDATE, 
+			PI_DUEDATE, PI_STATUS, UI_NAME  
+		from (
+		select * from prj_user
+		where UI_ID = 'daniel95') pu, PRJ_INFO pi, user_info ui
+		where pu.PI_ID = pi.PI_ID 
+		and pi.PI_WRITER = ui.UI_ID;
 
 CREATE TABLE TASK_OUTPUT (
 	TO_ID	VARCHAR2(20)	PRIMARY key	,

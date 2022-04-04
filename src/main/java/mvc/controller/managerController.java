@@ -43,7 +43,7 @@ public class managerController {
 		
 		d.addAttribute("msg", "수정되었습니다.");
 		
-		return "forward:/manager.do?method=user";
+		return "redirect:/manager.do?method=user";
 	}
 	
 	@RequestMapping(params="method=userDel")
@@ -53,7 +53,7 @@ public class managerController {
 		
 		d.addAttribute("msg", "삭제되었습니다.");
 		
-		return "forward:/manager.do?method=user";
+		return "redirect:/manager.do?method=user";
 	}
 	
 	@RequestMapping(params="method=userSearch")
@@ -80,7 +80,7 @@ public class managerController {
 		
 		service.addDept(dept);
 		
-		return "manager/managerDept";
+		return "redirect:/manager.do?method=dept";
 	}
 	
 	@RequestMapping(params="method=deptDetail")
@@ -96,7 +96,7 @@ public class managerController {
 		
 		service.uptDept(dept);
 	
-		return "forward:/manager.do?method=dept";
+		return "redirect:/manager.do?method=dept";
 	}
 	
 	
@@ -125,7 +125,7 @@ public class managerController {
 		
 		service.uptPrj(prj);
 	
-		return "forward:/manager.do?method=prj";
+		return "redirect:/manager.do?method=prj";
 	}
 	
 	@RequestMapping(params="method=prjSearch")
@@ -166,7 +166,7 @@ public class managerController {
 		
 		service.uptPrjUser(sch);
 	
-		return "forward:/manager.do?method=prjUser";
+		return "redirect:/manager.do?method=prjUser";
 	}
 	
 	
