@@ -39,6 +39,9 @@
 		display: none;
 		background-color: rgba(0, 0, 0, 0.4);
 	}
+	.header-title {
+		font-size: 30px;
+	}
 </style>
 
 
@@ -60,7 +63,6 @@
 						<div class="col-12">
 							<div class="page-title-box">
 								<div class="page-title-right">
-
 								</div>
 								<h4 class="page-title">팀 페이지</h4>
 							</div>
@@ -72,10 +74,10 @@
 								<div class="card-body">
 									<div class="row my-3">
 										<div class="header-title" style="font-size:20px; padding-bottom:5px; float:left;">팀소개
-											<br>
 											<textarea style="width:100%; height:170px;" value=""></textarea>
 											<div style="text-align:right;">
-												<button id="docList-btn" type="button" class="btn btn-primary">저장</button>
+												<button id="docList-btn" type="button" class="btn btn-primary">편집</button>
+												<button id="docList-btn1" type="button" class="btn btn-primary">저장</button>
                                             </div>
 										</div>
 									</div>
@@ -83,20 +85,11 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-xl-3 col-lg-6" style="float:left; width:40%;">
+					<div class="col-xl-3 col-lg-6" style="float:left; width:30%;">
 						<div class="card card-h-100">
 							<div class="card-body">
 								<div class="d-flex justify-content-between align-items-center mb-2">
                                    	<h4 class="header-title">팀원</h4>
-                                   	<div class="dropdown">
-                                       <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false">
-                                           <i class="mdi mdi-dots-horizontal"></i>
-                                       </a>
-                                       <div class="dropdown-menu dropdown-menu-end" style="">
-                                           <!-- item-->
-                                           <button type="button" id="modal_btn">팀원 초대</button>
-                                       </div>
-                                    </div>
                            		</div>
 								<div class="inbox-widget" style="height:500px;overflow-x:hidden; overflow-y:scroll;">
                                     <div class="inbox-item">
@@ -166,12 +159,31 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-xl-7 col-lg-6" style="float:right; width:58%; height:616px">
+					<div class="col-xl-7 col-lg-6" style="float:right; width:35%; height:616px; ">
 						<div class="card card-h-100">
 							<div class="card-body">
 								<div class="d-flex justify-content-between align-items-center mb-2">
 									<h4 class="header-title">상세보기</h4>
 								</div>
+								<div>
+									<p style="font-size:25px;">이름 : 한가람</p>
+									<p style="font-size:25px;">부서 : 개발1팀</p>
+									<p style="font-size:25px;">직급 : 과장</p>
+									<p style="font-size:25px;">이메일 : 이메일</p>
+									<p style="font-size:25px;">연락처 : 연락처</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-xl-7 col-lg-6" style="float:right; width:30%; height:616px; margin-right:2%;">
+						<div class="card card-h-100">
+							<div class="card-body">
+								<div class="d-flex justify-content-between align-items-center mb-2">
+									<h4 class="header-title">상세보기</h4>
+								</div>
+									<div class="inbox-item-img" style="text-align:center;">
+										<img src="${path}/tools/main_assets/images/users/profile.png" style="width:100%;" class="rounded-circle" alt="">
+									</div>
 							</div>
 						</div>
 					</div>
