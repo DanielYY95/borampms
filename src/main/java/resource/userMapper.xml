@@ -18,7 +18,7 @@
 		INSERT INTO user_info VALUES (
 		#{uiId}, #{uiPw}, #{uiName}, 
 		#{uiEmail}, #{uiPhone}, #{uiBirth}, sysdate,
-		'', '', #{uiRank}, #{uiDept}, 0
+		'', '', #{uiRank}, #{uiDept}, 2
 		)
 
 	</insert> 
@@ -45,18 +45,27 @@
 	<update id="updateUser" parameterType="user">
 		UPDATE user_info 
 			SET UI_PW = #{uiPw}
-			and UI_EMAIL = #{uiEmail}
-			and UI_PHONE = #{uiPhone}
-			and UI_BIRTH = #{uiBirth}
-			and UI_PIC = #{uiPic}
-			and UI_INTRO = #{uiIntro}
-			and UI_RANK = #{uiRank}
-			and UI_DEPT = #{uiDept}
-			and UI_STATUS = #{uiStatus}
+			, UI_EMAIL = #{uiEmail}
+			, UI_PHONE = #{uiPhone}
+			, UI_BIRTH = #{uiBirth}
+			, UI_PIC = #{uiPic}
+			, UI_INTRO = #{uiIntro}
+			, UI_RANK = #{uiRank}
+			, UI_DEPT = #{uiDept}
+			, UI_STATUS = #{uiStatus}
 			WHERE UI_ID = #{uiId}
 	
 	</update>
-
+	
+	<!-- 5-1. 프로필 수정 -->
+	<update id="uptProfile" parameterType="user">
+		UPDATE user_info 
+			SET UI_EMAIL = #{uiEmail}
+			, UI_PHONE = #{uiPhone}
+			, UI_INTRO = #{uiIntro}
+			WHERE UI_ID = #{uiId}
+	</update>
+	
 	<!-- 6. 회원정보 불러오기 --> 
 	<select id="getUser" parameterType="string" resultType="user" >
 		select * from user_info
@@ -77,16 +86,115 @@
 	
 	<!-- 8. 아이디찾기 -->
 	
+	<select id="getId" parameterType="user" resultType="string">
+		SELECT UI_ID FROM USER_INFO ui
+		WHERE UI_NAME = #{uiName}
+		AND UI_EMAIL = #{uiEmail}
+	
+	</select>
+	
 	<!-- 9. 비밀번호찾기 -->
+	
+	<select id="getPw" parameterType="user" resultType="string">
+		SELECT UI_PW FROM USER_INFO ui
+		WHERE UI_NAME = #{uiName}
+		AND UI_ID = #{uiId}
+	
+	</select>
+	
+	<update id="updateTempPw" >
+		update USER_INFO
+			set UI_PW = #{uiPw}
+			where UI_NAME = #{uiName}
+			and UI_ID = #{uiId}
+	
+	</update>
+	
+	<select id="getEmail" parameterType="user" resultType="string">
+		SELECT UI_EMAIL FROM USER_INFO ui
+		WHERE UI_NAME = #{uiName}
+		AND UI_ID = #{uiId}
+	
+	</select>
+	
 	
 	
 	<!-- 10. 내 프로젝트 목록  -->
 	
 	<select id="getMyPrjList" parameterType="string" resultType="prj">
-		select pi.* from ( 
+		select pi.*, ui.UI_NAME from (
 		select * from prj_user
-		where UI_ID = #{uiId}) pu, PRJ_INFO pi
+		where UI_ID = #{uiId}) pu, PRJ_INFO pi, USER_INFO ui 
 		where pu.PI_ID = pi.PI_ID
+		and pi.PI_WRITER = ui.UI_ID
+		and pu.PU_STATUS = '0'
+		order by pi.PI_ID
 	</select>
+
+	<select id="getNewPrjList" parameterType="string" resultType="prj">
+		SELECT pi.*, ui.UI_NAME
+		FROM PRJ_INFO pi, USER_INFO ui 
+		WHERE NOT PI_ID IN 
+		(SELECT PI_ID FROM PRJ_USER pu 
+		WHERE UI_ID = #{uiId})
+		and pi.PI_WRITER = ui.UI_ID	
+		order by pi.PI_ID
+	</select>
+	
+	<select id="getWaitPrjList" parameterType="string" resultType="prj">
+		select pi.*, ui.UI_NAME, pu.PU_STATUS 
+		from (select * from prj_user
+		where UI_ID = #{uiId}) pu, PRJ_INFO pi, USER_INFO ui 
+		where pu.PI_ID = pi.PI_ID
+		and pi.PI_WRITER = ui.UI_ID
+		and pu.PU_STATUS not in ('0','1')
+		order by pi.PI_ID
+	
+	</select>
+	
+	
+	<insert id="joinPrj" parameterType="prjUser">
+		insert into PRJ_USER
+		values(#{uiId}, #{piId}, 2, 'PU' || LPAD(pu_seq.nextval, 5, '0'))	
+	</insert>
+	
+	<insert id="insertPrj" parameterType="prj">
+		insert into PRJ_INFO
+		values('PI' || LPAD(prj_seq.nextval,5,'0'), #{piWriter}, #{piTitle}, sysdate, #{piStartdate}, #{piDuedate}, #{piStatus})
+
+	</insert>
+	
+	
+	
+	<select id="mainSearchPrj" parameterType="prj" resultType="prj">
+		select pi.PI_ID, PI_TITLE, PI_STARTDATE, 
+			PI_DUEDATE, PI_STATUS, UI_NAME  
+		from (
+		select * from prj_user
+		where UI_ID = #{uiId}
+		and PU_STATUS = '0'
+		) pu, PRJ_INFO pi, user_info ui
+		where pu.PI_ID = pi.PI_ID 
+		and pi.PI_WRITER = ui.UI_ID
+		and PI_TITLE like '%'||#{piTitle}||'%'
+		<if test="piStatus != null and piStatus !=''">
+			and PI_STATUS like '%'||#{piStatus}||'%'
+		</if>
+		<choose>
+			<when test="piStartdate != null and piStartdate != '' and  piDuedate != null and piDuedate != ''">
+			and pi_startdate between #{piStartdate} and #{piDuedate}
+			and pi_duedate between #{piStartdate} and #{piDuedate}
+			</when>
+			<when test="piStartdate != null and piStartdate != ''">
+			and pi_startdate >= #{piStartdate}
+			</when>
+			<when test="piDuedate != null and piDuedate != ''">
+			and pi_duedate <![CDATA[<]]>= #{piDuedate}
+			</when>
+		</choose>
+		
+	</select>
+	
+	
 	
 </mapper>

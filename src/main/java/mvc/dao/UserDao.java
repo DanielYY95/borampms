@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import mvc.vo.PRJ_INFO;
+import mvc.vo.PRJ_USER;
 import mvc.vo.USER_INFO;
 
 
@@ -32,12 +33,36 @@ public interface UserDao {
 	public void deleteUser(USER_INFO user);
 	
 	// 8. 아이디 찾기
-	
+	public String getId(USER_INFO user);
 	
 	// 9. 비밀번호 찾기
+	public String getPw(USER_INFO user);
+	
+	public void updateTempPw(USER_INFO user);
+	
+	public String getEmail(USER_INFO user);
 	
 	
 	// 10. 내 프로젝트 목록 조회
 	public ArrayList<PRJ_INFO> getMyPrjList(String uiId);
+	
+	public ArrayList<PRJ_INFO> mainSearchPrj(PRJ_INFO prj);
+	
+	// 11. 참여하지않은 프로젝트 목록 조회
+	
+	public ArrayList<PRJ_INFO> getNewPrjList(String uiId);
+	
+	public ArrayList<PRJ_INFO> getWaitPrjList(String uiId);
+	
+	// 12. 프로젝트 참여
+	
+	public void joinPrj(PRJ_USER user);
+	
+	// 13. 프로젝트 만들기
+	
+	public void insertPrj(PRJ_INFO sch);
+	
+	// 14. 프로필
+	public void uptProfile(USER_INFO user);
 	
 }
