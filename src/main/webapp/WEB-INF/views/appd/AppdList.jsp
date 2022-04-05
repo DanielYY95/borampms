@@ -145,12 +145,12 @@
 	                                                <h5 class="mb-3">결재 문서함</h5>
 	                                                <ul class="nav nav-tabs nav-bordered mb-3" id="searchDocStauts1" style="display: flex; justify-content: space-around; display:none;">
 							                           <li class="nav-item">
-							                               <a href="javascript:searchDocList('04')"  aria-expanded="true" class="nav-link active">
+							                               <a href="javascript:searchDocList('04')" id="config" aria-expanded="true" class="nav-link active">
 							                               	 내 등록 결재
 							                               </a>
 							                           </li>
 							                           <li class="nav-item">
-							                               <a href="javascript:searchDocList('05')"  aria-expanded="true" class="nav-link">
+							                               <a href="javascript:searchDocList('05')" id="charge" aria-expanded="true" class="nav-link">
 							                                 내 담당 결재
 							                               </a>
 							                           </li>
@@ -276,6 +276,14 @@
 	var searchDocStauts = "${param.searchDocStauts}";
 	if(searchDocStauts=="04" || searchDocStauts=="05"){
 		$("#searchDocStauts1").show();
+		if(searchDocStauts=="04"){
+			$("#config").attr("class", "nav-link active");
+			$("#charge").attr("class", "nav-link");
+		}
+		else if(searchDocStauts=="05"){
+			$("#config").attr("class", "nav-link");
+			$("#charge").attr("class", "nav-link active");
+		}
 	}else{
 		$("#searchDocStauts1").hide();
 	}

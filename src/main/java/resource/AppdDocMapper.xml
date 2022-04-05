@@ -53,7 +53,7 @@
             and AD_WRITER=#{uiId}
             </if>
             <if test='searchDocStauts !=null and searchDocStauts == "05"'>
-            and AD_ADAPPD=#{uiId}
+            and AD_UI_ID=#{uiId}
             </if>
 		)
 		where cnt between #{firstPage} and #{lastPage}
