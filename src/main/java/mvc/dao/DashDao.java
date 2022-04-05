@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import mvc.vo.PRJ_INFO;
 import mvc.vo.PRJ_TASK;
+import mvc.vo.PRJ_USER;
 
 @Repository
 public interface DashDao {
@@ -14,6 +15,6 @@ public interface DashDao {
 		public List<PRJ_TASK> gettaskDashlist(String piId);
 		public List<PRJ_TASK> gettaskDashChart(String piId);
 		public ArrayList<PRJ_INFO> getPrjList(String piId);
-
+		public int getPrjUserNum(PRJ_USER prj);
 		
 }

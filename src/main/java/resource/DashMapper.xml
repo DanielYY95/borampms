@@ -9,16 +9,24 @@
 		where pi_id = #{piId}
 	</select>
 	<select id="gettaskDashChart" resultType="task" parameterType="string">
-	SELECT pt_status, count(*) as count
+	SELECT pt_status, count(*) as cnt
 	FROM PRJ_TASK
 	WHERE pi_id = #{piId}
 	GROUP BY PT_STATUS
 	</select>
 	
 	<select id="getPrjList" parameterType="string" resultType="prj">
-	SELECT *
-	FROM PRJ_INFO 
-	WHERE pi_id = #{piId}
+		SELECT pi.*, ui.UI_NAME, TO_DATE(pi_duedate, 'YYYY-MM-DD') - TO_DATE(TO_CHAR(sysdate, 'YYYY-MM-DD'),'YYYY-MM-DD') as duration
+		FROM PRJ_INFO pi, user_info ui
+		WHERE pi.pi_id = #{piId}
+		and pi.pi_writer = ui.ui_id
+	</select>
+	
+	<select id="getPrjUserNum" resultType="int" parameterType="prjUser">
+		select count(*)  from prj_user
+		where PI_ID = #{piId}
+		and PU_STATUS = '0'
+	
 	</select>
 	
 	</mapper>

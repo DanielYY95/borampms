@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import mvc.dao.DashDao;
 import mvc.vo.PRJ_INFO;
 import mvc.vo.PRJ_TASK;
+import mvc.vo.PRJ_USER;
 
 @Service
 public class DashService {
@@ -25,4 +26,9 @@ public class DashService {
 	public ArrayList<PRJ_INFO> getPrjList(String piId){
 		return dao.getPrjList(piId);
 	}
+	
+	public int getPrjUserNum(PRJ_USER prj) {
+		
+		return dao.getPrjUserNum(prj);
+	};
 }

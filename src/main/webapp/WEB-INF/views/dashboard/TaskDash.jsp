@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="java.util.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <c:set var="path" value="${pageContext.request.contextPath }" />
 <fmt:requestEncoding value="utf-8" />
 <!DOCTYPE html>
@@ -35,7 +36,7 @@
 		<jsp:include page="../include/leftBar.jsp" flush="true" />
 
 		<div class="content-page">
-			<div class="content">
+			<div class="content col-10 mx-auto">
 				<!-- Topbar Start -->
 				<jsp:include page="../include/headerBar.jsp" flush="true" />
 
@@ -58,33 +59,20 @@
 						<div class="col-xl-5 col-lg-6">
 
 								<div class="row">
-								<div class="col-sm-6">
-									<div class="card widget-flat">
-										<div class="card-body" >
-											<div style="text-align: center; padding-bottom: 10px;">
-												<i class="fa-regular fa-clock fa-4x"></i>
-											</div>
-											<h5 class="text-muted fw-normal mt-0" title="Number of Customers"
-											 style="text-align: center; padding-bottom: 10px;">남은 기간</h5>
-											<p class="mb-0 text-muted">
-											<div class="text-nowrap" style="text-align: center; padding-bottom: 10px;">10일</div>
-											</p>
-										</div>
-										<!-- end card-body-->
-									</div>
-									<!-- end card-->
-								</div>
+								
 								<!-- end col-->
 								<c:forEach var="prj" items="${prjList }">
 								<div class="col-sm-6">
 									<div class="card widget-flat" style="position:flex;">
-										<div class="card-body" style="height:200px;">
+										<div class="card-body" style=" text-align: center; height:300px;">
+											<i class="fa fa-tasks fa-4x pb-2" aria-hidden="true" style="padding-top:45px;"></i><br>
 											<h5 class="text-muted fw-normal mt-0" title="Number of Customers" 
 											style="text-align: center; padding-bottom: 10px; font-size:19px; ">${prj.piTitle}</h5>
 					
 											<div class="text-nowrap" style="text-align: center; padding-bottom: 10px;">
-											시작일 <h5 class="my-0" style="padding-bottom:10px;">${prj.piStartdate}</h5>
-											마감일 <h5 class="my-0">${prj.piDuedate}</h5>
+											
+												<h5 class="my-0" >시작일: ${prj.piStartdate}</h5><br>
+												<h5 class="my-0">마감일: ${prj.piDuedate}</h5>
 											</div>
 											
 										</div>
@@ -92,8 +80,26 @@
 									</div>
 									<!-- end card-->
 								</div>
-								</c:forEach>
+								
 								<!-- end col-->
+								
+								<div class="col-sm-6">
+									<div class="card widget-flat">
+										<div class="card-body" style="height:300px;">
+											<div style="text-align: center; padding-bottom: 10px;">
+												<i class="fa-regular fa-clock fa-4x" style="padding-top:45px;"></i>
+											</div><br>
+											<h5 class="text-muted fw-normal mt-0" title="Number of Customers"
+											 style="text-align: center; padding-bottom: 10px;">남은 기간</h5>
+											<p class="mb-0 text-muted">
+											<div class="text-nowrap" style="text-align: center; padding-bottom: 10px;">${prj.duration}일</div>
+											</p>
+										</div>
+										<!-- end card-body-->
+									</div>
+									<!-- end card-->
+								</div>
+								</c:forEach>
 								</div>
 								
 							<!-- end row -->
@@ -102,16 +108,16 @@
 								<div class="col-sm-6">
 
 									<div class="card widget-flat">
-										<div class="card-body"style="height:200px;">
+										<div class="card-body" style="height:300px;">
 											<div style="text-align: center; padding-bottom: 10px;">
 
-												<i class="fa-solid fa-child-reaching fa-4x"></i>
+												<i class="fa-solid fa-child-reaching fa-4x pb-2" style="padding-top:45px;" ></i><br>
 												<h5 class="text-muted fw-normal mt-0" title="Number of Customers" 
 												style="text-align: center; padding-bottom: 10px;">프로젝트 구성원</h5>
-												<c:forEach var="taskdash" items="${dashlist}" begin="0" end="4">
+												
 													<div class="text-nowrap" style="text-align: center; padding-bottom: 10px;">
-													${taskdash.ptCharge }</div>
-												</c:forEach>
+													${userNum} 명</div>
+												
 
 											</div>
 										</div>
@@ -123,11 +129,11 @@
 
 								<div class="col-sm-6">
 									<div class="card widget-flat" >
-										<div class="card-body " style="height:200px;">
+										<div class="card-body " style="height:300px;">
 
 											<div style="text-align: center; padding-bottom: 10px;">
-												<i class="fa-solid fa-calendar-days fa-4x"></i>
-											</div>
+												<i class="fa-solid fa-calendar-days fa-4x" style="padding-top:45px;"></i>
+											</div><br>
 
 											<h5 class="text-muted fw-normal mt-0" title="Number of Customers"
 											 style="text-align: center; padding-bottom: 10px;">총 작업 수</h5>
@@ -148,7 +154,7 @@
 						<!-- end col-->
 
 
-						<div class="col-xl-7 col-lg-6" style="width: 400px;">
+						<div class="col-xl-7 col-lg-6" style="width: 570px;">
 							<div class="card card-h-100">
 								<div class="card-body">
 									<div class="d-flex justify-content-between align-items-center mb-2">
@@ -159,25 +165,38 @@
 									</div>
 									<form class="chartform">
 										<div class="form-body">
-											<div style="height: 350px; position: relative;">
+											<div style="height: 350px; position: relative; padding-left:100px;">
 												<canvas id="taskDashChart" width="300vh;" height="300vh;"></canvas>
 											</div>
 										</div>
 									</form>
 							
 									<div class="chart-widget-list">
-										<p>
-											<i class="mdi mdi-square text-primary"></i> 진행 중 <span class="float-end"> 건</span>
-										</p>
-										<p>
-											<i class="mdi mdi-square text-danger"></i> 보류 <span class="float-end"> 건</span>
-										</p>
-										<p>
-											<i class="mdi mdi-square text-success"></i> 완료 <span class="float-end"> 건</span>
-										</p>
-										<p class="mb-0">
-											<i class="mdi mdi-square text-warning"></i> 진행 전 <span class="float-end"> 건</span>
-										</p>
+										<c:forEach var="task" items="${taskDashChart}">
+											
+											<p>
+												<i class=
+												<c:choose>
+													<c:when test="${task.ptStatus eq '진행 전' }">
+														"mdi mdi-square text-warning"
+													</c:when>
+													<c:when test="${task.ptStatus eq '진행 중' }">
+														"mdi mdi-square text-primary"
+													</c:when>
+													<c:when test="${task.ptStatus eq '완료' }">
+														"mdi mdi-square text-success"
+													</c:when>
+			
+													<c:when test="${task.ptStatus eq '보류' }">
+														"mdi mdi-square text-danger"
+													</c:when>
+												</c:choose>
+												></i> ${task.ptStatus} <span class="float-end"> ${task.cnt} 건</span>
+											</p>
+											
+					
+										</c:forEach>
+							
 									</div>
 								
 
@@ -241,10 +260,7 @@
 																			"progress-bar bg-success"
 																			style="width:100%" aria-valuenow="100"
 																		</c:when>
-																		<c:when test="${taskdash.ptStatus eq '지연' }">
-																			"progress-bar-striped bg-warning progress-bar-animated"
-																			style="width:70%" aria-valuenow="70"
-																		</c:when>
+							
 																		<c:when test="${taskdash.ptStatus eq '보류' }">
 																			"progress-bar-striped"
 																			style="width:0%" aria-valuenow="0"
@@ -310,14 +326,13 @@
 	var taskCountList = [];
 	
 	<c:forEach var="task" items="${taskDashChart}">
-	console.log(1);
 	
-	taskDashList.push('${task.ptStatus}');
-	taskCountList.push('${task.count}');
+		taskDashList.push('${task.ptStatus}');
+		taskCountList.push('${task.cnt}');
 	
 	</c:forEach>
-	console.log(taskDashList);
-	console.log(taskCountList);
+	
+
 	
 	const tdl = document.getElementById('taskDashChart');
 	const taskDashChart = new Chart(tdl, {
