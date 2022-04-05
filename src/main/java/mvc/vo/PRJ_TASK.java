@@ -15,8 +15,9 @@ public class PRJ_TASK {
 	private String uiId;
 	private String piId;
 	private String duration;
-
-
+	
+	
+	
 	public String getDuration() {
 		return duration;
 	}

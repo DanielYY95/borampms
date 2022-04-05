@@ -28,12 +28,11 @@
 				url += (queryString != '')? '?'+queryString: '';
 		
 				// JSP 현재 url 정보 얻기 => ${pageContext.request.requestURL}는 실제 jsp 물리적 경로...
-				console.log(url);
+				
 				alert("로그인 후, 이용해주세요."); 
 				
 				location.href="${path}/loginFrm.do?toURL="+url;
 			</c:if>
-			
 			
 			getAlarmList();
 			

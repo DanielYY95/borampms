@@ -3,35 +3,30 @@
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="mvc.dao.DashDao">
-	<select id="taskDashlist" resultType="task">
-			select *
-		from (
-			SELECT row_number() over(ORDER BY to_date(pt_startdate, 'YYYY-MM-DD')) cnt, prj_task.*
-			from prj_task
-			where 1=1
-			<if test="ptTitle != null and ptTitle != ''">
-			and pt_title like '%'||#{ptTitle}||'%'
-			</if>
-			<if test='ptCharge != null and ptCharge != ""'>
-			and pt_charge like '%'||#{ptCharge}||'%'
-			</if>
-			<if test="ptStartdate != null and ptStartdate != ''">
-			and pt_startdate = #{ptStartdate}
-			</if>
-			<if test="ptDuedate != null and ptDuedate != ''">
-			and pt_duedate = #{ptDuedate}
-			</if>
-		)
+	<select id="gettaskDashlist" resultType="task" parameterType="string">
+		select *
+		from prj_task
+		where pi_id = #{piId}
 	</select>
-	<!-- 
-		private String uiDept;
-		private String uiName;
-	 -->
-	 <select id="getDashUser"  parameterType="string" resultType="dashUser" >
-	SELECT *
-	FROM prj_task
+	<select id="gettaskDashChart" resultType="task" parameterType="string">
+	SELECT pt_status, count(*) as cnt
+	FROM PRJ_TASK
+	WHERE pi_id = #{piId}
+	GROUP BY PT_STATUS
 	</select>
 	
+	<select id="getPrjList" parameterType="string" resultType="prj">
+		SELECT pi.*, ui.UI_NAME, TO_DATE(pi_duedate, 'YYYY-MM-DD') - TO_DATE(TO_CHAR(sysdate, 'YYYY-MM-DD'),'YYYY-MM-DD') as duration
+		FROM PRJ_INFO pi, user_info ui
+		WHERE pi.pi_id = #{piId}
+		and pi.pi_writer = ui.ui_id
+	</select>
 	
+	<select id="getPrjUserNum" resultType="int" parameterType="prjUser">
+		select count(*)  from prj_user
+		where PI_ID = #{piId}
+		and PU_STATUS = '0'
+	
+	</select>
 	
 	</mapper>

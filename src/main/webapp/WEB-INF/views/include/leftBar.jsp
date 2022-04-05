@@ -19,9 +19,38 @@
 		.side-nav-link, .menu-arrow{
 			font-size: 1.2rem;
 		}
-
+	
+		
 
 	</style>
+	
+	<script>
+		// 프로젝트 참여자가 아니라면 돌아간다. 
+		isInPrj();
+		
+		function isInPrj(){
+		
+			$.ajax({
+				url: "${path}/isInPrj.do",
+				type: "get",
+				dataType: "json",
+				success: function (data) {
+					ischecked = data.isChecked;
+					if(ischecked == 0){
+						alert("프로젝트 참여자만 이용가능합니다."); 
+						location.href="${path}/prjList.do";
+					}
+				
+				},
+				error:function(err) {
+					console.log(err);
+				}
+			})
+		
+		}
+		
+	
+	</script>
 
 		<!-- ========== Left Sidebar Start ========== -->
 		<div class="leftside-menu">
@@ -102,7 +131,7 @@
                         </a>
                     </li>
                     <li class="side-nav-item">
-                        <a href="${path}/issue.do?method=list" class="side-nav-link">
+                        <a href="${path}/risk.do?method=list" class="side-nav-link">
                             <i class="uil-folder-plus"></i>
                             <span> 리스크관리 </span>
                         </a>

@@ -92,12 +92,10 @@
         내용 - 에디터 문제...'
         
         
-        #### 
-        생각해보니 업무당당자로 지정됬으면 내 작업으로 생기는 로직도 필요하겠네...
+        ### 업무 등록자는 업무 상세정보에서 업무 삭제와 업무정보 수정, 이슈 등록 가능.
+        	업무 담당자는 업무, WBS 확인, 산출물 등록하고, 이슈 등록 가능 
         
-        ###
-        우선순위도 반영!!
-	
+        
 	 -->
 	
 
@@ -165,20 +163,11 @@
                                                     </a>
                                                 </li>
                                                 <li class="nav-item">
-                                                     <a href="${path}/taskIssue.do?" aria-expanded="true" class="nav-link">
+                                                     <a href="${path}/issue.do?method=list" aria-expanded="true" class="nav-link">
                                                          이슈
                                                      </a>
                                                  </li>
-                                                <li class="nav-item">
-                                                    <a href="${path}/project/task/taskGuide.html"  aria-expanded="true" class="nav-link">
-                                                        가이드
-                                                    </a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a href="${path}/project/task/taskHistory.html"  aria-expanded="true" class="nav-link">
-                                                        히스토리
-                                                    </a>
-                                                </li>
+                                            
                                             </ul> <!-- end nav-->
                                         </div>	
 
@@ -253,7 +242,7 @@
 																		    
 																		     <optgroup label="인사팀">
 					
-																		        <option value="인사팀 김소월">인사팀 양초명</option>
+																		        <option value="인사팀 양초명">인사팀 양초명</option>
 																		        <option value="인사팀 한가람">인사팀 한가람</option>
 																		        <option value="인사팀 김효은">인사팀 김효은</option>
 																		    </optgroup>
@@ -287,7 +276,7 @@
 																			
 																			// "${taskUser.ptCharge}"
 																			$("#chargeUpt").val(chargeList); // 개발1팀 양초명, 개발1팀 양현수
-																			console.log("${taskUser.ptCharge}");
+																
 																		
 																		
 																		</script>
@@ -347,6 +336,7 @@
             
                                                        
                                                                     <div id="btnList" class="mb-3 text-center" style="display: flex; justify-content: space-between;">
+                                                                       
                                                                        <c:if test="${taskUser.uiId eq user_info.uiId}">
                                                                             <button class="btn btn-secondary" 
                                                                             		type="button" id="delBtn">삭제</button>

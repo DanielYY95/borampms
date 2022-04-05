@@ -110,15 +110,29 @@ public class MainController {
 	
 	
 	@RequestMapping("/prjDash.do") // 메인->프로젝트 목록 -> 대시보드로 접근하는게 아니면 자꾸 에러가...
-	public String prjDash(@ModelAttribute("prj_info") PRJ_INFO pi, Model d) {
+	public String prjDash(@ModelAttribute("prj_info") PRJ_INFO pi, 
+			HttpServletRequest request, Model d) {
 		// 이걸로 세션값을 받아온다. Prj_info vo객체에 piId 를 요청값으로 보내줬으니
-		
-
-		
-		d.addAttribute("dashlist", dservice.taskDashlist());
-		
-		return "dashboard/TaskDash";
+	
+		return "forward:/dash.do?method=list";
 	}
+	
+	@RequestMapping("/isInPrj.do")
+	public String isInPrj(HttpServletRequest request, PRJ_USER prj, Model d) {
+		
+		// 세션으로 프로젝트 고유번호를 얻고 들어와서, 체크 후, 조회되면 ok
+		String piId = smethod.getPiid(request);
+		USER_INFO user = smethod.getUserSession(request);
+		
+		prj.setPiId(piId);
+		prj.setUiId(user.getUiId());
+		
+		d.addAttribute("isChecked", service.isInPrj(prj));
+		
+		
+		return "pageJsonReport";
+	}
+	
 	
 	
 	@RequestMapping("/alarmList.do")

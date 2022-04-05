@@ -18,6 +18,9 @@
 		<typeAlias alias="deptDoc" type="mvc.vo.DeptDoc"/>
 		<typeAlias alias="deptDocSch" type="mvc.vo.DeptDocSch"/>
 		<typeAlias alias="deptFile" type="mvc.vo.DeptFile"/>
+		<typeAlias alias="commonDoc" type="mvc.vo.CommonDoc"/>
+		<typeAlias alias="commonDocSch" type="mvc.vo.CommonDocSch"/>
+		<typeAlias alias="commonFile" type="mvc.vo.CommonFile"/>
 		<typeAlias alias="kanban" type="mvc.vo.KanbanVo"/>
 		<typeAlias alias="kanban2" type="mvc.vo.KanbanVo"/>
 		<typeAlias alias="kanban3" type="mvc.vo.KanbanVo"/>
@@ -25,6 +28,8 @@
 		<typeAlias alias="taskUser" type="mvc.vo.Task_User"/>
 		<typeAlias alias="issue" type="mvc.vo.TASK_ISSUE"/>
 		<typeAlias alias="issueSch" type="mvc.vo.IssueSch"/>
+		<typeAlias alias="prjIssue" type="mvc.vo.PRJ_ISSUE"/>
+		<typeAlias alias="prjIssueSch" type="mvc.vo.prjIssueSch"/>
 		<typeAlias alias="dept" type="mvc.vo.DeptInfo"/>
 		<typeAlias alias="prj" type="mvc.vo.PRJ_INFO"/>
 		<typeAlias alias="calendar" type="mvc.vo.Calendar"/>
@@ -34,6 +39,7 @@
 		<typeAlias alias="appdDoc" type="mvc.vo.APPD_DOC"/>
 		<typeAlias alias="appdDocSch" type="mvc.vo.APPD_DOC_SCH"/>
 		<typeAlias alias="notice" type="mvc.vo.Notice"/>
+		
 
 	</typeAliases>
 	<mappers>
@@ -42,6 +48,8 @@
 		<mapper resource="resource/KanbanMapper.xml" />
 		<mapper resource="resource/DeptMapper.xml"/>
 		<mapper resource="resource/DeptDetailMapper.xml"/>
+		<mapper resource="resource/CommonMapper.xml"/>
+		<mapper resource="resource/CommonDetailMapper.xml"/>
 		<mapper resource="resource/TaskMapper.xml"/>
 		<mapper resource="resource/sgMapper.xml"/>
 		<mapper resource="resource/IssueMapper.xml"/>

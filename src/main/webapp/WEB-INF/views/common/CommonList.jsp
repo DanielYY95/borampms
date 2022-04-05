@@ -22,8 +22,7 @@
         <!-- App css -->
         <link href="${path}/tools/main_assets/css/icons.min.css" rel="stylesheet" type="text/css" />
         <link href="${path}/tools/main_assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-style"/>
-      	<!-- App favicon -->
-        <link rel="shortcut icon" href="${path}/tools/main_assets/images/favicon.ico">
+      
 		<link
 		    rel="stylesheet"
 		    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
@@ -63,7 +62,7 @@
         <!-- Begin page -->
         <div class="wrapper">
             <!-- ========== Left Sidebar Start ========== -->
-            <jsp:include page="../include/leftBar.jsp" flush="true"/>
+            <jsp:include page="../include/leftBar.jsp"/>
             <!-- Left Sidebar End -->
 
             <!-- ============================================================== -->
@@ -73,7 +72,7 @@
             <div class="content-page">
                 <div class="content">
                     <!-- Topbar Start -->
-                    <jsp:include page="../include/headerBar.jsp" flush="true"/>
+                    <jsp:include page="../include/headerBar.jsp"/>
                     <!-- end Topbar -->
 
                     <!-- Start Content-->
@@ -169,14 +168,14 @@
 											<!-- 임의로 만든 표 -->
 	                                        <div class="page-aside-right">
 	                                            <div class="mt-3">
-	                                                <h5 class="mb-3">부서 공유문서함</h5>
+	                                                <h5 class="mb-3">공통 문서함</h5>
 		                                                <!-- 게시물 조회 -->
-		                                                <form id="frm01" method="post" action="${path}/dept.do?method=list">
+		                                                <form id="frm01" method="post" action="${path}/common.do?method=list">
 		                                                	<input type="hidden" name="curPage" value="1"/>
 		                               						<div class="col-lg-4" style="text-align:center;">
 		                               						<!-- 작성자 조회 -->
 		                               						<div class="input-group">
-			                               						<input type="text" id="simpleinput" class="form-control" name="ddWriter" value="${deptDocSch.ddWriter}" placeholder="작성자">
+			                               						<input type="text" id="simpleinput" class="form-control" name="cdWriter" value="${commonDocSch.cdWriter}" placeholder="작성자">
 			                               						<button class="input-group-text btn-primary" type="submit">조회</button>
 			                               					</div>
 			                               					</div>
@@ -196,22 +195,22 @@
 		                                                            </tr>
 		                                                        </thead>
 		                                                        <tbody>
-		                                                        	<c:forEach var="deptdoc" items="${ddList}">
+		                                                        	<c:forEach var="commondoc" items="${cdList}">
 		                                                            <tr>
-		                                                                <td onclick="detail(${deptdoc.ddId})">
-		                                                                    <span class="ms-2 fw-semibold">${deptdoc.ddId}</span>
+		                                                                <td onclick="detail(${commondoc.cdId})">
+		                                                                    <span class="ms-2 fw-semibold">${commondoc.cdId}</span>
 		                                                                </td>
-		                                                                <td onclick="detail(${deptdoc.ddId})">
-		                                                                    <span class="font-12"><a href="javascript: void(0);" class="text-reset">${deptdoc.ddTitle}</a></span>
+		                                                                <td onclick="detail(${commondoc.cdId})">
+		                                                                    <span class="font-12"><a href="javascript: void(0);" class="text-reset">${commondoc.cdTitle}</a></span>
 		                                                                </td>
-		                                                                <td onclick="detail(${deptdoc.ddId})">${deptdoc.ddDept}</td>
-		                                                                <td onclick="detail(${deptdoc.ddId})">${deptdoc.ddWriter}</td>
-		                                                                <td onclick="detail(${deptdoc.ddId})"><fmt:formatDate value="${deptdoc.ddRegdate}" pattern="yyyy-MM-dd"/></td>
+		                                                                <td onclick="detail(${commondoc.cdId})">${commondoc.cdDept}</td>
+		                                                                <td onclick="detail(${commondoc.cdId})">${commondoc.cdWriter}</td>
+		                                                                <td onclick="detail(${commondoc.cdId})"><fmt:formatDate value="${commondoc.cdRegdate}" pattern="yyyy-MM-dd"/></td>
 		                                                            	<c:choose>
-																			<c:when test="${deptdoc.ddDept==user_info.uiDept&&deptdoc.ddWriter==user_info.uiName}">
+																			<c:when test="${commondoc.cdDept==user_info.uiDept&&commondoc.cdWriter==user_info.uiName}">
 																				<td>
-							 														<button onclick="update(${deptdoc.ddId})" id="upt-btn"><i class="dripicons-pencil"></i></button> |
-																					<button onclick="delete1(${deptdoc.ddId})" id="del-btn"><i class="dripicons-trash"></i></button>
+							 														<button onclick="update(${commondoc.cdId})" id="upt-btn"><i class="dripicons-pencil"></i></button> |
+																					<button onclick="delete1(${commondoc.cdId})" id="del-btn"><i class="dripicons-trash"></i></button>
 																				</td>
 																			</c:when>
 																		</c:choose>
@@ -223,16 +222,16 @@
 															<nav class="pagination-margin-top">
 															    <ul class="pagination pagination-rounded mb-0 justify-content-center">
 															        <li class="page-item">
-															            <a class="page-link" href="javascript:goPage(${deptDocSch.firstBlock!=1?deptDocSch.firstBlock-1:1})" aria-label="Previous">
+															            <a class="page-link" href="javascript:goPage(${commonDocSch.firstBlock!=1?commonDocSch.firstBlock-1:1})" aria-label="Previous">
 															                <span aria-hidden="true">&laquo;</span>
 															            </a>
 															        </li>
-															        <c:forEach var="cnt" begin="${deptDocSch.firstBlock}" end="${deptDocSch.lastBlock}">
-																		<li class="page-item ${cnt==deptDocSch.curPage?'active':''}"> <!-- 클릭한 현재 페이지 번호 -->
+															        <c:forEach var="cnt" begin="${commonDocSch.firstBlock}" end="${commonDocSch.lastBlock}">
+																		<li class="page-item ${cnt==commonDocSch.curPage?'active':''}"> <!-- 클릭한 현재 페이지 번호 -->
 																			<a class="page-link" href="javascript:goPage(${cnt})">${cnt}</a></li>
 																	</c:forEach>
 															        <li class="page-item">
-															            <a class="page-link" href="javascript:goPage(${deptDocSch.lastBlock!=deptDocSch.pageCount?deptDocSch.lastBlock+1:deptDocSch.lastBlock})" aria-label="Next">
+															            <a class="page-link" href="javascript:goPage(${commonDocSch.lastBlock!=commonDocSch.pageCount?commonDocSch.lastBlock+1:commonDocSch.lastBlock})" aria-label="Next">
 															                <span aria-hidden="true">&raquo;</span>
 															            </a>
 															        </li>
@@ -259,7 +258,7 @@
 	                </div> <!-- content -->
 
                 <!-- Footer Start -->
-                <jsp:include page="../include/rightBar_footer.jsp" flush="true"/>
+                <jsp:include page="../include/rightBar_footer.jsp"/>
                 <!-- end Footer -->
 
             </div>
@@ -270,9 +269,7 @@
 
 
         </div>
-        <!-- END wrapper -->
-
-
+        
 		<!-- jstree js -->
 		<script src="${path}/tools/main_assets/js/vendor/jstree.min.js"></script>
 		<script src="${path}/tools/main_assets/js/pages/demo.jstree.js"></script>
@@ -283,12 +280,12 @@
     </body>
 	<script>
 	/* 휴지통 버튼(삭제) 클릭 시 */
-	function delete1(ddId){
+	function delete1(cdId){
 		if(!confirm("삭제할 경우 복구가 불가능합니다. \n삭제하시겠습니까?")){
-			location.href="${path}/dept.do?method=list";
+			location.href="${path}/common.do?method=list";
 		}
 		else{
-			location.href="${path}/dept.do?method=del&ddId="+ddId;	
+			location.href="${path}/common.do?method=del&cdId="+cdId;	
 		}
 	}
 	/* 부서 공유문서함 클릭시 */
@@ -333,7 +330,7 @@
 	}
 	/* 등록 버튼 클릭 시(등록 페이지로 이동) */
 	$("#Doc-regBtn").click(function(){
-		location.href="${path}//dept.do?method=insertFrm";
+		location.href="${path}//common.do?method=insertFrm";
 	});	
 	/* 페이징 처리 */
 	function goPage(no){
@@ -341,12 +338,12 @@
 		$("#frm01").submit();
 	}
 	/* 클릭 시, ddId의 값을 controller에 요청값을 전달 */
-	function detail(ddId){
-		location.href="${path}/dept.do?method=detail&ddId="+ddId;
+	function detail(cdId){
+		location.href="${path}/common.do?method=detail&cdId="+cdId;
 	}
 	/* 연필 버튼(수정) 클릭 */
-	function update(ddId){
-		location.href="${path}/dept.do?method=uptPage&ddId="+ddId;
+	function update(cdId){
+		location.href="${path}/common.do?method=uptPage&cdId="+cdId;
 	}
 	
 	</script>

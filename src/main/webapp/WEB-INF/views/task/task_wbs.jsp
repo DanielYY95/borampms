@@ -18,15 +18,13 @@
                     <link href="${path}/tools/project_assets/css/app-creative.min.css" rel="stylesheet" type="text/css"
                         id="app-style" />
 
-                <!-- 간트 js/css 시작 -->
+    <!-- 간트 js/css 시작 -->
     <script src="${path}/tools/main_assets/js/dhtmlxgantt.js"></script>
-	    <link rel="stylesheet" href="${path}/tools/main_assets/css/dhtmlxgantt.css" />
-    <link rel="stylesheet" href="${path}/tools/main_assets/css/controls_styles.css" />
-	
-	
+
 	<!-- jquery 라이브러리 -->
 	<script src="${path}/tools/jquery-3.6.0.js"></script>
-	
+    <link rel="stylesheet" href="${path}/tools/main_assets/css/dhtmlxgantt.css" />
+    <link rel="stylesheet" href="${path}/tools/main_assets/css/controls_styles.css" />
 
 
                     <script type="text/javascript">
@@ -52,6 +50,34 @@
                             width: 100%;
                             font-weight: bolder;
                         }
+                        
+                        	 .gantt_grid .gantt_grid_scale .gantt_grid_head_cell .gantt_grid_head_add {
+						  	display : none;
+						  }
+					      .summary-row,
+					      .summary-row.odd {
+					        background-color: #eeeeee;
+					        font-weight: bold;
+					      }
+					
+					      .gantt_grid div,
+					      .gantt_data_area div {
+					        font-size: 12px;
+					      }
+					
+					      .summary-bar {
+					        opacity: 0.4;
+					      }
+					      .gantt_grid_data .gantt_add,
+					      .gantt_grid_scale .gantt_grid_head_add {
+							 display: none;
+							 width: 0px !important
+						  }
+						 .gantt_layout_cell.grid_cell.gantt_layout_outer_scroll.gantt_layout_outer_scroll_vertical.gantt_layout_outer_scroll.gantt_layout_outer_scroll_horizontal.gantt_layout_cell_border_right{
+						     width: calc(360px - 43px) !important
+						 }
+					                        
+                        
                     </style>
 
                 </head>
@@ -118,22 +144,11 @@
                                                                 </a>
                                                             </li>
                                                              <li class="nav-item">
-                                                                <a href="${path}/taskIssue.do?" aria-expanded="true" class="nav-link">
+                                                                <a href="${path}/issue.do?method=list" aria-expanded="true" class="nav-link">
                                                                     이슈
                                                                 </a>
                                                             </li>
-                                                            <li class="nav-item">
-                                                                <a href="${path}/project/task/taskGuide.html"
-                                                                    aria-expanded="true" class="nav-link">
-                                                                    가이드
-                                                                </a>
-                                                            </li>
-                                                            <li class="nav-item">
-                                                                <a href="${path}/project/task/taskHistory.html"
-                                                                    aria-expanded="true" class="nav-link">
-                                                                    히스토리
-                                                                </a>
-                                                            </li>
+                                                 
                                                         </ul> <!-- end nav-->
                                                     </div>
 
@@ -158,19 +173,23 @@
 
           <script type="text/javascript">
 		// test data
+		gantt.config.start_date = new Date(2022, 01, 01);
+		gantt.config.end_date = new Date(2022, 12, 31);
 		
 		gantt.init("gantt_here");
 		getData();
 		
+		
+		
 		// 해당 업무가 표시된다. 
 			// 적용됬다가 말았다가 하는 문제..?
-		$(document).ready(function(){
-		 $("[task_id=${prj_task.ptId}]").click();
+		$(function(){
+		 	$("[task_id=${prj_task.ptId}]").click();
+			console.log($("[task_id=${prj_task.ptId}]"));
 			
 
 		});
-	
-		
+
 		function getData(){
 			let paramData = [];
 			$.ajax({
@@ -188,7 +207,7 @@
 							           , start_date: stringToDate(data.result[i].ptStartdate)
 							           , duration:data.result[i].duration
 							           });
-						
+
 					}
 					gantt.parse({
 						data: paramData,
@@ -204,7 +223,7 @@
 
 			})
 		}
-		
+	
 		function fn_close(){
 			$('#signup-modal').css('display','none');
 		}
@@ -217,14 +236,11 @@
 
 	        month = month >= 10 ? month : '0' + month;
 	        day = day >= 10 ? day : '0' + day;
-/* 	        hour = hour >= 10 ? hour : '0' + hour;
-	        minute = minute >= 10 ? minute : '0' + minute;
-	        second = second >= 10 ? second : '0' + second; */
 
 	        return date.getFullYear() + '-' + month + '-' + day;
 		}
 		function stringToDate(value) {
-	        return new Date(value.split('-')[0],value.split('-')[1],value.split('-')[2]);
+	        return new Date(Number(value.split('-')[0]),Number(value.split('-')[1])-1,Number(value.split('-')[2]));
 		}
 	</script>
  

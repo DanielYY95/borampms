@@ -187,5 +187,13 @@
 	</select>
 	
 	
+	<select id="isInPrj" parameterType="prj" resultType="int">
+		select count(*) from prj_user
+		where UI_ID = #{uiId} 
+		and PI_ID = #{piId}
+		and PU_STATUS = '0'
+	</select>
+	
+	
 	
 </mapper>

@@ -62,5 +62,8 @@ public interface UserDao {
 	
 	public void insertPrj(PRJ_INFO sch);
 	
+	// 14. 프로젝트 참여여부 확인
+	
+	public int isInPrj(PRJ_USER user);
 	
 }
