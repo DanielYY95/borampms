@@ -143,7 +143,7 @@
 	                                        <div class="page-aside-right">
 	                                            <div class="mt-3">
 	                                                <h5 class="mb-3">결재 문서함</h5>
-	                                                <ul class="nav nav-tabs nav-bordered mb-3" style="display: flex; justify-content: space-around; display:none;">
+	                                                <ul class="nav nav-tabs nav-bordered mb-3" id="searchDocStauts1" style="display: flex; justify-content: space-around; display:none;">
 							                           <li class="nav-item">
 							                               <a href="javascript:searchDocList('04')"  aria-expanded="true" class="nav-link active">
 							                               	 내 등록 결재
@@ -256,6 +256,7 @@
 	<script>
 	/* 부서 공유문서함 클릭시 */
 	function searchDocList(type){
+		console.log(type+"타입");
 		$('#searchDocStauts').val(type);
 		$('#frm01').submit();
 	}
@@ -272,6 +273,12 @@
 	function detail(adId){
 		location.href="${path}/appd.do?method=detail&adId="+adId;
 	}
-	
+	var searchDocStauts = "${param.searchDocStauts}";
+	if(searchDocStauts=="04" || searchDocStauts=="05"){
+		$("#searchDocStauts1").show();
+	}else{
+		$("#searchDocStauts1").hide();
+	}
+
 	</script>
 </html>

@@ -35,7 +35,6 @@ public class AppdDocController {
 
 		return "appd\\AppdList";
 	}
-	// http://localhost:7080/borampms/dept.do?method=insertFrm
 	// 초기 화면 호출
 	@RequestMapping(params="method=insertFrm")
 	public String ddInsertFrm(HttpServletRequest request, Model d) {
@@ -47,7 +46,7 @@ public class AppdDocController {
 		return "appd\\AppdInsert";
 	}
 
-	// 부서문서 등록
+
 	@RequestMapping(params="method=insert")
 	public String adInsertFrm(HttpServletRequest request, APPD_DOC ins, Model d) {
 

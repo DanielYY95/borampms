@@ -16,14 +16,18 @@
             and ad_appd='결재대기'
             </if>
             <if test='searchDocStauts !=null and searchDocStauts == "02"'>
-            and ad_appd='결재처리중'
+            and ad_appd='반려'
             </if>
             <if test='searchDocStauts !=null and searchDocStauts == "03"'>
-            and ad_appd in ('결재완료','반려')
+            and ad_appd = '결재완료'
             </if>
             <if test='searchDocStauts !=null and searchDocStauts == "04"'>
             and AD_WRITER=#{uiId}
             </if>
+            <if test='searchDocStauts !=null and searchDocStauts == "05"'>
+            and AD_UI_ID=#{uiId}
+            </if>
+
 	</select>
 	<!-- 부서문서 테이블 조회 -->
 	<select id="getADList" parameterType="appdDocSch" resultType="appdDoc">
