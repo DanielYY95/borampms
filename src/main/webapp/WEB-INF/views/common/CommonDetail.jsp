@@ -53,7 +53,7 @@
             <div class="content-page">
                 <div class="content">
                     <!-- Topbar Start -->
-                    <jsp:include page="../include/headerBar.jsp" flush="true"/>
+                    <jsp:include page="../include/headerBar.jsp"/>
                     <!-- end Topbar -->
 
                     <div class="container-fluid">
@@ -78,7 +78,7 @@
                             <div class="col-12">
                                 <div class="card">
                                     <div class="card-body">
-                                    <h4 class="header-title">[부서 문서공유함]</h4>
+                                    <h4 class="header-title">[공통 문서함]</h4>
                                     <br>
                                         <div class="tab-content">
                                             <div class="tab-pane show active" id="input-masks-preview">
@@ -86,7 +86,7 @@
 	                                                    <div class="col-lg-6">
 		                                                    <div class="mb-3">
 															    <label class="form-label">제목</label>
-															    <input type="text" class="form-control" name="ddTitle" value="${deptRowList.ddTitle}" readonly>
+															    <input type="text" class="form-control" name="cdTitle" value="${commonRowList.cdTitle}" readonly>
 															    <span class="font-13 text-muted"></span>
 															</div>
 														</div>
@@ -95,19 +95,19 @@
 														<div class="col-lg-6">
 															<div class="mb-3">
 															    <label class="form-label" >부서</label>
-															    <input type="text" class="form-control" name="ddDept" value="${deptRowList.ddDept}" readonly>
+															    <input type="text" class="form-control" name="cdDept" value="${commonRowList.cdDept}" readonly>
 															</div>
 														</div>
 														<div class="col-lg-6">
 															<div class="mb-3">
 															    <label class="form-label">작성자</label>
-															    <input type="text" class="form-control" name="ddWriter" value="${deptRowList.ddWriter}" readonly>
+															    <input type="text" class="form-control" name="cdWriter" value="${commonRowList.cdWriter}" readonly>
 															</div>
 														</div>
 													</div>
 													<div class="mb-3">
                                                         <label class="form-label">내용</label>
-                                                        <textarea class="form-control" id="example-textarea" name="ddContent" rows="5" readonly>${deptRowList.ddContent}</textarea>
+                                                        <textarea class="form-control" id="example-textarea" name="cdContent" rows="5" readonly>${commonRowList.cdContent}</textarea>
                                                     </div>
 													<div class="row">
 	                                                    <div class="col-lg-6">
@@ -115,7 +115,7 @@
 							
 														</div>
 													</div>
-													<c:forEach var="fname" items="${deptRowList.fnames}">
+													<c:forEach var="fname" items="${commonRowList.fnames}">
 													<div class="row">
 								            			<div class="col-lg-4">
 															<div class="mb-3">
@@ -168,7 +168,6 @@
 
         </div>
         
-
 		<!-- jstree js -->
 		<script src="${path}/tools/main_assets/js/vendor/jstree.min.js"></script>
 		<script src="${path}/tools/main_assets/js/pages/demo.jstree.js"></script>
@@ -181,7 +180,7 @@
 	/* 글목록버튼 클릭시, 문서관리 페이지로 이동 */
 	$("#docList-btn").click(function(){
 		alert("문서관리 페이지로 이동하시겠습니까?");
-		location.href="${path}/dept.do?method=list";
+		location.href="${path}/common.do?method=list";
 	});
 	function downFile(fname){
 		if(confirm("다운로드할 파일:"+fname)){

@@ -18,7 +18,7 @@ import mvc.vo.TASK_ISSUE;
 
 @Controller
 @RequestMapping("/issue.do")
-public class IssueController {
+public class TaskIssueController {
 	@Autowired
 	private IssueService service;
 	
@@ -27,9 +27,15 @@ public class IssueController {
 	
 	
 	@RequestMapping(params="method=list")
-	public String issueList(IssueSch sch, Model d) {
+	public String issueList(HttpServletRequest request, IssueSch sch, Model d) {
+		
+		sch.setPtId(smethod.getPtid(request));
+		System.out.println("PTID:"+sch.getPtId());
+		
 		Gson gson = new Gson();
 		String jsonlist = gson.toJson(service.getIssueList(sch));
+		
+		
 		
 		d.addAttribute("issuelist", service.getIssueList(sch));
 		d.addAttribute("jsonlist", jsonlist);
@@ -41,12 +47,16 @@ public class IssueController {
 	public String taskAjaxWord(@RequestParam("curPage") int curPage,
 				@RequestParam("schContent") String schContent, @RequestParam("schCharge") String schCharge, 
 				@RequestParam("schDuedate") String schDuedate, @RequestParam("schPriority") String schPriority,
-			   IssueSch sch, Model d) {
+			   IssueSch sch, Model d, HttpServletRequest request) {
 		sch.setCurPage(curPage);
 		sch.setTiContent(schContent);
 		sch.setTiCharge(schCharge);
 		sch.setTiDuedate(schDuedate);
 		sch.setTiPriority(schPriority);
+		sch.setPtId(smethod.getPtid(request));
+		
+		System.out.println("PTID:"+sch.getPtId());
+		
 
 		d.addAttribute("schIssuelist", service.getIssueList(sch));
 		return "pageJsonReport";
@@ -57,6 +67,9 @@ public class IssueController {
 	public String insertIssue(TASK_ISSUE ins, HttpServletRequest request) {
 		
 		ins.setTiWriter(smethod.getUserSession(request).getUiId());
+		ins.setPtId(smethod.getPtid(request));
+		
+		System.out.println("PTID:"+ins.getPtId());
 		
 		
 		service.insertIssue(ins);
@@ -88,4 +101,16 @@ public class IssueController {
 		
 		return "redirect:/issue.do?method=list";
 	}
+	
+	
+	@RequestMapping(params="method=detail")
+	public String detailIssue(String tiId, Model d) {
+		
+
+		d.addAttribute("issueDetail", service.getIssue(tiId));
+		
+		return "pageJsonReport";
+	}
+	
+	
 }

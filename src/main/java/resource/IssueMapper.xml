@@ -8,6 +8,7 @@
 		select count(*)
 		from task_issue
 		where 1=1
+		and PT_ID = #{ptId}
 		<if test="tiContent != null and tiContent != ''">
 		and ti_content like '%'||#{tiContent}||'%'
 		</if>
@@ -22,12 +23,16 @@
 		</if>
 	</select>
 	
+	<!-- 서브쿼리 문제 없으나, ti_writer가 이름으로 들어가 있네... 
+	++ PT_ID 업무담당자에 해당 등록자가 있는지...
+	-->
 	<select id="getIssueList" parameterType="issueSch" resultType="issue">
-		select *
+		select ti.*, ui.UI_NAME
 		from (
 			SELECT row_number() over(ORDER BY to_date(ti_duedate, 'YYYY-MM-DD')) cnt, task_issue.*
 			from task_issue
 			where 1=1
+			and PT_ID = #{ptId}
 			<if test="tiContent != null and tiContent != ''">
 			and ti_content like '%'||#{tiContent}||'%'
 			</if>
@@ -40,8 +45,9 @@
 			<if test="tiPriority != null and tiPriority != ''">
 			and ti_priority like '%'||#{tiPriority}||'%'
 			</if>
-		)
+		)ti, user_info ui
 		where cnt between #{firstPage} and #{lastPage}
+		and ti.TI_WRITER = ui.UI_ID
 	</select>
 	
 	
@@ -52,7 +58,7 @@
 			#{tiContent},
 			#{tiCharge},
 			#{tiPriority},
-			#{tiDuedate}, ''
+			#{tiDuedate}, #{ptId}
 		)
 	</insert>
 	
@@ -66,38 +72,99 @@
 		where ti_id = #{tiId}
 	</update>
 	
-	<delete id="deleteIssue" parameterType="String">
+	<delete id="deleteIssue" parameterType="string">
 		delete from task_issue where ti_id = #{tiId}
 	</delete>
 	
+	<select id="getIssue" parameterType="string" resultType="issue">
+		select * 
+		from task_issue 
+		where ti_id= #{tiId}
 	
-<!--  
-	<select id="getEmpList" parameterType="emp" resultType="emp">
+	</select>
+	
+	
+
+
+	<select id="getTotalPICnt" parameterType="prjIssueSch" resultType="int">
+		select count(*)
+		from prj_issue
+		where 1=1
+		and PI_ID = #{piId}
+		<if test="iContent != null and iContent != ''">
+		and i_content like '%'||#{iContent}||'%'
+		</if>
+		<if test="iCharge != null and iCharge != ''">
+		and i_charge like '%'||#{iCharge}||'%'
+		</if>
+		<if test="iDuedate != null and iDuedate != ''">
+		and i_duedate like '%'||#{iDuedate}||'%'
+		</if>
+		<if test="iPriority != null and iPriority != ''">
+		and i_priority like '%'||#{iPriority}||'%'
+		</if>
+	</select>
+	
+	<select id="getPrjIssueList" parameterType="prjIssueSch" resultType="prjIssue">
 		select *
-		from empcrud
-		where ename like '%'||#{ename}||'%'
-		and job like '%'||#{job}||'%'
+		from (
+			SELECT row_number() over(ORDER BY to_date(i_duedate, 'YYYY-MM-DD')) cnt, prj_issue.*
+			from prj_issue
+			where 1=1
+			and PI_ID = #{piId}
+			<if test="iContent != null and iContent != ''">
+			and i_content like '%'||#{iContent}||'%'
+			</if>
+			<if test="iCharge != null and iCharge != ''">
+			and i_charge like '%'||#{iCharge}||'%'
+			</if>
+			<if test="iDuedate != null and iDuedate != ''">
+			and i_duedate like '%'||#{iDuedate}||'%'
+			</if>
+			<if test="iPriority != null and iPriority != ''">
+			and i_priority like '%'||#{iPriority}||'%'
+			</if>
+		)i, user_info ui
+		where cnt between #{firstPage} and #{lastPage}
+		and i.I_WRITER = ui.UI_ID
+		
 	</select>
-	<insert id="insertEmp" parameterType="emp">
-		insert into empcrud values(empcrud_seq.NEXTVAL, #{ename},
-			#{job},#{mgr},to_date(#{hiredateS},'YYYY-MM-DD'),#{sal},#{comm},#{deptno})
+	
+	
+	<insert id="insertPrjIssue" parameterType="prjIssue">
+		INSERT INTO prj_issue VALUES(
+			'I' || lpad(i_seq.nextval, 5, 0),
+			#{iWriter},
+			#{iContent},
+			#{iCharge},
+			#{iPriority},
+			#{iDuedate}, #{piId}
+		)
 	</insert>
-	<select id="getEmp" parameterType="int" resultType="emp">
-		select * from empcrud where empno=#{empno}
-	</select>
-	<update id="uptEmp" parameterType="emp">
-		update empcrud
-		set ename=#{ename},
-			job=#{job},
-			mgr=#{mgr},
-			hiredate=to_date(#{hiredateS}, 'yyyy-mm-dd'),
-			sal=#{sal},
-			comm=#{comm},
-			deptno=#{deptno}
-		where empno = #{empno}
+	
+	
+	<update id="updatePrjIssue" parameterType="prjIssue">
+		update prj_issue
+		set i_content = #{iContent},
+		    i_charge = #{iCharge},
+			i_priority = #{iPriority},
+			i_duedate = #{iDuedate}
+		where i_id = #{iId}
 	</update>
-	<delete id="delEmp" parameterType="int">
-		delete from empcrud where empno = #{empno}
+	
+	<delete id="deletePrjIssue" parameterType="string">
+		delete from prj_issue where i_id = #{iId}
 	</delete>
--->
+	
+
+	<select id="getPrjIssue" parameterType="string" resultType="prjIssue">
+		select * 
+		from prj_issue 
+		where i_id= #{iId}
+	
+	</select>
+
+
+
+
 </mapper>

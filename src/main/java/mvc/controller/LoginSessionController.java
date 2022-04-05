@@ -27,13 +27,12 @@ public class LoginSessionController {
 	@Autowired
 	private UserService service;
 	
-	// https://moonong.tistory.com/45 회원가입시 메일 인증
 	// 로그인이 너무 잘 끊기는 문제...? 
 	@RequestMapping(params="method=session")
 	public String login(@ModelAttribute("user_info") 
 		USER_INFO sch, boolean saveId, HttpServletResponse response, String toURL, Model d) {
 		
-		sch = service.login(sch);
+		sch = service.login(sch); // 세션에서 가져온 유저 vo객체로 로그인 진행 return 값
 	
 		if(sch!=null) {
 			d.addAttribute("loginMsg","로그인 성공!");
@@ -90,7 +89,7 @@ public class LoginSessionController {
 		d.addAttribute("user_info", new USER_INFO()); // 새 객체로 만들어준다.
 		d.addAttribute("msg", "로그아웃이 되었습니다.");
 		
-		return "forward:/main.do";
+		return "redirect:/main.do";
 	}
 
 	

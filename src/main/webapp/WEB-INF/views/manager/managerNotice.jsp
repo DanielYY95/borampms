@@ -87,20 +87,55 @@
 					<!-- start page content -->
 					<div class="row">
 						<div class="col-12">
+							 <div class="card">
+                                	<h3 class="fw-bold text-center">관리자페이지</h3>
+                                    <div class="card-body">
+                                    	 <div>
+                                            <ul class="nav nav-tabs nav-bordered mb-3" style="display: flex; justify-content: space-around;">
+                                                <li class="nav-item"> <!-- a링크에서  data-bs-toggle="tab" 뺐음-->
+                                                    <a href="${path}/manager.do?method=user"  aria-expanded="true" class="nav-link">
+                                                    	회원관리
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="${path}/manager.do?method=prj"  aria-expanded="true" class="nav-link">
+                                                        프로젝트관리
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="${path}/manager.do?method=dept"  aria-expanded="true" class="nav-link">
+                                                        부서관리
+                                                    </a>
+                                                </li>
+                                               	<li class="nav-item">
+														<a href="${path}/manager.do?method=notice" aria-expanded="true" class="nav-link active">
+															공지사항
+														</a>
+													</li>
+													<li class="nav-item">
+														<a href="${path}/manager.do?method=prjUser" aria-expanded="true" class="nav-link">
+															프로젝트 참여자 목록
+														</a>
+													</li>
+                                             
+                                              
+                                            </ul> <!-- end nav-->
+                                        </div>
 							<div class="card">
 								<div class="card-body">
 									<form class="row gy-2 gx-2 align-items-center justify-content-between"
 										id="ntSchForm" method="post" action="${path}/manager.do?method=notice">
 										<input type="hidden" name="curPage" value="1"/>
 										<input type="hidden" name="ntTitle" value="${notice.ntTitle }"/>
-										<input type="hidden" name="ntId" value="${user_info.uiId}"/>
+										<input type="hidden" name="ntWriter" value="${user_info.uiId}"/>
+										<input type="hidden" name="ntType" value="${notice.ntType}"/>
 										<div class="col-auto">
 											<div class="row gy-3">
 												<div class="col-auto">
 													<label for="search-word" class="col-form-label">제목</label>
 												</div>
 												<div class="col-auto">
-													<input type="search" class="form-control" id="search-word" placeholder="Search...">
+													<input type="search" class="form-control" id="ntSchWord" placeholder="Search...">
 												</div>
 												<div class="col-auto">
 													<select class="form-select" id="ntSchSelect">
@@ -129,11 +164,11 @@
 											 	</thead>
 											 	<tbody id="notice-tbody">
 													<c:forEach var="notice" items="${ntlist}" varStatus="status">
-													<tr onclick="detail('${notice.ntId}')">
-														<td><input type="checkbox"/><input type="hidden" value="${notice.ntId }"></td>
+													<tr>
+														<td><input type="checkbox"/><input type="hidden" value="${notice.ntId }"/></td>
 														<td>${notice.cnt }</td>
 														<td>${notice.ntType }</td>
-														<td>${notice.ntTitle}</td>
+														<td onclick="detail('${notice.ntId}')">${notice.ntTitle}</td>
 														<td>${notice.ntRegdate }</td>
 														<td>${notice.ntWriter }</td>
 													</tr>
@@ -160,10 +195,11 @@
 												  	</li>
 												</ul>
 											</div>
-											<div class="d-grid gap-2 col-sm-2 col-lg-1 float-end">
-												<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#notice-modal">등록</button>
+											<div class="d-grid gap-2 col-sm-2 col-mb-2 col-lg-1 float-end">
+												<button type="button" class="btn btn-primary" data-bs-toggle="modal"
+													data-bs-target="#notice-modal" id="insBtn">등록</button>
 											</div>
-											<div class="d-grid gap-2 col-sm-2 col-lg-1 float-end">
+											<div class="d-grid gap-2 col-sm-2 col-mb-2 col-lg-1 float-end">
 												<button type="button" class="btn btn-primary" id="delBtn">삭제</button>
 											</div>
 										</div>
@@ -219,16 +255,19 @@
 	                    </div>
 	
 	                    <div class="modal-body">
-	                        <form id="ntRegForm" class="ps-3 pe-3" action="${path}/manager.do?method=ntInsert" method="post">
-	                        	<input type="hidden" name="uiId" value="${user_info.uiId }">                  
+	                        <form id="ntRegForm" class="ps-3 pe-3" action="${path}/manager.do?method=insertNotice" method="post">
+	                        	<input type="hidden" name="ntWriter" value="${user_info.uiId }">                  
 	                            <div class="mb-3">
 	                                <label for="username" class="form-label">제목</label>
-	                                <input name="ntTitle" class="form-control"  required="" placeholder="제목을 입력해주세요">
+	                                <input name="ntTitle" class="form-control" required="" placeholder="제목을 입력해주세요">
 	                            </div>
-	                            
+	                            <div class="mb-3">
+	                                <label for="username" class="form-label">제목</label>
+	                                <input class="form-control" value="${user_info.uiName }" disabled>
+	                            </div>
 	                            <div class="mb-3 position-relative">
 	                                <label class="form-label">공지 구분</label>
-	                                <select id="select-ntType"  name="ntType" class="form-control" value="${notice.ntType}" required="" data-placeholder="공지 구분">
+	                                <select id="select-ntType"  name="ntType" class="form-control" required="" data-placeholder="공지 구분">
 										<option value="">구분 선택</option>
 										<option value="공지">공지</option>
 										<option value="점검">점검</option>
@@ -255,6 +294,19 @@
 			
 			
 <script>	
+	let ntarr = new Array();
+	let json = new Object();
+	<c:forEach items="${ntlist}" var="notice">
+		json.ntId = "${notice.ntId}"
+		json.ntTitle = "${notice.ntTitle}";
+		json.ntWriter = "${notice.ntWriter}";
+		json.ntType = "${notice.ntType}";
+		console.log(json);
+		ntarr.push(json);
+		console.log(ntarr);
+	</c:forEach>
+	
+	
 	$(document).ready(function() {
 		// 검색이 실행되어 화면이 새로고침되었더라도 검색 키워드가 입력된 상태로 설정
 		let schTitle = "${notice.ntTitle}";
@@ -270,41 +322,50 @@
 	
 	
 	// 검색 : 제목 키워드 입력 시
-	$("#search-word").keydown(function(key) {
+	$("#ntSchWord").keydown(function(key) {
 		if(key.keyCode == 13) {
+			$("#ntSchForm").find("[name=ntTitle]").val($("#ntSchWord").val());
 			$("#ntSchForm").submit();
 		}
 	});
-	
-	
 	// 검색 : 공지 구분
-	$("#ntSchForm").find("[name=ntType]").change(function() {
+	$("#ntSchSelect").change(function() {
+		$("#ntSchForm").find("[name=ntType]").val($("#ntSchSelect option:selected").val());
 		$("#ntSchForm").submit();
 	});
 	
 	
-	// 공지사항 보기
-	function detail(ntId){
-		location.href="${path}/manager.do?ntId="+ntId;
+	// 공지사항 내용 보기
+	function detail(ntid){
+		console.log("안");
+		console.log(ntarr);
+		let ntitem = ntarr.filter(nt => nt.ntId === 'NT1');
+		console.log(ntitem);
+		$("#ntRegForm").find("[name=ntTitle]").val(ntitem.ntTitle);
+		$("#ntRegForm").find("[name=ntWriter]").val(ntitem.ntWriter);
+		$("#ntRegForm").find("[name=ntType]").val(ntitem.ntType);
+		$("#ntRegForm").find("[name=ntContent]").val(ntitem.ntContent);
+		
+		$("#insBtn").click();
 	}
-	// 
 	function goPage(no){
 		$("[name=curPage]").val(no);
 		$("#ntSchForm").submit();
 	}
 	
+	
 
 	// 공지 등록
 	$("#regBtn").click(function() {
 		if(confirm("등록하시겠습니까?")) {
-			if($("#regForm").find("[name=ntTitle]").val() == "") {
+			if($("#ntRegForm").find("[name=ntTitle]").val() == "") {
 				alert("제목을 작성해주세요.");
-			} else if($("#regForm").find("[name=ntType]").val() == "" || $("#regForm").find("[name=ptCharge]").val() == null) {
+			} else if($("#ntRegForm").find("[name=ntType]").val() == "") {
 				alert("구분 항목을 지정해주세요.");	
-			} else if($("#regForm").find("[name=ntContent]").val() == "" || $("#regForm").find("[name=ntContent]").val() == null) {
+			} else if($("#ntRegForm").find("[name=ntContent]").val() == "") {
 				alert("내용을 입력해주세요.");
 			} else {
-				$("#regForm").submit();
+				$("#ntRegForm").submit();
 			}
 		}
 	});

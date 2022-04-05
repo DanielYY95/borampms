@@ -55,7 +55,6 @@
 			    -webkit-box-shadow: none;
 			    box-shadow: none;
 			}
-			.block{display:block;}
         </style>
     </head>
 
@@ -143,8 +142,8 @@
 	                                        <div class="page-aside-right">
 	                                            <div class="mt-3">
 	                                                <h5 class="mb-3">결재 문서함</h5>
-	                                                <ul class="nav nav-tabs nav-bordered mb-3" style="display: flex; justify-content: space-around; display:none;">
-							                           <li class="nav-item">
+	                                                <ul class="nav nav-tabs nav-bordered mb-3" style="display: flex; justify-content: space-around;">
+							                           <li class="nav-item"> <!-- a링크에서  data-bs-toggle="tab" 뺐음-->
 							                               <a href="javascript:searchDocList('04')"  aria-expanded="true" class="nav-link active">
 							                               	 내 등록 결재
 							                               </a>
@@ -272,6 +271,5 @@
 	function detail(adId){
 		location.href="${path}/appd.do?method=detail&adId="+adId;
 	}
-	
 	</script>
 </html>

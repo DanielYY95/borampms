@@ -9,7 +9,7 @@ package mvc.vo;
 	ti_duedate varchar2(20),
 	pt_id REFERENCES prj_task(pt_id)
  */
-public class IssueSch {
+public class prjIssueSch {
 	private int count;		// 전체 업무 건수
 	private int pageSize;	// 한 페이지에 표시되는 업무 건수
 	private int pageCount;	// 전체 페이지 수 = count / pageSize
@@ -23,29 +23,17 @@ public class IssueSch {
 	
 	
 	// 이하 검색 키워드
-	private String tiContent;
-	private String tiCharge;
-	private String tiPriority;
-	private String tiDuedate;
+	private String iContent;
+	private String iCharge;
+	private String iPriority;
+	private String iDuedate;
 	
-	private String ptId;
+	private String piId;
 	
-	public IssueSch() {
+	public prjIssueSch() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
-	
-	
-	public String getPtId() {
-		return ptId;
-	}
-
-	public void setPtId(String ptId) {
-		this.ptId = ptId;
-	}
-
-
 
 	public int getCount() {
 		return count;
@@ -119,36 +107,45 @@ public class IssueSch {
 		this.lastBlock = lastBlock;
 	}
 
-	public String getTiContent() {
-		return tiContent;
+
+	public String getiContent() {
+		return iContent;
 	}
 
-	public void setTiContent(String tiContent) {
-		this.tiContent = tiContent;
+	public void setiContent(String iContent) {
+		this.iContent = iContent;
 	}
 
-	public String getTiCharge() {
-		return tiCharge;
+	public String getiCharge() {
+		return iCharge;
 	}
 
-	public void setTiCharge(String tiCharge) {
-		this.tiCharge = tiCharge;
+	public void setiCharge(String iCharge) {
+		this.iCharge = iCharge;
 	}
 
-	public String getTiPriority() {
-		return tiPriority;
+	public String getiPriority() {
+		return iPriority;
 	}
 
-	public void setTiPriority(String tiPriority) {
-		this.tiPriority = tiPriority;
+	public void setiPriority(String iPriority) {
+		this.iPriority = iPriority;
 	}
 
-	public String getTiDuedate() {
-		return tiDuedate;
+	public String getiDuedate() {
+		return iDuedate;
 	}
 
-	public void setTiDuedate(String tiDuedate) {
-		this.tiDuedate = tiDuedate;
+	public void setiDuedate(String iDuedate) {
+		this.iDuedate = iDuedate;
+	}
+
+	public String getPiId() {
+		return piId;
+	}
+
+	public void setPiId(String piId) {
+		this.piId = piId;
 	}
 
 

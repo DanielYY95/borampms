@@ -128,7 +128,7 @@ public class UserService {
 					+ "임시비밀번호: <span style='font-weight: 700'>"
 					+tempPw +"</span>"
 					+ "<br><br> BORAM3 PMS로 "
-					+ "<a href='http://13.125.255.115:8080/borampms/'>이동</a>";
+					+ "<a href='http://3.35.208.23:8080/borampms/'>이동</a>";
 			
 		
 			email.setContent(content);
@@ -192,7 +192,11 @@ public class UserService {
 			dao.insertPrj(sch);
 		};
 		
-	
+	// 14. 프로젝트 참여 여부 확인
+		public int isInPrj(PRJ_USER user) {
+			
+			return dao.isInPrj(user);
+		};
 		
 	
 }

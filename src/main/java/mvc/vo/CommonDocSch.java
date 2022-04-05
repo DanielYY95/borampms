@@ -1,51 +1,24 @@
 package mvc.vo;
 
-/*
- *  ti_id varchar2(20) PRIMARY KEY,
-	ti_writer varchar2(100),
-	ti_content varchar2(4000),
-	ti_charge varchar2(100),
-	ti_priority varchar2(30),
-	ti_duedate varchar2(20),
-	pt_id REFERENCES prj_task(pt_id)
- */
-public class IssueSch {
+public class CommonDocSch {
 	private int count;		// 전체 업무 건수
 	private int pageSize;	// 한 페이지에 표시되는 업무 건수
 	private int pageCount;	// 전체 페이지 수 = count / pageSize
 	private int curPage;	// 현재 페이지 번호
 	private int firstPage;	// 페이지 내 시작 번호
 	private int lastPage;	// 페이지 내 마지막 번호
-	
+	private String cdTitle;
 	private int blockSize;	// 한 번에 출력되는 페이지 블럭 수
 	private int firstBlock;	// 페이지 블럭의 시작 번호
 	private int lastBlock;	// 페이지 블럭의 끝 번호
 	
-	
-	// 이하 검색 키워드
-	private String tiContent;
-	private String tiCharge;
-	private String tiPriority;
-	private String tiDuedate;
-	
-	private String ptId;
-	
-	public IssueSch() {
+	// 검색할 내용
+	private	String cdWriter; // 작성자 검색
+
+	public CommonDocSch() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
-	
-	
-	public String getPtId() {
-		return ptId;
-	}
-
-	public void setPtId(String ptId) {
-		this.ptId = ptId;
-	}
-
-
 
 	public int getCount() {
 		return count;
@@ -94,6 +67,16 @@ public class IssueSch {
 	public void setLastPage(int lastPage) {
 		this.lastPage = lastPage;
 	}
+	
+	
+
+	public String getCdTitle() {
+		return cdTitle;
+	}
+
+	public void setCdTitle(String cdTitle) {
+		this.cdTitle = cdTitle;
+	}
 
 	public int getBlockSize() {
 		return blockSize;
@@ -119,40 +102,12 @@ public class IssueSch {
 		this.lastBlock = lastBlock;
 	}
 
-	public String getTiContent() {
-		return tiContent;
+	public String getCdWriter() {
+		return cdWriter;
 	}
 
-	public void setTiContent(String tiContent) {
-		this.tiContent = tiContent;
+	public void setCdWriter(String cdWriter) {
+		this.cdWriter = cdWriter;
 	}
-
-	public String getTiCharge() {
-		return tiCharge;
-	}
-
-	public void setTiCharge(String tiCharge) {
-		this.tiCharge = tiCharge;
-	}
-
-	public String getTiPriority() {
-		return tiPriority;
-	}
-
-	public void setTiPriority(String tiPriority) {
-		this.tiPriority = tiPriority;
-	}
-
-	public String getTiDuedate() {
-		return tiDuedate;
-	}
-
-	public void setTiDuedate(String tiDuedate) {
-		this.tiDuedate = tiDuedate;
-	}
-
-
-	
-	
 	
 }

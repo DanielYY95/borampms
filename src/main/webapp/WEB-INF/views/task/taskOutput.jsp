@@ -115,22 +115,11 @@
                                                                 </a>
                                                             </li>
                                                              <li class="nav-item">
-                                                                <a href="${path}/taskIssue.do?" aria-expanded="true" class="nav-link">
+                                                                <a href="${path}/issue.do?method=list" aria-expanded="true" class="nav-link">
                                                                     이슈
                                                                 </a>
                                                             </li>
-                                                            <li class="nav-item">
-                                                                <a href="${path}/project/task/taskGuide.html"
-                                                                    aria-expanded="true" class="nav-link">
-                                                                    가이드
-                                                                </a>
-                                                            </li>
-                                                            <li class="nav-item">
-                                                                <a href="${path}/project/task/taskHistory.html"
-                                                                    aria-expanded="true" class="nav-link">
-                                                                    히스토리
-                                                                </a>
-                                                            </li>
+                                                       
                                                         </ul> <!-- end nav-->
                                                     </div>
                                                     <!-- Signup modal content -->
@@ -199,7 +188,7 @@
                                                                                                 class="dripicons-download" ></i>
                                                                                         </button>
                                                                                     </div>
-                                                                                    <c:if test="${fname.toWriter eq user_info.uiId}">
+                                                                                    <c:if test="${fname.toWriter eq user_info.uiId}"> <!-- 파일을 등록한 사람만 삭제 가능 -->
 	                                                                                    <div class="col-auto">
 	                                                                                        <!-- Button --> <button
 	                                                                                            class="btn btn-link btn-lg text-muted"

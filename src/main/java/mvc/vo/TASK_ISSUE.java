@@ -11,6 +11,7 @@ package mvc.vo;
  */
 public class TASK_ISSUE {
 	private int cnt;	// 페이징 처리용
+	private String uiName;
 	
 	private String tiId;
 	private String tiWriter;
@@ -23,6 +24,16 @@ public class TASK_ISSUE {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	
+	public String getUiName() {
+		return uiName;
+	}
+
+	public void setUiName(String uiName) {
+		this.uiName = uiName;
+	}
+
 	public int getCnt() {
 		return cnt;
 	}

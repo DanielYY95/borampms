@@ -101,7 +101,7 @@
                                                     </a>
                                                 </li>
                                                	<li class="nav-item">
-														<a href="" aria-expanded="true" class="nav-link">
+														<a href="${path}/manager.do?method=notice" aria-expanded="true" class="nav-link">
 															공지사항
 														</a>
 													</li>

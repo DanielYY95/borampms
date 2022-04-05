@@ -238,6 +238,17 @@
 		where cnt between #{firstPage} and #{lastPage}
 	</select>
 	
+	<!-- 공지사항 등록 -->
+	<insert id="insertNotice" parameterType="notice">
+		insert into notice values(
+			'NT'||lpad(notice_seq.nextval, 5, 0),
+			#{ntTitle},
+			#{ntContent},
+			sysdate,
+			#{ntWriter},
+			#{ntType}
+		)		
+	</insert>
 	
 	
 	

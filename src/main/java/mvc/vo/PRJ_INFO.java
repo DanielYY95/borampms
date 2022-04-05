@@ -14,10 +14,15 @@ public class PRJ_INFO {
 	private String uiName;
 	private String puStatus;
 	private String uiId;
+	private String duration;
 	
 	
-	
-	
+	public String getDuration() {
+		return duration;
+	}
+	public void setDuration(String duration) {
+		this.duration = duration;
+	}
 	public String getUiId() {
 		return uiId;
 	}
