@@ -84,6 +84,11 @@ public class managerController {
 		d.addAttribute("ntlist", service.getNoticeList(sch));
 		return "manager/managerNotice";
 	}
+	@RequestMapping(params="method=insertNotice")
+	public String insertNotice(Notice ins) {
+		service.insertNotice(ins);
+		return "redirect:/manager.do?method=notice";
+	}
 
 
 }

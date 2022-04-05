@@ -111,5 +111,8 @@ public class ManagerService {
 		
 		return dao.getNoticeList(sch);
 	}
+	public void insertNotice(Notice ins) {
+		dao.insertNotice(ins);
+	}
 	
 }

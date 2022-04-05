@@ -26,5 +26,6 @@ public interface ManagerDao {
 	
 	public int getTotalCnt(Notice sch);
 	public ArrayList<Notice> getNoticeList(Notice sch);
+	public void insertNotice(Notice ins);
 	
 }

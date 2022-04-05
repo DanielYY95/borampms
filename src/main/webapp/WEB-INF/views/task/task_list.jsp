@@ -602,7 +602,7 @@
 		 		// 페이징 블록 .html 코드 추가 필요
 			},
 			error:function(err) {
-				console.log(err);
+				console.log(err); 
 			}
 		});
 	}
