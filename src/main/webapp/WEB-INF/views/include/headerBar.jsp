@@ -221,25 +221,7 @@
 								<a href="javascript:void(0);"
 									class="dropdown-item p-0 notify-item card read-noti shadow-none mb-2">
 									<div class="card-body">
-										<span class="float-end noti-close-btn text-muted">
-											<i class="mdi mdi-close"></i>
-										</span>
-										<div class="d-flex align-items-center">
-											<div class="flex-shrink-0">
-												<div class="notify-icon">
-													<img src="${path}/tools/project_assets/images/users/avatar-2.jpg"
-														class="img-fluid rounded-circle" alt="" />
-												</div>
-											</div>
-											<div class="flex-grow-1 text-truncate ms-2">
-												<h5 class="noti-item-title fw-semibold font-14">
-													Cristina Pride
-													<small class="fw-normal text-muted ms-1">1 day ago</small>
-												</h5>
-												<small class="noti-item-subtitle text-muted">
-													Hi, How are you? What about our next meeting</small>
-											</div>
-										</div>
+										
 									</div>
 								</a>
 
@@ -342,6 +324,11 @@
 							<div class=" dropdown-header noti-title">
 								<h6 class="text-overflow m-0">안녕하세요!</h6>
 							</div>
+							
+							<a href="${path}/profile.do?method=myProfile" class="dropdown-item notify-item">
+								<i class="dripicons-user me-1"></i>
+								<span>프로필 수정</span>
+							</a>
 
 							<!-- item-->
 							<a href="${path}/prjList.do" class="dropdown-item notify-item">

@@ -415,7 +415,7 @@
         	}
         	
 
-            $("#alarm").hide();
+            $("#alarmLogo").hide();
             
             
             

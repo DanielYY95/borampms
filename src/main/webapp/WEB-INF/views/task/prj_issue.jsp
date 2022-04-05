@@ -111,7 +111,7 @@
 												<input class="form-control" placeholder="이슈 내용" name="iContent" required/>
 											</div>
 											<div class="col">
-												<label class="form-label col-form-label">업무담당자</label> 
+												<label class="form-label col-form-label" id="chargeMsg">업무담당자</label> 
 											<select id="chargeUpt" name="iCharge" class="select2 form-control select2-multiple"
 												 required="" data-toggle="select2"  multiple="multiple" data-placeholder="업무담당자 지정"> 
 												 
@@ -186,23 +186,24 @@
 										<div class="row">	
 											<form id="isSchForm" method="post" action="${path}/risk.do?method=list">	
 											<input type="hidden" name="curPage" value="1"/>	
+											<input type="hidden" name="piId" value="${prj_info.piId}"/>	
 											<div class="row justify-content-between">	
 												<div class="col">	
 													<div class="input-group">	
 														<label class="input-group-text"><i class="fa fa-search"></i></label>	
-														<input type="text" class="form-control" placeholder="이슈 내용" name="schContent">	
+														<input type="text" class="form-control" placeholder="이슈 내용" name="iContent">	
 													</div>	
 												</div>	
 												<div class="col">	
 													<div class="input-group">	
 														<label class="input-group-text"><i class="fa fa-search"></i></label>	
-														<input type="text" class="form-control" placeholder="담당자" name="schCharge">	
+														<input type="text" class="form-control" placeholder="담당자" name="iCharge">	
 													</div>	
 												</div>	
 												<div class="col">	
 													<div class="input-group">	
 														<label class="input-group-text"><i class="fa fa-search"></i></label>	
-														<select class="form-control" name="schPriority">	
+														<select class="form-control" name="iPriority">	
 															<option value="" selected>우선순위</option>	
 															<option value="중요">중요</option>	
 															<option value="보통">보통</option>	
@@ -214,9 +215,12 @@
 												<div class="col">	
 													<div class="input-group">	
 														<label class="input-group-text"><i class="fa fa-search"></i></label>	
-														<input class="form-control" type="date" name="schDuedate"/>	
+														<input class="form-control" type="date" name="iDuedate"/>	
 													</div>	
 												</div>	
+												<div class="d-grid gap-2 col-sm-2 col-lg-1 float-end">
+													<button type="button" class="btn btn-success" id="isSearchBtn">조회</button>
+												</div>
 											</div>	
 											</form>	
 										</div>
@@ -322,25 +326,27 @@
 
             
        <script>
+       
+       
 				let logUiId = "${user_info.uiId}";
 				$(document).ready(function() {
 					// 검색이 실행되어 화면이 새로고침되었더라도 검색 키워드가 입력된 상태로 설정
-					let schContent = "${issueSch.tiContent}";
-					let schCharge = "${issueSch.tiCharge}";
-					let schPriority = "${issueSch.tiPriority}";
-					let schDdate = "${issueSch.tiDuedate}";
+					let schContent = "${prjIssueSch.iContent}";
+					let schCharge = "${prjIssueSch.iCharge}";
+					let schPriority = "${prjIssueSch.iPriority}";
+					let schDdate = "${prjIssueSch.iDuedate}";
 					
 					if(schContent != "") {
-						$("[name=schContent]").val(schContent);
+						$("#isSchForm [name=iContent]").val(schContent);
 					}
 					if(schCharge != "") {
-						$("[name=schCharge]").val(schCharge);
+						$("#isSchForm [name=iCharge]").val(schCharge);
 					}
 					if(schPriority != "") {
-						$("[name=schPriority]").val(schPriority);
+						$("#isSchForm [name=iPriority]").val(schPriority);
 					}
 					if(schDdate != "") {
-						$("[name=schDuedate]").val(schDdate);
+						$("#isSchForm [name=iDuedate]").val(schDdate);
 					}
 					
 				});
@@ -353,15 +359,7 @@
 				}
 				
 				
-				// 검색 키워드 입력 후 엔터 키를 누르거나, 검색일자를 바꾸었을 때 검색 실행
-				$("[name=schContent], [name=schCharge]").keyup(function(key) {
-					if(key.keyCode == 13) {
-						$("#isSchForm").submit();
-					}
-				});
-				$("[name=schPriority], [name=schDuedate]").change(function() {
-					$("#isSchForm").submit();
-				});
+	
 				
 				
 				// 수정 및 삭제 아이콘 클릭 시 현재 로그인 유저와 등록자가 같은지 확인하고
@@ -376,17 +374,17 @@
 						success: function (data) {
 							issueDetail = data.issueDetail;
 		
-							$("[name=iContent]").val(issueDetail.iContent);
-							$("[name=iPriority]").val(issueDetail.iPriority);
+							$("#isRegForm [name=iContent]").val(issueDetail.iContent);
+							$("#isRegForm [name=iPriority]").val(issueDetail.iPriority);
 							let iCharge = issueDetail.iCharge;
 							
 							let chargeList = iCharge.split(",");
 							
-							$("[name=iCharge]").val(chargeList); // 배열로 만든다음 넣으면 되야하는게 맞는디..
+							$("#isRegForm [name=iCharge]").val(chargeList); // 배열로 만든다음 넣으면 되야하는게 맞는디..
 							
-							$("[name=iDuedate]").val(issueDetail.iDuedate);
-							$("[name=iId]").val(issueDetail.iId);
-							
+							$("#isRegForm [name=iDuedate]").val(issueDetail.iDuedate);
+							$("#isRegForm [name=iId]").val(issueDetail.iId);
+							$("#chargeMsg").text("업무담당자(지정하지 않을 시, 기존값 유지)")
 					
 						}
 					});
@@ -411,13 +409,13 @@
 				// '등록' 버튼인 경우와 '수정' 버튼인 경우의 처리
 				$("#isRegFormBtn").click(function() {
 					// 등록/수정 전 유효성 검증
-					if($("[name=iContent]").val() == null || $("[name=iContent]").val() == "") {
+					if($("#isRegForm [name=iContent]").val() == null || $("#isRegForm [name=iContent]").val() == "") {
 						alert("등록할 이슈 내용을 입력해주세요.");
-					} else if($("[name=iCharge]").val() == null || $("[name=iCharge").val() == "") {
+					} else if($("#isRegForm [name=iCharge]").val() == null || $("#isRegForm [name=iCharge").val() == "") {
 						alert("업무담당자를 지정해주세요.");
-					} else if($("[name=iDuedate]").val() == null || $("[name=iDuedate]").val() == "") {
+					} else if($("#isRegForm [name=iDuedate]").val() == null || $("#isRegForm [name=iDuedate]").val() == "") {
 						alert("마감일을 지정해주세요.");
-					} else if($("[name=iPriority]").val() == null || $("[name=iPriority]").val() == "") {
+					} else if($("#isRegForm [name=iPriority]").val() == null || $("#isRegForm [name=iPriority]").val() == "") {
 						alert("우선순위를 지정해주세요.");
 					} else {
 						// 등록/수정에 따른 form action 설정
@@ -432,7 +430,29 @@
 				});
 				
 				
-				/* => controller에 남아있다. table body 구성하는 것처럼 페이징 만들어준다. 
+				// ajax 검색 시
+			
+				let schdata = {schContent:"", schCharge:"", schPriority:"", schDuedate:"", curPage:1};
+				
+				
+				
+				// 검색 키워드 입력 후 엔터 키를 누르거나, 검색일자를 바꾸었을 때 검색 실행
+				$("#isSchForm [name=iContent], #isSchForm [name=iCharge]").keyup(function(key) {
+					if(key.keyCode == 13) {
+						$("#isSchForm").submit();
+					}
+				});
+				
+				$("#isSearchBtn").click(function(){
+					$("#isSchForm").submit();
+				})
+				
+				
+				// $("[name=schPriority], [name=schDuedate]").change(function() {
+				//	$("#isSchForm").submit();
+				// });
+				
+				// => controller에 남아있다. table body 구성하는 것처럼 페이징 만들어준다. 
 				// ajax 활용 검색
 				// 검색 키워드 입력, ajax 호출
 				$("[name=schContent], [name=schCharge]").keyup(function() {
@@ -451,47 +471,8 @@
 					schdata.schPriority = $("[name=schPriority]").val();
 					schdata.schDuedate = $("[name=schDuedate]").val();
 				}
-				// 검색(ajax)
-				function search(schdata) {
-					console.log(schdata);
-					
-					$.ajax({
-						url:"${path}/issue.do?method=search",
-						type:"get",
-						data:schdata,
-						dataType:"json",
-						success:function(data) {
-							console.log(data.schIssuelist);
-							let html = "";
-							
-					    	$.each(data.schIssuelist, function(idx, sch) {
-					    		let tiPriority = sch.tiPriority
-					    		let settings = "badge";
-					    		
-					    		if(tiPriority == "중요") { settings = "badge bg-danger" }
-					    		if(tiPriority == "보통") { settings = "badge bg-info" }
-					    		if(tiPriority == "낮음") { settings = "badge bg-secondary" }
-					    		
-					 			html += "<tr>"
-					 				+"<td>"+sch.cnt+"</td>"
-					 				+"<td>"+sch.tiWriter+"</td>"
-					 				+"<td>"+sch.tiContent+"</td>"
-					 				+"<td>"+sch.tiCharge+"</td>"
-					 				+"<td><div class='"+settings+"'>"+sch.tiPriority+"</div></td>"
-					 				+"<td>"+sch.tiDuedate+"</td>"
-					 				+"<td><a href='javascript:setUpt('"+sch.tiId+"');' class='action-icon'><i class='mdi mdi-square-edit-outline'></i></a>"
-					 				+"<a href='javascript:delIssue('"+sch.tiId+"');' class='action-icon'><i class='mdi mdi-delete'></i></a></td>"
-					 				+"</tr>";	
-					 				
-						 	});	
-					 		$("#issue-tbody").html(html);
-						},
-						error:function(err) {
-							console.log(err);
-						}
-					});
-				}
-				*/
+			
+				
 			</script>
 
 

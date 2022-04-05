@@ -1,8 +1,5 @@
 package mvc.vo;
 
-import java.sql.Date;
-
-
 public class TaskSch {
 	private int count;		// 전체 업무 건수
 	private int pageSize;	// 한 페이지에 표시되는 업무 건수
@@ -22,10 +19,14 @@ public class TaskSch {
 	private String ptDuedate;
 	private String ptCharge;
 	
+	
 	public TaskSch() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+
+
 
 	public int getCount() {
 		return count;

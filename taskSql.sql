@@ -242,6 +242,10 @@ SELECT * FROM PRJ_TASK pt;
 
 SELECT * FROM PRJ_ISSUE;
 
+SELECT row_number() over(ORDER BY pt_duedate) cnt, PRJ_TASK.*
+		from PRJ_TASK
+		where 1=1;
+
 
 SELECT * FROM PRJ_USER pu, user_info ui
 WHERE pu.UI_ID  = ui.UI_ID
@@ -357,3 +361,31 @@ SELECT * FROM PRJ_TASK pt;
 UPDATE ALARM 
 	SET A_TO = '개발1팀 양초명'
 	WHERE A_ID = 'A00002';
+
+
+create table users(
+	username varchar2(50) not null primary key,
+	password varchar2(100) not null,
+	enabled number(1) not null
+);
+
+create table authorities (
+	username varchar2(50) not null,
+	authority varchar2(50) not null
+);
+
+
+insert into users values ('himan', '7777', 1);
+insert into users values ('admin', '1234', 1);
+insert into users values ('manager', '1111', 1);
+
+insert into authorities values ('admin', 'USER');
+insert into authorities values ('admin', 'USER_MANAGER');
+insert into authorities values ('manager', 'ROLE_MANAGER');
+insert into authorities values ('manager', 'USER');
+insert into authorities values ('admin', 'ROLE_ADMIN');
+insert into authorities values ('himan', 'USER');
+
+
+SELECT * FROM authorities;
+SELECT * FROM users;

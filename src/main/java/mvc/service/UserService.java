@@ -198,5 +198,8 @@ public class UserService {
 			return dao.isInPrj(user);
 		};
 		
-	
+		// 15. 프로필
+		public void uptProfile(USER_INFO user) {
+			dao.uptProfile(user);
+		}
 }

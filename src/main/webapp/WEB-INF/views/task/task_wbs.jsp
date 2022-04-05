@@ -33,8 +33,7 @@
                         if (msg != '') {
                             alert(msg);
                         }
-
-
+					
 
                     </script>
                     <style>
@@ -172,6 +171,9 @@
 
 
           <script type="text/javascript">
+          
+          // 참고: https://docs.dhtmlx.com/gantt/api__gantt_ontaskloading_event.html
+          
 		// test data
 		gantt.config.start_date = new Date(2022, 01, 01);
 		gantt.config.end_date = new Date(2022, 12, 31);
@@ -249,4 +251,7 @@
 
     <!-- demo js -->
     <script src="${path}/tools/main_assets/js/ui/component.dragula.js"></script>
+  	
+ 
+
   </body>

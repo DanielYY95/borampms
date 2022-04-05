@@ -98,7 +98,7 @@
 		and i_charge like '%'||#{iCharge}||'%'
 		</if>
 		<if test="iDuedate != null and iDuedate != ''">
-		and i_duedate like '%'||#{iDuedate}||'%'
+		and i_duedate <![CDATA[<=]]> #{iDuedate}
 		</if>
 		<if test="iPriority != null and iPriority != ''">
 		and i_priority like '%'||#{iPriority}||'%'
@@ -119,7 +119,7 @@
 			and i_charge like '%'||#{iCharge}||'%'
 			</if>
 			<if test="iDuedate != null and iDuedate != ''">
-			and i_duedate like '%'||#{iDuedate}||'%'
+			and i_duedate <![CDATA[<=]]> #{iDuedate}
 			</if>
 			<if test="iPriority != null and iPriority != ''">
 			and i_priority like '%'||#{iPriority}||'%'

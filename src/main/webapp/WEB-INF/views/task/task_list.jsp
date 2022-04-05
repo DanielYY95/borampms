@@ -148,7 +148,7 @@
 													<tr onclick="detail('${task.ptId}')">
 														<td>${task.cnt }</td>
 														<td>${task.ptTitle }</td>
-														<td>${task_user.uiDept } ${task_user.uiName }</td>
+														<td>${task.uiDept} ${task.uiName} </td>
 														<td>${task.ptStartdate }</td>
 														<td>${task.ptDuedate }</td>
 														<td>
@@ -457,6 +457,9 @@
 	}
 	
 
+	
+	
+	
 	// 업무 등록
 	$("#regBtn").click(function() {
 		if(confirm("등록하시겠습니까?")) {
@@ -495,11 +498,7 @@
 	}
 	
 	$("[name=ptStartdate]").change(function(){
-	    // 음.... 깜박하고 그런 경우에는...?
-	    // if($("[name=ptStartdate]").val()<new Date().toLocaleDateString("en-US", newDateOptions)){
-	    //     alert("시작일은 오늘 전일로 설정할 수 없습니다.");
-	    //     $(this).val('');
-	    // }
+	 
 	
 	    if($("[name=ptStartdate]").val()>$("[name=ptDuedate]").val() && $("[name=ptDuedate]").val()!=""){
 	        alert("시작일은 마감일보다 이후로 설정할 수 없습니다.");
@@ -508,105 +507,14 @@
 	});
 	
 	$("[name=ptDuedate]").change(function(){
-	    // if($("[name=ptDuedate]").val()<new Date().toLocaleDateString("en-US", newDateOptions)){
-	    //     alert("마감일은 오늘 전일로 설정할 수 없습니다.");
-	    //     $(this).val('');
-	    // }
+	
 	    if($("[name=ptStartdate]").val()>$("[name=ptDuedate]").val()){
 	        alert("마감일은 시작일보다 이전으로 설정할 수 없습니다.");
 	        $(this).val('');
 	    }
 	});
 	
-	
-	
-	
 
-	/*
-	// ajax 검색 시
-	let schword = "";
-	let schtype = "제목";
-	let schdate = {ptStartdate:"", ptDuedate:""};
-	let schdata = {ptTitle:"", ptCharge:"", ptStartdate:"", ptDuedate:"", curPage:1};
-	
-	$("[name=ptStartdate], [name=ptDuedate]").change(function() {
-		schword = $(this).val();
-		console.log(schword);
-		
-		schdata.ptStartdate = schdate.startdate;
-		schdata.ptDuedate = schdate.enddate;
-		
-		search(schdata);
-	});
-	function setProgress(ptStatus) {
-		let settings = {"cl":"", "style":"", "valuenow":0};
-		
-		if(ptStatus == "진행 전") {
-			settings.cl = "progress-bar bg-secondary";
-			settings.style = "width:100%";
-			settings.valuenow = 100;
-		}
-		if(ptStatus == "진행 중") {
-			settings.cl = "progress-bar-striped bg-info progress-bar-animated";
-			settings.style = "width:70%";
-			settings.valuenow = 70;
-		}
-		if(ptStatus == "완료") {
-			settings.cl = "progress-bar bg-success";
-			settings.style = "width:100%";
-			settings.valuenow = 100;
-		}
-		if(ptStatus == "지연") {
-			settings.cl = "progress-bar-striped bg-warning progress-bar-animated";
-			settings.style = "width:70%";
-			settings.valuenow = 100;
-		}
-		if(ptStatus == "보류") {
-			settings.cl = "progress-bar-striped bg-secondary";
-			settings.style = "width:100%";
-			settings.valuenow = 100;
-		}
-		
-		return settings;
-	}
-	function search(schdata) {
-		console.log(schdata);
-		
-		$.ajax({
-			url:"${path}/task.do?method=search",
-			type:"get",
-			data:schdata,
-			dataType:"json",
-			success:function(data) {
-				console.log(data.tasklist);
-				let tbody = "";
-				let paging = "";
-				
-		    	$.each(data.tasklist, function(idx, sch) {
-		    		let settings = setProgress(sch.ptStatus);
-		 			tbody += "<tr>"
-		 				+"<td>"+sch.cnt+"</td>"
-		 				+"<td>"+sch.ptTitle+"</td>"
-		 				+"<td>"+sch.ptCharge+"</td>"
-		 				+"<td>"+sch.ptCharge+"</td>"
-		 				+"<td>"+sch.ptStartdate+"</td>"
-		 				+"<td>"+sch.ptDuedate+"</td>"
-		 				+"<td><div class='progress' style='position:relative;'>"
-		 				+"<div class='"+settings.cl+"' role='progressbar' style='"+settings.style+"' aria-valuenow='"+settings.valuenow+"' "
-		 				+"aria-valuemin='0' aria-valuemax='100'></div><small class='justify-content-center d-flex position-absolute w-100' style='color:white;'>"+sch.ptStatus
-						+"</small></div></td>"
-		 				+"<td><span class='badge bg-secondary text-light'>결재완료</span></td>"
-		 				+"</tr>";	
-			 	});	
-		 		$("#task-tbody").html(tbody);
-		 		// 페이징 블록 .html 코드 추가 필요
-			},
-			error:function(err) {
-				console.log(err);
-			}
-		});
-	}
-	*/
 </script>
 
 

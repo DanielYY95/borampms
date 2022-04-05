@@ -107,6 +107,13 @@
 								<div class="card-body" id="form-card-body">
 									<div class="card-title" id="card-title-reg"><h4>이슈 등록</h4></div>
 								
+									<form class="row gy-2 gx-2 align-items-center justify-content-between"
+										id="isSchForm" method="post" action="${path}/issue.do?method=list">
+										<input type="hidden" name="curPage" value="1"/>
+										<input type="hidden" name="ptId" value=""/>
+									</form>
+									<!-- end row -->
+								
 									<!-- end nav-->
 									<div class="tab-content">	
 										<form id="isRegForm" method="post">	
@@ -318,17 +325,6 @@
 	}
 	
 	
-	// 검색 키워드 입력 후 엔터 키를 누르거나, 검색일자를 바꾸었을 때 검색 실행
-	$("[name=schContent], [name=schCharge]").keyup(function(key) {
-		if(key.keyCode == 13) {
-			$("#isSchForm").submit();
-		}
-	});
-	$("[name=schPriority], [name=schDuedate]").change(function() {
-		$("#isSchForm").submit();
-	});
-	
-	
 	// 수정 및 삭제 아이콘 클릭 시 현재 로그인 유저와 등록자가 같은지 확인하고
 	// 등록자 본인인 경우 등록 폼 -> 수정 폼으로 스타일 적용
 	function setUpt(tiId) {
@@ -390,67 +386,6 @@
 		}
 	});
 	
-	
-	/* => controller에 남아있다. table body 구성하는 것처럼 페이징 만들어준다. 
-	// ajax 활용 검색
-	// 검색 키워드 입력, ajax 호출
-	$("[name=schContent], [name=schCharge]").keyup(function() {
-		setSchdata();	
-		search(schdata);
-	});
-	$("[name=schDuedate], [name=schPriority]").change(function() {
-		setSchdata();
-		search(schdata);
-	});
-	// 검색 키워드 json 설정
-	function setSchdata() {
-		schdata.curPage = $("[name=curPage]").val();
-		schdata.schContent = $("[name=schContent]").val();
-		schdata.schCharge = $("[name=schCharge]").val();
-		schdata.schPriority = $("[name=schPriority]").val();
-		schdata.schDuedate = $("[name=schDuedate]").val();
-	}
-	// 검색(ajax)
-	function search(schdata) {
-		console.log(schdata);
-		
-		$.ajax({
-			url:"${path}/issue.do?method=search",
-			type:"get",
-			data:schdata,
-			dataType:"json",
-			success:function(data) {
-				console.log(data.schIssuelist);
-				let html = "";
-				
-		    	$.each(data.schIssuelist, function(idx, sch) {
-		    		let tiPriority = sch.tiPriority
-		    		let settings = "badge";
-		    		
-		    		if(tiPriority == "중요") { settings = "badge bg-danger" }
-		    		if(tiPriority == "보통") { settings = "badge bg-info" }
-		    		if(tiPriority == "낮음") { settings = "badge bg-secondary" }
-		    		
-		 			html += "<tr>"
-		 				+"<td>"+sch.cnt+"</td>"
-		 				+"<td>"+sch.tiWriter+"</td>"
-		 				+"<td>"+sch.tiContent+"</td>"
-		 				+"<td>"+sch.tiCharge+"</td>"
-		 				+"<td><div class='"+settings+"'>"+sch.tiPriority+"</div></td>"
-		 				+"<td>"+sch.tiDuedate+"</td>"
-		 				+"<td><a href='javascript:setUpt('"+sch.tiId+"');' class='action-icon'><i class='mdi mdi-square-edit-outline'></i></a>"
-		 				+"<a href='javascript:delIssue('"+sch.tiId+"');' class='action-icon'><i class='mdi mdi-delete'></i></a></td>"
-		 				+"</tr>";	
-		 				
-			 	});	
-		 		$("#issue-tbody").html(html);
-			},
-			error:function(err) {
-				console.log(err);
-			}
-		});
-	}
-	*/
 </script>
 
 

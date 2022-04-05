@@ -25,20 +25,86 @@ public class TaskDetailService {
 	@Value("${toUpload}")
 	private String uploadPath;
 	
-	
-	public List<Task_User> getMytaskListW(USER_INFO sch){
+
+
+	public List<Task_User> getMytaskListW(Task_User sch){
+		
+		// 전체 업무 건수를 IssueSch 객체에 설정 : 모델 데이터로 활용
+		sch.setCount(dao.getMyWTaskCnt(sch));
+		
+		if(sch.getPageSize() == 0) {
+			sch.setPageSize(5);
+		}
+		
+		double totalPage = sch.getCount() / (double)sch.getPageSize();
+		totalPage = Math.ceil(totalPage);	// 나머지가 있는 경우 페이지를 1장 추가하여 보여준다.
+		int totalPageInt = (int)totalPage;
+		sch.setPageCount(totalPageInt);
+		
+		
+		if(sch.getCurPage() == 0) {
+			sch.setCurPage(1);
+		}
+		
+		sch.setFirstPage((sch.getCurPage()-1)*sch.getPageSize()+1);
+		
+		sch.setLastPage(sch.getCurPage()*sch.getPageSize());
+
+		sch.setBlockSize(5);
+		
+		int curBlockGrp = (int)Math.ceil(sch.getCurPage() / (double)sch.getBlockSize());
+		
+		sch.setFirstBlock((curBlockGrp - 1)*sch.getBlockSize()+1);
+		
+		int lastBlockGrp = curBlockGrp*sch.getBlockSize();
+		sch.setLastBlock((lastBlockGrp > sch.getPageCount()) ? sch.getPageCount() : lastBlockGrp);
+		
 		
 		return dao.getMytaskListW(sch);
 	};
 	
-	public List<Task_User> getMytaskListC(USER_INFO sch){
+	
+	
+	
+	public List<Task_User> getMytaskListC(Task_User sch){
+		
+		sch.setCount(dao.getMyCTaskCnt(sch));
+		
+		if(sch.getPageSize() == 0) {
+			sch.setPageSize(5);
+		}
+		
+		double totalPage = sch.getCount() / (double)sch.getPageSize();
+		totalPage = Math.ceil(totalPage);	// 나머지가 있는 경우 페이지를 1장 추가하여 보여준다.
+		int totalPageInt = (int)totalPage;
+		sch.setPageCount(totalPageInt);
+		
+		if(sch.getCurPage() == 0) {
+			sch.setCurPage(1);
+		}
+
+		sch.setFirstPage((sch.getCurPage()-1)*sch.getPageSize()+1);
+		
+		sch.setLastPage(sch.getCurPage()*sch.getPageSize());
+
+		sch.setBlockSize(5);
+		
+		int curBlockGrp = (int)Math.ceil(sch.getCurPage() / (double)sch.getBlockSize());
+		
+		sch.setFirstBlock((curBlockGrp - 1)*sch.getBlockSize()+1);
+		
+		int lastBlockGrp = curBlockGrp*sch.getBlockSize();
+		sch.setLastBlock((lastBlockGrp > sch.getPageCount()) ? sch.getPageCount() : lastBlockGrp);
+		
+		
 		
 		return dao.getMytaskListC(sch);
 	};
 	
-	public USER_INFO getUser(String ptId) {
+	
+	public Task_User getUser(Task_User user) {
 		
-		return dao.getUser(ptId);
+		return dao.getUser(user);
 	};
 	
 	

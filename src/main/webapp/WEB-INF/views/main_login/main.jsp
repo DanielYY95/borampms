@@ -377,8 +377,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="mt-5">
-                            <p class="text-muted mt-4 text-center mb-0">© 2018 - <script>document.write(new Date().getFullYear())</script> Hyper. Design and coded by
-                                Coderthemes</p>
+                            <p class="text-muted mt-4 text-center mb-0">© <script>document.write(new Date().getFullYear())</script> BORAM3 PMS</p>
                         </div>
                     </div>
                 </div>

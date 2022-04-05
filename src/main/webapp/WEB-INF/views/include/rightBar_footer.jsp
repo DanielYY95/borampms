@@ -17,7 +17,7 @@
 					<script>
 						document.write(new Date().getFullYear())
 					</script>
-					© Hyper - Coderthemes.com
+					© BORAM3 PMS 
 				</div>
 				<div class="col-md-6">
 					<div class="text-md-end footer-links d-none d-md-block">

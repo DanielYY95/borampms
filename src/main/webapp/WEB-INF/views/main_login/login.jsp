@@ -4,6 +4,7 @@
     %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <c:set var="path" value="${pageContext.request.contextPath }"/>
 <fmt:requestEncoding value="utf-8"/>     
 <!DOCTYPE html>
@@ -82,6 +83,7 @@
                                         <div class="form-check">
                                             <input type="checkbox" name="saveId" class="form-check-input" id="checkbox-signin" checked>
                                             <label class="form-check-label" for="checkbox-signin">아이디 기억하기</label>
+                                            
                                         </div>
                                     </div>
 
@@ -97,6 +99,14 @@
                         <div class="row mt-3">
                             <div class="col-12 text-center">
 	                            <p class="text-muted">새 계정이 필요하십니까? <a href="${path}/regUser.do" class="text-muted ms-1"><b>회원가입</b></a></p>
+	                            
+	                            <sec:authorize access="!isAuthenticated()">
+	                           		 <a href="/borampms/adminLoginform" class="text-muted float-end"><small>관리자 로그인 -></small></a>
+	                             </sec:authorize>
+	                            <sec:authorize access="isAuthenticated()">
+						
+	                           	 	<a href="/borampms/admin" class="text-muted float-end"><small>관리자 페이지 이동 -></small></a>
+	                            </sec:authorize>
                             </div> <!-- end col -->
                         </div>
 
@@ -111,7 +121,7 @@
         <!-- end page -->
 
         <footer class="footer footer-alt">
-            2018 - <script>document.write(new Date().getFullYear())</script> © Hyper - Coderthemes.com
+           <script>document.write(new Date().getFullYear())</script> BORAM3 PMS
         </footer>
 
         <!-- bundle -->

@@ -56,6 +56,16 @@
 			WHERE UI_ID = #{uiId}
 	
 	</update>
+	
+		<!-- 5-1. 프로필 수정 -->
+	<update id="uptProfile" parameterType="user">
+		UPDATE user_info 
+			SET UI_PW = #{uiPw} 
+			, UI_EMAIL = #{uiEmail}
+			, UI_PHONE = #{uiPhone}
+			, UI_INTRO = #{uiIntro}
+			WHERE UI_ID = #{uiId}
+	</update>
 
 	<!-- 6. 회원정보 불러오기 --> 
 	<select id="getUser" parameterType="string" resultType="user" >

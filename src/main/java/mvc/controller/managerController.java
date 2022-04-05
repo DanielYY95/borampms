@@ -1,5 +1,7 @@
 package mvc.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,14 +15,16 @@ import mvc.vo.PRJ_USER;
 import mvc.vo.USER_INFO;
 
 @Controller
-@RequestMapping("/manager.do")
+@RequestMapping("/admin/manager.do")
 public class managerController {
+	
+		
 	
 	@Autowired
 	private ManagerService service;
 	
 	@RequestMapping(params="method=user")
-	public String managermain(Model d) {
+	public String managermain(Model d, HttpServletRequest request) {
 		
 		d.addAttribute("userList", service.getUserList());
 		
@@ -43,7 +47,7 @@ public class managerController {
 		
 		d.addAttribute("msg", "수정되었습니다.");
 		
-		return "redirect:/manager.do?method=user";
+		return "redirect:/admin/manager.do?method=user";
 	}
 	
 	@RequestMapping(params="method=userDel")
@@ -53,7 +57,7 @@ public class managerController {
 		
 		d.addAttribute("msg", "삭제되었습니다.");
 		
-		return "redirect:/manager.do?method=user";
+		return "redirect:/admin/manager.do?method=user";
 	}
 	
 	@RequestMapping(params="method=userSearch")
@@ -80,7 +84,7 @@ public class managerController {
 		
 		service.addDept(dept);
 		
-		return "redirect:/manager.do?method=dept";
+		return "redirect:/admin/manager.do?method=dept";
 	}
 	
 	@RequestMapping(params="method=deptDetail")
@@ -96,7 +100,7 @@ public class managerController {
 		
 		service.uptDept(dept);
 	
-		return "redirect:/manager.do?method=dept";
+		return "redirect:/admin/manager.do?method=dept";
 	}
 	
 	
@@ -125,7 +129,7 @@ public class managerController {
 		
 		service.uptPrj(prj);
 	
-		return "redirect:/manager.do?method=prj";
+		return "redirect:/admin/manager.do?method=prj";
 	}
 	
 	@RequestMapping(params="method=prjSearch")
@@ -166,7 +170,7 @@ public class managerController {
 		
 		service.uptPrjUser(sch);
 	
-		return "redirect:/manager.do?method=prjUser";
+		return "redirect:/admin/manager.do?method=prjUser";
 	}
 	
 	
@@ -190,7 +194,7 @@ public class managerController {
 	@RequestMapping(params="method=insertNotice")
 	public String insertNotice(Notice ins) {
 		service.insertNotice(ins);
-		return "redirect:/manager.do?method=notice";
+		return "redirect:/admin/manager.do?method=notice";
 	}
 
 	

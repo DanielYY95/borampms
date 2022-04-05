@@ -55,10 +55,10 @@ public class RiskController {
 		sch.setiPriority(schPriority);
 		sch.setPiId(smethod.getPiid(request));
 		
-		System.out.println("PIID:"+sch.getPiId());
-		
 
 		d.addAttribute("schPrjIssuelist", service.getPrjIssueList(sch));
+		System.out.println(service.getPrjIssueList(sch));
+		
 		return "pageJsonReport";
 	}
 	

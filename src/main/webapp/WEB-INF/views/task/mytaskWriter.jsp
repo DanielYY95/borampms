@@ -117,8 +117,8 @@
 												<input type="hidden" name="curPage" value="1"/>
 												<div class="col">
 													<select class="form-select" id="search-select">
-														<option selected value="${taskSch.ptTitle}">제목</option>
-														<option value="${taskSch.ptCharge}">담당자</option>
+														<option selected value="${task_User.ptTitle}">제목</option>
+														<option value="${task_User.ptCharge}">담당자</option>
 													</select>
 												</div>
 												<div class="col">
@@ -132,13 +132,13 @@
 													<label for="startdate-form" class="col-form-label">시작일</label>
 												</div>
 												<div class="col">
-													<input class="form-control" type="date" name="startdate" value="${taskSch.ptStartdate }"/>
+													<input class="form-control" type="date" name="startdate" value="${task_User.ptStartdate }"/>
 												</div>
 												<div class="col">
 													<label for="enddate-form" class="col-form-label">마감일</label>
 												</div>
 												<div class="col">
-													<input class="form-control" type="date" name="enddate" value="${taskSch.ptDuedate }"/>
+													<input class="form-control" type="date" name="enddate" value="${task_User.ptDuedate }"/>
 												</div>
 											</form>
 										</div>
@@ -185,13 +185,10 @@
 																			class="progress-bar bg-success"
 																			style="width:100%" aria-valuenow="100"
 																		</c:when>
-																		<c:when test="${task.ptStatus eq '지연' }">
-																			class="progress-bar-striped bg-warning progress-bar-animated"
-																			style="width:0%" aria-valuenow="0"
-																		</c:when>
+								
 																		<c:when test="${task.ptStatus eq '보류' }">
-																			class="progress-bar-striped"
-																			style="width:0%" aria-valuenow="0"
+																			class="progress-bar bg-warning"
+																			style="width:100%" aria-valuenow="0"
 																		</c:when>
 																	</c:choose>
 																		role="progressbar" aria-valuemin="0" aria-valuemax="100">${task.ptStatus }
@@ -210,16 +207,16 @@
 											<div class="col justify-content-end">
 												<ul class="pagination pagination-rounded">
 													<li class="page-item">
-												  		<a class="page-link" href="javascript:goPage(${taskSch.firstBlock != 1 ? taskSch.lastBlock-1 : 1})">Previous</a>
+												  		<a class="page-link" href="javascript:goPage(${task_User.firstBlock != 1 ? task_User.lastBlock-1 : 1})">Previous</a>
 												  	</li>
-												  	<c:forEach var="cnt" begin="${taskSch.firstBlock}" end="${taskSch.lastBlock}">
-												  	<li class="page-item ${cnt == taskSch.curPage ? 'active' : ''}"> <!-- 클릭한 현재 페이지 번호 -->
+												  	<c:forEach var="cnt" begin="${task_User.firstBlock}" end="${task_User.lastBlock}">
+												  	<li class="page-item ${cnt == task_User.curPage ? 'active' : ''}"> <!-- 클릭한 현재 페이지 번호 -->
 												  		<a class="page-link" href="javascript:goPage(${cnt})">${cnt}</a>
 												  	</li>
 												  	</c:forEach>
 												  	<li class="page-item">
 												  		<a class="page-link"
-												  			href="javascript:goPage(${taskSch.firstBlock != taskSch.pageCount ? taskSch.lastBlock+1 : taskSch.lastBlock})">Next</a>
+												  			href="javascript:goPage(${task_User.firstBlock != task_User.pageCount ? task_User.lastBlock+1 : task_User.lastBlock})">Next</a>
 												  	</li>
 												</ul>
 											</div>
@@ -230,6 +227,9 @@
 									
 									</div>
 									<!-- end row -->
+									
+									
+									
 									
 								</div>
 								<!-- end card body -->
@@ -426,16 +426,14 @@
 			schdata.ptCharge = schword;
 		};
 		
-		console.log(schdata);
-		
+	
 		search(schdata);
 	});
 	
 	// 시작일 / 마감일 키워드 입력 시
 	$("[name=startdate], [name=enddate]").change(function() {
 		schword = $(this).val();
-		console.log(schword);
-		
+	
 		schdata.ptStartdate = schdate.startdate;
 		schdata.ptDuedate = schdate.enddate;
 		
@@ -498,13 +496,11 @@
 		 				+"<td>"+sch.cnt+"</td>"
 		 				+"<td>"+sch.ptTitle+"</td>"
 		 				+"<td>"+sch.ptCharge+"</td>"
-		 				+"<td>"+sch.ptCharge+"</td>"
 		 				+"<td>"+sch.ptStartdate+"</td>"
 		 				+"<td>"+sch.ptDuedate+"</td>"
 		 				+"<td><div class='progress'>"
 		 				+"<div class='"+settings.cl+"' role='progressbar' style='"+settings.style+"' aria-valuenow='"+settings.valuenow+"' "
 		 				+"aria-valuemin='0' aria-valuemax='100'>"+sch.ptStatus+"</div></div></td>"		 				
-		 				+"<td><span class='badge bg-secondary text-light'>결재완료</span></td>"
 		 				+"</tr>";	
 			 	});	
 		 		$("#task-tbody").html(html);

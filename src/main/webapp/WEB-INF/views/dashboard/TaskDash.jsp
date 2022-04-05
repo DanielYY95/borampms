@@ -64,8 +64,8 @@
 								<c:forEach var="prj" items="${prjList }">
 								<div class="col-sm-6">
 									<div class="card widget-flat" style="position:flex;">
-										<div class="card-body" style=" text-align: center; height:200px;">
-											<i class="fa fa-tasks fa-4x pb-2" aria-hidden="true"></i><br>
+										<div class="card-body" style=" text-align: center; height:300px;">
+											<i class="fa fa-tasks fa-4x pb-2" aria-hidden="true" style="padding-top:45px;"></i><br>
 											<h5 class="text-muted fw-normal mt-0" title="Number of Customers" 
 											style="text-align: center; padding-bottom: 10px; font-size:19px; ">${prj.piTitle}</h5>
 					
@@ -85,9 +85,9 @@
 								
 								<div class="col-sm-6">
 									<div class="card widget-flat">
-										<div class="card-body" style="height:200px;">
+										<div class="card-body" style="height:300px;">
 											<div style="text-align: center; padding-bottom: 10px;">
-												<i class="fa-regular fa-clock fa-4x"></i>
+												<i class="fa-regular fa-clock fa-4x" style="padding-top:45px;"></i>
 											</div><br>
 											<h5 class="text-muted fw-normal mt-0" title="Number of Customers"
 											 style="text-align: center; padding-bottom: 10px;">남은 기간</h5>
@@ -108,12 +108,12 @@
 								<div class="col-sm-6">
 
 									<div class="card widget-flat">
-										<div class="card-body" style="height:200px;">
-											<div style="text-align: center; padding-bottom: 10px;">
+										<div class="card-body" style="height:300px;">
+											<div style="text-align: center; padding-bottom: 10px;"><br>
 
-												<i class="fa-solid fa-child-reaching fa-4x pb-2"></i><br>
-												<h5 class="text-muted fw-normal mt-0" title="Number of Customers" 
-												style="text-align: center; padding-bottom: 10px;">프로젝트 구성원</h5>
+												<i class="fa-solid fa-child-reaching fa-4x pb-3" style="padding-top:35px;" ></i><br>
+												<h5 class="text-muted fw-normal mt-0 pb-2" title="Number of Customers" 
+												style="text-align: center;">프로젝트 구성원</h5>
 												
 													<div class="text-nowrap" style="text-align: center; padding-bottom: 10px;">
 													${userNum} 명</div>
@@ -129,10 +129,10 @@
 
 								<div class="col-sm-6">
 									<div class="card widget-flat" >
-										<div class="card-body " style="height:200px;">
+										<div class="card-body " style="height:300px;">
 
 											<div style="text-align: center; padding-bottom: 10px;">
-												<i class="fa-solid fa-calendar-days fa-4x"></i>
+												<i class="fa-solid fa-calendar-days fa-4x" style="padding-top:45px;"></i>
 											</div><br>
 
 											<h5 class="text-muted fw-normal mt-0" title="Number of Customers"
@@ -154,7 +154,7 @@
 						<!-- end col-->
 
 
-						<div class="col-xl-7 col-lg-6" style="width: 400px;">
+						<div class="col-xl-7 col-lg-6" style="width: 570px;">
 							<div class="card card-h-100">
 								<div class="card-body">
 									<div class="d-flex justify-content-between align-items-center mb-2">
@@ -165,7 +165,7 @@
 									</div>
 									<form class="chartform">
 										<div class="form-body">
-											<div style="height: 350px; position: relative;">
+											<div style="height: 350px; position: relative; padding-left:100px;">
 												<canvas id="taskDashChart" width="300vh;" height="300vh;"></canvas>
 											</div>
 										</div>

@@ -66,4 +66,7 @@ public interface UserDao {
 	
 	public int isInPrj(PRJ_USER user);
 	
+	// 15. 프로필
+		public void uptProfile(USER_INFO user);
+	
 }

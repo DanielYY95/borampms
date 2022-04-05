@@ -64,7 +64,7 @@
 	<!-- jsp view는 기본적으로 설정이 되어있지만, 우선 순위 때문에 선언한다 -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 
-		<property name="prefix" value="WEB-INF\views\"/>	 
+		<property name="prefix" value="/WEB-INF/views/"/>	 
 		<property name="suffix" value=".jsp"/>
 		<property name="order" value="1"></property>
 		
@@ -133,5 +133,14 @@
 	</bean>
 	<bean id="localeResolver" 
 	class="org.springframework.web.servlet.i18n.SessionLocaleResolver"/>
+	
+	<mvc:view-controller path="/index" view-name="/view/index" />
+	
+	<mvc:view-controller path="/admin/" view-name="/manager/managerUser" />	
+	<mvc:view-controller path="/adminLoginform" view-name="/main_login/adminLogin" />
+	<mvc:view-controller path="/security/accessDenied" view-name="/view/security/accessDenied" />
+	
+	<!-- 	스프링 시큐리티 5버전부터는 패스워드 암호화 처리기를 반드시 이용하도록 변경이 되었음
+	암호화 처리기를 사용하지 않도록 "{noop}" 문자열을 비밀번호 앞에 사용. -->
 	
 </beans>

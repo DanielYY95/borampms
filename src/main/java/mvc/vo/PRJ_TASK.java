@@ -16,8 +16,23 @@ public class PRJ_TASK {
 	private String piId;
 	private String duration;
 	
+	private String uiName;
+	private String uiDept;
 	
 	
+	
+	public String getUiName() {
+		return uiName;
+	}
+	public void setUiName(String uiName) {
+		this.uiName = uiName;
+	}
+	public String getUiDept() {
+		return uiDept;
+	}
+	public void setUiDept(String uiDept) {
+		this.uiDept = uiDept;
+	}
 	public String getDuration() {
 		return duration;
 	}

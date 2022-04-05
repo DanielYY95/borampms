@@ -4,6 +4,7 @@
     %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <c:set var="path" value="${pageContext.request.contextPath }"/>
 <fmt:requestEncoding value="utf-8"/>     
 <!DOCTYPE html>
@@ -56,57 +57,121 @@
 <body class="loading" data-layout-color="light" data-leftbar-theme="dark" data-layout-mode="fluid"
 	data-rightbar-onstart="true">
 	
+		<div>
+               		<a href="" class="logo text-center logo-light" style="background-color:#313a46">
+						<span class="logo-lg">
+							<img src="/borampms/tools/project_assets/images/boram_dark.png" alt="" height="45">
+						</span>
+						<span class="logo-sm">
+							<img src="/borampms/tools/project_assets/images/boram_sm_dark.png" alt="" height="35">
+						</span>
+					</a>
+		                	
+               	</div>
+				
+
+				<!-- Begin page -->
+				<div class="wrapper">
+					<div class="navbar-custom">
+				<ul class="list-unstyled topbar-menu float-end mb-0">
+					<li class="dropdown notification-list d-lg-none">
+						<a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+							<i class="dripicons-search noti-icon"></i>
+						</a>
+						<div class="dropdown-menu dropdown-menu-animated dropdown-lg p-0">
+							<form class="p-3">
+								<input type="text" class="form-control" placeholder="Search ..." aria-label="Recipient's username">
+							</form>
+						</div>
+					</li>
+					
+					
+			
+
+					<!-- setting 아이콘 -->
+					<li class="notification-list">
+						<a class="nav-link end-bar-toggle" href="javascript: void(0);">
+							<i class="dripicons-gear noti-icon"></i>
+						</a>
+					</li>
+
+					<!-- 내 프로필 아이콘 -->
+					<li class="dropdown notification-list">
+						<a class="nav-link dropdown-toggle nav-user arrow-none me-0" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+							<span class="account-user-avatar">
+								<img src="/borampms/tools/project_assets/images/users/avatar-1.jpg" alt="user-image" class="rounded-circle">
+							</span>
+							<span>
+								<span class="account-position">관리팀</span>				
+								<span class="account-user-name">관리자</span>
+								
+							</span>
+						</a>
+						<div class="dropdown-menu dropdown-menu-end dropdown-menu-animated topbar-dropdown-menu profile-dropdown">
+							<!-- item-->
+							<div class=" dropdown-header noti-title">
+								<h6 class="text-overflow m-0">안녕하세요!</h6>
+							</div>
+					
+							<!-- item-->
+							<sec:authorize access="isAuthenticated()">
+								<a href="<c:url value='/user/logout' />" class="dropdown-item notify-item">
+									<i class="mdi mdi-logout me-1"></i>
+									<span>관리자 로그아웃</span>
+								</a>
+							</sec:authorize>
+				
+						</div>
+					</li>
+				</ul>
+					
+			
+				
+				<button class="button-menu-mobile open-left" style="display: none;">
+					<i class="mdi mdi-menu"></i>
+				</button>
+				
 	
-	<!-- Begin page -->
-	<div class="wrapper">
-		<!-- ========== Left Sidebar Start ========== -->
-			<jsp:include page="../include/leftBar.jsp" 
-						flush="true"/>
-		<!-- ========== Left Sidebar end ========== -->
-		
-		
+			</div>
+
 		
 		<!-- Start Page Content here -->
 		<!-- ============================================================== -->
 
-		<div class="content-page">
+		<div class="content-page mx-auto col-10">
 			<div class="content">
 
-				<jsp:include page="../include/headerBar.jsp" 
-		        				flush="true"/>
-				
-				<!-- end Topbar -->
 
 				<!-- Start Content-->
 				 <div class="row">
                             <div class="col-12">
                                 <div class="card">
-                                	<h3 class="fw-bold text-center">관리자페이지</h3>
+                                	<h3 class="fw-bold text-center  pt-2">관리자페이지</h3>
                                     <div class="card-body">
                                     	 <div>
                                             <ul class="nav nav-tabs nav-bordered mb-3" style="display: flex; justify-content: space-around;">
                                                 <li class="nav-item"> <!-- a링크에서  data-bs-toggle="tab" 뺐음-->
-                                                    <a href="${path}/manager.do?method=user"  aria-expanded="true" class="nav-link">
+                                                    <a href="${path}/admin/manager.do?method=user"  aria-expanded="true" class="nav-link">
                                                     	회원관리
                                                     </a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a href="${path}/manager.do?method=prj"  aria-expanded="true" class="nav-link">
+                                                    <a href="${path}/admin/manager.do?method=prj"  aria-expanded="true" class="nav-link">
                                                         프로젝트관리
                                                     </a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a href="${path}/manager.do?method=dept"  aria-expanded="true" class="nav-link active">
+                                                    <a href="${path}/admin/manager.do?method=dept"  aria-expanded="true" class="nav-link active">
                                                         부서관리
                                                     </a>
                                                 </li>
                                                	<li class="nav-item">
-														<a href="${path}/manager.do?method=notice" aria-expanded="true" class="nav-link">
+														<a href="${path}/admin/manager.do?method=notice" aria-expanded="true" class="nav-link">
 															공지사항
 														</a>
 													</li>
 													<li class="nav-item">
-														<a href="${path}/manager.do?method=prjUser" aria-expanded="true" class="nav-link">
+														<a href="${path}/admin/manager.do?method=prjUser" aria-expanded="true" class="nav-link">
 															프로젝트 참여자 목록
 														</a>
 													</li>
@@ -115,7 +180,7 @@
                                             </ul> <!-- end nav-->
                                         </div>
                                         <div class="row">
-                                        	<form action="${path}/manager.do?method=deptInsert">
+                                        	<form action="${path}/admin/manager.do?method=deptInsert">
 	                                        	<div class="col-2 d-flex justify-content-evenly">
 	                                        		<div>
 	                                        			<label>부서명</label>
@@ -161,8 +226,12 @@
 	                                                        <td><a href="apps-ecommerce-orders-details.html" class="text-body fw-bold">${dept.diId}</a> </td>
 	                                                        <td>${dept.diDept}</td>
 	                                                        <td>${dept.count}</td>
-	                                               
-	                                                        <td><h5 class="my-0"><span class="badge badge-info-lighten">${dept.diStatus}</span></h5></td>
+	                                               			
+	                                                        <td><h5 class="my-0"><span class="badge badge-info-lighten">${dept.diStatus}</span></h5>
+	                                                        	<c:if test="${dept.diStatus eq 2}">
+                                                                            <span class="badge bg-danger">승인 요청</span>
+                                                             </c:if>
+	                                                        </td>
 	                                                        <td>
 	                                                            <a onclick="deptDetail('${dept.diId}')" class="action-icon"
 	                                                            data-bs-toggle="modal"data-bs-target="#signup-modal">
@@ -199,7 +268,7 @@
 									</div>
 
 									<div class="modal-body">
-										<form id="uptForm" class="ps-3 pe-3" action="${path}/manager.do?method=deptUpdate"
+										<form id="uptForm" class="ps-3 pe-3" action="${path}/admin/manager.do?method=deptUpdate"
 											method="post">
 										
 											<!-- Autoclose -->
@@ -254,7 +323,7 @@
 	function deptDetail(diId){
 		
 			$.ajax({
-				url: "${path}/manager.do?method=deptDetail",
+				url: "${path}/admin/manager.do?method=deptDetail",
 				type: "get",
 				dataType: "json",
 				data: "diId="+diId,

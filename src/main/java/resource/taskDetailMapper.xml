@@ -5,30 +5,140 @@
 	
 <mapper namespace="mvc.dao.TaskDetailDao">
 
-	<select id="getMytaskListW" parameterType="user" resultType="taskUser">
-		select * from PRJ_TASK
-		WHERE UI_ID = #{uiId}
-	
+
+	<select id="getMyWTaskCnt" parameterType="taskUser" resultType="int">
+		select count(*)
+		from PRJ_TASK
+		where 1=1
+		and  UI_ID = #{uiId}
+		and PI_ID = #{piId}
+		<if test="ptTitle != null and ptTitle != ''">
+		and PT_TITLE like '%'||#{ptTitle}||'%'
+		</if>
+		<if test="ptCharge != null and ptCharge != ''">
+		and pt_charge like '%'||#{ptCharge}||'%'
+		</if>
+		<choose>
+			<when test="ptStartdate != null and ptStartdate != '' and  ptDuedate != null and ptDuedate != ''">
+			and pt_startdate between #{ptStartdate} and #{ptDuedate}
+			and pt_duedate between #{ptStartdate} and #{ptDuedate}
+			</when>
+			<when test="ptStartdate != null and ptStartdate != ''">
+			and pt_startdate >= #{ptStartdate}
+			</when>
+			<when test="ptDuedate != null and ptDuedate != ''">
+			and pt_duedate <![CDATA[<]]>= #{ptDuedate}
+			</when>
+		</choose>
+		
+	</select>
+
+
+	<select id="getMytaskListW" parameterType="taskUser" resultType="taskUser">
+		select tu.*
+		from(
+		SELECT row_number() over(ORDER BY pt_duedate) cnt, PRJ_TASK.*
+		from PRJ_TASK
+		where 1=1
+		and UI_ID = #{uiId}
+		and PI_ID = #{piId}
+		<if test="ptTitle != null and ptTitle != ''">
+		and PT_TITLE like '%'||#{ptTitle}||'%'
+		</if>
+		<if test="ptCharge != null and ptCharge != ''">
+		and pt_charge like '%'||#{ptCharge}||'%'
+		</if>
+		<choose>
+			<when test="ptStartdate != null and ptStartdate != '' and  ptDuedate != null and ptDuedate != ''">
+			and pt_startdate between #{ptStartdate} and #{ptDuedate}
+			and pt_duedate between #{ptStartdate} and #{ptDuedate}
+			</when>
+			<when test="ptStartdate != null and ptStartdate != ''">
+			and pt_startdate >= #{ptStartdate}
+			</when>
+			<when test="ptDuedate != null and ptDuedate != ''">
+			and pt_duedate <![CDATA[<]]>= #{ptDuedate}
+			</when>
+		</choose>
+		) tu
+		where cnt between #{firstPage} and #{lastPage}
 	</select>
 	
-	<select id="getMytaskListC" parameterType="user" resultType="taskUser">
-		select * from PRJ_TASK
-		WHERE PT_CHARGE LIKE '%' || #{uiDept} || ' ' || #{uiName} || '%'
 	
+	<select id="getMyCTaskCnt" parameterType="taskUser" resultType="int">
+		select count(*)
+		from PRJ_TASK
+		where 1=1
+		and PT_CHARGE LIKE '%' || #{uiDept} || ' ' || #{uiName} || '%'
+		and PI_ID = #{piId}
+		<if test="ptTitle != null and ptTitle != ''">
+		and PT_TITLE like '%'||#{ptTitle}||'%'
+		</if>
+		<if test="ptCharge != null and ptCharge != ''">
+		and pt_charge like '%'||#{ptCharge}||'%'
+		</if>
+		<choose>
+			<when test="ptStartdate != null and ptStartdate != '' and  ptDuedate != null and ptDuedate != ''">
+			and pt_startdate between #{ptStartdate} and #{ptDuedate}
+			and pt_duedate between #{ptStartdate} and #{ptDuedate}
+			</when>
+			<when test="ptStartdate != null and ptStartdate != ''">
+			and pt_startdate >= #{ptStartdate}
+			</when>
+			<when test="ptDuedate != null and ptDuedate != ''">
+			and pt_duedate <![CDATA[<]]>= #{ptDuedate}
+			</when>
+		</choose>
 	</select>
 	
 	
-	<select id="getUser" parameterType="string" resultType="user">
-		SELECT *
-		FROM user_info
-		WHERE UI_ID = #{uiId}
+	<select id="getMytaskListC" parameterType="taskUser" resultType="taskUser">
+		
+		select tu.*
+		from(
+		SELECT row_number() over(ORDER BY pt_duedate) cnt, PRJ_TASK.*
+		from PRJ_TASK
+		where 1=1
+		and PT_CHARGE LIKE '%' || #{uiDept} || ' ' || #{uiName} || '%'
+		and PI_ID = #{piId}
+		<if test="ptTitle != null and ptTitle != ''">
+		and PT_TITLE like '%'||#{ptTitle}||'%'
+		</if>
+		<if test="ptCharge != null and ptCharge != ''">
+		and pt_charge like '%'||#{ptCharge}||'%'
+		</if>
+		<choose>
+			<when test="ptStartdate != null and ptStartdate != '' and  ptDuedate != null and ptDuedate != ''">
+			and pt_startdate between #{ptStartdate} and #{ptDuedate}
+			and pt_duedate between #{ptStartdate} and #{ptDuedate}
+			</when>
+			<when test="ptStartdate != null and ptStartdate != ''">
+			and pt_startdate >= #{ptStartdate}
+			</when>
+			<when test="ptDuedate != null and ptDuedate != ''">
+			and pt_duedate <![CDATA[<]]>= #{ptDuedate}
+			</when>
+		</choose>
+		) tu
+		where cnt between #{firstPage} and #{lastPage}
+		
+		
 	</select>
+	
+	
 	
 	
 
-	<insert id="insertTask" parameterType="task">
 	
-	</insert>
+	<select id="getUser" parameterType="taskUser" resultType="taskUser">
+		SELECT distinct ui.UI_ID, ui.UI_DEPT, ui.ui_Name, pt.PI_ID
+		FROM user_info ui, prj_task pt
+		WHERE ui.UI_ID = #{uiId}
+		and pt.pi_id = #{piId}
+		and ui.ui_id = pt.ui_id
+	</select>
+	
+	
 	
 	<insert id="insertOutput" parameterType="output">
 		insert into TASK_OUTPUT values(
