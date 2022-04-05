@@ -243,7 +243,15 @@ SELECT * FROM PRJ_TASK pt;
 SELECT * FROM PRJ_ISSUE;
 
 
-SELECT * FROM PRJ_USER pu;
+SELECT * FROM PRJ_USER pu, user_info ui
+WHERE pu.UI_ID  = ui.UI_ID
+AND pu.PU_STATUS = '0'
+AND pu.PI_ID = #{piId} 
+;
+-- 프로첵트 참여자 목록과 유저 테이블을 조인해서 프로젝트 참여하고 있는 유저 정보 얻는다.
+-- 조건 => PU_STATUS 0 (참여하고있는 상태)
+
+;
 
 SELECT * FROM PRJ_TASK
 WHERE PT_CHARGE LIKE '%' ||'개발1팀 ' || '양초명' || '%'   
