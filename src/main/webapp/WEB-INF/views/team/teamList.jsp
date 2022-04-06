@@ -74,10 +74,10 @@
 								<div class="card-body">
 									<div class="row my-3">
 										<div class="header-title" style="font-size:20px; padding-bottom:5px; float:left;">팀소개
-											<textarea id="" style="width:100%; height:170px;" readonly></textarea>
+											<textarea id="txt_content" style="width:100%; height:170px;" readonly>${team.piContent}</textarea>
 											<div style="text-align:right;">
-												<button id="docList-btn" type="button" class="btn btn-primary" style="display:block;">편집</button>
-												<button id="docList-btn1" type="button" class="btn btn-primary" style="display:none;">저장</button>
+												<button id="docList-btn" onclick="uptText()" type="button" class="btn btn-primary">편집</button>
+												<button id="docList-btn1" onclick="saveText('${team.piId}')" type="button" class="btn btn-primary" style="display:none;">저장</button>
                                             </div>
 										</div>
 									</div>
@@ -141,6 +141,30 @@
 		</div>
 	</div>
 	<script>
+		function uptText(){
+			$("#docList-btn1").show();
+			$("#docList-btn").hide();
+			$('#txt_content').attr("readonly",false);
+
+		}
+		function saveText(piId){
+			let paramData = {
+					piContent : $('#txt_content').val(),
+					piId : piId
+			}
+
+			$.ajax({
+				url:"${path}/teamUpt.do",
+				type:"get",
+				data:paramData,
+				success:function(data){
+					alert("처리되었습니다.");
+					$("#docList-btn1").hide();
+					$("#docList-btn").show();
+					$('#txt_content').attr("readonly",true);
+				}
+			})
+		}
 		function selectUserInfo(uiId){
 	    	$('#userInfo_name'  ).text("이름  : ");
 	    	$('#userInfo_dept'  ).text("부서  : ");

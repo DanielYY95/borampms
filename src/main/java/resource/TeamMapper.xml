@@ -5,7 +5,7 @@
 
 <mapper namespace="mvc.dao.TeamDao">
 	<select id="getTeamContent" parameterType="string" resultType="prj">
-		select pi_content
+		select pi_content, pi_id
 		from prj_info
 		where pi_id = #{value}
 	</select>
@@ -25,7 +25,7 @@
 	</select>
 	<update id="updateTeamContent" parameterType="prj">
 		update PRJ_INFO
-		set PI_CONTENT = #{piContent},
+		set PI_CONTENT = #{piContent}
 		where PI_ID = #{piId}
 	</update>
 </mapper>

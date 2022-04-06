@@ -32,8 +32,8 @@ public class TeamController {
 
     @RequestMapping("/teamUpt.do")
     public String uptTeamContent(PRJ_INFO prj, Model d) {
-        service.updateTeamContent(prj);
-        return "redirect:/team.do";
+    	service.updateTeamContent(prj);
+        return "pageJsonReport";
     }
 
     @RequestMapping("/teamUserInfo.do")
