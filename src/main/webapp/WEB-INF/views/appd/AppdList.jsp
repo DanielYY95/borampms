@@ -20,8 +20,8 @@
 		<!-- jstree css -->
 		<link href="${path}/tools/main_assets/css/vendor/jstree.min.css" rel="stylesheet" type="text/css">
         <!-- App css -->
-        <link href="${path}/tools/main_assets/css/icons.min.css" rel="stylesheet" type="text/css" />
-        <link href="${path}/tools/main_assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-style"/>
+        <link href="${path}/tools/project_assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+        <link href="${path}/tools/project_assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-style"/>
 
 		<link
 		    rel="stylesheet"

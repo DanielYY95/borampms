@@ -40,7 +40,8 @@
 <script src="${path}/a00_com/jquery-ui.js"></script>
 <script src='${path}/a00_com/lib/main.js'></script>
 
-
+<!-- fullcalendar 언어 CDN  이걸 하면 today, month, week, day 모두 한글로-->
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/locales-all.min.js'></script>
 
 
 <style>
@@ -70,7 +71,8 @@ body {
 										center : 'title',
 										right : 'dayGridMonth,timeGridWeek,timeGridDay'
 									},
-									initialDate : '2022-03-17',
+									locale: "ko", //요것만 추가해주면 한글
+													// 초기 날짜 지움
 									navLinks : true, 
 									selectable : true,
 									selectMirror : true,

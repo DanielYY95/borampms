@@ -66,25 +66,6 @@
                 <!-- menus -->
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
 
-                    <!-- left menu -->
-                    <ul class="navbar-nav me-auto align-items-center">
-                        <li class="nav-item mx-lg-2">
-                            <a class="nav-link active" href="">홈</a>
-                        </li>
-                        <li class="nav-item mx-lg-2">
-                            <a class="nav-link" href="">기능</a>
-                        </li>
-                        <li class="nav-item mx-lg-2">
-                            <a class="nav-link" href="">가격</a>
-                        </li>
-                        <li class="nav-item mx-lg-2">
-                            <a class="nav-link" href="">문의</a>
-                        </li>
-                        <li class="nav-item mx-lg-2">
-                            <a class="nav-link" href="">연락처</a>
-                        </li>
-                    </ul>
-
                     <!-- right menu -->
                     <ul class="navbar-nav ms-auto align-items-center">
                     
@@ -159,20 +140,20 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-lg-4 col-md-6">
+                    <div class="col-lg-3 col-md-6">
                         <div class="text-center p-2 p-sm-3">
                             <div class="avatar-sm m-auto">
                                 <span class="avatar-title bg-primary-lighten rounded-circle">
                                     <i class="uil uil-desktop text-primary font-24"></i>
                                 </span>
                             </div>
-                            <h4 class="mt-3">대시보드</h4>
+                            <h4 class="mt-3">정보관리</h4>
                             <p class="text-muted mt-2 mb-0">
                             </p>
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-6">
+                    <div class="col-lg-3 col-md-6">
                         <div class="text-center p-2 p-sm-3">
                             <div class="avatar-sm m-auto">
                                 <span class="avatar-title bg-primary-lighten rounded-circle">
@@ -185,7 +166,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-6">
+                    <div class="col-lg-3 col-md-6">
                         <div class="text-center p-2 p-sm-3">
                             <div class="avatar-sm m-auto">
                                 <span class="avatar-title bg-primary-lighten rounded-circle">
@@ -198,7 +179,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-6">
+                    <div class="col-lg-3 col-md-6">
                         <div class="text-center p-2 p-sm-3">
                             <div class="avatar-sm m-auto">
                                 <span class="avatar-title bg-primary-lighten rounded-circle">
@@ -211,7 +192,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-6">
+                    <div class="col-lg-3 col-md-6">
                         <div class="text-center p-2 p-sm-3">
                             <div class="avatar-sm m-auto">
                                 <span class="avatar-title bg-primary-lighten rounded-circle">
@@ -224,18 +205,46 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-6">
+                    <div class="col-lg-3 col-md-6">
                         <div class="text-center p-2 p-sm-3">
                             <div class="avatar-sm m-auto">
                                 <span class="avatar-title bg-primary-lighten rounded-circle">
                                     <i class="uil uil-grids text-primary font-24"></i>
                                 </span>
                             </div>
-                            <h4 class="mt-3">위험관리</h4>
+                            <h4 class="mt-3">리스크관리</h4>
                             <p class="text-muted mt-2 mb-0">
                             </p>
                         </div>
                     </div>
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="text-center p-2 p-sm-3">
+                            <div class="avatar-sm m-auto">
+                                <span class="avatar-title bg-primary-lighten rounded-circle">
+                                    <i class="uil uil-grids text-primary font-24"></i>
+                                </span>
+                            </div>
+                            <h4 class="mt-3">결재관리</h4>
+                            <p class="text-muted mt-2 mb-0">
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="text-center p-2 p-sm-3">
+                            <div class="avatar-sm m-auto">
+                                <span class="avatar-title bg-primary-lighten rounded-circle">
+                                    <i class="uil uil-grids text-primary font-24"></i>
+                                </span>
+                            </div>
+                            <h4 class="mt-3">산출물관리</h4>
+                            <p class="text-muted mt-2 mb-0">
+                            </p>
+                        </div>
+                    </div>
+
+
                 </div>
 
             </div>
@@ -243,133 +252,52 @@
         <!-- END SERVICES -->
 
 
-        <!-- START CONTACT -->
-        <section class="py-5 bg-light-lighten border-top border-bottom border-light">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="text-center">
-                            <h3>고객 <span class="text-primary">문의</span></h3>
-                            <p class="text-muted mt-2">양식을 작성해주시면 빠른 시간 내로 답변을 드립니다. 
-                                <br>자세한 문의는 연락 부탁드립니다.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row align-items-center mt-3">
-                    <div class="col-md-4">
-                        <p class="text-muted"><span class="fw-bold">고객지원</span><br> <span class="d-block mt-1">02=1111-2222</span></p>
-                        <p class="text-muted mt-4"><span class="fw-bold">이메일</span><br> <span class="d-block mt-1">asrs02041@gmail.com</span></p>
-                        <p class="text-muted mt-4"><span class="fw-bold">회사 주소</span><br> <span class="d-block mt-1">서울특별시 강남구 역삼동 테헤란로 132 한독약품빌딩 8층</span></p>
-                        <p class="text-muted mt-4"><span class="fw-bold">운영시간</span><br> <span class="d-block mt-1">9:00 ~ 18:00</span></p>
-                    </div>
-
-                    <div class="col-md-8">
-                        <form>
-                            <div class="row mt-4">
-                                <div class="col-lg-6">
-                                    <div class="mb-2">
-                                        <label for="fullname" class="form-label">이름</label>
-                                        <input class="form-control form-control-light" type="text" id="fullname" >
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="mb-2">
-                                        <label for="emailaddress" class="form-label">이메일</label>
-                                        <input class="form-control form-control-light" type="email" required="" id="emailaddress" >
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row mt-1">
-                                <div class="col-lg-12">
-                                    <div class="mb-2">
-                                        <label for="subject" class="form-label">문의 제목</label>
-                                        <input class="form-control form-control-light" type="text" id="subject" placeholder="제목을 입력해주세요">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row mt-1">
-                                <div class="col-lg-12">
-                                    <div class="mb-2">
-                                        <label for="comments" class="form-label">문의 내용</label>
-                                        <textarea id="comments" rows="4" class="form-control form-control-light" placeholder="내용을 입력해주세요"></textarea>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row mt-2">
-                                <div class="col-12 text-end">
-                                    <button class="btn btn-primary">문의 보내기<i
-                                        class="mdi mdi-telegram ms-1"></i> </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- END CONTACT -->
-
         <!-- START FOOTER -->
         <footer class="bg-dark py-5">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-6">
-                        <img src="${path}/tools/main_assets/images/logo.png" alt="" class="logo-dark" height="18" />
-                        <p class="text-muted mt-4">Hyper makes it easier to build better websites with
-                            <br> great speed. Save hundreds of hours of design
-                            <br> and development by using it.</p>
+                    <div class="col-lg-3">
+                        <img src="/borampms/tools/project_assets/images/boram_dark.png" alt="" height="65">
+                    
+                    </div>
 
-                        <ul class="social-list list-inline mt-3">
-                            <li class="list-inline-item text-center">
-                                <a href="javascript: void(0);" class="social-list-item border-primary text-primary"><i class="mdi mdi-facebook"></i></a>
-                            </li>
-                            <li class="list-inline-item text-center">
-                                <a href="javascript: void(0);" class="social-list-item border-danger text-danger"><i class="mdi mdi-google"></i></a>
-                            </li>
-                            <li class="list-inline-item text-center">
-                                <a href="javascript: void(0);" class="social-list-item border-info text-info"><i class="mdi mdi-twitter"></i></a>
-                            </li>
-                            <li class="list-inline-item text-center">
-                                <a href="javascript: void(0);" class="social-list-item border-secondary text-secondary"><i class="mdi mdi-github"></i></a>
-                            </li>
+                    <div class="col-lg-3 col-md-4 mt-3 mt-lg-0">
+                        <h5 class="text-light">회사 주소</h5>
+                        <ul class="list-unstyled ps-0 mb-0 mt-3">
+                            <li class="mt-2"><a href="javascript: void(0);" class="text-muted">
+                                <p>서울특별시 강남구<br> 
+                                    역삼동 테헤란로 132 <br>
+                                    한독약품빌딩 8층</p></a></li>
+                            
+                        </ul>
+                        
+                    </div>
+
+
+                    <div class="col-lg-2 col-md-4 mt-3 mt-lg-0">
+                        <h5 class="text-light">운영시간</h5>
+
+                        <ul class="list-unstyled ps-0 mb-0 mt-3">
+                            <li class="mt-2"><a href="javascript: void(0);" class="text-muted">9:00 ~ 18:00</a></li>
+                            
                         </ul>
 
                     </div>
 
                     <div class="col-lg-2 col-md-4 mt-3 mt-lg-0">
-                        <h5 class="text-light">Company</h5>
+                        <h5 class="text-light">이메일</h5>
 
                         <ul class="list-unstyled ps-0 mb-0 mt-3">
-                            <li class="mt-2"><a href="javascript: void(0);" class="text-muted">About Us</a></li>
-                            <li class="mt-2"><a href="javascript: void(0);" class="text-muted">Documentation</a></li>
-                            <li class="mt-2"><a href="javascript: void(0);" class="text-muted">Blog</a></li>
-                            <li class="mt-2"><a href="javascript: void(0);" class="text-muted">Affiliate Program</a></li>
-                        </ul>
-
-                    </div>
-
-                    <div class="col-lg-2 col-md-4 mt-3 mt-lg-0">
-                        <h5 class="text-light">Apps</h5>
-
-                        <ul class="list-unstyled ps-0 mb-0 mt-3">
-                            <li class="mt-2"><a href="javascript: void(0);" class="text-muted">Ecommerce Pages</a></li>
-                            <li class="mt-2"><a href="javascript: void(0);" class="text-muted">Email</a></li>
-                            <li class="mt-2"><a href="javascript: void(0);" class="text-muted">Social Feed</a></li>
-                            <li class="mt-2"><a href="javascript: void(0);" class="text-muted">Projects</a></li>
-                            <li class="mt-2"><a href="javascript: void(0);" class="text-muted">Tasks Management</a></li>
+                            <li class="mt-2"><a href="javascript: void(0);" class="text-muted">asrs02041@gmail.com</a></li>
                         </ul>
                     </div>
 
                     <div class="col-lg-2 col-md-4 mt-3 mt-lg-0">
-                        <h5 class="text-light">Discover</h5>
+                        <h5 class="text-light">고객문의</h5>
 
                         <ul class="list-unstyled ps-0 mb-0 mt-3">
-                            <li class="mt-2"><a href="javascript: void(0);" class="text-muted">Help Center</a></li>
-                            <li class="mt-2"><a href="javascript: void(0);" class="text-muted">Our Products</a></li>
-                            <li class="mt-2"><a href="javascript: void(0);" class="text-muted">Privacy</a></li>
+                            <li class="mt-2"><a href="javascript: void(0);" class="text-muted">02-1111-2222</a></li>
+        
                         </ul>
                     </div>
                 </div>

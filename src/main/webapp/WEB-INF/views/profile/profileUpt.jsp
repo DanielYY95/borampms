@@ -127,10 +127,7 @@
 												</select>
 											</div>
 										</div>	
-										<script>
-											// 처음 선택된 option에서 변경되지 않게.
-								       	 	$("option").attr("disabled", "disabled");
-										</script>
+									
 										
 										<div class="row g-2">
 											<div class="col mb-3 position-relative">
@@ -148,6 +145,11 @@
 														<option value="3">반려</option>
 													</select>
 												</div>
+												<script>
+													// 처음 선택된 option에서 변경되지 않게.
+														$("option").attr("disabled", "disabled");
+												</script>
+
 										</div>	
 										
 										<div class="row mb-3">

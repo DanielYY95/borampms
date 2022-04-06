@@ -107,7 +107,7 @@
         			<li class="side-nav-item">
            				<a data-bs-toggle="collapse" href="#sidebarDashboards" aria-expanded="false"
 							aria-controls="sidebarDashboards" class="side-nav-link">
-							<i class="uil-home-alt"></i>
+							<i class="dripicons-document-edit"></i>
 							<span> 업무 관리 </span>
 							<span class="menu-arrow"></span>
 						</a>
@@ -120,26 +120,26 @@
 					</li>
                     <li class="side-nav-item">
                         <a href="${path}/dept.do?method=list" class="side-nav-link">
-                            <i class="uil-folder-plus"></i>
+                            <i class="dripicons-folder-open"></i>
                             <span> 문서관리 </span>
                         </a>
                     </li>
                      <li class="side-nav-item">
                         <a href="${path}/appd.do?method=list" class="side-nav-link">
-                            <i class="uil-folder-plus"></i>
+                            <i class="dripicons-clipboard"></i>
                             <span> 결재관리 </span>
                         </a>
                     </li>
                     <li class="side-nav-item">
                         <a href="${path}/risk.do?method=list" class="side-nav-link">
-                            <i class="uil-folder-plus"></i>
+                            <i class="dripicons-warning"></i>
                             <span> 리스크관리 </span>
                         </a>
                     </li>
 
                    <li class="side-nav-item">
                         <a href="${path}/notice.do?method=list" class="side-nav-link">
-                            <i class="mdi mdi-account-lock-open"></i>
+                            <i class="dripicons-broadcast"></i>
                             <span> 공지사항 </span>
                         </a>
                     </li>
@@ -148,7 +148,7 @@
                     <li class="side-nav-item">
 
                         <a href="${path}/team.do" class="side-nav-link">
-                            <i class="mdi mdi-account-lock-open"></i>
+                            <i class="dripicons-user-group"></i>
                             <span> 팀 페이지 </span>
                         </a>
                     </li>

@@ -132,57 +132,6 @@
 						</div>
 					</li>
 					
-					<!--상단(top bar) 언어 설정 / 알림 목록 / 공유 / 설정 nav -->
-					<li class="dropdown notification-list topbar-dropdown">
-						<a class="nav-link dropdown-toggle arrow-none"
-							data-bs-toggle="dropdown" href="#" role="button"
-							aria-haspopup="false" aria-expanded="false">
-	
-								<img src="${path}/tools/project_assets/images/flags/korean.jpg" alt="user-image"
-								class="me-1" height="12"> <span class="align-middle">한국어</span>
-								<i class="mdi mdi-chevron-down d-none d-sm-inline-block align-middle"></i>
-						</a>
-						
-						<!-- 언어 설정 -->
-						<div class="dropdown-menu dropdown-menu-end dropdown-menu-animated topbar-dropdown-menu">
-
-							<!-- item-->
-							<a href="javascript:void(0);" class="dropdown-item notify-item">
-		
-								<img src="${path}/tools/project_assets/images/flags/us.jpg" alt="user-image"
-									class="me-0 me-sm-1" height="12">
-								<span class="align-middle d-none d-sm-inline-block">English</span>
-							
-							</a>
-							
-							<!-- item-->
-							<a href="javascript:void(0);" class="dropdown-item notify-item">
-								<img src="${path}/tools/project_assets/images/flags/japan.jpg" alt="user-image"
-								class="me-1" height="12"> <span class="align-middle">日本語</span>
-							</a>
-
-							<!-- item-->
-							<a href="javascript:void(0);" class="dropdown-item notify-item">
-								<img src="${path}/tools/project_assets/images/flags/germany.jpg" alt="user-image"
-								class="me-1" height="12"> <span class="align-middle">Deutsch</span>
-							</a>
-
-							<!-- item-->
-							<a href="javascript:void(0);" class="dropdown-item notify-item">
-								<img src="${path}/tools/project_assets/images/flags/italy.jpg" alt="user-image"
-								class="me-1" height="12"> <span class="align-middle">italiano</span>
-
-							</a>
-
-							<!-- item-->
-							<a href="javascript:void(0);" class="dropdown-item notify-item">
-								<img src="${path}/tools/project_assets/images/flags/spain.jpg" alt="user-image"
-								class="me-1" height="12"> <span class="align-middle">español</span>
-							</a>
-				
-
-						</div>
-					</li>
 
 					<!-- 알림 목록 -->
 					<li id="alarmLogo" class="dropdown notification-list">
@@ -198,12 +147,7 @@
 							<!-- item-->
 							<div class="dropdown-item noti-title px-3">
 								<h5 class="m-0">
-									<span class="float-end">
-										<a href="javascript: void(0);" class="text-dark">
-
-										<small>모두 지우기</small>
-										</a>
-									</span>
+									
 									알림
 								</h5>
 							</div>
@@ -230,11 +174,6 @@
 									<i class="mdi mdi-dots-circle mdi-spin text-muted h3 mt-0"></i>
 								</div>
 							</div>
-
-							<!-- All-->
-							<a href="javascript:void(0);"
-								class="dropdown-item text-center text-primary notify-item border-top border-light py-2">
-								View All </a>
 
 						</div>
 					</li>
