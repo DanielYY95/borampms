@@ -109,11 +109,11 @@
 
 									<div class="card widget-flat">
 										<div class="card-body" style="height:300px;">
-											<div style="text-align: center; padding-bottom: 10px;">
+											<div style="text-align: center; padding-bottom: 10px;"><br>
 
-												<i class="fa-solid fa-child-reaching fa-4x pb-2" style="padding-top:45px;" ></i><br>
-												<h5 class="text-muted fw-normal mt-0" title="Number of Customers" 
-												style="text-align: center; padding-bottom: 10px;">프로젝트 구성원</h5>
+												<i class="fa-solid fa-child-reaching fa-4x pb-3" style="padding-top:35px;" ></i><br>
+												<h5 class="text-muted fw-normal mt-0 pb-2" title="Number of Customers" 
+												style="text-align: center;">프로젝트 구성원</h5>
 												
 													<div class="text-nowrap" style="text-align: center; padding-bottom: 10px;">
 													${userNum} 명</div>
