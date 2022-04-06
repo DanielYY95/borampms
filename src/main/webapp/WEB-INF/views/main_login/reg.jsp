@@ -241,16 +241,6 @@
                                     </div>
 
 
-
-                                    <div class="mb-3">
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="checkbox-signup">
-                                            <label class="form-check-label" for="checkbox-signup">개인정보 관리에 동의합니다. <a href="#" class="text-muted">개인정보 약관</a></label>
-                                        </div>
-                                        
-                                        
-                                    </div>
-
                                     <div class="mb-3 text-center">
                                         <button class="btn btn-primary" type="button" id="chkBtn" onclick="chkValidate()"> 가입 </button>
                                         <button type="button" hidden id="signupBtn"> </button>
@@ -339,6 +329,13 @@
                 	 alert("패스워드는 각각 하나 이상의 숫자, 영어로 최소 8글자에서 최대 20자 가능합니다.");
                  	return;
                  };
+                 
+                 if(!CheckName($("#fullname").val())){
+                	 alert("이름을 한글 혹은 영문으로 제대로 입력해주세요");
+                	 
+                	 return; 
+                	 
+                 }
             	
 
                 // 연락처 숫자 아니면 거르기
@@ -416,6 +413,21 @@
 			     }                            
 			
 			}           
+                  
+                  
+             function CheckName(name){
+            	 
+            	 let regName= /^[가-힣a-zA-Z]+$/;  // 영문 + 한글은 반드시 모음으로, 띄어쓰기 불가능
+            	 
+            	 if(!regName.test(name)){
+            		   return false;         
+			     }                            	
+			     else {                       	
+			          return true;         	
+			     }                            
+			
+            	 
+             }
 	          
 
 

@@ -5,6 +5,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <c:set var="path" value="${pageContext.request.contextPath }"/>
 <fmt:requestEncoding value="utf-8"/>     
 <!DOCTYPE html>
@@ -30,9 +31,13 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		
-		<%-- 
+		$("#selectLan").val("${param.lang}")
+		$("#selectLan").change(function(){
+			if($(this).val()!=""){
+				location.href="${path}/choiceLang.do?lang="+$(this).val();
+			}
+		});
 		
-		--%>	
 	});
 </script>
 </head>
@@ -52,27 +57,37 @@
                                     <span><img src="${path}/tools/project_assets/images/boram_light.png" alt="" height="50" width="175"></span>
                                 </a>
                             </div>
-
+                            <div>
+	                            <div class="col-3 float-end">
+		                            <select class="form-select" id="selectLan"  aria-label="Floating label select example">
+									  	<option value=""><spring:message code="chlange"/></option>
+									  	<option value="ko">한국어</option>
+									  	<option value="en">english</option>
+									  </select>
+								</div>
+							</div>
+							
                             <div class="card-body p-4">
 
                                 <div class="text-center w-75 m-auto">
-                                    <h4 class="text-dark-50 text-center mt-0 fw-bold">로그인</h4>
+                                    <h4 class="text-dark-50 text-center mt-0 fw-bold">
+                                    	<spring:message code="login"/></h4>
         
                                 </div>
 
                                 <form method="post" action="${path}/login.do?method=session">
 									<input name="toURL" value="${toURL}" hidden />
                                     <div class="mb-3">
-                                        <a href="${path}/findId.do" class="text-muted float-end"><small>아이디 찾기</small></a>
-                                        <label for="id" class="form-label">아이디</label>
-                                        <input class="form-control" type="text" id="id" value="${cookie.id.value}" required="" name="uiId" placeholder="아이디를 입력하세요">
+                                        <a href="${path}/findId.do" class="text-muted float-end"><small><spring:message code="findId"/></small></a>
+                                        <label for="id" class="form-label"><spring:message code="id"/></label>
+                                        <input class="form-control" type="text" id="id" value="${cookie.id.value}" required="" name="uiId" placeholder="<spring:message code="inputId"/>">
                                     </div>
 
                                     <div class="mb-3">
-                                        <a href="${path}/findPw.do" class="text-muted float-end"><small>비밀번호 찾기</small></a>
-                                        <label for="password" class="form-label">비밀번호</label>
+                                        <a href="${path}/findPw.do" class="text-muted float-end"><small><spring:message code="findPw"/></small></a>
+                                        <label for="password" class="form-label"><spring:message code="pw"/></label>
                                         <div class="input-group input-group-merge">
-                                            <input type="password" id="password" class="form-control" name="uiPw" placeholder="비밀번호를 입력하세요">
+                                            <input type="password" id="password" class="form-control" name="uiPw" placeholder="<spring:message code="inputPw"/>">
                                             <div class="input-group-text" data-password="false">
                                                 <span class="password-eye"></span>
                                             </div>
@@ -82,13 +97,13 @@
                                     <div class="mb-3 mb-3">
                                         <div class="form-check">
                                             <input type="checkbox" name="saveId" class="form-check-input" id="checkbox-signin" checked>
-                                            <label class="form-check-label" for="checkbox-signin">아이디 기억하기</label>
+                                            <label class="form-check-label" for="checkbox-signin"><spring:message code="rememberId"/></label>
                                             
                                         </div>
                                     </div>
 
                                     <div class="mb-3 mb-0 text-center">
-                                        <button class="btn btn-primary" type="submit" onclick="return loginchk()">로그인 </button>
+                                        <button class="btn btn-primary" type="submit" onclick="return loginchk()"><spring:message code="loginBtn"/> </button>
                                     </div>
 
                                 </form>
@@ -98,14 +113,14 @@
 
                         <div class="row mt-3">
                             <div class="col-12 text-center">
-	                            <p class="text-muted">새 계정이 필요하십니까? <a href="${path}/regUser.do" class="text-muted ms-1"><b>회원가입</b></a></p>
+	                            <p class="text-muted"><spring:message code="regMsg"/> <a href="${path}/regUser.do" class="text-muted ms-1"><b><spring:message code="reg"/></b></a></p>
 	                            
 	                            <sec:authorize access="!isAuthenticated()">
-	                           		 <a href="/borampms/adminLoginform" class="text-muted float-end"><small>관리자 로그인 -></small></a>
+	                           		 <a href="/borampms/adminLoginform" class="text-muted float-end"><small><spring:message code="adminLogin"/> -></small></a>
 	                             </sec:authorize>
 	                            <sec:authorize access="isAuthenticated()">
 						
-	                           	 	<a href="/borampms/admin" class="text-muted float-end"><small>관리자 페이지 이동 -></small></a>
+	                           	 	<a href="/borampms/admin" class="text-muted float-end"><small><spring:message code="adminPage"/> -></small></a>
 	                            </sec:authorize>
                             </div> <!-- end col -->
                         </div>

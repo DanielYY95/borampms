@@ -1,6 +1,9 @@
 package mvc.controller;
 
+import java.util.Locale;
+
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,7 +12,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.LocaleResolver;
 
 import mvc.method.SessionMethod;
 import mvc.service.DashService;
@@ -23,6 +28,9 @@ import mvc.vo.USER_INFO;
 @Controller
 @SessionAttributes("prj_info")
 public class MainController {
+	
+	@Autowired(required=false)
+	private LocaleResolver localResolver;
 	
 	@Autowired
 	private DashService dservice;
@@ -55,6 +63,19 @@ public class MainController {
 		
 		return "main_login//login";
 	}
+	
+	@RequestMapping("/choiceLang.do")
+	public String choiceLang(@RequestParam("lang") String lang,
+			HttpServletRequest request,
+			HttpServletResponse response) {
+		
+		System.out.println("선택한 언어:"+lang);
+		Locale locale = new Locale(lang);
+		localResolver.setLocale(request, response, locale);
+		
+		return "forward:/loginFrm.do";
+	}
+	
 	
 	@RequestMapping("/prjList.do")
 	public String prjList(HttpServletRequest request, Model d) {
