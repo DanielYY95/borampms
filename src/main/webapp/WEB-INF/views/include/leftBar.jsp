@@ -19,17 +19,17 @@
 		.side-nav-link, .menu-arrow{
 			font-size: 1.2rem;
 		}
-	
-		
+
+
 
 	</style>
-	
+
 	<script>
-		// 프로젝트 참여자가 아니라면 돌아간다. 
+		// 프로젝트 참여자가 아니라면 돌아간다.
 		isInPrj();
-		
+
 		function isInPrj(){
-		
+
 			$.ajax({
 				url: "${path}/isInPrj.do",
 				type: "get",
@@ -37,19 +37,19 @@
 				success: function (data) {
 					ischecked = data.isChecked;
 					if(ischecked == 0){
-						alert("프로젝트 참여자만 이용가능합니다."); 
+						alert("프로젝트 참여자만 이용가능합니다.");
 						location.href="${path}/prjList.do";
 					}
-				
+
 				},
 				error:function(err) {
 					console.log(err);
 				}
 			})
-		
+
 		}
-		
-		
+
+
 	</script>
 
 		<!-- ========== Left Sidebar Start ========== -->
@@ -143,11 +143,11 @@
                             <span> 공지사항 </span>
                         </a>
                     </li>
-            	
+
 
                     <li class="side-nav-item">
 
-                        <a href="#" class="side-nav-link">
+                        <a href="${path}/team.do" class="side-nav-link">
                             <i class="mdi mdi-account-lock-open"></i>
                             <span> 팀 페이지 </span>
                         </a>
