@@ -32,14 +32,11 @@ public class myTaskController {
 		ins.setPiId(piId);
 		
 		Task_User user = service.getUser(ins); // 세션에있는 유저 vo객체의 id로 다시 한번 유저정보를 가져온다.
-
-		/// 여기서 이렇게 받아오는게 문제가 되네... // 처음에 화면 호출할 때, VO객체에 넘겨주는 값들이 있는건가?
+		ins.setUiName(user.getUiName());
+		ins.setUiDept(user.getUiDept());
+	
 		
-		d.addAttribute("tasklist", service.getMytaskListC(user)); // vo객체를 가지고 자신의 업무들을 가져온다. 
-		System.out.println("첫:"+ins.getFirstBlock()+":"+ins.getPageCount()+":"+ins.getCnt()+":"+ins.getCount());
-		System.out.println("둘:"+user.getFirstBlock()+":"+user.getLastBlock()+":"+user.getPageCount()+":"+user.getCnt()+":"+user.getCount());
-		
-		d.addAttribute("task_User", user); // 새로 받게 되서 기존 모델데이터를 유지하지못하는건가..?
+		d.addAttribute("tasklist", service.getMytaskListC(ins)); // vo객체를 가지고 자신의 업무들을 가져온다. 
 		
 		return "task/mytaskCharge";
 	}
@@ -52,9 +49,6 @@ public class myTaskController {
 		
 		ins.setUiId(sch.getUiId());
 		ins.setPiId(piId);
-		
-		ins = service.getUser(ins); // 세션에있는 유저 vo객체의 id로 다시 한번 유저정보를 가져온다.
-
 		
 		d.addAttribute("tasklist", service.getMytaskListW(ins)); // vo객체를 가지고 자신의 업무들을 가져온다. 
 		

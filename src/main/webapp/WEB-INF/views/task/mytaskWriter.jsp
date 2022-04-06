@@ -111,38 +111,47 @@
 						<div class="col-12">
 							<div class="card">
 								<div class="card-body">
-									<div class="row gy-2 gx-2 align-items-center justify-content-between">
-										<div class="col-auto">
-											<form class="row g-2" id="listsch" method="post">
-												<input type="hidden" name="curPage" value="1"/>
-												<div class="col">
-													<select class="form-select" id="search-select">
-														<option selected value="${task_User.ptTitle}">제목</option>
-														<option value="${task_User.ptCharge}">담당자</option>
-													</select>
+									<form class="row gy-2 gx-2 align-items-center justify-content-between" id="listsch" method="post" action="/borampms/mytask.do?method=clist">
+										<input type="hidden" name="curPage" value="1">
+										
+											<div class="col-auto">
+												<div class="row gy-2">
+													<div class="col">
+														<select class="form-select" id="searchType">
+															<option selected="" value="">제목</option>
+															<option value="">담당자</option>
+														</select>
+													</div>
+													<div class="col">
+														<input type="search" class="form-control" id="typeInput" name="ptTitle" placeholder="내용을 입력하세요">
+													</div>
 												</div>
-												<div class="col">
-													<input type="search" class="form-control" id="search-word" placeholder="Search...">
+											</div>
+											
+											<div class="col-auto">
+												<div class="row gy-4">
+													<div class="col">
+														<label for="startdate-form" class="col-form-label">시작일</label>
+													</div>
+													<div class="col">
+														<input class="form-control" type="date" name="ptStartdate" value="">
+													</div>
+													<div class="col">
+															<label for="enddate-form" class="col-form-label">마감일</label>
+													</div>
+													<div class="col">
+														<input class="form-control" type="date" name="ptDuedate" value="">
+													</div>
+													
 												</div>
-											</form>
-										</div>
-										<div class="col-auto">
-											<form class="row g-4" id="datesch" action="">
-												<div class="col">
-													<label for="startdate-form" class="col-form-label">시작일</label>
-												</div>
-												<div class="col">
-													<input class="form-control" type="date" name="startdate" value="${task_User.ptStartdate }"/>
-												</div>
-												<div class="col">
-													<label for="enddate-form" class="col-form-label">마감일</label>
-												</div>
-												<div class="col">
-													<input class="form-control" type="date" name="enddate" value="${task_User.ptDuedate }"/>
-												</div>
-											</form>
-										</div>
-									</div>
+												
+												
+											</div>
+											<div class="col-sm-3 cl-lg-2 float-end">
+												<button type="submit" class="btn btn-success" id="isSearchBtn">조회</button>
+											</div>
+											
+									</form>
 									<!-- end row -->
 							
 									<div class="row my-3">
@@ -204,10 +213,11 @@
 									
 										<!-- 페이징 블록 -->
 										<div class="row gy-2">
-											<div class="col justify-content-end">
-												<ul class="pagination pagination-rounded">
+											<div class="col">
+												<ul class="pagination pagination-rounded justify-content-center">
 													<li class="page-item">
-												  		<a class="page-link" href="javascript:goPage(${task_User.firstBlock != 1 ? task_User.lastBlock-1 : 1})">Previous</a>
+												  		<a class="page-link" href="javascript:goPage(${task_User.firstBlock != 1 ? task_User.lastBlock-1 : 1})">
+												  		<span aria-hidden="true">«</span></a>
 												  	</li>
 												  	<c:forEach var="cnt" begin="${task_User.firstBlock}" end="${task_User.lastBlock}">
 												  	<li class="page-item ${cnt == task_User.curPage ? 'active' : ''}"> <!-- 클릭한 현재 페이지 번호 -->
@@ -216,7 +226,8 @@
 												  	</c:forEach>
 												  	<li class="page-item">
 												  		<a class="page-link"
-												  			href="javascript:goPage(${task_User.firstBlock != task_User.pageCount ? task_User.lastBlock+1 : task_User.lastBlock})">Next</a>
+												  			href="javascript:goPage(${task_User.lastBlock!= task_User.pageCount ? task_User.lastBlock+1 : task_User.lastBlock})">
+																<span aria-hidden="true">»</span></a>
 												  	</li>
 												</ul>
 											</div>
@@ -393,123 +404,56 @@
 	
 <script>
 	
-	// 검색 범위(제목 / 담당자)
-	let schtype = "제목";
-	// 검색 키워드
-	let schword = "";
-	let schdate = {"startdate":"", "enddate":""};
-	let schdata = {"ptTitle":"", "ptCharge":"", "ptStartdate":"", "ptDuedate":""};
-	
-	
-	// 검색 : 제목 / 담당자
-	$("#search-select").change(function() {
-		schtype = $("#search-select option:selected").text();
-	});
-	// 검색 : 시작일 / 마감일
-	$("[name=startdate]").change(function() {
-		schdate.startdate = $(this).val();
-	});
-	$("[name=enddate]").change(function() {
-		schdate.enddate = $(this).val();
-	});
-	
-	// 제목 / 담당자 검색 키워드 입력 시
-	$("#search-word").keyup(function(key) {
-		schword = $(this).val();
-		
-		// 검색 범위와 검색 키워드를 json 형태로 설정
-		if(schtype == "제목") {
-			schdata.ptTitle = schword;
-			schdata.ptCharge = "";
-		};
-		if(schtype == "담당자") { 
-			schdata.ptCharge = schword;
-		};
-		
-	
-		search(schdata);
-	});
-	
-	// 시작일 / 마감일 키워드 입력 시
-	$("[name=startdate], [name=enddate]").change(function() {
-		schword = $(this).val();
-	
-		schdata.ptStartdate = schdate.startdate;
-		schdata.ptDuedate = schdate.enddate;
-		
-		search(schdata);		
-	});
-	
-	
-	
-	function detail(ptId){
-		// 더블 클릭시, no를 매개변수를 넘기고 controller에 요청값을 전달 처리.
-		location.href="${path}/taskDetail.do?ptId="+ptId;
-	}
-	function goPage(no){
-		$("[name=curPage]").val(no);
-		$("#listsch").submit();
-	}
-	function search(schdata) {
-		console.log(schdata);
-		
-		$.ajax({
-			url:"${path}/task.do?method=search",
-			type:"get",
-			data:schdata,
-			dataType:"json",
-			success:function(data) {
-				console.log(data.schlist);
-				let html = "";
-				
-		    	$.each(data.schlist, function(idx, sch) {
-		    		let ptStatus = sch.ptStatus;
-		    		let settings = {"cl":"", "style":"", "valuenow":0};
-		    		
-		    		if(ptStatus == "진행 전") {
-		    			settings.cl = "progress-bar bg-secondary";
-		    			settings.style = "width:100%";
-		    			settings.valuenow = 100;
-		    		}
-		    		if(ptStatus == "진행 중") {
-		    			settings.cl = "progress-bar bg-info";
-		    			settings.style = "width:70%";
-		    			settings.valuenow = 70;
-		    		}
-		    		if(ptStatus == "완료") {
-		    			settings.cl = "progress-bar bg-success";
-		    			settings.style = "width:100%";
-		    			settings.valuenow = 100;
-		    		}
-		    		if(ptStatus == "지연") {
-		    			settings.cl = "progress-bar-striped bg-warning progress-bar-animated";
-		    			settings.style = "width:70%";
-		    			settings.valuenow = 100;
-		    		}
-		    		if(ptStatus == "보류") {
-		    			settings.cl = "progress-bar-striped bg-secondary";
-		    			settings.style = "width:100%";
-		    			settings.valuenow = 100;
-		    		}
-		    		
-		 			html += "<tr>"
-		 				+"<td>"+sch.cnt+"</td>"
-		 				+"<td>"+sch.ptTitle+"</td>"
-		 				+"<td>"+sch.ptCharge+"</td>"
-		 				+"<td>"+sch.ptStartdate+"</td>"
-		 				+"<td>"+sch.ptDuedate+"</td>"
-		 				+"<td><div class='progress'>"
-		 				+"<div class='"+settings.cl+"' role='progressbar' style='"+settings.style+"' aria-valuenow='"+settings.valuenow+"' "
-		 				+"aria-valuemin='0' aria-valuemax='100'>"+sch.ptStatus+"</div></div></td>"		 				
-		 				+"</tr>";	
-			 	});	
-		 		$("#task-tbody").html(html);
-			},
-			error:function(err) {
-				console.log(err);
+
+		$(document).ready(function() {
+			// 검색이 실행되어 화면이 새로고침되었더라도 검색 키워드가 입력된 상태로 설정
+			let schTitle = "${task_User.ptTitle}";
+			let schCharge = "${task_User.ptCharge}";
+			let schSdate = "${task_User.ptStartdate}";
+			let schDdate = "${task_User.ptDuedate}";
+			
+			if(schTitle != "") {
+				$("#listsch [name=ptTitle]").val(schTitle);
 			}
+			if(schCharge != "") {
+				$("#listsch [name=ptCharge]").val(schCharge);
+			}
+			if(schSdate != "") {
+				$("#listsch [name=ptStartdate]").val(schSdate);
+			}
+			if(schDdate != "") {
+				$("#listsch [name=ptDuedate]").val(schDdate);
+			}
+			
 		});
-	}
+		
+		
+		
+		// 검색 : 제목 / 담당자
+		$("#searchType").change(function() {
+			schtype = $("#searchType option:selected").text();
+			
+			if(schtype=="담당자"){
+				$("#typeInput").attr("name","ptCharge");
+				
+			}else{
+				$("#typeInput").attr("name","ptTitle");
+			}
+			
+		});
+
+
+		
+		
+		
+		function detail(ptId){
+			// 더블 클릭시, no를 매개변수를 넘기고 controller에 요청값을 전달 처리.
+			location.href="${path}/taskDetail.do?ptId="+ptId;
+		}
+		function goPage(no){
+			$("[name=curPage]").val(no);
+			$("#listsch").submit();
+		}
 	
 
 	
@@ -551,11 +495,7 @@
 	}
 	
 	$("[name=ptStartdate]").change(function(){
-	    // 음.... 깜박하고 그런 경우에는...?
-	    // if($("[name=ptStartdate]").val()<new Date().toLocaleDateString("en-US", newDateOptions)){
-	    //     alert("시작일은 오늘 전일로 설정할 수 없습니다.");
-	    //     $(this).val('');
-	    // }
+	  
 	
 	    if($("[name=ptStartdate]").val()>$("[name=ptDuedate]").val() && $("[name=ptDuedate]").val()!=""){
 	        alert("시작일은 마감일보다 이후로 설정할 수 없습니다.");
@@ -564,10 +504,7 @@
 	});
 	
 	$("[name=ptDuedate]").change(function(){
-	    // if($("[name=ptDuedate]").val()<new Date().toLocaleDateString("en-US", newDateOptions)){
-	    //     alert("마감일은 오늘 전일로 설정할 수 없습니다.");
-	    //     $(this).val('');
-	    // }
+	  
 	    if($("[name=ptStartdate]").val()>$("[name=ptDuedate]").val()){
 	        alert("마감일은 시작일보다 이전으로 설정할 수 없습니다.");
 	        $(this).val('');

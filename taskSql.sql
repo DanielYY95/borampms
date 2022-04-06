@@ -321,6 +321,8 @@ SELECT * FROM TASK_OUTPUT to2;
 
 SELECT * FROM USER_INFO ui;
 
+SELECT * FROM NOTICE n;
+
 
 	select * from user_info
 		where 

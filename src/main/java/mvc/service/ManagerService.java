@@ -191,5 +191,21 @@ public class ManagerService {
 		dao.insertNotice(ins);
 	}
 	
+	public void deleteNotice(String ntId) {
+		
+		dao.deleteNotice(ntId);
+	};
+	
+	public Notice getNotice(String ntId) {
+		
+		return dao.getNotice(ntId);
+	};
+	
+	public void updateNotice(Notice sch) {
+		
+		dao.updateNotice(sch);
+	};
+	
+	
 	
 }

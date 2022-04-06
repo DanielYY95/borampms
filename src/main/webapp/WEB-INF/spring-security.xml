@@ -17,7 +17,7 @@
 			login-processing-url="/user/login"
 			username-parameter="adminId"
 			password-parameter="adminPw"
-			default-target-url="/admin"
+			default-target-url="/admin/"
 			authentication-failure-url="/adminLoginform?error=true"		
 		
 		/><!-- login-page 은 로그인화면

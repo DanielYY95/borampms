@@ -263,7 +263,7 @@
 												  	</c:forEach>	
 												  	<li class="page-item">	
 												  		<a class="page-link"	
-												  			href="javascript:goPage(${issueSch.firstBlock != issueSch.pageCount ? issueSch.lastBlock+1 : issueSch.lastBlock})">Next</a>	
+												  			href="javascript:goPage(${issueSch.lastBlock!= issueSch.pageCount ? issueSch.lastBlock+1 : issueSch.lastBlock})">Next</a>	
 												  	</li>	
 												</ul>	
 											</div>	

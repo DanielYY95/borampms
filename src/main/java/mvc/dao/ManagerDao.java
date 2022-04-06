@@ -60,4 +60,12 @@ public interface ManagerDao {
 	public ArrayList<Notice> getNoticeList(Notice sch);
 	public void insertNotice(Notice ins);
 	
+	public void deleteNotice(String ntId);
+	
+	public Notice getNotice(String ntId);
+	
+	public void updateNotice(Notice sch);
+	
+	
+	
 }

@@ -184,6 +184,7 @@ public class managerController {
 	}
 	
 	
+	
 	// 공지사항
 	
 	@RequestMapping(params="method=notice")
@@ -196,10 +197,30 @@ public class managerController {
 		service.insertNotice(ins);
 		return "redirect:/admin/manager.do?method=notice";
 	}
+	
+	@RequestMapping(params="method=getNotice")
+	public String getNotice(String ntId, Model d) {
+		
+		d.addAttribute("noticeDetail", service.getNotice(ntId));
+		
+		return "pageJsonReport";
+	}
 
+	@RequestMapping(params="method=deleteNotice")
+	public String deleteNotice(String ntId) {
+		
+		service.deleteNotice(ntId);
+		
+		return "redirect:/admin/manager.do?method=notice";
+	}
 	
-	
-	
+	@RequestMapping(params="method=updateNotice")
+	public String updateNotice(Notice sch) {
+		
+		service.updateNotice(sch);
+		
+		return "redirect:/admin/manager.do?method=notice";
+	}
 	
 
 }

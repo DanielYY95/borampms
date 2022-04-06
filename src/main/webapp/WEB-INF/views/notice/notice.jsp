@@ -46,137 +46,51 @@
 	data-rightbar-onstart="true">
 	
 	
-		<div>
-               		<a href="" class="logo text-center logo-light" style="background-color:#313a46">
-						<span class="logo-lg">
-							<img src="/borampms/tools/project_assets/images/boram_dark.png" alt="" height="45">
-						</span>
-						<span class="logo-sm">
-							<img src="/borampms/tools/project_assets/images/boram_sm_dark.png" alt="" height="35">
-						</span>
-					</a>
-		                	
-               	</div>
-				
-
-				<!-- Begin page -->
-				<div class="wrapper">
-					<div class="navbar-custom">
-				<ul class="list-unstyled topbar-menu float-end mb-0">
-					<li class="dropdown notification-list d-lg-none">
-						<a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-							<i class="dripicons-search noti-icon"></i>
-						</a>
-						<div class="dropdown-menu dropdown-menu-animated dropdown-lg p-0">
-							<form class="p-3">
-								<input type="text" class="form-control" placeholder="Search ..." aria-label="Recipient's username">
-							</form>
-						</div>
-					</li>
-					
-					
-			
-
-					<!-- setting 아이콘 -->
-					<li class="notification-list">
-						<a class="nav-link end-bar-toggle" href="javascript: void(0);">
-							<i class="dripicons-gear noti-icon"></i>
-						</a>
-					</li>
-
-					<!-- 내 프로필 아이콘 -->
-					<li class="dropdown notification-list">
-						<a class="nav-link dropdown-toggle nav-user arrow-none me-0" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-							<span class="account-user-avatar">
-								<img src="/borampms/tools/project_assets/images/users/avatar-1.jpg" alt="user-image" class="rounded-circle">
-							</span>
-							<span>
-								<span class="account-position">관리팀</span>				
-								<span class="account-user-name">관리자</span>
-								
-							</span>
-						</a>
-						<div class="dropdown-menu dropdown-menu-end dropdown-menu-animated topbar-dropdown-menu profile-dropdown">
-							<!-- item-->
-							<div class=" dropdown-header noti-title">
-								<h6 class="text-overflow m-0">안녕하세요!</h6>
-							</div>
-					
-							<!-- item-->
-							<sec:authorize access="isAuthenticated()">
-								<a href="<c:url value='/user/logout' />" class="dropdown-item notify-item">
-									<i class="mdi mdi-logout me-1"></i>
-									<span>관리자 로그아웃</span>
-								</a>
-							</sec:authorize>
-				
-						</div>
-					</li>
-				</ul>
-					
-			
-				
-				<button class="button-menu-mobile open-left" style="display: none;">
-					<i class="mdi mdi-menu"></i>
-				</button>
-				
+			<!-- Begin page -->
+	<div class="wrapper">
 	
-			</div>
+		<!-- ========== Left Sidebar Start ========== -->
+		<jsp:include page="../include/leftBar.jsp" flush="true"/>
+		<!-- ========== Left Sidebar end ========== -->
+		
 		
 		
 		<!-- Start Page Content here -->
 		<!-- ============================================================== -->
 
-		<div class="content-page mx-auto col-10">
+		<div class="content-page">
 			<div class="content">
 			
-				
+				<!-- Start headerBar -->
+				<jsp:include page="../include/headerBar.jsp" flush="true"/>
+				<!-- end headerBar -->
+			
 				<!-- Start Content-->
 				<div class="container-fluid">
 
-				
+					<!-- start page title -->
+					<div class="row">
+						<div class="col-12">
+							<div class="page-title-box">
+								<div class="page-title-right">
+									
+								</div>
+								<h4 class="page-title">공지사항</h4>
+							</div>
+						</div>
+					</div>
+					<!-- end page title -->
 
 					<!-- start page content -->
 					<div class="row">
 						<div class="col-12">
 							 <div class="card">
-                                	<h3 class="fw-bold text-center  pt-2">관리자페이지</h3>
                                     <div class="card-body">
-                                    	 <div>
-                                            <ul class="nav nav-tabs nav-bordered mb-3" style="display: flex; justify-content: space-around;">
-                                                <li class="nav-item"> <!-- a링크에서  data-bs-toggle="tab" 뺐음-->
-                                                    <a href="${path}/admin/manager.do?method=user"  aria-expanded="true" class="nav-link">
-                                                    	회원관리
-                                                    </a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a href="${path}/admin/manager.do?method=prj"  aria-expanded="true" class="nav-link">
-                                                        프로젝트관리
-                                                    </a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a href="${path}/admin/manager.do?method=dept"  aria-expanded="true" class="nav-link">
-                                                        부서관리
-                                                    </a>
-                                                </li>
-                                               	<li class="nav-item">
-														<a href="${path}/admin/manager.do?method=notice" aria-expanded="true" class="nav-link active">
-															공지사항
-														</a>
-													</li>
-													<li class="nav-item">
-														<a href="${path}/admin/manager.do?method=prjUser" aria-expanded="true" class="nav-link">
-															프로젝트 참여자 목록
-														</a>
-													</li>
-                                             
-                                              
-                                            </ul> <!-- end nav-->
-                                        </div>
+                                    	
 							<div class="card">
 								<div class="card-body">
 									<form class="row gy-2 gx-2 align-items-center justify-content-between"
-										id="ntSchForm" method="post" action="${path}/admin/manager.do?method=notice">
+										id="ntSchForm" method="post" action="${path}/notice.do?method=list">
 										<input type="hidden" name="curPage" value="1"/>
 										<input type="hidden" name="ntTitle" value="${notice.ntTitle }"/>
 										<input type="hidden" name="ntWriter" value="${user_info.uiId}"/>
@@ -203,19 +117,18 @@
 										</div>
 									</form>
 									<!-- end row -->
-							
+						
+										
 									<div class="row my-3">
 										<div class="table-responsive">
 											<table class="table table-centered table-nowrap mb-0 text-center">
 												<thead class="table-light">
 													<tr>
-														
 														<th>번호</th>
 														<th>구분</th>
 														<th>제목</th>
 														<th>등록일</th>
 														<th>작성자</th>
-														<th>수정/삭제</th>
 													</tr>
 											 	</thead>
 											 	<tbody id="notice-tbody">
@@ -224,19 +137,17 @@
 														
 														<td>${notice.cnt }</td>
 														<td>${notice.ntType }</td>
-														<td>${notice.ntTitle}</td>
+														<td onclick="detailNotice('${notice.ntId}')"
+															data-bs-toggle="modal" data-bs-target="#notice-modal"
+														>${notice.ntTitle}</td>
 														<td>${notice.ntRegdate }</td>
 														<td>관리자</td>
-														<td><a href="javascript:void(0);" onclick="detailNotice('${notice.ntId}')" class="action-icon"
-														data-bs-toggle="modal" data-bs-target="#notice-modal"> 
-															<i class="mdi mdi-square-edit-outline"></i></a>
-															<a href="javascript:deleteNotice('${notice.ntId}');" class="action-icon">
-															<i class="mdi mdi-delete"></i></a></td>
 													</tr>
 													</c:forEach>
 												</tbody>
 											</table>
 										</div>
+										
 									
 										<!-- start 페이징 블록 -->
 										<div class="row gy-3" id="paging"> 
@@ -255,11 +166,6 @@
 												  			href="javascript:goPage(${notice.lastBlock != notice.pageCount ? notice.lastBlock+1 : notice.lastBlock})">Next</a>
 												  	</li>
 												</ul>
-											</div>
-											<div class="d-grid gap-2 col-sm-2 col-mb-2 col-lg-1 float-end">
-												
-												<button type="button" class="btn btn-primary" data-bs-toggle="modal"
-													data-bs-target="#notice-modal" id="insBtn">등록</button>
 											</div>
 											
 										</div>
@@ -301,6 +207,7 @@
 	
 
 
+
 	<!--  modal -->
 	<div class="tab-content">
 	    <div class="tab-pane show active" id="modal-pages-preview" >
@@ -310,16 +217,16 @@
 	                <div class="modal-content" >
 						
 	                    <div class="modal-header">
-	                        <h4 id="noticeTitle">공지 작성</h4>                                                                
+	                        <h4 id="noticeTitle">공지 조회</h4>                                                                
 	                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 	                    </div>
 	
 	                    <div class="modal-body">
-	                        <form id="ntRegForm" class="ps-3 pe-3" action="${path}/admin/manager.do?method=insertNotice" method="post">
+	                        
 	                        	 <input name="ntId" hidden/>   
 	                            <div class="mb-3">
 	                                <label for="username" class="form-label">제목</label>
-	                                <input name="ntTitle" class="form-control" required="" placeholder="제목을 입력해주세요">
+	                                <input name="ntTitle" class="form-control" required="" placeholder="제목을 입력해주세요"  readonly>
 	                            </div>
 	                            <div class="mb-3">
 	                                <label for="username" class="form-label">작성자</label>
@@ -328,22 +235,22 @@
 	                            <div class="mb-3 position-relative">
 	                                <label class="form-label">공지 구분</label>
 	                                <select id="select-ntType"  name="ntType" class="form-control" required="" data-placeholder="공지 구분">
-										<option value="">구분 선택</option>
-										<option value="공지">공지</option>
-										<option value="점검">점검</option>
+										<option value="" disabled>구분 선택</option>
+										<option value="공지" disabled>공지</option>
+										<option value="점검" disabled>점검</option>
 									</select>
 	                            </div>
 	                            
 	                            <div class="mb-3">
 	                                <label for="example-textarea" class="form-label">내용</label>
-	                                <textarea class="form-control" id="example-textarea" rows="15" name="ntContent"></textarea>
+	                                <textarea class="form-control" id="example-textarea" rows="15" name="ntContent" readonly></textarea>
 	                            </div>
 	                            <hr>		
 	                            <div class="mb-3 text-center" style="display: flex; justify-content: space-between;">
 	                                <button class="btn btn-secondary" class="btn-close" data-bs-dismiss="modal" aria-label="Close">취소</button>
-	                                <button class="btn btn-primary" type="button" id="regBtn">등록</button>
+	                                
 	                            </div>
-	                        </form>
+	                       
 	                    </div>
 	                </div><!-- /.modal-content -->
 	            </div><!-- /.modal-dialog -->
@@ -351,8 +258,7 @@
 	    </div> <!-- /.tab-panel -->
 	</div> <!-- /.tab-content -->
 			
-			
-			
+					
 <script>	
 	
 	$(document).ready(function() {
@@ -382,44 +288,25 @@
 		$("#ntSchForm").submit();
 	});
 	
-	let text = "등록하시겠습니까?";
-
-	
-	$("#insBtn").click(function(){
-		$("[name=ntTitle]").val("");
-		$("[name=ntType]").val("");
-		$("[name=ntContent]").val("");
-		
-
-		$("#ntRegForm").attr("action","${path}/admin/manager.do?method=insertNotice")
-		text = "등록하시겠습니까?";
-		$("#noticeTitle").text("공지 작성");
-		$("#regBtn").text("등록")
-		
-	})
 	
 	function detailNotice(ntId){
 		
 
 		$.ajax({
-			url: "${path}/admin/manager.do?method=getNotice",
+			url: "${path}/notice.do?method=getNotice",
 			type: "get",
 			dataType: "json",
 			data: "ntId="+ntId,
 			success: function (data) {
 				noticeDetail = data.noticeDetail;
-				console.log(noticeDetail);
+			
 				$("[name=ntId]").val(noticeDetail.ntId);
 				$("[name=ntTitle]").val(noticeDetail.ntTitle);
 				$("[name=ntType]").val(noticeDetail.ntType);
 				$("[name=ntContent]").val(noticeDetail.ntContent);
 				
 				$("#notice-modal").click();
-				
-				$("#ntRegForm").attr("action","${path}/admin/manager.do?method=updateNotice");
-				text = "수정하시겠습니까?";
-				$("#noticeTitle").text("공지 수정");
-				$("#regBtn").text("수정")
+			
 			}
 		});
 		
@@ -433,33 +320,6 @@
 		$("#ntSchForm").submit();
 	}
 	
-	
-
-	// 공지 등록
-	$("#regBtn").click(function() {
-		
-		
-		if(confirm(text)) {
-			if($("#ntRegForm").find("[name=ntTitle]").val() == "") {
-				alert("제목을 작성해주세요.");
-			} else if($("#ntRegForm").find("[name=ntType]").val() == "") {
-				alert("구분 항목을 지정해주세요.");	
-			} else if($("#ntRegForm").find("[name=ntContent]").val() == "") {
-				alert("내용을 입력해주세요.");
-			} else {
-				$("#ntRegForm").submit();
-			}
-		}
-	});
-	
-	// 공지 삭제
-	function deleteNotice(ntId){
-		if(confirm("삭제하시겠습니까?")) {
-			// 반복문, 체크박스 선택된 id 받아서 delete 처리
-			
-			location.href="${path}/admin/manager.do?method=deleteNotice&ntId="+ntId
-		}
-	};
 	
 
 	

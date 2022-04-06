@@ -16,19 +16,23 @@ public class MultiLangController {
 	@Autowired(required=false)
 	private LocaleResolver localResolver;
 	
-	// 1. ÃÊ±âÈ­¸é È£Ãâ
+	// ë‹¤êµ­ì–´ ì²˜ë¦¬ë¥¼ í•˜ê³ ë‚˜ì„œ í˜„ì¬ url ì£¼ì†Œë¥¼ ë‹´ì•„ì„œ redirect
+		// jsì—ì„œ window.location.href í™œìš©í•˜ë©´ í˜„ì¬ url ì£¼ì†Œ ê°€ì ¸ì˜¬ ìˆ˜ ìˆë‹¤.
+		// controllerì—ì„œ input hidden ìœ¼ë¡œ íƒœì›Œì„œ redirectìœ¼ë¡œ ë³´ë‚¸ë‹¤. 
+	
+	// 1. ï¿½Ê±ï¿½È­ï¿½ï¿½ È£ï¿½ï¿½
 	@GetMapping("multi.do")
 	public String multi() {
 		return "WEB-INF\\views\\a02_mvc\\a12_multiLang.jsp";
 	}
 	
-	// 2. ¾ğ¾î ¼±ÅÃ¿¡ µû¸¥ º¯È¯ Ã³¸®
+	// 2. ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ã¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ Ã³ï¿½ï¿½
 	@GetMapping("choiceLang.do")
 	public String choiceLang(@RequestParam("lang") String lang,
 			HttpServletRequest request,
 			HttpServletResponse response) {
 		
-		System.out.println("ÇöÀç ¼±ÅÃÇÑ ¾ğ¾î: "+lang);
+		System.out.println("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½: "+lang);
 		
 		Locale locale = new Locale(lang);
 		localResolver.setLocale(request, response, locale);

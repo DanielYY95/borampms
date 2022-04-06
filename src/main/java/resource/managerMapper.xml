@@ -251,6 +251,26 @@
 	</insert>
 	
 	
+	<delete id="deleteNotice" parameterType="string">
+		delete from notice
+		where NT_ID = #{ntId}
+	
+	</delete>
+	
+	<select id="getNotice" parameterType="string" resultType="notice">
+		select * from notice
+		where NT_ID = #{ntId}
+	
+	</select>
+	
+	<update id="updateNotice" parameterType="notice">
+		update notice
+			set nt_title = #{ntTitle}
+			, nt_content = #{ntContent}
+			, nt_type = #{ntType}
+			where nt_id = #{ntId}
+	
+	</update>
 	
 	
 </mapper>

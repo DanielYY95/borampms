@@ -83,7 +83,7 @@
 						</a>
 						<div class="dropdown-menu dropdown-menu-animated dropdown-lg p-0">
 							<form class="p-3">
-								<input type="text" class="form-control" placeholder="Search ..." aria-label="Recipient's username">
+								<input type="text" class="form-control" placeholder="내용을 입력하세요" aria-label="Recipient's username">
 							</form>
 						</div>
 					</li>
@@ -559,8 +559,7 @@
 												'</td><td class="statusClr"><h5 class="my-0"><span class="badge badge-info-lighten">'+
 												sch.uiStatus+'</span></h5></td><td><a href="javascript:void(0);" class="action-icon"'+
 												'onclick="editUserDetail('+"'"+sch.uiId+"'"+')" data-bs-toggle="modal" data-bs-target="#signup-modal">'+
-												' <i class="mdi mdi-square-edit-outline"></i></a><a href="javascript:void(0);" class="action-icon"'+
-												'onclick="deleteUser('+"'"+sch.uiName+"','"+sch.uiId+"'"+')"><i class="mdi mdi-delete"></i></a></td></tr>'
+												' <i class="mdi mdi-square-edit-outline"></i></a></td></tr>'
 						
 								});	
 								
