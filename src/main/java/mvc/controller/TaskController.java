@@ -36,7 +36,8 @@ public class TaskController {
 	private AlarmMethod amethod;
 	
 	@RequestMapping(params="method=list")
-	public String taskList(TaskSch sch, Model d) {
+	public String taskList(HttpServletRequest request, TaskSch sch, Model d) {
+		sch.setPiId(smethod.getPiid(request));
 		d.addAttribute("tasklist", service.getTaskList(sch));
 		return "task/task_list";
 	}
@@ -62,8 +63,6 @@ public class TaskController {
 
 		ins.setPiId(smethod.getPiid(request)); 
 		ins.setUiId(uiId); // 세션에서...
-		ins.setPtGuidecontent("가이드 콘텐츠"); // 비워두면 안되나?
-		
 	
 		USER_INFO user = smethod.getUserSession(request);
 		
@@ -75,13 +74,16 @@ public class TaskController {
 		// for 반복문으로 업무 담당자를 지정
 		// 쓰여지는 때에 따라 다른 메시지	
 		
+		
+		
+		service.insertTask(ins);
+		
 		for(Alarm a : alarmList) {
 			System.out.println("##"+a.getaFrom()+a.getaTo()+a.getaContent()+a.getPiId());
 			
 			etcservice.insertAlarm(a);
 		}
 		
-		service.insertTask(ins);
-		return "forward:/task.do?method=list";
+		return "redirect:/task.do?method=list";
 	}
 }

@@ -19,6 +19,9 @@ public class TaskSch {
 	private String ptDuedate;
 	private String ptCharge;
 	
+	private String piId;
+	private String uiId;
+	
 	
 	public TaskSch() {
 		super();
@@ -130,6 +133,21 @@ public class TaskSch {
 
 	public void setPtCharge(String ptCharge) {
 		this.ptCharge = ptCharge;
+	}
+	
+	public String getPiId() {
+		return piId;
+	}
+
+	public void setPiId(String piId) {
+		this.piId = piId;
+	}
+	public String getUiId() {
+		return uiId;
+	}
+
+	public void setUiId(String uiId) {
+		this.uiId = uiId;
 	}
 	
 	

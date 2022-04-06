@@ -16,6 +16,8 @@ public class MultiLangController {
 	@Autowired(required=false)
 	private LocaleResolver localResolver;
 	
+	// 다국어 처리 방법을 알고, 환경 세팅하는 방법을 알고 있다 정도만 어필
+	
 	// 다국어 처리를 하고나서 현재 url 주소를 담아서 redirect
 		// js에서 window.location.href 활용하면 현재 url 주소 가져올 수 있다.
 		// controller에서 input hidden 으로 태워서 redirect으로 보낸다. 
@@ -23,6 +25,7 @@ public class MultiLangController {
 	// 1. �ʱ�ȭ�� ȣ��
 	@GetMapping("multi.do")
 	public String multi() {
+		
 		return "WEB-INF\\views\\a02_mvc\\a12_multiLang.jsp";
 	}
 	

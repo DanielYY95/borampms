@@ -9,7 +9,7 @@
 		select count(*)
 		from prj_task
 		where 1=1
-		
+		and pi_id = #{piId}
 		<if test="ptTitle != null and ptTitle != ''">
 		and pt_title like '%'||#{ptTitle}||'%'
 		</if>
@@ -36,6 +36,7 @@
 			from prj_task pt, user_info ui
 			where 1=1
 			and pt.UI_ID = ui.ui_id
+			and pi_id = #{piId}
 			<if test="ptTitle != null and ptTitle != ''">
 			and pt_title like '%'||#{ptTitle}||'%'
 			</if>
@@ -78,7 +79,6 @@
 			#{ptType},
 			#{ptStatus},
 			#{ptPriority},
-			#{ptGuidecontent},
 			#{uiId},
 			#{piId}
 		)
