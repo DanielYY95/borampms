@@ -13,6 +13,7 @@ public class CommonDoc {
 	private String cdContent;
 	private Date cdRegdate;
 	private String diId;
+	private String piId;
 	private MultipartFile[] report;
 	// 파일 정보 한번에 로딩
 	private ArrayList<String> fnames;
@@ -22,13 +23,14 @@ public class CommonDoc {
 	}
 	
 
-	public CommonDoc(String cdTitle, String cdWriter, String cdDept, String cdContent, String diId) {
+	public CommonDoc(String cdTitle, String cdWriter, String cdDept, String cdContent, String diId, String piId) {
 		super();
 		this.cdTitle = cdTitle;
 		this.cdWriter = cdWriter;
 		this.cdDept = cdDept;
 		this.cdContent = cdContent;
 		this.diId = diId;
+		this.piId = piId;
 	}
 	
 
@@ -107,6 +109,16 @@ public class CommonDoc {
 
 	public void setDiId(String diId) {
 		this.diId = diId;
+	}
+	
+
+	public String getPiId() {
+		return piId;
+	}
+
+
+	public void setPiId(String piId) {
+		this.piId = piId;
 	}
 
 
