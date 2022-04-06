@@ -14,6 +14,7 @@ public class DeptDoc {
 	private String ddContent;
 	private Date ddRegdate;
 	private String diId;
+	private String piId;
 	private MultipartFile[] report;
 	// 파일 정보 한번에 로딩
 	private ArrayList<String> fnames;
@@ -23,13 +24,14 @@ public class DeptDoc {
 	}
 	
 
-	public DeptDoc(String ddTitle, String ddWriter, String ddDept, String ddContent, String diId) {
+	public DeptDoc(String ddTitle, String ddWriter, String ddDept, String ddContent, String diId, String piId) {
 		super();
 		this.ddTitle = ddTitle;
 		this.ddWriter = ddWriter;
 		this.ddDept = ddDept;
 		this.ddContent = ddContent;
 		this.diId = diId;
+		this.piId = piId;
 	}
 	
 
@@ -108,6 +110,16 @@ public class DeptDoc {
 
 	public void setDiId(String diId) {
 		this.diId = diId;
+	}
+
+	
+	public String getPiId() {
+		return piId;
+	}
+
+
+	public void setPiId(String piId) {
+		this.piId = piId;
 	}
 
 
