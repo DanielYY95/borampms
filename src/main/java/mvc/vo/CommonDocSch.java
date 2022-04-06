@@ -14,6 +14,9 @@ public class CommonDocSch {
 	
 	// 검색할 내용
 	private	String cdWriter; // 작성자 검색
+	
+	// 프로젝트 세션값
+	private String piId;
 
 	public CommonDocSch() {
 		super();
@@ -108,6 +111,14 @@ public class CommonDocSch {
 
 	public void setCdWriter(String cdWriter) {
 		this.cdWriter = cdWriter;
+	}
+
+	public String getPiId() {
+		return piId;
+	}
+
+	public void setPiId(String piId) {
+		this.piId = piId;
 	}
 	
 }
