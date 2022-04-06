@@ -73,13 +73,16 @@ public class TaskController {
 		// for 반복문으로 업무 담당자를 지정
 		// 쓰여지는 때에 따라 다른 메시지	
 		
+		
+		
+		service.insertTask(ins);
+		
 		for(Alarm a : alarmList) {
 			System.out.println("##"+a.getaFrom()+a.getaTo()+a.getaContent()+a.getPiId());
 			
 			etcservice.insertAlarm(a);
 		}
 		
-		service.insertTask(ins);
 		return "redirect:/task.do?method=list";
 	}
 }
