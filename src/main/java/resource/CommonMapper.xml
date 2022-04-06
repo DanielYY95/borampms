@@ -9,6 +9,7 @@
 		select count(*)
 		from COMMON_DOC
 		where 1=1
+		and PI_ID = #{piId}
 		<if test="cdWriter!=null and cdWriter!=''"> 
 		and CD_WRITER like '%'||#{cdWriter}||'%'
 		</if>
@@ -23,6 +24,7 @@
 			select rownum cnt, COMMON_DOC.*
 			from COMMON_DOC
 			where 1=1
+			and PI_ID = #{piId}
 			<if test="cdWriter!=null and cdWriter!=''"> 
 			and CD_WRITER like '%'||#{cdWriter}||'%'
 			</if>
@@ -36,7 +38,7 @@
 	<!-- 공통문서 등록 -->
 	<insert id="insertCD" parameterType="commonDoc">
 		INSERT INTO COMMON_DOC VALUES(seq_cd.nextval,#{cdTitle},#{cdWriter},
-		#{cdDept},#{cdContent},sysdate,'1')
+		#{cdDept},#{cdContent},sysdate,'1',#{piId})
 	</insert>
 	<!-- 공통문서 첨부파일 -->
 	<insert id="insertCF" parameterType="commonFile">

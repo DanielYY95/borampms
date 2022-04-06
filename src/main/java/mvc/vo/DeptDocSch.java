@@ -14,6 +14,9 @@ public class DeptDocSch {
 	
 	// 검색할 내용
 	private	String ddWriter; // 작성자 검색
+	
+	// 프로젝트 세션값
+	private String piId;
 
 	public DeptDocSch() {
 		super();
@@ -108,6 +111,14 @@ public class DeptDocSch {
 
 	public void setDdWriter(String ddWriter) {
 		this.ddWriter = ddWriter;
+	}
+
+	public String getPiId() {
+		return piId;
+	}
+
+	public void setPiId(String piId) {
+		this.piId = piId;
 	}
 	
 }

@@ -9,6 +9,7 @@
 		select count(*)
 		from DEPT_DOC 
 		where 1=1
+		and PI_ID = #{piId}
 		<if test="ddWriter!=null and ddWriter!=''"> 
 		and DD_WRITER like '%'||#{ddWriter}||'%'
 		</if>
@@ -23,6 +24,7 @@
 			select rownum cnt, DEPT_DOC.*
 			from DEPT_DOC
 			where 1=1
+			and PI_ID = #{piId}
 			<if test="ddWriter!=null and ddWriter!=''"> 
 			and DD_WRITER like '%'||#{ddWriter}||'%'
 			</if>
@@ -36,7 +38,7 @@
 	<!-- 부서문서 등록 -->
 	<insert id="insertDD" parameterType="deptDoc">
 		INSERT INTO DEPT_DOC VALUES(seq_dd.nextval,#{ddTitle},#{ddWriter},
-		#{ddDept},#{ddContent},sysdate,'1')
+		#{ddDept},#{ddContent},sysdate,'1',#{piId})
 	</insert>
 	<!-- 부서문서 첨부파일 -->
 	<insert id="insertDF" parameterType="deptFile">
