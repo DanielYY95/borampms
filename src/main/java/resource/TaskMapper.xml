@@ -78,7 +78,6 @@
 			#{ptType},
 			#{ptStatus},
 			#{ptPriority},
-			#{ptGuidecontent},
 			#{uiId},
 			#{piId}
 		)

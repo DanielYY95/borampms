@@ -62,8 +62,6 @@ public class TaskController {
 
 		ins.setPiId(smethod.getPiid(request)); 
 		ins.setUiId(uiId); // 세션에서...
-		ins.setPtGuidecontent("가이드 콘텐츠"); // 비워두면 안되나?
-		
 	
 		USER_INFO user = smethod.getUserSession(request);
 		
@@ -82,6 +80,6 @@ public class TaskController {
 		}
 		
 		service.insertTask(ins);
-		return "forward:/task.do?method=list";
+		return "redirect:/task.do?method=list";
 	}
 }
