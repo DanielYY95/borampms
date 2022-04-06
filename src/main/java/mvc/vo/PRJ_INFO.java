@@ -9,7 +9,7 @@ public class PRJ_INFO {
 	private String piStartdate;
 	private String piDuedate;
 	private String piStatus;
-	
+	private String piContent;
 	// DB에 없으나 작성자명을 나타내기위함
 	private String uiName;
 	private String puStatus;
@@ -92,6 +92,12 @@ public class PRJ_INFO {
 	}
 	public void setPiStatus(String piStatus) {
 		this.piStatus = piStatus;
+	}
+	public String getPiContent() {
+		return piContent;
+	}
+	public void setPiContent(String piContent) {
+		this.piContent = piContent;
 	}
 
 	

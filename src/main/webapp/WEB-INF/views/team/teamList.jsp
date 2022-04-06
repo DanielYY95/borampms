@@ -74,7 +74,7 @@
 								<div class="card-body">
 									<div class="row my-3">
 										<div class="header-title" style="font-size:20px; padding-bottom:5px; float:left;">팀소개
-											<textarea style="width:100%; height:170px;" readonly></textarea>
+											<textarea id="" style="width:100%; height:170px;" readonly></textarea>
 											<div style="text-align:right;">
 												<button id="docList-btn" type="button" class="btn btn-primary" style="display:block;">편집</button>
 												<button id="docList-btn1" type="button" class="btn btn-primary" style="display:none;">저장</button>

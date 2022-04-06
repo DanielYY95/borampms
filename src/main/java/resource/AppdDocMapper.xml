@@ -4,7 +4,6 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
 <mapper namespace="mvc.dao.AppdDocDao">
-	<!-- 부서문서 테이블 총 카운터 -->
 	<select id="totCnt"  parameterType="appdDocSch" resultType="int">
 		select count(*)
 		from APPD_DOC
@@ -29,7 +28,6 @@
             </if>
 
 	</select>
-	<!-- 부서문서 테이블 조회 -->
 	<select id="getADList" parameterType="appdDocSch" resultType="appdDoc">
 		select *
 		from (
@@ -58,7 +56,6 @@
 		)
 		where cnt between #{firstPage} and #{lastPage}
 	</select>
-	<!-- 부서문서 등록 -->
 	<insert id="insertAD" parameterType="appdDoc">
 		INSERT INTO APPD_DOC (
 			ad_id,
@@ -80,7 +77,6 @@
 			,#{adUiId}
 			)
 	</insert>
-	<!-- 부서문서 등록 -->
 	<update id="updateAD" parameterType="appdDoc">
 		UPDATE appd_doc
 		SET
@@ -106,7 +102,6 @@
 		WHERE
 		    ad_id = #{adId}
 	</update>
-	<!-- 부서별 유저아이디 조회 -->
 	<select id="getDeptUserList" resultType="user" parameterType="String">
 		select ui_id, ui_name
 		from USER_INFO usr

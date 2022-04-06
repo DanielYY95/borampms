@@ -290,7 +290,7 @@
 	});
 	$("#docList-btn3").click(function(){
 		alert("삭제 하시겠습니까?");
-		location.href="${path}/appd.do?params=method=del&adId="+$('#adId').val();
+		location.href="${path}/appd.do?params=method=del;
 	});
 
 	$("#docList-btn").click(function(){
