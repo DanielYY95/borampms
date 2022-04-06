@@ -36,7 +36,8 @@ public class TaskController {
 	private AlarmMethod amethod;
 	
 	@RequestMapping(params="method=list")
-	public String taskList(TaskSch sch, Model d) {
+	public String taskList(HttpServletRequest request, TaskSch sch, Model d) {
+		sch.setPiId(smethod.getPiid(request));
 		d.addAttribute("tasklist", service.getTaskList(sch));
 		return "task/task_list";
 	}

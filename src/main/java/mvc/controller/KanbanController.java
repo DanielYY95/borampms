@@ -35,25 +35,24 @@ public class KanbanController {
 	
 	// http://localhost:7090/borampms/kanban.do?method=list
 	@RequestMapping(params="method=list")
-	public String kanbanMain(Model d) {
-		d.addAttribute("klist",service.getKlist());
-		d.addAttribute("klist2",service.getKlist2());
-		d.addAttribute("klist3",service.getKlist3());
-		d.addAttribute("klist4",service.getKlist4());
+	public String kanbanMain(HttpServletRequest request, Model d) {
+		String piId = smethod.getPiid(request);
+		d.addAttribute("klist",service.getKlist(piId));
+		d.addAttribute("klist2",service.getKlist2(piId));
+		d.addAttribute("klist3",service.getKlist3(piId));
+		d.addAttribute("klist4",service.getKlist4(piId));
 		return "/schedule/schKanban";
 	}
 	
 	@RequestMapping(params="method=insert")
 	public String insertKanban(HttpServletRequest request, PRJ_TASK ins, Model d) {
 
-
-
 		ins.setPiId(smethod.getPiid(request)); 
 		ins.setUiId(smethod.getUserSession(request).getUiId()); // 세션에서...
-		ins.setPtGuidecontent("가이드 콘텐츠"); // 비워두면 안되나?
 
 
 		USER_INFO user = smethod.getUserSession(request);
+		String piId = smethod.getPiid(request);
 
 
 		ArrayList<Alarm> alarmList = amethod.taskAlarm(user, ins, smethod.getPiid(request)); // 이렇게 주면 구현부에서 알아서 처리된다. 

@@ -36,13 +36,7 @@
     <link rel="stylesheet" href="${path}/tools/main_assets/css/controls_styles.css" />
 
     <style>
-      html,
-      body {
-        height: 100%;
-        padding: 0px;
-        margin: 0px;
-        overflow: hidden;
-      }
+      
 	 .gantt_grid .gantt_grid_scale .gantt_grid_head_cell .gantt_grid_head_add {
 	  	display : none;
 	  }

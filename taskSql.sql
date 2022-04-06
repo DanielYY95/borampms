@@ -291,6 +291,8 @@ INSERT INTO PRJ_INFO values('PI' || LPAD(prj_seq.nextval,5,'0'), 'ycm95', '쌍�
 SELECT * FROM TASK_OUTPUT;
 SELECT * FROM DEPT_INFO di;
 
+
+
 -- 프로젝트 참여
 CREATE TABLE PRJ_USER(
 	UI_ID varchar2(20) REFERENCES USER_INFO(UI_ID),
@@ -326,7 +328,7 @@ SELECT * FROM USER_INFO ui;
 SELECT * FROM NOTICE n;
 
 
-	select * from user_info
+select * from user_info
 		where 
 			UI_NAME like '%테스트봇4%'
 		and UI_DEPT like '%%'

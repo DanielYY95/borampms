@@ -14,18 +14,18 @@ public class KanbanService {
 	@Autowired
 	private KanbanDao dao;
 	
-	public List<KanbanVo> getKlist() {
-		return dao.getKlist();
+	public List<KanbanVo> getKlist(String piId) {
+		return dao.getKlist(piId);
 	}
 
-	public List<KanbanVo> getKlist2() {
-		return dao.getKlist2();
+	public List<KanbanVo> getKlist2(String piId) {
+		return dao.getKlist2(piId);
 	}
-	public List<KanbanVo> getKlist3() {
-		return dao.getKlist3();
+	public List<KanbanVo> getKlist3(String piId) {
+		return dao.getKlist3(piId);
 	}
-	public List<KanbanVo> getKlist4() {
-		return dao.getKlist4();
+	public List<KanbanVo> getKlist4(String piId) {
+		return dao.getKlist4(piId);
 	}
 	
 	public String insertKanban(PRJ_TASK ins) {

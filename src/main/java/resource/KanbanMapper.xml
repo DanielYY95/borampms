@@ -4,32 +4,36 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
 <mapper namespace="mvc.dao.KanbanDao">
-	<select id="getKlist" resultType="kanban">
+	<select id="getKlist" resultType="kanban" parameterType="string">
 		SELECT pt_id, pt_title, pt_startdate, pt_duedate, pt_type, pt_status,
 		pt_charge, pt_priority
 		FROM prj_task
 		WHERE pt_status = '진행 전'
+		AND pi_id = #{piId}
 	</select>
 
-	<select id="getKlist2" resultType="kanban2">
+	<select id="getKlist2" resultType="kanban2" parameterType="string">
 		SELECT pt_id, pt_title, pt_startdate, pt_duedate, pt_type, pt_status,
 		pt_charge, pt_priority
 		FROM prj_task
 		WHERE pt_status = '진행 중'
+		AND pi_id = #{piId}
 	</select>
 	
-	<select id="getKlist3" resultType="kanban3">
+	<select id="getKlist3" resultType="kanban3" parameterType="string">
 		SELECT pt_id, pt_title, pt_startdate, pt_duedate, pt_type, pt_status,
 		pt_charge, pt_priority
 		FROM prj_task
 		WHERE pt_status = '보류'
+		AND pi_id = #{piId}
 	</select>
 	
-		<select id="getKlist4" resultType="kanban4">
+		<select id="getKlist4" resultType="kanban4" parameterType="string">
 		SELECT pt_id, pt_title, pt_startdate, pt_duedate, pt_type, pt_status,
 		pt_charge, pt_priority
 		FROM prj_task
 		WHERE pt_status = '완료'
+		AND pi_id = #{piId}
 	</select>
 	
 	<update id="KBupdate" parameterType="mvc.vo.KanbanVo">
@@ -50,7 +54,6 @@
 			#{ptType},
 			#{ptStatus},
 			#{ptPriority},
-			#{ptGuidecontent},
 			#{uiId},
 			#{piId}
 		)
