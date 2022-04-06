@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="mvc.dao.TeamDao">
+	<select id="getTeamContent" parameterType="string" resultType="prj">
+		select pi_content
+		from prj_info
+		where pi_id = #{value}
+	</select>
+
+	<select id="getUserList" parameterType="string" resultType="user">
+		select usr.*, pusr.*
+		from user_info usr, prj_user pusr
+		where usr.ui_id = pusr.ui_id
+		and pusr.pu_status = '0'
+        and pusr.pI_id = #{value}
+	</select>
+
+	<select id="getUserInfo" parameterType="string" resultType="user">
+		select usr.*
+		from user_info usr
+		where usr.uI_id = #{value}
+	</select>
+	<update id="updateTeamContent" parameterType="prj">
+		update PRJ_INFO
+		set PI_CONTENT = #{piContent},
+		where PI_ID = #{piId}
+	</update>
+</mapper>
