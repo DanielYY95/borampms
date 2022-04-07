@@ -36,7 +36,7 @@
     <link rel="stylesheet" href="${path}/tools/main_assets/css/controls_styles.css" />
 
     <style>
-      
+
 	 .gantt_grid .gantt_grid_scale .gantt_grid_head_cell .gantt_grid_head_add {
 	  	display : none;
 	  }
@@ -112,10 +112,7 @@
 
     <script type="text/javascript">
 		// test data
-		gantt.config.start_date = new Date(2022, 01, 01);
-		gantt.config.end_date = new Date(2022, 12, 31);
 		gantt.init("gantt_here");
-		//gantt.init("gantt_here", new Date(2022, 01, 01), new Date(2022, 01, 20));
 		getData();
 		gantt.attachEvent("onAfterTaskDrag", function(id, mode, e){
 			let task = gantt.getTask(id);
@@ -150,7 +147,7 @@
 					for(var i=0; i < data.result.length; i++){
 						paramData.push({ id:data.result[i].ptId
 							           , text: data.result[i].ptTitle
-							           , start_date: stringToDate(data.result[i].ptStartdate)
+							         	  , start_date: stringToDate(data.result[i].ptStartdate)
 							           , duration:data.result[i].duration
 							           });
 
@@ -204,7 +201,7 @@
 				    dataType:"json",
 				    success:function(data){
 						alert("저장되었습니다.");
-						document.getElementById('btn_search').click();
+						location.reload();
 				    },
 				    error:function(){
 				       console.log("에러발생:"+err);
@@ -230,7 +227,7 @@
 	        return date.getFullYear() + '-' + month + '-' + day;
 		}
 		function stringToDate(value) {
-	        return new Date(Number(value.split('-')[0]),Number(value.split('-')[1])-1,Number(value.split('-')[2]));
+	        return new Date(Number(value.split('-')[0]),Number(value.split('-')[1]),Number(value.split('-')[2]));
 		}
 	</script>
 
