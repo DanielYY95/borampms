@@ -56,7 +56,9 @@
                                 <div class="text-center">
                                     <h1 class="text-error">4<i class="mdi mdi-emoticon-sad"></i>4</h1>
                                     <h4 class="text-uppercase text-danger mt-3">페이지를 찾을 수 없음</h4>
-                                    <p class="text-muted mt-3">잘못된 URL 접근입니다. </p>
+                                    <p class="text-muted mt-3">잘못된 URL 접근입니다.<br>
+                                    	(로그인하지 않았거나 로그인 후, 프로젝트 목록에서 프로젝트를 <br>
+                                    	클릭하지 않고 프로젝트 접근 시 발생할 수 있습니다.) </p>
                                     <div class="mb-3 text-center">
 										관리자 문의: <span class="badge badge-outline-secondary rounded-pill">010-1111-2222</span>
 									
