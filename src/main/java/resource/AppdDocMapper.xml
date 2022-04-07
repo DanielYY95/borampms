@@ -39,7 +39,6 @@
 			</if>
             <if test='searchDocStauts !=null and searchDocStauts == "01"'>
             and ad_appd='결재대기'
-            and AD_ui_id=#{uiId}
             </if>
             <if test='searchDocStauts !=null and searchDocStauts == "02"'>
             and ad_appd='반려'

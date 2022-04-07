@@ -20,7 +20,7 @@
           <!-- App css -->
           <link href="${path}/tools/project_assets/css/icons.min.css" rel="stylesheet" type="text/css" />
           <link href="${path}/tools/project_assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-style"/>
-  
+
         <!-- SimpleMDE css -->
 		<link href="${path}/tools/main_assets/css/vendor/simplemde.min.css" rel="stylesheet" type="text/css" />
 		<link
@@ -130,9 +130,6 @@
 														</c:if>
 														<c:if test="${appdRowList.adAppd == '결재대기' && appdRowList.adWriter == sessionUserId }">
 															<button id="docList-btn2" type="button" class="btn btn-primary">수정</button>
-														</c:if>
-														<c:if test="${(appdRowList.adAppd == '결재대기' || appdRowList.adAppd == '반려' ) && appdRowList.adWriter == sessionUserId }">
-														<button id="docList-btn3" type="button" class="btn btn-primary">삭제</button>
 														</c:if>
 														<button id="docList-btn" type="button" class="btn btn-primary">글목록</button>
 		                                            </div>

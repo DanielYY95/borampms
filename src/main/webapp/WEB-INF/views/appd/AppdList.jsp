@@ -106,30 +106,30 @@
                                         <div class="page-aside-left">
                                         	<!-- 공유 문서함 -->
                                         	<h4 class="header-title">공유문서함</h4>
-											 <div id="jstree-2" class="jstree jstree-1 jstree-default" role="tree" aria-multiselectable="true" tabindex="0" aria-activedescendant="j1_2" aria-busy="false">
+											 <div id="jstree-2" class="jstree jstree-1 jstree-default" role="tree" aria-multiselectable="true" tabindex="0" aria-activedescendant="j1_1" aria-busy="false">
 											 	<ul class="jstree-container-ul jstree-children" role="group">
-											        <li role="none" id="j1_11" class="jstree-node jstree-open"><i class="jstree-icon jstree-ocl" role="presentation"></i>
-												        <a class="jstree-anchor" href="javascript:searchDocList('');" tabindex="-1" role="treeitem" aria-selected="false" aria-level="1" aria-expanded="true" id="j1_11_anchor"><i class="jstree-icon jstree-themeicon dripicons-folder text-warning jstree-themeicon-custom" role="presentation"></i>
+											        <li role="none" id="j1_2" class="jstree-node jstree-open"><i class="jstree-icon jstree-ocl" role="presentation"></i>
+												        <a class="jstree-anchor" href="javascript:searchDocList('');" tabindex="-1" role="treeitem" aria-selected="false" aria-level="1" aria-expanded="true" id="j1_2_anchor"><i class="jstree-icon jstree-themeicon dripicons-folder text-warning jstree-themeicon-custom" role="presentation"></i>
 												        	결재 문서함
 												       	</a>
 											       		<ul role="group" class="jstree-children" style="">
-											       			<li role="none" data-jstree="{ &quot;selected&quot; : true }" id="j1_12" class="jstree-node  jstree-leaf"><i class="jstree-icon jstree-ocl" role="presentation"></i>
-												       			<a class="jstree-anchor jstree-clicked" href="javascript:searchDocList('01');" tabindex="-1" role="treeitem" aria-selected="true" aria-level="2" id="j1_12_anchor"><i class="jstree-icon jstree-themeicon dripicons-folder text-warning jstree-themeicon-custom" role="presentation"></i>
+											       			<li role="none" data-jstree="{ &quot;selected&quot; : true }" id="j1_3" class="jstree-node  jstree-leaf"><i class="jstree-icon jstree-ocl" role="presentation"></i>
+												       			<a class="jstree-anchor jstree-clicked" href="javascript:searchDocList('01');" tabindex="-1" role="treeitem" aria-selected="true" aria-level="2" id="j1_3_anchor"><i class="jstree-icon jstree-themeicon dripicons-folder text-warning jstree-themeicon-custom" role="presentation"></i>
 												                결재대기
 												                </a>
 											                </li>
-											                <li role="none" data-jstree="{ &quot;selected&quot; : true }" id="j1_13" class="jstree-node  jstree-leaf"><i class="jstree-icon jstree-ocl" role="presentation"></i>
-												                <a class="jstree-anchor  jstree-clicked" href="javascript:searchDocList('02');" tabindex="-1" role="treeitem" aria-selected="true" aria-level="2" id="j1_13_anchor"><i class="jstree-icon jstree-themeicon dripicons-folder text-warning jstree-themeicon-custom" role="presentation"></i>
+											                <li role="none" data-jstree="{ &quot;selected&quot; : true }" id="j1_4" class="jstree-node  jstree-leaf"><i class="jstree-icon jstree-ocl" role="presentation"></i>
+												                <a class="jstree-anchor  jstree-clicked" href="javascript:searchDocList('02');" tabindex="-1" role="treeitem" aria-selected="true" aria-level="2" id="j1_4_anchor"><i class="jstree-icon jstree-themeicon dripicons-folder text-warning jstree-themeicon-custom" role="presentation"></i>
 												                반려
 												                </a>
 											                </li>
-											                <li role="none" data-jstree="{ &quot;selected&quot; : true }" id="j1_14" class="jstree-node  jstree-leaf"><i class="jstree-icon jstree-ocl" role="presentation"></i>
-												       			<a class="jstree-anchor jstree-clicked" href="javascript:searchDocList('03');" tabindex="-1" role="treeitem" aria-selected="true" aria-level="2" id="j1_14_anchor"><i class="jstree-icon jstree-themeicon dripicons-folder text-warning jstree-themeicon-custom" role="presentation"></i>
+											                <li role="none" data-jstree="{ &quot;selected&quot; : true }" id="j1_5" class="jstree-node  jstree-leaf"><i class="jstree-icon jstree-ocl" role="presentation"></i>
+												       			<a class="jstree-anchor jstree-clicked" href="javascript:searchDocList('03');" tabindex="-1" role="treeitem" aria-selected="true" aria-level="2" id="j1_5_anchor"><i class="jstree-icon jstree-themeicon dripicons-folder text-warning jstree-themeicon-custom" role="presentation"></i>
 												                결재완료
 												                </a>
 											                </li>
-											                <li role="none" data-jstree="{ &quot;selected&quot; : true }" id="j1_15" class="jstree-node  jstree-leaf"><i class="jstree-icon jstree-ocl" role="presentation"></i>
-												                <a class="jstree-anchor  jstree-clicked" href="javascript:searchDocList('04');" tabindex="-1" role="treeitem" aria-selected="true" aria-level="2" id="j1_15_anchor"><i class="jstree-icon jstree-themeicon dripicons-folder text-warning jstree-themeicon-custom" role="presentation"></i>
+											                <li role="none" data-jstree="{ &quot;selected&quot; : true }" id="j1_6" class="jstree-node  jstree-leaf"><i class="jstree-icon jstree-ocl" role="presentation"></i>
+												                <a class="jstree-anchor  jstree-clicked" href="javascript:searchDocList('04');" tabindex="-1" role="treeitem" aria-selected="true" aria-level="2" id="j1_6_anchor"><i class="jstree-icon jstree-themeicon dripicons-folder text-warning jstree-themeicon-custom" role="presentation"></i>
 												                내 결재함
 												                </a>
 											                </li>
@@ -255,7 +255,7 @@
     </body>
 	<script>
 	/* 부서 공유문서함 클릭시 */
-	function searchDocList(type){
+	function searchDocList(type){	
 		console.log(type+"타입");
 		$('#searchDocStauts').val(type);
 		$('#frm01').submit();
