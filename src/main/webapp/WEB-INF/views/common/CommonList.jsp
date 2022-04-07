@@ -198,7 +198,7 @@
 		                                                        	<c:forEach var="commondoc" items="${cdList}">
 		                                                            <tr>
 		                                                                <td onclick="detail(${commondoc.cdId})">
-		                                                                    <span class="ms-2 fw-semibold">${commondoc.cdId}</span>
+		                                                                    <span class="ms-2 fw-semibold">${commondoc.cnt}</span>
 		                                                                </td>
 		                                                                <td onclick="detail(${commondoc.cdId})">
 		                                                                    <span class="font-12"><a href="javascript: void(0);" class="text-reset">${commondoc.cdTitle}</a></span>

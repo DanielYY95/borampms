@@ -5,7 +5,7 @@ import java.util.Date;
 
 import org.springframework.web.multipart.MultipartFile;
 public class CommonDoc {
-
+	private int cnt;
 	private String cdId;
 	private String cdTitle;
 	private String cdWriter;
@@ -17,6 +17,7 @@ public class CommonDoc {
 	private MultipartFile[] report;
 	// 파일 정보 한번에 로딩
 	private ArrayList<String> fnames;
+	
 	public CommonDoc() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -140,5 +141,17 @@ public class CommonDoc {
 	public void setFnames(ArrayList<String> fnames) {
 		this.fnames = fnames;
 	}
+
+
+	public int getCnt() {
+		return cnt;
+	}
+
+
+	public void setCnt(int cnt) {
+		this.cnt = cnt;
+	}
+
+	
 	
 }
