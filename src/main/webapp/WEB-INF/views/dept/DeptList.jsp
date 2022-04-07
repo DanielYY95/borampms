@@ -199,7 +199,7 @@
 		                                                        	<c:forEach var="deptdoc" items="${ddList}">
 		                                                            <tr>
 		                                                                <td onclick="detail(${deptdoc.ddId})">
-		                                                                    <span class="ms-2 fw-semibold">${deptdoc.ddId}</span>
+		                                                                    <span class="ms-2 fw-semibold">${deptdoc.cnt}</span>
 		                                                                </td>
 		                                                                <td onclick="detail(${deptdoc.ddId})">
 		                                                                    <span class="font-12"><a href="javascript: void(0);" class="text-reset">${deptdoc.ddTitle}</a></span>

@@ -6,7 +6,7 @@ import java.util.Date;
 import org.springframework.web.multipart.MultipartFile;
 
 public class DeptDoc {
-
+	private int cnt;
 	private String ddId;
 	private String ddTitle;
 	private String ddWriter;
@@ -141,6 +141,17 @@ public class DeptDoc {
 	public void setFnames(ArrayList<String> fnames) {
 		this.fnames = fnames;
 	}
+
+
+	public int getCnt() {
+		return cnt;
+	}
+
+
+	public void setCnt(int cnt) {
+		this.cnt = cnt;
+	}
+	
 }
 
 	
