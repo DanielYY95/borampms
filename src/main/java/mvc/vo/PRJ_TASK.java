@@ -21,6 +21,12 @@ public class PRJ_TASK {
 	
 	
 	
+	public PRJ_TASK(String ptId, String uiDept, String uiName) {
+		super();
+		this.ptId = ptId;
+		this.uiName = uiName;
+		this.uiDept = uiDept;
+	}
 	public String getUiName() {
 		return uiName;
 	}

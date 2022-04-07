@@ -4,9 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import mvc.vo.PRJ_TASK;
-import mvc.vo.TASK_CHECK;
-import mvc.vo.TASK_GUIDE;
-import mvc.vo.TASK_HISTORY;
 import mvc.vo.TASK_OUTPUT;
 import mvc.vo.Task_User;
 import mvc.vo.USER_INFO;
@@ -58,42 +55,8 @@ public interface TaskDetailDao {
 	public void deleteOutput(String toFile);
 	
 	
-	// (5) 가이드
-		// 1. 가이드 내용 등록
-	public void insertGuide(PRJ_TASK task);
-		
-		// 2. 가이드 내용 수정
-	public void updateGuide(PRJ_TASK task);
-	
-		// 3. 체크 사항 등록
-	public void insertCheck(TASK_CHECK check);
-	
-		// 4. 체크 사항 수정
-	public void updateCheck(TASK_CHECK check);
-	
-		// 5. 체크 사항 삭제
-	public void deleteCheck(String tcId);
-	
-		// 6. 첨부파일 추가
-	public void insertGuideFile(TASK_GUIDE guide);
-	
-		// 7. 첨부파일 삭제
-	public void deleteGuideFIle(String tgId);
-	
-	
-	// (6) 히스토리
-		// 1. 히스토리 등록
-	public void insertHistory(TASK_HISTORY history);
-	
-		// 2. 히스토리 조회
-	public ArrayList<TASK_HISTORY> getHistoryList(String ptId);
-	
-		// 3. 히스토리 수정
-	public void updateHistory(TASK_HISTORY history);
-	
-		// 4. 히스토리 삭제
-	public void deleteHistory(String thId);
-	
+	// 업무담당자인지 확인
+	public int chargeChk(PRJ_TASK task);
 	
 	
 }

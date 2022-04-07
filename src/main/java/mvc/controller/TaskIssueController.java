@@ -13,14 +13,20 @@ import com.google.gson.Gson;
 
 import mvc.method.SessionMethod;
 import mvc.service.IssueService;
+import mvc.service.TaskDetailService;
 import mvc.vo.IssueSch;
+import mvc.vo.PRJ_TASK;
 import mvc.vo.TASK_ISSUE;
+import mvc.vo.USER_INFO;
 
 @Controller
 @RequestMapping("/issue.do")
 public class TaskIssueController {
 	@Autowired
 	private IssueService service;
+	
+	@Autowired
+	private TaskDetailService tservice;
 	
 	@Autowired
 	private SessionMethod smethod; // 세션 값 가져오는 메서드
@@ -35,7 +41,10 @@ public class TaskIssueController {
 		Gson gson = new Gson();
 		String jsonlist = gson.toJson(service.getIssueList(sch));
 		
-		
+		String ptId = smethod.getPtid(request);
+		USER_INFO user = smethod.getUserSession(request);
+		PRJ_TASK task = new PRJ_TASK(ptId, user.getUiDept(), user.getUiName());
+		d.addAttribute("chargeChk", tservice.chargeChk(task));
 		
 		d.addAttribute("issuelist", service.getIssueList(sch));
 		d.addAttribute("jsonlist", jsonlist);

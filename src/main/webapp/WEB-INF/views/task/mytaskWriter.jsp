@@ -289,7 +289,8 @@
 	                    </div>
 	
 	                    <div class="modal-body">
-	                        <form id="regForm" class="ps-3 pe-3" action="${path}/task.do?method=insert" method="post">                               
+	                        <form id="regForm" class="ps-3 pe-3" action="${path}/task.do?method=insert" method="post">
+	                        	<input type="hidden" name="uiId" value="${user_info.uiId }">                  
 	                            <div class="mb-3">
 	                                <label for="username" class="form-label">제목</label>
 	                                <input name="ptTitle" class="form-control"  required="" placeholder="제목을 입력해주세요">
@@ -309,45 +310,45 @@
 	                            <!-- Multiple Select -->
 	                            <div class="mb-3 position-relative">
 	                                <label class="form-label">업무담당자</label>
-	                               <select id="chargeUpt"  name="ptCharge" class="select2 form-control select2-multiple" value="${taskUser.ptCharge}" required="" data-toggle="select2" multiple="multiple" data-placeholder="업무담당자 지정">
-								      	<optgroup label="개발1팀">
-									        <option value="개발1팀 양초명">개발1팀 양초명</option>
-									        <option value="개발1팀 조민혁">개발1팀 조민혁</option>
-
-									    </optgroup>
-									      	<optgroup label="개발2팀">
-									        <option value="개발2팀 한가람">개발2팀 한가람</option>
-									        <option value="개발2팀 김효은">개발2팀 김효은</option>
-									        <option value="개발2팀 전지원">개발2팀 전지원</option>
-
-										    </optgroup>
-										    
-										     <optgroup label="인사팀">
-
-										        <option value="인사팀 김소월">인사팀 양초명</option>
-										        <option value="인사팀 한가람">인사팀 한가람</option>
-										        <option value="인사팀 김효은">인사팀 김효은</option>
-										    </optgroup>
-										    
-										    <optgroup label="기획팀">
-										        <option value="기획팀 조민혁">기획팀 양현수</option>
-										        <option value="기획팀 전지원">기획팀 전지원</option>
-										    </optgroup>
+	                                <select id="chargeUpt"  name="ptCharge" class="select2 form-control select2-multiple" value="${taskUser.ptCharge}" required="" data-toggle="select2" multiple="multiple" data-placeholder="업무담당자 지정">
+											<optgroup label="개발1팀">
+											<option value="개발1팀 양초명">개발1팀 양초명</option>
+											<option value="개발1팀 조민혁">개발1팀 조민혁</option>
+										
+										</optgroup>
+											  <optgroup label="개발2팀">
+											<option value="개발2팀 한가람">개발2팀 한가람</option>
+											<option value="개발2팀 김효은">개발2팀 김효은</option>
+											<option value="개발2팀 전지원">개발2팀 전지원</option>
+										
+										</optgroup>
+										
+										 <optgroup label="인사팀">
+										
+											<option value="인사팀 김소월">인사팀 양초명</option>
+											<option value="인사팀 한가람">인사팀 한가람</option>
+											<option value="인사팀 김효은">인사팀 김효은</option>
+										</optgroup>
+										
+										<optgroup label="기획팀">
+											<option value="기획팀 조민혁">기획팀 양현수</option>
+											<option value="기획팀 전지원">기획팀 전지원</option>
+										</optgroup>
+										
+										<optgroup label="디자인팀">
+											<option value="디자인팀 조민혁">디자인팀 조민혁</option>
+											<option value="디자인팀 전지원">디자인팀 전지원</option>
+										</optgroup>
+										
+										
+										<optgroup label="마케팅팀">
+											<option value="마케팅팀 양초명">마케팅팀 양초명</option>
+											<option value="마케팅팀 양현수">마케팅팀 양현수</option>
 										   
-										    <optgroup label="디자인팀">
-										        <option value="디자인팀 조민혁">디자인팀 조민혁</option>
-										        <option value="디자인팀 전지원">디자인팀 전지원</option>
-										    </optgroup>
-										   
-										   
-										    <optgroup label="마케팅팀">
-										        <option value="마케팅팀 양초명">마케팅팀 양초명</option>
-										        <option value="마케팅팀 양현수">마케팅팀 양현수</option>
-										       
-
-										    </optgroup>
-										   
-										 
+										
+										</optgroup>
+										
+										
 										</select>
 	                            </div>
 	                            
@@ -362,23 +363,21 @@
 	                                    </select>
 	                                </div>
 	                                <div class="mb-3" style="width: 30%;">
-	                                    <label for="example-select" class="form-label">분류</label>
-	                                   <select class="form-select" id="example-select" value="${taskUser.ptType}" name="ptType">
-                                            <option>기획</option>
-                                            <option>설계</option>
-                                            <option>개발</option>
-                                            <option>구현</option>
-                                            <option>테스트</option> 
-                                            <option>점검</option> 
-                                     
-                                        </select>
+	                                   <label for="example-select" class="form-label">분류</label> 
+											<select class="form-select" id="example-select" name="ptType" value="">
+												<option>기획</option>
+												<option>설계</option>
+												<option>개발</option>
+												<option>구현</option>
+												<option>테스트</option>
+												<option>점검</option>
+											</select>
 	                                </div>	
 	                                <div class="mb-3" style="width: 30%;">
 	                                    <label for="example-select" class="form-label">진행상태</label>
 	                                    <select class="form-select" id="example-select" name="ptStatus">
 	                                        <option>진행 전</option>
 	                                        <option>진행 중</option>
-	                       
 	                                        <option>보류</option>
 	                                        <option>완료</option>
 	                                    </select>
@@ -400,6 +399,7 @@
 	        </div><!-- /.modal -->
 	    </div> <!-- /.tab-panel -->
 	</div> <!-- /.tab-content -->
+			
 			
 	
 <script>
@@ -456,61 +456,61 @@
 		}
 	
 
-	
-	// 업무 등록
-	$("#regBtn").click(function() {
-		if(confirm("등록하시겠습니까?")) {
-			if($("[name=ptTitle]").val() == "") {
-				alert("제목을 작성해주세요.");
-			} else if($("[name=ptCharge]").val() == "" || $("[name=ptCharge]").val() == null) {
-				alert("업무담당자를 지정해주세요.");			
-			} else if($("[name=ptStartdate]").val() == "" || $("[name=ptStartdate]").val() == null) {
-				alert("업무 시작일을 지정해주세요.");
-			} else if($("[name=ptDuedate]").val() == "" || $("[name=ptDuedate]").val() == null) {
-				alert("업무 마감일을 지정해주세요.");
-			} else if($("[name=ptContent]").val() == "" || $("[name=ptContent]").val() == null) {
-				alert("업무 마감일을 지정해주세요.");
-			} else {
-				$("#regForm").submit();
+
+		// 업무 등록
+		$("#regBtn").click(function() {
+			if(confirm("등록하시겠습니까?")) {
+				if($("#regForm").find("[name=ptTitle]").val() == "") {
+					alert("제목을 작성해주세요.");
+				} else if($("#regForm").find("[name=ptCharge]").val() == "" || $("#regForm").find("[name=ptCharge]").val() == null) {
+					alert("업무담당자를 지정해주세요.");			
+				} else if($("#regForm").find("[name=ptStartdate]").val() == "" || $("#regForm").find("[name=ptStartdate]").val() == null) {
+					alert("업무 시작일을 지정해주세요.");
+				} else if($("#regForm").find("[name=ptDuedate]").val() == "" || $("#regForm").find("[name=ptDuedate]").val() == null) {
+					alert("업무 마감일을 지정해주세요.");
+				} else if($("#regForm").find("[name=ptContent]").val() == "" || $("#regForm").find("[name=ptContent]").val() == null) {
+					alert("업무 내용을 입력해주세요.");
+				} else {
+					$("#regForm").submit();
+				}
 			}
+		});
+		
+		
+		
+		
+		// 유효성 검증
+		// 1. 업무 등록
+		$("#regForm").find("[name=ptTitle]").keyup(function(){
+		    if($(this).val().length>30){
+		        alert("제목은 최대 30자까지 작성가능합니다.");
+		        $(this).val($(this).val().substring(0,29));
+		    }
+		});
+				
+		let newDateOptions = {
+		        year: "numeric",
+		        month: "2-digit",
+		        day: "2-digit"
 		}
-	});
-	
-	
-	
-	
-	// 유효성 검증
-	// 1. 업무 등록
-	$("[name=ptTitle]").change(function(){
-	    if($(this).val().length>30){
-	        alert("제목은 최대 30자까지 작성가능합니다.");
-	        $(this).val($(this).val().substring(0,29));
-	    }
-	});
-			
-	let newDateOptions = {
-	        year: "numeric",
-	        month: "2-digit",
-	        day: "2-digit"
-	}
-	
-	$("[name=ptStartdate]").change(function(){
-	  
-	
-	    if($("[name=ptStartdate]").val()>$("[name=ptDuedate]").val() && $("[name=ptDuedate]").val()!=""){
-	        alert("시작일은 마감일보다 이후로 설정할 수 없습니다.");
-	        $(this).val('');
-	    }
-	});
-	
-	$("[name=ptDuedate]").change(function(){
-	  
-	    if($("[name=ptStartdate]").val()>$("[name=ptDuedate]").val()){
-	        alert("마감일은 시작일보다 이전으로 설정할 수 없습니다.");
-	        $(this).val('');
-	    }
-	});
-	
+		
+		$("#regForm").find("[name=ptStartdate]").change(function(){
+		 
+		
+		    if($("#regForm").find("[name=ptStartdate]").val()>$("#regForm").find("[name=ptDuedate]").val() && $("#regForm").find("[name=ptDuedate]").val()!=""){
+		        alert("시작일은 마감일보다 이후로 설정할 수 없습니다.");
+		        $(this).val('');
+		    }
+		});
+		
+		$("#regForm").find("[name=ptDuedate]").change(function(){
+		
+		    if($("#regForm").find("[name=ptStartdate]").val()>$("#regForm").find("[name=ptDuedate]").val()){
+		        alert("마감일은 시작일보다 이전으로 설정할 수 없습니다.");
+		        $(this).val('');
+		    }
+		});
+		
 	
 	
     

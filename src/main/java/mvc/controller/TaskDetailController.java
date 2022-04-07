@@ -101,6 +101,7 @@ public class TaskDetailController {
 	public String taskIssue() {
 		
 		
+		
 		return "task//Issue";
 	}
 	
@@ -110,7 +111,11 @@ public class TaskDetailController {
 	public String toFrm(HttpServletRequest request, Model d) {
 		
 		String ptId = smethod.getPtid(request);
+		USER_INFO user = smethod.getUserSession(request);
+		PRJ_TASK task = new PRJ_TASK(ptId, user.getUiDept(), user.getUiName());
+		d.addAttribute("chargeChk", service.chargeChk(task));
 		d.addAttribute("outputList", service.getOutputList(ptId));
+		
 		
 		return "task//taskOutput";
 	}

@@ -178,7 +178,7 @@
 
                                                             <div class="modal-header">
                                                             	
-                                                                <h4>업무정보</h4>                                                                
+                                                                <h4>업무정보 <small style="color:red;">※ 업무등록자만 수정, 삭제 가능합니다.</small></h4>                                                                
                                                             	<button class="btn btn-primary float-end" id="listBtn" type="button">글 목록</button>
                                                             </div>
             

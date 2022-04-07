@@ -155,7 +155,7 @@
 	
 	</select>
 	
-	<delete id="deleteOutput" parameterType="String">
+	<delete id="deleteOutput" parameterType="string">
 	
 		DELETE FROM TASK_OUTPUT to2 WHERE TO_FILE = #{toFile}
 	
@@ -196,6 +196,14 @@
 		WHERE UI_ID = #{uiId}
 		and UI_PW = #{uiPw}
 		
+	</select>
+	
+	<select id="chargeChk" parameterType="task" resultType="int">
+		SELECT count(*)
+		from PRJ_TASK
+		where  PT_CHARGE LIKE '%' || #{uiDept} || ' ' || #{uiName} || '%'
+		and PT_ID = #{ptId}
+	
 	</select>
 	
 

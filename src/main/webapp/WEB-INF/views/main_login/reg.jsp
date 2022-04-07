@@ -145,7 +145,7 @@
                                 <form id="regForm" method="post" action="${path}/regUser.do?method=insert">
 
                                     <div class="mb-3">
-                                        <label for="id" class="form-label">아이디</label>
+                                        <label for="id" class="form-label">아이디<small>(중복 확인 후, 수정 불가합니다.)</small></label>
                                         <button style="float:right" class="btn btn-dark" type="button" onclick="idchk()">중복 확인</button>
                                         <input class="form-control" type="text" id="id" name="uiId" placeholder="영소문자로 시작해서 숫자, 영소문자로 4자 ~ 20자" required>
                                     </div>
@@ -270,7 +270,7 @@
             <script>document.write(new Date().getFullYear())</script> BORAM3 PMS
         </footer>
 
-        <!-- bundle -->
+        <!-- bundle --> 
         <script src="${path}/tools/main_assets/js/vendor.min.js"></script>
         <script src="${path}/tools/main_assets/js/app.min.js"></script>
         <script>
@@ -281,7 +281,7 @@
 
             // 패스워드 확인 => 패스워드 확인 작성 후, 패스워드 
             // 패스워드를 지웠을 경우, 초기화 (""가 되면 초기화되도록)
-
+ 
             // 패스워드 확인 작업
             	// 일치하다는 것을 확인후, 내용을 지우면 일치하지않음이 정상적으로 나온다.
             	// 문제: 패스워드 확인을 갑자기 확 지우면 메시지가 안 지워진다....
@@ -336,6 +336,12 @@
                 	 return; 
                 	 
                  }
+                 
+                 if($("[name=phone2]").val().trim()=="" || $("[name=phone3]").val().trim()==""){
+                	 alert("연락처를 입력해주세요.");
+                	 return false;
+                	 
+                 }
             	
 
                 // 연락처 숫자 아니면 거르기
@@ -376,7 +382,7 @@
             
             function checkId(Id){ 
             		// 영문자로 시작해서 영어, 숫자로만 4~20글자 // ""를 하면 함수가 아니라고 에러
-            	let regId = /^[A-Za-z]{1}[A-Za-z0-9]{4,20}$/;
+            	let regId = /^[A-Za-z]{1}(?=.*[A-Za-z])(?=.*[0-9]).{3,19}$/;
             		  if(!regId.test(Id)) {                            
     			          return false;         
     			     }                            	

@@ -129,7 +129,7 @@
 
                                                                 <div class="modal-header">
 
-                                                                    <h4>업무 산출물</h4>
+                                                                    <h4>업무 산출물 <small style="color:red;">※ 업무담당자만 등록 가능합니다.</small></h4>
 																	<button class="btn btn-primary float-end" id="listBtn" type="button">글 목록</button>
                                                                 </div>
 
@@ -137,6 +137,7 @@
                                                                     <!-- ### 파일업로드 File Upload -->
                                                                     <div class="container">
                                                                     	 
+                                                                    	 <c:if test="${chargeChk eq 1}">
 	                                                                        <form method="post"
 	                                                                            enctype="multipart/form-data"
 	                                                                            action="${path}/toInsert.do">
@@ -166,6 +167,8 @@
 	
 	                                                                            </div>
 	                                                                        </form>
+                                                                        </c:if>
+                                                                        
                                                                         
                                                                     </div>
 

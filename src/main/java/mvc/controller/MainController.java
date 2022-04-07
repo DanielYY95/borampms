@@ -119,7 +119,7 @@ public class MainController {
 		return "main_login/addPrj";
 	}
 	
-	@PostMapping("/insertPrj.do")
+	@PostMapping("/insertPrj.do") 
 	public String insertPrj(PRJ_INFO sch) {
 		
 		service.insertPrj(sch);

@@ -128,7 +128,7 @@ public class UserService {
 					+ "임시비밀번호: <span style='font-weight: 700'>"
 					+tempPw +"</span>"
 					+ "<br><br> BORAM3 PMS로 "
-					+ "<a href='http://3.35.208.23:8080/borampms/'>이동</a>";
+					+ "<a href='http://14.33.134.85:7090/borampms/main.do'>이동</a>";
 			
 		
 			email.setContent(content);

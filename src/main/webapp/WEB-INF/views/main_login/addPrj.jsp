@@ -223,7 +223,8 @@
 	});
 	
 
-    $("#alarm").hide();
+    $("#alarmLogo").hide();
+    
 	
 </script>
 

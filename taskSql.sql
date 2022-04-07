@@ -6,7 +6,7 @@
 
 -- 수정과 삭제를 위해서는 고유번호가 반드시 필요하다...
 
-
+SELECT * FROM TASK_OUTPUT to2;
 
 SELECT * FROM calendar;
 
@@ -75,6 +75,10 @@ SELECT TO_CHAR(PI_REGDATE,'YYYY-MM-DD') FROM PRJ_INFO pi2;
 
 SELECT  * FROM DEPT_INFO di;
 
+SELECT count(*)
+from PRJ_TASK
+where  PT_CHARGE LIKE '%' || #{uiDept} || ' ' || #{uiName} || '%'
+and PT_ID = #{ptId}
 
 
 CREATE TABLE PRJ_TASK (

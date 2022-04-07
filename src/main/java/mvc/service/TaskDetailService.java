@@ -232,6 +232,12 @@ public class TaskDetailService {
 		return dao.pwChk(sch);
 	};
 	
+	// 6. 업무 담당자 확인
+	public int chargeChk(PRJ_TASK task) {
+		
+		return dao.chargeChk(task);
+	};
+	
 	
 	
 }

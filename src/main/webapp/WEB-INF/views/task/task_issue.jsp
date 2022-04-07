@@ -102,10 +102,13 @@
 
 
 					<div class="row">
-						<div class="col-12">
+						<div class="col-10 mx-auto">
 							<div class="card">
 								<div class="card-body" id="form-card-body">
-									<div class="card-title" id="card-title-reg"><h4>이슈 등록</h4></div>
+									<div class="card-title row" id="card-title-reg">
+										<h4>업무 이슈 <small style="color:red;">※ 업무담당자만 등록 가능합니다.</small></h4>
+										
+										</div>
 								
 									<form class="row gy-2 gx-2 align-items-center justify-content-between"
 										id="isSchForm" method="post" action="${path}/issue.do?method=list">
@@ -116,76 +119,80 @@
 								
 									<!-- end nav-->
 									<div class="tab-content">	
-										<form id="isRegForm" method="post">	
-										<div class="row justify-content-between">	
-											
-											<input type="hidden" name="tiWriter" value="${user_info.uiName }"/>	
-											
-											<div class="col">
-												<label class="form-label col-form-label">이슈 내용</label>
-												<input class="form-control" placeholder="이슈 내용" name="tiContent" required/>
-											</div>
-											<div class="col">
-												<label class="form-label col-form-label">담당자</label>
-											<select id="chargeUpt"  name="tiCharge" class="select2 form-control select2-multiple"
-												 required="" data-toggle="select2" multiple="multiple" data-placeholder="업무담당자 지정">
-												<optgroup label="개발1팀">
-											    <option value="개발1팀 양초명">개발1팀 양초명</option>
-											    <option value="개발1팀 조민혁">개발1팀 조민혁</option>
-											
-											</optgroup>
-											  	<optgroup label="개발2팀">
-											    <option value="개발2팀 한가람">개발2팀 한가람</option>
-											    <option value="개발2팀 김효은">개발2팀 김효은</option>
-											    <option value="개발2팀 전지원">개발2팀 전지원</option>
-											
-											</optgroup>
-											
-											 <optgroup label="인사팀">
-											
-											    <option value="인사팀 양초명">인사팀 양초명</option>
-											    <option value="인사팀 한가람">인사팀 한가람</option>
-											    <option value="인사팀 김효은">인사팀 김효은</option>
-											</optgroup>
-											
-											<optgroup label="기획팀">
-											    <option value="기획팀 양현수">기획팀 양현수</option>
-											    <option value="기획팀 전지원">기획팀 전지원</option>
-											</optgroup>
-											
-											<optgroup label="디자인팀">
-											    <option value="디자인팀 조민혁">디자인팀 조민혁</option>
-											    <option value="디자인팀 전지원">디자인팀 전지원</option>
-											</optgroup>
-											
-											
-											<optgroup label="마케팅팀">
-											    <option value="마케팅팀 양초명">마케팅팀 양초명</option>
-											    <option value="마케팅팀 양현수">마케팅팀 양현수</option>
-								
-											</optgroup>
-											
-											
-											</select>
-											</div>
-											<div class="col">
-												<label class="form-label col-form-label">우선순위</label>
-												<select class="form-control" name="tiPriority" required>
-													<option value="">우선순위</option>
-													<option value="중요">중요</option>
-													<option value="보통">보통</option>
-													<option value="낮음">낮음</option>
-												</select>
-											</div>
-											<div class="col">
-												<label class="form-label col-form-label">마감일</label>
-												<input class="form-control" type="date" name="tiDuedate" required/>
-											</div>
-											<div class="d-grid gap-2 col-sm-2 col-lg-1 float-end">
-												<button type="button" class="btn btn-primary" id="isRegFormBtn">등록</button>
-											</div>
-										</div>
-										</form>
+										<c:if test="${chargeChk eq 1}">
+											<form id="isRegForm" method="post">	
+												<div class="row justify-content-between">	
+													
+													<input type="hidden" name="tiWriter" value="${user_info.uiName }"/>	
+													
+													<div class="col">
+														<label class="form-label col-form-label">이슈 내용</label>
+														<input class="form-control" placeholder="이슈 내용" name="tiContent" required/>
+													</div>
+													<div class="col">
+														<label class="form-label col-form-label">담당자</label>
+													<select id="chargeUpt"  name="tiCharge" class="select2 form-control select2-multiple"
+														 required="" data-toggle="select2" multiple="multiple" data-placeholder="업무담당자 지정">
+														<optgroup label="개발1팀">
+													    <option value="개발1팀 양초명">개발1팀 양초명</option>
+													    <option value="개발1팀 조민혁">개발1팀 조민혁</option>
+													
+													</optgroup>
+													  	<optgroup label="개발2팀">
+													    <option value="개발2팀 한가람">개발2팀 한가람</option>
+													    <option value="개발2팀 김효은">개발2팀 김효은</option>
+													    <option value="개발2팀 전지원">개발2팀 전지원</option>
+													
+													</optgroup>
+													
+													 <optgroup label="인사팀">
+													
+													    <option value="인사팀 양초명">인사팀 양초명</option>
+													    <option value="인사팀 한가람">인사팀 한가람</option>
+													    <option value="인사팀 김효은">인사팀 김효은</option>
+													</optgroup>
+													
+													<optgroup label="기획팀">
+													    <option value="기획팀 양현수">기획팀 양현수</option>
+													    <option value="기획팀 전지원">기획팀 전지원</option>
+													</optgroup>
+													
+													<optgroup label="디자인팀">
+													    <option value="디자인팀 조민혁">디자인팀 조민혁</option>
+													    <option value="디자인팀 전지원">디자인팀 전지원</option>
+													</optgroup>
+													
+													
+													<optgroup label="마케팅팀">
+													    <option value="마케팅팀 양초명">마케팅팀 양초명</option>
+													    <option value="마케팅팀 양현수">마케팅팀 양현수</option>
+										
+													</optgroup>
+													
+													
+													</select>
+													</div>
+													<div class="col">
+														<label class="form-label col-form-label">우선순위</label>
+														<select class="form-control" name="tiPriority" required>
+															<option value="">우선순위</option>
+															<option value="중요">중요</option>
+															<option value="보통">보통</option>
+															<option value="낮음">낮음</option>
+														</select>
+													</div>
+													<div class="col">
+														<label class="form-label col-form-label">마감일</label>
+														<input class="form-control" type="date" name="tiDuedate" required/>
+													</div>
+													
+														<div class="d-grid gap-2 col-sm-2 col-lg-1 float-end">
+															<button type="button" class="btn btn-primary" id="isRegFormBtn">등록</button>
+														</div>
+													
+												</div>
+											</form>
+										</c:if>
 									</div>
 								</div>
 								<!-- end card-body-->

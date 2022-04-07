@@ -96,7 +96,7 @@
 
                                     <div class="mb-3 mb-3">
                                         <div class="form-check">
-                                            <input type="checkbox" name="saveId" class="form-check-input" id="checkbox-signin" checked>
+                                            <input type="checkbox" name="saveId" class="form-check-input" id="checkbox-signin">
                                             <label class="form-check-label" for="checkbox-signin"><spring:message code="rememberId"/></label>
                                             
                                         </div>
