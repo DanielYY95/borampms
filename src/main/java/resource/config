@@ -7,8 +7,8 @@ jdbc.pass=pms
 
 # 업로드할 파일 경로 설정
 
-upload=D:/upload/
-toUpload=D:/upload/
+upload=C:/upload/
+toUpload=C:/upload/
 
 
 ///// upload=C:/a01_javaexp/z01_upload/

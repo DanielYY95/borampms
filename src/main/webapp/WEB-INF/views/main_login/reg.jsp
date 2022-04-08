@@ -382,7 +382,7 @@
             
             function checkId(Id){ 
             		// 영문자로 시작해서 영어, 숫자로만 4~20글자 // ""를 하면 함수가 아니라고 에러
-            	let regId = /^[A-Za-z]{1}(?=.*[A-Za-z])(?=.*[0-9]).{3,19}$/;
+            	let regId = /^[a-z]{1}(?=.*[a-z])(?=.*[0-9]).{3,19}$/;
             		  if(!regId.test(Id)) {                            
     			          return false;         
     			     }                            	
