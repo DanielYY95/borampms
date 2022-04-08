@@ -122,7 +122,7 @@
 										<c:if test="${chargeChk eq 1}">
 											<form id="isRegForm" method="post">	
 												<div class="row justify-content-between">	
-													
+													<input type="hidden" name="tiId" />
 													<input type="hidden" name="tiWriter" value="${user_info.uiName }"/>	
 													
 													<div class="col">
@@ -130,7 +130,7 @@
 														<input class="form-control" placeholder="이슈 내용" name="tiContent" required/>
 													</div>
 													<div class="col">
-														<label class="form-label col-form-label">담당자</label>
+														<label class="form-label col-form-label" id="chargeMsg">담당자</label>
 													<select id="chargeUpt"  name="tiCharge" class="select2 form-control select2-multiple"
 														 required="" data-toggle="select2" multiple="multiple" data-placeholder="업무담당자 지정">
 														<optgroup label="개발1팀">
@@ -241,10 +241,10 @@
 															<td>${issue.tiDuedate }</td>
 															<td>
 																<c:if test="${issue.tiWriter eq user_info.uiId }">
-																	<a onclick="javascript:setUpt('${issue.tiId }')" class="action-icon">
+																	<a onclick="javascript:setUpt('${issue.tiId}')" class="action-icon">
 																		<i class="mdi mdi-square-edit-outline"></i>
 																	</a>
-																	<a onclick="javascript:setDel('${issue.tiId }')" class="action-icon">
+																	<a onclick="javascript:setDel('${issue.tiId}')" class="action-icon">
 																		<i class="mdi mdi-delete"></i>
 																	</a>
 																</c:if>
@@ -351,7 +351,7 @@
 				
 				$("[name=tiDuedate]").val(issueDetail.tiDuedate);
 				$("[name=tiId]").val(issueDetail.tiId);
-				
+				$("#chargeMsg").text("업무담당자(지정하지 않을 시, 기존값 유지)")
 		
 			}
 		});

@@ -26,8 +26,19 @@
 		 <!-- jquery 라이브러리 -->
 		 <script src="${path}/tools/jquery-3.6.0.js"></script>
  
+
+		<style>
+			.col{
+				padding-left: 0;
+			
+			}
+		
+		
+		</style>
 		
     </head>
+
+
 
 	
     <body class="loading" data-layout-color="light"  data-layout="topnav" data-layout-mode="fluid" data-rightbar-onstart="true">
@@ -75,64 +86,75 @@
                             <div class="col-12">
                                 <div class="card">
                                     <div class="card-body">
+                                    	<div class="row">
+                                    		  <div class="col-xl-12">
+                                                <div class="float-end  mt-2">
+                                                    <button id="newPrjBtn" type="button" class="btn btn-danger mb-2"><i class="mdi mdi-basket me-1"></i> 새 프로젝트 등록</button>
+                                                 
+                                                </div>
+                                            </div><!-- end col-->
+                                    	
+                                    	
+                                    	</div>
+                                    
+                                    
                                         <div class="row mb-2">
-                                            <div class="col-xl-9">
-                                                <form id="searchForm" action="${path}/mainSearchPrj.do"  method="post">
-                                                	
-                                                    <div class="row d-flex justify-content-between">
-                                                      <div class="d-flex col-5">
-                                                          <div class="">
-                                                         
-                                                            <label class="col-form-label p-1" style="width: 100px;" >프로젝트명</label>
-                                                          </div>
-                                                          <div class="">
-                                                            <input type="search" name="piTitle" class="form-control" id="search-word" placeholder="검색">
-                                                          </div>
-                                                          <div class="">
-                                                           <label class="col-form-label p-1" style="width: 100px;" >프로젝트상태</label>
-                                                          </div>
-                                                          <div class="">
-                                                            <select class="form-select" id="search-select" name="piStatus">
-                                                                <option value="" selected>전체</option>
-                                                                <option>진행 전</option>
-                                                                <option>진행 중</option>
-                                                                <option>보류</option>
-                                                                <option>완료</option>
-                                                            </select>
+                       
+                                            <div class="col-xl-12">
+                                                   
+                                                <form id="searchForm" action="${path}/mainSearchPrj.do" class="row gy-2 gx-2 align-items-center justify-content-between"  method="post">
+                                                
+                                                    
+                                                      <div class="col-auto">
+                                                     	 <div class="row gy-4">
+	                                                          <div class="col">
+	                                                         
+	                                                            <label class="p-1" style="width: 100px;" >프로젝트명</label>
+	                                                          </div>
+	                                                          <div class="col">
+	                                                            <input type="search" name="piTitle" class="form-control" id="search-word" placeholder="검색">
+	                                                          </div>
+	                                                          <div class="col">
+	                                                           <label class=" p-1" style="width: 100px;" >프로젝트상태</label>
+	                                                          </div>
+	                                                          <div class="col">
+	                                                            <select class="form-select" id="search-select" name="piStatus">
+	                                                                <option value="" selected>전체</option>
+	                                                                <option>진행 전</option>
+	                                                                <option>진행 중</option>
+	                                                                <option>보류</option>
+	                                                                <option>완료</option>
+	                                                            </select>
+	                                                          </div>
                                                           </div>
                                                       
                                                       </div>
-                                                      <div class="d-flex justify-content-between col-4">
-                                                          
-                                                          <div>
-                                                            <label for="startdate-form" class="col-form-label p-1" style="width: 60px;" >시작일</label>
-                                                          </div>
-                                                          <div>
-                                                            <input id="startdate-form" class="form-control" name="piStartdate" type="date" />
-                                                          </div>
-                                                          <div>
-                                                            <label for="duedate-form" class="col-form-label p-1" style="width: 60px;">마감일</label>
-                                                          </div>
-                                                          <div >
-                                                            <input id="duedate-form" class="form-control" name="piDuedate" type="date" />
-                                                          </div>
-       													 <div>
-															<button class="btn btn-primary" id="searchBtn" type="button">조회</button>
-														</div>
-        
-                                                      </div>
-                                                     
-                                                  </div>
+                                                      <div class="col-auto">
+                                                          <div class="row gy-5">
+	                                                          <div  class="col">
+	                                                            <label for="startdate-form" class="col-form-label p-1" style="width: 60px;" >시작일</label>
+	                                                          </div>
+	                                                          <div  class="col">
+	                                                            <input id="startdate-form" class="form-control" name="piStartdate" type="date" />
+	                                                          </div>
+	                                                          <div  class="col">
+	                                                            <label for="duedate-form" class="col-form-label p-1" style="width: 60px;">마감일</label>
+	                                                          </div>
+	                                                          <div  class="col">
+	                                                            <input id="duedate-form" class="form-control" name="piDuedate" type="date" />
+	                                                          </div>
+	       													 <div  class="col">
+																<button class="btn btn-primary" id="searchBtn" type="button">조회</button>
+															</div>
+	        
+	                                                      </div>
+                                                     </div>
+                                            
                                               </form>
                                             </div>
 
 
-                                            <div class="col-xl-3">
-                                                <div class="text-xl-end mt-xl-0 mt-2">
-                                                    <button id="newPrjBtn" type="button" class="btn btn-danger mb-2 me-2"><i class="mdi mdi-basket me-1"></i> 새 프로젝트 등록</button>
-                                                 
-                                                </div>
-                                            </div><!-- end col-->
+                                          
                                         </div>
 
                                         <div class="table-responsive">
