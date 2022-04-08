@@ -173,25 +173,13 @@
 	    	$('#userInfo_uiphon').text("연락처 : ");
 			let paramData = {
 					uiId : uiId,
-				}// 화면에서 입력한 값 = 저장할 값.
+				}
 				$.ajax({
 				    url:"${path}/teamUserInfo.do",
 				    type:"get",
 				    data: paramData,
 				    dataType:"json",
 				    success:function(data){
-					  /*uiBirth: "1995-01-23"
-			    		uiDept: "개발1팀"
-			    		uiEmail: "asrs02041@naver.com"
-			    		uiId: "daniel95"
-			    		uiIntro: null
-			    		uiName: "양초명"
-			    		uiPhone: "01011111111"
-			    		uiPic: null
-			    		uiPw: "1234"
-			    		uiRank: "실장"
-			    		uiRegDate: 1647997699000
-			    		uiStatus: "0" */
 				    	$('#userInfo_name'  ).text("이름  : "   +data.userInfo.uiName);
 				    	$('#userInfo_dept'  ).text("부서  : "   +data.userInfo.uiDept);
 				    	$('#userInfo_rank'  ).text("직급  : "   +data.userInfo.uiRank);

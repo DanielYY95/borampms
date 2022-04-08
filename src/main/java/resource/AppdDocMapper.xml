@@ -21,7 +21,7 @@
             and ad_appd = '결재완료'
             </if>
             <if test='searchDocStauts !=null and searchDocStauts == "04"'>
-            and AD_WRITER=#{uiId}
+            and AD_WRITER=#{uiId}	
             </if>
             <if test='searchDocStauts !=null and searchDocStauts == "05"'>
             and AD_UI_ID=#{uiId}

@@ -254,7 +254,7 @@
 		<script src="${path}/tools/main_assets/js/pages/demo.simplemde.js"></script>
     </body>
 	<script>
-	/* 부서 공유문서함 클릭시 */
+	
 	function searchDocList(type){	
 		console.log(type+"타입");
 		$('#searchDocStauts').val(type);
@@ -269,7 +269,7 @@
 		$("[name=curPage]").val(no);
 		$("#frm01").submit();
 	}
-	/* 클릭 시, ddId의 값을 controller에 요청값을 전달 */
+	/* 클릭 시, adId의 값을 controller에 요청값을 전달 */
 	function detail(adId){
 		location.href="${path}/appd.do?method=detail&adId="+adId;
 	}
