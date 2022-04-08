@@ -20,7 +20,7 @@
           <!-- App css -->
           <link href="${path}/tools/project_assets/css/icons.min.css" rel="stylesheet" type="text/css" />
           <link href="${path}/tools/project_assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-style"/>
-  
+
         <!-- SimpleMDE css -->
 		<link href="${path}/tools/main_assets/css/vendor/simplemde.min.css" rel="stylesheet" type="text/css" />
 		<link
@@ -195,14 +195,16 @@
 	$(document).ready(function(){
 		storage.removeItem("smde_simplemde1");
 	});
-
-	/* 부서문서 등록 처리 */
 	$(document).ready(function(){
 		$("#regBtn").click(function(){
 			if(confirm("등록하시겠습니까?")){
-				/* 제목란이 비어있을 경우 */
 				if($("[name=adTitle]").val()==""){
 					alert("제목은 필수항목입니다.")
+					$("[name=adTitle]").focus();
+					return;
+				}
+				if($("[name=adDept]").val()==""){
+					alert("부서는 필수항목입니다.")
 					$("[name=adTitle]").focus();
 					return;
 				}
@@ -212,14 +214,12 @@
 					return;
 				}
 				$("[name=adUiId]").val($("#selAdUiId option:selected").val());
-				/* 문서관리 페이지로 이동 */
 				if($("form").submit()){
 
 				}
 			}
 		});
 	});
-	/* 취소버튼 클릭시, 문서관리 페이지로 이동 */
 	$("#cancelBtn").click(function(){
 		alert("문서관리 페이지로 이동하시겠습니까?");
 		location.href="${path}/appd.do?method=list";
