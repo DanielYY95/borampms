@@ -95,6 +95,15 @@ CREATE TABLE PRJ_TASK (
 	PI_ID	VARCHAR2(20) REFERENCES prj_info(PI_ID)
 );
 
+SELECT * FROM NOTICE n ORDER BY NT_REGDATE;
+
+
+SELECT distinct ui.UI_ID, ui.UI_DEPT, ui.ui_Name, pt.PI_ID
+		FROM user_info ui, prj_task pt
+		WHERE ui.UI_ID = 'test123'
+		and pt.pi_id = 'PI00001'
+		and ui.ui_id = pt.ui_id; -- 프로젝트도 있어야하니까...
+
 
 SELECT * FROM prj_task;
 

@@ -220,6 +220,7 @@
 		<if test="ntType != null and ntType != ''">
 		and nt_type like '%'||#{ntType}||'%'
 		</if>
+		ORDER BY NT_REGDATE
 	</select>
 	<select id="getNoticeList" parameterType="notice" resultType="notice">
 		select *
@@ -236,6 +237,7 @@
 			</if>
 		)
 		where cnt between #{firstPage} and #{lastPage}
+		ORDER BY NT_REGDATE
 	</select>
 	
 	<!-- 공지사항 등록 -->

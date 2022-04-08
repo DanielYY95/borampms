@@ -28,10 +28,17 @@ public class myTaskController {
 		USER_INFO sch=  smethod.getUserSession(request);
 		String piId = smethod.getPiid(request);
 		
+	
 		ins.setUiId(sch.getUiId());
 		ins.setPiId(piId);
 		
 		Task_User user = service.getUser(ins); // 세션에있는 유저 vo객체의 id로 다시 한번 유저정보를 가져온다.
+		// null 값이면 처리해줘야한다.
+		if(user==null) {
+			
+			return "task/mytaskCharge";
+		}
+
 		ins.setUiName(user.getUiName());
 		ins.setUiDept(user.getUiDept());
 	

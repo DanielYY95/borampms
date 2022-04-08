@@ -120,7 +120,7 @@
 	                             </sec:authorize>
 	                            <sec:authorize access="isAuthenticated()">
 						
-	                           	 	<a href="/borampms/admin" class="text-muted float-end"><small><spring:message code="adminPage"/> -></small></a>
+	                           	 	<a href="/borampms/admin/" class="text-muted float-end"><small><spring:message code="adminPage"/> -></small></a>
 	                            </sec:authorize>
                             </div> <!-- end col -->
                         </div>

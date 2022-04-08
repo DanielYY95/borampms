@@ -511,7 +511,7 @@
 	});
  
  
-$("[name=title]").change(function(){
+$("[name=ptTitle]").change(function(){
     if($(this).val().length>30){
         alert("제목은 최대 30자까지 작성가능합니다.");
         $(this).val($(this).val().substring(0,29));
@@ -526,30 +526,19 @@ let newDateOptions = {
         day: "2-digit"
 }
 
-$("[name=startdate]").change(function(){
+$("[name=ptStartdate]").change(function(){
 
 
-    // 음.... 깜박하고 그런 경우에는...?
-    // if($("[name=startdate]").val()<new Date().toLocaleDateString("en-US", newDateOptions)){
-    //     alert("시작일은 오늘 전일로 설정할 수 없습니다.");
-    //     $(this).val('');
-    // }
-
-    if($("[name=startdate]").val()>$("[name=duedate]").val() && $("[name=duedate]").val()!=""){
+    if($("[name=ptStartdate]").val()>$("[name=ptDuedate]").val() && $("[name=ptDuedate]").val()!=""){
         alert("시작일은 마감일 과거일로 설정할 수 없습니다.");
         $(this).val('');
     }
 })
 
-$("[name=duedate]").change(function(){
+$("[name=ptDuedate]").change(function(){
     
-    // if($("[name=duedate]").val()<new Date().toLocaleDateString("en-US", newDateOptions)){
-    //     alert("마감일은 오늘 전일로 설정할 수 없습니다.");
-    //     $(this).val('');
-    // }
-
-
-    if($("[name=startdate]").val()>$("[name=duedate]").val()){
+ 
+    if($("[name=ptStartdate]").val()>$("[name=ptDuedate]").val()){
         alert("마감일은 시작일 과거일로 설정할 수 없습니다.");
         $(this).val('');
     }
