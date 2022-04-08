@@ -26,13 +26,11 @@ public class AppdDocController {
 
 	@RequestMapping(params="method=list")
 	public String adList(HttpServletRequest request, APPD_DOC_SCH sch, Model d) {
-
 		USER_INFO user=  smethod.getUserSession(request);
 		if(user == null) return "main_login//login";
 		sch.setUiId(user.getUiId());
 		d.addAttribute("adList", service.getADList(sch));
 		d.addAttribute("appdDocSch", sch);
-
 		return "appd\\AppdList";
 	}
 	// 초기 화면 호출
