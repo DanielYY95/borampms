@@ -106,8 +106,12 @@
 		<!-- 보안 관련 설정 --> 
 		<property name="javaMailProperties"> 
 			<props >
-				<prop key="mail.smtp.auth">true</prop> 
-				<prop key="mail.smtp.starttls.enable">true</prop> <!-- 구글인증에 tls 사용 -->
+				<prop key="mail.smtp.starttls.enable">true</prop>
+                <prop key="mail.smtp.auth">true</prop>
+                <prop key="mail.transport.protocol">smtp</prop>
+                <prop key="mail.debug">true</prop>
+                <prop key="mail.smtp.ssl.trust">smtp.gmail.com</prop>
+                <prop key="mail.smtp.ssl.protocols">TLSv1.2</prop>
 
 			</props > 
 		</property>
