@@ -106,7 +106,7 @@
 													</select>
 												</div>
 												<div class="col">
-													<input type="search" class="form-control" id="search-word" placeholder="Search...">
+													<input type="search" class="form-control" id="search-word" placeholder="내용을 입력하세요" style="width:180px;">
 												</div>
 											</div>
 										</div>
@@ -204,7 +204,7 @@
 												  	</c:forEach>
 												  	<li class="page-item">
 												  		<a class="page-link"
-												  			href="javascript:goPage(${taskSch.firstBlock != taskSch.pageCount ? taskSch.lastBlock+1 : taskSch.lastBlock})">Next</a>
+												  			href="javascript:goPage(${taskSch.lastBlock != taskSch.pageCount ? taskSch.lastBlock+1 : taskSch.lastBlock})">Next</a>
 												  	</li>
 												</ul>
 											</div>
@@ -497,18 +497,18 @@
 	        day: "2-digit"
 	}
 	
-	$("[name=ptStartdate]").change(function(){
+	$("#regForm [name=ptStartdate]").change(function(){
 	 
 	
-	    if($("[name=ptStartdate]").val()>$("[name=ptDuedate]").val() && $("[name=ptDuedate]").val()!=""){
+	    if($("#regForm [name=ptStartdate]").val()>$("#regForm [name=ptDuedate]").val() && $("#regForm [name=ptDuedate]").val()!=""){
 	        alert("시작일은 마감일보다 이후로 설정할 수 없습니다.");
 	        $(this).val('');
 	    }
 	});
 	
-	$("[name=ptDuedate]").change(function(){
+	$("#regForm [name=ptDuedate]").change(function(){
 	
-	    if($("[name=ptStartdate]").val()>$("[name=ptDuedate]").val()){
+	    if($("#regForm [name=ptStartdate]").val()>$("#regForm [name=ptDuedate]").val()){
 	        alert("마감일은 시작일보다 이전으로 설정할 수 없습니다.");
 	        $(this).val('');
 	    }

@@ -185,6 +185,7 @@
 		
 		// 해당 업무가 표시된다. 
 			// 적용됬다가 말았다가 하는 문제..?
+					
 		$(function(){
 		 	$("[task_id=${prj_task.ptId}]").click();
 			console.log($("[task_id=${prj_task.ptId}]"));
@@ -195,7 +196,7 @@
 		function getData(){
 			let paramData = [];
 			$.ajax({
-			    url:"${path}/schGanttJson.do",
+				url:"${path}/schGanttJson.do",
 			    type:"get",
 			    // data:schdata, => 파라미터 넣을곳
 			    dataType:"json",

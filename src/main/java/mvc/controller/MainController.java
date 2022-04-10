@@ -53,7 +53,7 @@ public class MainController {
 	@RequestMapping("/main.do")
 	public String main() {
 		
-		return "main_login//main";
+		return "main_login//main.jsp";
 	}
 	
 	@RequestMapping("/loginFrm.do") 
@@ -61,15 +61,14 @@ public class MainController {
 
 		d.addAttribute("toURL", toURL); // 원래 요청 url
 		
-		return "main_login//login";
+		return "main_login//login.jsp";
 	}
 	
 	@RequestMapping("/choiceLang.do")
 	public String choiceLang(@RequestParam("lang") String lang,
 			HttpServletRequest request,
 			HttpServletResponse response) {
-		
-		System.out.println("선택한 언어:"+lang);
+
 		Locale locale = new Locale(lang);
 		localResolver.setLocale(request, response, locale);
 		
@@ -88,7 +87,7 @@ public class MainController {
 		d.addAttribute("newPrjList", service.getNewPrjList(uiId));
 		d.addAttribute("waitPrjList", service.getWaitPrjList(uiId));
 			
-		return "main_login//prjList";
+		return "main_login//prjList.jsp";
 	}
 	
 	@RequestMapping("/mainSearchPrj.do")
@@ -116,7 +115,7 @@ public class MainController {
 	public String addPrj() {
 		
 		
-		return "main_login/addPrj";
+		return "main_login/addPrj.jsp";
 	}
 	
 	@PostMapping("/insertPrj.do") 

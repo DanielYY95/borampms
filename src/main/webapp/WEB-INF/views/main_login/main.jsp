@@ -157,7 +157,7 @@
                         <div class="text-center p-2 p-sm-3">
                             <div class="avatar-sm m-auto">
                                 <span class="avatar-title bg-primary-lighten rounded-circle">
-                                    <i class="uil uil-vector-square text-primary font-24"></i>
+                                    <i class="uil uil-schedule text-primary font-24"></i>
                                 </span>
                             </div>
                             <h4 class="mt-3">일정관리</h4>
@@ -170,7 +170,7 @@
                         <div class="text-center p-2 p-sm-3">
                             <div class="avatar-sm m-auto">
                                 <span class="avatar-title bg-primary-lighten rounded-circle">
-                                    <i class="uil uil-presentation text-primary font-24"></i>
+                                    <i class="uil uil-comment-dots text-primary font-24"></i>
                                 </span>
                             </div>
                             <h4 class="mt-3">소통관리</h4>
@@ -183,7 +183,7 @@
                         <div class="text-center p-2 p-sm-3">
                             <div class="avatar-sm m-auto">
                                 <span class="avatar-title bg-primary-lighten rounded-circle">
-                                    <i class="uil uil-apps text-primary font-24"></i>
+                                    <i class="uil uil-books text-primary font-24"></i>
                                 </span>
                             </div>
                             <h4 class="mt-3">업무관리</h4>
@@ -196,7 +196,7 @@
                         <div class="text-center p-2 p-sm-3">
                             <div class="avatar-sm m-auto">
                                 <span class="avatar-title bg-primary-lighten rounded-circle">
-                                    <i class="uil uil-shopping-cart-alt text-primary font-24"></i>
+                                    <i class="uil  uil-users-alt text-primary font-24"></i>
                                 </span>
                             </div>
                             <h4 class="mt-3">인력관리</h4>
@@ -209,7 +209,7 @@
                         <div class="text-center p-2 p-sm-3">
                             <div class="avatar-sm m-auto">
                                 <span class="avatar-title bg-primary-lighten rounded-circle">
-                                    <i class="uil uil-grids text-primary font-24"></i>
+                                    <i class="uil uil-lightbulb-alt text-primary font-24"></i>
                                 </span>
                             </div>
                             <h4 class="mt-3">리스크관리</h4>
@@ -222,7 +222,7 @@
                         <div class="text-center p-2 p-sm-3">
                             <div class="avatar-sm m-auto">
                                 <span class="avatar-title bg-primary-lighten rounded-circle">
-                                    <i class="uil uil-grids text-primary font-24"></i>
+                                    <i class="uil  uil-file-check text-primary font-24"></i>
                                 </span>
                             </div>
                             <h4 class="mt-3">결재관리</h4>
@@ -235,7 +235,7 @@
                         <div class="text-center p-2 p-sm-3">
                             <div class="avatar-sm m-auto">
                                 <span class="avatar-title bg-primary-lighten rounded-circle">
-                                    <i class="uil uil-grids text-primary font-24"></i>
+                                    <i class="uil uil-down-arrow text-primary font-24"></i>
                                 </span>
                             </div>
                             <h4 class="mt-3">산출물관리</h4>

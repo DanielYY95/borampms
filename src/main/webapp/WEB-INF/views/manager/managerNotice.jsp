@@ -47,7 +47,7 @@
 	
 	
 		<div>
-               		<a href="" class="logo text-center logo-light" style="background-color:#313a46">
+               		<a href="" class="logo text-center logo-light" style="background-color:#313a46; z-index: 1;">
 						<span class="logo-lg">
 							<img src="/borampms/tools/project_assets/images/boram_dark.png" alt="" height="45">
 						</span>
@@ -416,7 +416,8 @@
 				
 				$("#notice-modal").click();
 				
-				$("#ntRegForm").attr("action","${path}/admin/manager.do?method=updateNotice");
+				$("#ntRegForm").attr("action",
+						"${path}/admin/manager.do?method=updateNotice");
 				text = "수정하시겠습니까?";
 				$("#noticeTitle").text("공지 수정");
 				$("#regBtn").text("수정")

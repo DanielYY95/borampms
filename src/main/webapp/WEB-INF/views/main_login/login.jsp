@@ -78,16 +78,20 @@
                                 <form method="post" action="${path}/login.do?method=session">
 									<input name="toURL" value="${toURL}" hidden />
                                     <div class="mb-3">
-                                        <a href="${path}/findId.do" class="text-muted float-end"><small><spring:message code="findId"/></small></a>
+                                        <a href="${path}/findId.do" class="text-muted float-end"><small>
+                                        	<spring:message code="findId"/></small></a>
                                         <label for="id" class="form-label"><spring:message code="id"/></label>
-                                        <input class="form-control" type="text" id="id" value="${cookie.id.value}" required="" name="uiId" placeholder="<spring:message code="inputId"/>">
+                                        <input class="form-control" type="text" id="id" value="${cookie.id.value}" 
+                                        	required="" name="uiId" placeholder="<spring:message code="inputId"/>">
                                     </div>
 
                                     <div class="mb-3">
-                                        <a href="${path}/findPw.do" class="text-muted float-end"><small><spring:message code="findPw"/></small></a>
+                                        <a href="${path}/findPw.do" class="text-muted float-end"><small>
+                                        	<spring:message code="findPw"/></small></a>
                                         <label for="password" class="form-label"><spring:message code="pw"/></label>
                                         <div class="input-group input-group-merge">
-                                            <input type="password" id="password" class="form-control" name="uiPw" placeholder="<spring:message code="inputPw"/>">
+                                            <input type="password" id="password" class="form-control" name="uiPw" 
+                                            	placeholder="<spring:message code="inputPw"/>">
                                             <div class="input-group-text" data-password="false">
                                                 <span class="password-eye"></span>
                                             </div>

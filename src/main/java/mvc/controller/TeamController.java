@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import mvc.method.SessionMethod;
 import mvc.service.TeamService;
 import mvc.vo.PRJ_INFO;
-import mvc.vo.USER_INFO;
 
 
 @Controller
@@ -27,7 +26,7 @@ public class TeamController {
         String piId = smethod.getPiid(request);
         d.addAttribute("team", service.getTeamContent(piId));
         d.addAttribute("tuser", service.getUserList(piId));
-        return "team\\teamList";
+        return "team\\teamList.jsp";
     }
 
     @RequestMapping("/teamUpt.do")

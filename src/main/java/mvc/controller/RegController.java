@@ -21,7 +21,7 @@ public class RegController {
 	public String regFrm() {
 		
 		
-		return "main_login//reg";
+		return "main_login//reg.html";
 	}
 	
 	//회원가입 form // post는 다른 url로 바로 갈수없다. 
@@ -34,7 +34,7 @@ public class RegController {
 			d.addAttribute("msg", "회원가입을 축하드립니다!");
 		} else{
 			d.addAttribute("msg", "이미 등록된 아이디나 닉네임으로 회원가입할 수 없습니다.");
-			return "main_login//reg";
+			return "main_login//reg.jsp";
 		} 
 		
 		return "forward:/regUser.do?method=reg";
@@ -53,7 +53,7 @@ public class RegController {
 	public String goMain() {
 		
 		
-		return "main_login//main";
+		return "main_login//main.jsp";
 	}
 	
 }

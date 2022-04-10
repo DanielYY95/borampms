@@ -28,7 +28,7 @@ public class managerController {
 		
 		d.addAttribute("userList", service.getUserList());
 		
-		return "manager/managerUser";
+		return "manager/managerUser.jsp";
 	}
 	
 	@RequestMapping(params="method=userDetail")
@@ -76,7 +76,7 @@ public class managerController {
 		
 		d.addAttribute("deptList", service.getDeptList());
 		
-		return "manager/managerDept";
+		return "manager/managerDept.jsp";
 	}
 	
 	@RequestMapping(params="method=deptInsert")
@@ -112,7 +112,7 @@ public class managerController {
 		
 		d.addAttribute("prjList", service.getPrjList());
 		
-		return "manager/managerPrj";
+		return "manager/managerPrj.jsp";
 	}
 	
 	
@@ -153,7 +153,7 @@ public class managerController {
 		
 		d.addAttribute("prjUserList", service.getPrjUserList());
 		
-		return "manager/managerPrjUser";
+		return "manager/managerPrjUser.jsp";
 	}
 	
 
@@ -190,7 +190,7 @@ public class managerController {
 	@RequestMapping(params="method=notice")
 	public String getNoticeList(Notice sch, Model d) {
 		d.addAttribute("ntlist", service.getNoticeList(sch));
-		return "manager/managerNotice";
+		return "manager/managerNotice.jsp";
 	}
 	@RequestMapping(params="method=insertNotice")
 	public String insertNotice(Notice ins) {

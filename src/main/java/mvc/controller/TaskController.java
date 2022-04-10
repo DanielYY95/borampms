@@ -39,7 +39,7 @@ public class TaskController {
 	public String taskList(HttpServletRequest request, TaskSch sch, Model d) {
 		sch.setPiId(smethod.getPiid(request));
 		d.addAttribute("tasklist", service.getTaskList(sch));
-		return "task/task_list";
+		return "task/task_list.jsp";
 	}
 	
 	@GetMapping(params="method=search")

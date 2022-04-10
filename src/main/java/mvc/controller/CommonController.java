@@ -32,14 +32,14 @@ public class CommonController {
 		
 		d.addAttribute("cdList", service.getCDList(sch));
 		
-		return "common\\CommonList";
+		return "common\\CommonList.jsp";
 	}
 	// http://localhost:7080/borampms/common.do?method=insertFrm
 	// 초기 화면 호출
 	@RequestMapping(params="method=insertFrm")
 	public String ddInsertFrm(CommonDoc Common) { 
 			
-		return "common\\CommonInsert";
+		return "common\\CommonInsert.jsp";
 	}
 
 	// 부서문서 등록

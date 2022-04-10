@@ -35,9 +35,11 @@
             text-align: center;
 
         }
-    
-
-
+  
+		.col{
+			padding-left: 0;
+		}
+	
     </style>
 
 
@@ -64,7 +66,7 @@
 	
 	
 		<div>
-               		<a href="" class="logo text-center logo-light" style="background-color:#313a46">
+               		<a href="" class="logo text-center logo-light" style="background-color:#313a46; z-index: 1;">
 						<span class="logo-lg">
 							<img src="/borampms/tools/project_assets/images/boram_dark.png" alt="" height="45">
 						</span>
@@ -184,45 +186,62 @@
                                               
                                             </ul> <!-- end nav-->
                                         </div>	
-
-										<form id="searchForm" action="${path}/admin/manager.do?method=prjSearch"  method="post">
-											<div class="row d-flex justify-content-between">
-											  <div class="d-flex col-3">
-												  <div class="">
-													<select class="form-select" id="type">
-														<option value="title" selected>프로젝트명</option>
-														<option value="writer" >프로젝트 등록자</option>
-														<option value="status" >프로젝트 상태</option>
-													</select>
-												  </div>
-												  <div class="">
-													<input type="search" name="piTitle" class="form-control" id="typeInput" placeholder="검색">
-												  </div>
-											  
-											  </div>
-											  <div class="d-flex justify-content-between col-3">
+										
+										
+										
+							      <div class="row mb-2">
+	                   
+                                     <div class="col-xl-12">
+										
+										<form id="searchForm" action="${path}/admin/manager.do?method=prjSearch"  method="post" class="row gy-2 gx-2 align-items-center justify-content-between">
+											 <div class="col-auto">
+												  <div class="row gy-2">
+													  <div class="col">
+														<select class="form-select" id="type">
+															<option value="title" selected>프로젝트명</option>
+															<option value="writer" >프로젝트 등록자</option>
+															<option value="status" >프로젝트 상태</option>
+														</select>
+													  </div>
+													  <div class="col">
+														<input type="search" name="piTitle" class="form-control" id="typeInput" placeholder="검색">
+													  </div>
 												  
-												  <div>
-													<label for="startdate-form" class="col-form-label">시작일</label>
 												  </div>
-												  <div>
-													<input class="form-control" type="date" name="piStartdate" />
-												  </div>
-												  <div>
-													<label for="enddate-form" class="col-form-label">마감일</label>
-												  </div>
-												  <div >
-													<input class="form-control" type="date" name="piDuedate" />
-												  </div>
-
 											  </div>
 											  
-											  	<div>
-													<button class="btn btn-primary" id="searchBtn"  type="button">조회</button>
-												</div>
+											   <div class="col-auto">
+												  <div class="row gy-5">
+													  
+													  <div class="col">
+														<label for="startdate-form" class="col-form-label">시작일</label>
+													  </div>
+													  <div class="col">
+														<input class="form-control" type="date" name="piStartdate" />
+													  </div>
+													  <div class="col">
+														<label for="enddate-form" class="col-form-label">마감일</label>
+													  </div>
+													  <div class="col">
+														<input class="form-control" type="date" name="piDuedate" />
+													  </div>
+	
+														<div class="col">
+															<button class="btn btn-primary" id="searchBtn"  type="button" style="width:63px;">조회</button>
+														</div>
+	
+												  </div>
+												  
 												
 										  </div>
 									  </form>
+									  
+									   </div>
+
+
+                                          
+                                     </div>
+										
 
 										<br>
                                         <div class="table-responsive">

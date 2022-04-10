@@ -18,7 +18,7 @@ public class profileController {
 	@RequestMapping(params="method=myProfile")
 	public String profile(USER_INFO user) {
 		
-		return "profile\\profileUpt";
+		return "profile\\profileUpt.jsp";
 	}
 	@RequestMapping(params="method=userDetail")
 	public String userDetail(String uiId, Model d) {

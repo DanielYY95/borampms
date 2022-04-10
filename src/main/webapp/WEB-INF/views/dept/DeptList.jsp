@@ -173,7 +173,7 @@
 		                                                <!-- 게시물 조회 -->
 		                                                <form id="frm01" method="post" action="${path}/dept.do?method=list">
 		                                                	<input type="hidden" name="curPage" value="1"/>
-		                               						<div class="col-lg-4" style="text-align:center;">
+		                               						<div class="col-xl-2 col-sm-4" style="text-align:center;">
 		                               						<!-- 작성자 조회 -->
 		                               						<div class="input-group">
 			                               						<input type="text" id="simpleinput" class="form-control" name="ddWriter" value="${deptDocSch.ddWriter}" placeholder="작성자">

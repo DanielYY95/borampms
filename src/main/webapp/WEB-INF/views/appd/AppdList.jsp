@@ -158,10 +158,10 @@
 	                                                <form id="frm01" method="post" action="${path}/appd.do?method=list">
 	                                                	<input type="hidden" name="searchDocStauts" id="searchDocStauts" value=""/>
 	                                                	<input type="hidden" name="curPage" value="1"/>
-	                               						<div class="col-lg-4" style="text-align:center;">
+	                               						<div class="col-xl-2 col-sm-4" style="text-align:center;">
 	                               						<!-- 작성자 조회 -->
 	                               						<div class="input-group">
-		                               						<input type="text" id="simpleinput" class="form-control" name="adWriter" value="${appdDocSch.adWriter}" placeholder="작성자">
+		                               						<input type="text"  id="simpleinput" class="form-control" name="adWriter" value="${appdDocSch.adWriter}" placeholder="작성자">
 		                               						<button class="input-group-text btn-primary" type="submit">조회</button>
 		                               					</div>
 		                               					</div>

@@ -30,7 +30,7 @@ public class DashController {
 		d.addAttribute("prjList", service.getPrjList(piId));
 		d.addAttribute("userNum", service.getPrjUserNum(prj));
 		
-		return "/dashboard/TaskDash";
+		return "/dashboard/TaskDash.jsp";
 	}
 	
 		

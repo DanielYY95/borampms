@@ -124,14 +124,14 @@
 		<script>
 		
 		   function loginchk(){
-				if($("[name=uiId]").val().trim()==""){
+				if($("[name=adminId]").val().trim()==""){
 					alert("아이디를 입력해주세요.");
 					// 값이 들어가있지 않으면 false로 리턴 
-					$("[name=uiId]").focus();
+					$("[name=adminId]").focus();
 					return false;
-				}else if ($("[name=uiPw]").val().trim()==""){
+				}else if ($("[name=adminPw]").val().trim()==""){
 					alert("비밀번호를 입력해주세요.");
-					$("[name=uiPw]").focus();
+					$("[name=adminPw]").focus();
 					return false;
 				}else{
 					return true;
@@ -139,16 +139,6 @@
 				}
 			}   
 		
-		$(document).ready(function(){
-			var loginMsg="${loginMsg}";
-			if(loginMsg!=""){
-				alert(loginMsg);
-				if(loginMsg=="로그인 성공!"){ // 로그인 성공을 보여주고나서 이동
-					location.href="${path}/prjList.do"; // 원래라면 요청이 들어온 곳으로 보내고 싶은데, mapping url은...
-				}
-			}
-			
-		});
 		
 		
 		</script>

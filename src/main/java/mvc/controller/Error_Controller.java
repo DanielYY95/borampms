@@ -14,7 +14,7 @@ public class Error_Controller {
 		
 		m.addAttribute("ex", ex);
 		
-		return "error404"; // 404와 마찬가지로 url요청을 잘못줬으니 이렇게 처리한다. 
+		return "error//error404.jsp"; // 404와 마찬가지로 url요청을 잘못줬으니 이렇게 처리한다. 
 	}
 
 	
@@ -23,7 +23,7 @@ public class Error_Controller {
 		
 		m.addAttribute("ex", ex);
 		
-		return "exception";
+		return "error//exception.jsp";
 	}
 	
 	

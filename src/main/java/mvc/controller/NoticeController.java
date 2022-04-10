@@ -20,7 +20,7 @@ public class NoticeController {
 		@RequestMapping(params="method=list")
 		public String getNoticeList(Notice sch, Model d) {
 			d.addAttribute("ntlist", service.getNoticeList(sch));
-			return "notice/notice";
+			return "notice/notice.jsp";
 		}
 	
 		

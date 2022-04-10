@@ -2,11 +2,14 @@ package mvc.controller;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import mvc.method.SessionMethod;
 import mvc.service.SchGanttService;
 import mvc.vo.PRJ_TASK;
 
@@ -15,15 +18,22 @@ public class SchGanttController {
 
 	@Autowired
 	private SchGanttService service;
+	
+	@Autowired
+	private SessionMethod smethod;
 
 	@GetMapping("/schGantt.do")
 	public String SchGanttList(PRJ_TASK pt, Model d) {
-		return "schedule//schGantt";
+		return "schedule//schGantt.jsp";
 	}
 
 	@GetMapping("/schGanttJson.do")
-	public String schGanttJson(PRJ_TASK pt, Model d) {
+	public String schGanttJson(HttpServletRequest request, PRJ_TASK pt, Model d) {
+		String piId = smethod.getPiid(request);
+		pt.setPiId(piId);
+		
 		ArrayList<PRJ_TASK> resultList  = service.getGanttList(pt);
+		
 		d.addAttribute("result", resultList);
 		return "pageJsonReport";
 	}

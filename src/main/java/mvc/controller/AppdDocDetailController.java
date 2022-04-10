@@ -31,26 +31,26 @@ public class AppdDocDetailController {
 	public String adInsertFrm(HttpServletRequest request, String adId, Model d) {
 		System.out.println("번호:"+adId);
 		USER_INFO user=  smethod.getUserSession(request);
-		if(user == null) return "main_login//login";
+		if(user == null) return "main_login//login.jsp";
 		d.addAttribute("deptUserList",service.getDeptUserList(user.getUiId()));
 		d.addAttribute("appddoc",service1.getDetailList(adId));
-		return "appd\\AppdInsert";
+		return "appd\\AppdInsert.jsp";
 	}
 	@RequestMapping(params="method=detail")
 	public String appdDocDetail(HttpServletRequest request, String adId, Model d) {
 		System.out.println("번호:"+adId);
 		USER_INFO user=  smethod.getUserSession(request);
-		if(user == null) return "main_login//login";
+		if(user == null) return "main_login//login.jsp";
 		d.addAttribute("deptUserList",service.getDeptUserList(user.getUiId()));
 		d.addAttribute("appdRowList",service1.getDetailList(adId));
 		d.addAttribute("sessionUserId",user.getUiId());
-		return "appd\\AppdDetail";
+		return "appd\\AppdDetail.jsp";
 	}
 	@RequestMapping(params="method=uptPage")
 	public String AppdDocUpdate(String adId, Model d) {
 		System.out.println("번호:"+adId);
 		d.addAttribute("appdRowList",service1.getDetailList(adId));
-		return "appd\\AppdUpdate";
+		return "appd\\AppdUpdate.jsp";
 	}
 	@RequestMapping(params="method=upt")
 	public String adUpdate(APPD_DOC upt, Model d) {

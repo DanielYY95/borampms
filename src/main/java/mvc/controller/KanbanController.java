@@ -41,7 +41,7 @@ public class KanbanController {
 		d.addAttribute("klist2",service.getKlist2(piId));
 		d.addAttribute("klist3",service.getKlist3(piId));
 		d.addAttribute("klist4",service.getKlist4(piId));
-		return "/schedule/schKanban";
+		return "/schedule/schKanban.jsp";
 	}
 	
 	@RequestMapping(params="method=insert")
@@ -68,8 +68,6 @@ public class KanbanController {
 			etcservice.insertAlarm(a);
 		}
 
-
-		System.out.println("제목 : "+ins.getPtTitle());
 
 		d.addAttribute("msg", service.insertKanban(ins));
 		 return "redirect:/kanban.do?method=list";

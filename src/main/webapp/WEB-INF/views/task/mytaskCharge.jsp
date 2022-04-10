@@ -126,13 +126,13 @@
 														</select>
 													</div>
 													<div class="col">
-														<input type="search" class="form-control" id="typeInput" name="ptTitle" placeholder="내용을 입력하세요">
+														<input type="search" class="form-control" id="typeInput" name="ptTitle" placeholder="내용을 입력하세요" style="width:180px;">
 													</div>
 												</div>
 											</div>
 											
 											<div class="col-auto">
-												<div class="row gy-4">
+												<div class="row gy-5">
 													<div class="col">
 														<label for="startdate-form" class="col-form-label">시작일</label>
 													</div>
@@ -145,12 +145,13 @@
 													<div class="col">
 														<input class="form-control" type="date" name="ptDuedate" value="${task_User.ptDuedate}"/>
 													</div>
+													<div class="col">
+														<button type="submit" class="btn btn-success" id="isSearchBtn" style="width:63px;">조회</button>
+													</div>
 													
 												</div>
 											</div>
-											<div class="col-sm-3 cl-lg-2 float-end">
-												<button type="submit" class="btn btn-success" id="isSearchBtn">조회</button>
-											</div>
+											
 											
 											</form>
 											

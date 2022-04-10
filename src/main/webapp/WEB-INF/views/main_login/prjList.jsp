@@ -53,7 +53,7 @@
                 <div class="content">
                 	
                 	<div>
-                		<a href="${path}/main.do" class="logo text-center logo-light" style="background-color:#313a46">
+                		<a href="${path}/main.do" class="logo text-center logo-light" style="background-color:#313a46;  z-index: 1;">
 							<span class="logo-lg">
 								<img src="${path}/tools/project_assets/images/boram_dark.png" alt="" height="45">
 							</span>
@@ -82,20 +82,19 @@
                         </div>
                         <!-- end page title -->
 
+						<div class="row">
+                             <div class="mt-2">
+                                 <button id="newPrjBtn" type="button" class="btn btn-danger mb-2"><i class="mdi mdi-basket me-1"></i> 새 프로젝트 등록</button>
+                              
+                             </div>
+                       
+                      	</div>
+
                         <div class="row">
                             <div class="col-12">
                                 <div class="card">
                                     <div class="card-body">
-                                    	<div class="row">
-                                    		  <div class="col-xl-12">
-                                                <div class="float-end  mt-2">
-                                                    <button id="newPrjBtn" type="button" class="btn btn-danger mb-2"><i class="mdi mdi-basket me-1"></i> 새 프로젝트 등록</button>
-                                                 
-                                                </div>
-                                            </div><!-- end col-->
                                     	
-                                    	
-                                    	</div>
                                     
                                     
                                         <div class="row mb-2">
@@ -107,17 +106,17 @@
                                                     
                                                       <div class="col-auto">
                                                      	 <div class="row gy-4">
-	                                                          <div class="col">
+	                                                          <div class="col text-center">
 	                                                         
 	                                                            <label class="p-1" style="width: 100px;" >프로젝트명</label>
 	                                                          </div>
-	                                                          <div class="col">
-	                                                            <input type="search" name="piTitle" class="form-control" id="search-word" placeholder="검색">
+	                                                          <div class="col-5 text-center">
+	                                                            <input type="search" name="piTitle" class="form-control" id="search-word" placeholder="검색" width="30">
 	                                                          </div>
 	                                                          <div class="col">
 	                                                           <label class=" p-1" style="width: 100px;" >프로젝트상태</label>
 	                                                          </div>
-	                                                          <div class="col">
+	                                                          <div class="col" style="width:170px;">
 	                                                            <select class="form-select" id="search-select" name="piStatus">
 	                                                                <option value="" selected>전체</option>
 	                                                                <option>진행 전</option>
@@ -132,13 +131,13 @@
                                                       <div class="col-auto">
                                                           <div class="row gy-5">
 	                                                          <div  class="col">
-	                                                            <label for="startdate-form" class="col-form-label p-1" style="width: 60px;" >시작일</label>
+	                                                            <label for="startdate-form" class="col-form-label p-1 text-center" style="width: 60px;" >시작일</label>
 	                                                          </div>
 	                                                          <div  class="col">
 	                                                            <input id="startdate-form" class="form-control" name="piStartdate" type="date" />
 	                                                          </div>
 	                                                          <div  class="col">
-	                                                            <label for="duedate-form" class="col-form-label p-1" style="width: 60px;">마감일</label>
+	                                                            <label for="duedate-form" class="col-form-label p-1 text-center" style="width: 60px;">마감일</label>
 	                                                          </div>
 	                                                          <div  class="col">
 	                                                            <input id="duedate-form" class="form-control" name="piDuedate" type="date" />
@@ -421,7 +420,7 @@
         							sch.piId+'</a></td><td onclick="goToPrj('+"'"+sch.piId+"'"+')">'+sch.piTitle+'</td><td><div class="d-flex"><div class="d-flex align-items-center">'+
                                     '<div class="flex-shrink-0"><img src="${path}/tools/main_assets/images/users/avatar-1.jpg" class="rounded-circle avatar-xs" alt="friend"></div>'+
                                     '<div class="flex-grow-1 ms-2"><h5 class="my-0">'+sch.uiName+'</h5></div> </div></div></td><td><h5 class="my-0">'+sch.piStartdate+
-                                    '</h5><p class="mb-0 txt-muted">'+sch.piDuedate+'}</p> </td><td><h5 class="my-0"><span class="badge badge-info-lighten">'+
+                                    '</h5><p class="mb-0 txt-muted">'+sch.piDuedate+'</p> </td><td><h5 class="my-0"><span class="badge badge-info-lighten">'+
                                     sch.piStatus+'</span></h5></td></tr>';
         				});	
         		

@@ -208,7 +208,8 @@
 	
 	$("[name=piStartdate]").change(function(){
 	
-	    if($("[name=piStartdate]").val()>$("[name=piDuedate]").val() && $("[name=piDuedate]").val()!=""){
+	    if($("[name=piStartdate]").val()
+	    		>$("[name=piDuedate]").val() && $("[name=piDuedate]").val()!=""){
 	        alert("시작일은 마감일보다 이후로 설정할 수 없습니다.");
 	        $(this).val('');
 	    }
@@ -216,7 +217,8 @@
 	
 	$("[name=piDuedate]").change(function(){
 	
-	    if($("[name=piStartdate]").val()>$("[name=piDuedate]").val()){
+	    if($("[name=piStartdate]").val()
+	    		>$("[name=piDuedate]").val()){
 	        alert("마감일은 시작일보다 이전으로 설정할 수 없습니다.");
 	        $(this).val('');
 	    }

@@ -58,7 +58,7 @@
 	data-rightbar-onstart="true">
 	
 		<div>
-               		<a href="" class="logo text-center logo-light" style="background-color:#313a46">
+               		<a href="" class="logo text-center logo-light" style="background-color:#313a46; z-index: 1;">
 						<span class="logo-lg">
 							<img src="/borampms/tools/project_assets/images/boram_dark.png" alt="" height="45">
 						</span>
@@ -179,71 +179,80 @@
                                               
                                             </ul> <!-- end nav-->
                                         </div>
+                                        
+                                       
+                                        
+                                        
+                                        
                                         <div class="row">
-                                        	<form action="${path}/admin/manager.do?method=deptInsert">
-	                                        	<div class="col-2 d-flex justify-content-evenly">
-	                                        		<div>
-	                                        			<label>부서명</label>
-	                                        		</div>
-	                                        		 <div class="">
-	                                        		 
-														<input type="text" class="form-control" id="search-word" name="diDept" required placeholder="입력">
-													  </div>
-													
-	                                        	</div>
-	                                        	<div class="col-3">  
-	                                        		<button id="newDeptBtn" type="button" class="btn btn-danger mb-2 me-2 ">부서 등록</button>     
-	                                        	</div>
-                                        	</form>                  
-										</div>                           
-										
-                                        <div class="table-responsive">
-                                            <table class="table table-centered table-nowrap mb-0">
-                                                <thead class="table-light">
-                                                    <tr class="column">
-                                                        <th style="width: 20px;">
-                                                            <div class="form-check">
-                                                                <input type="checkbox" class="form-check-input" id="customCheck1">
-                                                                <label class="form-check-label" for="customCheck1">&nbsp;</label>
-                                                            </div>
-                                                        </th>
-                                                        <th>부서고유번호</th>
-                                                        <th>부서명</th>
-                                                        <th>부서인원</th>
-                                                        <th>부서상태</th>   
-                                                        <th>수정</th>                            
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <c:forEach var="dept" items="${deptList}">
-	                                                    <tr>
-	                                                        <td>
+                                        	<div class="col-xl-12">
+	                                        	<form action="${path}/admin/manager.do?method=deptInsert" class="row gy-2 gx-2 align-items-center justify-content-between">
+		                                        	 <div class="col-auto">
+		                                        	 	<div class="row gy-3">
+			                                        		<div class="col text-center">
+			                                        			<label class="p-1">부서명</label>
+			                                        		</div>
+			                                        		 <div class="col">
+			                                        		 
+																<input type="text" class="form-control" id="search-word" name="diDept" required placeholder="입력">
+															  </div>
+															  <div class="col">  
+		                                        				<button id="newDeptBtn" type="button" class="btn btn-danger mb-2 me-2 ">부서 등록</button>     
+		                                        			</div>
+														</div>
+		                                        	</div>
+		                                        	 
+	                                        	</form>                  
+											</div>                           
+											
+	                                        <div class="table-responsive">
+	                                            <table class="table table-centered table-nowrap mb-0">
+	                                                <thead class="table-light">
+	                                                    <tr class="column">
+	                                                        <th style="width: 20px;">
 	                                                            <div class="form-check">
-	                                                                <input type="checkbox" class="form-check-input" id="customCheck2">
-	                                                                <label class="form-check-label" for="customCheck2">&nbsp;</label>
+	                                                                <input type="checkbox" class="form-check-input" id="customCheck1">
+	                                                                <label class="form-check-label" for="customCheck1">&nbsp;</label>
 	                                                            </div>
-	                                                        </td>
-	                                                        <td><a href="apps-ecommerce-orders-details.html" class="text-body fw-bold">${dept.diId}</a> </td>
-	                                                        <td>${dept.diDept}</td>
-	                                                        <td>${dept.count}</td>
-	                                               			
-	                                                        <td><h5 class="my-0"><span class="badge badge-info-lighten">${dept.diStatus}</span></h5>
-	                                                        	<c:if test="${dept.diStatus eq 2}">
-                                                                            <span class="badge bg-danger">승인 요청</span>
-                                                             </c:if>
-	                                                        </td>
-	                                                        <td>
-	                                                            <a onclick="deptDetail('${dept.diId}')" class="action-icon"
-	                                                            data-bs-toggle="modal"data-bs-target="#signup-modal">
-	                                                             <i class="mdi mdi-square-edit-outline"></i></a>
-	                                                      
-	                                                        </td>
+	                                                        </th>
+	                                                        <th>부서고유번호</th>
+	                                                        <th>부서명</th>
+	                                                        <th>부서인원</th>
+	                                                        <th>부서상태</th>   
+	                                                        <th>수정</th>                            
 	                                                    </tr>
-                                                    </c:forEach>
-                                                    
-
-                                                </tbody>
-                                            </table>
+	                                                </thead>
+	                                                <tbody>
+	                                                    <c:forEach var="dept" items="${deptList}">
+		                                                    <tr>
+		                                                        <td>
+		                                                            <div class="form-check">
+		                                                                <input type="checkbox" class="form-check-input" id="customCheck2">
+		                                                                <label class="form-check-label" for="customCheck2">&nbsp;</label>
+		                                                            </div>
+		                                                        </td>
+		                                                        <td><a href="apps-ecommerce-orders-details.html" class="text-body fw-bold">${dept.diId}</a> </td>
+		                                                        <td>${dept.diDept}</td>
+		                                                        <td>${dept.count}</td>
+		                                               			
+		                                                        <td><h5 class="my-0"><span class="badge badge-info-lighten">${dept.diStatus}</span></h5>
+		                                                        	<c:if test="${dept.diStatus eq 2}">
+	                                                                            <span class="badge bg-danger">승인 요청</span>
+	                                                             </c:if>
+		                                                        </td>
+		                                                        <td>
+		                                                            <a onclick="deptDetail('${dept.diId}')" class="action-icon"
+		                                                            data-bs-toggle="modal"data-bs-target="#signup-modal">
+		                                                             <i class="mdi mdi-square-edit-outline"></i></a>
+		                                                      
+		                                                        </td>
+		                                                    </tr>
+	                                                    </c:forEach>
+	                                                    
+	
+	                                                </tbody>
+	                                            </table>
+	                                        </div>
                                         </div>
                                     </div> <!-- end card-body-->
                                 </div> <!-- end card-->

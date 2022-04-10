@@ -19,14 +19,14 @@ public class UserController {
 	@GetMapping("/findId.do")
 	public String getUserIdFrm() {
 		
-		return "main_login//userId";
+		return "main_login//userId.jsp";
 	}
 	
 
 	@GetMapping("/findPw.do")
 	public String getUserPwFrm() {
 		
-		return "main_login//userPw";
+		return "main_login//userPw.jsp";
 	}
 	
 	@RequestMapping("/getUserId.do")

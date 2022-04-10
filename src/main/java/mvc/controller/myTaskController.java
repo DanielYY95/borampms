@@ -36,7 +36,7 @@ public class myTaskController {
 		// null 값이면 처리해줘야한다.
 		if(user==null) {
 			
-			return "task/mytaskCharge";
+			return "task/mytaskCharge.jsp";
 		}
 
 		ins.setUiName(user.getUiName());
@@ -45,7 +45,7 @@ public class myTaskController {
 		
 		d.addAttribute("tasklist", service.getMytaskListC(ins)); // vo객체를 가지고 자신의 업무들을 가져온다. 
 		
-		return "task/mytaskCharge";
+		return "task/mytaskCharge.jsp";
 	}
 	
 	@RequestMapping(params="method=wlist")
@@ -59,7 +59,7 @@ public class myTaskController {
 		
 		d.addAttribute("tasklist", service.getMytaskListW(ins)); // vo객체를 가지고 자신의 업무들을 가져온다. 
 		
-		return "task/mytaskWriter";
+		return "task/mytaskWriter.jsp";
 	}
 	
 

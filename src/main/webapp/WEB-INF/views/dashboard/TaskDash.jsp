@@ -138,7 +138,7 @@
 											<h5 class="text-muted fw-normal mt-0" title="Number of Customers"
 											 style="text-align: center; padding-bottom: 10px;">총 작업 수</h5>
 											<p class="mb-0 text-muted">
-											<div class="text-nowrap" style="text-align: center; padding-bottom: 10px;">${dashlist.size() }건</div>
+												<div class="text-nowrap" style="text-align: center; padding-bottom: 10px;">${dashlist.size() }건</div>
 											</p>
 										</div>
 										<!-- end card-body-->

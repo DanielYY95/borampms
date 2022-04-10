@@ -20,14 +20,14 @@ public class DeptDetailController {
 	public String DeptDetail(String ddId, Model d) {
 		System.out.println("번호:"+ddId);
 		d.addAttribute("deptRowList",service1.getDetailList(ddId));
-		return "dept\\DeptDetail";
+		return "dept\\DeptDetail.jsp";
 	}
 	// 부서문서 수정하기(ddId)
 	@RequestMapping(params="method=uptPage")
 	public String DeptUpdate(String ddId, Model d) {
 		System.out.println("번호:"+ddId);
 		d.addAttribute("deptRowList",service1.getDetailList(ddId));
-		return "dept\\DeptUpdate";
+		return "dept\\DeptUpdate.jsp";
 	}
 	@RequestMapping(params="method=upt")
 	public String ddUpdate(DeptDoc upt, Model d) {

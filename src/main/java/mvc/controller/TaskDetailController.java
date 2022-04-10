@@ -45,7 +45,7 @@ public class TaskDetailController {
 		
 		d.addAttribute("taskUser", service.getTask(sch.getPtId()));
 	
-		return "task//taskDetail";
+		return "task//taskDetail.jsp";
 	}
 	
 	@RequestMapping("/taskUpt.do") // ptId를 포함한 vo객체 받는다.
@@ -89,12 +89,15 @@ public class TaskDetailController {
 	}
 	
 	@RequestMapping("/taskWbs.do")
-	public String taskWbs(PRJ_TASK pt, Model d) {
+	public String taskWbs(HttpServletRequest request, PRJ_TASK pt, Model d) {
+		
+		String piId = smethod.getPiid(request);
+		pt.setPiId(piId);
 		
 		ArrayList<PRJ_TASK> resultList  = gservice.getGanttList(pt);
 		d.addAttribute("result", resultList);
 		
-		return "task//task_wbs";
+		return "task//task_wbs.jsp";
 	}
 	
 	@RequestMapping("/taskIssue.do")
@@ -102,7 +105,7 @@ public class TaskDetailController {
 		
 		
 		
-		return "task//Issue";
+		return "task//Issue.jsp";
 	}
 	
 	
@@ -117,7 +120,7 @@ public class TaskDetailController {
 		d.addAttribute("outputList", service.getOutputList(ptId));
 		
 		
-		return "task//taskOutput";
+		return "task//taskOutput.jsp";
 	}
 	
 	@PostMapping("/toInsert.do") //post방식이라 forward 적극 활용할 것

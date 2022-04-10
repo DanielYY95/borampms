@@ -4,7 +4,7 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="mvc.dao.SchGanttDao">
 	<!-- 1. 조회 -->
-	<select id="getGanttList" resultType="task">
+	<select id="getGanttList" parameterType="task" resultType="task">
 		SELECT pt_id
 		     , pt_title
 		     , pt_startdate
@@ -15,8 +15,11 @@
 		     , pi_id
 		     , TO_DATE(pt_duedate, 'YYYY-MM-DD') - TO_DATE(pt_startdate, 'YYYY-MM-DD') as duration
 		  FROM prj_task
+		  where PI_ID = #{piId}
 		  order by pt_startdate
 	</select>
+	
+	
 	<select id="getSchGanttList"  resultType="sg">
 		SELECT sg_id
 		     , sg_type

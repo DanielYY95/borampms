@@ -32,9 +32,15 @@
 						text-align: center;
 
 					}
+					
+					
+					.col{
+						padding-left: 0;
+					}
+				
 				</style>
 
-
+	
 
 			</head>
 
@@ -62,7 +68,7 @@
 
 
 					<div>
-               		<a href="" class="logo text-center logo-light" style="background-color:#313a46">
+               		<a href="" class="logo text-center logo-light" style="background-color:#313a46; z-index: 1;">
 						<span class="logo-lg">
 							<img src="/borampms/tools/project_assets/images/boram_dark.png" alt="" height="45">
 						</span>
@@ -191,38 +197,46 @@
 												</ul> <!-- end nav-->
 											</div>
 											
+							
+											
+											<div class="row mb-2">
+	                   
+                                   			 <div class="col-xl-12">
 										
-											<form id="searchForm" method="post" action="${path}/admin/manager.do?method=prjUserSearch">
-												<div class="row d-flex justify-content-between">
-													<div class="d-flex col-3">
-														<div class="">
-															<label>이름</label>
+											<form id="searchForm" method="post" action="${path}/admin/manager.do?method=prjUserSearch"  
+												class="row gy-2 gx-2 align-items-center justify-content-between">
+												<div class="col-auto">
+                                                   	 <div class="row gy-4">
+														<div class="col-auto">
+															<label class="p-1">이름</label>
 
 														</div>
-														<div class=""> <!--왜 한글말고 다른건 입력이 안되는겨....-->
-															<input type="text" id="typeInput" name="uiName" class="form-control" placeholder="검색">
+														<div class="col"> <!--왜 한글말고 다른건 입력이 안되는겨....-->
+															<input type="text" id="idInput" name="uiName" class="form-control" placeholder="검색">
+														</div>
+
+												
+													
+														<div class="col-auto">
+														
+															<label class="p-1">프로젝트명</label>
+
+														</div>
+														<div class="col"> <!--왜 한글말고 다른건 입력이 안되는겨....-->
+															<input type="text" id="titleInput" name="piTitle" class="form-control" placeholder="검색">
 														</div>
 
 													</div>
-													
-													<div class="d-flex col-3">
-														<div class="">
-															<label>프로젝트명</label>
-
-														</div>
-														<div class=""> <!--왜 한글말고 다른건 입력이 안되는겨....-->
-															<input type="text" id="typeInput" name="piTitle" class="form-control" placeholder="검색">
-														</div>
-
-													</div>
+												</div>
 													
 													
-													<div class="d-flex justify-content-between col-3">
+													<div class="col-auto">
+                                                   	 <div class="row gy-5">
 
-														<div>
+														<div class="col-auto">
 															<label class="pt-1 ">부서</label>
 														</div>
-														<div>
+														<div class="col" style="width:250px;">
 															<select class="form-select" name="uiDept">
 																<option value='' selected>전체</option>
 																<option value="개발1팀">개발1팀</option>
@@ -234,10 +248,10 @@
 															</select>
 														</div>
 									
-														<div>
+														<div class="col-auto">
 															<label class="pt-1 ">참여상태</label>
 														</div>
-														<div>
+														<div class="col" style="width:150px;">
 															<select class="form-select" name="puStatus">
 																<option value="" selected>전체</option>
 																<option value="0">참여</option>
@@ -247,13 +261,17 @@
 
 															</select>
 														</div>
-														<div>
+														<div class="col">
 															<button class="btn btn-primary" id="searchBtn" type="button">조회</button>
 														</div>
 
 													</div>
 												</div>
-											</form><br>
+											</form>
+											 </div>
+                                              </div>
+											
+											<br>
 
 											<div class="table-responsive">
 												<table class="table table-centered table-nowrap mb-0">
@@ -459,7 +477,7 @@
 				searchPrjUser();		
 			})
 
-			$("#typeInput").on("keypress",function(e){
+			$("#idInput, #titleInput").on("keypress",function(e){
 				if(e.keyCode==13){
 					e.preventDefault();
 					searchPrjUser();

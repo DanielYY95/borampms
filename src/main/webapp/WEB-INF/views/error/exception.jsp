@@ -55,7 +55,7 @@
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     <h1 class="text-error">서버 오류</h1>
-                                    <h4 class="text-uppercase text-danger mt-3">서버 오류가 발생했습니다. 해당 사항은 문의 부탁드립니다.</h4>
+                                    <h4 class="text-uppercase text-danger mt-3">서버 오류가 발생했습니다. <br> 해당 사항은 문의 부탁드립니다.</h4>
                                     <p class="text-muted mt-3">오류메시지 <a href="https://www.google.com/search?q=${ex}">확인</a> </p>
                                     <div class="mb-3 text-center">
 										관리자 문의: <span class="badge badge-outline-secondary rounded-pill">010-1111-2222</span>

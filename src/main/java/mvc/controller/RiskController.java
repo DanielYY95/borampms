@@ -40,7 +40,7 @@ public class RiskController {
 		d.addAttribute("issuelist", service.getPrjIssueList(sch));
 		d.addAttribute("jsonlist", jsonlist);
 		
-		return "task/prj_issue";
+		return "task/prj_issue.jsp";
 	}
 	
 	@GetMapping(params="method=search")
@@ -57,8 +57,7 @@ public class RiskController {
 		
 
 		d.addAttribute("schPrjIssuelist", service.getPrjIssueList(sch));
-		System.out.println(service.getPrjIssueList(sch));
-		
+	
 		return "pageJsonReport";
 	}
 	

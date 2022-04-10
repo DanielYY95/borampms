@@ -39,12 +39,12 @@ public class LoginSessionController {
 			
 			// 승인 요청 중인 자는 승인 대기 화면으로
 			if(sch.getUiStatus().equals("2")) {
-				return "main_login//userApprove";
+				return "main_login//userApprove.jsp";
 			}
 			
 			// 퇴사자나 승인 반려자는 알림 화면으로
 			if(sch.getUiStatus().equals("1") || sch.getUiStatus().equals("3")) {
-				return "main_login//userBan";
+				return "main_login//userBan.jsp";
 			}
 			
 			
@@ -65,7 +65,7 @@ public class LoginSessionController {
 			d.addAttribute("user_info",sch);
 		
 			if(toURL.equals("")) { // main에서 로그인할 때는, header 쪽에서 주는 toURL이 없으니
-				return "main_login//login";
+				return "main_login//login.jsp";
 			}
 			
 			return "redirect:"+toURL;
@@ -76,7 +76,7 @@ public class LoginSessionController {
 		}
 		d.addAttribute("user_info",sch); // 이렇게 해야 로그인 실패할때 빈값으로 보내진다.
 
-		return "main_login//login";
+		return "main_login//login.jsp";
 	}
 	
 	
@@ -99,7 +99,7 @@ public class LoginSessionController {
 	@RequestMapping(params="method=login")
 		public String golog() {
 		
-			return "main_login//login";
+			return "main_login//login.jsp";
 		}
 
 }

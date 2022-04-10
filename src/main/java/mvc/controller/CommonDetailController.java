@@ -20,14 +20,14 @@ public class CommonDetailController {
 	public String CommonDetail(String cdId, Model d) {
 		System.out.println("번호:"+cdId);
 		d.addAttribute("commonRowList",service1.getDetailList(cdId));
-		return "common\\CommonDetail";
+		return "common\\CommonDetail.jsp";
 	}
 	// 부서문서 수정하기(ddId)
 	@RequestMapping(params="method=uptPage")
 	public String CommonUpdate(String cdId, Model d) {
 		System.out.println("번호:"+cdId);
 		d.addAttribute("commonRowList",service1.getDetailList(cdId));
-		return "common\\CommonUpdate";
+		return "common\\CommonUpdate.jsp";
 	}
 	@RequestMapping(params="method=upt")
 	public String cdUpdate(CommonDoc upt, Model d) {

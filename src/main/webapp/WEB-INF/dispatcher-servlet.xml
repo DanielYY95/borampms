@@ -65,7 +65,6 @@
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 
 		<property name="prefix" value="/WEB-INF/views/"/>	 
-		<property name="suffix" value=".jsp"/>
 		<property name="order" value="1"></property>
 		
 	</bean>
@@ -76,10 +75,7 @@
 	
 	</bean>
 	
-		<!-- 웹 소켓 통신을 위한 handelr 선언 
-		component로 선언한 이름과 url패턴을 mapping
-		server handler와 client에서 js로 호출할 url형식을 선언..
-	-->
+		
 	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/>
 	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"/>
 	<mvc:default-servlet-handler/>
@@ -118,11 +114,7 @@
 			
 	</bean>
 	
-	<!-- 다국어 처리를 위한 모듈 등록
-	1. 핵심 클래스
-	2. 다국어 파일 기본 위치 등록
-		\message\msg.properties 기준파일
-	3. 위치기반 session 설정  -->
+
 	<bean id="messageSource"
 		class="org.springframework.context.support.ResourceBundleMessageSource">
 		<property name="basenames">
@@ -134,11 +126,11 @@
 	<bean id="localeResolver" 
 	class="org.springframework.web.servlet.i18n.SessionLocaleResolver"/>
 	
-	<mvc:view-controller path="/index" view-name="/view/index" />
+	<mvc:view-controller path="/index" view-name="/view/index.jsp" />
 	
-	<mvc:view-controller path="/admin/" view-name="/manager/managerUser" />	
-	<mvc:view-controller path="/adminLoginform" view-name="/main_login/adminLogin" />
-	<mvc:view-controller path="/security/accessDenied" view-name="/view/security/accessDenied" />
+	<mvc:view-controller path="/admin/" view-name="/manager/managerUser.jsp" />	
+	<mvc:view-controller path="/adminLoginform" view-name="/main_login/adminLogin.jsp" />
+	<mvc:view-controller path="/security/accessDenied" view-name="/view/security/accessDenied.jsp" />
 	
 	<!-- 	스프링 시큐리티 5버전부터는 패스워드 암호화 처리기를 반드시 이용하도록 변경이 되었음
 	암호화 처리기를 사용하지 않도록 "{noop}" 문자열을 비밀번호 앞에 사용. -->

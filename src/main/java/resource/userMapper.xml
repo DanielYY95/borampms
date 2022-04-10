@@ -103,7 +103,7 @@
 	
 	</select>
 	
-	<update id="updateTempPw" >
+	<update id="updateTempPw" parameterType="user" >
 		update USER_INFO
 			set UI_PW = #{uiPw}
 			where UI_NAME = #{uiName}
@@ -161,7 +161,9 @@
 	
 	<insert id="insertPrj" parameterType="prj">
 		insert into PRJ_INFO
-		values('PI' || LPAD(prj_seq.nextval,5,'0'), #{piWriter}, #{piTitle}, sysdate, #{piStartdate}, #{piDuedate}, #{piStatus}, '')
+		values('PI' || LPAD(prj_seq.nextval,5,'0'), 
+		#{piWriter}, #{piTitle}, sysdate, 
+		#{piStartdate}, #{piDuedate}, #{piStatus}, '')
 
 	</insert>
 	

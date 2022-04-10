@@ -17,7 +17,7 @@ public class SchCalendarController {
 	// http://localhost:7090/borampms/calendar.do
 		@GetMapping("calendar.do")
 		public String calendar() {
-			return "/schedule/schCalendar";
+			return "/schedule/schCalendar.jsp";
 		}
 		// http://localhost:7090/borampms/calList.do
 		@RequestMapping("calList.do")

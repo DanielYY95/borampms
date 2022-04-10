@@ -32,14 +32,14 @@ public class DeptController {
 		
 		d.addAttribute("ddList", service.getDDList(sch));
 		
-		return "dept\\DeptList";
+		return "dept\\DeptList.jsp";
 	}
 	// http://localhost:7080/borampms/dept.do?method=insertFrm
 	// 초기 화면 호출
 	@RequestMapping(params="method=insertFrm")
 	public String ddInsertFrm(DeptDoc Dept) { 
 			
-		return "dept\\DeptInsert";
+		return "dept\\DeptInsert.jsp";
 	}
 
 	// 부서문서 등록

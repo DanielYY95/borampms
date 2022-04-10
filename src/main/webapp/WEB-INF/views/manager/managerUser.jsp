@@ -32,6 +32,12 @@
 						text-align: center;
 
 					}
+					
+					.col{
+						padding-left: 0;
+					}
+				
+								
 				</style>
 
 
@@ -61,7 +67,7 @@
 				data-rightbar-onstart="true">
 				
 				<div>
-               		<a href="" class="logo text-center logo-light" style="background-color:#313a46">
+               		<a href="" class="logo text-center logo-light" style="background-color:#313a46; z-index: 1;">
 						<span class="logo-lg">
 							<img src="/borampms/tools/project_assets/images/boram_dark.png" alt="" height="45">
 						</span>
@@ -189,77 +195,100 @@
 
 												</ul> <!-- end nav-->
 											</div>
+											
+										
+                                              
+                                              
+                                              <!--  -->
+											<div class="row mb-2">
+	                   
+                                   			 <div class="col-xl-12">
 
-											<form id="searchForm" method="post" action="${path}/admin/manager.do?method=userSearch">
-												<div class="row d-flex justify-content-between">
-													<div class="d-flex col-3">
-														<div class="">
-															<select class="form-select " id="type">
-																<option selected value="name">이름</option>
-																<option value="id">아이디</option>
-																<option value="email">이메일</option>
-																<option value="phone">연락처</option>
-															</select>
+											<form id="searchForm" method="post" action="${path}/admin/manager.do?method=userSearch" class="row gy-2 gx-2 align-items-center justify-content-between">
+												<div class="col-auto">
+                                                   	 <div class="row gy-2">
+															<div class="col-5">
+																<select class="form-select " id="type">
+																	<option selected value="name">이름</option>
+																	<option value="id">아이디</option>
+																	<option value="email">이메일</option>
+																	<option value="phone">연락처</option>
+																</select>
+															</div>
+															<!--왜 한글말고 다른건 입력이 안되는겨....-->
+														
+														  <div class="col-7">
+															<input type="search" name="uiName" class="form-control" id="typeInput" placeholder="검색">
+														  </div>
+	
 														</div>
-														<!--왜 한글말고 다른건 입력이 안되는겨....-->
-													
-												  <div class="">
-													<input type="search" name="uiName" class="form-control" id="typeInput" placeholder="검색">
-												  </div>
-
 													</div>
-													<div class="d-flex justify-content-between col-3">
-
-														<div>
-															<label class="pt-1 ">부서</label>
+														
+														<div class="col-auto">
+	                                                   	 	<div class="row gy-7">
+																<div class="col-auto text-center">
+				
+																	<label class="pt-1 ">부서</label>
+																</div>
+																<div class="col" style="width:250px;">
+																	<select class="form-select" name="uiDept">
+																		<option value='' selected>전체</option>
+																		<option value="개발1팀">개발1팀</option>
+																		<option value="개발2팀">개발2팀</option>
+																		<option value="인사팀">인사팀</option>
+																		<option value="기획팀">기획팀</option>
+																		<option value="디자인팀">디자인팀</option>
+																		<option value="마케팅팀">마케팅팀</option>
+																	</select>
+																</div>
+																<div class="col-auto text-center">
+																	<label class="pt-1">직급</label>
+																</div>
+																<div class="col">
+																	<select class="form-select" name="uiRank">
+																		<option value='' selected>전체</option>
+																		<option value="실장">실장</option>
+																		<option value="팀장">팀장</option>
+																		<option value="부장">부장</option>
+																		<option value="차장">차장</option>
+																		<option value="과장">과장</option>
+																		<option value="대리">대리</option>
+																		<option value="주임">주임</option>
+																		<option value="사원">사원</option>
+																	</select>
+																</div>
+																<div class="col-auto text-center">
+																	<label class="pt-1 ">진행상태</label>
+																</div>
+																<div class="col">
+																	<select class="form-select" name="uiStatus">
+																		<option value="" selected>전체</option>
+																		<option value="0">재직</option>
+																		<option value="1">퇴사</option>
+																		<option value="2">승인대기</option>
+																		<option value="3">반려</option>
+		
+																	</select>
+																</div>
+																<div class="col ">
+																	<button class="btn btn-primary" id="searchBtn" type="button">조회</button>
+																</div>
+		
+															</div>
 														</div>
-														<div>
-															<select class="form-select" name="uiDept">
-																<option value='' selected>전체</option>
-																<option value="개발1팀">개발1팀</option>
-																<option value="개발2팀">개발2팀</option>
-																<option value="인사팀">인사팀</option>
-																<option value="기획팀">기획팀</option>
-																<option value="디자인팀">디자인팀</option>
-																<option value="마케팅팀">마케팅팀</option>
-															</select>
-														</div>
-														<div>
-															<label class="pt-1">직급</label>
-														</div>
-														<div>
-															<select class="form-select" name="uiRank">
-																<option value='' selected>전체</option>
-																<option value="실장">실장</option>
-																<option value="팀장">팀장</option>
-																<option value="부장">부장</option>
-																<option value="차장">차장</option>
-																<option value="과장">과장</option>
-																<option value="대리">대리</option>
-																<option value="주임">주임</option>
-																<option value="사원">사원</option>
-															</select>
-														</div>
-														<div>
-															<label class="pt-1 ">진행상태</label>
-														</div>
-														<div>
-															<select class="form-select" name="uiStatus">
-																<option value="" selected>전체</option>
-																<option value="0">재직</option>
-																<option value="1">퇴사</option>
-																<option value="2">승인대기</option>
-																<option value="3">반려</option>
-
-															</select>
-														</div>
-														<div>
-															<button class="btn btn-primary" id="searchBtn" type="button">조회</button>
-														</div>
-
-													</div>
-												</div>
-											</form><br>
+												
+												
+											</form>
+											
+											
+											  </div>
+                                              </div>
+                                              
+											
+											
+											<br>
+											
+											
 
 											<div class="table-responsive">
 												<table class="table table-centered table-nowrap mb-0">

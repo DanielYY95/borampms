@@ -140,7 +140,8 @@
 			PI_STATUS like '%'||#{piStatus}||'%'
 		</if>
 		<choose>
-			<when test="piStartdate != null and piStartdate != '' and  piDuedate != null and piDuedate != ''">
+			<when test="piStartdate != null and piStartdate != '' 
+				and  piDuedate != null and piDuedate != ''">
 			and pi_startdate between #{piStartdate} and #{piDuedate}
 			and pi_duedate between #{piStartdate} and #{piDuedate}
 			</when>
@@ -155,10 +156,11 @@
 	</select>
 	
 
+	<!-- 매개변수가 다르더라도 이름이 같으면 안되는듯.. -->
 	
-	
-	<select id="getPrjUserList" resultType="prjUser" > <!-- 매개변수가 다르더라도 이름이 같으면 안되는듯.. -->
-		SELECT pu.PU_ID, ui.UI_NAME, ui.UI_DEPT,ui.UI_RANK, pi2.PI_TITLE, pu.PU_STATUS 
+	<select id="getPrjUserList" resultType="prjUser" > 
+		SELECT pu.PU_ID, ui.UI_NAME, 
+			ui.UI_DEPT,ui.UI_RANK, pi2.PI_TITLE, pu.PU_STATUS 
 		FROM USER_INFO ui,PRJ_USER pu, PRJ_INFO pi2
 		WHERE pu.UI_ID = ui.UI_ID
 		AND pu.PI_ID = pi2.PI_ID
@@ -213,7 +215,6 @@
 		select count(*)
 		from notice
 		where 1=1
-		
 		<if test="ntTitle != null and ntTitle != ''">
 		and nt_title like '%'||#{ntTitle}||'%'
 		</if>
@@ -225,10 +226,10 @@
 	<select id="getNoticeList" parameterType="notice" resultType="notice">
 		select *
 		from (
-			SELECT row_number() over(ORDER BY to_date(nt_regdate, 'YYYY-MM-DD')) cnt, notice.*
+			SELECT row_number() 
+				over(ORDER BY to_date(nt_regdate, 'YYYY-MM-DD')) cnt, notice.*
 			from notice
 			where 1=1
-			
 			<if test="ntTitle != null and ntTitle != ''">
 			and nt_title like '%'||#{ntTitle}||'%'
 			</if>

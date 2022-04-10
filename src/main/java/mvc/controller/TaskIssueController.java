@@ -49,7 +49,7 @@ public class TaskIssueController {
 		d.addAttribute("issuelist", service.getIssueList(sch));
 		d.addAttribute("jsonlist", jsonlist);
 		
-		return "task/task_issue";
+		return "task/task_issue.jsp";
 	}
 	
 	@GetMapping(params="method=search")

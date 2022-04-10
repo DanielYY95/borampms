@@ -6,8 +6,10 @@
 <mapper namespace="mvc.dao.EtcDao">
 
 	<insert id="insertAlarm" parameterType="alarm">
-		insert into ALARM values('A' || LPAD(alram_seq.nextval, 5, '0'), 
-			#{aFrom}, #{aTo}, #{aContent}, 0, sysdate, #{piId})
+		insert into ALARM values
+			('A' || LPAD(alram_seq.nextval, 5, '0'), 
+			#{aFrom}, #{aTo}, #{aContent}, 
+			0, sysdate, #{piId})
 					
 	</insert>
 
