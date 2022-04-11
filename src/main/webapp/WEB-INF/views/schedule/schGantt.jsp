@@ -227,7 +227,7 @@
 	        return date.getFullYear() + '-' + month + '-' + day;
 		}
 		function stringToDate(value) {
-	        return new Date(Number(value.split('-')[0]),Number(value.split('-')[1]),Number(value.split('-')[2]));
+	        return new Date(Number(value.split('-')[0]),Number(value.split('-')[1])-1,Number(value.split('-')[2]));
 		}
 	</script>
 
