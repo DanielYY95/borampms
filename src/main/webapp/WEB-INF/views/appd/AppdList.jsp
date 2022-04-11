@@ -90,7 +90,7 @@
                                             <li class="breadcrumb-item active">File Manager</li>
                                         </ol>
                                     </div>
-                                    <h4 class="page-title">문서관리</h4>
+                                    <h4 class="page-title">결재문서관리</h4>
                                 </div>
                             </div>
                         </div>
@@ -105,7 +105,7 @@
                                         <!-- Left sidebar -->
                                         <div class="page-aside-left">
                                         	<!-- 공유 문서함 -->
-                                        	<h4 class="header-title">공유문서함</h4>
+                                        	<h4 class="header-title">부서결재문서함</h4>
 											 <div id="jstree-2" class="jstree jstree-1 jstree-default" role="tree" aria-multiselectable="true" tabindex="0" aria-activedescendant="j1_1" aria-busy="false">
 											 	<ul class="jstree-container-ul jstree-children" role="group">
 											        <li role="none" id="j1_2" class="jstree-node jstree-open"><i class="jstree-icon jstree-ocl" role="presentation"></i>
@@ -254,8 +254,8 @@
 		<script src="${path}/tools/main_assets/js/pages/demo.simplemde.js"></script>
     </body>
 	<script>
-	
-	function searchDocList(type){	
+
+	function searchDocList(type){
 		console.log(type+"타입");
 		$('#searchDocStauts').val(type);
 		$('#frm01').submit();

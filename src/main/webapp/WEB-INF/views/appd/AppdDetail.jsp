@@ -67,7 +67,7 @@
                                             <li class="breadcrumb-item active">File Manager</li>
                                         </ol>
                                     </div>
-                                    <h4 class="page-title">문서 상세정보</h4>
+                                    <h4 class="page-title">결재문서 상세정보</h4>
                                 </div>
                             </div>
                         </div>
@@ -76,7 +76,7 @@
                             <div class="col-12">
                                 <div class="card">
                                     <div class="card-body">
-                                    <h4 class="header-title">[부서 문서공유함]</h4>
+                                    <h4 class="header-title">[결재 문서공유함]</h4>
                                     <br>
                                         <div class="tab-content">
                                             <div class="tab-pane show active" id="input-masks-preview">
