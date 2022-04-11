@@ -117,14 +117,18 @@
 
                         <div class="row mt-3">
                             <div class="col-12 text-center">
-	                            <p class="text-muted"><spring:message code="regMsg"/> <a href="${path}/regUser.do" class="text-muted ms-1"><b><spring:message code="reg"/></b></a></p>
+	                            <p class="text-muted"><spring:message code="regMsg"/> 
+	                            	<a href="${path}/regUser.do" class="text-muted ms-1"><b><spring:message code="reg"/>
+	                            		</b></a></p>
 	                            
 	                            <sec:authorize access="!isAuthenticated()">
-	                           		 <a href="/borampms/adminLoginform" class="text-muted float-end"><small><spring:message code="adminLogin"/> -></small></a>
+	                           		 <a href="/borampms/adminLoginform" class="text-muted float-end">
+	                           		 	<small><spring:message code="adminLogin"/> -></small></a>
 	                             </sec:authorize>
 	                            <sec:authorize access="isAuthenticated()">
 						
-	                           	 	<a href="/borampms/admin/" class="text-muted float-end"><small><spring:message code="adminPage"/> -></small></a>
+	                           	 	<a href="/borampms/admin/" class="text-muted float-end">
+	                           	 		<small><spring:message code="adminPage"/> -></small></a>
 	                            </sec:authorize>
                             </div> <!-- end col -->
                         </div>

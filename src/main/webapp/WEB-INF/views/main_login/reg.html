@@ -14,17 +14,37 @@
  
  <!-- Vue 라이브러리 -->
  <script src="/borampms/tools/vue.js"></script>
-<script src="/borampms/tools/axios.js"></script>
+ <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+ 
+<!--  <script src="/borampms/tools/axios.js"></script>-->
  
  <!-- jquery 라이브러리 -->
- <script src="/borampms/tools/jquery-3.6.0.js"></script>
- 
+<link rel="stylesheet" href="/borampms/tools/jquery-ui.css" >
+<script src="/borampms/tools/jquery.min.js"></script>
+<script src="/borampms/tools/jquery-ui.js"></script>
+
+
+
 <script type="text/javascript">
 
+	 // vue를 사용하면 vue 방식대로 이벤트를 처리해줘야...
+	
+	   let idChkResult = 1; // 이게 0이 되어야 등록될 수 있도록
+           
+
+            // 패스워드 확인 => 패스워드 확인 작성 후, 패스워드 
+            // 패스워드를 지웠을 경우, 초기화 (""가 되면 초기화되도록)
+ 
+            // 패스워드 확인 작업
+            	// 일치하다는 것을 확인후, 내용을 지우면 일치하지않음이 정상적으로 나온다.
+            	// 문제: 패스워드 확인을 갑자기 확 지우면 메시지가 안 지워진다....
+            	// 패스워드를 지우면 메시지가 지워지는데...
+
     $(document).ready(function(){
+    
 		var vm = new Vue({
 			el:".container",
-			data:{result: 0, uiId:""},
+			data:{obj:{}, result: 0, uiId:""},
 			methods:{
 				idchk:function(){
 
@@ -45,16 +65,16 @@
 			
 					axios({
 						method:"get",
-						url: "/borampms//regUser.do?method=idchk", // 이걸로 restController 와 연결
-						params: vm.uiId // 받은 매개변수 객체 사용
+						url: "/borampms/idchk.do", // 이걸로 restController 와 연결
+						params: {uiId: vm.uiId} // 받은 매개변수 객체 사용
 					}).then((res)=>{
-						vm.result = res.data.result;
+						vm.result = res.data;
 						console.log("# 최종 받은 모델 #")
-						console.log(vm.result)
+						console.log(vm.result);
                         if(vm.result == 0){
                         alert("사용가능한 아이디입니다.");
                         $("[name=uiId]").attr("readonly", true);
-
+                        idChkResult = 0;
                         }else{
                             alert("중복된 아이디입니다.");
                         }
@@ -64,7 +84,102 @@
 						throw new Error(error)
 					})
 
+				},
+				chkPw:function(){
+					if($("#pw").val().trim()!=""){
+						if($("#pw2").val()!=$("#pw").val()){ // 이게 꼭 반대여야하는듯...
+							$("#pwMsg").css("color","red").text("비밀번호가 일치하지않습니다.");
+							
+						}else{
+							$("#pwMsg").css("color","green").text("비밀번호가 일치합니다.");	
+						}
+						
+					}
+					// 패스워드확인에 아무것도 없을 때는 메시지x
+					if($("#pw2").val().trim()=="" || $("#pw").val().trim()==""){
+						$("#pwMsg").text("");
+					}
+					
+				},
+				chkPw2:function(){
+					$("#pw2").keyup(function(){
+						if($("#pw2").val().trim()!=""){ // 이미 여기서 통과했으니 순서가 바뀌어야..
+							if($("#pw").val()!=$("#pw2").val()){ //이게 반대여야...
+								$("#pwMsg").css("color","red").text("비밀번호가 일치하지않습니다.");
+								
+							}else{
+								$("#pwMsg").css("color","green").text("비밀번호가 일치합니다.");	
+							}
+							
+						}
+						// 패스워드에 아무것도 없을 때는 메시지x
+						if($("#pw").val().trim()=="" || $("#pw2").val().trim()==""){
+							$("#pwMsg").text("");
+							
+						}
+					})
+				},
+				btnClick:function(){
+					   // 폼 제출
+		    
+		                 if(!checkPw($("#pw").val())){
+		                	 alert("패스워드는 각각 하나 이상의 숫자, 영어로 최소 8글자에서 최대 20자 가능합니다.");
+		                 	return;
+		                 };
+		                 
+		                 if(!CheckName($("#fullname").val())){
+		                	 alert("이름을 한글 혹은 영문으로 제대로 입력해주세요");
+		                	 
+		                	 return; 
+		                	 
+		                 }
+		                 
+		                 if($("[name=phone2]").val().trim()=="" || $("[name=phone3]").val().trim()==""){
+		                	 alert("연락처를 입력해주세요.");
+		                	 return false;
+		                	 
+		                 }
+		            	
+
+		                // 연락처 숫자 아니면 거르기
+		                if(isNaN($("[name=phone2]").val()) || 
+		                		isNaN($("[name=phone3]").val())){
+		                    alert("연락처는 숫자만 입력할 수 있습니다.")
+		                    return false;
+		                }
+
+		            	
+		                // 아이디 중복 체크 여부
+		                if(idChkResult==1){
+		                    alert("아이디 중복 체크해주세요.")
+		                    return false;
+		                }
+
+		                // 패스워드 둘 다 같으면
+		                if($("#pw").val() != $("#pw2").val()){
+		                    alert("비밀번호 확인이 일치하지않습니다.");
+		                    return false;
+		                }
+		                
+		                // 이메일 형식 확인
+		                if(!CheckEmail($("#emailaddress").val())){
+		                	alert("이메일 형식이 잘못되었습니다.");
+		                	return;
+		                };
+
+		                // 연락처 합치기
+		                $("[name=uiPhone]").val($("[name=phone1]").val()
+		                		+$("[name=phone2]").val()+$("[name=phone3]").val());
+		           
+			            
+		                if(confirm("사원 가입을 진행하시겠습니까?"))
+		                    $("#regForm").submit();
+		               
+		        
+					
 				}
+			
+			
 			}
 		});
 
@@ -120,41 +235,64 @@
 			
 		
 	}
+	
+	
+    function checkId(Id){ 
+		// 영문자로 시작해서 영어, 숫자로만 4~20글자 // ""를 하면 함수가 아니라고 에러
+	let regId = /^[a-z]{1}(?=.*[a-z])(?=.*[0-9]).{3,19}$/;
+		  if(!regId.test(Id)) {                            
+	          return false;         
+	     }                            	
+	     else {                       	
+	          return true;         	
+	     }          
 
-      // 중복 확인 후, 중복이 아니라고하면 아이디 readonly로 만듬. 중복이라고하면 아이디 초기화
-     /*
-      function idchk(){
-                
-            if($("[name=uiId]").val().trim()==''){
-                    alert("아이디를 입력해주세요.");
-                    return;
-                }
-            
-            if(!checkId($("#id").val())){
-             	alert("아이디는 숫자, 영소문자로 최소 4글자에서 최대 20자 가능합니다.");
-             	return;
-             };
-                
-                $.ajax({
-                url : "/borampms//regUser.do?method=idchk",
-                type : "get",
-                dataType : "json",
-                data : "uiId="+$("[name=uiId]").val(),
-                success : function(data){
-                    result = data.result;
-                    if(result == 0){
-                        alert("사용가능한 아이디입니다.");
-                        $("[name=uiId]").attr("readonly", true);
+	}
 
-                    }else{
-                        alert("중복된 아이디입니다.");
-                    }
-                }
-                
-                });
+function checkPw(Pw){
+		// 최소 하나이상의 영어, 숫자 8~20글자 필요
+	   let regPw = /^(?=.*[a-zA-z])(?=.*[0-9]).{8,20}$/;
+		  if(!regPw.test(Pw)) {                            
+          return false;         
+     }                            	
+     else {                       	
+          return true;         	
+     }          
+	
+}
 
-        }
-        */
+
+
+      // 이메일 형식 확인 함수
+function CheckEmail(email){
+
+   let regEmail = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+					
+     if(!regEmail.test(email)) {                            
+          return false;         
+     }                            	
+     else {                       	
+          return true;         	
+     }                            
+
+}           
+      
+      
+ function CheckName(name){
+	 
+	 let regName= /^[가-힣a-zA-Z]+$/;  // 영문 + 한글은 반드시 모음으로, 띄어쓰기 불가능
+	 
+	 if(!regName.test(name)){
+		   return false;         
+     }                            	
+     else {                       	
+          return true;         	
+     }                            
+
+	 
+ }
+
+     
 	
 </script>
 </head>
@@ -193,7 +331,7 @@
                                     <div class="mb-3">
                                         <label for="password" class="form-label">패스워드</label>
                                         <div class="input-group input-group-merge">
-                                            <input type="password" id="pw" class="form-control" name="uiPw" required placeholder="숫자, 영문자로 최소 8글자에서 최대 20자">
+                                            <input type="password" id="pw" @keyup="chkPw" class="form-control" name="uiPw" required placeholder="숫자, 영문자로 최소 8글자에서 최대 20자">
                                             <div class="input-group-text" data-password="false">
                                                 <span class="password-eye"></span>
                                             </div>
@@ -203,7 +341,7 @@
                                     <div class="mb-3">
                                         <label for="password" class="form-label">패스워드 확인</label>
                                         <div class="input-group input-group-merge">
-                                            <input type="password" id="pw2" class="form-control"  required>
+                                            <input type="password" id="pw2" @keyup="chkPw2" class="form-control"  required>
                                             <div class="input-group-text" data-password="false">
                                                 <span class="password-eye"></span>
                                             </div>
@@ -283,7 +421,7 @@
 
                                     <div class="mb-3 text-center">
                                         <button class="btn btn-primary" type="button" id="chkBtn" onclick="chkValidate()"> 가입 </button>
-                                        <button type="button" hidden id="signupBtn"> </button>
+                                        <button type="button" hidden id="signupBtn" @click="btnClick" > </button>
                                     </div>
 
                                 </form>
@@ -316,167 +454,9 @@
         <script>
 
 
-            let result = 1; // 이게 0이 되어야 등록될 수 있도록
-           
-
-            // 패스워드 확인 => 패스워드 확인 작성 후, 패스워드 
-            // 패스워드를 지웠을 경우, 초기화 (""가 되면 초기화되도록)
- 
-            // 패스워드 확인 작업
-            	// 일치하다는 것을 확인후, 내용을 지우면 일치하지않음이 정상적으로 나온다.
-            	// 문제: 패스워드 확인을 갑자기 확 지우면 메시지가 안 지워진다....
-            	// 패스워드를 지우면 메시지가 지워지는데...
+       
             
-            $("#pw").keyup(function(){
-				if($("#pw").val().trim()!=""){
-					if($("#pw2").val()!=$("#pw").val()){ // 이게 꼭 반대여야하는듯...
-						$("#pwMsg").css("color","red").text("비밀번호가 일치하지않습니다.");
-						
-					}else{
-						$("#pwMsg").css("color","green").text("비밀번호가 일치합니다.");	
-					}
-					
-				}
-				// 패스워드확인에 아무것도 없을 때는 메시지x
-				if($("#pw2").val().trim()=="" || $("#pw").val().trim()==""){
-					$("#pwMsg").text("");
-				}
-			})
-			
-
-			$("#pw2").keyup(function(){
-				if($("#pw2").val().trim()!=""){ // 이미 여기서 통과했으니 순서가 바뀌어야..
-					if($("#pw").val()!=$("#pw2").val()){ //이게 반대여야...
-						$("#pwMsg").css("color","red").text("비밀번호가 일치하지않습니다.");
-						
-					}else{
-						$("#pwMsg").css("color","green").text("비밀번호가 일치합니다.");	
-					}
-					
-				}
-				// 패스워드에 아무것도 없을 때는 메시지x
-				if($("#pw").val().trim()=="" || $("#pw2").val().trim()==""){
-					$("#pwMsg").text("");
-					
-				}
-			})
-			
-   
-            // 폼 제출
-            $("#signupBtn").click(function(){
-        
-                 if(!checkPw($("#pw").val())){
-                	 alert("패스워드는 각각 하나 이상의 숫자, 영어로 최소 8글자에서 최대 20자 가능합니다.");
-                 	return;
-                 };
-                 
-                 if(!CheckName($("#fullname").val())){
-                	 alert("이름을 한글 혹은 영문으로 제대로 입력해주세요");
-                	 
-                	 return; 
-                	 
-                 }
-                 
-                 if($("[name=phone2]").val().trim()=="" || $("[name=phone3]").val().trim()==""){
-                	 alert("연락처를 입력해주세요.");
-                	 return false;
-                	 
-                 }
-            	
-
-                // 연락처 숫자 아니면 거르기
-                if(isNaN($("[name=phone2]").val()) || 
-                		isNaN($("[name=phone3]").val())){
-                    alert("연락처는 숫자만 입력할 수 있습니다.")
-                    return false;
-                }
-
-            	
-                // 아이디 중복 체크 여부
-                if(result==1){
-                    alert("아이디 중복 체크해주세요.")
-                    return false;
-                }
-
-                // 패스워드 둘 다 같으면
-                if($("#pw").val() != $("#pw2").val()){
-                    alert("비밀번호 확인이 일치하지않습니다.");
-                    return false;
-                }
-                
-                // 이메일 형식 확인
-                if(!CheckEmail($("#emailaddress").val())){
-                	alert("이메일 형식이 잘못되었습니다.");
-                	return;
-                };
-
-                // 연락처 합치기
-                $("[name=uiPhone]").val($("[name=phone1]").val()
-                		+$("[name=phone2]").val()+$("[name=phone3]").val());
-           
-	            
-                if(confirm("사원 가입을 진행하시겠습니까?"))
-                    $("#regForm").submit();
-               
-            })
-            
-            function checkId(Id){ 
-            		// 영문자로 시작해서 영어, 숫자로만 4~20글자 // ""를 하면 함수가 아니라고 에러
-            	let regId = /^[a-z]{1}(?=.*[a-z])(?=.*[0-9]).{3,19}$/;
-            		  if(!regId.test(Id)) {                            
-    			          return false;         
-    			     }                            	
-    			     else {                       	
-    			          return true;         	
-    			     }          
-     
-            	}
-        
-            function checkPw(Pw){
-            		// 최소 하나이상의 영어, 숫자 8~20글자 필요
-          	   let regPw = /^(?=.*[a-zA-z])(?=.*[0-9]).{8,20}$/;
-          		  if(!regPw.test(Pw)) {                            
-			          return false;         
-			     }                            	
-			     else {                       	
-			          return true;         	
-			     }          
-        		
-            }
-            
-
-            
-                  // 이메일 형식 확인 함수
-            function CheckEmail(email){
-
-			   let regEmail = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
-								
-			     if(!regEmail.test(email)) {                            
-			          return false;         
-			     }                            	
-			     else {                       	
-			          return true;         	
-			     }                            
-			
-			}           
-                  
-                  
-             function CheckName(name){
-            	 
-            	 let regName= /^[가-힣a-zA-Z]+$/;  // 영문 + 한글은 반드시 모음으로, 띄어쓰기 불가능
-            	 
-            	 if(!regName.test(name)){
-            		   return false;         
-			     }                            	
-			     else {                       	
-			          return true;         	
-			     }                            
-			
-            	 
-             }
-	          
-
-
+    
         </script>
 
   

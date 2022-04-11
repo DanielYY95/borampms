@@ -208,7 +208,8 @@
 		                                                                <td onclick="detail(${deptdoc.ddId})">${deptdoc.ddWriter}</td>
 		                                                                <td onclick="detail(${deptdoc.ddId})"><fmt:formatDate value="${deptdoc.ddRegdate}" pattern="yyyy-MM-dd"/></td>
 		                                                            	<c:choose>
-																			<c:when test="${deptdoc.ddDept==user_info.uiDept&&deptdoc.ddWriter==user_info.uiName}">
+																			<c:when test="${deptdoc.ddDept==user_info.uiDept
+																				&&deptdoc.ddWriter==user_info.uiName}">
 																				<td>
 							 														<button onclick="update(${deptdoc.ddId})" id="upt-btn"><i class="dripicons-pencil"></i></button> |
 																					<button onclick="delete1(${deptdoc.ddId})" id="del-btn"><i class="dripicons-trash"></i></button>

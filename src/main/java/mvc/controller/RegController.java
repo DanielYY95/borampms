@@ -42,11 +42,11 @@ public class RegController {
 	
 		// 자동으로 로그인=> @ModelAttribute 로 vo객체를 사용하면 그런듯....
 	
-	@RequestMapping(params="method=idchk")
-	public String idchk(USER_INFO ins, Model d) {
-		d.addAttribute("result", service.idChk(ins));
-		return "pageJsonReport";
-	}
+	//@RequestMapping(params="method=idchk")
+	//public String idchk(USER_INFO ins, Model d) {
+	//	d.addAttribute("result", service.idChk(ins));
+	//	return "pageJsonReport";
+	//}
 	
 	
 	@RequestMapping(params="method=reg")
