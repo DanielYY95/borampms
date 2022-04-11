@@ -67,7 +67,7 @@
                                             <li class="breadcrumb-item active">File Manager</li>
                                         </ol>
                                     </div>
-                                    <h4 class="page-title">문서등록</h4>
+                                    <h4 class="page-title">결재문서등록</h4>
                                 </div>
                             </div>
                         </div>
@@ -77,7 +77,7 @@
                             <div class="col-12">
                                 <div class="card">
                                     <div class="card-body">
-                                    <h4 class="header-title">[부서 문서공유함]</h4>
+                                    <h4 class="header-title">[결재문서함]</h4>
                                     <br>
                                         <div class="tab-content">
                                             <div class="tab-pane show active" id="input-masks-preview">
@@ -95,7 +95,7 @@
 														<div class="col-lg-6">
 															<div class="mb-3">
 															    <label class="form-label" >부서</label>
-															    <input type="text" class="form-control" name="adDept" value="${appddoc.adDept}">
+															    <input type="text" class="form-control" name="adDept" value="${user_info.uiDept}" readonly>
 															</div>
 														</div>
 														<div class="col-lg-6">
@@ -221,7 +221,7 @@
 		});
 	});
 	$("#cancelBtn").click(function(){
-		alert("문서관리 페이지로 이동하시겠습니까?");
+		alert("결재관리 페이지로 이동하시겠습니까?");
 		location.href="${path}/appd.do?method=list";
 	});
 	</script>

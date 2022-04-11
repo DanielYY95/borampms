@@ -111,7 +111,7 @@
 						<div class="col-12">
 							<div class="card">
 								<div class="card-body">
-									<form class="row gy-2 gx-2 align-items-center justify-content-between" id="listsch" method="post" action="/borampms/mytask.do?method=clist">
+									<form class="row gy-2 gx-2 align-items-center justify-content-between" id="listsch" method="post" action="/borampms/mytask.do?method=wlist">
 										<input type="hidden" name="curPage" value="1">
 										
 											<div class="col-auto">

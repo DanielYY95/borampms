@@ -197,7 +197,7 @@
 	});
 
 	$("#docList-btn").click(function(){
-		alert("문서관리 페이지로 이동하시겠습니까?");
+		alert("결재관리 페이지로 이동하시겠습니까?");
 		location.href="${path}/appd.do?method=list";
 	});
 	</script>
