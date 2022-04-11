@@ -77,7 +77,9 @@
                             <div class="col-12">
                                 <div class="card">
                                     <div class="card-body">
+
                                     <h4 class="header-title">[결재문서함]</h4>
+
                                     <br>
                                         <div class="tab-content">
                                             <div class="tab-pane show active" id="input-masks-preview">
