@@ -39,7 +39,7 @@
 
 
 
-  <body class="loading" data-layout-config='{"darkMode":false}'>
+  <body class="loading font-16" data-layout-config='{"darkMode":false}'>
 
 		
         <c:set var="reg_prjList_Link" 
@@ -72,14 +72,14 @@
                         <li class="nav-item me-0">
                         	 <c:if test="${empty user_info.uiName}">
 	                            <a href="${path}/loginFrm.do"  
-	                            	class="nav-link d-lg-none">로그인</a>
+	                            	class="nav-link d-lg-none" style="font-size: 1.2rem;">로그인</a>
 	                            <a href="${path}/loginFrm.do"  
 	                            	class="btn btn-sm btn-light 
 	                            		rounded-pill d-none d-lg-inline-flex"><!-- 버튼같은 a태그 -->
-	                                <span style="padding-top: 3%;">로그인&nbsp;</span> 
-	                                	<i class="dripicons-power" > </i>
+	                                <span style="padding-top: 3%; font-size: 1.2rem;">로그인&nbsp;</span> 
+	                                	<i class="dripicons-power" style="font-size: 1.2rem;"> </i>
 	                            </a> 
-	                            <span>${user_info.uiName}</span>
+	                          
                             </c:if>
                             <c:if test="${!empty user_info.uiName}">
                             	<span class="badge bg-secondary text-light 
@@ -110,15 +110,23 @@
                                 BORAM3의 이펙티브한 PMS 시스템
                             </h2>
 
-                            <p class="mb-4 font-16 text-white-50">BORAM3 PMS는 간편하고 편리하며, 프로젝트 관리에 필요한 기능들을 모두 제공하고 있습니다.</p>
+                            <p class="mb-4 font-16 text-white-50">BORAM3 PMS는 간편하고 편리하며, <br>
+                                프로젝트 관리에 필요한 기능들을 제공하고 있습니다.</p>
                             <a href="${path}${reg_prjList_Link}" 
-                            		class="btn btn-success">${reg_prjList_text}
-                            		<i class="mdi mdi-arrow-right ms-1"></i></a>
+                            		class="btn btn-success" style="font-size: 1.3rem;">${reg_prjList_text}
+                            		<i class="mdi mdi-arrow-right ms-1"></i></a><br>
+                        <c:if test="${empty user_info.uiName}">
+                            <button class="mt-4 p-2 btn btn-secondary" style="font-size: 1.5rem" 
+                                ><a style="color:white" href="${path}/login.do?method=session&uiId=daniel95&uiPw=qwer1234&toURL=">체험용 로그인</a></button>
+                        </c:if>
                         </div>
                     </div>
-                    <div class="col-md-5 offset-md-2">
+                    <div class="col-md-5">
                         <div class="text-md-end mt-3 mt-md-0">
-                            <img src="${path}/tools/main_assets/images/startup.svg" alt="" class="img-fluid" />
+                            <video controls="" height="650" width="1000">
+                                <source src="${path}/videos/video.mp4" type="video/mp4">
+                                <strong>Your browser does not support the video tag.</strong>
+                              </video>
                         </div>
                     </div>
                 </div>

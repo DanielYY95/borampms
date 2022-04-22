@@ -33,7 +33,7 @@
 			</if>
 		)
 		where cnt between #{firstPage} and #{lastPage}
-		order by CD_ID desc
+		order by CD_ID ASC
 	</select>
 	<!-- 공통문서 등록 -->
 	<insert id="insertCD" parameterType="commonDoc">

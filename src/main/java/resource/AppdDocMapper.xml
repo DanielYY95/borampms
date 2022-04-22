@@ -29,7 +29,7 @@
 
 	</select>
 	<select id="getADList" parameterType="appdDocSch" resultType="appdDoc">
-		select *
+		select ad.*, ui.UI_NAME
 		from (
 			select rownum cnt, APPD_DOC.*
 			from APPD_DOC
@@ -52,8 +52,9 @@
             <if test='searchDocStauts !=null and searchDocStauts == "05"'>
             and AD_UI_ID=#{uiId}
             </if>
-		)
+		)ad, user_info ui
 		where cnt between #{firstPage} and #{lastPage}
+			and ad.AD_WRITER = ui.UI_ID 
 	</select>
 	<insert id="insertAD" parameterType="appdDoc">
 		INSERT INTO APPD_DOC (

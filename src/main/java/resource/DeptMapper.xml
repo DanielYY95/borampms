@@ -33,7 +33,7 @@
 			</if>
 		)
 		where cnt between #{firstPage} and #{lastPage}
-		order by DD_ID desc
+		order by DD_ID ASC
 	</select>
 	<!-- 부서문서 등록 -->
 	<insert id="insertDD" parameterType="deptDoc">

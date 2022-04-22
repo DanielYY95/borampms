@@ -181,8 +181,8 @@
 		});
 		/* 취소버튼 클릭시, 문서관리 페이지로 이동 */
 		$("#cancelBtn").click(function(){
-			alert("문서관리 페이지로 이동하시겠습니까?");
-			location.href="${path}/appd.do?method=list";
+			if(confirm("문서관리 페이지로 이동하시겠습니까?"))
+				location.href="${path}/appd.do?method=list";
 		});
 	});
 	</script>

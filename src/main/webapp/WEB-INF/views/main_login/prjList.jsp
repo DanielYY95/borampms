@@ -74,7 +74,7 @@
                         <!-- start page title -->
                         <div class="row">
                             <div class="col-12">
-                                <div class="page-title-box">
+                                <div class="page-title-box text-center">
                                    	
                                     <h4 class="page-title">프로젝트 목록</h4>
                                 </div>
@@ -83,15 +83,15 @@
                         <!-- end page title -->
 
 						<div class="row">
-                             <div class="mt-2">
-                                 <button id="newPrjBtn" type="button" class="btn btn-danger mb-2"><i class="mdi mdi-basket me-1"></i> 새 프로젝트 등록</button>
+                             <div class="col-10 mx-auto mt-2">
+                                 <button id="newPrjBtn" type="button" class="btn btn-danger mb-2 float-end"><i class="mdi mdi-basket me-1"></i> 새 프로젝트 등록</button>
                               
                              </div>
                        
                       	</div>
 
                         <div class="row">
-                            <div class="col-12">
+                            <div class="col-10 mx-auto">
                                 <div class="card">
                                     <div class="card-body">
                                     	
@@ -99,7 +99,7 @@
                                     
                                         <div class="row mb-2">
                        
-                                            <div class="col-xl-12">
+                                            <div class="col-12">
                                                    
                                                 <form id="searchForm" action="${path}/mainSearchPrj.do" class="row gy-2 gx-2 align-items-center justify-content-between"  method="post">
                                                 
@@ -166,10 +166,11 @@
                                                                 <label class="form-check-label" for="customCheck1">&nbsp;</label>
                                                             </div>
                                                         </th>
-                                                        <th>프로젝트 ID</th>
-                                                        <th>제목(프로젝트에 들어가기위해 여기를 누르시오)</th>
+                                                       
+                                                        <th style="width:30%;">제목(클릭 시, 프로젝트에 접근)</th>
                                                         <th>프로젝트 관리자</th>
-                                                        <th>생성일/마감일</th>
+														<th>시작일</th>
+														<th>마감일</th>
                                                         <th>프로젝트 상태</th>
                                                         
                                                     </tr>
@@ -183,8 +184,8 @@
 	                                                                <label class="form-check-label" for="customCheck2">&nbsp;</label>
 	                                                            </div>
 	                                                        </td>
-	                                                        <td><a href="apps-ecommerce-orders-details.html" class="text-body fw-bold">${prj.piId} </a> </td>
-	                                                        <td onclick="goToPrj('${prj.piId}')">${prj.piTitle}</td>
+	                                                       
+	                                                        <td style="width:30%;" onclick="goToPrj('${prj.piId}')">${prj.piTitle}</td>
 	                                                        <td>
 	                                                            <div class="d-flex">
 	                                                                <div class="d-flex align-items-center">
@@ -198,8 +199,10 @@
 	
 	                                                        <td>
 	                                                            <h5 class="my-0">${prj.piStartdate}</h5>
-	                                                            <p class="mb-0 txt-muted">${prj.piDuedate}</p>
+	                                                            
 	                                                        </td>
+															<td><p class="mb-0 txt-muted">${prj.piDuedate}</p></td>
+
 	
 	                                                        <td><h5 class="my-0"><span class="badge badge-info-lighten">${prj.piStatus}</span></h5></td>
 	                                                      
@@ -221,7 +224,7 @@
 						
 						   <!-- start page title -->
                         <div class="row">
-                            <div class="col-12">
+                            <div class="col-10 mx-auto">
                                 <div class="page-title-box">
                                    	
                                     <h4 class="page-title">프로젝트 참여가능 목록</h4>
@@ -231,7 +234,7 @@
                         <!-- end page title -->
 
                         <div class="row">
-                            <div class="col-12">
+                            <div class="col-10 mx-auto">
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="row mb-2">
@@ -248,10 +251,11 @@
 		                                                                <label class="form-check-label" for="customCheck1">&nbsp;</label>
 		                                                            </div>
 		                                                        </th>
-		                                                        <th>프로젝트 ID</th>
-		                                                        <th>제목</th>
-		                                                        <th>프로젝트 관리자</th>
-		                                                        <th>생성일/마감일</th>
+		                                                       
+		                                                        <th style="width:30%;">제목</th>
+		                                                        <th >프로젝트 관리자</th>
+		                                                        <th>시작일</th>
+																<th>마감일</th>
 		                                                        <th>프로젝트 상태</th>
 		                                                        <th style="width: 125px;">참가 요청/상태</th>
 		                                                    </tr>
@@ -259,14 +263,14 @@
 		                                                <tbody>
 		                                                	<c:forEach var="newprj" items="${newPrjList}">
 		                                                		<tr>
-			                                                        <td>
+																	<td>
 			                                                            <div class="form-check">
 			                                                                <input type="checkbox" class="form-check-input" id="customCheck2">
 			                                                                <label class="form-check-label" for="customCheck2">&nbsp;</label>
 			                                                            </div>
 			                                                        </td>
-			                                                        <td><a href="apps-ecommerce-orders-details.html" class="text-body fw-bold">${newprj.piId}</a> </td>
-			                                                        <td>${newprj.piTitle}</td>
+			  
+			                                                        <td style="width:30%;">${newprj.piTitle}</td>
 			                                                        <td>
 			                                                            <div class="d-flex">
 			                                                                <div class="d-flex align-items-center">
@@ -280,8 +284,9 @@
 			
 			                                                        <td>
 			                                                            <h5 class="my-0">${newprj.piStartdate}</h5>
-			                                                            <p class="mb-0 txt-muted">${newprj.piDuedate}</p>
+			                                                            
 			                                                        </td>
+																	<td><p class="mb-0 txt-muted">${newprj.piDuedate}</p></td>
 			
 			                                                        <td><h5 class="my-0"><span class="badge badge-info-lighten">${newprj.piStatus}</span></h5></td>
 			                                                        <td>
@@ -301,8 +306,8 @@
 			                                                                <label class="form-check-label" for="customCheck2">&nbsp;</label>
 			                                                            </div>
 			                                                        </td>
-			                                                        <td><a href="apps-ecommerce-orders-details.html" class="text-body fw-bold">${waitprj.piId} </a> </td>
-			                                                        <td>${waitprj.piTitle}</td>
+			  
+			                                                        <td style="width:30%;">${waitprj.piTitle}</td>
 			                                                        <td>
 			                                                            <div class="d-flex">
 			                                                                <div class="d-flex align-items-center">
@@ -316,8 +321,9 @@
 			
 			                                                        <td>
 			                                                            <h5 class="my-0">${waitprj.piStartdate}</h5>
-			                                                            <p class="mb-0 txt-muted">${waitprj.piDuedate}</p>
+			                                                            
 			                                                        </td>
+																	<td><p class="mb-0 txt-muted">${waitprj.piDuedate}</p></td>
 			
 			                                                        <td><h5 class="my-0"><span class="badge badge-info-lighten">${waitprj.piStatus}</span></h5></td>
 			                                                        <td>

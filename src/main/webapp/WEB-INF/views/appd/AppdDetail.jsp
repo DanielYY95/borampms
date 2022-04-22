@@ -180,24 +180,24 @@
 	/* 글목록버튼 클릭시, 문서관리 페이지로 이동 */
 
 	$("#docList-btn4").click(function(){
-		alert("결재 반려하시겠습니까?");
+		if(confirm("결재 반려하시겠습니까?"))
 		location.href="${path}/appd.do?method=returnDocument&adId="+$('#adId').val();
 	});
 	$("#docList-btn1").click(function(){
-		alert("결재 승인하시겠습니까?");
+		if(confirm("결재 승인하시겠습니까?"))
 		location.href="${path}/appd.do?method=appdDocument&adId="+$('#adId').val();
 	});
 	$("#docList-btn2").click(function(){
-		alert("수정 페이지로 이동하시겠습니까?");
+		if(confirm("수정 페이지로 이동하시겠습니까?"))
 		location.href="${path}/appd.do?method=updateFrm&adId="+$('#adId').val();
 	});
 	$("#docList-btn3").click(function(){
-		alert("삭제 하시겠습니까?");
+		if(confirm("삭제 하시겠습니까?"))
 		location.href="${path}/appd.do?params=method=del";
 	});
 
 	$("#docList-btn").click(function(){
-		alert("결재관리 페이지로 이동하시겠습니까?");
+		if(confirm("결재관리 페이지로 이동하시겠습니까?"))
 		location.href="${path}/appd.do?method=list";
 	});
 	</script>

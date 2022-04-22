@@ -27,10 +27,13 @@
 
 <script type="text/javascript">
 
+
+
 	 // vue를 사용하면 vue 방식대로 이벤트를 처리해줘야...
-	
+	 	// vue 사용하면 jquery만 못 사용하는 듯하다.
+		
 	   let idChkResult = 1; // 이게 0이 되어야 등록될 수 있도록
-           
+  
 
             // 패스워드 확인 => 패스워드 확인 작성 후, 패스워드 
             // 패스워드를 지웠을 경우, 초기화 (""가 되면 초기화되도록)
@@ -42,6 +45,17 @@
 
     $(document).ready(function(){
     
+    	// 생년월일 유효성 추가
+    	let today = new Date();
+    	let year = today.getFullYear(); // 년도
+    	let month = today.getMonth() + 1+"";  // 월
+    	let date = today.getDate()+"";  // 날짜
+    	
+    	let maxBirth = year+"-"+month.padStart(2,"0")+"-"+date.padStart(2,"0");
+    	
+    	$("[name=uiBirth]").attr("max", maxBirth);
+    	
+    	// vue 사용
 		var vm = new Vue({
 			el:".container",
 			data:{obj:{}, result: 0, uiId:""},
@@ -69,8 +83,10 @@
 						params: {uiId: vm.uiId} // 받은 매개변수 객체 사용
 					}).then((res)=>{
 						vm.result = res.data;
+						
 						console.log("# 최종 받은 모델 #")
 						console.log(vm.result);
+						
                         if(vm.result == 0){
                         alert("사용가능한 아이디입니다.");
                         $("[name=uiId]").attr("readonly", true);
@@ -87,7 +103,7 @@
 				},
 				chkPw:function(){
 					if($("#pw").val().trim()!=""){
-						if($("#pw2").val()!=$("#pw").val()){ // 이게 꼭 반대여야하는듯...
+						if($("#pw").val()!=$("#pw2").val()){ 
 							$("#pwMsg").css("color","red").text("비밀번호가 일치하지않습니다.");
 							
 						}else{
@@ -103,8 +119,8 @@
 				},
 				chkPw2:function(){
 					$("#pw2").keyup(function(){
-						if($("#pw2").val().trim()!=""){ // 이미 여기서 통과했으니 순서가 바뀌어야..
-							if($("#pw").val()!=$("#pw2").val()){ //이게 반대여야...
+						if($("#pw2").val().trim()!=""){ 
+							if($("#pw2").val()!=$("#pw").val()){ 
 								$("#pwMsg").css("color","red").text("비밀번호가 일치하지않습니다.");
 								
 							}else{
@@ -119,125 +135,124 @@
 						}
 					})
 				},
-				btnClick:function(){
-					   // 폼 제출
-		    
-		                 if(!checkPw($("#pw").val())){
-		                	 alert("패스워드는 각각 하나 이상의 숫자, 영어로 최소 8글자에서 최대 20자 가능합니다.");
-		                 	return;
-		                 };
-		                 
-		                 if(!CheckName($("#fullname").val())){
-		                	 alert("이름을 한글 혹은 영문으로 제대로 입력해주세요");
-		                	 
-		                	 return; 
-		                	 
-		                 }
-		                 
-		                 if($("[name=phone2]").val().trim()=="" || $("[name=phone3]").val().trim()==""){
-		                	 alert("연락처를 입력해주세요.");
-		                	 return false;
-		                	 
-		                 }
-		            	
-
-		                // 연락처 숫자 아니면 거르기
-		                if(isNaN($("[name=phone2]").val()) || 
-		                		isNaN($("[name=phone3]").val())){
-		                    alert("연락처는 숫자만 입력할 수 있습니다.")
-		                    return false;
-		                }
-
-		            	
-		                // 아이디 중복 체크 여부
-		                if(idChkResult==1){
-		                    alert("아이디 중복 체크해주세요.")
-		                    return false;
-		                }
-
-		                // 패스워드 둘 다 같으면
-		                if($("#pw").val() != $("#pw2").val()){
-		                    alert("비밀번호 확인이 일치하지않습니다.");
-		                    return false;
-		                }
-		                
-		                // 이메일 형식 확인
-		                if(!CheckEmail($("#emailaddress").val())){
-		                	alert("이메일 형식이 잘못되었습니다.");
-		                	return;
-		                };
-
-		                // 연락처 합치기
-		                $("[name=uiPhone]").val($("[name=phone1]").val()
-		                		+$("[name=phone2]").val()+$("[name=phone3]").val());
-		           
-			            
-		                if(confirm("사원 가입을 진행하시겠습니까?"))
-		                    $("#regForm").submit();
-		               
-		        
+				
+				chkValidate:function(){
+					// 입력 유효성 검사 
+					if($("[name=uiId]").val().trim()==""){
+						alert("아이디을 입력해주세요.");
+						$("[name=uiId]").focus();
+						return false;	
+			        }
+			        if ($("[name=uiPw]").val().trim()==""){
+						alert("비밀번호를 입력해주세요.");
+						$("[name=uiPw]").focus();
+						return false;
+			        }
+			        
+			        if ($("[name=uiName]").val().trim()==""){
+						alert("이름을 입력해주세요.");
+						$("[name=uiName]").focus();
+						return false;
+			               
+					}
+			        
+			        if ($("[name=uiEmail]").val().trim()==""){
+						alert("이메일을 입력해주세요.");
+						$("[name=uiEmail]").focus();
+						return false;
+					}
+			        
+			        if ($("[name=uiBirth]").val()==""){
+						alert("생년월일을 입력해주세요.");
+						$("[name=uiBirth]").focus();
+						return false;
+					}
+			        
+			        if ($("[name=uiDept]").val()==""){
+						alert("부서를 입력해주세요.");
+						$("[name=uiDept]").focus();
+						return false;
+					}
 					
+			        if ($("[name=uiRank]").val()==""){
+						alert("직급을 입력해주세요.");
+						$("[name=uiRank]").focus();
+						return false;
+					}
+			        
+			        if($("[name=phone2]").val().trim()=="" || $("[name=phone3]").val().trim()==""){
+			         	 alert("연락처를 입력해주세요.");
+			         	 return false;
+			         	 
+			          }
+			        
+			        btnClick();
+			
 				}
-			
-			
 			}
 		});
 
 	});
-	
-	
-	function chkValidate(){
+            
+    function btnClick(){
+		   // 폼 제출
 
-		// 입력 유효성 검사 
-		if($("[name=uiId]").val().trim()==""){
-			alert("아이디을 입력해주세요.");
-			$("[name=uiId]").focus();
-			return false;	
-        }
-        if ($("[name=uiPw]").val().trim()==""){
-			alert("비밀번호를 입력해주세요.");
-			$("[name=uiPw]").focus();
-			return false;
-        }
+          if(!checkPw($("#pw").val())){
+         	 alert("패스워드는 각각 하나 이상의 숫자, 영어로 최소 8글자에서 최대 20자 가능합니다.");
+         	  return false;
+          };
+          
+          if(!CheckName($("#fullname").val())){
+         	 alert("이름을 한글 혹은 영문으로 입력해주세요");
+         	 
+         	  return false;
+         	 
+          }
+          
+
+         // 연락처 숫자 아니면 거르기
+         if(isNaN($("[name=phone2]").val()) || 
+         		isNaN($("[name=phone3]").val())){
+             alert("연락처는 숫자만 입력할 수 있습니다.")
+             return false;
+         }
+
+     	
+         // 아이디 중복 체크 여부
+         if(idChkResult==1){
+             alert("아이디 중복 체크해주세요.")
+             return false;
+         }
+
+         // 패스워드 둘 다 같으면
+         if($("#pw").val() != $("#pw2").val()){
+             alert("비밀번호 확인이 일치하지않습니다.");
+             return false;
+         }
+         
+         // 이메일 형식 확인
+         if(!CheckEmail($("#emailaddress").val())){
+         	alert("이메일 형식이 잘못되었습니다.");
+         	  return false;
+         };
+
+         // 연락처 합치기
+         $("[name=uiPhone]").val($("[name=phone1]").val()
+         		+$("[name=phone2]").val()+$("[name=phone3]").val());
+    
+         
+         if(confirm("사원 가입을 진행하시겠습니까?"))
+             $("#regForm").submit();
         
-        if ($("[name=uiName]").val().trim()==""){
-			alert("이름을 입력해주세요.");
-			$("[name=uiName]").focus();
-			return false;
-               
-		}
-        
-        if ($("[name=uiEmail]").val().trim()==""){
-			alert("이메일을 입력해주세요.");
-			$("[name=uiEmail]").focus();
-			return false;
-		}
-        
-        if ($("[name=uiBirth]").val()==""){
-			alert("생년월일을 입력해주세요.");
-			$("[name=uiBirth]").focus();
-			return false;
-		}
-        
-        if ($("[name=uiDept]").val()==""){
-			alert("부서를 입력해주세요.");
-			$("[name=uiDept]").focus();
-			return false;
-		}
-		
-        if ($("[name=uiRank]").val()==""){
-			alert("직급을 입력해주세요.");
-			$("[name=uiRank]").focus();
-			return false;
-		}
-        
-		$("#signupBtn").click();
-			
+ 
 		
 	}
 	
 	
-    function checkId(Id){ 
+
+	
+	
+ function checkId(Id){ 
 		// 영문자로 시작해서 영어, 숫자로만 4~20글자 // ""를 하면 함수가 아니라고 에러
 	let regId = /^[a-z]{1}(?=.*[a-z])(?=.*[0-9]).{3,19}$/;
 		  if(!regId.test(Id)) {                            
@@ -367,7 +382,7 @@ function CheckEmail(email){
                            			<div class="row g-3">
 	                        			<div class="mb-3 col-4">
 	                                        <label for="example-date" class="form-label">생년월일</label>
-	                                        <input class="form-control" id="example-date" name="uiBirth" type="date" name="uiBirth">
+	                                        <input class="form-control" id="example-date"  type="date" name="uiBirth" >
 	                                    </div>
 	                                    
 	                                     <div class="mb-3 col">
@@ -385,14 +400,14 @@ function CheckEmail(email){
 	                                     <div class="mb-3 col">
 	                                        <label for="rank" class="form-label">직급</label> 
 	                                            <select class="form-select" id="rank" name="uiRank">
-	                                            	<option>실장</option>
+	                                            	<option>사원</option>
+	                                            	<option>주임</option>
+	                                            	<option>대리</option>
+	                                            	<option>과장</option>
+	                                            	<option>차장</option>
+	                                            	<option>부장</option>
 	                                            	<option>팀장</option>
-	                                                <option>부장</option>
-	                                                <option>차장</option>
-	                                                <option>과장</option>
-	                                                <option>대리</option>
-	                                                <option>주임</option>
-	                    							<option>사원</option>
+	                                            	<option>실장</option>
 	                                            </select>
 	                                    </div>
                            			
@@ -420,8 +435,8 @@ function CheckEmail(email){
 
 
                                     <div class="mb-3 text-center">
-                                        <button class="btn btn-primary" type="button" id="chkBtn" onclick="chkValidate()"> 가입 </button>
-                                        <button type="button" hidden id="signupBtn" @click="btnClick" > </button>
+                                        <button class="btn btn-primary" type="button" id="chkBtn" @click="chkValidate()"> 가입 </button>
+                                      
                                     </div>
 
                                 </form>

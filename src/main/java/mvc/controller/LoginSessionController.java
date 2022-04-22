@@ -1,6 +1,7 @@
 package mvc.controller;
 
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -10,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 import mvc.service.UserService;
 import mvc.vo.USER_INFO;
@@ -23,6 +25,8 @@ public class LoginSessionController {
 	public USER_INFO getUser() {
 		return new USER_INFO();
 	}
+	
+
 	
 	@Autowired
 	private UserService service;
@@ -82,13 +86,19 @@ public class LoginSessionController {
 	
 	@RequestMapping(params="method=logout")
 	public String logout(@ModelAttribute("user_info") 
-		USER_INFO sch, HttpSession session, Model d) {
+		USER_INFO sch, HttpSession session, SessionStatus s, Model d, HttpServletRequest request) {
 
 		// 세션 종료
-		session.invalidate(); // 세션은 확실히 없어졌으나, 계속 정보가 남아있는 문제(이것만으로는 로그아웃이 안되네)
-		d.addAttribute("user_info", new USER_INFO()); // 새 객체로 만들어준다.
-		d.addAttribute("msg", "로그아웃이 되었습니다.");
+		session.invalidate(); 
+		// @SessionAttritbute를 사용하게되면 session에도 값을 담게 된다. 그래서 session.getAttribute가능
+			// but session.invalidate()를 통해 세션 종료해도 계속 값이 남는다. 아마 스프링 컨테이너에 계속 있는듯? 
+			// 세션 만료 후에는 세션에서 가져올 때(getAttributes)는 안되지만, 이렇게 @ModelAttribute로 가져오는건 그대로 유지가 되네
+
+		s.setComplete();
 		
+	
+		d.addAttribute("msg", "로그아웃이 되었습니다.");
+	
 		return "redirect:/main.do";
 	}
 

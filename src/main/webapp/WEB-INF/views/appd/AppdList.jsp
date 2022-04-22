@@ -182,15 +182,15 @@
 	                                                        <tbody>
 	                                                        	<c:forEach var="appddoc" items="${adList}">
 	                                                            <tr>
-	                                                                <td onclick="detail(${appddoc.adId})">
+	                                                                <td>
 	                                                                    <span class="ms-2 fw-semibold">${appddoc.adId}</span>
 	                                                                </td>
 	                                                                <td onclick="detail(${appddoc.adId})">
 	                                                                    <span class="font-12"><a href="javascript: void(0);" class="text-reset">${appddoc.adTitle}</a></span>
 	                                                                </td>
-	                                                                <td onclick="detail(${appddoc.adId})">${appddoc.adWriter}</td>
-																	<td onclick="detail(${appddoc.adId})"><fmt:formatDate value="${appddoc.adRegdate}" pattern="yyyy-MM-dd"/></td>
-	                                                                <td onclick="detail(${appddoc.adAppd})">${appddoc.adAppd}</td>
+	                                                                <td>${appddoc.uiName}</td>
+																	<td><fmt:formatDate value="${appddoc.adRegdate}" pattern="yyyy-MM-dd"/></td>
+	                                                                <td>${appddoc.adAppd}</td>
 	                                                            </tr>
 	                                                            </c:forEach>
 	                                                        </tbody>

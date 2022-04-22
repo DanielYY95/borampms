@@ -50,8 +50,6 @@ public class UserController {
 		// 랜덤 비밀번호로 변경
 		service.updateTempPw(email, user);
 		
-		// 랜덤 비밀번호를 이메일로 전송
-		
 		
 		// 메시지용
 		d.addAttribute("userPw", 1);

@@ -39,92 +39,102 @@
 
 
 
-  <body class="loading" data-layout-config='{"darkMode":false}'>
+ 
+<body class="loading font-16" data-layout-config='{"darkMode":false}'>
 
 		
-        <c:set var="reg_prjList_Link" 
-        	value="${user_info.uiName==null? 
-        		'/regUser.do': '/prjList.do'}" />        
-		<c:set var="reg_prjList_text" 
-			value="${user_info.uiName==null? 
-				'시작하기': '내 프로젝트 목록'}" />
+    <c:set var="reg_prjList_Link" 
+        value="${user_info.uiName==null? 
+            '/regUser.do': '/prjList.do'}" />        
+    <c:set var="reg_prjList_text" 
+        value="${user_info.uiName==null? 
+            '시작하기': '내 프로젝트 목록'}" />
 
-        <!-- NAVBAR START -->
-        <nav class="navbar navbar-expand-lg py-lg-3 navbar-dark">
-            <div class="container">
+    <!-- NAVBAR START -->
+    <nav class="navbar navbar-expand-lg py-lg-3 navbar-dark">
+        <div class="container">
 
-                <!-- logo -->
-                <a href="${path}/main.do" class="navbar-brand me-lg-5">
-                    <img src="${path}/tools/project_assets/images/boram_light.png" style="height: 100px;" alt="" class="logo-dark" height="18" />
-                </a>
+            <!-- logo -->
+            <a href="${path}/main.do" class="navbar-brand me-lg-5">
+                <img src="${path}/tools/project_assets/images/boram_light.png" style="height: 100px;" alt="" class="logo-dark" height="18" />
+            </a>
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-                    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="mdi mdi-menu"></i>
-                </button>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="mdi mdi-menu"></i>
+            </button>
 
-                <!-- menus -->
-                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <!-- menus -->
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
 
-                    <!-- right menu -->
-                    <ul class="navbar-nav ms-auto align-items-center">
-                    
-                        <li class="nav-item me-0">
-                        	 <c:if test="${empty user_info.uiName}">
-	                            <a href="${path}/loginFrm.do"  
-	                            	class="nav-link d-lg-none">로그인</a>
-	                            <a href="${path}/loginFrm.do"  
-	                            	class="btn btn-sm btn-light 
-	                            		rounded-pill d-none d-lg-inline-flex"><!-- 버튼같은 a태그 -->
-	                                <span style="padding-top: 3%;">로그인&nbsp;</span> 
-	                                	<i class="dripicons-power" > </i>
-	                            </a> 
-	                            <span>${user_info.uiName}</span>
-                            </c:if>
-                            <c:if test="${!empty user_info.uiName}">
-                            	<span class="badge bg-secondary text-light 
-                            		rounded-pill p-2 pb-1 fs-5">${user_info.uiName} 님</span>
-                            	<a href="${path}/login.do?method=logout" 
-                            		class="nav-link">로그아웃&nbsp;<i class="dripicons-enter"></i></a>
-                            </c:if>
-                            
-                        </li>
-                    </ul>
+                <!-- right menu -->
+                <ul class="navbar-nav ms-auto align-items-center">
+                
+                    <li class="nav-item me-0">
+                         <c:if test="${empty user_info.uiName}">
+                            <a href="${path}/loginFrm.do"  
+                                class="nav-link d-lg-none" style="font-size: 1.2rem;">로그인</a>
+                            <a href="${path}/loginFrm.do"  
+                                class="btn btn-sm btn-light 
+                                    rounded-pill d-none d-lg-inline-flex"><!-- 버튼같은 a태그 -->
+                                <span style="padding-top: 3%; font-size: 1.2rem;">로그인&nbsp;</span> 
+                                    <i class="dripicons-power" style="font-size: 1.2rem;"> </i>
+                            </a> 
+                          
+                        </c:if>
+                        <c:if test="${!empty user_info.uiName}">
+                            <span class="badge bg-secondary text-light 
+                                rounded-pill p-2 pb-1 fs-5">${user_info.uiName} 님</span>
+                            <a href="${path}/login.do?method=logout" 
+                                class="nav-link">로그아웃&nbsp;<i class="dripicons-enter"></i></a>
+                        </c:if>
+                        
+                    </li>
+                </ul>
 
+            </div>
+        </div>
+    </nav>
+    <!-- NAVBAR END -->
+
+    <!-- START HERO -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-5">
+                    <div class="mt-md-4">
+                        <div>
+                            <span class="badge bg-danger rounded-pill">New</span>
+                            <span class="text-white-50 ms-1">BORAM3 PMS version 3.4 업데이트</span>
+                        </div>
+                        <h2 class="text-white fw-normal mb-4 mt-3 hero-title">
+                            BORAM3의 이펙티브한 PMS 시스템
+                        </h2>
+
+                        <p class="mb-4 font-16 text-white-50">BORAM3 PMS는 간편하고 편리하며, <br>
+                            프로젝트 관리에 필요한 기능들을 제공하고 있습니다.</p>
+                        <a href="${path}${reg_prjList_Link}" 
+                                class="btn btn-success" style="font-size: 1.3rem;">${reg_prjList_text}
+                                <i class="mdi mdi-arrow-right ms-1"></i></a><br>
+                    <c:if test="${empty user_info.uiName}">
+                        <button class="mt-4 p-2 btn btn-secondary" style="font-size: 1.5rem" 
+                            ><a style="color:white" href="${path}/login.do?method=session&uiId=daniel95&uiPw=qwer1234&toURL=">체험용 로그인</a></button>
+                    </c:if>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="text-md-end mt-3 mt-md-0">
+                        <video controls="" height="650" width="1000">
+                            <source src="${path}/videos/video.mp4" type="video/mp4">
+                            <strong>Your browser does not support the video tag.</strong>
+                          </video>
+                    </div>
                 </div>
             </div>
-        </nav>
-        <!-- NAVBAR END -->
-
-        <!-- START HERO -->
-        <section class="hero-section">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-md-5">
-                        <div class="mt-md-4">
-                            <div>
-                                <span class="badge bg-danger rounded-pill">New</span>
-                                <span class="text-white-50 ms-1">BORAM3 PMS version 3.4 업데이트</span>
-                            </div>
-                            <h2 class="text-white fw-normal mb-4 mt-3 hero-title">
-                                BORAM3의 이펙티브한 PMS 시스템
-                            </h2>
-
-                            <p class="mb-4 font-16 text-white-50">BORAM3 PMS는 간편하고 편리하며, 프로젝트 관리에 필요한 기능들을 모두 제공하고 있습니다.</p>
-                            <a href="${path}${reg_prjList_Link}" 
-                            		class="btn btn-success">${reg_prjList_text}
-                            		<i class="mdi mdi-arrow-right ms-1"></i></a>
-                        </div>
-                    </div>
-                    <div class="col-md-5 offset-md-2">
-                        <div class="text-md-end mt-3 mt-md-0">
-                            <img src="${path}/tools/main_assets/images/startup.svg" alt="" class="img-fluid" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- END HERO -->
+        </div>
+    </section>
+    <!-- END HERO -->
+      
 
         <!-- START SERVICES -->
         <section class="py-5">

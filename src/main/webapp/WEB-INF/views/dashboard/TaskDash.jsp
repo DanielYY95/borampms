@@ -36,7 +36,7 @@
 		<jsp:include page="../include/leftBar.jsp" flush="true" />
 
 		<div class="content-page">
-			<div class="content col-10 mx-auto">
+			<div class="content col-8 mx-auto">
 				<!-- Topbar Start -->
 				<jsp:include page="../include/headerBar.jsp" flush="true" />
 
@@ -154,7 +154,7 @@
 						<!-- end col-->
 
 
-						<div class="col-xl-7 col-lg-6" style="width: 570px;">
+						<div class="col-xl-7 col-lg-6">
 							<div class="card card-h-100">
 								<div class="card-body">
 									<div class="d-flex justify-content-between align-items-center mb-2">
@@ -165,13 +165,13 @@
 									</div>
 									<form class="chartform">
 										<div class="form-body">
-											<div style="height: 350px; position: relative; padding-left:100px;">
-												<canvas id="taskDashChart" width="300vh;" height="300vh;"></canvas>
+											<div style="height: 350px; ">
+												<canvas id="taskDashChart" width="300;" height="300;" class="mx-auto"></canvas>
 											</div>
 										</div>
 									</form>
 							
-									<div class="chart-widget-list">
+									<div class="chart-widget-list px-5">
 										<c:forEach var="task" items="${taskDashChart}">
 											
 											<p>
@@ -206,6 +206,11 @@
 							<!-- end card-->
 
 						</div>
+					
+
+						</div>
+						<!-- end col -->
+
 						<div class="row">
 							<div class="col-12">
 								<div class="card">
@@ -289,9 +294,6 @@
 
 							</div>
 							<!-- end col -->
-
-						</div>
-						<!-- end col -->
 
 					</div>
 					<!-- end content -->

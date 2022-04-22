@@ -116,7 +116,7 @@
 															<div class="mb-3">
 															    <label class="form-label">결재자</label><br>
 															    <input type="hidden" class="form-control" name="adUiId" value="${appddoc.adUiId}" readonly>
-															    <select id="selAdUiId">
+															    <select class="form-select" id="selAdUiId">
 															    	<c:forEach var="user" items="${deptUserList}">
 																    	<c:choose>
 																	    	<c:when test="${appddoc.adUiId == user.uiId}">
@@ -223,8 +223,8 @@
 		});
 	});
 	$("#cancelBtn").click(function(){
-		alert("결재관리 페이지로 이동하시겠습니까?");
-		location.href="${path}/appd.do?method=list";
+		if(confirm("결재관리 페이지로 이동하시겠습니까?"))
+			location.href="${path}/appd.do?method=list";
 	});
 	</script>
 </html>
