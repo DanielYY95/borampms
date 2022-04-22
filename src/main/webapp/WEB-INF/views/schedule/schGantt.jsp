@@ -215,7 +215,7 @@
 			$('#signup-modal').css('display','none');
 		}
 		function dateFormat(date) {
-	        let month = date.getMonth();
+		 let month = date.getMonth()+1;
 	        let day = date.getDate();
 	        let hour = date.getHours();
 	        let minute = date.getMinutes();
