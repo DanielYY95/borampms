@@ -51,8 +51,8 @@
 	</filter-mapping>
   
   	
-  	<session-config> <!-- 세션 60분 -->
-		<session-timeout>1</session-timeout> 
+  	<session-config> <!-- jsp는 보통 was 서버인 tomcat으로 실행되는 경우가 많기에 tomcat의 session time 받아서 -->
+		<session-timeout>30</session-timeout> 
 	</session-config>
 	  	
 	  	

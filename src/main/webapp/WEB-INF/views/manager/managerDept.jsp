@@ -241,7 +241,7 @@
 	                                                             </c:if>
 		                                                        </td>
 		                                                        <td>
-		                                                            <a onclick="deptDetail('${dept.diId}')" class="action-icon"
+		                                                            <a href="javascript:void(0);" onclick="goDeptDetail('${dept.diId}')" class="action-icon"
 		                                                            data-bs-toggle="modal"data-bs-target="#signup-modal">
 		                                                             <i class="mdi mdi-square-edit-outline"></i></a>
 		                                                      
@@ -329,8 +329,10 @@
 
 <script>
 
-	function deptDetail(diId){
+	function goDeptDetail(diId){
+			
 		
+		// 함수랑 같은 이름으로 변수 쓰지말자 => 해당 @@는 함수가 아닙니다 로 에러가 나온다. 
 			$.ajax({
 				url: "${path}/admin/manager.do?method=deptDetail",
 				type: "get",

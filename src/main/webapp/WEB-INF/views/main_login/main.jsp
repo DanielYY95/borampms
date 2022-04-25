@@ -123,10 +123,15 @@
                     </div>
                     <div class="col-md-5">
                         <div class="text-md-end mt-3 mt-md-0">
-                            <video controls="" height="650" width="1000">
-                                <source src="${path}/videos/video.mp4" type="video/mp4">
-                                <strong>Your browser does not support the video tag.</strong>
-                              </video>
+                            <iframe 
+                                width="1000" height="650" src="https://www.youtube.com/embed/lOVG3tafBzU?start=881" 
+                                title="YouTube video player" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                                </iframe>
+
+                         
                         </div>
                     </div>
                 </div>
