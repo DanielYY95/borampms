@@ -11,7 +11,7 @@ public class Task_User {
 	private String ptCharge;
 	private String ptType;
 	private String ptStatus;
-	private String ptGuidecontent;
+
 	private String uiId;
 	private String piId;
 	
@@ -108,12 +108,7 @@ public class Task_User {
 	public void setPtStatus(String ptStatus) {
 		this.ptStatus = ptStatus;
 	}
-	public String getPtGuidecontent() {
-		return ptGuidecontent;
-	}
-	public void setPtGuidecontent(String ptGuidecontent) {
-		this.ptGuidecontent = ptGuidecontent;
-	}
+
 	public String getUiId() {
 		return uiId;
 	}

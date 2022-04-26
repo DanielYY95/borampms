@@ -11,7 +11,7 @@ public class PRJ_TASK {
 	private String ptType;
 	private String ptStatus;
 	private String ptPriority;
-	private String ptGuidecontent;
+
 	private String uiId;
 	private String piId;
 	private String duration;
@@ -113,12 +113,7 @@ public class PRJ_TASK {
 	public void setPtPriority(String ptPriority) {
 		this.ptPriority = ptPriority;
 	}
-	public String getPtGuidecontent() {
-		return ptGuidecontent;
-	}
-	public void setPtGuidecontent(String ptGuidecontent) {
-		this.ptGuidecontent = ptGuidecontent;
-	}
+
 	public String getUiId() {
 		return uiId;
 	}

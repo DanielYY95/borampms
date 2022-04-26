@@ -215,7 +215,6 @@
 																	<option value="phone">연락처</option>
 																</select>
 															</div>
-															<!--왜 한글말고 다른건 입력이 안되는겨....-->
 														
 														  <div class="col-7">
 															<input type="search" name="uiName" class="form-control" id="typeInput" placeholder="검색">
@@ -593,8 +592,7 @@
 								});	
 								
 								//JSTL과 JAVASCRIPT는 실행되는 시점이 다르기 때문에...	 서버는 JAVA>JSTL>HTML>Javascript 순서로 동작
-
-								//JSTL이 먼저 실행되고 JAVASCRIPT는 이후에 실행됩니다. => badge 붙여주는게 어려울 듯... 
+								//JSTL이 먼저 실행되고 JAVASCRIPT는 이후에 실행됩니다.
 								
 								$("#listBox").append(html);
 								let approveMsg = `<span class="badge bg-danger">승인 요청</span>`;
